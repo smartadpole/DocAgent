@@ -24,7 +24,7 @@
 当前工具：
 - `Obsidian`：浏览、编辑、链接 Markdown
 - `Codex CLI`：读写文件、批量整理、生成索引
-- `workspace-filesystem` MCP：让 Codex 直接访问 `/Users/hai/Documents/Software`
+- `workspace-filesystem` MCP：让 Codex 直接访问当前工作区
 - `workspace-memory` MCP：保存长期规则、偏好和稳定结论
 
 层级：

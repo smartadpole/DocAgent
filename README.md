@@ -50,7 +50,7 @@
 
 - `Obsidian` 用来浏览、编辑和串联笔记。
 - `Codex CLI` 用来读取、改写、批量生成 Markdown。
-- `workspace-filesystem` 让 Codex 直接操作 `/Users/hai/Documents/Software` 下的文件。
+- `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
 
 ## 软件研发模式怎么叠加
@@ -66,7 +66,7 @@
 
 如果你正在做研发，先看 [projects/README.md](./projects/README.md)。
 
-研发阶段的详细说明、阶段映射和推进方式，统一看 [WORKFLOW.md](/Users/hai/Documents/Software/wiki/WORKFLOW.md) 里的 `1.9 软件研发模式`。
+研发阶段的详细说明、阶段映射和推进方式，统一看 [WORKFLOW.md](./WORKFLOW.md) 里的 `1.9 软件研发模式`。
 
 ## 最短工作流
 
@@ -86,8 +86,8 @@
 
 ## 打开方式
 
-- `open -a Obsidian /Users/hai/Documents/Software/wiki`
-- `open 'obsidian:///Users/hai/Documents/Software/wiki/INDEX.md'`
+- 直接用 Obsidian 打开当前 vault
+- 在 vault 里直接打开 `INDEX.md`
 
 ## 更新原则
 
