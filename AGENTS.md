@@ -43,6 +43,36 @@
 - 导航类信息放 `indexes/`，不要在多个说明页里重复堆导航列表。
 - 需要在别处提及时，优先链接、摘一句、或写简短引用说明，不复制整段内容。
 
+## 上下文模型
+
+- 这里的“上下文”，不是当前文件附近几段话，而是为了正确更新目标内容，必须一起判断的最小相关信息集合。
+- 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、知识沉淀层、导航层、历史层。
+- 证据层是 `raw/`、`inbox/`、`assets/`，回答“信息从哪里来”。
+- 项目运行层是 `projects/README.md`、`requirements.md`、`design.md`、`decisions.md`、`worklog.md`、`releases.md`、`incidents.md`，回答“当前项目正在做什么、为什么这样做、做到哪里了”。
+- 知识沉淀层是 `articles/`、`concepts/`、`indexes/`，回答“哪些结论已经稳定、哪些概念可以复用、入口如何组织”。
+- 历史层是 `archive/` 和 `log.md`，回答“它以前怎么演进、哪些内容已退役、这次结构调整从何时开始生效”。
+- 同一段内容至少同时拥有四个属性：所属模式、所属阶段、主入口、受影响页面。
+
+## 关联关系
+
+- `projects/README.md` 是项目运行层主入口，连接 `requirements.md`、`design.md`、`decisions.md`、`worklog.md`、`releases.md`、`incidents.md`。
+- `requirements.md` 上连项目主页，下连 `design.md` 和 `decisions.md`，外连相关 `raw/` 来源。
+- `design.md` 上连项目主页和需求，横向连接 `decisions.md`，必要时连到相关 `concepts/`。
+- `decisions.md` 要能回溯到需求、设计和当时约束，必要时连到 `worklog.md`、`releases.md` 或 `incidents.md`。
+- `worklog.md` 连接项目主页、决策和实际推进记录，是过程上下文，不是长期知识主入口。
+- `releases.md` 连接项目主页、设计、决策和验证结果；`incidents.md` 连接发布、运行现象、根因和修复动作。
+- `articles/` 连接原始来源和稳定结论；`concepts/` 连接多个文章页和项目页；`indexes/` 只负责把这些主页面串起来。
+- `archive/` 只承接退役内容，不承担当前主入口职责。
+
+## 演进关系
+
+- 默认演进链路是：`raw/inbox -> projects -> articles/concepts/indexes -> archive/log.md`。
+- 新信息先作为来源进入 `raw/` 或 `inbox/`。
+- 当信息开始参与当前项目判断和推进时，进入 `projects/`。
+- 当项目里的某些结论已经脱离当前阶段、可以跨阶段或跨问题复用时，提升到 `articles/` 或 `concepts/`。
+- 当一个主题需要长期导航、分类和检索时，再由 `indexes/` 收口。
+- 当页面不再承担当前入口职责但仍有历史价值时，转入 `archive/`，同时在 `log.md` 留痕。
+
 ## 读取顺序
 
 - 写任何内容时都要先建立全局背景，不允许只盯着当前文件局部改写。
@@ -53,6 +83,19 @@
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义或项目状态，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
+
+## 目标文件的最小读取集
+
+- 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、相关 `requirements.md`、`design.md`、`decisions.md`、`worklog.md`。
+- 改 `requirements.md` 时，至少读：`projects/README.md`、相关 `raw/` 来源、已有 `design.md`、已有 `decisions.md`。
+- 改 `design.md` 时，至少读：`projects/README.md`、`requirements.md`、已有 `decisions.md`、相关 `concepts/`。
+- 改 `decisions.md` 时，至少读：`projects/README.md`、`requirements.md`、`design.md`、相关 `worklog.md` 或 `incidents.md`。
+- 改 `worklog.md` 时，至少读：`projects/README.md`、当前相关 `decisions.md`、必要时读 `releases.md` 或 `incidents.md`。
+- 改 `releases.md` 时，至少读：`projects/README.md`、`design.md`、`decisions.md`、相关验证记录。
+- 改 `incidents.md` 时，至少读：`projects/README.md`、`releases.md`、相关 `worklog.md`、相关决策和原始证据。
+- 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
+- 改 `concepts/` 时，至少读：相关 `articles/`、相关项目页、相关 `indexes/`。
+- 改 `indexes/` 时，至少读：它要导航到的主页面，不允许只看索引本身闭门重排。
 
 ## 文件与目录操作
 

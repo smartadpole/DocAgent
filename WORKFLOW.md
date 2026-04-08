@@ -39,6 +39,41 @@
 - 哪些页面会被这次更新影响
 - 这次写进去的内容是长期知识，还是阶段性上下文
 
+建立上下文时，建议按这个顺序做：
+
+1. 先判断目标属于证据层、项目运行层、知识沉淀层、导航层还是历史层。
+2. 再判断它在当前项目里属于哪个阶段：调研、设计、开发、发布、事故、归档。
+3. 找到这个目标的主入口页，不允许绕开主入口直接写局部文件。
+4. 找到它的上游文件和下游文件。
+5. 确认这次写入的是来源、判断、过程、结论还是导航。
+6. 再决定该改主页面、补支撑页，还是把结论提升到知识库层。
+
+上下游关系可以这样理解：
+
+- 上游：这段内容依赖哪些来源、需求、设计、决策、阶段判断
+- 下游：这段内容会影响哪些页面的理解、状态、跳转、结论
+- 主入口：这一类信息最终由哪一页负责解释和收口
+
+对当前这个单项目系统，默认上下文链路是：
+
+- 外部来源进入 `raw/` 或 `inbox/`
+- 当前项目判断和推进进入 `projects/`
+- 稳定结论沉到 `articles/`、`concepts/`、`indexes/`
+- 失去主入口职责但仍需保留的内容进入 `archive/`
+
+不同目标文件，默认先读这些关联文件：
+
+- `projects/README.md`：`requirements.md`、`design.md`、`decisions.md`、`worklog.md`
+- `requirements.md`：`projects/README.md`、相关 `raw/`、已有 `design.md`
+- `design.md`：`projects/README.md`、`requirements.md`、`decisions.md`、相关 `concepts/`
+- `decisions.md`：`projects/README.md`、`requirements.md`、`design.md`、相关过程记录
+- `worklog.md`：`projects/README.md`、当前相关 `decisions.md`
+- `releases.md`：`projects/README.md`、`design.md`、`decisions.md`
+- `incidents.md`：`projects/README.md`、`releases.md`、`worklog.md`、相关证据
+- `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
+- `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
+- `indexes/`：它所指向的主页面
+
 ## 1. 收集
 
 - 新文章、链接、会议纪要、想法，先放进 `inbox/` 或 `raw/`。
