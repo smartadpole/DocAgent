@@ -4,15 +4,15 @@
 
 如果你不知道先看什么，按这个顺序：
 
-1. 先看 [README.md](./README.md)，知道这个 vault 是干什么的、怎么启动、怎么选动作。
-2. 要处理文件和目录细节，就看 [WORKFLOW.md](./WORKFLOW.md)。
-3. 要知道 agent 的维护边界，就看 [AGENTS.md](./AGENTS.md)。
+1. 先看 [[README]]，知道这个 vault 是干什么的、怎么启动、怎么选动作。
+2. 要处理文件和目录细节，就看 [[WORKFLOW]]。
+3. 要知道 agent 的维护边界，就看 [[AGENTS]]。
 4. 要找入口分类和运行记录，就留在这页。
 
 这页只做总导航，不承载细节。
 
 项目入口：
-- [projects/README.md](./projects/README.md)：活跃软件研发项目的运行说明和流程
+- [[projects/README]]：活跃软件研发项目的运行说明和流程
 
 先看这几个总入口判断：
 - 这是新目录还是已有目录扩展
@@ -38,7 +38,7 @@
 - `archive/`：退役但仍需保留的页面和历史版本
 
 运行记录：
-- [log.md](./log.md)：按时间追加的 ingest / lint / decision 记录
+- [[log]]：按时间追加的 ingest / lint / decision 记录
 
 更新原则：
 - 工具名和概念名尽量用 `[[双向链接]]`
