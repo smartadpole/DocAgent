@@ -1,6 +1,6 @@
 # 知识库入口
 
-这是一套给 Obsidian + Codex 用的文档系统。先看 [README.md](./README.md)，再看 [WORKFLOW.md](./WORKFLOW.md)。
+这是一套给 Obsidian + Codex 用的文档系统。先看 [README.md](./README.md)，再看 [WORKFLOW.md](./WORKFLOW.md)，最后看 [AGENTS.md](./AGENTS.md)。
 
 当前工具：
 - `Obsidian`：浏览、编辑、链接 Markdown
@@ -8,11 +8,15 @@
 - `workspace-filesystem` MCP：让 Codex 直接访问 `/Users/hai/Documents/Software`
 - `workspace-memory` MCP：保存长期规则、偏好和稳定结论
 
-推荐结构：
-- `inbox/`：原始材料，先收进来，再整理
+层级：
+- `raw/`：原始资料层，尽量只进不改
+- `inbox/`：临时收口区，来源还没完全整理前先放这里
 - `articles/`：每篇材料一张摘要卡片
 - `concepts/`：每个工具或概念一个页面
 - `indexes/`：全局索引、分类索引、时间线索引
+
+运行记录：
+- [log.md](./log.md)：按时间追加的 ingest / lint / decision 记录
 
 更新原则：
 - 工具名和概念名尽量用 `[[双向链接]]`
