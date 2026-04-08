@@ -18,6 +18,15 @@
 - 发布说明
 - 事故和复盘
 
+## 极简版本
+
+如果你只有一个小项目，最小只需要这两个东西：
+
+- `projects/<项目名>/README.md`
+- 根目录 `log.md`
+
+其余文件都按需添加，不要为了完整性先建空文件。
+
 ## 这层不负责什么
 
 - 不把项目上下文直接混进 `articles/`、`concepts/` 或 `indexes/`
@@ -40,12 +49,12 @@ projects/
     incidents.md
 ```
 
-如果项目数量变多，再补一个 `projects/INDEX.md` 汇总活跃项目入口。
+如果项目数量变多，再补一个 `projects/INDEX.md` 汇总活跃项目入口。单项目场景下，这一步可以先不做。
 
 ## 典型流程
 
 1. 立项时先建项目目录和 `README.md`。
-2. 用 `templates/project-template.md` 生成项目主页。
+2. 可以用 `templates/project-template.md` 生成项目主页，也可以直接手写 `README.md`。
 3. 收集需求、会议纪要、Issue、PR 和外部资料。
 4. 先写清目标、范围、非目标和成功标准。
 5. 再补设计、决策和实施记录。
