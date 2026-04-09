@@ -60,9 +60,9 @@
 - `projects/README.md` 是项目运行层主入口，连接项目层其他主页面。
 - 需求页上连项目主页，下连设计页和决策页，外连相关 `raw/` 来源。
 - 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出架构页、数据库页等子页，它们仍然属于同一个设计层。
-- 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页或事故页。
+- 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页或事故目录。
 - 开发页连接项目主页、决策和实际推进记录，是过程上下文，不是长期知识主入口。
-- 发布页连接项目主页、设计、决策和验证结果；事故页连接发布、运行现象、根因和修复动作。
+- 发布页连接项目主页、设计、决策和验证结果；事故目录连接发布、运行现象、根因和修复动作。
 - `articles/` 连接原始来源和稳定结论；`concepts/` 连接多个文章页和项目页；`indexes/` 只负责把这些主页面串起来。
 - `archive/` 只承接退役内容，不承担当前主入口职责。
 
@@ -98,10 +98,10 @@
 - 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面。
 - 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
 - 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`。
-- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故页。
-- 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故页。
+- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录。
+- 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
-- 改事故页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
+- 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
 - 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
 - 改 `concepts/` 时，至少读：相关 `articles/`、相关项目页、相关 `indexes/`。
 - 改 `indexes/` 时，至少读：它要导航到的主页面，不允许只看索引本身闭门重排。
@@ -110,7 +110,7 @@
 
 - 新建目录前先确认是不是已有目录的子集。
 - 新建目录后先补 `README.md`；模板和索引按需补，不要为了完整性先铺满。
-- 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。
+- 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/` 这类天然按条目累积的模块默认保留目录。
 - 新建文件先确认它属于 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`。
 - 如果是支持性附件，优先放 `assets/`；如果是退役页面，优先放 `archive/`。
 - 如果是活跃研发项目的文档，优先放 `projects/`。

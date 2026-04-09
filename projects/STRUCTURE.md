@@ -29,6 +29,7 @@
 
 - `design/` 里如果已经有 `README.md`、`architecture.md`、`database.md`，就继续保留目录。
 - `releases/` 如果现在只有一个 `README.md`，而且短期内不会继续长文件，就更适合平铺成 `releases.md`。
+- `incidents/` 更适合保留目录，因为它天然是一组独立事故记录的集合。
 
 ```text
 projects/
@@ -44,7 +45,9 @@ projects/
     README.md
     worklog.md
   releases.md
-  incidents.md
+  incidents/
+    README.md
+    2026-04-09-example.md
 ```
 
 这不是要求一次性建全，而是推荐的扩展方向。
@@ -124,8 +127,9 @@ projects/
 
 ### 3.7 事故层
 
-- `projects/incidents.md`
-- 回答：发生了什么、影响是什么、根因是什么、怎么修、如何防再发
+- `projects/incidents/README.md`
+- 回答：当前事故总览、整体状态、索引和共性改进项
+- 每一个具体事故单独成文，放在 `projects/incidents/` 目录下
 
 ## 4. 文件依赖
 
@@ -141,7 +145,7 @@ projects/
 - 决策页依赖需求和设计，记录关键判断
 - 开发页依赖设计和决策，记录实际推进过程
 - 发布页依赖设计、决策和验证结果
-- 事故页依赖发布记录、开发记录和证据
+- 事故目录依赖发布记录、开发记录和证据
 
 数据库设计不是独立于设计层存在的，它默认属于设计主入口或其子页：
 
@@ -164,7 +168,7 @@ projects/
 2. 再读 `design/README.md`
 3. 再读 `decisions.md`
 4. 发布看 `releases.md`
-5. 故障看 `incidents.md` 和 `development/worklog.md`
+5. 故障看 `incidents/README.md` 和 `development/worklog.md`
 
 ## 6. 什么时候建新文件
 

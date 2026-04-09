@@ -38,3 +38,4 @@
 - 明确项目层的目录规则：现有内容优先保留；已经形成多文件职责的模块继续保留目录；只有一个 `README.md` 的子目录才优先收平成单文件。
 - 澄清设计层口径：`design/README.md` 是设计主入口，`architecture.md`、`database.md` 是设计子页，不是并列的第二份“设计”。
 - 按统一规则实际创建项目层文件：`requirements.md`、`design/README.md`、`design/architecture.md`、`design/database.md`、`decisions.md`、`development/README.md`、`development/worklog.md`、`releases.md`、`incidents.md`。
+- 将事故层调整为目录结构：`incidents/README.md` 负责总览和整体状态，每一次事故单独成文件，避免把多次事故堆在同一页。

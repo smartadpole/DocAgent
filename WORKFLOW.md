@@ -34,7 +34,7 @@
 - 关键取舍：看 `projects/decisions.md`
 - 过程记录和排障：看 `projects/development/worklog.md`
 - 发布和回滚：看 `projects/releases.md`
-- 事故和复盘：看 `projects/incidents.md`
+- 事故和复盘：看 `projects/incidents/README.md`
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
 建立全局背景时，至少先回答这几个问题：
@@ -75,7 +75,7 @@
 - `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、相关过程记录
 - `projects/development/worklog.md`：`projects/README.md`、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`
-- `projects/incidents.md`：`projects/README.md`、`projects/releases.md`、`projects/development/worklog.md`、相关证据
+- `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/worklog.md`、相关证据
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
 - `indexes/`：它所指向的主页面
@@ -230,8 +230,9 @@
 ## 1.8.1 项目层平铺还是分目录
 
 - 不要为了看起来模块化，就把只有一个 `README.md` 的内容放进子目录。
-- 如果一个模块当前只有一个主文件，优先平铺，例如 `releases.md`、`incidents.md`。
+- 如果一个模块当前只有一个主文件，优先平铺，例如 `releases.md`。
 - 如果一个模块已经有多个职责明确的文件，就保留目录，例如设计主入口 `design/README.md` 加上它的子页 `design/architecture.md`、`design/database.md`。
+- `incidents/` 这类天然会累积多条独立记录的模块，默认保留目录。
 - 现有内容优先保留；先根据内容是否已经长成多文件模块判断，再决定要不要收平。
 
 ## 1.9 软件研发模式
@@ -281,7 +282,7 @@
 3. 开始实现前补 `design/README.md`，先讲结构和取舍，再写代码。
 4. 关键判断写进 `decisions.md`，避免后面忘记为什么这样做。
 5. 开发过程中持续更新项目主页；只有过程复杂时再补 `development/worklog.md`。
-6. 上线前后补 `releases.md`；出问题或需要总结时补 `incidents.md`。
+6. 上线前后补 `releases.md`；出问题或需要总结时，在 `incidents/` 下新增事故文件，并更新 `incidents/README.md`。
 7. 一轮结束后，把通用经验回写到知识库层。
 
 ### 1.9.4 流程控制怎么处理

@@ -46,7 +46,7 @@
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
 - [[projects/development/README]]：开发主入口。这里放开发状态、阻塞和下一步。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
-- [[projects/incidents]]：事故主文件。这里放故障、根因、修复和复盘。
+- [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。
 - `WORKFLOW.md`：详细流程说明。这里放阶段映射、推进顺序和 AI 功能研发工作流。
 
 ## 什么时候再拆
