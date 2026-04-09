@@ -24,13 +24,13 @@ tags: [policy]
 ## 这页不负责什么
 
 - 不放项目阶段的具体取舍，那进 `[[projects/decisions]]`
-- 不放时间顺序上的过程记录，那进 `log.md`
+- 不放时间顺序上的过程记录，那进 `[[log]]`
 - 不放单轮会话草稿，那留在 session / inbox
 - 不放共享背景正文，那是 `[[BRAIN]]`
 
 ## 读取优先级
 
-- POLICY.md
+- `[[POLICY]]`
 - `[[projects/decisions]]`
 - `[[projects/memory/README]]`
 - `[[projects/memory/shared]]`
@@ -89,8 +89,8 @@ tags: [policy]
 
 - 临时会话信息先留在 session 或 `inbox/`
 - 重复出现、且只对当前项目长期有用的信息，先进入 `[[projects/memory/README]]`
-- 跨任务、跨会话、但仍属于共享背景的信息，进入 `BRAIN.md`
-- 会改变后续执行方式的内容，进入 `POLICY.md`
+- 跨任务、跨会话、但仍属于共享背景的信息，进入 `[[BRAIN]]`
+- 会改变后续执行方式的内容，进入 `[[POLICY]]`
 - 项目冲突和最终拍板，进入 `[[projects/decisions]]`
 
 ## 优先级顺序
