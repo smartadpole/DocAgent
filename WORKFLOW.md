@@ -29,12 +29,12 @@
 判断主入口和单一信息源时，优先这样看：
 
 - 状态、范围、下一步：看 `projects/README.md`
-- 需求边界和验收：看 `requirements.md`
-- 方案、接口、数据流：看 `design.md`
-- 关键取舍：看 `decisions.md`
-- 过程记录和排障：看 `worklog.md`
-- 发布和回滚：看 `releases.md`
-- 事故和复盘：看 `incidents.md`
+- 需求边界和验收：看 `projects/requirements.md`
+- 方案、接口、数据流：看 `projects/design/README.md`
+- 关键取舍：看 `projects/decisions.md`
+- 过程记录和排障：看 `projects/development/worklog.md`
+- 发布和回滚：看 `projects/releases.md`
+- 事故和复盘：看 `projects/incidents.md`
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
 建立全局背景时，至少先回答这几个问题：
@@ -69,13 +69,13 @@
 
 不同目标文件，默认先读这些关联文件：
 
-- `projects/README.md`：`requirements.md`、`design.md`、`decisions.md`、`worklog.md`
-- `requirements.md`：`projects/README.md`、相关 `raw/`、已有 `design.md`
-- `design.md`：`projects/README.md`、`requirements.md`、`decisions.md`、相关 `concepts/`
-- `decisions.md`：`projects/README.md`、`requirements.md`、`design.md`、相关过程记录
-- `worklog.md`：`projects/README.md`、当前相关 `decisions.md`
-- `releases.md`：`projects/README.md`、`design.md`、`decisions.md`
-- `incidents.md`：`projects/README.md`、`releases.md`、`worklog.md`、相关证据
+- `projects/README.md`：`requirements.md`、`design/README.md`、`decisions.md`、`development/README.md`
+- `projects/requirements.md`：`projects/README.md`、相关 `raw/`、已有 `projects/design/README.md`
+- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、`projects/decisions.md`、相关 `concepts/`
+- `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、相关过程记录
+- `projects/development/worklog.md`：`projects/README.md`、当前相关 `projects/decisions.md`
+- `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`
+- `projects/incidents.md`：`projects/README.md`、`projects/releases.md`、`projects/development/worklog.md`、相关证据
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
 - `indexes/`：它所指向的主页面
@@ -278,9 +278,9 @@
 
 1. 在 `projects/README.md` 写清问题、目标用户、成功标准和当前阶段。
 2. 需求复杂时补 `requirements.md`，把范围、非目标、验收标准写清楚。
-3. 开始实现前补 `design.md`，先讲结构和取舍，再写代码。
+3. 开始实现前补 `design/README.md`，先讲结构和取舍，再写代码。
 4. 关键判断写进 `decisions.md`，避免后面忘记为什么这样做。
-5. 开发过程中持续更新项目主页；只有过程复杂时再补 `worklog.md`。
+5. 开发过程中持续更新项目主页；只有过程复杂时再补 `development/worklog.md`。
 6. 上线前后补 `releases.md`；出问题或需要总结时补 `incidents.md`。
 7. 一轮结束后，把通用经验回写到知识库层。
 
@@ -312,7 +312,7 @@
 
 - `调研/立项`：`projects/README.md`，必要时补需求页
 - `设计/评审`：设计页 + 决策页
-- `开发/联调`：`projects/README.md` 持续更新，复杂过程补执行页
+- `开发/联调`：`projects/README.md` 持续更新，复杂过程补开发页
 - `发布/运维`：发布页
 - `事故/复盘`：事故页
 - `沉淀/归档`：回写 `articles/`、`concepts/`、`indexes/`
@@ -366,7 +366,7 @@
 
 6. `代码实现`
    AI 在代码仓库里实际修改代码、补测试、跑验证。
-   如果过程复杂、排障很多、回滚思路重要，再补执行记录页。
+   如果过程复杂、排障很多、回滚思路重要，再补开发记录页。
 
 7. `结果验证`
    至少验证三件事：

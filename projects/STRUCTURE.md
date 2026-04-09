@@ -34,28 +34,24 @@
 projects/
   README.md
   STRUCTURE.md
-  requirements/
-    README.md
+  requirements.md
   design/
     README.md
     architecture.md
     database.md
-  decisions/
-    README.md
-  execution/
+  decisions.md
+  development/
     README.md
     worklog.md
-  releases/
-    README.md
-  incidents/
-    README.md
+  releases.md
+  incidents.md
 ```
 
 这不是要求一次性建全，而是推荐的扩展方向。
 
 - 极简项目：只保留 `projects/README.md`
 - 小项目：优先平铺单文件；只有明显会长成多文件模块时再建子目录
-- 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md`、`releases/README.md`、`incidents/README.md`
+- 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md` 等子页
 
 如果你更喜欢平铺文件，也可以用统一前缀，例如：
 
@@ -66,7 +62,7 @@ projects/
   design-architecture.md
   design-database.md
   decision-log.md
-  exec-worklog.md
+  development-worklog.md
   release-notes.md
   incident-review.md
 ```
@@ -87,7 +83,7 @@ projects/
 
 ### 3.2 需求层
 
-- `projects/requirements/README.md`
+- `projects/requirements.md`
 - 回答：为什么做、做给谁、范围是什么、验收怎么算通过
 - 适合放：问题定义、用户场景、目标、非目标、约束、验收标准
 
@@ -110,32 +106,32 @@ projects/
 
 ### 3.4 决策层
 
-- `projects/decisions/README.md`
+- `projects/decisions.md`
 - 回答：为什么选这个方案、不选另一个、当时约束是什么
 - 适合放关键取舍和 ADR 风格记录
 
-### 3.5 执行层
+### 3.5 开发层
 
-- `projects/execution/README.md`
+- `projects/development/README.md`
 - 回答：最近在推进什么、卡在哪里、下一步做什么
-- `projects/execution/worklog.md`
+- `projects/development/worklog.md`
   适合放复杂排障、联调过程、验证过程
 
 ### 3.6 发布层
 
-- `projects/releases/README.md`
+- `projects/releases.md`
 - 回答：这次发了什么、怎么验证、出了问题怎么回滚
 
 ### 3.7 事故层
 
-- `projects/incidents/README.md`
+- `projects/incidents.md`
 - 回答：发生了什么、影响是什么、根因是什么、怎么修、如何防再发
 
 ## 4. 文件依赖
 
 项目层依赖关系建议固定成这条主链：
 
-`projects/README.md -> requirements -> design -> decisions -> execution -> releases -> incidents`
+`projects/README.md -> requirements -> design -> decisions -> development -> releases -> incidents`
 
 具体来说：
 
@@ -143,9 +139,9 @@ projects/
 - 需求页向下驱动设计和决策
 - 设计页依赖需求，并向下驱动实现
 - 决策页依赖需求和设计，记录关键判断
-- 执行页依赖设计和决策，记录实际推进过程
+- 开发页依赖设计和决策，记录实际推进过程
 - 发布页依赖设计、决策和验证结果
-- 事故页依赖发布记录、执行记录和证据
+- 事故页依赖发布记录、开发记录和证据
 
 数据库设计不是独立于设计层存在的，它默认属于设计主入口或其子页：
 
@@ -157,18 +153,18 @@ projects/
 ### 5.1 做一个新功能时
 
 1. 先读 `projects/README.md`
-2. 再读 `requirements/README.md`
+2. 再读 `requirements.md`
 3. 再读 `design/README.md`
-4. 有关键取舍时再读 `decisions/README.md`
-5. 实施复杂时再读 `execution/worklog.md`
+4. 有关键取舍时再读 `decisions.md`
+5. 实施复杂时再读 `development/worklog.md`
 
 ### 5.2 做发布或排障时
 
 1. 先读 `projects/README.md`
 2. 再读 `design/README.md`
-3. 再读 `decisions/README.md`
-4. 发布看 `releases/README.md`
-5. 故障看 `incidents/README.md` 和 `execution/worklog.md`
+3. 再读 `decisions.md`
+4. 发布看 `releases.md`
+5. 故障看 `incidents.md` 和 `development/worklog.md`
 
 ## 6. 什么时候建新文件
 

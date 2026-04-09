@@ -37,3 +37,4 @@
 - 将项目层的结构说明单独抽到 `projects/STRUCTURE.md`，把目录、文件职责、依赖关系和默认读取顺序收口成一个主页面，避免继续把结构和流程堆在同一页。
 - 明确项目层的目录规则：现有内容优先保留；已经形成多文件职责的模块继续保留目录；只有一个 `README.md` 的子目录才优先收平成单文件。
 - 澄清设计层口径：`design/README.md` 是设计主入口，`architecture.md`、`database.md` 是设计子页，不是并列的第二份“设计”。
+- 按统一规则实际创建项目层文件：`requirements.md`、`design/README.md`、`design/architecture.md`、`design/database.md`、`decisions.md`、`development/README.md`、`development/worklog.md`、`releases.md`、`incidents.md`。
