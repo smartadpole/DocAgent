@@ -45,9 +45,9 @@ tags: [entry, root]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
-- 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 `WORKFLOW.md`
-- 想知道“Codex 处理时有哪些约束” -> 读 `AGENTS.md`
-- 想知道“入口页、索引页、层级在哪” -> 读 `INDEX.md`
+- 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
+- 想知道“Codex 处理时有哪些约束” -> 读 [[AGENTS]]
+- 想知道“入口页、索引页、层级在哪” -> 读 [[INDEX]]
 
 ## 先看这些关键问题
 
@@ -57,7 +57,7 @@ tags: [entry, root]
 - 这是新文件，还是对已有文件的修改？
 - 这份材料该进 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`？
 - 这次改动会不会影响链接、目录名或索引？
-- 这次处理是不是有长期价值，需要写进 `log.md` 或 `workspace-memory`？
+- 这次处理是不是有长期价值，需要写进 [[log]] 或 `workspace-memory`？
 
 ## 这组工具怎么配合
 
