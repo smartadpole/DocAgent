@@ -7,6 +7,7 @@
 
 子页：
 
+- [[projects/design/tech-selection]]
 - [[projects/design/architecture]]
 - [[projects/design/database]]
 
@@ -15,7 +16,7 @@
 - 说明整体方案
 - 说明模块划分
 - 说明接口和数据流
-- 说明技术选型和主要风险
+- 说明设计总览，并链接技术选型、架构和数据库子页
 
 ## 当前内容
 
@@ -25,5 +26,5 @@
 - 模块划分
 - 接口边界
 - 数据流
-- 技术选型
+- 技术选型入口
 - 风险和权衡
