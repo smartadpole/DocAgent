@@ -50,7 +50,11 @@ projects/
   decisions.md
   development/
     README.md
-    examples.md
+    feature-points/
+      README.md
+      FP-001.md
+      FP-002.md
+      FP-003.md
     worklog.md
   releases.md
   incidents/
@@ -130,9 +134,17 @@ projects/
 ### 3.5 开发层
 
 - `projects/development/README.md`
-- 回答：当前开发状态、活跃功能点清单、状态轴、阶段轴、卡在哪里、下一步做什么
-- `projects/development/examples.md`
-  适合放进行中、完成和已发布的功能点卡片示例，以及过程记录示例
+- 回答：当前开发状态、活跃功能点索引、状态轴、阶段轴、卡在哪里、下一步做什么
+- `projects/development/feature-points/README.md`
+  这是功能点实体目录，一页一个功能点
+  适合放当前活跃、完成待发布和已发布功能点的索引
+- `projects/development/feature-points/FP-001.md`
+  这是功能点实体页
+  适合放一个功能点的 frontmatter、目标、范围、验收、阻塞、过程和结果
+- `projects/development/feature-points/FP-002.md`
+  这是完成待发布的功能点实体页
+- `projects/development/feature-points/FP-003.md`
+  这是已发布的功能点实体页
 - `projects/development/worklog.md`
   适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
 

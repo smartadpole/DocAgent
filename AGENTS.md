@@ -8,6 +8,7 @@
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
 - `projects/`：活跃研发项目层。需求、设计、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
+- `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
 - `concepts/`：概念和实体层。工具、项目、术语都放这里。
 - `indexes/`：导航层。只负责入口、分类和检索。

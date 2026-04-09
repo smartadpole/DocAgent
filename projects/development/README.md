@@ -16,13 +16,13 @@ tags: [development]
 
 子页：
 
-- [[projects/development/examples]]
+- [[projects/development/feature-points/README]]
 - [[projects/development/worklog]]
 
 ## 这页负责什么
 
 - 说明当前开发状态
-- 维护活跃功能点清单和状态
+- 维护活跃功能点实体的索引和状态
 - 说明阻塞和风险
 - 说明下一步
 - 汇总需要关注的验证项
@@ -30,12 +30,14 @@ tags: [development]
 ## 功能点推进
 
 设计拆成模块以后，这页就是当前活跃功能点的工作台。
+每个功能点单独一页，状态和阶段写在该页 frontmatter 里。
 
 ### 双轴模型
 
 - `status` 只看生命周期，回答这张卡是不是还活跃
 - `phase` 只看串联步骤，回答这张卡现在走到哪一步
-- 每张功能点卡都要同时写 `status` 和 `phase`
+- 每个功能点实体页都要同时写 `status` 和 `phase`
+- `projects/development/feature-points/` 里一页只放一个功能点
 - `blocked` 是叠加态，不是单独一条流程
 - 旧的 `in_progress` 以后统一拆成 `status=active + phase=*`
 
@@ -55,12 +57,21 @@ tags: [development]
 - `verification`：测试、回归、验收
 - `release`：发布、观察、收口
 
-### 卡片模板
+### 实体模板
 
 ```md
-#### FP-001 | 功能点名称
-- 状态：active
-- 阶段：implementation
+---
+type: feature_point
+id: FP-001
+project: PROJ-WIKI-001
+status: active
+phase: implementation
+updated: 2026-04-10
+tags: [development, feature-point]
+---
+
+# FP-001 | 功能点名称
+
 - 模块：
 - 目标：
 - 范围：
@@ -75,26 +86,36 @@ tags: [development]
 - 结果：
 ```
 
-### 示例文件
+### 当前实体
 
-- [[projects/development/examples]]：可直接复制的进行中、完成和已发布功能点卡片，以及过程记录示例
+- [[projects/development/feature-points/README]]：功能点实体目录，一页一个功能点
+
+#### 进行中
+
+- [[projects/development/feature-points/FP-001]]：active / implementation
+
+#### 完成待发布
+
+- [[projects/development/feature-points/FP-002]]：done / release
+
+#### 已发布
+
+- [[projects/development/feature-points/FP-003]]：released / release
 
 ### 维护方式
 
-- 这页保留当前活跃功能点清单，完成后移到归档区，或在同页标成 `done`
-- 如果某张卡卡在某一步，就只改 `status` 为 `blocked`，`phase` 保留当前阶段
-- 如果 `phase` 从 `design` 推进到 `implementation` 或 `verification`，就在同一张卡上更新，不要新开一张卡
+- 这页保留当前活跃功能点的索引和状态，完成后只改对应实体页，不要把多个功能点正文塞进同一页
+- 如果某个功能点卡在某一步，就只改该页的 `status` 为 `blocked`，`phase` 保留当前阶段
+- 如果 `phase` 从 `design` 推进到 `implementation` 或 `verification`，就在同一功能点页更新，不要新开另一页
 - 过程流水写到 [[projects/development/worklog]]
 - 关键取舍写到 [[projects/decisions]]
 - 可复用结论写到 [[projects/memory/README]] 或知识库层
 
-## 当前内容
+## 当前关注点
 
 按需要补充：
 
-- 活跃功能点清单
-- `status` 和 `phase`
-- 当前状态
+- 当前状态和阶段
 - 当前分支或关联 PR/Issue
 - 当前阻塞
 - 测试关注点
@@ -103,5 +124,5 @@ tags: [development]
 ## 维护说明
 
 - 开发推进时如果发现项目记忆、规则边界或决策发生变化，先回写到 [[projects/memory/README]]、[[POLICY]] 和 [[projects/decisions]]
-- 功能点状态发生变化时，同步更新 [[projects/status]] 和 [[projects/development/worklog]]；如果已经发布，再看 [[projects/releases]]
+- 功能点状态发生变化时，同步更新对应实体页、[[projects/status]] 和 [[projects/development/worklog]]；如果已经发布，再看 [[projects/releases]]
 - 开发页只记录推进过程，不重复写设计正文

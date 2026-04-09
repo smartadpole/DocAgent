@@ -374,7 +374,9 @@
 - `status` 和 `phase` 不是平级标签，而是串联关系。
 - `blocked` 是叠加态，可以落在任何 `phase` 上。
 - 旧的 `in_progress` 口径以后统一拆成 `status=active + phase=*`，不再作为单字段主轴。
-- 功能点模板放在 [[projects/development/README]]，示例放在 [[projects/development/examples]]。
+- 功能点模板放在 [[projects/development/README]]。
+- 功能点实体页放在 [[projects/development/feature-points/README]]，每个功能点一页，不把多个功能点正文塞在同一页。
+- `status` 和 `phase` 写在功能点页的 frontmatter 或页面属性里。
 - 过程日志放在 [[projects/development/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。
@@ -386,6 +388,7 @@
 - 开始前，先把功能点所属模块、目标、验收、依赖和负责人写清楚。
 - 先定 `phase`，再定 `status`。
 - `phase` 表示现在做到哪一步，`status` 表示这张卡是否活跃、被卡住、已完成或已发布。
+- 功能点实体页一页一个功能点，不把多个功能点放在同一页。
 - 进行中，`phase` 只沿串联链路前进，不要在 `design`、`implementation`、`verification` 之间来回改口。
 - `status` 只在生命周期切换时改，比如 `planned -> active -> blocked -> done -> released -> archived`。
 - 验证通过后，再把 `status` 从 `active` 收到 `done`；真正上线后，再改成 `released`。

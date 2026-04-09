@@ -26,8 +26,8 @@ tags: [memory, shared]
   - [[projects/decisions]] 放项目拍板
 - 项目主页固定为 [[projects/README]]
 - 项目层结构和读取顺序固定看 [[projects/STRUCTURE]]
-- 设计拆模块后，执行粒度以功能点卡片为准；状态镜像看 [[projects/status]]，过程流水看 [[projects/development/worklog]]
-- 功能点用 `status` + `phase` 双轴管理：`status` 看生命周期，`phase` 看串联步骤；每张卡都要同时写这两个字段；旧 `in_progress` 口径已拆开
+- 设计拆模块后，执行粒度以功能点实体页为准；状态镜像看 [[projects/status]]，过程流水看 [[projects/development/worklog]]
+- 功能点用 `status` + `phase` 双轴管理：`status` 看生命周期，`phase` 看串联步骤；每个功能点实体页都要同时写这两个字段；功能点实体页一页一个功能点；旧 `in_progress` 口径已拆开
 
 ## 需要持续带入的前提
 

@@ -62,3 +62,4 @@
 - 把过程记录也同步拆轴：`projects/development/worklog.md` 现在要求分开记录 `status` 变化和 `phase` 变化，避免把两条线重新揉回 `in_progress`。
 - 把开发示例进一步显式化：`projects/development/examples.md` 现在同时展示进行中、完成待发布、已发布三种卡片，让 `status` 和 `phase` 的区别一眼可见。
 - 把已发布示例的阶段口径收口到 `release`，避免 `released` 功能点还挂着 `verification` 阶段造成误读。
+- 把开发示例从“同页多卡”进一步拆成真实功能点实体页：新增 `projects/development/feature-points/` 目录，拆出 `README.md` 索引页和 `FP-001.md` / `FP-002.md` / `FP-003.md` 三个实体页；同时把 `WORKFLOW.md`、`projects/README.md`、`projects/STRUCTURE.md`、`projects/status.md`、`projects/development/README.md`、`projects/development/worklog.md`、`projects/decisions.md`、`projects/memory/shared.md` 和 `AGENTS.md` 的口径一起改成实体页优先。

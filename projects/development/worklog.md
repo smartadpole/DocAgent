@@ -29,7 +29,7 @@
 
 ```md
 - 时间：
-- 功能点：
+- 功能点（链接到实体页）：
 - 模块：
 - 状态变化：
 - 阶段变化：
@@ -41,6 +41,7 @@
 - 关联链接：
 ```
 
-## 示例文件
+## 关联实体
 
-- 示例已移到 [[projects/development/examples]]。
+- 功能点实体页看 [[projects/development/feature-points/README]]
+- 过程记录里如果提到某个功能点，优先链接到对应实体页
