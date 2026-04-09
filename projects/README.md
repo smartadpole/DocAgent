@@ -21,9 +21,9 @@ tags: [project]
 - 研发模式是叠加层，负责项目推进和阶段管理。
 - 项目里的稳定结论，最终要回写到知识库层。
 - 项目里的上下文、一次性决策和阶段记录，留在项目层即可。
-- 项目级稳定记忆放在 `[[projects/memory/README]]`。
-- 共享背景放在 `[[BRAIN]]`。
-- 规则和优先级放在 `[[POLICY]]`。
+- 项目级稳定记忆放在 [[projects/memory/README]]。
+- 共享背景放在 [[BRAIN]]。
+- 规则和优先级放在 [[POLICY]]。
 
 这两层不是并排摆放，而是有演进关系：
 
@@ -52,30 +52,30 @@ tags: [project]
 
 - 不把项目上下文直接混进 `articles/`、`concepts/` 或 `indexes/`
 - 不把可复用知识长期留在项目层
-- 不把共享背景长期堆在这里，那是 `[[BRAIN]]`
-- 不把规则和优先级长期堆在这里，那是 `[[POLICY]]`
+- 不把共享背景长期堆在这里，那是 [[BRAIN]]
+- 不把规则和优先级长期堆在这里，那是 [[POLICY]]
 
 ## 结构主说明
 
 - `projects/README.md` 只做项目层入口。
-- 项目层的目录设计、文件职责、依赖关系和读取顺序，统一看 `[[projects/STRUCTURE]]`。
-- 详细推进步骤和 AI 功能研发闭环，统一看 `[[WORKFLOW]]` 的 `1.9 软件研发模式`。
+- 项目层的目录设计、文件职责、依赖关系和读取顺序，统一看 [[projects/STRUCTURE]]。
+- 详细推进步骤和 AI 功能研发闭环，统一看 [[WORKFLOW]] 的 `1.9 软件研发模式`。
 
 ## 常用页面
 
-- `[[projects/README]]`：项目运行层主入口。这里放目标、状态、关键链接和下一步。
-- `[[projects/status]]`：项目状态页。这里放当前阶段、阻塞项和当前主入口。
-- `[[projects/STRUCTURE]]`：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
-- `[[projects/requirements]]`：需求主文件。这里放问题定义、范围、非目标和验收标准。
-- `[[projects/design/README]]`：设计主入口。这里放设计总览，并链接架构和数据库子页。
-- `[[projects/design/memory/README]]`：memory 研究层入口。这里放研究稿、工具调研和运行层设计草稿。
-- `[[projects/decisions]]`：决策主文件。这里放关键取舍和 ADR 风格记录。
-- `[[projects/development/README]]`：开发主入口。这里放开发状态、阻塞和下一步。
-- `[[projects/releases]]`：发布主文件。这里放上线范围、验证和回滚。
-- `[[projects/incidents/README]]`：事故总览。这里放事故状态、索引和共性改进项。
-- `[[projects/memory/README]]`：项目级稳定记忆入口。这里放项目长期背景和路由。
-- `[[POLICY]]`：规则、优先级和 memory 路由。
-- `[[BRAIN]]`：共享背景和共同前提。
+- [[projects/README]]：项目运行层主入口。这里放目标、状态、关键链接和下一步。
+- [[projects/status]]：项目状态页。这里放当前阶段、阻塞项和当前主入口。
+- [[projects/STRUCTURE]]：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
+- [[projects/requirements]]：需求主文件。这里放问题定义、范围、非目标和验收标准。
+- [[projects/design/README]]：设计主入口。这里放设计总览，并链接架构和数据库子页。
+- [[projects/design/memory/README]]：memory 研究层入口。这里放研究稿、工具调研和运行层设计草稿。
+- [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
+- [[projects/development/README]]：开发主入口。这里放开发状态、阻塞和下一步。
+- [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
+- [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。
+- [[projects/memory/README]]：项目级稳定记忆入口。这里放项目长期背景和路由。
+- [[POLICY]]：规则、优先级和 memory 路由。
+- [[BRAIN]]：共享背景和共同前提。
 
 ## 什么时候再拆
 

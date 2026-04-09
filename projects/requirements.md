@@ -37,5 +37,5 @@ tags: [requirement]
 
 ## 维护说明
 
-- 如果一个需求会改变项目记忆、规则路由或阶段判断，先在这里写清楚，再同步到 `[[POLICY]]`、`[[projects/memory/README]]` 和 `[[projects/decisions]]`
+- 如果一个需求会改变项目记忆、规则路由或阶段判断，先在这里写清楚，再同步到 [[POLICY]]、[[projects/memory/README]] 和 [[projects/decisions]]
 - 需求页只保留需求本身，不写实现细节

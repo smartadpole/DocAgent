@@ -20,12 +20,12 @@ tags: [memory, shared]
 - 现阶段仍然是半自动：人决定做哪一项，agent 按规则辅助执行。
 - Git 负责变更审计和回滚，Obsidian 负责阅读和组织，Codex 负责读写与编排。
 - 共享背景、项目记忆和规则已经分层：
-  - `[[BRAIN]]` 放共享背景
-  - `[[projects/memory/README]]` 放项目级稳定记忆
-  - `[[POLICY]]` 放规则和优先级
-  - `[[projects/decisions]]` 放项目拍板
-- 项目主页固定为 `[[projects/README]]`
-- 项目层结构和读取顺序固定看 `[[projects/STRUCTURE]]`
+  - [[BRAIN]] 放共享背景
+  - [[projects/memory/README]] 放项目级稳定记忆
+  - [[POLICY]] 放规则和优先级
+  - [[projects/decisions]] 放项目拍板
+- 项目主页固定为 [[projects/README]]
+- 项目层结构和读取顺序固定看 [[projects/STRUCTURE]]
 
 ## 需要持续带入的前提
 

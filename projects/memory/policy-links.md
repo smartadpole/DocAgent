@@ -15,12 +15,12 @@ tags: [memory, policy]
 
 ## 当前关联
 
-- `[[POLICY]]`：全局规则、优先级和自动沉淀边界
-- `[[projects/decisions]]`：项目内的冲突升级和正式拍板
-- `[[projects/memory/shared]]`：项目级稳定记忆
-- `[[BRAIN]]`：共享背景
+- [[POLICY]]：全局规则、优先级和自动沉淀边界
+- [[projects/decisions]]：项目内的冲突升级和正式拍板
+- [[projects/memory/shared]]：项目级稳定记忆
+- [[BRAIN]]：共享背景
 
 ## 使用方式
 
 - 项目需要引用规则时，优先从这里跳转，不复制整段规则
-- 如果某条项目记忆以后提升成正式规则，先写入 `[[projects/decisions]]`，再回写 `[[POLICY]]`
+- 如果某条项目记忆以后提升成正式规则，先写入 [[projects/decisions]]，再回写 [[POLICY]]

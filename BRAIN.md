@@ -27,9 +27,9 @@ tags: [memory, shared]
 - 不记录按时间追加的过程流水，那是 `log.md` 的职责
 - 不重复写详细流程，那是 `WORKFLOW.md` 的职责
 - 不重复写 agent 行为约束，那是 `AGENTS.md` 的职责
-- 不重复写规则和优先级，那是 `[[POLICY]]` 的职责
-- 不代替项目阶段的具体取舍，那些进入 `[[projects/decisions]]`
-- 不承接项目级稳定事实，那些优先进入 `[[projects/memory/shared]]`
+- 不重复写规则和优先级，那是 [[POLICY]] 的职责
+- 不代替项目阶段的具体取舍，那些进入 [[projects/decisions]]
+- 不承接项目级稳定事实，那些优先进入 [[projects/memory/shared]]
 
 ## 当前共享背景
 
@@ -48,15 +48,15 @@ tags: [memory, shared]
 
 ### 3. 当前分层
 
-- `[[projects/memory/shared]]`：项目级稳定事实和项目共享背景
-- `[[POLICY]]`：规则、优先级和 memory 路由
-- `[[projects/decisions]]`：项目阶段的冲突和取舍
-- `[[projects/README]]`：项目运行主入口
+- [[projects/memory/shared]]：项目级稳定事实和项目共享背景
+- [[POLICY]]：规则、优先级和 memory 路由
+- [[projects/decisions]]：项目阶段的冲突和取舍
+- [[projects/README]]：项目运行主入口
 
 ### 4. 冲突处理
 
-- 如果后续工作与这页、`[[POLICY]]`、`AGENTS.md`、`[[projects/STRUCTURE]]` 或既有决策发生思维碰撞，不要直接覆盖。
-- 在项目阶段，思维碰撞要先升级到 `[[projects/decisions]]`。
+- 如果后续工作与这页、[[POLICY]]、`AGENTS.md`、[[projects/STRUCTURE]] 或既有决策发生思维碰撞，不要直接覆盖。
+- 在项目阶段，思维碰撞要先升级到 [[projects/decisions]]。
 - 只有决策明确后，才能反向更新这页和相关规则。
 
 ## 更新准入
@@ -73,8 +73,8 @@ tags: [memory, shared]
 - `AGENTS.md`：硬约束。回答“agent 必须怎么做”
 - `WORKFLOW.md`：流程。回答“事情按什么顺序做”
 - `BRAIN.md`：共享背景。回答“哪些已确认前提应自动进入后续思考”
-- `[[POLICY]]`：规则和优先级。回答“什么能自动晋升、什么必须人工确认”
-- `[[projects/memory/README]]`：项目级稳定记忆入口
+- [[POLICY]]：规则和优先级。回答“什么能自动晋升、什么必须人工确认”
+- [[projects/memory/README]]：项目级稳定记忆入口
 - `workspace-memory`：稳定个人偏好和重复习惯。回答“用户个人长期偏好是什么”
 - `projects/decisions.md`：项目阶段冲突和取舍。回答“思维碰撞后最后怎么定”
 - `log.md`：时间记录。回答“它是什么时候发生的”
