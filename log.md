@@ -60,3 +60,5 @@
 - 明确功能点卡的最小填写要求：每张卡都必须同时写 `status` 和 `phase`，不能只留一个“进行中”的笼统字段。
 - 把“功能点卡必须同时写 `status` 和 `phase`”写进项目共享背景，后续读入口、模板或示例时都默认按双轴模型理解。
 - 把过程记录也同步拆轴：`projects/development/worklog.md` 现在要求分开记录 `status` 变化和 `phase` 变化，避免把两条线重新揉回 `in_progress`。
+- 把开发示例进一步显式化：`projects/development/examples.md` 现在同时展示进行中、完成待发布、已发布三种卡片，让 `status` 和 `phase` 的区别一眼可见。
+- 把已发布示例的阶段口径收口到 `release`，避免 `released` 功能点还挂着 `verification` 阶段造成误读。

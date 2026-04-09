@@ -77,7 +77,7 @@ tags: [development]
 
 ### 示例文件
 
-- [[projects/development/examples]]：可直接复制的功能点卡片和过程记录示例
+- [[projects/development/examples]]：可直接复制的进行中、完成和已发布功能点卡片，以及过程记录示例
 
 ### 维护方式
 
