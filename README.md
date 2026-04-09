@@ -14,13 +14,17 @@ tags: [entry, root]
 
 如果只记一件事，就记住这一层分法：
 
+目录层：
+
 - `raw/` 放原始资料
 - `inbox/` 放临时待处理内容
 - `assets/` 放截图、图片、导出物和辅助附件
 - `projects/` 放活跃软件研发项目
 - `articles/`、`concepts/`、`indexes/` 放整理后的知识
 - `archive/` 放退役但仍需保留的旧页面
-- vault 根目录主要放入口页、规则页和总索引
+
+根目录页面：
+
 - [[README]] 是总入口
 - [[INDEX]] 是总导航
 - [[BRAIN]] 放共享背景
