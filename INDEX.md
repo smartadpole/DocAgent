@@ -31,6 +31,10 @@
 共享背景：
 - [[BRAIN]]：跨多轮确认、后续自动生效的共享思维和共同前提
 
+设计思路：
+- [[articles/2026-04-09-obsidian-doc-system-design]]：Obsidian 文档系统整体设计研究
+- [[concepts/document-os]]：文档操作系统概念定义
+
 层级：
 - `raw/`：原始资料层，尽量只进不改
 - `inbox/`：临时收口区，来源还没完全整理前先放这里
