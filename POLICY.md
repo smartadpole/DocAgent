@@ -80,6 +80,7 @@ tags: [policy]
 ## 自动写入边界
 
 - agent 可以自动写入：`inbox/`、临时草稿、已确认结构下的普通项目页、已确认模板的 frontmatter
+- agent 可以自动执行格式归一化：把 vault 内错误的 Markdown 页面引用收敛成 `[[wikilink]]`，把明显失效的空链接、占位链接和本机绝对路径引用修正掉
 - agent 需要先形成明确结论再写入：`[[BRAIN]]`、`[[projects/memory/shared]]`
 - agent 不应直接拍板写入：高优先级 policy、冲突结论、覆盖旧规则的变更
 - 任何会改变后续执行方式的内容，优先先进入 `[[projects/decisions]]` 再回写
