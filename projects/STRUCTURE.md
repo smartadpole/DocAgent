@@ -19,7 +19,16 @@
 
 ## 2. 推荐结构
 
-推荐用分目录方式，而不是把所有语义平铺到一个文件里。
+项目层结构不是一刀切。
+
+- 已经形成多文件职责的模块，继续保留子目录。
+- 只有一个 `README.md` 的子目录，默认优先收平成单文件。
+- 现有内容优先保留，不为了“结构更整齐”就重写或打散已有信息。
+
+例如：
+
+- `design/` 里如果已经有 `README.md`、`architecture.md`、`database.md`，就继续保留目录。
+- `releases/` 如果现在只有一个 `README.md`，而且短期内不会继续长文件，就更适合平铺成 `releases.md`。
 
 ```text
 projects/
@@ -45,7 +54,7 @@ projects/
 这不是要求一次性建全，而是推荐的扩展方向。
 
 - 极简项目：只保留 `projects/README.md`
-- 小项目：再按需补 `requirements/README.md`、`design/README.md`、`decisions/README.md`
+- 小项目：优先平铺单文件；只有明显会长成多文件模块时再建子目录
 - 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md`、`releases/README.md`、`incidents/README.md`
 
 如果你更喜欢平铺文件，也可以用统一前缀，例如：
@@ -62,7 +71,11 @@ projects/
   incident-review.md
 ```
 
-当前系统默认优先推荐“分目录 + 各目录一个主 README”的方式，因为它更适合后续继续拆分而不改语义。
+当前系统默认规则是：
+
+- 多文件模块保留目录
+- 单文件模块优先平铺
+- 先保留已有内容，再优化结构
 
 ## 3. 文件职责
 
