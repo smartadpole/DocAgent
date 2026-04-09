@@ -1,8 +1,11 @@
 ---
 type: entry
+id: ENTRY-ROOT-001
 scope: shared
 status: active
-updated: 2026-04-09
+source_of_truth: true
+updated: 2026-04-10
+tags: [entry, root]
 ---
 
 # 文档系统说明
@@ -18,29 +21,30 @@ updated: 2026-04-09
 - `articles/`、`concepts/`、`indexes/` 放整理后的知识
 - `archive/` 放退役但仍需保留的旧页面
 - vault 根目录主要放入口、规则和总索引
-- `[[BRAIN]]` 放共享背景
-- `[[POLICY]]` 放规则和优先级
-- `[[projects/memory/README]]` 放项目级稳定记忆
-- `[[AGENTS]]` 放维护规则
+- [[BRAIN]] 放共享背景
+- [[POLICY]] 放规则和优先级
+- [[projects/memory/README]] 放项目级稳定记忆
+- [[AGENTS]] 放维护规则
 
 ## 怎么用这个总入口
 
 如果你第一次打开这个 vault，就按这个顺序走：
 
 1. 先看这页，知道它是做什么的、怎么分层、怎么启动。
-2. 再看 `[[BRAIN]]`，了解已经确认过、后续会自动参与工作的共享背景。
-3. 再看 `[[POLICY]]`，知道哪些规则、优先级和 memory 路由是硬约束。
-4. 如果你要处理项目推进，就去看 `[[projects/README]]` 和 `[[projects/STRUCTURE]]`。
-5. 如果你要新增或修改文档，去看 `[[WORKFLOW]]`。
-6. 如果你要知道 agent 能做什么、不能做什么，去看 `[[AGENTS]]`。
-7. 如果你只是想找入口，直接看 `[[INDEX]]`。
+2. 再看 [[BRAIN]]，了解已经确认过、后续会自动参与工作的共享背景。
+3. 再看 [[POLICY]]，知道哪些规则、优先级和 memory 路由是硬约束。
+4. 如果你要处理项目推进，就去看 [[projects/README]] 和 [[projects/STRUCTURE]]。
+5. 如果你要先看项目当前阶段、阻塞和下一步，也可以直接看 [[projects/status]]。
+6. 如果你要新增或修改文档，去看 [[WORKFLOW]]。
+7. 如果你要知道 agent 能做什么、不能做什么，去看 [[AGENTS]]。
+8. 如果你只是想找入口，直接看 [[INDEX]]。
 
 常见操作对应关系：
 
 - 想知道“这个系统怎么用” -> 读这页
-- 想知道“之前确认过哪些前提，以后不用重复说” -> 读 `[[BRAIN]]`
-- 想知道“规则、优先级和自动沉淀边界” -> 读 `[[POLICY]]`
-- 想知道“项目级稳定记忆放哪” -> 读 `[[projects/memory/README]]`
+- 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
+- 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
+- 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 `WORKFLOW.md`
 - 想知道“Codex 处理时有哪些约束” -> 读 `AGENTS.md`
 - 想知道“入口页、索引页、层级在哪” -> 读 `INDEX.md`
@@ -61,9 +65,9 @@ updated: 2026-04-09
 - `Codex CLI` 用来读取、改写、批量生成 Markdown。
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
-- `[[BRAIN]]` 承接跨多轮确认、后续需要自动进入思考背景的共享内容。
-- `[[POLICY]]` 承接共享规则、优先级和 memory 路由。
-- `[[projects/memory/README]]` 承接项目级稳定记忆。
+- [[BRAIN]] 承接跨多轮确认、后续需要自动进入思考背景的共享内容。
+- [[POLICY]] 承接共享规则、优先级和 memory 路由。
+- [[projects/memory/README]] 承接项目级稳定记忆。
 
 ## 软件研发模式怎么叠加
 
@@ -73,18 +77,18 @@ updated: 2026-04-09
 
 - 知识库模式：收集资料，整理成 `articles/`、`concepts/`、`indexes/`
 - 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘
-- 路由层：`[[BRAIN]]` 放共享背景，`[[POLICY]]` 放规则，`[[projects/memory/README]]` 放项目级稳定记忆
+- 路由层：[[BRAIN]] 放共享背景，[[POLICY]] 放规则，[[projects/memory/README]] 放项目级稳定记忆
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
 - 流程控制：不做自动流控，由人读项目主页后手动推进
 
-如果你正在做研发，先看 `[[projects/README]]`。
-如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 `[[projects/STRUCTURE]]`。
+如果你正在做研发，先看 [[projects/README]]。
+如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
 
-如果你想看这套 vault 的整体设计思路，去看 `[[articles/2026-04-09-obsidian-doc-system-design]]` 和 `[[concepts/document-os]]`。
-如果你想看分层 memory 的设计，去看 `[[articles/2026-04-09-layered-memory-research]]` 和 `[[concepts/layered-memory]]`。
+如果你想看这套 vault 的整体设计思路，去看 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]。
+如果你想看分层 memory 的设计，去看 [[articles/2026-04-09-layered-memory-research]] 和 [[concepts/layered-memory]]。
 
-研发阶段的详细说明、阶段映射和推进方式，统一看 `[[WORKFLOW]]` 里的 `1.9 软件研发模式`。
-如果你要让 AI 直接推进一个具体功能，也统一看 `[[WORKFLOW]]` 里的 `1.9.9` 到 `1.9.12`。
+研发阶段的详细说明、阶段映射和推进方式，统一看 [[WORKFLOW]] 里的 `1.9 软件研发模式`。
+如果你要让 AI 直接推进一个具体功能，也统一看 [[WORKFLOW]] 里的 `1.9.9` 到 `1.9.12`。
 
 ## 最短工作流
 
@@ -93,7 +97,7 @@ updated: 2026-04-09
 3. 把反复出现的工具和概念抽到 `concepts/`。
 4. 把入口、分类和时间线写到 `indexes/`。
 5. 把过程和决策追加到 `log.md`。
-6. 把共享背景写进 `[[BRAIN]]`，把规则写进 `[[POLICY]]`，把项目级稳定记忆写进 `[[projects/memory/README]]`。
+6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 
 ## 为什么入口页不写太多

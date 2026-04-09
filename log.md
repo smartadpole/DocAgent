@@ -46,3 +46,9 @@
 - 清理 `projects/design/memory/` 空目录：研究内容已迁回知识库层，项目层不再保留无职责的空壳目录。
 - 将 Obsidian 软件开发文档系统的整体设计沉淀到知识库层：新增 `articles/2026-04-09-obsidian-doc-system-design.md` 和 `concepts/document-os.md`，用于承接整体架构、无账号小团队约束、半自动到自动化路径，以及未来分层 memory 的文档化路线。
 - 这次把 memory 路由正式分层：新增 `POLICY.md` 承接规则和优先级，新增 `projects/memory/` 承接项目级稳定记忆，收紧 `BRAIN.md` 只保留共享背景，并同步更新 `README.md`、`INDEX.md`、`WORKFLOW.md`、`AGENTS.md`、`projects/STRUCTURE.md`、项目主页面、模板页、相关文章和概念页。
+
+## 2026-04-10
+
+- 对齐最小改造方案的剩余缺口：保留并恢复 `projects/design/memory/` 作为研究层，新增 `projects/status.md` 作为项目状态页，并为其补充可读字段。
+- 强化 `POLICY.md`：明确默认不自动晋升、晋升条件、只有拍板后才进入 policy、以及冲突不直接覆盖的固定流程。
+- 在 `projects/memory/` 增加 `policy-links.md` 作为运行层到规则层的桥接页，并同步更新 `projects/README.md`、`projects/STRUCTURE.md` 和 `README.md` 的入口说明。

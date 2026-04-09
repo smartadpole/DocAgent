@@ -1,10 +1,12 @@
 ---
 type: memory
+id: MEM-SHARED-001
 memory_layer: shared
-scope: workspace
-status: active
+scope: project
+status: confirmed
 source_of_truth: true
 updated: 2026-04-09
+tags: [memory, shared]
 ---
 
 # 共享脑

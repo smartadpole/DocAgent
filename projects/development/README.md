@@ -1,15 +1,17 @@
 ---
 type: development
-project: wiki
+id: DEV-001
+project: PROJ-WIKI-001
 status: active
 updated: 2026-04-09
+tags: [development]
 ---
 
 # 开发
 
 这页是开发主入口。
 
-上游：[[projects/design/README]]、[[projects/decisions]]、[[projects/memory/README]]、`POLICY.md`  \
+上游：[[projects/design/README]]、[[projects/decisions]]、[[projects/memory/README]]、[[POLICY]]  \
 下游：[[projects/releases]]、[[projects/incidents/README]]
 
 子页：
@@ -35,5 +37,5 @@ updated: 2026-04-09
 
 ## 维护说明
 
-- 开发推进时如果发现项目记忆、规则边界或决策发生变化，先回写到 `projects/memory/README.md`、`POLICY.md` 和 `projects/decisions.md`
+- 开发推进时如果发现项目记忆、规则边界或决策发生变化，先回写到 [[projects/memory/README]]、[[POLICY]] 和 [[projects/decisions]]
 - 开发页只记录推进过程，不重复写设计正文

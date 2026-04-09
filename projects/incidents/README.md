@@ -41,5 +41,5 @@ updated: 2026-04-09
 
 ## 维护说明
 
-- 如果事故结论会长期影响项目推进，回写到 `projects/memory/README.md`、`POLICY.md` 或 `projects/decisions.md`
+- 如果事故结论会长期影响项目推进，回写到 [[projects/memory/README]]、[[POLICY]] 或 [[projects/decisions]]
 - 事故目录只做索引和复盘入口，不重复堆正文

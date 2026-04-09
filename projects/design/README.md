@@ -1,9 +1,11 @@
 ---
 type: design
-project: wiki
+id: DES-001
+project: PROJ-WIKI-001
 status: active
 stage: design
-updated: 2026-04-09
+updated: 2026-04-10
+tags: [design]
 ---
 
 # 设计
@@ -13,13 +15,14 @@ updated: 2026-04-09
 上游：[[projects/README]]、[[projects/requirements]]  \
 下游：[[projects/decisions]]、[[projects/development/README]]
 
-相关：`[[projects/memory/README]]`、`[[POLICY]]`
+相关：[[projects/memory/README]]、[[POLICY]]
 
 子页：
 
 - [[projects/design/tech-selection]]
 - [[projects/design/architecture]]
 - [[projects/design/database]]
+- [[projects/design/memory/README]]
 
 ## 这页负责什么
 
@@ -45,4 +48,4 @@ updated: 2026-04-09
 ## 维护说明
 
 - 如果某一块设计长成了独立主题，再从这个主入口往下拆子页
-- 如果设计判断会影响项目记忆或规则边界，先同步 `[[projects/memory/README]]` 和 `[[POLICY]]`
+- 如果设计判断会影响项目记忆或规则边界，先同步 [[projects/memory/README]] 和 [[POLICY]]

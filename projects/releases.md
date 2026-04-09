@@ -1,15 +1,17 @@
 ---
 type: release
-project: wiki
+id: REL-001
+project: PROJ-WIKI-001
 status: active
 updated: 2026-04-09
+tags: [release]
 ---
 
 # 发布
 
 这页是发布主文件。
 
-上游：[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/memory/README]]、`POLICY.md`
+上游：[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/memory/README]]、[[POLICY]]
 
 ## 这页负责什么
 
@@ -31,5 +33,5 @@ updated: 2026-04-09
 
 ## 维护说明
 
-- 如果某个发布结论会长期影响后续推进，回写到 `projects/memory/README.md` 或 `POLICY.md`
+- 如果某个发布结论会长期影响后续推进，回写到 [[projects/memory/README]] 或 [[POLICY]]
 - 发布页只保留发布本身，不重复写开发过程

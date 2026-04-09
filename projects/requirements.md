@@ -1,9 +1,12 @@
 ---
 type: requirement
-project: wiki
+id: REQ-001
+project: PROJ-WIKI-001
 status: active
 stage: design
+depends_on: []
 updated: 2026-04-09
+tags: [requirement]
 ---
 
 # 需求

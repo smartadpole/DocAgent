@@ -1,10 +1,14 @@
 ---
 type: project
+id: PROJ-WIKI-001
 project: wiki
 status: active
 stage: design
+next_action: define-policy-and-memory-routing
+owner: team
 source_of_truth: true
-updated: 2026-04-09
+updated: 2026-04-10
+tags: [project]
 ---
 
 # Projects
@@ -60,9 +64,11 @@ updated: 2026-04-09
 ## 常用页面
 
 - `[[projects/README]]`：项目运行层主入口。这里放目标、状态、关键链接和下一步。
+- `[[projects/status]]`：项目状态页。这里放当前阶段、阻塞项和当前主入口。
 - `[[projects/STRUCTURE]]`：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
 - `[[projects/requirements]]`：需求主文件。这里放问题定义、范围、非目标和验收标准。
 - `[[projects/design/README]]`：设计主入口。这里放设计总览，并链接架构和数据库子页。
+- `[[projects/design/memory/README]]`：memory 研究层入口。这里放研究稿、工具调研和运行层设计草稿。
 - `[[projects/decisions]]`：决策主文件。这里放关键取舍和 ADR 风格记录。
 - `[[projects/development/README]]`：开发主入口。这里放开发状态、阻塞和下一步。
 - `[[projects/releases]]`：发布主文件。这里放上线范围、验证和回滚。

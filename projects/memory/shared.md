@@ -1,11 +1,13 @@
 ---
 type: memory
-memory_layer: project
+id: MEM-PROJ-001
+memory_layer: shared
 scope: project
-project: wiki
+project: PROJ-WIKI-001
 status: confirmed
 source_of_truth: true
 updated: 2026-04-09
+tags: [memory, shared]
 ---
 
 # 项目共享背景

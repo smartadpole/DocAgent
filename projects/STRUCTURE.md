@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-04-09
+updated: 2026-04-10
 ---
 
 # 项目层结构
@@ -37,12 +37,16 @@ updated: 2026-04-09
 projects/
   README.md
   STRUCTURE.md
+  status.md
   requirements.md
   design/
     README.md
     tech-selection.md
     architecture.md
     database.md
+    memory/
+      README.md
+      tools.md
   decisions.md
   development/
     README.md
@@ -54,6 +58,7 @@ projects/
   memory/
     README.md
     shared.md
+    policy-links.md
 ```
 
 根目录还有几页要一起看：
@@ -75,6 +80,12 @@ projects/
 - `projects/README.md`
 - 回答：项目现在在做什么、当前状态是什么、下一步是什么
 - 这里只放摘要、状态、关键链接和跳转，不承载大段设计正文
+
+### 3.1.1 状态页
+
+- `projects/status.md`
+- 回答：当前状态、当前阶段、下一步、阻塞项和当前主入口
+- 这是项目主页的状态镜像页，适合后续自动化读取
 
 ### 3.2 需求层
 
@@ -102,6 +113,12 @@ projects/
 - `projects/design/database.md`
   这是数据库子页，也属于设计层
   适合放表结构、字段约束、索引、迁移策略、读写路径
+- `projects/design/memory/README.md`
+  这是 memory 研究层入口
+  适合放分层方案讨论、工具调研和运行层设计草稿
+- `projects/design/memory/tools.md`
+  这是 memory 工具调研子页
+  适合放 `Mem0`、`Zep`、`Letta` 等工具路线
 
 ### 3.4 决策层
 
@@ -131,6 +148,7 @@ projects/
 
 - `projects/memory/README.md`
 - `projects/memory/shared.md`
+- `projects/memory/policy-links.md`
 - 回答：这个项目长期有效的背景、路由和稳定事实
 - 这里放的是项目级记忆，不是全局规则，也不是项目拍板
 
