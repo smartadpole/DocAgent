@@ -6,7 +6,7 @@ scope: project
 project: PROJ-WIKI-001
 status: confirmed
 source_of_truth: true
-updated: 2026-04-09
+updated: 2026-04-10
 tags: [memory, shared]
 ---
 
@@ -26,6 +26,7 @@ tags: [memory, shared]
   - [[projects/decisions]] 放项目拍板
 - 项目主页固定为 [[projects/README]]
 - 项目层结构和读取顺序固定看 [[projects/STRUCTURE]]
+- 设计拆模块后，执行粒度以功能点卡片为准；状态镜像看 [[projects/status]]，过程流水看 [[projects/development/worklog]]
 
 ## 需要持续带入的前提
 

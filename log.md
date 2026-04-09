@@ -53,3 +53,4 @@
 - 强化 `POLICY.md`：明确默认不自动晋升、晋升条件、只有拍板后才进入 policy、以及冲突不直接覆盖的固定流程。
 - 在 `projects/memory/` 增加 `policy-links.md` 作为运行层到规则层的桥接页，并同步更新 `projects/README.md`、`projects/STRUCTURE.md` 和 `README.md` 的入口说明。
 - 强化 Markdown 引用约束：统一 vault 内页面引用必须使用 `[[wikilink]]` 及其变体，禁止继续保留内部 `.md` 链接、本机绝对路径、空链接和占位链接，并把引用校验加入 `WORKFLOW.md` 的交付前必检项。
+- 把功能点推进流程正式沉淀到项目层：`WORKFLOW.md` 补了功能点状态机，`projects/development/README.md` 和 `projects/development/worklog.md` 补了模板与示例，`projects/status.md` 变成全局状态镜像，`projects/memory/`、`projects/decisions.md` 和 `projects/README.md` 也同步收口了对应入口。

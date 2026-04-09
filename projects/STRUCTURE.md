@@ -84,7 +84,7 @@ projects/
 ### 3.1.1 状态页
 
 - `projects/status.md`
-- 回答：当前状态、当前阶段、下一步、阻塞项和当前主入口
+- 回答：当前状态、当前阶段、下一步、阻塞项、功能点状态镜像和当前主入口
 - 这是项目主页的状态镜像页，适合后续自动化读取
 
 ### 3.2 需求层
@@ -129,9 +129,9 @@ projects/
 ### 3.5 开发层
 
 - `projects/development/README.md`
-- 回答：最近在推进什么、卡在哪里、下一步做什么
+- 回答：当前开发状态、活跃功能点清单、卡在哪里、下一步做什么
 - `projects/development/worklog.md`
-  适合放复杂排障、联调过程、验证过程
+  适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
 
 ### 3.6 发布层
 
@@ -167,6 +167,7 @@ projects/
 具体来说：
 
 - 项目主页依赖所有活跃页面的摘要结果
+- `projects/status.md` 依赖 `projects/README.md` 和 `projects/development/README.md`，保留当前阶段和功能点状态镜像
 - 需求页向下驱动设计和决策
 - 设计页依赖需求，并向下驱动实现
 - 决策页依赖需求和设计，记录关键判断
@@ -190,11 +191,12 @@ projects/
 ### 5.1 做一个新功能时
 
 1. 先读 `projects/README.md`
-2. 再读 `projects/requirements.md`
-3. 再读 `projects/design/README.md`
-4. 有关键取舍时再读 `projects/decisions.md`
-5. 如果涉及 memory 或 policy，再读 `projects/memory/README.md` 和 `POLICY.md`
-6. 实施复杂时再读 `projects/development/worklog.md`
+2. 再读 `projects/status.md`
+3. 再读 `projects/requirements.md`
+4. 再读 `projects/design/README.md`
+5. 有关键取舍时再读 `projects/decisions.md`
+6. 如果涉及 memory 或 policy，再读 `projects/memory/README.md` 和 `POLICY.md`
+7. 实施复杂时再读 `projects/development/worklog.md`
 
 ### 5.2 做 memory / policy 改动时
 

@@ -19,6 +19,9 @@ tags: [memory, policy]
 - [[projects/decisions]]：项目内的冲突升级和正式拍板
 - [[projects/memory/shared]]：项目级稳定记忆
 - [[BRAIN]]：共享背景
+- [[projects/status]]：当前功能点状态镜像
+- [[projects/development/README]]：活跃功能点模板和清单
+- [[projects/development/worklog]]：过程记录
 
 ## 使用方式
 
