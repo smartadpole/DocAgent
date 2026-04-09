@@ -20,7 +20,9 @@ tags: [entry, root]
 - `projects/` 放活跃软件研发项目
 - `articles/`、`concepts/`、`indexes/` 放整理后的知识
 - `archive/` 放退役但仍需保留的旧页面
-- vault 根目录主要放入口、规则和总索引
+- vault 根目录主要放入口页、规则页和总索引
+- [[README]] 是总入口
+- [[INDEX]] 是总导航
 - [[BRAIN]] 放共享背景
 - [[POLICY]] 放规则和优先级
 - [[projects/memory/README]] 放项目级稳定记忆
