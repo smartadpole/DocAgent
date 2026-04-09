@@ -3,7 +3,7 @@ type: development
 id: DEV-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-09
+updated: 2026-04-10
 tags: [development]
 ---
 
@@ -16,6 +16,7 @@ tags: [development]
 
 子页：
 
+- [[projects/development/examples]]
 - [[projects/development/worklog]]
 
 ## 这页负责什么
@@ -62,23 +63,9 @@ tags: [development]
 - 结果：
 ```
 
-### 示例
+### 示例文件
 
-#### FP-001 | 为项目状态页补功能点状态镜像
-
-- 模块：项目运行层
-- 状态：in_progress
-- 目标：把模块 -> 功能点 -> 状态 -> 记录 -> 发布这条链路固定下来
-- 范围：`projects/status.md`、`projects/development/README.md`、`projects/development/worklog.md`
-- 验收：读者能按模板登记一个功能点，并知道状态如何推进
-- 负责人：team
-- 下一步：把活跃页面按模板补齐
-- 阻塞：暂无
-- 相关设计：[[projects/design/README]]
-- 相关决策：[[projects/decisions]]
-- 过程日志：[[projects/development/worklog]]
-- 发布/事故：视实现结果补到 [[projects/releases]] 或 [[projects/incidents/README]]
-- 结果：待完成后补充
+- [[projects/development/examples]]：可直接复制的功能点卡片和过程记录示例
 
 ### 维护方式
 

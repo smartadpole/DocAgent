@@ -71,6 +71,7 @@ tags: [project]
 - [[projects/design/memory/README]]：memory 研究层入口。这里放研究稿、工具调研和运行层设计草稿。
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
 - [[projects/development/README]]：开发主入口。这里放活跃功能点模板、开发状态、阻塞和下一步。
+- [[projects/development/examples]]：开发示例文件。这里放可直接复制的功能点卡片和过程记录示例。
 - [[projects/development/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
 - [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。

@@ -371,7 +371,7 @@
 - 功能点是最小执行单位，一张卡只描述一个可验证结果，不把多个需求绑在一起。
 - 统一状态词：`planned`、`designed`、`ready`、`in_progress`、`blocked`、`review`、`done`、`released`、`archived`。
 - 被取消或被替代的功能点，分别记成 `canceled` 或 `superseded`，不要悄悄删掉历史。
-- 功能点模板和示例放在 [[projects/development/README]]。
+- 功能点模板放在 [[projects/development/README]]，示例放在 [[projects/development/examples]]。
 - 过程日志放在 [[projects/development/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。

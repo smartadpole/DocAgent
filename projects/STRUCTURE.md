@@ -50,6 +50,7 @@ projects/
   decisions.md
   development/
     README.md
+    examples.md
     worklog.md
   releases.md
   incidents/
@@ -130,6 +131,8 @@ projects/
 
 - `projects/development/README.md`
 - 回答：当前开发状态、活跃功能点清单、卡在哪里、下一步做什么
+- `projects/development/examples.md`
+  适合放可直接复制的功能点卡片示例和过程记录示例
 - `projects/development/worklog.md`
   适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
 
