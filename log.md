@@ -43,3 +43,4 @@
 - 引入 `BRAIN.md` 作为共享脑：承接跨多轮确认、后续应自动进入思考背景的内容；同时明确 `AGENTS.md`、`workspace-memory`、`projects/decisions.md`、`log.md` 的分工。
 - 将“分层 memory 研究”沉淀到项目设计层：新增 `design/memory/README.md` 和 `design/memory/tools.md`，分别承接分层设计稿和开源工具调研。
 - 调整“分层 memory 研究”的落点：它属于知识库调研而不是当前项目设计，因此迁移到 `articles/` 和 `concepts/`，并从项目设计入口移除。
+- 清理 `projects/design/memory/` 空目录：研究内容已迁回知识库层，项目层不再保留无职责的空壳目录。
