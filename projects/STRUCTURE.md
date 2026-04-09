@@ -1,3 +1,10 @@
+---
+type: structure
+project: wiki
+status: active
+updated: 2026-04-09
+---
+
 # 项目层结构
 
 这页只回答四件事：
@@ -7,14 +14,15 @@
 - 文件之间怎么依赖
 - 项目推进时先读什么、后写什么
 
-详细操作顺序看 [[WORKFLOW]]；硬约束看 [[AGENTS]]；这页只做项目层的结构主说明。
+详细操作顺序看 `[[WORKFLOW]]`；硬约束看 `[[AGENTS]]`；这页只做项目层的结构主说明。
 
 ## 1. 设计原则
 
 - 一个 `wiki` 只服务一个项目，所以 `projects/` 本身就是这个项目的运行层。
-- 项目层只放当前项目直接相关的需求、设计、决策、过程和发布信息。
+- 项目层只放当前项目直接相关的需求、设计、决策、过程、记忆和发布信息。
 - 可复用知识最终回写到 `articles/`、`concepts/`、`indexes/`，不要长期堆在项目层。
 - 单一信息源优先：同一类信息只保留一个主文件，其他页面链接它，不重复抄写。
+- `BRAIN.md`、`POLICY.md` 和 `projects/memory/` 是显式分层，不再混成一页 prose。
 - 先有目录和职责，再决定是否需要模板。
 
 ## 2. 推荐结构
@@ -25,12 +33,6 @@
 - 只有一个 `README.md` 的子目录，默认优先收平成单文件。
 - 现有内容优先保留，不为了“结构更整齐”就重写或打散已有信息。
 
-例如：
-
-- `design/` 里如果已经有 `README.md`、`architecture.md`、`database.md`，就继续保留目录。
-- `releases/` 如果现在只有一个 `README.md`，而且短期内不会继续长文件，就更适合平铺成 `releases.md`。
-- `incidents/` 更适合保留目录，因为它天然是一组独立事故记录的集合。
-
 ```text
 projects/
   README.md
@@ -38,6 +40,7 @@ projects/
   requirements.md
   design/
     README.md
+    tech-selection.md
     architecture.md
     database.md
   decisions.md
@@ -48,33 +51,22 @@ projects/
   incidents/
     README.md
     2026-04-09-example.md
+  memory/
+    README.md
+    shared.md
 ```
+
+根目录还有几页要一起看：
+
+- `BRAIN.md`：共享背景
+- `POLICY.md`：规则、优先级和自动沉淀边界
+- `log.md`：时间记录
 
 这不是要求一次性建全，而是推荐的扩展方向。
 
 - 极简项目：只保留 `projects/README.md`
 - 小项目：优先平铺单文件；只有明显会长成多文件模块时再建子目录
-- 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md` 等子页
-
-如果你更喜欢平铺文件，也可以用统一前缀，例如：
-
-```text
-projects/
-  README.md
-  req-overview.md
-  design-architecture.md
-  design-database.md
-  decision-log.md
-  development-worklog.md
-  release-notes.md
-  incident-review.md
-```
-
-当前系统默认规则是：
-
-- 多文件模块保留目录
-- 单文件模块优先平铺
-- 先保留已有内容，再优化结构
+- 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md`、`shared.md` 等子页
 
 ## 3. 文件职责
 
@@ -97,6 +89,7 @@ projects/
 - `projects/design/README.md` 是设计主入口
 - 它回答：整体方案是什么、涉及哪些模块、怎样实现
 - 这里先放设计总览：模块划分、接口、数据流、依赖、主要风险，以及指向技术选型、架构、数据库等子页的入口
+- 如果设计会影响 memory 路由或 policy 接线，也要在这里留入口
 
 如果某一块设计继续长大，再从这个主入口往下拆子页：
 
@@ -134,6 +127,19 @@ projects/
 - 回答：当前事故总览、整体状态、索引和共性改进项
 - 每一个具体事故单独成文，放在 `projects/incidents/` 目录下
 
+### 3.8 项目记忆层
+
+- `projects/memory/README.md`
+- `projects/memory/shared.md`
+- 回答：这个项目长期有效的背景、路由和稳定事实
+- 这里放的是项目级记忆，不是全局规则，也不是项目拍板
+
+### 3.9 共享规则层
+
+- `POLICY.md`
+- 回答：什么可以自动沉淀、什么必须人工确认、优先级怎么排
+- 这是全局规则层，不是项目层正文
+
 ## 4. 文件依赖
 
 项目层依赖关系建议固定成这条主链：
@@ -150,6 +156,12 @@ projects/
 - 发布页依赖设计、决策和验证结果
 - 事故目录依赖发布记录、开发记录和证据
 
+横向依赖也要固定：
+
+- `projects/memory/README.md` 依赖 `BRAIN.md`、`POLICY.md` 和 `projects/decisions.md`
+- `POLICY.md` 依赖 `AGENTS.md`、`WORKFLOW.md` 和相关决策
+- 如果设计或决策改变了 memory 路由或规则边界，就要同步更新 `projects/memory/`、`BRAIN.md` 和 `POLICY.md`
+
 数据库设计不是独立于设计层存在的，它默认属于设计主入口或其子页：
 
 - 如果数据库只是局部实现细节，放在 `design/README.md`
@@ -160,18 +172,28 @@ projects/
 ### 5.1 做一个新功能时
 
 1. 先读 `projects/README.md`
-2. 再读 `requirements.md`
-3. 再读 `design/README.md`
-4. 有关键取舍时再读 `decisions.md`
-5. 实施复杂时再读 `development/worklog.md`
+2. 再读 `projects/requirements.md`
+3. 再读 `projects/design/README.md`
+4. 有关键取舍时再读 `projects/decisions.md`
+5. 如果涉及 memory 或 policy，再读 `projects/memory/README.md` 和 `POLICY.md`
+6. 实施复杂时再读 `projects/development/worklog.md`
 
-### 5.2 做发布或排障时
+### 5.2 做 memory / policy 改动时
 
 1. 先读 `projects/README.md`
-2. 再读 `design/README.md`
-3. 再读 `decisions.md`
-4. 发布看 `releases.md`
-5. 故障看 `incidents/README.md` 和 `development/worklog.md`
+2. 再读 `projects/STRUCTURE.md`
+3. 再读 `BRAIN.md`
+4. 再读 `POLICY.md`
+5. 再读 `projects/memory/README.md`
+6. 需要拍板时再读 `projects/decisions.md`
+
+### 5.3 做发布或排障时
+
+1. 先读 `projects/README.md`
+2. 再读 `projects/design/README.md`
+3. 再读 `projects/decisions.md`
+4. 发布看 `projects/releases.md`
+5. 故障看 `projects/incidents/README.md` 和 `projects/development/worklog.md`
 
 ## 6. 什么时候建新文件
 

@@ -1,3 +1,8 @@
+---
+type: concept
+updated: 2026-04-09
+---
+
 # 分层 Memory
 
 ## 定义
@@ -16,9 +21,11 @@
 
 - [[articles/2026-04-09-layered-memory-research]]
 - [[BRAIN]]
+- [[POLICY]]
+- [[projects/memory/README]]
+- [[projects/decisions]]
 - [[AGENTS]]
 - [[WORKFLOW]]
-- [[projects/decisions]]
 
 ## 常见用法
 

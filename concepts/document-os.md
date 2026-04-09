@@ -1,3 +1,8 @@
+---
+type: concept
+updated: 2026-04-09
+---
+
 # 文档操作系统
 
 ## 定义
@@ -16,10 +21,11 @@
 
 - [[articles/2026-04-09-obsidian-doc-system-design]]
 - [[BRAIN]]
-- [[AGENTS]]
-- [[WORKFLOW]]
+- [[POLICY]]
 - [[projects/README]]
 - [[projects/STRUCTURE]]
+- [[projects/memory/README]]
+- [[projects/decisions]]
 
 ## 常见用法
 

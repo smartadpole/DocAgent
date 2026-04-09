@@ -1,3 +1,8 @@
+---
+type: article
+updated: {{date}}
+---
+
 # {{title}}
 
 - 来源：
@@ -17,4 +22,3 @@
 ## 后续动作
 
 - 
-

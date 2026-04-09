@@ -1,12 +1,17 @@
+---
+type: memory
+memory_layer: shared
+scope: workspace
+status: active
+source_of_truth: true
+updated: 2026-04-09
+---
+
 # 共享脑
 
-这页不是日志，也不是流程说明。
+这页不是日志，也不是流程说明，也不是 policy。
 
-这页是这套系统的共享背景和共同思维入口，用来承接多轮对话里已经确认、后续还会持续影响工作的内容。
-
-目标只有一个：
-
-- 让已经确认过的事情自动进入后续工作背景，不需要每次再说一遍
+这页只负责承接跨多轮确认、后续还会持续影响工作的共享背景。
 
 ## 这页负责什么
 
@@ -20,7 +25,9 @@
 - 不记录按时间追加的过程流水，那是 `log.md` 的职责
 - 不重复写详细流程，那是 `WORKFLOW.md` 的职责
 - 不重复写 agent 行为约束，那是 `AGENTS.md` 的职责
-- 不代替项目阶段的具体取舍，那些进入 `projects/decisions.md`
+- 不重复写规则和优先级，那是 `[[POLICY]]` 的职责
+- 不代替项目阶段的具体取舍，那些进入 `[[projects/decisions]]`
+- 不承接项目级稳定事实，那些优先进入 `[[projects/memory/shared]]`
 
 ## 当前共享背景
 
@@ -37,18 +44,17 @@
 - 保留已有内容，优先重组结构，不为了结构好看而打散已确认信息。
 - 结构变化后，规则、入口和相关依赖必须同次更新。
 
-### 3. 当前项目层共识
+### 3. 当前分层
 
-- `projects/README.md` 是项目运行主入口。
-- 需求、设计、决策、开发、发布按主文件或主入口组织。
-- 设计层只有一层：`design/README.md` 是主入口，`tech-selection.md`、`architecture.md`、`database.md` 是设计子页。
-- 事故层使用目录：`incidents/README.md` 做总览，每次事故单独成文件。
-- 单文件模块优先平铺；天然会长成多文件集合的模块保留目录。
+- `[[projects/memory/shared]]`：项目级稳定事实和项目共享背景
+- `[[POLICY]]`：规则、优先级和 memory 路由
+- `[[projects/decisions]]`：项目阶段的冲突和取舍
+- `[[projects/README]]`：项目运行主入口
 
 ### 4. 冲突处理
 
-- 如果后续工作与这页、`AGENTS.md`、`projects/STRUCTURE.md` 或既有决策发生思维碰撞，不要直接覆盖。
-- 在项目阶段，思维碰撞要先升级到 `projects/decisions.md`。
+- 如果后续工作与这页、`[[POLICY]]`、`AGENTS.md`、`[[projects/STRUCTURE]]` 或既有决策发生思维碰撞，不要直接覆盖。
+- 在项目阶段，思维碰撞要先升级到 `[[projects/decisions]]`。
 - 只有决策明确后，才能反向更新这页和相关规则。
 
 ## 更新准入
@@ -65,6 +71,8 @@
 - `AGENTS.md`：硬约束。回答“agent 必须怎么做”
 - `WORKFLOW.md`：流程。回答“事情按什么顺序做”
 - `BRAIN.md`：共享背景。回答“哪些已确认前提应自动进入后续思考”
-- `workspace-memory`：稳定个人偏好和习惯。回答“用户个人长期偏好是什么”
+- `[[POLICY]]`：规则和优先级。回答“什么能自动晋升、什么必须人工确认”
+- `[[projects/memory/README]]`：项目级稳定记忆入口
+- `workspace-memory`：稳定个人偏好和重复习惯。回答“用户个人长期偏好是什么”
 - `projects/decisions.md`：项目阶段冲突和取舍。回答“思维碰撞后最后怎么定”
 - `log.md`：时间记录。回答“它是什么时候发生的”

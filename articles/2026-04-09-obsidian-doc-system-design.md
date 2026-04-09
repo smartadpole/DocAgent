@@ -1,3 +1,9 @@
+---
+type: article
+date: 2026-04-09
+updated: 2026-04-09
+---
+
 # Obsidian 文档系统设计
 
 - 来源：多轮对话沉淀
@@ -17,7 +23,9 @@
 - 入口层：`README.md` / `INDEX.md`
 - 治理层：`WORKFLOW.md` / `AGENTS.md`
 - 共享背景层：`BRAIN.md`
+- 规则层：`POLICY.md`
 - 项目层：`projects/`
+- 项目记忆层：`projects/memory/`
 - 知识沉淀层：`articles/` / `concepts/` / `indexes/`
 - 历史层：`archive/` / `log.md`
 
@@ -56,9 +64,29 @@
 
 主要集中在三点：
 
-- `BRAIN.md` 目前承接的内容还偏宽
-- 项目层还不够机器可读
-- 分层 memory 研究还没有真正和主系统接线
+- `BRAIN.md` 需要只保留共享背景
+- `POLICY.md` 需要承接规则和优先级
+- `projects/memory/` 需要承接项目级稳定记忆
+
+### 5. memory 先做文档化，不急着上数据库
+
+未来要加入分层 memory，可以先把它做成文档化 memory，而不是一开始就上独立存储引擎。
+
+也就是说：
+
+- 先让文档成为 memory 的承载层
+- 再让 agent 读取这些文档
+- 最后才考虑接入外部 memory 工具
+
+## 现有落点
+
+这套设计现在已经落到一组明确页面里：
+
+- `BRAIN.md`：共享背景
+- `POLICY.md`：规则、优先级和路由边界
+- `projects/memory/`：项目级稳定记忆
+- `projects/decisions.md`：项目阶段的关键取舍
+- `projects/README.md`：项目运行主入口
 
 ## 结构建议
 
@@ -67,7 +95,7 @@
 建议把根层语义继续收口成：
 
 - `README.md` / `INDEX.md`：入口
-- `AGENTS.md` / `WORKFLOW.md` / `BRAIN.md`：治理和背景
+- `AGENTS.md` / `WORKFLOW.md` / `BRAIN.md` / `POLICY.md`：治理和背景
 - `projects/`：运行层
 - `articles/` / `concepts/` / `indexes/`：沉淀层
 - `archive/` / `log.md`：历史层
@@ -97,27 +125,17 @@
 - 先进入项目决策
 - 决策明确后，再回写共享背景或规则层
 
-### 4. memory 先做文档化，不急着上数据库
+### 4. 对小团队的建议
 
-未来要加入分层 memory，可以先把它做成文档化 memory，而不是一开始就上独立存储引擎。
-
-也就是说：
-
-- 先让文档成为 memory 的承载层
-- 再让 agent 读取这些文档
-- 最后才考虑接入外部 memory 工具
-
-## 对小团队的建议
-
-### 1. 继续保持“单库”
+#### 1. 继续保持“单库”
 
 不要拆成多个仓库，不要上来做多账号权限系统。
 
-### 2. 继续保持“强规范”
+#### 2. 继续保持“强规范”
 
 规则和入口要少而稳定，避免每次任务都重新解释一遍系统怎么用。
 
-### 3. 继续保持“半自动到自动化”的演进路径
+#### 3. 继续保持“半自动到自动化”的演进路径
 
 先让人决定做哪一项，再逐步把可判断的部分交给 agent。
 
@@ -130,6 +148,20 @@
 3. 再定义项目 memory 的承载位
 4. 最后再考虑接 Mem0 / Zep / 向量检索等工具
 
+## 当前判断
+
+如果目标是先把系统做稳：
+
+- 维持单库
+- 保持小团队协作
+- 让 `BRAIN.md`、`POLICY.md` 和 `projects/memory/` 分层
+- 用 `projects/decisions.md` 收口冲突
+
+如果目标是继续往自动化走：
+
+- 先把文档层做成可读的状态机和路由系统
+- 再把可重复的判断逐步交给 agent
+
 ## 相关概念
 
 - [[concepts/document-os]]
@@ -137,5 +169,5 @@
 
 ## 后续动作
 
-- 继续把确认过的系统规则沉淀到 `AGENTS.md` / `WORKFLOW.md` / `BRAIN.md`
-- 如果未来要正式引入分层 memory，再补项目层运行位和 policy 层
+- 继续把确认过的系统规则沉淀到 `AGENTS.md` / `WORKFLOW.md` / `BRAIN.md` / `POLICY.md`
+- 如果未来要正式引入分层 memory，再补项目层运行位和规则层的细化说明

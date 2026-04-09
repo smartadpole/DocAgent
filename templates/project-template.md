@@ -1,3 +1,12 @@
+---
+type: project
+project:
+status: active
+stage: design
+updated: {{date}}
+source_of_truth: true
+---
+
 # {{title}}
 
 - 状态：

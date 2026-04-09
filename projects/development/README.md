@@ -1,9 +1,16 @@
+---
+type: development
+project: wiki
+status: active
+updated: 2026-04-09
+---
+
 # 开发
 
 这页是开发主入口。
 
-上游：[[projects/design/README]]、[[projects/decisions]]  
-下游：[[projects/releases]]、[[projects/incidents]]
+上游：[[projects/design/README]]、[[projects/decisions]]、[[projects/memory/README]]、`POLICY.md`  \
+下游：[[projects/releases]]、[[projects/incidents/README]]
 
 子页：
 
@@ -25,3 +32,8 @@
 - 当前阻塞
 - 测试关注点
 - 下一步
+
+## 维护说明
+
+- 开发推进时如果发现项目记忆、规则边界或决策发生变化，先回写到 `projects/memory/README.md`、`POLICY.md` 和 `projects/decisions.md`
+- 开发页只记录推进过程，不重复写设计正文

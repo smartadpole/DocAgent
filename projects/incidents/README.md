@@ -1,8 +1,16 @@
+---
+type: incident-index
+project: wiki
+status: active
+updated: 2026-04-09
+---
+
 # 事故
 
 这页是事故目录总览。
 
-上游：[[projects/releases]]、[[projects/development/worklog]]、[[projects/decisions]]
+上游：[[projects/releases]]、[[projects/development/worklog]]、[[projects/decisions]]、[[projects/memory/README]]  \
+下游：每一条独立事故记录
 
 ## 这页负责什么
 
@@ -30,3 +38,8 @@
 - 事故索引
 - 共性问题
 - 后续改进项
+
+## 维护说明
+
+- 如果事故结论会长期影响项目推进，回写到 `projects/memory/README.md`、`POLICY.md` 或 `projects/decisions.md`
+- 事故目录只做索引和复盘入口，不重复堆正文

@@ -1,9 +1,16 @@
+---
+type: decision-log
+project: wiki
+status: active
+updated: 2026-04-09
+---
+
 # 决策
 
 这页是决策主文件。
 
-上游：[[projects/requirements]]、[[projects/design/README]]  
-下游：[[projects/development/README]]、[[projects/releases]]、[[projects/incidents]]
+上游：[[projects/requirements]]、[[projects/design/README]]、[[projects/memory/README]]、`POLICY.md`  \
+下游：[[projects/development/README]]、[[projects/releases]]、[[projects/incidents/README]]
 
 ## 这页负责什么
 
@@ -15,19 +22,20 @@
 
 ## 当前内容
 
-按需要追加决策记录。
+### 2026-04-09 分层 memory 落点
 
-建议每条至少包含：
+- 背景：当前 vault 已经具备入口层、治理层、共享背景层、项目层、知识层和历史层，需要把 memory 路由明确下来，避免后续继续把所有稳定内容都塞进 `BRAIN.md`。
+- 决定：
+  - `BRAIN.md` 只保留共享背景
+  - `POLICY.md` 承接规则、优先级和自动沉淀边界
+  - `projects/memory/` 承接项目级稳定记忆
+  - `projects/decisions.md` 继续承接项目取舍
+- 影响：
+  - 以后新增稳定内容时，先判断它是背景、规则、项目记忆还是决策
+  - 没有账号体系也可以靠 Git + 文档层级协作
+  - 结构升级以小改为主，不推翻现有骨架
 
-- 背景
-- 选项
-- 结论
-- 理由
-- 影响
+## 维护说明
 
-以下情况优先进入这页，而不是直接改共享背景或规则：
-
-- 多个方案明显冲突
-- 多人协作时出现理解碰撞
-- 新需求和当前结构或既有前提不一致
-- 需要先定案，才能继续更新 `BRAIN.md`、`AGENTS.md` 或项目结构
+- 如果后续发生新的结构冲突或规则冲突，优先写到这里，再回写到 `BRAIN.md`、`POLICY.md` 或项目主入口
+- 决策页只写拍板结果，不重复写需求和设计全文
