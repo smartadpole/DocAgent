@@ -7,7 +7,6 @@
 
 子页：
 
-- [[projects/design/memory/README]]
 - [[projects/design/tech-selection]]
 - [[projects/design/architecture]]
 - [[projects/design/database]]
