@@ -55,3 +55,8 @@
 - 强化 Markdown 引用约束：统一 vault 内页面引用必须使用 `[[wikilink]]` 及其变体，禁止继续保留内部 `.md` 链接、本机绝对路径、空链接和占位链接，并把引用校验加入 `WORKFLOW.md` 的交付前必检项。
 - 把功能点推进流程正式沉淀到项目层：`WORKFLOW.md` 补了功能点状态机，`projects/development/README.md` 和 `projects/development/worklog.md` 补了模板与示例，`projects/status.md` 变成全局状态镜像，`projects/memory/`、`projects/decisions.md` 和 `projects/README.md` 也同步收口了对应入口。
 - 把开发示例独立成文件：新增 `projects/development/examples.md`，并把 `projects/development/README.md`、`projects/development/worklog.md`、`projects/STRUCTURE.md`、`projects/README.md` 和 `WORKFLOW.md` 的示例入口同步改为指向该文件。
+- 把功能点管理从单字段 `in_progress` 改成双轴模型：`status` 管生命周期，`phase` 管串联步骤；同时把开发入口、示例页、工作日志、状态页、决策页和项目记忆页都同步沉淀，避免设计、实现、验证混写在一个字段里。
+- 进一步把项目级状态和功能点双轴分开：项目入口只保留项目级状态词，功能点推进统一用 `status + phase`，避免不同层级的“进行中”概念互相污染。
+- 明确功能点卡的最小填写要求：每张卡都必须同时写 `status` 和 `phase`，不能只留一个“进行中”的笼统字段。
+- 把“功能点卡必须同时写 `status` 和 `phase`”写进项目共享背景，后续读入口、模板或示例时都默认按双轴模型理解。
+- 把过程记录也同步拆轴：`projects/development/worklog.md` 现在要求分开记录 `status` 变化和 `phase` 变化，避免把两条线重新揉回 `in_progress`。

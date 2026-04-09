@@ -31,25 +31,37 @@ tags: [development]
 
 设计拆成模块以后，这页就是当前活跃功能点的工作台。
 
-### 状态词
+### 双轴模型
 
-- `planned`：已列入计划，还没补齐设计或验收
-- `designed`：设计和边界已明确
-- `ready`：依赖、验收和实现路径都准备好了
-- `in_progress`：正在实现
-- `blocked`：被外部依赖或未决问题卡住
-- `review`：实现完成，正在验证
-- `done`：验证通过，准备归档或进入发布
+- `status` 只看生命周期，回答这张卡是不是还活跃
+- `phase` 只看串联步骤，回答这张卡现在走到哪一步
+- 每张功能点卡都要同时写 `status` 和 `phase`
+- `blocked` 是叠加态，不是单独一条流程
+- 旧的 `in_progress` 以后统一拆成 `status=active + phase=*`
+
+### 状态轴
+
+- `planned`：已列入计划，还没进入执行
+- `active`：已经进入当前推进链路
+- `blocked`：当前链路被外部依赖或未决问题卡住
+- `done`：开发和验证完成，等待收口或发布
 - `released`：已经发布或对外可用
 - `archived`：不再活跃但保留历史
-- `canceled` / `superseded`：被取消或被替代
+
+### 阶段轴
+
+- `design`：问题定义、方案拆分、边界确认
+- `implementation`：编码、联调、实现修改
+- `verification`：测试、回归、验收
+- `release`：发布、观察、收口
 
 ### 卡片模板
 
 ```md
 #### FP-001 | 功能点名称
+- 状态：active
+- 阶段：implementation
 - 模块：
-- 状态：planned
 - 目标：
 - 范围：
 - 验收：
@@ -70,6 +82,8 @@ tags: [development]
 ### 维护方式
 
 - 这页保留当前活跃功能点清单，完成后移到归档区，或在同页标成 `done`
+- 如果某张卡卡在某一步，就只改 `status` 为 `blocked`，`phase` 保留当前阶段
+- 如果 `phase` 从 `design` 推进到 `implementation` 或 `verification`，就在同一张卡上更新，不要新开一张卡
 - 过程流水写到 [[projects/development/worklog]]
 - 关键取舍写到 [[projects/decisions]]
 - 可复用结论写到 [[projects/memory/README]] 或知识库层
@@ -79,6 +93,7 @@ tags: [development]
 按需要补充：
 
 - 活跃功能点清单
+- `status` 和 `phase`
 - 当前状态
 - 当前分支或关联 PR/Issue
 - 当前阻塞

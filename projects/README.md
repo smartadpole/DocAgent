@@ -64,13 +64,13 @@ tags: [project]
 ## 常用页面
 
 - [[projects/README]]：项目运行层主入口。这里放目标、状态、关键链接和下一步。
-- [[projects/status]]：项目状态页。这里放当前阶段、活跃功能点状态镜像和当前主入口。
+- [[projects/status]]：项目状态页。这里放当前阶段、活跃功能点双轴状态镜像和当前主入口。
 - [[projects/STRUCTURE]]：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
 - [[projects/requirements]]：需求主文件。这里放问题定义、范围、非目标和验收标准。
 - [[projects/design/README]]：设计主入口。这里放设计总览，并链接架构和数据库子页。
 - [[projects/design/memory/README]]：memory 研究层入口。这里放研究稿、工具调研和运行层设计草稿。
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
-- [[projects/development/README]]：开发主入口。这里放活跃功能点模板、开发状态、阻塞和下一步。
+- [[projects/development/README]]：开发主入口。这里放活跃功能点模板、状态轴、阶段轴、阻塞和下一步。
 - [[projects/development/examples]]：开发示例文件。这里放可直接复制的功能点卡片和过程记录示例。
 - [[projects/development/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
@@ -93,7 +93,8 @@ tags: [project]
 
 ## 手动流控
 
-- 建议状态词：`idea`、`active`、`blocked`、`review`、`released`、`archived`
+- 建议项目级状态词：`idea`、`active`、`blocked`、`released`、`archived`
+- 功能点细化用 [[projects/development/README]] 里的 `status` + `phase`
 - 每次切状态前先读项目主页
 - 如果多个文档冲突，以项目主页和 `projects/decisions.md` 为准
 - 如果项目结束，把可复用内容提炼回知识库，把项目特有内容保留在项目目录或归档层

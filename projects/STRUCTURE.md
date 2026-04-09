@@ -85,7 +85,7 @@ projects/
 ### 3.1.1 状态页
 
 - `projects/status.md`
-- 回答：当前状态、当前阶段、下一步、阻塞项、功能点状态镜像和当前主入口
+- 回答：当前状态、当前阶段、下一步、阻塞项、功能点双轴状态镜像和当前主入口
 - 这是项目主页的状态镜像页，适合后续自动化读取
 
 ### 3.2 需求层
@@ -130,7 +130,7 @@ projects/
 ### 3.5 开发层
 
 - `projects/development/README.md`
-- 回答：当前开发状态、活跃功能点清单、卡在哪里、下一步做什么
+- 回答：当前开发状态、活跃功能点清单、状态轴、阶段轴、卡在哪里、下一步做什么
 - `projects/development/examples.md`
   适合放可直接复制的功能点卡片示例和过程记录示例
 - `projects/development/worklog.md`
@@ -170,7 +170,7 @@ projects/
 具体来说：
 
 - 项目主页依赖所有活跃页面的摘要结果
-- `projects/status.md` 依赖 `projects/README.md` 和 `projects/development/README.md`，保留当前阶段和功能点状态镜像
+- `projects/status.md` 依赖 `projects/README.md` 和 `projects/development/README.md`，保留当前阶段和功能点双轴状态镜像
 - 需求页向下驱动设计和决策
 - 设计页依赖需求，并向下驱动实现
 - 决策页依赖需求和设计，记录关键判断

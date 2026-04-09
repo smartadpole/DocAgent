@@ -365,12 +365,15 @@
 - 上线前先回看发布页和事故入口。
 - 如果上线后产生了稳定结论，把它们回写到 `projects/memory/`、`POLICY.md` 或知识库层。
 
-### 1.9.13 功能点推进闭环
+### 1.9.13 功能点双轴模型
 
 - 设计拆成模块以后，再把模块拆成功能点。
-- 功能点是最小执行单位，一张卡只描述一个可验证结果，不把多个需求绑在一起。
-- 统一状态词：`planned`、`designed`、`ready`、`in_progress`、`blocked`、`review`、`done`、`released`、`archived`。
-- 被取消或被替代的功能点，分别记成 `canceled` 或 `superseded`，不要悄悄删掉历史。
+- 功能点用两个正交字段管理：`status` 和 `phase`。
+- `status` 只表示生命周期：`planned`、`active`、`blocked`、`done`、`released`、`archived`。
+- `phase` 只表示串联步骤：`design`、`implementation`、`verification`、`release`。
+- `status` 和 `phase` 不是平级标签，而是串联关系。
+- `blocked` 是叠加态，可以落在任何 `phase` 上。
+- 旧的 `in_progress` 口径以后统一拆成 `status=active + phase=*`，不再作为单字段主轴。
 - 功能点模板放在 [[projects/development/README]]，示例放在 [[projects/development/examples]]。
 - 过程日志放在 [[projects/development/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
@@ -381,8 +384,11 @@
 ### 1.9.14 状态怎么维护
 
 - 开始前，先把功能点所属模块、目标、验收、依赖和负责人写清楚。
-- 进行中，只在关键转折点改状态，不要每做一点小事就改一次。
-- 进入 `review` 前，先把验证方式和通过标准补齐。
-- 验证通过后，再改成 `done`；真正上线后，再改成 `released`。
-- 如果被卡住，就把阻塞原因、依赖对象和下一步写到同一张卡里。
+- 先定 `phase`，再定 `status`。
+- `phase` 表示现在做到哪一步，`status` 表示这张卡是否活跃、被卡住、已完成或已发布。
+- 进行中，`phase` 只沿串联链路前进，不要在 `design`、`implementation`、`verification` 之间来回改口。
+- `status` 只在生命周期切换时改，比如 `planned -> active -> blocked -> done -> released -> archived`。
+- 验证通过后，再把 `status` 从 `active` 收到 `done`；真正上线后，再改成 `released`。
+- 如果被卡住，保留当前 `phase`，只把 `status` 改成 `blocked`，并写清阻塞原因、依赖对象和下一步。
 - 如果功能点不再推进，就归到 `archived`；如果被替代，就标成 `superseded`。
+- 如果一个功能点在 `done` 之后又要做修复，不要直接倒回原卡，优先新开修复点或事故记录，保留原卡的完成结果。
