@@ -43,6 +43,7 @@
 - [[projects/STRUCTURE]]：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
 - [[projects/requirements]]：需求主文件。这里放问题定义、范围、非目标和验收标准。
 - [[projects/design/README]]：设计主入口。这里放设计总览，并链接架构和数据库子页。
+- [[projects/design/memory/README]]：分层 memory 研究。这里放 memory 分层设计、治理规则和工具调研。
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
 - [[projects/development/README]]：开发主入口。这里放开发状态、阻塞和下一步。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。

@@ -41,3 +41,4 @@
 - 将事故层调整为目录结构：`incidents/README.md` 负责总览和整体状态，每一次事故单独成文件，避免把多次事故堆在同一页。
 - 为设计层补出显式的技术选型文件：`design/tech-selection.md`，避免把技术选型长期埋在设计总览里。
 - 引入 `BRAIN.md` 作为共享脑：承接跨多轮确认、后续应自动进入思考背景的内容；同时明确 `AGENTS.md`、`workspace-memory`、`projects/decisions.md`、`log.md` 的分工。
+- 将“分层 memory 研究”沉淀到项目设计层：新增 `design/memory/README.md` 和 `design/memory/tools.md`，分别承接分层设计稿和开源工具调研。
