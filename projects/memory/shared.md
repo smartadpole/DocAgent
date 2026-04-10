@@ -30,13 +30,6 @@ tags: [memory, shared]
 - 设计拆模块后，执行粒度以功能点实体页为准；状态镜像看 [[projects/status]]，过程流水看 [[projects/development/worklog]]
 - 功能点用 `status` + `phase` 双轴管理：`status` 看生命周期，`phase` 看串联步骤；每个功能点实体页都要同时写这两个字段；功能点实体页一页一个功能点；旧 `in_progress` 口径已拆开
 
-## 角色和 memory 的关系
-
-- 角色是职责视角，memory 是上下文视角。
-- 现在没有“每个角色一套独立 memory”；项目只维护一套按作用域分层的 memory。
-- 不同角色读取同一套 memory 层，但关注点不同：项目负责人更常看 [[BRAIN]]、[[POLICY]] 和 [[projects/decisions]]，研发经理更常看 [[projects/memory/README]]、[[projects/status]] 和 [[projects/development/worklog]]，工程师更常看 [[projects/requirements]]、[[projects/design/README]] 和 [[projects/development/feature-points/README]]。
-- 如果以后要做角色专属 memory，需要额外引入角色 ownership / routing 设计，不是当前默认方案。
-
 ## 需要持续带入的前提
 
 - 不需要账号系统才能协作
