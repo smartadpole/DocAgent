@@ -23,6 +23,7 @@ tags: [design, memory]
 - 不承接正式生效的项目 memory，那是 [[projects/memory/README]]
 - 不承接共享背景，那是 [[BRAIN]]
 - 不承接正式规则，那是 [[POLICY]]
+- 不承接角色专属 memory；角色分层是项目稳定事实，统一记在 [[projects/memory/shared]]
 
 ## 当前入口
 
