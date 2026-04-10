@@ -10,7 +10,7 @@ updated: 2026-04-10
 tags: [policy]
 ---
 
-# POLICY
+# 规则层
 
 这页放共享规则、优先级和 memory 路由约束。
 

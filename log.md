@@ -1,4 +1,4 @@
-# Log
+# 活动记录
 
 > append-only
 
@@ -64,3 +64,4 @@
 - 把已发布示例的阶段口径收口到 `release`，避免 `released` 功能点还挂着 `verification` 阶段造成误读。
 - 把开发示例从“同页多卡”进一步拆成真实功能点实体页：新增 `projects/development/feature-points/` 目录，拆出 `README.md` 索引页和 `FP-001.md` / `FP-002.md` / `FP-003.md` 三个实体页；同时把 `WORKFLOW.md`、`projects/README.md`、`projects/STRUCTURE.md`、`projects/status.md`、`projects/development/README.md`、`projects/development/worklog.md`、`projects/decisions.md`、`projects/memory/shared.md` 和 `AGENTS.md` 的口径一起改成实体页优先。
 - 进一步把 `projects/development/README.md` 收成研发经理看板，移走状态轴、阶段轴、实体模板和当前实体清单；把这些执行细节集中到 `projects/development/feature-points/README.md`，让开发主入口只负责整体推进、阻塞、下一步和协调。
+- 这次把目录入口标题统一收成中文，并补了一条写作约定：正文默认中文，英文只保留文件名、产品名、代码标识和必要术语；保留技术专名，但降低入口层的混排感。
