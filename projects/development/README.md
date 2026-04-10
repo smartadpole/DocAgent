@@ -37,6 +37,7 @@ tags: [development]
 - `status` 只看生命周期，回答这张卡是不是还活跃
 - `phase` 只看串联步骤，回答这张卡现在走到哪一步
 - 每个功能点实体页都要同时写 `status` 和 `phase`
+- 同一个功能点始终只对应一个实体页，状态变化只改同一页
 - `projects/development/feature-points/` 里一页只放一个功能点
 - `blocked` 是叠加态，不是单独一条流程
 - 旧的 `in_progress` 以后统一拆成 `status=active + phase=*`
