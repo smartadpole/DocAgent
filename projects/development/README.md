@@ -9,7 +9,7 @@ tags: [development]
 
 # 开发
 
-这页是开发主入口。
+这页是研发经理视角的开发主入口。
 
 上游：[[projects/design/README]]、[[projects/decisions]]、[[projects/memory/README]]、[[POLICY]]  \
 下游：[[projects/releases]]、[[projects/incidents/README]]
@@ -21,16 +21,18 @@ tags: [development]
 
 ## 这页负责什么
 
-- 说明当前开发状态
+- 说明当前研发推进状态
 - 维护活跃功能点实体的索引和状态
 - 说明阻塞和风险
 - 说明下一步
 - 汇总需要关注的验证项
+- 不写单个功能点的完整执行正文，那部分在 [[projects/development/feature-points/README]]
 
 ## 功能点推进
 
-设计拆成模块以后，这页就是当前活跃功能点的工作台。
+设计拆成模块以后，这页就是当前活跃功能点的研发推进工作台。
 每个功能点单独一页，状态和阶段写在该页 frontmatter 里。
+研发经理负责拆解、协调、排期和跟进，单个功能点的执行正文放到 `feature-points` 目录。
 
 ### 双轴模型
 
@@ -38,7 +40,6 @@ tags: [development]
 - `phase` 只看串联步骤，回答这张卡现在走到哪一步
 - 每个功能点实体页都要同时写 `status` 和 `phase`
 - 同一个功能点始终只对应一个实体页，状态变化只改同一页
-- `projects/development/feature-points/` 里一页只放一个功能点
 - `blocked` 是叠加态，不是单独一条流程
 - 旧的 `in_progress` 以后统一拆成 `status=active + phase=*`
 
@@ -87,25 +88,13 @@ tags: [development, feature-point]
 - 结果：
 ```
 
-### 当前实体
+### 当前实体目录
 
-- [[projects/development/feature-points/README]]：功能点实体目录，一页一个功能点
-
-#### 进行中
-
-- [[projects/development/feature-points/FP-001]]：active / implementation
-
-#### 完成待发布
-
-- [[projects/development/feature-points/FP-002]]：done / release
-
-#### 已发布
-
-- [[projects/development/feature-points/FP-003]]：released / release
+- [[projects/development/feature-points/README]]：功能点实体目录，工程师的执行清单
 
 ### 维护方式
 
-- 这页保留当前活跃功能点的索引和状态，完成后只改对应实体页，不要把多个功能点正文塞进同一页
+- 这页保留当前活跃功能点的索引和整体推进状态，不要把多个功能点正文塞进同一页
 - 如果某个功能点卡在某一步，就只改该页的 `status` 为 `blocked`，`phase` 保留当前阶段
 - 如果 `phase` 从 `design` 推进到 `implementation` 或 `verification`，就在同一功能点页更新，不要新开另一页
 - 过程流水写到 [[projects/development/worklog]]

@@ -35,6 +35,7 @@ tags: [project]
 ## 默认运行方式
 
 - 一个 `wiki` 只对应一个项目，所以项目主页固定是 `projects/README.md`
+- 项目主页更像 CTO / 项目负责人视角，负责定方向、边界、优先级和最终拍板
 - 当前规模很小，先保持单库、强规范、弱权限、强链接、可编排
 - 没有账号体系也没关系，Git 已经足够承担审计和回滚
 - 不做隐藏自动流控，状态由人读项目主页后手动判断
@@ -70,8 +71,8 @@ tags: [project]
 - [[projects/design/README]]：设计主入口。这里放设计总览，并链接架构和数据库子页。
 - [[projects/design/memory/README]]：memory 研究层入口。这里放研究稿、工具调研和运行层设计草稿。
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
-- [[projects/development/README]]：开发主入口。这里放活跃功能点模板、状态轴、阶段轴、实体索引、阻塞和下一步。
-- [[projects/development/feature-points/README]]：功能点实体目录。这里放一页一个功能点的实体页和状态索引。
+- [[projects/development/README]]：开发主入口。这里放研发经理视角的整体推进、状态镜像、阻塞和下一步。
+- [[projects/development/feature-points/README]]：功能点实体目录。这里放工程师视角的单功能点执行页和状态索引。
 - [[projects/development/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
 - [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。

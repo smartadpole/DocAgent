@@ -6,7 +6,7 @@ status: active
 stage: design
 source_of_truth: true
 updated: 2026-04-10
-next_action: normalize-feature-point-entity-pages
+next_action: clarify-project-development-feature-point-roles
 current_entry: projects/README.md
 blockers:
   - remaining-page-normalization
@@ -23,7 +23,7 @@ tags: [status]
 
 ## 下一步
 
-- 把活跃功能点按一页一个实体的方式补到 [[projects/development/feature-points/README]]
+- 把项目主页、开发主入口和功能点实体目录的职责分层进一步收口
 - 继续把高频页面的链接和字段收敛成机器可读格式
 - 如果某个结论已经稳定，再回写到 [[projects/memory/README]] 或知识库层
 

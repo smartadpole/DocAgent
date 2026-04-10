@@ -69,6 +69,18 @@ tags: [decision]
   - 每个功能点实体页单独承载 `status` 和 `phase`
   - 如果功能点完成后又要修复，优先新开修复点或事故记录，保留原卡的完成状态
 
+### 2026-04-10 项目、开发、功能点三层职责分工
+
+- 背景：`projects/README.md`、`projects/development/README.md` 和 `projects/development/feature-points/README.md` 之前都在解释功能点和状态，容易让读者把协调层和执行层混在一起。
+- 决定：
+  - `projects/README.md` 承担 CTO / 项目负责人视角，负责方向、边界、优先级和最终拍板
+  - `projects/development/README.md` 承担研发经理视角，负责整体推进、状态镜像、阻塞协调和下一步
+  - `projects/development/feature-points/README.md` 和其下实体页承担工程师视角，负责单个功能点执行、验证和结果
+- 影响：
+  - 以后写文档时，先判断是在定方向、做协调，还是在做单个功能点执行
+  - 功能点正文只放在实体页里，不再和开发主入口混写
+  - 状态分组是索引视图，不是目录结构
+
 ## 维护说明
 
 - 如果后续发生新的结构冲突或规则冲突，优先写到这里，再回写到 [[BRAIN]]、[[POLICY]] 或项目主入口

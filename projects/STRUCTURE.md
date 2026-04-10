@@ -133,11 +133,33 @@ projects/
 
 ### 3.5 开发层
 
+#### 3.5.0 职责分层
+
+- `projects/README.md`
+  这是项目主入口，偏 CTO / 项目负责人视角
+  负责定方向、边界、优先级和最终拍板
 - `projects/development/README.md`
-- 回答：当前开发状态、活跃功能点索引、状态轴、阶段轴、卡在哪里、下一步做什么
+  这是研发推进主入口，偏研发经理视角
+  负责整体推进、状态镜像、阻塞协调和下一步
+- `projects/development/feature-points/README.md` 和其下实体页
+  这是功能点执行层，偏工程师视角
+  负责单个功能点的实现、验证、结果和状态更新
+
+#### 3.5.1 研发推进主入口
+
+- `projects/development/README.md`
+- 回答：当前研发推进状态、活跃功能点索引、状态轴、阶段轴、卡在哪里、下一步做什么
+- 偏研发经理视角
+
+#### 3.5.2 功能点执行目录
+
 - `projects/development/feature-points/README.md`
   这是功能点实体目录，一页一个功能点
   适合放当前活跃、完成待发布和已发布功能点的索引
+  偏工程师视角
+
+#### 3.5.3 功能点实体页
+
 - `projects/development/feature-points/FP-001.md`
   这是功能点实体页
   适合放一个功能点的 frontmatter、目标、范围、验收、阻塞、过程和结果
@@ -145,6 +167,9 @@ projects/
   这是完成待发布的功能点实体页
 - `projects/development/feature-points/FP-003.md`
   这是已发布的功能点实体页
+
+#### 3.5.4 开发过程记录
+
 - `projects/development/worklog.md`
   适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
 

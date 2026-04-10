@@ -377,6 +377,7 @@
 - 功能点模板放在 [[projects/development/README]]。
 - 功能点实体页放在 [[projects/development/feature-points/README]]，每个功能点一页，不把多个功能点正文塞在同一页。
 - `status` 和 `phase` 写在功能点页的 frontmatter 或页面属性里。
+- 三层职责固定为：`projects/README.md` 偏 CTO / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和其下实体页偏工程师视角。
 - 过程日志放在 [[projects/development/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。
