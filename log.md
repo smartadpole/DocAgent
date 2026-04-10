@@ -69,3 +69,4 @@
 - 把“随意中英混排”提升为 `AGENTS.md` 的硬约束：正文默认中文，除必要专名外不得混排，后续新增或修改内容时必须先检查这一条。
 - 补充“角色和 memory 的关系”说明：角色是职责视角，memory 是上下文分层；项目内不做每个角色一套独立 memory，而是由共享背景、项目记忆和规则路由承接不同角色的默认上下文。相关说明已写入 `projects/memory/shared.md` 和 `projects/design/memory/README.md`。
 - 纠正上一条说明的落点：`projects/memory/shared.md` 只保留角色分层这一条稳定事实；“角色和 memory 的关系”属于设计判断，已移到 `projects/design/memory/README.md`，避免把解释性内容写进运行层 memory。
+- 再次上提落点：`projects/` 只承载项目运行层，关于“角色和 memory 的关系”的框架级说明已移到根 `README.md`，`projects/design/memory/README.md` 仅保留研究入口和指向，不再承接该说明正文。
