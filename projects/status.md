@@ -6,7 +6,7 @@ status: active
 stage: design
 source_of_truth: true
 updated: 2026-04-10
-next_action: clarify-project-development-feature-point-roles
+next_action: slim-development-manager-view
 current_entry: projects/README.md
 blockers:
   - remaining-page-normalization
@@ -30,7 +30,8 @@ tags: [status]
 ## 功能点状态维护
 
 - 这页只保留全局状态镜像，不展开所有功能点细节
-- 详细模板和活跃实体清单看 [[projects/development/README]]、[[projects/development/feature-points/README]]
+- 整体推进看 [[projects/development/README]]
+- 实体模板和活跃实体清单看 [[projects/development/feature-points/README]]
 - 过程流水看 [[projects/development/worklog]]
 - 功能点用 `status` + `phase` 双轴管理
 - `status` 看生命周期：`planned`、`active`、`blocked`、`done`、`released`、`archived`
