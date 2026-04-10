@@ -18,11 +18,11 @@ updated: 2026-04-10
 
 ## 1. 设计原则
 
-- 一个 `wiki` 只服务一个项目，所以 `projects/` 本身就是这个项目的运行层。
+- 一个文档库只服务一个项目，所以 `projects/` 本身就是这个项目的运行层。
 - 项目层只放当前项目直接相关的需求、设计、决策、过程、记忆和发布信息。
 - 可复用知识最终回写到 `articles/`、`concepts/`、`indexes/`，不要长期堆在项目层。
 - 单一信息源优先：同一类信息只保留一个主文件，其他页面链接它，不重复抄写。
-- `BRAIN.md`、`POLICY.md` 和 `projects/memory/` 是显式分层，不再混成一页 prose。
+- `BRAIN.md`、`POLICY.md` 和 `projects/memory/` 是显式分层，不再混成一页正文。
 - 先有目录和职责，再决定是否需要模板。
 
 ## 2. 推荐结构
@@ -105,7 +105,7 @@ projects/
 - `projects/design/README.md` 是设计主入口
 - 它回答：整体方案是什么、涉及哪些模块、怎样实现
 - 这里先放设计总览：模块划分、接口、数据流、依赖、主要风险，以及指向技术选型、架构、数据库等子页的入口
-- 如果设计会影响 memory 路由或 policy 接线，也要在这里留入口
+- 如果设计会影响记忆路由或规则接线，也要在这里留入口
 
 如果某一块设计继续长大，再从这个主入口往下拆子页：
 
@@ -119,10 +119,10 @@ projects/
   这是数据库子页，也属于设计层
   适合放表结构、字段约束、索引、迁移策略、读写路径
 - `projects/design/memory/README.md`
-  这是 memory 研究层入口
+  这是记忆研究层入口
   适合放分层方案讨论、工具调研和运行层设计草稿
 - `projects/design/memory/tools.md`
-  这是 memory 工具调研子页
+  这是记忆工具调研子页
   适合放 `Mem0`、`Zep`、`Letta` 等工具路线
 
 ### 3.4 决策层
@@ -136,7 +136,7 @@ projects/
 #### 3.5.0 职责分层
 
 - `projects/README.md`
-  这是项目主入口，偏 CTO / 项目负责人视角
+  这是项目主入口，偏首席技术官 / 项目负责人视角
   负责定方向、边界、优先级和最终拍板
 - `projects/development/README.md`
   这是研发推进主入口，偏研发经理视角
@@ -219,7 +219,7 @@ projects/
 
 - `projects/memory/README.md` 依赖 `BRAIN.md`、`POLICY.md` 和 `projects/decisions.md`
 - `POLICY.md` 依赖 `AGENTS.md`、`WORKFLOW.md` 和相关决策
-- 如果设计或决策改变了 memory 路由或规则边界，就要同步更新 `projects/memory/`、`BRAIN.md` 和 `POLICY.md`
+- 如果设计或决策改变了记忆路由或规则边界，就要同步更新 `projects/memory/`、`BRAIN.md` 和 `POLICY.md`
 
 数据库设计不是独立于设计层存在的，它默认属于设计主入口或其子页：
 
@@ -235,10 +235,10 @@ projects/
 3. 再读 `projects/requirements.md`
 4. 再读 `projects/design/README.md`
 5. 有关键取舍时再读 `projects/decisions.md`
-6. 如果涉及 memory 或 policy，再读 `projects/memory/README.md` 和 `POLICY.md`
+6. 如果涉及记忆或规则，再读 `projects/memory/README.md` 和 `POLICY.md`
 7. 实施复杂时再读 `projects/development/worklog.md`
 
-### 5.2 做 memory / policy 改动时
+### 5.2 做记忆 / 规则改动时
 
 1. 先读 `projects/README.md`
 2. 再读 `projects/STRUCTURE.md`

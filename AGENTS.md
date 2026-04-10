@@ -1,6 +1,6 @@
 # 维护约束
 
-这份文件是给 Codex 和其他 agent 的维护约束。目标不是写说明书，而是把这套 vault 持续维护成一个可演化的知识库。
+这份文件是给 Codex 和其他 agent 的维护约束。目标不是写说明书，而是把这套文档库持续维护成一个可演化的知识库。
 
 ## 角色分工
 
@@ -9,12 +9,12 @@
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
 - `projects/`：活跃研发项目层。需求、设计、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
-- 角色分层固定为：`projects/README.md` 偏 CTO / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
+- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
 - `concepts/`：概念和实体层。工具、项目、术语都放这里。
 - `indexes/`：导航层。只负责入口、分类和检索。
 - `archive/`：退役和历史层。保留旧页面、合并结果和历史版本。
-- `log.md`：append-only 活动记录。
+- `log.md`：只追加活动记录。
 
 ## 维护规则
 
@@ -25,7 +25,7 @@
 - 优先更新已有页，不要无脑新建重复页。
 - 新页面先写最小可用版本，再补链接。
 - 所有重要概念都要双向链接，避免孤岛页。
-- 有长期价值的结论要回写到 vault，而不是只留在对话里。
+- 有长期价值的结论要回写到文档库，而不是只留在对话里。
 - 过程性决定和修复动作要写进 `log.md`。
 - `workspace-memory` 只记稳定偏好和重复习惯，不作为唯一规则源。
 - `BRAIN.md` 是共享背景，承接跨多轮确认、会持续影响后续工作的共同背景。
@@ -97,14 +97,14 @@
 ## 结构变更同步规则
 
 - 新增模块、目录、模板、入口页或高频文件类型时，必须在同一次变更里同步检查并更新 `AGENTS.md`、`WORKFLOW.md`，必要时更新 `README.md`。
-- 如果新增内容改变了主入口、上下游关系、阶段映射、单一信息源或 memory 路由，就必须同步更新对应章节，不允许以后再补。
+- 如果新增内容改变了主入口、上下游关系、阶段映射、单一信息源或记忆路由，就必须同步更新对应章节，不允许以后再补。
 - 如果新增内容只是一次性页面，不改变系统结构，可以不改上下文模型，但要确认它挂靠在哪个既有主入口之下。
 - 任何结构性扩展都要在 `log.md` 留痕，说明它进入了哪一层、服务什么职责、和哪些页面产生关联。
 
 ## 读取顺序
 
 - 写任何内容时都要先建立全局背景，不允许只盯着当前文件局部改写。
-- 先判断这段内容在整个 vault 里的位置：它服务哪个主题、哪个阶段、哪个主入口、哪类读者。
+- 先判断这段内容在整个文档库里的位置：它服务哪个主题、哪个阶段、哪个主入口、哪类读者。
 - 任何一段内容都不是孤立的，修改前必须先判断它的上游、下游和主入口。
 - 默认先读 `README.md`、`INDEX.md`、相关目录的 `README.md`，再读目标文件本身。
 - 默认把 `BRAIN.md` 当作共享背景读取入口之一，不要跳过。
@@ -112,7 +112,7 @@
 - 如果目标涉及项目级稳定记忆，再读 `projects/memory/README.md`。
 - 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、决策、记忆、开发页面。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
-- 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或 memory 路由，就必须额外回看相关入口页和主页面。
+- 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
 
 ## 冲突升级
@@ -123,10 +123,10 @@
 
 ## 目标文件的最小读取集
 
-- 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及 memory 或 policy，再加读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
+- 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
 - 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
-- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响 memory 或 policy，还要读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
-- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及 memory 路由，再读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
+- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
+- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
@@ -153,13 +153,13 @@
 
 ## 链接规则
 
-- 同一个 vault 内的页面跳转，默认优先使用 `[[wikilink]]`，不要再写成本机绝对路径。
-- 仓库内文档之间的引用，默认统一使用 `[[wikilink]]`，不要再保留 `[xxx](./foo.md)`、`[xxx](../bar.md)`、`[xxx](foo.md)` 这类指向 vault 内页面的 Markdown 链接。
+- 同一文档库内的页面跳转，默认优先使用 `[[wikilink]]`，不要再写成本机绝对路径。
+- 仓库内文档之间的引用，默认统一使用 `[[wikilink]]`，不要再保留 `[xxx](./foo.md)`、`[xxx](../bar.md)`、`[xxx](foo.md)` 这类指向本库内页面的 Markdown 链接。
 - 只有在说明命令、环境变量、工作区位置时，才提“当前工作区”这类概念；不要把本机用户名和绝对目录写进长期文档。
 - 外部网站、官方文档、仓库地址这类外部资源，继续使用普通 Markdown 链接。
 - 如果一个页面只是作为导航入口出现，优先用 `[[wikilink]]`；如果需要附带解释，可以在链接后补一句说明，不复制整段内容。
-- 页内引用如果指向本 vault 的标题、区块或子页面，也优先使用 Obsidian 可解析的 `[[page#heading]]`、`[[page#^block-id]]`、`[[page|alias]]`，不要混回 `.md#heading` 形式。
-- 当语义上是在引用 vault 内页面本身、入口职责或跳转目标时，优先直接写成 `[[wikilink]]`，不要写成 `BRAIN.md`、`POLICY.md`、`log.md` 这类裸文件名。
+- 页内引用如果指向本库的标题、区块或子页面，也优先使用 Obsidian 可解析的 `[[page#heading]]`、`[[page#^block-id]]`、`[[page|alias]]`，不要混回 `.md#heading` 形式。
+- 当语义上是在引用本库内页面本身、入口职责或跳转目标时，优先直接写成 `[[wikilink]]`，不要写成 `BRAIN.md`、`POLICY.md`、`log.md` 这类裸文件名。
 - 不允许保留空链接、占位链接、缺失目标的半成品引用；发现 `[]()`、`[text](#)`、只剩文本没有目标的引用时，必须在交付前修正或删除。
 - 只要本次处理新增或修改了 Markdown 引用，就必须顺手修正同一文件内发现的错误引用，不把坏格式留给下一轮。
 - 交付前必须回看引用格式是否满足这组约束；引用格式不合规，视为结果未完成。

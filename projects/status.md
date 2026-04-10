@@ -39,7 +39,7 @@ tags: [status]
 - 旧的 `in_progress` 口径以后统一拆成 `status=active + phase=*`
 - 功能点实体页一页一个功能点，`status` 和 `phase` 写在各自页的 frontmatter
 - 被取消或被替代的功能点，分别标成 `canceled` 或 `superseded`
-- 切状态时，先更新功能点实体页，再回看 release、incident 和 memory 是否需要同步
+- 切状态时，先更新功能点实体页，再回看发布、事故和记忆是否需要同步
 
 ## 阻塞项
 

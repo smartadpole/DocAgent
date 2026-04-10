@@ -56,15 +56,15 @@
 
 - `AGENTS.md`：写硬约束和 agent 必须遵守的行为。
 - `BRAIN.md`：写多轮确认后的共享背景和共同前提。
-- `POLICY.md`：写规则、优先级和 memory 路由边界。
+- `POLICY.md`：写规则、优先级和记忆路由边界。
 - `projects/memory/README.md`：写项目级稳定记忆。
 - `workspace-memory`：写个人稳定偏好和重复习惯。
 - `projects/decisions.md`：写项目阶段的冲突、取舍和正式决策。
 - `log.md`：写时间顺序上的过程和结构调整记录。
 
-### 0.3 分层 memory 怎么路由
+### 0.3 分层记忆怎么路由
 
-- 临时会话信息和还没确认的草稿，先留在 session 或 `inbox/`
+- 临时会话信息和还没确认的草稿，先留在会话或 `inbox/`
 - 只对当前项目长期有效的稳定事实，写进 `projects/memory/`
 - 跨任务、跨会话、后续还会持续影响工作的共享背景，写进 `BRAIN.md`
 - 会改变后续判断方式、优先级或自动沉淀边界的内容，写进 `POLICY.md`
@@ -222,10 +222,10 @@
 
 每次改完 Markdown，都把引用格式检查当作交付前必做动作，不是可选优化。
 
-- 本 vault 内页面引用只允许使用 `[[wikilink]]` 及其变体：`[[page]]`、`[[page|alias]]`、`[[page#heading]]`、`[[page#^block-id]]`。
-- 如果语义上是在指向本 vault 的页面，而不是单纯讨论文件名字符串，也统一改成 `[[wikilink]]`，不要保留 `BRAIN.md`、`POLICY.md`、`log.md` 这类裸文件名引用。
+- 本库内页面引用只允许使用 `[[wikilink]]` 及其变体：`[[page]]`、`[[page|alias]]`、`[[page#heading]]`、`[[page#^block-id]]`。
+- 如果语义上是在指向本库的页面，而不是单纯讨论文件名字符串，也统一改成 `[[wikilink]]`，不要保留 `BRAIN.md`、`POLICY.md`、`log.md` 这类裸文件名引用。
 - 外部资源只使用普通 Markdown 链接：`[title](https://example.com)`。
-- 发现 vault 内 `.md` 相对链接、空链接、占位链接、写死本机绝对路径时，当场修正，不留到后续再清理。
+- 发现本库内 `.md` 相对链接、空链接、占位链接、写死本机绝对路径时，当场修正，不留到后续再清理。
 - 如果一次处理里改了标题、文件名、目录名或段落结构，结束前必须回看受影响页面，确认引用仍然能跳转、别名仍然可读、没有残留旧路径。
 - 如果无法在当轮确认目标页名，就先停留为纯文本说明并明确标注，不要制造一个看起来像链接但实际会失效的引用。
 
@@ -233,11 +233,11 @@
 
 ### 1.5.1 链接怎么写
 
-- 同一个 vault 内的页面跳转，优先写成 `[[wikilink]]`。
+- 同一文档库内的页面跳转，优先写成 `[[wikilink]]`。
 - 不要在仓库文档里写死本机绝对路径；换电脑后会失效。
-- 如果只是引用当前 vault 的其他文档，不要继续写 `./xxx.md` 这类相对 Markdown 链接，优先改成 `wikilink`。
+- 如果只是引用当前文档库的其他文档，不要继续写 `./xxx.md` 这类相对 Markdown 链接，优先改成 `wikilink`。
 - 如果要引用页内标题、区块或显示别名，继续沿用 `wikilink` 变体，不退回 `.md#heading` 形式。
-- 如果链接目标在 vault 外部，比如官网、GitHub、微信文章，继续使用普通 Markdown 链接。
+- 如果链接目标在文档库外部，比如官网、GitHub、微信文章，继续使用普通 Markdown 链接。
 - 改完页面标题或路径后，回看内部链接是否仍然自然、可读、可迁移。
 
 ## 1.6 处理已有目录
@@ -302,7 +302,7 @@
 4. 再读 `projects/requirements.md`
 5. 再读 `projects/design/README.md`
 6. 有冲突再读 `projects/decisions.md`
-7. 涉及 memory 或 policy 再读 `projects/memory/README.md` 和 `POLICY.md`
+7. 涉及记忆或规则再读 `projects/memory/README.md` 和 `POLICY.md`
 
 ### 1.9.2 项目主页怎么用
 
@@ -310,7 +310,7 @@
 - 项目主页不写长篇设计，不写长篇决策，不写过程流水。
 - 如果项目主页和其他页面冲突，以项目主页和 `projects/decisions.md` 为准。
 
-### 1.9.3 memory / policy 怎么用
+### 1.9.3 记忆 / 规则怎么用
 
 - `BRAIN.md` 负责共享背景。
 - `projects/memory/` 负责项目级稳定记忆。
@@ -321,7 +321,7 @@
 
 - 需求先说明为什么做、做给谁、范围是什么。
 - 设计再说明怎么做、模块怎么切、数据怎么走。
-- 如果设计会改变 memory 路由或 policy 接线，先在设计页留入口，再回写相关页面。
+- 如果设计会改变记忆路由或规则接线，先在设计页留入口，再回写相关页面。
 
 ### 1.9.5 设计到决策
 
@@ -345,22 +345,22 @@
 - 事故页只负责事故总览、单条事故和复盘入口。
 - 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、`POLICY.md` 或 `projects/decisions.md`。
 
-### 1.9.9 AI 功能研发：从需求到设计
+### 1.9.9 智能体功能研发：从需求到设计
 
 - 先把问题定义清楚，再把输入、输出、边界和验收写清楚。
-- 如果要让 AI 参与推进，至少要有项目主页、需求页和设计页三件套。
+- 如果要让智能体参与推进，至少要有项目主页、需求页和设计页三件套。
 
-### 1.9.10 AI 功能研发：从设计到决策
+### 1.9.10 智能体功能研发：从设计到决策
 
 - 设计里所有会影响后续自动化的判断，都应当单独落到决策页。
 - 决策页要能回溯到需求、设计和当时约束。
 
-### 1.9.11 AI 功能研发：从决策到开发
+### 1.9.11 智能体功能研发：从决策到开发
 
 - 开发推进时，先读决策页，再读设计页。
-- 如果 AI 需要项目级长期背景，就先读 `projects/memory/`。
+- 如果智能体需要项目级长期背景，就先读 `projects/memory/`。
 
-### 1.9.12 AI 功能研发：从开发到上线
+### 1.9.12 智能体功能研发：从开发到上线
 
 - 上线前先回看发布页和事故入口。
 - 如果上线后产生了稳定结论，把它们回写到 `projects/memory/`、`POLICY.md` 或知识库层。
@@ -377,7 +377,7 @@
 - 功能点模板放在 [[projects/development/README]]。
 - 功能点实体页放在 [[projects/development/feature-points/README]]，每个功能点一页，不把多个功能点正文塞在同一页。
 - `status` 和 `phase` 写在功能点页的 frontmatter 或页面属性里。
-- 三层职责固定为：`projects/README.md` 偏 CTO / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和其下实体页偏工程师视角。
+- 三层职责固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和其下实体页偏工程师视角。
 - 过程日志放在 [[projects/development/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。

@@ -10,7 +10,7 @@ tags: [entry, root]
 
 # 文档系统说明
 
-这个 vault 的目标很简单：把散乱资料变成能查、能连、能持续更新的知识网络，同时给未来的半自动 / 自动化项目推进留好路由。
+这个文档库的目标很简单：把散乱资料变成能查、能连、能持续更新的知识网络，同时给未来的半自动 / 自动化项目推进留好路由。
 
 如果只记一件事，就记住这一层分法：
 
@@ -34,11 +34,11 @@ tags: [entry, root]
 
 ## 怎么用这个总入口
 
-如果你第一次打开这个 vault，就按这个顺序走：
+如果你第一次打开这个文档库，就按这个顺序走：
 
 1. 先看这页，知道它是做什么的、怎么分层、怎么启动。
 2. 再看 [[BRAIN]]，了解已经确认过、后续会自动参与工作的共享背景。
-3. 再看 [[POLICY]]，知道哪些规则、优先级和 memory 路由是硬约束。
+3. 再看 [[POLICY]]，知道哪些规则、优先级和记忆路由是硬约束。
 4. 如果你要处理项目推进，就去看 [[projects/README]] 和 [[projects/STRUCTURE]]。
 5. 如果你要先看项目当前阶段、阻塞和下一步，也可以直接看 [[projects/status]]。
 6. 如果你要新增或修改文档，去看 [[WORKFLOW]]。
@@ -72,7 +72,7 @@ tags: [entry, root]
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
 - [[BRAIN]] 承接跨多轮确认、后续需要自动进入思考背景的共享内容。
-- [[POLICY]] 承接共享规则、优先级和 memory 路由。
+- [[POLICY]] 承接共享规则、优先级和记忆路由。
 - [[projects/memory/README]] 承接项目级稳定记忆。
 
 ## 软件研发模式怎么叠加
@@ -90,11 +90,11 @@ tags: [entry, root]
 如果你正在做研发，先看 [[projects/README]]。
 如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
 
-如果你想看这套 vault 的整体设计思路，去看 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]。
-如果你想看分层 memory 的设计，去看 [[articles/2026-04-09-layered-memory-research]] 和 [[concepts/layered-memory]]。
+如果你想看这套文档库的整体设计思路，去看 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]。
+如果你想看分层记忆的设计，去看 [[articles/2026-04-09-layered-memory-research]] 和 [[concepts/layered-memory]]。
 
 研发阶段的详细说明、阶段映射和推进方式，统一看 [[WORKFLOW]] 里的 `1.9 软件研发模式`。
-如果你要让 AI 直接推进一个具体功能，也统一看 [[WORKFLOW]] 里的 `1.9.9` 到 `1.9.12`。
+如果你要让智能体直接推进一个具体功能，也统一看 [[WORKFLOW]] 里的 `1.9.9` 到 `1.9.12`。
 
 ## 最短工作流
 
@@ -115,8 +115,8 @@ tags: [entry, root]
 
 ## 打开方式
 
-- 直接用 Obsidian 打开当前 vault
-- 在 vault 里直接打开 `INDEX.md`
+- 直接用 Obsidian 打开当前文档库
+- 在文档库里直接打开 `INDEX.md`
 
 ## 更新原则
 
@@ -127,7 +127,7 @@ tags: [entry, root]
 - 正文默认中文，英文只保留文件名、产品名、代码标识和必要术语，不为了表面统一强行翻译专有名词。
 - 更新任何内容时，先看它在整个系统里的位置，再动当前文件。
 - 上下文不是“当前文档前后几段”，而是和目标内容直接相关的主入口、上下游文件、阶段位置和知识层级。
-- 同一个 vault 内的页面跳转，默认优先使用 `[[wikilink]]`，不要写死本机绝对路径。
+- 同一文档库内的页面跳转，默认优先使用 `[[wikilink]]`，不要写死本机绝对路径。
 - `log.md` 只追加，不重写。
 - 原始来源只进 `raw/`，临时待处理内容只进 `inbox/`，整理稿不要回塞 `raw/`。
 - 支持性图片、截图、图表和 canvas 等辅助文件优先放 `assets/`。
