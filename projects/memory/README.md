@@ -5,7 +5,7 @@ scope: project
 project: wiki
 status: active
 source_of_truth: true
-updated: 2026-04-10
+updated: 2026-04-11
 ---
 
 # 项目记忆
@@ -24,7 +24,7 @@ updated: 2026-04-10
 - 不放全局规则，那是 [[POLICY]]
 - 不放项目拍板，那是 [[projects/decisions]]
 - 不放共享背景正文，那是 [[BRAIN]]
-- 不放过程流水，那是 `log.md`
+- 不放过程流水，那是 [[log]]
 
 ## 当前子页
 

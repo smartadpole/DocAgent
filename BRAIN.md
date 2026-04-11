@@ -24,7 +24,7 @@ tags: [memory, shared]
 
 ## 这页不负责什么
 
-- 不记录按时间追加的过程流水，那是 `log.md` 的职责
+- 不记录主题化的历史流水，那是 [[log]] 的职责
 - 不重复写详细流程，那是 `WORKFLOW.md` 的职责
 - 不重复写 agent 行为约束，那是 `AGENTS.md` 的职责
 - 不重复写规则和优先级，那是 [[POLICY]] 的职责
@@ -78,4 +78,4 @@ tags: [memory, shared]
 - [[projects/memory/README]]：项目级稳定记忆入口
 - `workspace-memory`：稳定个人偏好和重复习惯。回答“用户个人长期偏好是什么”
 - `projects/decisions.md`：项目阶段冲突和取舍。回答“思维碰撞后最后怎么定”
-- `log.md`：时间记录。回答“它是什么时候发生的”
+- [[log]]：主题化的历史记录。回答“当时在解决什么问题、做了哪些关键动作、它是什么时候发生的”

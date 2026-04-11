@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-10
+updated: 2026-04-11
 tags: [entry, root]
 ---
 
@@ -63,7 +63,7 @@ tags: [entry, root]
 - 这是新文件，还是对已有文件的修改？
 - 这份材料该进 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`？
 - 这次改动会不会影响链接、目录名或索引？
-- 这次处理是不是有长期价值，需要写进 [[log]] 或 `workspace-memory`？
+- 这次处理是不是有长期价值，需要把主题化后的用户意图和关键动作写进 [[log]]，或把稳定偏好写进 `workspace-memory`？
 
 ## 这组工具怎么配合
 
@@ -113,7 +113,7 @@ tags: [entry, root]
 2. 让 Codex 把材料整理成一篇 `articles/` 摘要卡片。
 3. 把反复出现的工具和概念抽到 `concepts/`。
 4. 把入口、分类和时间线写到 `indexes/`。
-5. 把过程和决策追加到 `log.md`。
+5. 把主题化后的用户意图、关键动作和关键决策写进 [[log]]。
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 
@@ -139,7 +139,7 @@ tags: [entry, root]
 - 更新任何内容时，先看它在整个系统里的位置，再动当前文件。
 - 上下文不是“当前文档前后几段”，而是和目标内容直接相关的主入口、上下游文件、阶段位置和知识层级。
 - 同一文档库内的页面跳转，默认优先使用 `[[wikilink]]`，不要写死本机绝对路径。
-- `log.md` 只追加，不重写。
+- [[log]] 不做对话转录；新记录按时间降序插在前面，优先写主题化后的用户意图、关键动作和结构变化。
 - 原始来源只进 `raw/`，临时待处理内容只进 `inbox/`，整理稿不要回塞 `raw/`。
 - 支持性图片、截图、图表和 canvas 等辅助文件优先放 `assets/`。
 - 不再作为默认入口但仍需保留的页面放 `archive/`。

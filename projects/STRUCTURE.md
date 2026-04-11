@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-04-10
+updated: 2026-04-11
 ---
 
 # 项目层结构
@@ -70,7 +70,7 @@ projects/
 
 - `BRAIN.md`：共享背景
 - `POLICY.md`：规则、优先级和自动沉淀边界
-- `log.md`：时间记录
+- [[log]]：主题化的历史记录
 
 这不是要求一次性建全，而是推荐的扩展方向。
 

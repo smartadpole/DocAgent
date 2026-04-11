@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-09
+updated: 2026-04-11
 tags: [index, root]
 ---
 
@@ -20,7 +20,7 @@ tags: [index, root]
 4. 要处理项目运行层，就看 [[projects/README]] 和 [[projects/memory/README]]。
 5. 要处理文件和目录细节，就看 [[WORKFLOW]]。
 6. 要知道 agent 的维护边界，就看 [[AGENTS]]。
-7. 要找入口分类和运行记录，就留在这页。
+7. 要找入口分类和主题化后的运行记录，就留在这页。
 
 这页只做总导航，不承载细节。
 
@@ -52,7 +52,7 @@ tags: [index, root]
 
 ## 运行记录
 
-- [[log]]：按时间追加的 ingest / lint / decision 记录
+- [[log]]：按时间降序记录主题化后的用户意图、关键动作和结构调整
 
 ## 更新原则
 

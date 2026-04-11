@@ -6,7 +6,7 @@ scope: shared
 status: confirmed
 priority: highest
 source_of_truth: true
-updated: 2026-04-10
+updated: 2026-04-11
 tags: [policy]
 ---
 
@@ -24,7 +24,8 @@ tags: [policy]
 ## 这页不负责什么
 
 - 不放项目阶段的具体取舍，那进 [[projects/decisions]]
-- 不放时间顺序上的过程记录，那进 [[log]]
+- 不放时间顺序上的主题化过程记录，那进 [[log]]
+- 不放逐条对话转录，那留在会话历史
 - 不放单轮会话草稿，那留在会话 / 临时收口区
 - 不放共享背景正文，那是 [[BRAIN]]
 
@@ -80,6 +81,7 @@ tags: [policy]
 ## 自动写入边界
 
 - agent 可以自动写入：`inbox/`、临时草稿、已确认结构下的普通项目页、已确认模板的 frontmatter
+- agent 可以自动写入 [[log]]，但只记录主题化后的用户意图、关键动作、结构变化和结论，不机械转录每个提问
 - agent 可以自动执行格式归一化：把本库内错误的 Markdown 页面引用收敛成 `[[wikilink]]`，把明显失效的空链接、占位链接和本机绝对路径引用修正掉
 - agent 需要先形成明确结论再写入：[[BRAIN]]、[[projects/memory/shared]]
 - agent 不应直接拍板写入：高优先级规则、冲突结论、覆盖旧规则的变更
@@ -88,6 +90,7 @@ tags: [policy]
 ## 路由规则
 
 - 临时会话信息先留在会话或 `inbox/`
+- 时间顺序上的历史记录进入 [[log]]；如果要写用户提问，只记录能代表本轮主题的提炼意图，不抄问题清单
 - 重复出现、且只对当前项目长期有用的信息，先进入 [[projects/memory/README]]
 - 跨任务、跨会话、但仍属于共享背景的信息，进入 [[BRAIN]]
 - 会改变后续执行方式的内容，进入 [[POLICY]]
