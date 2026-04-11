@@ -70,3 +70,4 @@
 - 补充“角色和 memory 的关系”说明：角色是职责视角，memory 是上下文分层；项目内不做每个角色一套独立 memory，而是由共享背景、项目记忆和规则路由承接不同角色的默认上下文。相关说明已写入 `projects/memory/shared.md` 和 `projects/design/memory/README.md`。
 - 纠正上一条说明的落点：`projects/memory/shared.md` 只保留角色分层这一条稳定事实；“角色和 memory 的关系”属于设计判断，已移到 `projects/design/memory/README.md`，避免把解释性内容写进运行层 memory。
 - 再次上提落点：`projects/` 只承载项目运行层，关于“角色和 memory 的关系”的框架级说明已移到根 `README.md`，`projects/design/memory/README.md` 仅保留研究入口和指向，不再承接该说明正文。
+- 继续把边界沉淀成全局约束：框架级说明优先维护在根 `README.md`、`BRAIN.md` 和 `POLICY.md`，不要下放到 `projects/` 及其子页；相关规则已写入根入口、共享背景和规则层，避免以后再把文档库本体说明误写进项目层。

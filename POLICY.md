@@ -92,6 +92,8 @@ tags: [policy]
 - 跨任务、跨会话、但仍属于共享背景的信息，进入 [[BRAIN]]
 - 会改变后续执行方式的内容，进入 [[POLICY]]
 - 项目冲突和最终拍板，进入 [[projects/decisions]]
+- 文档库本体的框架级说明和层级边界，默认写根 [[README]]；如果需要补背景，写 [[BRAIN]]；如果需要写规则，写 [[POLICY]]
+- 除非明确是当前项目的结论，否则不要把这类内容写进 `projects/`、`projects/memory/` 或 `projects/design/memory/`
 
 ## 优先级顺序
 

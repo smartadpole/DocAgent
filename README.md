@@ -96,6 +96,7 @@ tags: [entry, root]
 - 角色是职责视角，memory 是上下文视角
 - 当前设计不打算给每个角色单独一套 memory，而是让同一套分层 memory 按作用域服务不同角色
 - 如果未来要做角色专属 memory，需要额外补 ownership 和 routing 设计，那会是框架层变更，不是项目层内容
+- 这类框架级说明以后优先维护在根 `README.md`、[[BRAIN]] 和 [[POLICY]]，不要下放到 `projects/` 及其子页
 
 如果你正在做研发，先看 [[projects/README]]。
 如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
