@@ -45,7 +45,7 @@ tags: [project]
 极简模式最小只需要这两个东西：
 
 - `projects/README.md`
-- 根目录 `log.md`
+- 根目录 [[log]]
 
 其余文件都按需添加，不要为了完整性先建空文件。
 
