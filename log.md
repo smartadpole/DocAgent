@@ -72,6 +72,18 @@
   2. 在 [[AGENTS]] 和 [[WORKFLOW]] 中补入专项检查：凡是语义上在引用本库页面、模板页、入口页或跳转目标，必须写成 `[[wikilink]]`；交付前还要额外检查有没有复制出第二份模板正文、有没有保留不可点击的文件名字符串。
 - 影响页面：[[AGENTS]]、[[WORKFLOW]]。
 
+### 对话：确认 memory 沉淀的边界和从 log 到 memory 的提炼方式
+
+- 用户意图：确认当前版本能否记录每次对话，并经过合适流程沉淀到 memory；进一步确认 memory 是否会自动从 log 抽取信息更新各层记忆。
+- 主题：
+  1. 多轮对话与 memory 的沉淀边界。
+  2. `log -> memory` 是否自动同步。
+- 关键动作：
+  1. 明确当前体系可以记录对话过程，但长期沉淀只接受被提炼后的稳定背景、规则和项目记忆，不保留逐字聊天全文。
+  2. 明确 `log` 只承担过程记录与时间线，不会自动驱动各层 memory 更新；从 `log` 到 `BRAIN`、`POLICY`、`projects/memory` 的迁移需要先判断晋升条件，再回写。
+  3. 把“可以从对话里提炼稳定信息沉淀到 memory”与“自动全文抽取并同步”区分开，避免把 `log` 误解为自动同步源。
+- 影响页面：[[log]]、[[BRAIN]]、[[POLICY]]、[[projects/memory/README]]。
+
 ### 对话：回填历史 log 的日期与整合
 
 - 用户意图：按新的 log 规则把历史回填写到当时提问的日期中，而不是留在当前回填动作的日期里。
@@ -173,7 +185,7 @@
   16. 引入 [[BRAIN]] 作为共享脑，承接跨多轮确认、后续应自动进入思考背景的内容；同时明确 [[AGENTS]]、`workspace-memory`、[[projects/decisions]]、[[log]] 的分工。
   17. 将“分层 memory 研究”先沉淀到项目设计层，新增 `design/memory/README.md` 和 `design/memory/tools.md`，随后又调整其落点，把这部分研究迁移到 `articles/` 和 `concepts/`，并清理 `projects/design/memory/` 空目录。
   18. 将 Obsidian 软件开发文档系统的整体设计沉淀到知识库层，新增 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]，用于承接整体架构、无账号小团队约束、半自动到自动化路径，以及未来分层 memory 的文档化路线。
-  19. 正式把 memory 路由分层，新增 [[POLICY]] 承接规则和优先级，新增 `projects/memory/` 承接项目级稳定记忆，收紧 [[BRAIN]] 只保留共享背景，并同步更新 [[README]]、[[INDEX]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/STRUCTURE]]、项目主页面、模板页、相关文章和概念页。
+  19. 正式把 memory 路由分层，新增 [[POLICY]] 承接规则和优先级，新增 `projects/memory/` 承接项目级稳定记忆，收紧 [[BRAIN]] 只保留共享背景，并同步更新 [[README]]、[[INDEX]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/STRUCTURE]]、项目主页面、模板页、相关文章和概念页；同时确认 `log` 只保留过程记录，不会自动抽取并同步各层 memory，后续沉淀要先从 `log` / 对话中提炼再回写。
 - 影响页面：[[README]]、[[INDEX]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/STRUCTURE]]、[[projects/README]]、[[BRAIN]]、[[POLICY]]、[[projects/memory/README]]、[[articles/2026-04-09-obsidian-doc-system-design]]、[[concepts/document-os]]。
 
 ## 2026-04-08
