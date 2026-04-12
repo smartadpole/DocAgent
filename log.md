@@ -16,7 +16,7 @@
   2. 继续收紧项目页和治理页中的裸文件名引用。
 - **关键动作**：
   1. **主同步**：更新 [[projects/README]] 和 [[projects/STRUCTURE]]，把治理层总边界正式改为指向 [[governance/README]]，并补上项目层如何依赖治理层的新说明。
-  2. 把项目主页、项目结构页和 [[WORKFLOW]] 中这轮直接碰到的 `BRAIN.md`、`POLICY.md`、`projects/decisions.md` 等旧文件名字符串继续收成 [[wikilink]]，避免治理迁移后留下半旧半新的表达。
+  2. 把项目主页、项目结构页和 [[WORKFLOW]] 中这轮直接碰到的 [[BRAIN]]、[[POLICY]]、[[projects/decisions]] 等旧文件名字符串继续收成 [[wikilink]]，避免治理迁移后留下半旧半新的表达。
   3. 在项目层的“默认读取顺序”和“依赖关系”里补上新的治理入口，让后续处理项目记忆、规则和状态时，不再默认只按旧根目录路径理解治理页。
 - **影响页面**：[[projects/README]]、[[projects/STRUCTURE]]、[[WORKFLOW]]、[[log]]。
 
@@ -267,7 +267,7 @@
   2. 框架级说明的最终落点。
 - **关键动作**：
   1. **主上提**：先在项目层尝试承接 role / memory 说明，随后把解释性内容从 `projects/memory/` 和 `projects/design/memory/` 中移出，最终放到根 `README.md`。
-  2. 同时在 `BRAIN.md` 和 `POLICY.md` 增加边界说明，让框架级说明、共享背景和规则层各自归位。
+  2. 同时在 [[BRAIN]] 和 [[POLICY]] 增加边界说明，让框架级说明、共享背景和规则层各自归位。
   3. 让 `projects/design/memory/README.md` 只保留研究入口，不再承接框架正文。
   4. 把 2026-04-10 的初次讨论和这次最终纠正合并成连续历史，不重复记两套正文。
 - **影响页面**：[[README]]、[[BRAIN]]、[[POLICY]]、[[projects/design/memory/README]]。
@@ -371,7 +371,7 @@
 - 关键动作：
   1. 初始化 `wiki` vault。
   2. 配置 `Obsidian`、`Codex CLI`、`workspace-filesystem`、`workspace-memory`。
-  3. 建立 `README.md`、`WORKFLOW.md`、`templates/`、`articles/`、`concepts/`、`indexes/`。
+  3. 建立 [[README]]、[[WORKFLOW]]、`templates/`、`articles/`、`concepts/`、`indexes/`。
   4. 把后续维护改成 `raw/ -> articles/concepts/indexes -> log.md` 的持续编译流程。
   5. 补充文件与目录操作流程，包括新建目录、新建文件、修改文件、处理已有目录。
   6. 将“新目录 / 新文件 / 修改文件 / 目录复用 / 链接影响 / 记录日志”等关键判断前置到 [[README]] 和 [[INDEX]]，避免总入口过于隐蔽。

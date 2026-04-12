@@ -2,6 +2,7 @@
 type: article
 date: 2026-04-09
 updated: 2026-04-09
+updated: 2026-04-12
 ---
 
 # 分层 Memory 研究
@@ -150,10 +151,10 @@ V1 注入顺序：
 
 这套分层现在已经有明确文件分工：
 
-- `BRAIN.md`：共享背景
+- [[BRAIN]]：共享背景
 - `projects/memory/`：项目级稳定记忆
-- `POLICY.md`：规则、优先级和自动沉淀边界
-- `projects/decisions.md`：项目拍板
+- [[POLICY]]：规则、优先级和自动沉淀边界
+- [[projects/decisions]]：项目拍板
 - `articles/` / `concepts/`：已经稳定的长期知识
 
 ## 开源工具

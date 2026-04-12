@@ -2,6 +2,7 @@
 type: article
 date: 2026-04-09
 updated: 2026-04-09
+updated: 2026-04-12
 ---
 
 # Obsidian 文档系统设计
@@ -20,14 +21,14 @@ updated: 2026-04-09
 
 当前骨架已经具备这些层次：
 
-- 入口层：`README.md` / `INDEX.md`
-- 治理层：`WORKFLOW.md` / `AGENTS.md`
-- 共享背景层：`BRAIN.md`
-- 规则层：`POLICY.md`
+- 入口层：[[README]] / [[INDEX]]
+- 治理层：[[governance/README]] / [[AGENTS]] / [[WORKFLOW]]
+- 共享背景层：[[BRAIN]]
+- 规则层：[[POLICY]]
 - 项目层：`projects/`
 - 项目记忆层：`projects/memory/`
 - 知识沉淀层：`articles/` / `concepts/` / `indexes/`
-- 历史层：`archive/` / `log.md`
+- 历史层：`archive/` / [[log]]
 
 这说明问题不是“有没有结构”，而是“层间边界是否足够硬、是否足够机器可读”。
 
@@ -64,9 +65,10 @@ updated: 2026-04-09
 
 主要集中在三点：
 
-- `BRAIN.md` 需要只保留共享背景
-- `POLICY.md` 需要承接规则和优先级
+- [[BRAIN]] 需要只保留共享背景
+- [[POLICY]] 需要承接规则和优先级
 - `projects/memory/` 需要承接项目级稳定记忆
+这些职责现在分别由 [[BRAIN]]、[[POLICY]] 和 `projects/memory/` 承接，且治理页已经物理收口到 `governance/`。
 
 ### 5. memory 先做文档化，不急着上数据库
 
@@ -82,11 +84,12 @@ updated: 2026-04-09
 
 这套设计现在已经落到一组明确页面里：
 
-- `BRAIN.md`：共享背景
-- `POLICY.md`：规则、优先级和路由边界
+- [[governance/README]]：治理层入口
+- [[BRAIN]]：共享背景
+- [[POLICY]]：规则、优先级和路由边界
 - `projects/memory/`：项目级稳定记忆
-- `projects/decisions.md`：项目阶段的关键取舍
-- `projects/README.md`：项目运行主入口
+- [[projects/decisions]]：项目阶段的关键取舍
+- [[projects/README]]：项目运行主入口
 
 ## 结构建议
 
@@ -94,15 +97,15 @@ updated: 2026-04-09
 
 建议把根层语义继续收口成：
 
-- `README.md` / `INDEX.md`：入口
-- `AGENTS.md` / `WORKFLOW.md` / `BRAIN.md` / `POLICY.md`：治理和背景
+- [[README]] / [[INDEX]]：入口
+- [[governance/README]] / [[AGENTS]] / [[WORKFLOW]] / [[BRAIN]] / [[POLICY]]：治理和背景
 - `projects/`：运行层
 - `articles/` / `concepts/` / `indexes/`：沉淀层
-- `archive/` / `log.md`：历史层
+- `archive/` / [[log]]：历史层
 
 ### 2. BRAIN 只保留共享背景
 
-`BRAIN.md` 适合回答：
+[[BRAIN]] 适合回答：
 
 - 已确认的共同前提是什么
 - 后续默认要带入哪些背景
@@ -154,7 +157,7 @@ updated: 2026-04-09
 
 - 维持单库
 - 保持小团队协作
-- 让 `BRAIN.md`、`POLICY.md` 和 `projects/memory/` 分层
+- 让 [[BRAIN]]、[[POLICY]] 和 `projects/memory/` 分层
 - 用 `projects/decisions.md` 收口冲突
 
 如果目标是继续往自动化走：
@@ -169,5 +172,5 @@ updated: 2026-04-09
 
 ## 后续动作
 
-- 继续把确认过的系统规则沉淀到 `AGENTS.md` / `WORKFLOW.md` / `BRAIN.md` / `POLICY.md`
+- 继续把确认过的系统规则沉淀到 [[AGENTS]] / [[WORKFLOW]] / [[BRAIN]] / [[POLICY]]
 - 如果未来要正式引入分层 memory，再补项目层运行位和规则层的细化说明
