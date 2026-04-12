@@ -8,6 +8,7 @@
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
 - `projects/`：活跃研发项目层。需求、设计、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
+- `projects/trace.md`：需求演进链层。记录原始意图、约束变化、修补性需求、关键取舍和最终实现口径之间的串联。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
 - 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
@@ -33,6 +34,7 @@
 - `BRAIN.md` 是共享背景，承接跨多轮确认、会持续影响后续工作的共同背景。
 - `POLICY.md` 是规则和优先级层，承接自动沉淀边界、冲突处理和路由约束。
 - `projects/memory/README.md` 是项目级记忆入口，承接只对当前项目长期有效的事实。
+- `projects/trace.md` 是项目演进链入口，承接需求从原始意图到当前实现的结构化收敛过程。
 - 研发项目的阶段和状态由人读项目主页手动推进，不做隐藏自动流控。
 - 活跃研发项目先读项目主页，再改需求、设计、决策、记忆、发布或运行记录。
 - 极简小项目默认只保留一个项目主页，除非内容明显变多，否则不要先建空的需求、设计、发布之类页面。
@@ -80,6 +82,7 @@
 - 多轮确认后会持续影响判断的共享背景，进入 `BRAIN.md`。
 - 会影响路由、优先级和自动沉淀边界的规则，进入 `POLICY.md`。
 - 只反映当前项目长期有效事实的内容，进入 `projects/memory/README.md`。
+- 只反映当前项目里需求、约束、修补和最终范围如何收敛的内容，进入 `projects/trace.md`。
 - 稳定的个人偏好、命名习惯、表达偏好，进入 `workspace-memory`。
 - 项目阶段出现的思维碰撞、方案冲突和最终取舍，进入 `projects/decisions.md`。
 - 只反映时间降序、按对话组织的主题化过程记录，进入 `log.md`，但 `log.md` 不是主动背景。
@@ -90,6 +93,7 @@
 - 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、知识沉淀层、导航层、历史层。
 - 证据层是 `raw/`、`inbox/`、`assets/`，回答“信息从哪里来”。
 - 项目运行层是 `projects/README.md` 加上需求、设计、决策、记忆、开发、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了”。
+- 其中 `projects/trace.md` 专门回答“这轮需求是怎样收敛到当前实现口径的”，它属于项目运行层，不属于历史层或规则层。
 - 知识沉淀层是 `articles/`、`concepts/`、`indexes/`，回答“哪些结论已经稳定、哪些概念可以复用、入口如何组织”。
 - 历史层是 `archive/` 和 `log.md`，回答“那次对话在解决什么主题、怎么演进、哪些内容已退役、这次结构调整从何时开始生效”。
 - 同一段内容至少同时拥有四个属性：所属模式、所属阶段、主入口、受影响页面。
@@ -99,6 +103,7 @@
 
 - `projects/README.md` 是项目运行层主入口，连接项目层其他主页面。
 - 需求页上连项目主页，下连设计页和决策页，外连相关 `raw/` 来源。
+- `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链。
 - 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出架构页、数据库页等子页，它们仍然属于同一个设计层。
 - 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页、记忆页或事故目录。
 - 记忆页连接项目主页、决策、设计和运行记录，是稳定背景，不是过程日志。
@@ -155,6 +160,7 @@
 
 - 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
 - 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
+- 改 `projects/trace.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有设计页、已有决策页、当前相关开发页；如果 trace 涉及记忆或规则边界，再加读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
 - 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
 - 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。

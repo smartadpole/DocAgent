@@ -31,6 +31,7 @@ tags: [entry, root]
 - [[POLICY]] 放规则和优先级
 - [[log-writing-rules]] 放 `[[log]]` 的记录规则
 - [[projects/memory/README]] 放项目级稳定记忆
+- [[projects/trace]] 放需求从原始意图收敛到最终实现的演进链
 - [[AGENTS]] 放维护规则
 
 ## 怎么用这个总入口
@@ -52,6 +53,7 @@ tags: [entry, root]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
+- 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“Codex 处理时有哪些约束” -> 读 [[AGENTS]]
@@ -86,6 +88,7 @@ tags: [entry, root]
 - 知识库模式：收集资料，整理成 `articles/`、`concepts/`、`indexes/`
 - 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘
 - 路由层：[[BRAIN]] 放共享背景，[[POLICY]] 放规则，[[projects/memory/README]] 放项目级稳定记忆
+- 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
 - 流程控制：不做自动流控，由人读项目主页后手动推进
 
@@ -117,7 +120,8 @@ tags: [entry, root]
 4. 把入口、分类和时间线写到 `indexes/`。
 5. 把按对话整理后的主题、用户意图、关键动作和关键决策写进 [[log]]。
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
-7. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
+7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
+8. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 
 ## 为什么入口页不写太多
 

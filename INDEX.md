@@ -32,6 +32,7 @@ tags: [index, root]
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
+- [[projects/trace]]：需求演进链入口
 
 ## 设计思路
 

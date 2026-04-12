@@ -39,6 +39,7 @@ projects/
   STRUCTURE.md
   status.md
   requirements.md
+  trace.md
   design/
     README.md
     tech-selection.md
@@ -97,6 +98,13 @@ projects/
 - `projects/requirements.md`
 - 回答：为什么做、做给谁、范围是什么、验收怎么算通过
 - 适合放：问题定义、用户场景、目标、非目标、约束、验收标准
+
+### 3.2.1 需求演进链
+
+- `projects/trace.md`
+- 回答：一轮需求怎样从原始意图、约束变化和修补性需求一路收敛到当前实现口径
+- 适合放：原始意图、收敛后的可执行需求、关键决策变化、最终范围、关联页面、迭代块
+- 不适合放：逐句对话历史、完整设计正文、完整开发流水
 
 ### 3.3 设计层
 
@@ -202,13 +210,14 @@ projects/
 
 项目层依赖关系建议固定成这条主链：
 
-`projects/README.md -> requirements -> design -> decisions -> development -> releases -> incidents`
+`projects/README.md -> requirements -> trace -> design -> decisions -> development -> releases -> incidents`
 
 具体来说：
 
 - 项目主页依赖所有活跃页面的摘要结果
 - `projects/status.md` 依赖 `projects/README.md` 和 `projects/development/README.md`，保留当前阶段和功能点双轴状态镜像
 - 需求页向下驱动设计和决策
+- trace 页把需求、设计、决策和开发串成同一条演进链
 - 设计页依赖需求，并向下驱动实现
 - 决策页依赖需求和设计，记录关键判断
 - 开发页依赖设计和决策，记录实际推进过程
@@ -233,10 +242,11 @@ projects/
 1. 先读 `projects/README.md`
 2. 再读 `projects/status.md`
 3. 再读 `projects/requirements.md`
-4. 再读 `projects/design/README.md`
-5. 有关键取舍时再读 `projects/decisions.md`
-6. 如果涉及记忆或规则，再读 `projects/memory/README.md` 和 `POLICY.md`
-7. 实施复杂时再读 `projects/development/worklog.md`
+4. 再读 [[projects/trace]]
+5. 再读 `projects/design/README.md`
+6. 有关键取舍时再读 `projects/decisions.md`
+7. 如果涉及记忆或规则，再读 `projects/memory/README.md` 和 `POLICY.md`
+8. 实施复杂时再读 `projects/development/worklog.md`
 
 ### 5.2 做记忆 / 规则改动时
 

@@ -12,7 +12,7 @@ tags: [design]
 
 这页是设计主入口。
 
-上游：[[projects/README]]、[[projects/requirements]]  \
+上游：[[projects/README]]、[[projects/requirements]]、[[projects/trace]]  \
 下游：[[projects/decisions]]、[[projects/development/README]]
 
 相关：[[projects/memory/README]]、[[POLICY]]
@@ -31,6 +31,7 @@ tags: [design]
 - 说明接口和数据流
 - 说明设计总览，并链接技术选型、架构和数据库子页
 - 说明 memory 路由和 policy 接线应该如何落到项目结构里
+- 承接需求演进链当前生效的范围和约束，把它落成可实现方案
 
 ## 当前内容
 
@@ -48,4 +49,5 @@ tags: [design]
 ## 维护说明
 
 - 如果某一块设计长成了独立主题，再从这个主入口往下拆子页
+- 如果设计改变了当前实现口径、范围边界或修补结论，记得同步回写 [[projects/trace]]
 - 如果设计判断会影响项目记忆或规则边界，先同步 [[projects/memory/README]] 和 [[POLICY]]

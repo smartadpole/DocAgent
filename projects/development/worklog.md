@@ -45,3 +45,4 @@
 
 - 功能点实体页看 [[projects/development/feature-points/README]]
 - 过程记录里如果提到某个功能点，优先链接到对应实体页
+- 如果某次实现改变了范围、口径或修补边界，记得同步回写 [[projects/trace]]

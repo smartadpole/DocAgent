@@ -78,6 +78,7 @@
 - `BRAIN.md`：写多轮确认后的共享背景和共同前提。
 - `POLICY.md`：写规则、优先级和记忆路由边界。
 - `projects/memory/README.md`：写项目级稳定记忆。
+- [[projects/trace]]：写需求从原始意图、约束变化到最终实现范围的演进链。
 - `workspace-memory`：写个人稳定偏好和重复习惯。
 - `projects/decisions.md`：写项目阶段的冲突、取舍和正式决策。
 - [[log]]：写时间降序、按对话组织的主题化记录，收口用户意图、关键动作和结构调整。
@@ -104,11 +105,28 @@
 ### 0.3 分层记忆怎么路由
 
 - 临时会话信息和还没确认的草稿，先留在会话或 `inbox/`
+- 项目里已经开始推进的一轮需求、约束变化、修补性需求和最终实现口径，优先写进 [[projects/trace]]
 - 只对当前项目长期有效的稳定事实，写进 `projects/memory/`
 - 跨任务、跨会话、后续还会持续影响工作的共享背景，写进 `BRAIN.md`
 - 会改变后续判断方式、优先级或自动沉淀边界的内容，写进 `POLICY.md`
 - 发生项目内冲突或取舍时，先写进 `projects/decisions.md`
 - 已经稳定到可以复用的结论，再提炼到 `articles/`、`concepts/` 或 `indexes/`
+
+### 0.3.1 需求演进 trace 怎么写
+
+`[[projects/trace]]` 不是 `[[log]]` 的第二份，也不是 `[[projects/decisions]]` 的替身。
+
+- `[[log]]` 记录这轮对话在推进什么主题、做了哪些关键动作。
+- [[projects/trace]] 记录一轮需求怎样从原始意图、约束变化、修补性需求一路收敛到最终实现口径。
+- `projects/decisions.md` 只记录真正需要拍板的冲突和取舍，不重复抄整条演进链。
+
+默认写法：
+
+1. 先确认这轮是否已经进入项目推进，而不只是聊天或资料收集。
+2. 如果已经进入需求、设计、实现或修补阶段，就在 [[projects/trace]] 维护同主题条目，而不是把这些变化只留在对话里。
+3. 每个主题优先保留一条主链，后续新增内容写成新的迭代块，不重复新建多条平行正文。
+4. 条目里至少写清：原始意图、收敛后的可执行需求、关键决策变化、最终范围、关联页面。
+5. 如果后续变化只是修补 agent 本轮实现引出的偏差，要明确标成修补性需求，不把它抬升成原始业务目标。
 
 建立全局背景时，至少先回答这几个问题：
 
@@ -143,10 +161,11 @@
 不同目标文件，默认先看这些关联文件：
 
 - `projects/README.md`：`requirements.md`、`design/README.md`、`decisions.md`、`development/README.md`、`projects/memory/README.md`、`POLICY.md`
-- `projects/requirements.md`：`projects/README.md`、相关 `raw/`、已有 `projects/design/README.md`
-- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、`projects/decisions.md`、`projects/memory/README.md`、`POLICY.md`、相关 `concepts/`
-- `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/memory/README.md`、`POLICY.md`、相关过程记录
-- `projects/development/worklog.md`：`projects/README.md`、当前相关 `projects/decisions.md`
+- `projects/requirements.md`：`projects/README.md`、相关 `raw/`、已有 `projects/design/README.md`、[[projects/trace]]
+- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、[[projects/trace]]、`projects/decisions.md`、`projects/memory/README.md`、`POLICY.md`、相关 `concepts/`
+- [[projects/trace]]：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`、当前相关开发页
+- `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、[[projects/trace]]、`projects/memory/README.md`、`POLICY.md`、相关过程记录
+- `projects/development/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、`POLICY.md`
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
