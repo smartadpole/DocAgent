@@ -29,6 +29,7 @@ tags: [index, root]
 - [[README]]：vault 总说明和启动入口
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
+- [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
 
@@ -53,6 +54,7 @@ tags: [index, root]
 ## 运行记录
 
 - [[log]]：按时间降序记录每次对话的主题、用户意图、关键动作和结构调整
+- [[log-writing-rules]]：`[[log]]` 的记录单位、主题合并规则和跨日期边界
 
 ## 更新原则
 
