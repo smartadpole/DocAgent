@@ -12,7 +12,7 @@ tags: [decision]
 
 这页是决策主文件。
 
-上游：[[projects/requirements]]、[[projects/design/README]]、[[projects/memory/README]]、[[POLICY]]  \
+上游：[[projects/requirements]]、[[projects/trace]]、[[projects/design/README]]、[[projects/memory/README]]、[[POLICY]]  \
 下游：[[projects/development/README]]、[[projects/releases]]、[[projects/incidents/README]]
 
 ## 这页负责什么
@@ -22,6 +22,7 @@ tags: [decision]
 - 说明为什么不选其他方案
 - 记录当时约束和影响
 - 承接项目阶段的思维碰撞和冲突升级
+- 为需求演进链提供正式拍板节点，不重复承接整条需求收敛过程
 
 ## 当前内容
 
@@ -84,4 +85,5 @@ tags: [decision]
 ## 维护说明
 
 - 如果后续发生新的结构冲突或规则冲突，优先写到这里，再回写到 [[BRAIN]]、[[POLICY]] 或项目主入口
+- 如果拍板改变了当前实现范围或替换了既有口径，记得同步回写 [[projects/trace]]
 - 决策页只写拍板结果，不重复写需求和设计全文

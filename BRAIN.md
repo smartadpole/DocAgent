@@ -50,6 +50,7 @@ tags: [memory, shared]
 ### 3. 当前分层
 
 - [[projects/memory/shared]]：项目级稳定事实和项目共享背景
+- [[projects/trace]]：项目内从原始需求到最终实现口径的演进链
 - [[POLICY]]：规则、优先级和记忆路由
 - [[projects/decisions]]：项目阶段的冲突和取舍
 - [[projects/README]]：项目运行主入口
@@ -78,4 +79,5 @@ tags: [memory, shared]
 - [[projects/memory/README]]：项目级稳定记忆入口
 - `workspace-memory`：稳定个人偏好和重复习惯。回答“用户个人长期偏好是什么”
 - `projects/decisions.md`：项目阶段冲突和取舍。回答“思维碰撞后最后怎么定”
+- [[projects/trace]]：需求演进链。回答“这轮需求、约束、取舍和最终实现是怎样一路收敛的”
 - [[log]]：按对话组织的主题化历史记录。回答“那次对话在解决什么问题、包含哪些主题、做了哪些关键动作、它是什么时候发生的”

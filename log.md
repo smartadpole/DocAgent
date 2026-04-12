@@ -8,6 +8,19 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-12
+### 对话：为项目层新增 `[[projects/trace]]` 需求演进链
+
+- **用户意图**：确认当前体系可以正式新增 trace 链路，并要求按结构性扩展的标准全面整改，让项目推进里“产品梳理、技术选型、架构设计、功能设计到 agent 开发”的链路有一个明确落点，而不是继续只靠 `[[log]]` 和零散项目页承接。
+- **主题**：
+  1. 为项目运行层新增需求演进链主入口。
+  2. 同步更新规则、流程、入口和项目结构，让 trace 成为正式职责。
+- **关键动作**：
+  1. **主新增**：新建 [[projects/trace]]，把它定义成项目层里记录原始意图、约束变化、修补性需求、关键决策变化和最终实现口径的主文件。
+  2. 在 [[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]] 中同步补上 trace 的职责、边界和路由，明确它不是第二份 `[[log]]`，也不是第二份 `[[projects/decisions]]`。
+  3. 在 [[projects/README]]、[[projects/STRUCTURE]]、[[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/development/worklog]] 和 [[projects/memory/README]] 中补上 trace 的入口、依赖关系和读取顺序。
+  4. 把当前文档系统项目自身的“从知识库底座到项目运行链路”的收敛过程写成 [[projects/trace]] 的首条主题，给后续使用留一个最小样例。
+- **影响页面**：[[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/requirements]]、[[projects/trace]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/memory/README]]、[[log]]。
+
 ### 对话：区分 `[[log]]` 与需求演进 trace，并把收尾模式补成显式协议
 
 - **用户意图**：确认 `[[log]]` 和需求演进 trace 是否其实是同一件事；如果不是，就说明差别在哪里。同时判断现有“收尾”是否已经足够稳，如果还能更稳，就把收尾流程补成更明确的执行协议。
