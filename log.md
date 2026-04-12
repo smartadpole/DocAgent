@@ -8,6 +8,19 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-12
+### 对话：为 `[[projects/trace]]` 补齐记录人、日期和文字渲染规则
+
+- **用户意图**：指出 trace 目前还缺少像 `[[log]]` 一样可直接执行的细节，包括人员信息记录、必要日期信息和文字渲染方式，希望把这些元信息和排版规则补到足够完善。
+- **主题**：
+  1. 为 trace 增加记录人与日期规则。
+  2. 为 trace 增加和 `[[log]]` 一致的文字渲染约束。
+- **关键动作**：
+  1. **主补齐**：在 [[trace-writing-rules]] 中新增“记录人与日期怎么写”，明确记录人优先使用 `git user.name`，迭代块必须带日期，默认写到天，同日多次收敛时才升级到分钟。
+  2. 在 [[trace-writing-rules]] 中新增“怎么做文字渲染”，把字段名加粗、短标签加粗、正文不整段加粗的约束补成显式规则，并和 `[[log]]` 保持一致。
+  3. 在 [[templates/trace-entry-template]] 中补上“记录人”“YYYY-MM-DD 或 YYYY-MM-DD HH:mm”“主收敛 / 主替换 / 主纠偏”等写法，让模板可以直接套用。
+  4. 按新规则回写 [[projects/trace]] 的现有示例，把 `sunhao`、字段加粗和重点短标签补齐，形成一个更可复用的样例。
+- **影响页面**：[[trace-writing-rules]]、[[templates/trace-entry-template]]、[[projects/trace]]、[[WORKFLOW]]、[[log]]。
+
 ### 对话：让 `[[projects/trace]]` 的文件、规则和模板对齐 `[[log]]` 的治理方式
 
 - **用户意图**：要求 trace 的相关设计参考 `[[log]]`，尤其是文件职责、规则主入口和模板格式，不要让 trace 只有主文件，没有像 `[[log]]` 那样清晰的配套治理结构。
