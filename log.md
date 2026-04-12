@@ -8,6 +8,20 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-12
+### 对话：把治理层正式收口成目录，并明确 `AGENTS` / `POLICY` 边界
+
+- **用户意图**：确认之前关于“入口 / 治理 / 运行 / 沉淀 / 历史”等分层概念其实已经出现，但边界还不够清楚；同时质疑规则长期散落在根目录不合适，希望同时从逻辑结构和物理结构上把治理层收口，并明确 `AGENTS` 和规则层到底怎么分工。
+- **主题**：
+  1. 正式把文档系统分层明确成可复用的治理模型。
+  2. 把治理层从根目录轻量收口到独立目录。
+  3. 澄清 `AGENTS`、`POLICY`、`WORKFLOW`、`BRAIN` 的职责边界。
+- **关键动作**：
+  1. **主收口**：新增 [[governance/README]]，把整套系统正式定义成入口层、治理层、运行层、沉淀层、历史层、证据层六层模型，并把治理层的逻辑结构与物理结构统一写清。
+  2. 将 [[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[log-writing-rules]]、[[trace-writing-rules]] 迁入 `governance/`，结束规则与写法指南继续散落在根目录的状态。
+  3. 保留 [[AGENTS]] 在根目录作为 agent 的特殊入口，同时在 [[governance/README]] 和 [[AGENTS]] 中明确说明：[[POLICY]] 负责“怎么判”，[[AGENTS]] 负责“怎么执行”，[[WORKFLOW]] 负责“怎么推进”，[[BRAIN]] 负责“默认带什么背景”。
+  4. 重写 [[README]] 和 [[INDEX]] 的入口说明，让总入口不再把治理页误写成根目录平铺页面，而是显式指向 [[governance/README]] 和新的治理层组织方式。
+- **影响页面**：[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[BRAIN]]、[[POLICY]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[log]]。
+
 ### 对话：把 `[[projects/trace]]` 的人员与时间信息下沉到迭代级
 
 - **用户意图**：指出同一个问题在 trace 过程中往往会有不同的人、不同时间参与，因此质疑当前把“记录人”放在主题主链顶层是否合理，希望把这部分设计调整到更贴近真实协作链路的版本。

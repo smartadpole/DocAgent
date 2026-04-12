@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-11
+updated: 2026-04-12
 tags: [entry, root]
 ---
 
@@ -12,45 +12,40 @@ tags: [entry, root]
 
 这个文档库的目标很简单：把散乱资料变成能查、能连、能持续更新的知识网络，同时给未来的半自动 / 自动化项目推进留好路由。
 
-如果只记一件事，就记住这一层分法：
+如果只记一件事，就记住这套六层模型：
 
-目录层：
+- 入口层：[[README]]、[[INDEX]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 运行层：[[projects/README]] 和 `projects/`
+- 沉淀层：`articles/`、`concepts/`、`indexes/`
+- 历史层：[[log]]、`archive/`
+- 证据层：`raw/`、`inbox/`、`assets/`
 
-- `raw/` 放原始资料
-- `inbox/` 放临时待处理内容
-- `assets/` 放截图、图片、导出物和辅助附件
-- `projects/` 放活跃软件研发项目
-- `articles/`、`concepts/`、`indexes/` 放整理后的知识
-- `archive/` 放退役但仍需保留的旧页面
+当前物理结构再补一句：
 
-根目录页面：
-
-- [[README]] 是总入口
-- [[INDEX]] 是总导航
-- [[BRAIN]] 放共享背景
-- [[POLICY]] 放规则和优先级
-- [[log-writing-rules]] 放 `[[log]]` 的记录规则
-- [[projects/memory/README]] 放项目级稳定记忆
-- [[projects/trace]] 放需求从原始意图收敛到最终实现的演进链
-- [[trace-writing-rules]] 放 `[[projects/trace]]` 的记录规则
-- [[AGENTS]] 放维护规则
+- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[log-writing-rules]]、[[trace-writing-rules]]
+- `projects/` 收运行中的项目内容
+- 其他目录分别承接沉淀、历史和证据
 
 ## 怎么用这个总入口
 
 如果你第一次打开这个文档库，就按这个顺序走：
 
 1. 先看这页，知道它是做什么的、怎么分层、怎么启动。
-2. 再看 [[BRAIN]]，了解已经确认过、后续会自动参与工作的共享背景。
-3. 再看 [[POLICY]]，知道哪些规则、优先级和记忆路由是硬约束。
-4. 如果你要处理项目推进，就去看 [[projects/README]] 和 [[projects/STRUCTURE]]。
-5. 如果你要先看项目当前阶段、阻塞和下一步，也可以直接看 [[projects/status]]。
-6. 如果你要新增或修改文档，去看 [[WORKFLOW]]。
-7. 如果你要知道 agent 能做什么、不能做什么，去看 [[AGENTS]]。
-8. 如果你只是想找入口，直接看 [[INDEX]]。
+2. 再看 [[governance/README]]，先建立治理层的整体边界。
+3. 再看 [[BRAIN]]，了解已经确认过、后续会自动参与工作的共享背景。
+4. 再看 [[POLICY]]，知道哪些规则、优先级和记忆路由是硬约束。
+5. 如果你要处理项目推进，就去看 [[projects/README]] 和 [[projects/STRUCTURE]]。
+6. 如果你要先看项目当前阶段、阻塞和下一步，也可以直接看 [[projects/status]]。
+7. 如果你要新增或修改文档，去看 [[WORKFLOW]]。
+8. 如果你要知道 agent 能做什么、不能做什么，去看 [[AGENTS]]。
+9. 如果你只是想找入口，直接看 [[INDEX]]。
 
 常见操作对应关系：
 
 - 想知道“这个系统怎么用” -> 读这页
+- 想知道“治理层是怎么分的” -> 读 [[governance/README]]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
@@ -81,6 +76,27 @@ tags: [entry, root]
 - [[POLICY]] 承接共享规则、优先级和记忆路由。
 - [[projects/memory/README]] 承接项目级稳定记忆。
 
+## 治理层怎么分
+
+治理层现在已经逻辑和物理两次收口：
+
+- 逻辑上，治理层负责约束、流程、裁定、背景和写法指南
+- 物理上，治理页统一收进 `governance/`，只保留 [[AGENTS]] 在根目录做 agent 特殊入口
+
+最容易混的是这四页：
+
+- [[POLICY]]：系统裁定规则。回答“什么允许、什么不允许、冲突时先按谁”
+- [[AGENTS]]：执行约束。回答“agent 修改时必须怎么做”
+- [[WORKFLOW]]：流程编排。回答“通常按什么顺序推进”
+- [[BRAIN]]：共享背景。回答“哪些前提以后默认带入”
+
+一句话记忆：
+
+- [[POLICY]] 决定怎么判
+- [[AGENTS]] 决定怎么执行
+- [[WORKFLOW]] 决定怎么走
+- [[BRAIN]] 决定默认带什么背景
+
 ## 软件研发模式怎么叠加
 
 可以把原有底座理解成只有知识库模式。
@@ -103,7 +119,7 @@ tags: [entry, root]
 - 角色是职责视角，memory 是上下文视角
 - 当前设计不打算给每个角色单独一套 memory，而是让同一套分层 memory 按作用域服务不同角色
 - 如果未来要做角色专属 memory，需要额外补 ownership 和 routing 设计，那会是框架层变更，不是项目层内容
-- 这类框架级说明以后优先维护在根 `README.md`、[[BRAIN]] 和 [[POLICY]]，不要下放到 `projects/` 及其子页
+- 这类框架级说明以后优先维护在 [[README]]、[[governance/README]]、[[BRAIN]] 和 [[POLICY]]，不要下放到 `projects/` 及其子页
 
 如果你正在做研发，先看 [[projects/README]]。
 如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
@@ -127,9 +143,10 @@ tags: [entry, root]
 
 ## 为什么入口页不写太多
 
-- `README.md` 负责让你快速判断方向，不负责承载所有细则。
-- 详细的文件和目录流程放在 `WORKFLOW.md`。
-- 维护约束和行为边界放在 `AGENTS.md`。
+- [[README]] 负责让你快速判断方向，不负责承载所有细则。
+- 更完整的治理边界放在 [[governance/README]]。
+- 详细的文件和目录流程放在 [[WORKFLOW]]。
+- 维护约束和行为边界放在 [[AGENTS]]。
 - 这样总入口不会变成长手册，但关键分流点仍然能一眼看到。
 
 ## 打开方式
@@ -155,4 +172,4 @@ tags: [entry, root]
 - 只要新增模块或新类型文件，就要同步更新上下文规则，不允许文档结构和规则描述脱节。
 - 只有实际内容或结构变更才需要 commit；本地状态和缓存不纳入正式提交。
 
-更细的会话级约束、读取顺序和提交规则，以 `AGENTS.md` 和 `WORKFLOW.md` 为准。
+更细的会话级约束、读取顺序和提交规则，以 [[AGENTS]] 和 [[WORKFLOW]] 为准。

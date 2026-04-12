@@ -2,8 +2,20 @@
 
 这份文件是给 Codex 和其他 agent 的维护约束。目标不是写说明书，而是把这套文档库持续维护成一个可演化的知识库。
 
+## 分层总览
+
+- 入口层：[[README]]、[[INDEX]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 运行层：[[projects/README]] 和 `projects/`
+- 沉淀层：`articles/`、`concepts/`、`indexes/`
+- 历史层：[[log]]、`archive/`
+- 证据层：`raw/`、`inbox/`、`assets/`
+
+治理层当前已经物理收口到 `governance/`，只有 [[AGENTS]] 保留在根目录。原因不是例外随意，而是它本身就是 agent 的根级特殊入口。
+
 ## 角色分工
 
+- `governance/`：治理层目录。放流程、规则、共享背景和写法指南；具体由 [[governance/README]] 收口。
 - `raw/`：原始资料层。优先保持原样，少改动。
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
@@ -17,11 +29,25 @@
 - `archive/`：退役和历史层。保留旧页面、合并结果和历史版本。
 - `log.md`：按时间降序维护、按对话组织的主题化活动记录，记录提炼后的主题、用户意图、关键动作和结构变化；日期只是分组容器，不是合并单位，同一天内部也按最新记录在前排序。
 
+## 治理层边界
+
+- [[POLICY]]：规则裁定层。回答“什么允许自动晋升、什么必须人工确认、冲突时先按谁”
+- [[AGENTS]]：执行约束层。回答“agent 修改时必须怎么做”
+- [[WORKFLOW]]：流程编排层。回答“通常按什么顺序推进”
+- [[BRAIN]]：共享背景层。回答“哪些已确认前提要自动带入后续工作”
+
+判断时优先用这条：
+
+- 如果问题是“怎么判”，先看 [[POLICY]]
+- 如果问题是“怎么执行”，先看 [[AGENTS]]
+- 如果问题是“怎么推进”，先看 [[WORKFLOW]]
+- 如果问题是“默认背景是什么”，先看 [[BRAIN]]
+
 ## 维护规则
 
 - 先读 `INDEX.md` 和相关页面，再决定是否新建页面。
-- 先读 `BRAIN.md`，把已经确认过的共享背景带入当前工作，不要让用户重复说明同一件事。
-- 如果这次内容会改变规则、优先级或自动沉淀边界，先读 `POLICY.md`。
+- 先读 [[BRAIN]]，把已经确认过的共享背景带入当前工作，不要让用户重复说明同一件事。
+- 如果这次内容会改变规则、优先级或自动沉淀边界，先读 [[POLICY]]。
 - 如果这次内容是项目级稳定事实，先读 `projects/memory/README.md`。
 - 优先更新已有页，不要无脑新建重复页。
 - 新页面先写最小可用版本，再补链接。
@@ -31,8 +57,8 @@
 - 写 `log.md` 时，同一天、同文件、同领域都不是自动合并理由；只有仍然属于同一条连续用户意图和同一段推进链，才允许并到同一条记录里。
 - 如果把几轮内容合并后，只能用“完善 `log`”“继续调整规则”这类过宽标题概括，说明已经合并过度，应拆回多条记录。
 - `workspace-memory` 只记稳定偏好和重复习惯，不作为唯一规则源。
-- `BRAIN.md` 是共享背景，承接跨多轮确认、会持续影响后续工作的共同背景。
-- `POLICY.md` 是规则和优先级层，承接自动沉淀边界、冲突处理和路由约束。
+- [[BRAIN]] 是共享背景，承接跨多轮确认、会持续影响后续工作的共同背景。
+- [[POLICY]] 是规则和优先级层，承接自动沉淀边界、冲突处理和路由约束。
 - `projects/memory/README.md` 是项目级记忆入口，承接只对当前项目长期有效的事实。
 - `projects/trace.md` 是项目演进链入口，承接需求从原始意图到当前实现的结构化收敛过程。
 - 研发项目的阶段和状态由人读项目主页手动推进，不做隐藏自动流控。
@@ -78,9 +104,9 @@
 
 ## 记忆路由
 
-- 会影响所有后续工作的硬约束，进入 `AGENTS.md`。
-- 多轮确认后会持续影响判断的共享背景，进入 `BRAIN.md`。
-- 会影响路由、优先级和自动沉淀边界的规则，进入 `POLICY.md`。
+- 会影响所有后续工作的硬约束，进入 [[AGENTS]]。
+- 多轮确认后会持续影响判断的共享背景，进入 [[BRAIN]]。
+- 会影响路由、优先级和自动沉淀边界的规则，进入 [[POLICY]]。
 - 只反映当前项目长期有效事实的内容，进入 `projects/memory/README.md`。
 - 只反映当前项目里需求、约束、修补和最终范围如何收敛的内容，进入 `projects/trace.md`。
 - 稳定的个人偏好、命名习惯、表达偏好，进入 `workspace-memory`。
@@ -123,7 +149,7 @@
 
 ## 结构变更同步规则
 
-- 新增模块、目录、模板、入口页或高频文件类型时，必须在同一次变更里同步检查并更新 `AGENTS.md`、`WORKFLOW.md`，必要时更新 `README.md`。
+- 新增模块、目录、模板、入口页或高频文件类型时，必须在同一次变更里同步检查并更新 [[AGENTS]]、[[WORKFLOW]]，必要时更新 `README.md`。
 - 如果新增内容改变了主入口、上下游关系、阶段映射、单一信息源或记忆路由，就必须同步更新对应章节，不允许以后再补。
 - 如果新增内容只是一次性页面，不改变系统结构，可以不改上下文模型，但要确认它挂靠在哪个既有主入口之下。
 - 任何结构性扩展都要在 `log.md` 留痕，说明它进入了哪一层、服务什么职责、和哪些页面产生关联。
@@ -135,8 +161,8 @@
 - 先判断这段内容在整个文档库里的位置：它服务哪个主题、哪个阶段、哪个主入口、哪类读者。
 - 任何一段内容都不是孤立的，修改前必须先判断它的上游、下游和主入口。
 - 默认先读 `README.md`、`INDEX.md`、相关目录的 `README.md`，再读目标文件本身。
-- 默认把 `BRAIN.md` 当作共享背景读取入口之一，不要跳过。
-- 如果目标涉及规则、优先级或自动沉淀边界，再读 `POLICY.md`。
+- 默认把 [[BRAIN]] 当作共享背景读取入口之一，不要跳过。
+- 如果目标涉及规则、优先级或自动沉淀边界，再读 [[POLICY]]。
 - 如果目标涉及项目级稳定记忆，再读 `projects/memory/README.md`。
 - 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、决策、记忆、开发页面。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
@@ -152,17 +178,17 @@
 
 ## 冲突升级
 
-- 如果新需求和 `BRAIN.md`、`POLICY.md`、`AGENTS.md`、`projects/STRUCTURE.md` 或既有项目决策发生碰撞，不要直接覆盖旧结论。
+- 如果新需求和 [[BRAIN]]、[[POLICY]]、[[AGENTS]]、`projects/STRUCTURE.md` 或既有项目决策发生碰撞，不要直接覆盖旧结论。
 - 在项目阶段，先升级到 `projects/decisions.md`，形成明确决策后，再同步更新相关页面。
 - 没有形成决策前，不把冲突内容直接写入共享脑或规则层。
 
 ## 目标文件的最小读取集
 
-- 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
+- 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
-- 改 `projects/trace.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有设计页、已有决策页、当前相关开发页；如果 trace 涉及记忆或规则边界，再加读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
-- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
-- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 `BRAIN.md`、`POLICY.md` 和 `projects/memory/README.md`。
+- 改 `projects/trace.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有设计页、已有决策页、当前相关开发页；如果 trace 涉及记忆或规则边界，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
+- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
+- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
@@ -173,7 +199,7 @@
 ### 批处理模式的最小读取集
 
 - 批量改 `articles/` 时，先读一次：`README.md`、`INDEX.md`、相关 `articles/` 主入口或相邻摘要卡、相关 `concepts/` 主页面；然后每篇材料只补读自己的来源和直接回链目标。只有当摘要明确参与当前项目判断时，才补读相关项目页。
-- 批量改设计材料或设计草稿时，先读一次：`projects/README.md`、`projects/STRUCTURE.md`、对应设计主入口、当前相关需求页或决策页；然后每份材料只补读自己的直接来源和必要的相关 `concepts/`。只有当某份材料会改变记忆、规则、项目状态或关键取舍时，才追加 `BRAIN.md`、`POLICY.md`、`projects/memory/README.md` 和更多项目页。
+- 批量改设计材料或设计草稿时，先读一次：`projects/README.md`、`projects/STRUCTURE.md`、对应设计主入口、当前相关需求页或决策页；然后每份材料只补读自己的直接来源和必要的相关 `concepts/`。只有当某份材料会改变记忆、规则、项目状态或关键取舍时，才追加 [[BRAIN]]、[[POLICY]]、`projects/memory/README.md` 和更多项目页。
 - 批量改 `concepts/` 时，先读一次相关概念主页面和索引页，再按条目补读必要的 `articles/` 或项目页，不为每个概念重复读同一组导航入口。
 
 ## 文件与目录操作
@@ -203,7 +229,7 @@
 - 外部网站、官方文档、仓库地址这类外部资源，继续使用普通 Markdown 链接。
 - 如果一个页面只是作为导航入口出现，优先用 `[[wikilink]]`；如果需要附带解释，可以在链接后补一句说明，不复制整段内容。
 - 页内引用如果指向本库的标题、区块或子页面，也优先使用 Obsidian 可解析的 `[[page#heading]]`、`[[page#^block-id]]`、`[[page|alias]]`，不要混回 `.md#heading` 形式。
-- 当语义上是在引用本库内页面本身、入口职责或跳转目标时，优先直接写成 `[[wikilink]]`，不要写成 `BRAIN.md`、`POLICY.md`、`log.md` 这类裸文件名。
+- 当语义上是在引用本库内页面本身、入口职责或跳转目标时，优先直接写成 `[[wikilink]]`，不要写成 [[BRAIN]]、[[POLICY]]、`log.md` 这类裸文件名。
 - 不允许保留空链接、占位链接、缺失目标的半成品引用；发现 `[]()`、`[text](#)`、只剩文本没有目标的引用时，必须在交付前修正或删除。
 - 只要本次处理新增或修改了 Markdown 引用，就必须顺手修正同一文件内发现的错误引用，不把坏格式留给下一轮。
 - 交付前必须回看引用格式是否满足这组约束；引用格式不合规，视为结果未完成。
@@ -223,7 +249,7 @@
 
 - 新规则只在跨多次对话稳定成立、且能明显减少混乱时才新增。
 - 能修改现有规则解决的问题，不新增平行规则。
-- `README.md` 保持短入口，`WORKFLOW.md` 保持唯一流程，`AGENTS.md` 保持硬约束，避免同一规则散落三处。
+- `README.md` 保持短入口，[[WORKFLOW]] 保持唯一流程，[[AGENTS]] 保持硬约束，避免同一规则散落三处。
 - 如果规则开始变重，优先压缩、合并、改写旧规则，不继续堆叠新章节。
 
 ## 新文档处理

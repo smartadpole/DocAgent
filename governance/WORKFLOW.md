@@ -1,5 +1,7 @@
 # 更新工作流
 
+这页属于治理层，统一由 [[governance/README]] 收口。
+
 这份流程适合每天反复用。目标不是一次写完，而是让文档系统持续长大。
 
 ## 0. 会话级执行规则
@@ -53,8 +55,8 @@
 - 方案、接口、数据流：看 `projects/design/README.md`
 - 关键取舍：看 `projects/decisions.md`
 - 项目级稳定记忆：看 `projects/memory/README.md`
-- 共享背景：看 `BRAIN.md`
-- 规则和优先级：看 `POLICY.md`
+- 共享背景：看 [[BRAIN]]
+- 规则和优先级：看 [[POLICY]]
 - 过程记录和排障：看 `projects/development/worklog.md`
 - 发布和回滚：看 `projects/releases.md`
 - 事故和复盘：看 `projects/incidents/README.md`
@@ -63,20 +65,20 @@
 ### 0.1 共享脑怎么用
 
 - [[log]] 只负责按时间降序呈现每次对话的主题、用户意图、关键动作和结构变化，不负责主动参与后续思考。
-- `BRAIN.md` 负责承接已经跨多轮确认、后续应该自动生效的共享背景。
-- `POLICY.md` 负责承接规则、优先级和自动沉淀边界。
+- [[BRAIN]] 负责承接已经跨多轮确认、后续应该自动生效的共享背景。
+- [[POLICY]] 负责承接规则、优先级和自动沉淀边界。
 - `projects/memory/README.md` 负责承接项目级稳定记忆。
-- 以后开始一个新任务时，默认把 `BRAIN.md` 当作背景之一，不要求用户再重复同一件事。
-- 如果一个结论只是这一次的过程记录，不进 `BRAIN.md`。
-- 如果一个结论会长期影响判断、多人协作或后续结构，就要考虑提升到 `BRAIN.md`。
-- 如果一个结论会改变路由、优先级或自动沉淀边界，就要考虑提升到 `POLICY.md`。
+- 以后开始一个新任务时，默认把 [[BRAIN]] 当作背景之一，不要求用户再重复同一件事。
+- 如果一个结论只是这一次的过程记录，不进 [[BRAIN]]。
+- 如果一个结论会长期影响判断、多人协作或后续结构，就要考虑提升到 [[BRAIN]]。
+- 如果一个结论会改变路由、优先级或自动沉淀边界，就要考虑提升到 [[POLICY]]。
 - 如果一个结论只对当前项目长期有效，就写进 `projects/memory/`。
 
 ### 0.2 内容写到哪里
 
-- `AGENTS.md`：写硬约束和 agent 必须遵守的行为。
-- `BRAIN.md`：写多轮确认后的共享背景和共同前提。
-- `POLICY.md`：写规则、优先级和记忆路由边界。
+- [[AGENTS]]：写硬约束和 agent 必须遵守的行为。
+- [[BRAIN]]：写多轮确认后的共享背景和共同前提。
+- [[POLICY]]：写规则、优先级和记忆路由边界。
 - `projects/memory/README.md`：写项目级稳定记忆。
 - [[projects/trace]]：写需求从原始意图、约束变化到最终实现范围的演进链。
 - `workspace-memory`：写个人稳定偏好和重复习惯。
@@ -107,8 +109,8 @@
 - 临时会话信息和还没确认的草稿，先留在会话或 `inbox/`
 - 项目里已经开始推进的一轮需求、约束变化、修补性需求和最终实现口径，优先写进 [[projects/trace]]
 - 只对当前项目长期有效的稳定事实，写进 `projects/memory/`
-- 跨任务、跨会话、后续还会持续影响工作的共享背景，写进 `BRAIN.md`
-- 会改变后续判断方式、优先级或自动沉淀边界的内容，写进 `POLICY.md`
+- 跨任务、跨会话、后续还会持续影响工作的共享背景，写进 [[BRAIN]]
+- 会改变后续判断方式、优先级或自动沉淀边界的内容，写进 [[POLICY]]
 - 发生项目内冲突或取舍时，先写进 `projects/decisions.md`
 - 已经稳定到可以复用的结论，再提炼到 `articles/`、`concepts/` 或 `indexes/`
 
@@ -163,13 +165,13 @@
 
 不同目标文件，默认先看这些关联文件：
 
-- `projects/README.md`：`requirements.md`、`design/README.md`、`decisions.md`、`development/README.md`、`projects/memory/README.md`、`POLICY.md`
+- `projects/README.md`：`requirements.md`、`design/README.md`、`decisions.md`、`development/README.md`、`projects/memory/README.md`、[[POLICY]]
 - `projects/requirements.md`：`projects/README.md`、相关 `raw/`、已有 `projects/design/README.md`、[[projects/trace]]
-- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、[[projects/trace]]、`projects/decisions.md`、`projects/memory/README.md`、`POLICY.md`、相关 `concepts/`
+- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、[[projects/trace]]、`projects/decisions.md`、`projects/memory/README.md`、[[POLICY]]、相关 `concepts/`
 - [[projects/trace]]：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`、当前相关开发页
-- `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、[[projects/trace]]、`projects/memory/README.md`、`POLICY.md`、相关过程记录
+- `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、[[projects/trace]]、`projects/memory/README.md`、[[POLICY]]、相关过程记录
 - `projects/development/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
-- `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、`POLICY.md`
+- `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
@@ -179,7 +181,7 @@
 
 1. 判断它属于哪一层，服务什么职责。
 2. 判断它的主入口是谁，它依赖哪些上游文件，又会影响哪些下游文件。
-3. 把这些关系同步补进 `AGENTS.md` 的上下文模型、关联关系、最小读取集。
+3. 把这些关系同步补进 [[AGENTS]] 的上下文模型、关联关系、最小读取集。
 4. 如果它影响总入口理解，再补 `README.md`。
 5. 在 [[log]] 记录这次结构扩展，并写明对应主题和用户意图。
 
@@ -188,8 +190,8 @@
 如果这次变更还形成了新的共享背景，再额外做这一步：
 
 1. 判断它是不是跨多轮确认、且后续还会反复影响判断。
-2. 如果是，补进 `BRAIN.md`。
-3. 如果它是规则、优先级或自动沉淀边界，补进 `POLICY.md`。
+2. 如果是，补进 [[BRAIN]]。
+3. 如果它是规则、优先级或自动沉淀边界，补进 [[POLICY]]。
 4. 如果它是项目级稳定记忆，补进 `projects/memory/README.md`。
 5. 如果它只是个人偏好，再写进 `workspace-memory`，不塞进共享脑。
 6. 如果它和已有背景冲突，先升级到 `projects/decisions.md`，不要直接改写共享脑。
@@ -334,7 +336,7 @@
 每次改完 Markdown，都把引用格式检查当作交付前必做动作，不是可选优化。
 
 - 本库内页面引用只允许使用 `[[wikilink]]` 及其变体：`[[page]]`、`[[page|alias]]`、`[[page#heading]]`、`[[page#^block-id]]`。
-- 如果语义上是在指向本库的页面，而不是单纯讨论文件名字符串，也统一改成 `[[wikilink]]`，不要保留 `BRAIN.md`、`POLICY.md`、`log.md` 这类裸文件名引用。
+- 如果语义上是在指向本库的页面，而不是单纯讨论文件名字符串，也统一改成 `[[wikilink]]`，不要保留 [[BRAIN]]、[[POLICY]]、`log.md` 这类裸文件名引用。
 - 外部资源只使用普通 Markdown 链接：`[title](https://example.com)`。
 - 发现本库内 `.md` 相对链接、空链接、占位链接、写死本机绝对路径时，当场修正，不留到后续再清理。
 - 如果一次处理里改了标题、文件名、目录名或段落结构，结束前必须回看受影响页面，确认引用仍然能跳转、别名仍然可读、没有残留旧路径。
@@ -420,7 +422,7 @@
 4. 再读 `projects/requirements.md`
 5. 再读 `projects/design/README.md`
 6. 有冲突再读 `projects/decisions.md`
-7. 涉及记忆或规则再读 `projects/memory/README.md` 和 `POLICY.md`
+7. 涉及记忆或规则再读 `projects/memory/README.md` 和 [[POLICY]]
 
 ### 1.9.2 项目主页怎么用
 
@@ -430,9 +432,9 @@
 
 ### 1.9.3 记忆 / 规则怎么用
 
-- `BRAIN.md` 负责共享背景。
+- [[BRAIN]] 负责共享背景。
 - `projects/memory/` 负责项目级稳定记忆。
-- `POLICY.md` 负责规则、优先级和自动沉淀边界。
+- [[POLICY]] 负责规则、优先级和自动沉淀边界。
 - `projects/decisions.md` 负责项目冲突和拍板。
 
 ### 1.9.4 需求到设计
@@ -461,7 +463,7 @@
 ### 1.9.8 发布到事故
 
 - 事故页只负责事故总览、单条事故和复盘入口。
-- 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、`POLICY.md` 或 `projects/decisions.md`。
+- 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、[[POLICY]] 或 `projects/decisions.md`。
 
 ### 1.9.9 智能体功能研发：从需求到设计
 
@@ -481,7 +483,7 @@
 ### 1.9.12 智能体功能研发：从开发到上线
 
 - 上线前先回看发布页和事故入口。
-- 如果上线后产生了稳定结论，把它们回写到 `projects/memory/`、`POLICY.md` 或知识库层。
+- 如果上线后产生了稳定结论，把它们回写到 `projects/memory/`、[[POLICY]] 或知识库层。
 
 ### 1.9.13 功能点双轴模型
 

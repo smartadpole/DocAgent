@@ -10,6 +10,8 @@ tags: [trace, guide]
 
 # `[[projects/trace]]` 记录规则
 
+这页属于治理层，统一由 [[governance/README]] 收口。
+
 这页是 `[[projects/trace]]` 写法的唯一主入口。
 
 `[[projects/trace]]` 本身只负责承接当前生效的需求演进链；怎么分主题、怎么续写、什么时候新开主链、什么时候只补迭代，统一以这页为准。

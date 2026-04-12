@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-11
+updated: 2026-04-12
 tags: [index, root]
 ---
 
@@ -15,18 +15,20 @@ tags: [index, root]
 如果你不知道先看什么，按这个顺序：
 
 1. 先看 [[README]]，知道这个 vault 是干什么的、怎么启动、怎么选动作。
-2. 再看 [[BRAIN]]，知道哪些已确认背景会自动参与后续工作。
-3. 再看 [[POLICY]]，知道规则、优先级和 memory 路由怎么定。
-4. 要处理项目运行层，就看 [[projects/README]] 和 [[projects/memory/README]]。
-5. 要处理文件和目录细节，就看 [[WORKFLOW]]。
-6. 要知道 agent 的维护边界，就看 [[AGENTS]]。
-7. 要找入口分类和主题化后的运行记录，就留在这页。
+2. 再看 [[governance/README]]，先知道治理层怎么分。
+3. 再看 [[BRAIN]]，知道哪些已确认背景会自动参与后续工作。
+4. 再看 [[POLICY]]，知道规则、优先级和 memory 路由怎么定。
+5. 要处理项目运行层，就看 [[projects/README]] 和 [[projects/memory/README]]。
+6. 要处理文件和目录细节，就看 [[WORKFLOW]]。
+7. 要知道 agent 的维护边界，就看 [[AGENTS]]。
+8. 要找入口分类和主题化后的运行记录，就留在这页。
 
 这页只做总导航，不承载细节。
 
 ## 入口
 
 - [[README]]：vault 总说明和启动入口
+- [[governance/README]]：治理层入口
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
@@ -44,14 +46,20 @@ tags: [index, root]
 
 ## 层级
 
-- `raw/`：原始资料层，尽量只进不改
-- `inbox/`：临时收口区，来源还没完全整理前先放这里
-- `assets/`：截图、图片、导图、导出物和辅助附件
-- `projects/`：活跃软件研发项目层，放需求、设计、决策、记忆、发布和复盘
-- `articles/`：每篇材料一张摘要卡片
-- `concepts/`：每个工具或概念一个页面
-- `indexes/`：全局索引、分类索引、时间线索引
-- `archive/`：退役但仍需保留的页面和历史版本
+- 入口层：[[README]]、[[INDEX]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 运行层：`projects/`
+- 沉淀层：`articles/`、`concepts/`、`indexes/`
+- 历史层：[[log]]、`archive/`
+- 证据层：`raw/`、`inbox/`、`assets/`
+
+## 物理结构
+
+- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
+- `governance/` 收治理页和规则页
+- `projects/` 收运行层
+- `articles/`、`concepts/`、`indexes/` 收知识沉淀
+- `archive/` 收退役历史，`raw/`、`inbox/`、`assets/` 收证据
 
 ## 运行记录
 
