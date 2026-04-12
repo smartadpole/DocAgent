@@ -30,16 +30,13 @@
 
 ## 2026-04-12
 
-### 对话：把框架级说明的落层边界收口到根入口
+### 对话：回填历史 log 的日期与整合
 
-- 主题：框架级说明应该放在根 `README.md`、`BRAIN.md`、`POLICY.md`，不要再下放到 `projects/` 及其子页。
-- 主题：`log.md` 需要按最新规则，用对话主题而不是动作流水来记录这次纠正。
-- 用户意图：把前几轮里和当前对话相关的误放层、纠正层和最终收口一次性整理清楚，避免以后继续把文档库本体的说明误写进项目运行层。
-- 关键动作：确认 `log.md` 的最新规则是“历史不重写、新记录按时间降序、按对话组织、每条记录保留主题 / 用户意图 / 关键动作 / 影响页面”，因此这次只追加新记录，不改旧条目正文。
-- 关键动作：把“框架级说明优先维护在根 `README.md`、`BRAIN.md` 和 `POLICY.md`，不要下放到 `projects/` 及其子页”沉淀成全局边界，作为后续写作时的默认判断标准。
-- 关键动作：把“角色和 memory 的关系”保留在根 `README.md` 作为框架说明，同时收束 `projects/design/memory/README.md` 为研究入口，避免解释性内容再次落到项目层。
-- 关键动作：回看前面几轮与本话题相关的记录，并把最终结论留在今天这条对话记录里，作为后续检索时的最新收口点。
-- 影响页面：[[log]]、[[README]]、[[BRAIN]]、[[POLICY]]、[[projects/design/memory/README]]。
+- 主题：把前几轮关于角色、memory 关系和框架级说明落层的内容，回填到实际提问日期。
+- 主题：把之前日期里已经出现过的相关信息做整合，避免重复和错位。
+- 用户意图：按新的 log 规则把历史回填写到当时提问的日期中，而不是留在当前回填动作的日期里。
+- 关键动作：回看 2026-04-10 和 2026-04-11 中和本话题相关的记录，准备把初次讨论、落层调整和最终边界分别放回对应日期，并把重复信息合并整理。
+- 影响页面：[[log]]。
 
 ## 2026-04-11
 
@@ -61,6 +58,17 @@
 - 关键动作：同步更新 [[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/memory/README]] 对 `[[log]]` 的职责描述。
 - 关键动作：新增 `templates/log-entry-template.md`，并在 [[log]] 与 [[WORKFLOW]] 中补入推荐骨架，方便后续直接套用。
 - 影响页面：[[log]]、[[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/memory/README]]、`templates/log-entry-template.md`。
+
+### 对话：把角色和 memory 的说明上提到根入口
+
+- 主题：角色分层和 memory 分层的关系。
+- 主题：框架级说明的最终落点。
+- 用户意图：纠正角色 / memory 说明的位置，把框架级解释放在最外层，而不是项目层。
+- 关键动作：先在项目层尝试承接 role / memory 说明，随后把解释性内容从 `projects/memory/` 和 `projects/design/memory/` 中移出，最终放到根 `README.md`。
+- 关键动作：同时在 `BRAIN.md` 和 `POLICY.md` 增加边界说明，让框架级说明、共享背景和规则层各自归位。
+- 关键动作：让 `projects/design/memory/README.md` 只保留研究入口，不再承接框架正文。
+- 关键动作：把 2026-04-10 的初次讨论和这次最终纠正合并成连续历史，不重复记两套正文。
+- 影响页面：[[README]]、[[BRAIN]]、[[POLICY]]、[[projects/design/memory/README]]。
 
 ## 2026-04-10
 
@@ -84,8 +92,7 @@
 - 关键动作：进一步把 [[projects/development/README]] 收成研发经理看板，移走状态轴、阶段轴、实体模板和当前实体清单；把这些执行细节集中到 [[projects/development/feature-points/README]]，让开发主入口只负责整体推进、阻塞、下一步和协调。
 - 关键动作：把目录入口标题统一收成中文，并补了一条写作约定：正文默认中文，英文只保留文件名、产品名、代码标识和必要术语；继续把说明性英文收口为中文表达，不动历史事实记录。
 - 关键动作：把“随意中英混排”提升为 [[AGENTS]] 的硬约束，要求正文默认中文，除必要专名外不得混排，后续新增或修改内容时必须先检查这一条。
-- 关键动作：补充“角色和 memory 的关系”说明，随后又连续纠正其落点：先写入 `projects/memory/shared.md` 和 `projects/design/memory/README.md`，再把解释性内容移出运行层 memory，最后把框架级说明上提到根 [[README]]，让 `projects/` 只承载项目运行层。
-- 关键动作：继续把边界沉淀成全局约束，明确框架级说明优先维护在根 [[README]]、[[BRAIN]] 和 [[POLICY]]，不要下放到 `projects/` 及其子页。
+- 关键动作：补充“角色和 memory 的关系”说明，先把内容写到 `projects/memory/shared.md` 和 `projects/design/memory/README.md`，作为后续纠正落点的起点。
 - 影响页面：[[projects/status]]、[[projects/memory/README]]、[[projects/memory/policy-links]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/development/feature-points/README]]、[[projects/README]]、[[projects/STRUCTURE]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]、[[AGENTS]]。
 
 ## 2026-04-09
