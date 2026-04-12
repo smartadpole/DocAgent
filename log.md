@@ -32,6 +32,17 @@
 
 ## 2026-04-12
 
+### 对话：把中英文混排问题沉淀为 `AGENTS` 硬约束
+
+- 用户意图：把已经确认的中英文混排问题正式沉淀成 agent 必须遵守的硬约束，避免后续继续出现。
+- 主题：
+  1. 将写作约定从“收口”升级为“必须遵守”。
+  2. 让规则落点留在 `AGENTS.md`，而不是只停留在临时说明里。
+- 关键动作：
+  1. 把 `AGENTS.md` 的写作规则改成正文默认中文，除必要专名外不得混排。
+  2. 承接 2026-04-10 的正文中文化收口，把这条约束正式升级为硬规则；同时继续把说明性英文收口为中文表达，并把这条约束写进历史记录，方便后续回看它是怎么形成的。
+- 影响页面：[[AGENTS]]、[[log]]。
+
 ### 对话：回填历史 log 的日期与整合
 
 - 用户意图：按新的 log 规则把历史回填写到当时提问的日期中，而不是留在当前回填动作的日期里。
@@ -103,8 +114,6 @@
   12. 把开发示例从“同页多卡”进一步拆成真实功能点实体页，新增 `projects/development/feature-points/` 目录，拆出 `README.md` 索引页和 `FP-001.md`、`FP-002.md`、`FP-003.md` 三个实体页；同时把 [[WORKFLOW]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/decisions]]、[[projects/memory/shared]] 和 [[AGENTS]] 的口径一起改成实体页优先。
   13. 进一步把 [[projects/development/README]] 收成研发经理看板，移走状态轴、阶段轴、实体模板和当前实体清单；把这些执行细节集中到 [[projects/development/feature-points/README]]，让开发主入口只负责整体推进、阻塞、下一步和协调。
   14. 把目录入口标题统一收成中文，并补了一条写作约定：正文默认中文，英文只保留文件名、产品名、代码标识和必要术语；继续把说明性英文收口为中文表达，不动历史事实记录。
-  15. 把“随意中英混排”提升为 [[AGENTS]] 的硬约束，要求正文默认中文，除必要专名外不得混排，后续新增或修改内容时必须先检查这一条。
-  16. 补充“角色和 memory 的关系”说明，先把内容写到 `projects/memory/shared.md` 和 `projects/design/memory/README.md`，作为后续纠正落点的起点。
 - 影响页面：[[projects/status]]、[[projects/memory/README]]、[[projects/memory/policy-links]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/development/feature-points/README]]、[[projects/README]]、[[projects/STRUCTURE]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]、[[AGENTS]]。
 
 ## 2026-04-09
