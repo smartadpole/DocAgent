@@ -11,24 +11,12 @@
 - 同一轮里多个细碎问题，如果服务同一主题或同一组相关主题，合并成一条记录。
 - 关键动作要保留足够完整，不能只剩过度压缩的摘要。
 - 每条记录优先回答四件事：主题、用户意图、关键动作、受影响页面。
-- 默认条目模板见 `templates/log-entry-template.md`。
+- 默认条目模板见 [[templates/log-entry-template]]。
 
-## 推荐模板
+## 模板入口
 
-```md
-## YYYY-MM-DD
-
-### 对话：一句话概括这次对话
-
-- 用户意图：这轮真正想解决什么问题，为什么现在要解决。
-- 主题：
-  1. 主题 A
-  2. 主题 B（可选；如果没有就删掉）
-- 关键动作：
-  1. 这次实际做了什么关键调整、整理或决策。
-  2. 如果动作很多，继续补，不要为了简短丢掉关键信息。
-- 影响页面：列出被更新的主页面。
-```
+- 唯一条目模板见 [[templates/log-entry-template]]。
+- 这页只说明记录原则，不再重复维护第二份模板正文。
 
 ## 2026-04-12
 
@@ -52,9 +40,9 @@
   2. 恢复 `[[log]]` 历史条目中过度压缩的修改动作细节。
 - 关键动作：
   1. 重写 `[[log]]`、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]]、[[README]]、[[INDEX]]、[[BRAIN]] 和模板文件中关于 `[[log]]` 的定义，明确记录单位是“每次对话”，同一天可以有多条记录，一次对话可以包含一个或多个相关主题。
-  2. 补充 `[[log]]` 和 `templates/log-entry-template.md` 的条目骨架，把“对话”“主题”“用户意图”“关键动作”“影响页面”固定成默认结构。
+  2. 补充 [[log]] 和 [[templates/log-entry-template]] 的条目骨架，把“对话”“主题”“用户意图”“关键动作”“影响页面”固定成默认结构。
   3. 回填历史条目时恢复更完整的动作列表，避免只剩笼统摘要。
-- 影响页面：[[log]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]]、[[README]]、[[INDEX]]、[[BRAIN]]、`templates/log-entry-template.md`。
+- 影响页面：[[log]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]]、[[README]]、[[INDEX]]、[[BRAIN]]、[[templates/log-entry-template]]。
 
 ### 对话：重构 `[[log]]` 的记录模型
 
@@ -64,8 +52,8 @@
 - 关键动作：
   1. 重写 `[[log]]` 的说明和历史条目结构，把记录口径收成“主题 + 用户意图 + 关键动作 + 受影响页面”。
   2. 同步更新 [[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/memory/README]] 对 `[[log]]` 的职责描述。
-  3. 新增 `templates/log-entry-template.md`，并在 [[log]] 与 [[WORKFLOW]] 中补入推荐骨架，方便后续直接套用。
-- 影响页面：[[log]]、[[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/memory/README]]、`templates/log-entry-template.md`。
+  3. 新增 [[templates/log-entry-template]]，并在 [[log]] 与 [[WORKFLOW]] 中补入推荐骨架，方便后续直接套用。
+- 影响页面：[[log]]、[[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/memory/README]]、[[templates/log-entry-template]]。
 
 ### 对话：把角色和 memory 的说明上提到根入口
 
