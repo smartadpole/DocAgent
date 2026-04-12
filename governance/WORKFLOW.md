@@ -55,6 +55,7 @@
 - 方案、接口、数据流：看 `projects/design/README.md`
 - 关键取舍：看 `projects/decisions.md`
 - 项目级稳定记忆：看 `projects/memory/README.md`
+- 治理层总边界：看 [[governance/README]]
 - 共享背景：看 [[BRAIN]]
 - 规则和优先级：看 [[POLICY]]
 - 过程记录和排障：看 `projects/development/worklog.md`

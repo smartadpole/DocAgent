@@ -7,7 +7,7 @@ stage: design
 next_action: define-policy-and-memory-routing
 owner: team
 source_of_truth: true
-updated: 2026-04-10
+updated: 2026-04-12
 tags: [project]
 ---
 
@@ -24,6 +24,7 @@ tags: [project]
 - 项目级稳定记忆放在 [[projects/memory/README]]。
 - 共享背景放在 [[BRAIN]]。
 - 规则和优先级放在 [[POLICY]]。
+- 治理层整体边界和物理结构统一看 [[governance/README]]。
 
 这两层不是并排摆放，而是有演进关系：
 
@@ -34,7 +35,7 @@ tags: [project]
 
 ## 默认运行方式
 
-- 一个文档库只对应一个项目，所以项目主页固定是 `projects/README.md`
+- 一个文档库只对应一个项目，所以项目主页固定是 [[projects/README]]
 - 项目主页更像首席技术官 / 项目负责人视角，负责定方向、边界、优先级和最终拍板
 - 当前规模很小，先保持单库、强规范、弱权限、强链接、可编排
 - 没有账号体系也没关系，Git 已经足够承担审计和回滚
@@ -44,7 +45,7 @@ tags: [project]
 
 极简模式最小只需要这两个东西：
 
-- `projects/README.md`
+- [[projects/README]]
 - 根目录 [[log]]
 
 其余文件都按需添加，不要为了完整性先建空文件。
@@ -58,7 +59,7 @@ tags: [project]
 
 ## 结构主说明
 
-- `projects/README.md` 只做项目层入口。
+- [[projects/README]] 只做项目层入口。
 - 项目层的目录设计、文件职责、依赖关系和读取顺序，统一看 [[projects/STRUCTURE]]。
 - 详细推进步骤和人工智能功能研发闭环，统一看 [[WORKFLOW]] 的 `1.9 软件研发模式`。
 
@@ -78,6 +79,7 @@ tags: [project]
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
 - [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。
 - [[projects/memory/README]]：项目级稳定记忆入口。这里放项目长期背景和路由。
+- [[governance/README]]：治理层入口。这里放规则边界、流程和治理页分工。
 - [[POLICY]]：规则、优先级和记忆路由。
 - [[BRAIN]]：共享背景和共同前提。
 
@@ -98,5 +100,5 @@ tags: [project]
 - 建议项目级状态词：`idea`、`active`、`blocked`、`released`、`archived`
 - 功能点细化用 [[projects/development/feature-points/README]] 里的实体页；每页一个功能点，`status` 和 `phase` 写在 frontmatter
 - 每次切状态前先读项目主页
-- 如果多个文档冲突，以项目主页和 `projects/decisions.md` 为准
+- 如果多个文档冲突，以项目主页和 [[projects/decisions]] 为准
 - 如果项目结束，把可复用内容提炼回知识库，把项目特有内容保留在项目目录或归档层

@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-04-11
+updated: 2026-04-12
 ---
 
 # 项目层结构
@@ -14,7 +14,7 @@ updated: 2026-04-11
 - 文件之间怎么依赖
 - 项目推进时先读什么、后写什么
 
-详细操作顺序看 [[WORKFLOW]]；硬约束看 [[AGENTS]]；这页只做项目层的结构主说明。
+详细操作顺序看 [[WORKFLOW]]；硬约束看 [[AGENTS]]；治理层总边界看 [[governance/README]]；这页只做项目层的结构主说明。
 
 ## 1. 设计原则
 
@@ -22,7 +22,7 @@ updated: 2026-04-11
 - 项目层只放当前项目直接相关的需求、设计、决策、过程、记忆和发布信息。
 - 可复用知识最终回写到 `articles/`、`concepts/`、`indexes/`，不要长期堆在项目层。
 - 单一信息源优先：同一类信息只保留一个主文件，其他页面链接它，不重复抄写。
-- `BRAIN.md`、`POLICY.md` 和 `projects/memory/` 是显式分层，不再混成一页正文。
+- [[BRAIN]]、[[POLICY]] 和 `projects/memory/` 是显式分层，不再混成一页正文。
 - 先有目录和职责，再决定是否需要模板。
 
 ## 2. 推荐结构
@@ -67,15 +67,16 @@ projects/
     policy-links.md
 ```
 
-根目录还有几页要一起看：
+项目层之外还有几页要一起看：
 
-- `BRAIN.md`：共享背景
-- `POLICY.md`：规则、优先级和自动沉淀边界
+- [[governance/README]]：治理层入口和总边界
+- [[BRAIN]]：共享背景
+- [[POLICY]]：规则、优先级和自动沉淀边界
 - [[log]]：主题化的历史记录
 
 这不是要求一次性建全，而是推荐的扩展方向。
 
-- 极简项目：只保留 `projects/README.md`
+- 极简项目：只保留 [[projects/README]]
 - 小项目：优先平铺单文件；只有明显会长成多文件模块时再建子目录
 - 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md`、`shared.md` 等子页
 
@@ -202,7 +203,7 @@ projects/
 
 ### 3.9 共享规则层
 
-- `POLICY.md`
+- [[POLICY]]
 - 回答：什么可以自动沉淀、什么必须人工确认、优先级怎么排
 - 这是全局规则层，不是项目层正文
 
@@ -210,7 +211,7 @@ projects/
 
 项目层依赖关系建议固定成这条主链：
 
-`projects/README.md -> requirements -> trace -> design -> decisions -> development -> releases -> incidents`
+`[[projects/README]] -> requirements -> trace -> design -> decisions -> development -> releases -> incidents`
 
 具体来说：
 
@@ -226,9 +227,9 @@ projects/
 
 横向依赖也要固定：
 
-- `projects/memory/README.md` 依赖 `BRAIN.md`、`POLICY.md` 和 `projects/decisions.md`
-- `POLICY.md` 依赖 `AGENTS.md`、`WORKFLOW.md` 和相关决策
-- 如果设计或决策改变了记忆路由或规则边界，就要同步更新 `projects/memory/`、`BRAIN.md` 和 `POLICY.md`
+- [[projects/memory/README]] 依赖 [[BRAIN]]、[[POLICY]] 和 [[projects/decisions]]
+- [[POLICY]] 依赖 [[AGENTS]]、[[WORKFLOW]] 和相关决策
+- 如果设计或决策改变了记忆路由或规则边界，就要同步更新 `projects/memory/`、[[BRAIN]] 和 [[POLICY]]
 
 数据库设计不是独立于设计层存在的，它默认属于设计主入口或其子页：
 
@@ -239,31 +240,32 @@ projects/
 
 ### 5.1 做一个新功能时
 
-1. 先读 `projects/README.md`
-2. 再读 `projects/status.md`
-3. 再读 `projects/requirements.md`
+1. 先读 [[projects/README]]
+2. 再读 [[projects/status]]
+3. 再读 [[projects/requirements]]
 4. 再读 [[projects/trace]]
-5. 再读 `projects/design/README.md`
-6. 有关键取舍时再读 `projects/decisions.md`
-7. 如果涉及记忆或规则，再读 `projects/memory/README.md` 和 `POLICY.md`
-8. 实施复杂时再读 `projects/development/worklog.md`
+5. 再读 [[projects/design/README]]
+6. 有关键取舍时再读 [[projects/decisions]]
+7. 如果涉及记忆或规则，再读 [[projects/memory/README]] 和 [[POLICY]]
+8. 实施复杂时再读 [[projects/development/worklog]]
 
 ### 5.2 做记忆 / 规则改动时
 
-1. 先读 `projects/README.md`
-2. 再读 `projects/STRUCTURE.md`
-3. 再读 `BRAIN.md`
-4. 再读 `POLICY.md`
-5. 再读 `projects/memory/README.md`
-6. 需要拍板时再读 `projects/decisions.md`
+1. 先读 [[projects/README]]
+2. 再读 [[projects/STRUCTURE]]
+3. 再读 [[governance/README]]
+4. 再读 [[BRAIN]]
+5. 再读 [[POLICY]]
+6. 再读 [[projects/memory/README]]
+7. 需要拍板时再读 [[projects/decisions]]
 
 ### 5.3 做发布或排障时
 
-1. 先读 `projects/README.md`
-2. 再读 `projects/design/README.md`
-3. 再读 `projects/decisions.md`
-4. 发布看 `projects/releases.md`
-5. 故障看 `projects/incidents/README.md` 和 `projects/development/worklog.md`
+1. 先读 [[projects/README]]
+2. 再读 [[projects/design/README]]
+3. 再读 [[projects/decisions]]
+4. 发布看 [[projects/releases]]
+5. 故障看 [[projects/incidents/README]] 和 [[projects/development/worklog]]
 
 ## 6. 什么时候建新文件
 
