@@ -11,6 +11,9 @@ tags: [trace, project]
 
 这页是项目层里“需求如何收敛成当前实现口径”的主入口。
 
+- 详细记录规则见 [[trace-writing-rules]]。
+- 默认模板见 [[templates/trace-entry-template]]。
+
 上游：[[projects/README]]、[[projects/requirements]]、[[projects/design/README]]  \
 横向：[[projects/decisions]]、[[projects/development/README]]、[[projects/development/worklog]]  \
 下游：[[projects/releases]]、[[projects/incidents/README]]
@@ -29,21 +32,6 @@ tags: [trace, project]
 - 不只记录最终拍板结果，那是 [[projects/decisions]]
 - 不沉淀项目长期稳定背景，那是 [[projects/memory/README]]
 - 不重复写完整设计正文或开发流水
-
-## 默认骨架
-
-每个主题保留一条主链，后续进展继续写到同一主题下面的迭代块里。
-
-建议至少包含这些字段：
-
-- 主题
-- 原始意图
-- 收敛后的可执行需求
-- 关键决策变化
-- 最终范围
-- 假设与未决项
-- 关联页面
-- 迭代
 
 ## 当前主题
 
