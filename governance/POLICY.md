@@ -6,11 +6,13 @@ scope: shared
 status: confirmed
 priority: highest
 source_of_truth: true
-updated: 2026-04-11
+updated: 2026-04-12
 tags: [policy]
 ---
 
 # 规则层
+
+这页属于治理层，统一由 [[governance/README]] 收口。
 
 这页放共享规则、优先级和记忆路由约束。
 

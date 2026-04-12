@@ -5,11 +5,13 @@ memory_layer: shared
 scope: project
 status: confirmed
 source_of_truth: true
-updated: 2026-04-09
+updated: 2026-04-12
 tags: [memory, shared]
 ---
 
 # 共享脑
+
+这页属于治理层，统一由 [[governance/README]] 收口。
 
 这页不是日志，也不是流程说明，也不是规则层。
 
@@ -25,8 +27,8 @@ tags: [memory, shared]
 ## 这页不负责什么
 
 - 不记录主题化的历史流水，那是 [[log]] 的职责
-- 不重复写详细流程，那是 `WORKFLOW.md` 的职责
-- 不重复写 agent 行为约束，那是 `AGENTS.md` 的职责
+- 不重复写详细流程，那是 [[WORKFLOW]] 的职责
+- 不重复写 agent 行为约束，那是 [[AGENTS]] 的职责
 - 不重复写规则和优先级，那是 [[POLICY]] 的职责
 - 不代替项目阶段的具体取舍，那些进入 [[projects/decisions]]
 - 不承接项目级稳定事实，那些优先进入 [[projects/memory/shared]]
@@ -57,7 +59,7 @@ tags: [memory, shared]
 
 ### 4. 冲突处理
 
-- 如果后续工作与这页、[[POLICY]]、`AGENTS.md`、[[projects/STRUCTURE]] 或既有决策发生思维碰撞，不要直接覆盖。
+- 如果后续工作与这页、[[POLICY]]、[[AGENTS]]、[[projects/STRUCTURE]] 或既有决策发生思维碰撞，不要直接覆盖。
 - 在项目阶段，思维碰撞要先升级到 [[projects/decisions]]。
 - 只有决策明确后，才能反向更新这页和相关规则。
 
@@ -72,9 +74,9 @@ tags: [memory, shared]
 
 ## 和其他存储位的分工
 
-- `AGENTS.md`：硬约束。回答“agent 必须怎么做”
-- `WORKFLOW.md`：流程。回答“事情按什么顺序做”
-- `BRAIN.md`：共享背景。回答“哪些已确认前提应自动进入后续思考”
+- [[AGENTS]]：硬约束。回答“agent 必须怎么做”
+- [[WORKFLOW]]：流程。回答“事情按什么顺序做”
+- [[BRAIN]]：共享背景。回答“哪些已确认前提应自动进入后续思考”
 - [[POLICY]]：规则和优先级。回答“什么能自动晋升、什么必须人工确认”
 - [[projects/memory/README]]：项目级稳定记忆入口
 - `workspace-memory`：稳定个人偏好和重复习惯。回答“用户个人长期偏好是什么”
