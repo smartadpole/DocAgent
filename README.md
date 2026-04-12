@@ -32,6 +32,7 @@ tags: [entry, root]
 - [[log-writing-rules]] 放 `[[log]]` 的记录规则
 - [[projects/memory/README]] 放项目级稳定记忆
 - [[projects/trace]] 放需求从原始意图收敛到最终实现的演进链
+- [[trace-writing-rules]] 放 `[[projects/trace]]` 的记录规则
 - [[AGENTS]] 放维护规则
 
 ## 怎么用这个总入口
@@ -54,6 +55,7 @@ tags: [entry, root]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
+- 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“Codex 处理时有哪些约束” -> 读 [[AGENTS]]

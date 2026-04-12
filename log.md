@@ -8,6 +8,19 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-12
+### 对话：让 `[[projects/trace]]` 的文件、规则和模板对齐 `[[log]]` 的治理方式
+
+- **用户意图**：要求 trace 的相关设计参考 `[[log]]`，尤其是文件职责、规则主入口和模板格式，不要让 trace 只有主文件，没有像 `[[log]]` 那样清晰的配套治理结构。
+- **主题**：
+  1. 为 trace 补齐规则主入口和模板入口。
+  2. 把 `[[projects/trace]]` 收成“正文 + 跳转”的主文件形态。
+- **关键动作**：
+  1. **主收口**：新增 [[trace-writing-rules]]，把 `[[projects/trace]]` 的记录单位、续写旧主题与新开主题的边界、以及和 `[[log]]` / [[projects/decisions]] / [[projects/memory/README]] 的分工统一迁过去。
+  2. 新增 [[templates/trace-entry-template]]，给需求演进链提供可直接复用的主链模板和迭代块模板，并在 [[templates/README]] 中补入口。
+  3. 把 [[projects/trace]] 自身收短成主文件，只保留职责说明、规则跳转、模板跳转和当前主题正文，不再在主文件里重复展开完整写法。
+  4. 在 [[README]]、[[INDEX]] 和 [[WORKFLOW]] 中补上 trace 规则入口和模板入口，保持和 `[[log]]` 同样的治理模式。
+- **影响页面**：[[README]]、[[INDEX]]、[[WORKFLOW]]、[[projects/trace]]、[[trace-writing-rules]]、[[templates/trace-entry-template]]、[[templates/README]]、[[log]]。
+
 ### 对话：为项目层新增 `[[projects/trace]]` 需求演进链
 
 - **用户意图**：确认当前体系可以正式新增 trace 链路，并要求按结构性扩展的标准全面整改，让项目推进里“产品梳理、技术选型、架构设计、功能设计到 agent 开发”的链路有一个明确落点，而不是继续只靠 `[[log]]` 和零散项目页承接。
