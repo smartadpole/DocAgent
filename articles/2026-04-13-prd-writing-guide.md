@@ -6,7 +6,7 @@ updated: 2026-04-13
 
 # PRD 写作指南
 
-- 来源：[[raw/PRD 指导|原始材料]]
+- 来源：[[archive/2026-04-13-prd-writing-guide-source|历史草稿]]
 - 日期：2026-04-13
 - 类型：方法总结
 

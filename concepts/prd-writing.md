@@ -60,7 +60,7 @@ PRD（Product Requirements Document）不是“把想法写得更长”，而是
 ## 相关页面
 
 - [[articles/2026-04-13-prd-writing-guide]]
-- [[raw/PRD 指导|原始材料]]
+- [[archive/2026-04-13-prd-writing-guide-source|历史草稿]]
 - [[projects/README]]
 - [[projects/requirements]]
 - [[projects/design/README]]

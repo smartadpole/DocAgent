@@ -8,6 +8,19 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-13
+### 对话：把已经处理过的 PRD 源稿从 `raw` 迁出，明确处理后内容只留在知识库层
+
+- **用户意图**：确认 PRD 教程在经过整理后不应继续占用 `raw/`，而应该回到知识库层；只有还没处理的原始材料才继续留在 `raw/`。
+- **主题**：
+  1. 纠正 PRD 教程的分层归属。
+  2. 强化 `raw/` 与知识库层的边界。
+- **关键动作**：
+  1. **主迁出**：把 [[archive/2026-04-13-prd-writing-guide-source]] 从 `raw/` 迁出，让这份已经处理过的源稿不再占用 `raw/`。
+  2. **主对齐**：同步更新 [[concepts/prd-writing]] 和 [[articles/2026-04-13-prd-writing-guide]] 的来源链接，改指向历史草稿而不是 `raw/`。
+  3. **主收紧**：在 [[raw/README]] 里补一句更明确的维护原则，说明已经整理成摘要、概念页、索引页或历史版本的内容，不应继续留在 `raw/`。
+- **影响页面**：[[archive/2026-04-13-prd-writing-guide-source]]、[[concepts/prd-writing]]、[[articles/2026-04-13-prd-writing-guide]]、[[raw/README]]、[[log]]。
+
+## 2026-04-13
 ### 对话：把 PRD 指导重排成可复用的方法入口，并接入项目需求和设计流程
 
 - **用户意图**：把新增加的 PRD 指导从一篇偏长的原始材料整理成可复用的方法入口，让它不只“能看”，还要能反向指导项目层的需求、设计和开发。
@@ -16,10 +29,10 @@
   2. 抽出 PRD 写作方法页和摘要卡片。
   3. 把 PRD 方法接到项目需求、设计和 workflow。
 - **关键动作**：
-  1. **主整理**：重写 [[raw/PRD 指导]]，按定义、常见误区、标准结构、思考顺序、专业细节、模板、自检和落库路径重新组织，删掉原稿里重复铺陈和来回兜圈的部分。
+  1. **主整理**：重写 [[archive/2026-04-13-prd-writing-guide-source]]，按定义、常见误区、标准结构、思考顺序、专业细节、模板、自检和落库路径重新组织，删掉原稿里重复铺陈和来回兜圈的部分。
   2. **主沉淀**：新增 [[concepts/prd-writing]] 和 [[articles/2026-04-13-prd-writing-guide]]，把 PRD 写作方法沉淀成稳定概念页和摘要卡片。
   3. **主接线**：在 [[projects/README]]、[[projects/requirements]]、[[projects/design/README]]、[[WORKFLOW]] 和 [[INDEX]] 中补上 PRD 方法入口与项目落点，让需求页和设计页可以直接引用。
-- **影响页面**：[[raw/PRD 指导]]、[[concepts/prd-writing]]、[[articles/2026-04-13-prd-writing-guide]]、[[projects/README]]、[[projects/requirements]]、[[projects/design/README]]、[[WORKFLOW]]、[[INDEX]]、[[concepts/README]]、[[log]]。
+- **影响页面**：[[archive/2026-04-13-prd-writing-guide-source]]、[[concepts/prd-writing]]、[[articles/2026-04-13-prd-writing-guide]]、[[projects/README]]、[[projects/requirements]]、[[projects/design/README]]、[[WORKFLOW]]、[[INDEX]]、[[concepts/README]]、[[log]]。
 
 ## 2026-04-12
 ### 对话：继续把项目层和治理页的旧口径收口到新治理结构
