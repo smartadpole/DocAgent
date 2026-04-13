@@ -536,4 +536,4 @@
   - 稳定背景进 `projects/memory/README.md`
 - 如果只是开发过程中的临时讨论、联调插会或排障沟通，可以直接记到 `projects/development/worklog.md`；如果是正式会议，默认写 `projects/meetings/worklog.md`
 - 会议记录默认一场会对应一条记录，不把多场会揉成一条总记录
-- 如果某类会议开始反复出现，再考虑把固定字段继续收紧成模板或索引
+- 如果某类会议开始反复出现，再考虑把固定字段继续收紧成模板或索引；会议记录模板优先看 [[templates/meeting-entry-template]]
