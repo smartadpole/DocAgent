@@ -5,7 +5,7 @@ scope: project
 project: wiki
 status: active
 source_of_truth: true
-updated: 2026-04-11
+updated: 2026-04-13
 ---
 
 # 项目记忆
@@ -31,12 +31,14 @@ updated: 2026-04-11
 
 - [[projects/memory/shared]]：项目共享背景和稳定事实
 - [[projects/memory/policy-links]]：运行层和规则层的连接页
+- [[projects/meetings/README]]：项目正式会议入口和纪要分流页
 
 ## 当前路由
 
 - 会话 / 临时收口区：临时信息
 - [[projects/memory/README]]：项目级稳定背景
 - [[projects/trace]]：项目需求演进链
+- [[projects/meetings/README]]：项目正式会议入口
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则和优先级
 - [[projects/decisions]]：项目冲突和拍板
@@ -46,6 +48,7 @@ updated: 2026-04-11
 
 - 如果一条信息只对当前项目长期有效，优先放这里
 - 如果内容是在说明本轮需求怎样收敛、哪些修补改变了当前实现口径，优先放 [[projects/trace]]
+- 如果内容是在说明正式会议怎么收口、怎么分流，优先放 [[projects/meetings/README]]
 - 如果它会改变后续怎么判断和怎么写，优先放到 [[POLICY]]
 - 如果它已经变成跨阶段、可复用的稳定知识，再提升到 `articles/` 或 `concepts/`
 - 记忆研究设计继续放在 [[projects/design/memory/README]]，不要把研究稿混进正式运行层

@@ -4,7 +4,7 @@ id: DECISION-LOG-001
 project: PROJ-WIKI-001
 status: active
 priority: high
-updated: 2026-04-10
+updated: 2026-04-13
 tags: [decision]
 ---
 
@@ -25,6 +25,19 @@ tags: [decision]
 - 为需求演进链提供正式拍板节点，不重复承接整条需求收敛过程
 
 ## 当前内容
+
+### 2026-04-13 会议材料拆出到 meetings 模块
+
+- 背景：项目管理中的正式会议越来越多，如果继续把会议纪要和开发过程混写在 `projects/development/worklog.md`，会把实现流水、会议结论和会后分流混成一层，后续检索和回看都会变难。
+- 决定：
+  - 新增 `projects/meetings/` 作为项目侧会议主入口
+  - 正式会议的纪要、行动项和回看链接优先写到 [[projects/meetings/worklog]]
+  - 开发过程的联调、排障、验证和临时同步继续留在 [[projects/development/worklog]]
+  - 会议组织规则和会后分流流程统一收进 [[governance/WORKFLOW]]
+- 影响：
+  - 后续正式会议不再默认写进开发 worklog
+  - 如果会议结果已经形成拍板、需求收敛或实现动作，再分别回写到 [[projects/decisions]]、[[projects/trace]] 或 [[projects/development/worklog]]
+  - 项目主页、结构说明、状态页、开发入口、项目记忆页和总入口都要补上会议入口的链接
 
 ### 2026-04-09 分层 memory 落点
 

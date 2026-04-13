@@ -264,6 +264,7 @@
 
 - `raw/` 只放原始来源，优先保持原样，不做二次总结。
 - `inbox/` 只做临时收口和待清洗队列，不要长期堆积。
+- 项目内正式会议的纪要、行动项和回看，最终收口到 [[projects/meetings/README]]；`raw/` 和 `inbox/` 只负责临时收集。
 - 原始来源如果已经处理完，去 `articles/`、`concepts/` 或 `indexes/`，不要再回写成 raw。
 - 图片、截图、导图和其他支持性附件，如果不是原始来源，优先放 `assets/`。
 - 如果来源还没确认，先放 `inbox/`，确认后再分流到正确层。
@@ -294,6 +295,7 @@
 - 临时收口，放 `inbox/`
 - 支持性附件，放 `assets/`
 - 活跃研发项目文档，放 `projects/`
+- 正式会议入口和会议纪要，放 `projects/meetings/`
 - 摘要卡片，放 `articles/`
 - 概念或实体页，放 `concepts/`
 - 导航页，放 `indexes/`
@@ -424,6 +426,7 @@
 5. 再读 `projects/design/README.md`
 6. 有冲突再读 `projects/decisions.md`
 7. 涉及记忆或规则再读 `projects/memory/README.md` 和 [[POLICY]]
+8. 如果这次主要是会议材料或会议规则，再读 `projects/meetings/README.md` 和 `projects/meetings/worklog.md`
 
 ### 1.9.2 项目主页怎么用
 
@@ -520,3 +523,17 @@
 - 如果被卡住，保留当前 `phase`，只把 `status` 改成 `blocked`，并写清阻塞原因、依赖对象和下一步。
 - 如果功能点不再推进，就归到 `archived`；如果被替代，就标成 `superseded`。
 - 如果一个功能点在 `done` 之后又要做修复，不要直接倒回原卡，优先新开修复点或事故记录，保留原卡的完成结果。
+
+### 1.9.15 会议管理：从议程到纪要到分流
+
+- 正式会议优先有一个明确的会议标题、目标和结论记录，不把逐字转录当主正文。
+- 会前材料和议程先收在 `inbox/` 或 `raw/`，确认是项目内材料后，归入 `projects/meetings/` 所辖的会议入口。
+- 会中只记结论、待办、风险、owner 和需要继续确认的问题。
+- 会后按结果分流：
+  - 拍板和取舍进 `projects/decisions.md`
+  - 需求变化和范围收敛进 `projects/trace.md`
+  - 开发动作和验证进 `projects/development/worklog.md`
+  - 稳定背景进 `projects/memory/README.md`
+- 如果只是开发过程中的临时讨论、联调插会或排障沟通，可以直接记到 `projects/development/worklog.md`；如果是正式会议，默认写 `projects/meetings/worklog.md`
+- 会议记录默认一场会对应一条记录，不把多场会揉成一条总记录
+- 如果某类会议开始反复出现，再考虑把固定字段继续收紧成模板或索引

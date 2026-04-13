@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-04-12
+updated: 2026-04-13
 ---
 
 # 项目层结构
@@ -19,7 +19,7 @@ updated: 2026-04-12
 ## 1. 设计原则
 
 - 一个文档库只服务一个项目，所以 `projects/` 本身就是这个项目的运行层。
-- 项目层只放当前项目直接相关的需求、设计、决策、过程、记忆和发布信息。
+- 项目层只放当前项目直接相关的需求、设计、会议、决策、过程、记忆和发布信息。
 - 可复用知识最终回写到 `articles/`、`concepts/`、`indexes/`，不要长期堆在项目层。
 - 单一信息源优先：同一类信息只保留一个主文件，其他页面链接它，不重复抄写。
 - [[BRAIN]]、[[POLICY]] 和 `projects/memory/` 是显式分层，不再混成一页正文。
@@ -56,6 +56,9 @@ projects/
       FP-001.md
       FP-002.md
       FP-003.md
+    worklog.md
+  meetings/
+    README.md
     worklog.md
   releases.md
   incidents/
@@ -150,6 +153,9 @@ projects/
 - `projects/development/README.md`
   这是研发推进主入口，偏研发经理视角
   负责整体推进、状态镜像、阻塞协调和下一步
+- `projects/meetings/README.md`
+  这是会议主入口，偏项目协作视角
+  负责正式会议材料、纪要、行动项和会后分流
 - `projects/development/feature-points/README.md` 和其下实体页
   这是功能点执行层，偏工程师视角
   负责单个功能点的实现、验证、结果和状态更新
@@ -181,19 +187,30 @@ projects/
 
 - `projects/development/worklog.md`
   适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
+  正式会议记录放在 `projects/meetings/worklog.md`，这里只保留开发过程里的同步和排障
 
-### 3.6 发布层
+### 3.6 会议层
+
+- `projects/meetings/README.md`
+  这是会议主入口
+  适合放会前材料、会议规则、纪要入口和会后分流口径
+- `projects/meetings/worklog.md`
+  这是正式会议的时间线记录页
+  适合放按时间顺序整理的会议纪要、行动项和回看链接
+- 会议层负责把正式会议里的拍板送到 [[projects/decisions]]，把需求变化送到 [[projects/trace]]，把实现动作送到 [[projects/development/worklog]]
+
+### 3.7 发布层
 
 - `projects/releases.md`
 - 回答：这次发了什么、怎么验证、出了问题怎么回滚
 
-### 3.7 事故层
+### 3.8 事故层
 
 - `projects/incidents/README.md`
 - 回答：当前事故总览、整体状态、索引和共性改进项
 - 每一个具体事故单独成文，放在 `projects/incidents/` 目录下
 
-### 3.8 项目记忆层
+### 3.9 项目记忆层
 
 - `projects/memory/README.md`
 - `projects/memory/shared.md`
@@ -201,7 +218,7 @@ projects/
 - 回答：这个项目长期有效的背景、路由和稳定事实
 - 这里放的是项目级记忆，不是全局规则，也不是项目拍板
 
-### 3.9 共享规则层
+### 3.10 共享规则层
 
 - [[POLICY]]
 - 回答：什么可以自动沉淀、什么必须人工确认、优先级怎么排
@@ -222,6 +239,7 @@ projects/
 - 设计页依赖需求，并向下驱动实现
 - 决策页依赖需求和设计，记录关键判断
 - 开发页依赖设计和决策，记录实际推进过程
+- 会议页横向连接需求、设计、决策、开发和记忆，承接正式会议材料和会后分流
 - 发布页依赖设计、决策和验证结果
 - 事故目录依赖发布记录、开发记录和证据
 

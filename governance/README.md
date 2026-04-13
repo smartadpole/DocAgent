@@ -4,7 +4,7 @@ id: ENTRY-GOV-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-13
 tags: [entry, governance]
 ---
 
@@ -20,6 +20,7 @@ tags: [entry, governance]
 - [[BRAIN]]：共享背景。回答“哪些已确认前提要自动带入后续工作”
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
+- 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
 ## 逻辑结构
 

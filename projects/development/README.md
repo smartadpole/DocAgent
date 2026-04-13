@@ -3,7 +3,7 @@ type: development
 id: DEV-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-10
+updated: 2026-04-13
 tags: [development]
 ---
 
@@ -18,6 +18,7 @@ tags: [development]
 
 - [[projects/development/feature-points/README]]
 - [[projects/development/worklog]]
+- [[projects/meetings/README]]
 
 ## 这页负责什么
 
@@ -39,6 +40,7 @@ tags: [development]
 - 这页只保留整体推进状态、阻塞和下一步
 - 具体功能点的 `status`、`phase` 和正文都只改对应实体页，不在这里重复维护
 - 过程流水写到 [[projects/development/worklog]]
+- 正式会议纪要和行动项写到 [[projects/meetings/worklog]]
 - 需求为什么这样收敛、哪些修补属于实现纠偏，优先回看 [[projects/trace]]
 - 关键取舍写到 [[projects/decisions]]
 - 可复用结论写到 [[projects/memory/README]] 或知识库层
