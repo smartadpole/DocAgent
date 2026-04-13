@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-12
+updated: 2026-04-13
 tags: [trace, project]
 ---
 
@@ -61,6 +61,8 @@ tags: [trace, project]
   - [[WORKFLOW]]
   - [[projects/README]]
   - [[projects/STRUCTURE]]
+  - [[projects/meetings/README]]
+  - [[projects/meetings/worklog]]
   - [[projects/requirements]]
   - [[projects/design/README]]
   - [[projects/decisions]]
@@ -77,3 +79,15 @@ tags: [trace, project]
 - **当前实现口径**：
   - 新主题先在需求、设计和决策页形成最小可执行内容，再把原始意图、关键变化和最终范围串回这页。
   - 后续每轮进入项目推进的对话，都应判断是否需要续写已有 trace 主题，而不是只补 `[[log]]`。
+
+#### 2026-04-13
+
+- **记录人**：sunhao
+- **角色**：agent
+- **本轮变化**：
+  - **主收敛**：把正式会议材料从开发 worklog 里拆出到 `projects/meetings/`，避免会议纪要和实现流水混写。
+  - **主补充**：把会议组织规则、会前材料、会后分流和记录模板补进治理层和项目入口。
+- **当前实现口径**：
+  - 正式会议默认走 `projects/meetings/README.md` 和 `projects/meetings/worklog.md`。
+  - 如果会议结果已经稳定成拍板、需求变化或实现动作，再分别回写到 `projects/decisions.md`、`projects/trace.md` 或 `projects/development/worklog.md`。
+  - `projects/development/worklog.md` 继续只承接开发过程中的排障、联调、验证和临时同步。

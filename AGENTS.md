@@ -19,10 +19,11 @@
 - `raw/`：原始资料层。优先保持原样，少改动。
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
-- `projects/`：活跃研发项目层。需求、设计、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
+- `projects/`：活跃研发项目层。需求、设计、会议、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
 - `projects/trace.md`：需求演进链层。记录原始意图、约束变化、修补性需求、关键取舍和最终实现口径之间的串联。
+- `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
-- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
+- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/meetings/README.md` 偏会议协作视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
 - `concepts/`：概念和实体层。工具、项目、术语都放这里。
 - `indexes/`：导航层。只负责入口、分类和检索。
@@ -119,7 +120,7 @@
 - 这里的“上下文”，不是当前文件附近几段话，而是为了正确更新目标内容，必须一起判断的最小相关信息集合。
 - 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、知识沉淀层、导航层、历史层。
 - 证据层是 `raw/`、`inbox/`、`assets/`，回答“信息从哪里来”。
-- 项目运行层是 `projects/README.md` 加上需求、设计、决策、记忆、开发、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了”。
+- 项目运行层是 `projects/README.md` 加上需求、设计、会议、决策、记忆、开发、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了”。
 - 其中 `projects/trace.md` 专门回答“这轮需求是怎样收敛到当前实现口径的”，它属于项目运行层，不属于历史层或规则层。
 - 知识沉淀层是 `articles/`、`concepts/`、`indexes/`，回答“哪些结论已经稳定、哪些概念可以复用、入口如何组织”。
 - 历史层是 `archive/` 和 `log.md`，回答“那次对话在解决什么主题、怎么演进、哪些内容已退役、这次结构调整从何时开始生效”。
@@ -131,6 +132,7 @@
 - `projects/README.md` 是项目运行层主入口，连接项目层其他主页面。
 - 需求页上连项目主页，下连设计页和决策页，外连相关 `raw/` 来源。
 - `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链。
+- `projects/meetings/README.md` 上连项目主页、需求页、设计页、决策页和开发页，横向连接正式会议记录、行动项和会后分流。
 - 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出架构页、数据库页等子页，它们仍然属于同一个设计层。
 - 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页、记忆页或事故目录。
 - 记忆页连接项目主页、决策、设计和运行记录，是稳定背景，不是过程日志。
@@ -144,6 +146,7 @@
 - 默认演进链路是：`raw/inbox -> projects -> articles/concepts/indexes -> archive/log.md`。
 - 新信息先作为来源进入 `raw/` 或 `inbox/`。
 - 当信息开始参与当前项目判断和推进时，进入 `projects/`。
+- 当正式会议材料、会议纪要和行动项开始参与当前项目判断和推进时，优先进入 `projects/meetings/`。
 - 当项目里的某些结论已经脱离当前阶段、可以跨阶段或跨问题复用时，提升到 `articles/` 或 `concepts/`。
 - 当一个主题需要长期导航、分类和检索时，再由 `indexes/` 收口。
 - 当页面不再承担当前入口职责但仍有历史价值时，转入 `archive/`，同时在 `log.md` 留痕。
@@ -165,7 +168,8 @@
 - 默认把 [[BRAIN]] 当作共享背景读取入口之一，不要跳过。
 - 如果目标涉及规则、优先级或自动沉淀边界，再读 [[POLICY]]。
 - 如果目标涉及项目级稳定记忆，再读 `projects/memory/README.md`。
-- 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、决策、记忆、开发页面。
+- 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、会议、决策、记忆、开发页面。
+- 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
@@ -191,6 +195,7 @@
 - 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
+- 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
 - 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
@@ -208,7 +213,7 @@
 - 新建目录前先确认是不是已有目录的子集。
 - 新建目录后先补 `README.md`；模板和索引按需补，不要为了完整性先铺满。
 - 模板正文只允许维护在对应的 `templates/` 页面；其他页面只做入口说明、使用约束和跳转，不重复粘贴第二份模板正文。
-- 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/` 这类天然按条目累积的模块默认保留目录。
+- 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/`、`meetings/` 这类天然按条目累积的模块默认保留目录。
 - 新建文件先确认它属于 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`。
 - 如果是支持性附件，优先放 `assets/`；如果是退役页面，优先放 `archive/`。
 - 如果是活跃研发项目的文档，优先放 `projects/`。

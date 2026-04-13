@@ -10,6 +10,8 @@
 - 记录联调过程
 - 记录验证过程
 - 记录阶段性问题和解决动作
+- 记录开发过程里的讨论和临时同步
+- 不承接正式会议纪要；正式会议优先写到 [[projects/meetings/worklog]]
 
 ## 当前内容
 
@@ -45,4 +47,5 @@
 
 - 功能点实体页看 [[projects/development/feature-points/README]]
 - 过程记录里如果提到某个功能点，优先链接到对应实体页
+- 如果这条开发记录来源于正式会议，回看 [[projects/meetings/worklog]]
 - 如果某次实现改变了范围、口径或修补边界，记得同步回写 [[projects/trace]]

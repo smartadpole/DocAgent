@@ -5,7 +5,7 @@ project: PROJ-WIKI-001
 status: active
 stage: design
 source_of_truth: true
-updated: 2026-04-10
+updated: 2026-04-13
 next_action: slim-development-manager-view
 current_entry: projects/README.md
 blockers:
@@ -23,7 +23,7 @@ tags: [status]
 
 ## 下一步
 
-- 把项目主页、开发主入口和功能点实体目录的职责分层进一步收口
+- 把项目主页、开发主入口、会议主入口和功能点实体目录的职责分层进一步收口
 - 继续把高频页面的链接和字段收敛成机器可读格式
 - 如果某个结论已经稳定，再回写到 [[projects/memory/README]] 或知识库层
 
@@ -33,6 +33,7 @@ tags: [status]
 - 整体推进看 [[projects/development/README]]
 - 实体模板和活跃实体清单看 [[projects/development/feature-points/README]]
 - 过程流水看 [[projects/development/worklog]]
+- 正式会议看 [[projects/meetings/worklog]]
 - 功能点用 `status` + `phase` 双轴管理
 - `status` 看生命周期：`planned`、`active`、`blocked`、`done`、`released`、`archived`
 - `phase` 看串联步骤：`design`、`implementation`、`verification`、`release`

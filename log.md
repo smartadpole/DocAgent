@@ -8,6 +8,20 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-13
+### 对话：把正式会议从开发 worklog 拆出到专门会议入口
+
+- **记录人**：sunhao
+- **用户意图**：项目管理期间会议会很多，希望把正式会议材料、会议纪要和行动项单独收口，不再和开发过程流水混在一起，同时把会议管理的规则和流程沉淀成稳定入口。
+- **主题**：
+  1. 把正式会议从开发 worklog 中拆出独立层。
+  2. 给会议材料、纪要、行动项和会后分流建立固定入口。
+  3. 把会议组织规则和流程写进治理层与项目层。
+- **关键动作**：
+  1. **主新增**：创建 [[projects/meetings/README]] 和 [[projects/meetings/worklog]]，把正式会议入口、记录模板和时间线记录单独收口。
+  2. **主同步**：更新 [[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/status]]、[[projects/memory/README]]、[[INDEX]] 和 [[README]]，让项目主入口、结构页和常用入口都能直接找到会议层。
+  3. **主治理**：在 [[governance/WORKFLOW]] 和 [[AGENTS]] 里补上会议材料的收集、记录、分流和阅读顺序，并用 [[projects/decisions]]、[[projects/trace]] 记录这次结构拆分。
+- **影响页面**：[[projects/meetings/README]]、[[projects/meetings/worklog]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/status]]、[[projects/memory/README]]、[[governance/README]]、[[governance/WORKFLOW]]、[[AGENTS]]、[[projects/decisions]]、[[projects/trace]]、[[INDEX]]、[[README]]、[[log]]。
+
 ### 对话：把 Obsidian 的依赖说明写清楚
 
 - **记录人**：sunhao
