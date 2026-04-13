@@ -7,6 +7,7 @@
 如果会议很多，就让这页专门承接“会议发生了什么、结论是什么、要分流到哪”。
 如果只是开发过程里的临时讨论，优先写到 [[projects/development/worklog]]。
 默认按时间倒序维护，新的会议记录放前面。
+模板可先复制 [[templates/meeting-entry-template]]。
 
 ## 这页负责什么
 
@@ -35,6 +36,8 @@
 - 分流：
 - 关联链接：
 ```
+
+也可以直接从 [[templates/meeting-entry-template]] 开始填。
 
 ## 记录方式
 

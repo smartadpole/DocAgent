@@ -8,6 +8,18 @@
 - 默认模板见 [[templates/log-entry-template]]。
 
 ## 2026-04-13
+### 对话：把会议记录骨架提炼成可复用模板页
+
+- **记录人**：sunhao
+- **用户意图**：在已经拆出会议主入口和会议记录页之后，希望把单场会议的记录骨架再提炼成模板页，后续新增正式会议时可以直接复制使用。
+- **主题**：
+  1. 把会议记录骨架抽成模板。
+  2. 让会议记录入口和模板互相可达。
+- **关键动作**：
+  1. **主新增**：新增 [[templates/meeting-entry-template]]，把正式会议记录的字段骨架、分流口径和使用说明沉淀成可复制模板。
+  2. **主联通**：更新 [[templates/README]]、[[projects/meetings/worklog]] 和 [[governance/WORKFLOW]]，让模板从模板入口、会议记录页和治理流程里都能直接找到。
+- **影响页面**：[[templates/meeting-entry-template]]、[[templates/README]]、[[projects/meetings/worklog]]、[[governance/WORKFLOW]]、[[log]]。
+
 ### 对话：把正式会议从开发 worklog 拆出到专门会议入口
 
 - **记录人**：sunhao

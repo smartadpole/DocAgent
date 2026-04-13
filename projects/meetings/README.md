@@ -40,11 +40,12 @@ tags: [meetings, project]
    - 需求变化和范围收敛进 [[projects/trace]]
    - 开发动作和验证进 [[projects/development/worklog]]
    - 稳定背景进 [[projects/memory/README]]
-4. 如果某类会议开始反复出现，再把固定字段继续收紧成模板或索引。
+4. 如果某类会议开始反复出现，再把固定字段继续收紧成 [[templates/meeting-entry-template]] 或索引。
 
 ## 当前子页
 
 - [[projects/meetings/worklog]]：按时间顺序记录正式会议
+- [[templates/meeting-entry-template]]：正式会议记录模板
 
 ## 规则来源
 
