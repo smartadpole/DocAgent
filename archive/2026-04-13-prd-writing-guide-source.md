@@ -1,6 +1,6 @@
 # PRD 指导
 
-这是一份面向新手的 PRD 写作源稿。沉淀版见 [[concepts/prd-writing]]，摘要卡见 [[articles/2026-04-13-prd-writing-guide]]。
+这是一份面向新手的 PRD 写作历史草稿。沉淀版见 [[concepts/prd-writing]]，摘要卡见 [[articles/2026-04-13-prd-writing-guide]]。
 
 ## 1. PRD 到底是什么
 
@@ -498,5 +498,3 @@ PRD 不是写给自己看的，是给团队协作用的。
 **背景 → 用户场景 → 目标 → 范围 → 功能 → 规则 → 验收**
 
 把这条链路写顺了，PRD 自然会越来越专业。
-
-如果你愿意，下一步可以直接拿一个真实小需求，按这套方法拆成可执行 PRD。
