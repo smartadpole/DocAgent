@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-13
 tags: [entry, root]
 ---
 
@@ -68,7 +68,7 @@ tags: [entry, root]
 
 ## 这组工具怎么配合
 
-- `Obsidian` 用来浏览、编辑和串联笔记。
+- `Obsidian` 是这套库的原生阅读 / 编辑工具，用来浏览、编辑和串联笔记；不用 `Obsidian` 时，`[[wikilink]]` 导航和双向链接不会完整生效。
 - `Codex CLI` 用来读取、改写、批量生成 Markdown。
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
@@ -151,7 +151,7 @@ tags: [entry, root]
 
 ## 打开方式
 
-- 直接用 Obsidian 打开当前文档库
+- 优先用 `Obsidian` 打开当前文档库；如果只用普通 Markdown 阅读器，可以看正文，但不会完整解析 `[[wikilink]]`。
 - 在文档库里直接打开 `INDEX.md`
 
 ## 更新原则
