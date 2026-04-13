@@ -10,7 +10,7 @@ tags: [index, root]
 
 # 知识库入口
 
-这是一套给 Obsidian + Codex 用的文档系统。
+这是一套给 Obsidian + Codex 用的文档系统，内部链接默认依赖 Obsidian 的 `[[wikilink]]` 解析。
 
 如果你不知道先看什么，按这个顺序：
 
