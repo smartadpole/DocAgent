@@ -7,7 +7,7 @@ stage: design
 next_action: define-policy-and-memory-routing
 owner: team
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-13
 tags: [project]
 ---
 
@@ -69,6 +69,7 @@ tags: [project]
 - [[projects/status]]：项目状态页。这里放当前阶段、活跃功能点双轴状态镜像和当前主入口。
 - [[projects/STRUCTURE]]：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
 - [[projects/requirements]]：需求主文件。这里放问题定义、范围、非目标和验收标准。
+- [[concepts/prd-writing]]：PRD 写作方法入口。这里把需求草稿收成问题、目标、范围、规则和验收，再交给需求页和设计页。
 - [[projects/trace]]：需求演进链主文件。这里放原始意图、约束变化、修补性需求和最终实现口径之间的串联。
 - [[projects/design/README]]：设计主入口。这里放设计总览，并链接架构和数据库子页。
 - [[projects/design/memory/README]]：记忆研究层入口。这里放研究稿、工具调研和运行层设计草稿。

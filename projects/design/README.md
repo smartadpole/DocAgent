@@ -4,7 +4,7 @@ id: DES-001
 project: PROJ-WIKI-001
 status: active
 stage: design
-updated: 2026-04-10
+updated: 2026-04-13
 tags: [design]
 ---
 
@@ -29,9 +29,12 @@ tags: [design]
 - 说明整体方案
 - 说明模块划分
 - 说明接口和数据流
+- 说明如何把已经收敛的 PRD / 需求翻成可实现方案
 - 说明设计总览，并链接技术选型、架构和数据库子页
 - 说明 memory 路由和 policy 接线应该如何落到项目结构里
 - 承接需求演进链当前生效的范围和约束，把它落成可实现方案
+
+相关方法：[[concepts/prd-writing]]
 
 ## 当前内容
 
@@ -48,6 +51,7 @@ tags: [design]
 
 ## 维护说明
 
+- 如果输入是一份 PRD，先按 [[concepts/prd-writing]] 收成问题、目标、范围、规则和验收，再落到这里
 - 如果某一块设计长成了独立主题，再从这个主入口往下拆子页
 - 如果设计改变了当前实现口径、范围边界或修补结论，记得同步回写 [[projects/trace]]
 - 如果设计判断会影响项目记忆或规则边界，先同步 [[projects/memory/README]] 和 [[POLICY]]

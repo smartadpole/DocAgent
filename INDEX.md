@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-13
 tags: [index, root]
 ---
 
@@ -43,6 +43,11 @@ tags: [index, root]
 - [[concepts/document-os]]：文档操作系统概念定义
 - [[articles/2026-04-09-layered-memory-research]]：分层 memory 研究
 - [[concepts/layered-memory]]：分层 memory 概念定义
+
+## 产品写作
+
+- [[concepts/prd-writing]]：PRD 写作方法
+- [[articles/2026-04-13-prd-writing-guide]]：PRD 写作指南摘要卡片
 
 ## 层级
 

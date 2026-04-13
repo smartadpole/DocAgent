@@ -7,6 +7,20 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-04-13
+### 对话：把 PRD 指导重排成可复用的方法入口，并接入项目需求和设计流程
+
+- **用户意图**：把新增加的 PRD 指导从一篇偏长的原始材料整理成可复用的方法入口，让它不只“能看”，还要能反向指导项目层的需求、设计和开发。
+- **主题**：
+  1. 重排 PRD 原始稿并去重。
+  2. 抽出 PRD 写作方法页和摘要卡片。
+  3. 把 PRD 方法接到项目需求、设计和 workflow。
+- **关键动作**：
+  1. **主整理**：重写 [[raw/PRD 指导]]，按定义、常见误区、标准结构、思考顺序、专业细节、模板、自检和落库路径重新组织，删掉原稿里重复铺陈和来回兜圈的部分。
+  2. **主沉淀**：新增 [[concepts/prd-writing]] 和 [[articles/2026-04-13-prd-writing-guide]]，把 PRD 写作方法沉淀成稳定概念页和摘要卡片。
+  3. **主接线**：在 [[projects/README]]、[[projects/requirements]]、[[projects/design/README]]、[[WORKFLOW]] 和 [[INDEX]] 中补上 PRD 方法入口与项目落点，让需求页和设计页可以直接引用。
+- **影响页面**：[[raw/PRD 指导]]、[[concepts/prd-writing]]、[[articles/2026-04-13-prd-writing-guide]]、[[projects/README]]、[[projects/requirements]]、[[projects/design/README]]、[[WORKFLOW]]、[[INDEX]]、[[concepts/README]]、[[log]]。
+
 ## 2026-04-12
 ### 对话：继续把项目层和治理页的旧口径收口到新治理结构
 
