@@ -25,6 +25,12 @@ tags: [meetings, project]
 - 统一会议相关的最小规则和流程入口
 - 默认一场会不单独生成一个文件，而是在 [[projects/meetings/worklog]] 里写成一条记录；只有特别大的会议才再单独拆页
 
+## 会前共享
+
+- 如果明天这场会要发给对方提前看，优先单独开一页可分享的会前材料 / 议程页，把目标、待确认问题、背景和材料链接写清
+- [[projects/meetings/worklog]] 主要负责会后归档和时间线，不建议把对外预读材料只埋在长时间线里
+- 会后如果形成结论，再把结果回写到 [[projects/meetings/worklog]]、[[projects/decisions]]、[[projects/trace]] 或 [[projects/development/worklog]]
+
 ## 这页不负责什么
 
 - 不放原始录音、截图和外部附件本体，那些优先进 `raw/` 或 `assets/`
