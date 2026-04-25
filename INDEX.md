@@ -37,7 +37,7 @@ tags: [index, root]
 - [[projects/trace]]：需求演进链入口
 - [[projects/meetings/README]]：项目正式会议入口
 - [[trace-writing-rules]]：`[[projects/trace]]` 的记录规则入口
-- [[template-feedback-rules]]：下游项目结构、流程、规则和模板反哺入口
+- [[template-feedback-rules]]：下游项目系统层信息反哺入口
 
 ## 设计思路
 
@@ -53,7 +53,7 @@ tags: [index, root]
 
 ## 模板治理
 
-- [[template-feedback-rules]]：其他项目进化出的系统能力如何反哺模板库
+- [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库
 
 ## 项目接手与代码基线
 
