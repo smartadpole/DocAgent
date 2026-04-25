@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-04-13
+updated: 2026-04-25
 ---
 
 # 项目层结构
@@ -21,6 +21,7 @@ updated: 2026-04-13
 - 一个文档库只服务一个项目，所以 `projects/` 本身就是这个项目的运行层。
 - 项目层只放当前项目直接相关的需求、设计、会议、决策、过程、记忆和发布信息。
 - 可复用知识最终回写到 `articles/`、`concepts/`、`indexes/`，不要长期堆在项目层。
+- 需求、trace、设计和决策共同定义主工程口径；[[projects/codebase/README]] 只负责现实实现审计、冲突收口和复用边界，不反向定义主工程。
 - 单一信息源优先：同一类信息只保留一个主文件，其他页面链接它，不重复抄写。
 - [[BRAIN]]、[[POLICY]] 和 `projects/memory/` 是显式分层，不再混成一页正文。
 - 先有目录和职责，再决定是否需要模板。
@@ -38,13 +39,27 @@ projects/
   README.md
   STRUCTURE.md
   status.md
+  codebase/
+    README.md
+    page-map.md
+    schema-map.md
+    infra.md
+    conflicts.md
+    reuse-boundary.md
   requirements.md
   trace.md
   design/
     README.md
     tech-selection.md
     architecture.md
+    backend-frontend-structure.md
+    permission-boundary.md
+    write-boundary.md
     database.md
+    deployment.md
+    runtime-quality.md
+    topics/
+      README.md
     memory/
       README.md
       tools.md
@@ -81,7 +96,7 @@ projects/
 
 - 极简项目：只保留 [[projects/README]]
 - 小项目：优先平铺单文件；只有明显会长成多文件模块时再建子目录
-- 复杂项目：再细分到 `architecture.md`、`database.md`、`worklog.md`、`shared.md` 等子页
+- 复杂项目：再细分到 `architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md`、`worklog.md`、`shared.md` 等子页
 
 ## 3. 文件职责
 
@@ -96,6 +111,18 @@ projects/
 - `projects/status.md`
 - 回答：当前状态、当前阶段、下一步、阻塞项、功能点双轴状态镜像和当前主入口
 - 这是项目主页的状态镜像页，适合后续自动化读取
+
+### 3.1.2 代码基线分析入口
+
+- `projects/codebase/README.md`
+- 回答：当前现实实现或既有工程是什么、页面怎么分、schema 怎么对、基础设施怎么跑、哪里有冲突、哪些能复用
+- 这是现实实现审计与复用边界的主入口，但它不是项目主工程入口
+- 子页：
+  - `projects/codebase/page-map.md`
+  - `projects/codebase/schema-map.md`
+  - `projects/codebase/infra.md`
+  - `projects/codebase/conflicts.md`
+  - `projects/codebase/reuse-boundary.md`
 
 ### 3.2 需求层
 
@@ -117,7 +144,10 @@ projects/
 - `projects/design/README.md` 是设计主入口
 - 它回答：整体方案是什么、涉及哪些模块、怎样实现
 - 这里先放设计总览：模块划分、接口、数据流、依赖、主要风险，以及指向技术选型、架构、数据库等子页的入口
+- `projects/design/topics/README.md` 是设计专题目录
+- 重要但尚未拍板、或当前不进入完整架构包的专项设计，优先挂到 `topics/`
 - 如果设计会影响记忆路由或规则接线，也要在这里留入口
+- 如果会议涉及未定设计问题，会议页只引用这里的专题，不在会议层重复承载主正文
 
 如果某一块设计继续长大，再从这个主入口往下拆子页：
 
@@ -127,9 +157,27 @@ projects/
 - `projects/design/architecture.md`
   这是架构子页，不是第二份设计
   适合放系统架构、模块关系、接口边界、调用链
+- `projects/design/backend-frontend-structure.md`
+  这是工程结构子页
+  适合放前后端模块拆分、目录边界、接口约定和代码落点
+- `projects/design/permission-boundary.md`
+  这是权限专题页
+  适合放权限真相源、业务后端和前端守卫的职责分层、数据可见性矩阵、权限风险与校验边界
+- `projects/design/write-boundary.md`
+  这是写操作边界专题页
+  适合放平台层轻量写白名单、必须进入业务后端的红线、页面动作映射、codebase 风险与改造优先级
 - `projects/design/database.md`
   这是数据库子页，也属于设计层
   适合放表结构、字段约束、索引、迁移策略、读写路径
+- `projects/design/deployment.md`
+  这是部署子页
+  适合放环境、运行拓扑、上传链路、发布和回滚
+- `projects/design/runtime-quality.md`
+  这是运行质量子页
+  适合放监控、告警、幂等、重试、补偿、限流和稳定性口径
+- `projects/design/topics/README.md`
+  这是设计专题入口
+  适合放未拍板但需要持续推进的设计专题，以及当前不进入完整架构包、但要长期保留的专项储备
 - `projects/design/memory/README.md`
   这是记忆研究层入口
   适合放分层方案讨论、工具调研和运行层设计草稿
@@ -142,6 +190,12 @@ projects/
 - `projects/decisions.md`
 - 回答：为什么选这个方案、不选另一个、当时约束是什么
 - 适合放关键取舍和 ADR 风格记录
+- 默认单页结构：顶部 `当前生效决策摘要`，中段 `正式决策记录`，底部 `已覆盖 / 历史决策`
+- 顶部摘要默认用数字编号条目写成“主题：决策。影响：摘要”，`主题` 直接链接到同页正式条目的标题
+- 正式决策记录和历史决策记录默认直接使用稳定的一句话标题，不额外加正文编号
+- 摘要区的 `影响` 只写影响摘要，不罗列影响文件清单
+- 新决策默认骨架：`**背景**`、`**要决策什么**`、`**可选项**`、`**最终决策**`、`**影响**`、`**各自优劣**`、`**风险点**`
+- 如果使用“标签：内容”展开式，冒号前标签统一加粗；`**最终决策**` 和 `**影响**` 放在比较和风险之前
 
 ### 3.5 开发层
 
@@ -198,6 +252,7 @@ projects/
   这是正式会议的时间线记录页
   适合放按时间顺序整理的会议纪要、行动项和回看链接
 - 会议层负责把正式会议里的拍板送到 [[projects/decisions]]，把需求变化送到 [[projects/trace]]，把实现动作送到 [[projects/development/worklog]]
+- 如果某个待确认问题本身已是未决设计专题，会议层只引用 [[projects/design/topics/README]] 下的专题页，不重复维护主正文
 
 ### 3.7 发布层
 
@@ -228,11 +283,12 @@ projects/
 
 项目层依赖关系建议固定成这条主链：
 
-`[[projects/README]] -> requirements -> trace -> design -> decisions -> development -> releases -> incidents`
+`[[projects/README]] -> codebase -> requirements -> trace -> design -> decisions -> development -> releases -> incidents`
 
 具体来说：
 
 - 项目主页依赖所有活跃页面的摘要结果
+- `projects/codebase/` 依赖当前代码工程事实、迁移、脚本和页面结构，向上提供代码基线结论
 - `projects/status.md` 依赖 `projects/README.md` 和 `projects/development/README.md`，保留当前阶段和功能点双轴状态镜像
 - 需求页向下驱动设计和决策
 - trace 页把需求、设计、决策和开发串成同一条演进链
@@ -254,6 +310,19 @@ projects/
 - 如果数据库只是局部实现细节，放在 `design/README.md`
 - 如果数据库已经成为独立主题，再拆成 `design/database.md`
 
+完整软件架构包默认由下面几页组成：
+
+- [[projects/design/tech-selection]]
+- [[projects/design/architecture]]
+- [[projects/design/backend-frontend-structure]]
+- [[projects/design/permission-boundary]]
+- [[projects/design/write-boundary]]
+- [[projects/design/database]]
+- [[projects/design/deployment]]
+- [[projects/design/runtime-quality]]
+
+如果某个主题已经明确后置、但已有长期保留价值的详细方案，可以另挂设计储备页；这类页面不自动进入当前完整架构包和默认查看顺序。
+
 ## 5. 默认读取顺序
 
 ### 5.1 做一个新功能时
@@ -263,9 +332,14 @@ projects/
 3. 再读 [[projects/requirements]]
 4. 再读 [[projects/trace]]
 5. 再读 [[projects/design/README]]
-6. 有关键取舍时再读 [[projects/decisions]]
-7. 如果涉及记忆或规则，再读 [[projects/memory/README]] 和 [[POLICY]]
-8. 实施复杂时再读 [[projects/development/worklog]]
+6. 再读 [[projects/design/tech-selection]] 和 [[projects/design/architecture]]
+7. 涉及代码落点时再读 [[projects/design/backend-frontend-structure]] 和 [[projects/design/permission-boundary]]
+8. 涉及写动作收口时再读 [[projects/design/write-boundary]]
+9. 涉及状态、字段和迁移时再读 [[projects/design/database]]
+10. 涉及运行、发布和稳定性时再读 [[projects/design/deployment]] 和 [[projects/design/runtime-quality]]
+11. 有关键取舍时再读 [[projects/decisions]]
+12. 如果涉及记忆或规则，再读 [[projects/memory/README]] 和 [[POLICY]]
+13. 实施复杂时再读 [[projects/development/worklog]]
 
 ### 5.2 做记忆 / 规则改动时
 

@@ -15,6 +15,7 @@
 5. 每个中间节点完成后，检查结构、链接、阶段映射和职责是否仍然清楚。
 6. 复杂问题在中间节点完成后就提交；只要这次对话产生了实际内容变更或结构变更，保底在对话结束前提交一次。
 7. 只要这次对话产生了实际内容变更或结构变更，就同步补一条 `[[log]]` 记录；不要因为“还是同一主题”就省略。
+8. 如果这轮是在对一份新方案或新架构稿逐项拍板，拍板后不能只留下决策结论；必须把与该项决策直接相关的原稿信息同步沉淀到 `projects/design/` 的当前主设计页或设计储备页，避免后续重复回读原稿。
 
 如果这次是大量同类材料的连续处理，再先多做一步：
 
@@ -53,6 +54,14 @@
 - 状态、范围、下一步：看 `projects/README.md`
 - 需求边界和验收：看 `projects/requirements.md`
 - 方案、接口、数据流：看 `projects/design/README.md`
+- 未拍板但需要持续推进的设计专题：看 `projects/design/topics/README.md`
+- 业务架构、页面动作、状态机：看 `projects/design/architecture.md`
+- 前后端模块和接口落点：看 `projects/design/backend-frontend-structure.md`
+- 权限真相源和分层：看 `projects/design/permission-boundary.md`
+- 写操作边界和服务端收口规则：看 `projects/design/write-boundary.md`
+- 数据模型和迁移：看 `projects/design/database.md`
+- 环境、发布和回滚：看 `projects/design/deployment.md`
+- 监控、告警、重试和补偿：看 `projects/design/runtime-quality.md`
 - 关键取舍：看 `projects/decisions.md`
 - 项目级稳定记忆：看 `projects/memory/README.md`
 - 治理层总边界：看 [[governance/README]]
@@ -168,7 +177,9 @@
 
 - `projects/README.md`：`requirements.md`、`design/README.md`、`decisions.md`、`development/README.md`、`projects/memory/README.md`、[[POLICY]]
 - `projects/requirements.md`：`projects/README.md`、相关 `raw/`、已有 `projects/design/README.md`、[[projects/trace]]
-- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、[[projects/trace]]、`projects/decisions.md`、`projects/memory/README.md`、[[POLICY]]、相关 `concepts/`
+- `projects/codebase/README.md`：`projects/README.md`、`projects/STRUCTURE.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`
+- `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/topics/README.md`、[[projects/trace]]、`projects/decisions.md`、`projects/memory/README.md`、[[POLICY]]、相关 `concepts/`
+- `projects/design/architecture.md`、`projects/design/backend-frontend-structure.md`、`projects/design/permission-boundary.md`、`projects/design/write-boundary.md`、`projects/design/database.md`、`projects/design/deployment.md`、`projects/design/runtime-quality.md`、`projects/design/topics/*.md`：先读 `projects/design/README.md`，再按主题补读相邻设计子页 / 专题页、`projects/requirements.md`、[[projects/trace]] 和 `projects/decisions.md`
 - [[projects/trace]]：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`、当前相关开发页
 - `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、[[projects/trace]]、`projects/memory/README.md`、[[POLICY]]、相关过程记录
 - `projects/development/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
@@ -185,6 +196,18 @@
 3. 把这些关系同步补进 [[AGENTS]] 的上下文模型、关联关系、最小读取集。
 4. 如果它影响总入口理解，再补 `README.md`。
 5. 在 [[log]] 记录这次结构扩展，并写明对应主题和用户意图。
+
+如果新增的是设计层高频子页，还要再补这一步：
+
+1. 先把它挂到 [[projects/design/README]]。
+2. 再把它补进 [[projects/README]] 和 [[projects/STRUCTURE]]。
+3. 如果它会影响“先看哪、后看哪”的默认顺序，再同步更新 [[README]]、[[INDEX]] 和当前相关流程说明。
+
+如果新增的是“未拍板但需要持续推进”的设计专题，还要再补这一步：
+
+1. 先把它挂到 [[projects/design/topics/README]]，而不是先塞到会议页。
+2. 再在相关会议材料里引用这张专题页，不复制第二份正文。
+3. 如果专题最终拍板并进入主设计，再同步更新 [[projects/design/README]]、[[projects/decisions]] 和 [[projects/trace]]。
 
 也就是说，结构一变，上下文规则就要在同一次变更里一起更新，不后补。
 
@@ -239,6 +262,26 @@
 1. 先改已有规则。
 2. 只有旧规则确实容纳不下，才新增新条目。
 3. 新规则加完后，回看有没有重复段落可以删掉。
+
+## 0.5 模板反哺模式
+
+当用户要求把某个下游项目的文档系统进化反哺回模板库时，按 [[template-feedback-rules]] 执行。
+
+默认顺序：
+
+1. 先确认来源项目和模板库各自的当前状态，不把来源项目的预存脏改动并入模板提交。
+2. 读取来源项目的入口页、结构页、治理页、相关模板和 [[log]]，只抽取系统性变化。
+3. 把候选变化分成三类：保留项目内、反哺模板、暂不处理。
+4. 对反哺项做脱敏和抽象，删掉项目名、业务名、具体数据、具体状态、具体技术拍板和一次性会议内容。
+5. 按路由更新模板：结构进 [[projects/STRUCTURE]] 和入口页，流程进 [[WORKFLOW]]，硬约束进 [[AGENTS]]，规则进 [[POLICY]]，共享背景进 [[BRAIN]]，可复制写法进 `templates/`。
+6. 如果反哺新增模块、目录、入口页或高频文件类型，同轮补齐 README、入口链接、上下游关系、最小读取集和 [[log]]。
+7. 交付前检查没有项目专名泄漏、没有缺失 wikilink、没有复制第二份模板正文。
+
+判断是否可以反哺：
+
+- 去掉项目事实后仍然能跨项目成立，才回模板。
+- 只是下游项目的业务决策、技术选择、会议结论、状态推进或实现结果，留在下游项目。
+- 如果某项变化会改变模板维护方式，必须同步更新 [[template-feedback-rules]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或 [[BRAIN]]。
 
 ## 1. 收集
 
@@ -409,7 +452,7 @@
 
 - 不要为了看起来模块化，就把只有一个 `README.md` 的内容放进子目录。
 - 如果一个模块当前只有一个主文件，优先平铺，例如 `releases.md`。
-- 如果一个模块已经有多个职责明确的文件，就保留目录，例如设计主入口 `design/README.md` 加上它的子页 `design/architecture.md`、`design/database.md`。
+- 如果一个模块已经有多个职责明确的文件，就保留目录，例如设计主入口 `design/README.md` 加上它的子页 `design/architecture.md`、`design/backend-frontend-structure.md`、`design/permission-boundary.md`、`design/write-boundary.md`、`design/database.md`、`design/deployment.md`、`design/runtime-quality.md`。
 - `incidents/` 这类天然会累积多条独立记录的模块，默认保留目录。
 - 现有内容优先保留；先根据内容是否已经长成多文件模块判断，再决定要不要收平。
 
@@ -424,9 +467,14 @@
 3. 再读 `projects/STRUCTURE.md`
 4. 再读 `projects/requirements.md`
 5. 再读 `projects/design/README.md`
-6. 有冲突再读 `projects/decisions.md`
-7. 涉及记忆或规则再读 `projects/memory/README.md` 和 [[POLICY]]
-8. 如果这次主要是会议材料或会议规则，再读 `projects/meetings/README.md` 和 `projects/meetings/worklog.md`
+6. 再读 `projects/design/tech-selection.md` 和 `projects/design/architecture.md`
+7. 涉及代码落点时再读 `projects/design/backend-frontend-structure.md` 和 `projects/design/permission-boundary.md`
+8. 涉及写动作收口时再读 `projects/design/write-boundary.md`
+9. 涉及状态、字段和迁移时再读 `projects/design/database.md`
+10. 涉及部署、发布、回滚、监控或补偿时，再读 `projects/design/deployment.md` 和 `projects/design/runtime-quality.md`
+11. 有冲突再读 `projects/decisions.md`
+12. 涉及记忆或规则再读 `projects/memory/README.md` 和 [[POLICY]]
+13. 如果这次主要是会议材料或会议规则，再读 `projects/meetings/README.md` 和 `projects/meetings/worklog.md`
 
 ### 1.9.2 项目主页怎么用
 
@@ -452,7 +500,14 @@
 ### 1.9.5 设计到决策
 
 - 设计里出现多个可选方案时，把比较结果写到决策页。
-- 决策页只保留结论、原因和当时约束。
+- 决策页默认保持单页主入口，不为每条决策先拆详情目录；优先在同一页里通过“当前生效决策摘要 -> 正式决策记录 -> 已覆盖 / 历史决策”三层结构来解决扫读和回看问题。
+- 顶部摘要默认用数字编号条目，写成“`主题`：`决策`。`影响`：`影响摘要`”这种短句。
+- `主题` 可以直接挂页内跳转，默认直接链接到同页正式条目的标题，不再引入复杂 block id。
+- 摘要区的 `决策` 和 `影响` 都只写一句摘要，不展开成长段，也不在摘要区罗列影响文件清单。
+- `正式决策记录` 和 `已覆盖 / 历史决策` 里的决策标题默认保持简洁稳定，不额外加正文编号。
+- 决策页默认按这组顺序写：`**背景**`、`**要决策什么**`、`**可选项**`、`**最终决策**`、`**影响**`、`**各自优劣**`、`**风险点**`。
+- `**最终决策**` 和 `**影响**` 必须放在 `**各自优劣**`、`**风险点**` 之前，先让读者看到拍板结果和它影响什么，再看比较过程和风险。
+- 决策记录要把背景、待拍板问题、候选方案、各自优劣和风险点写完整，不要只留下结论，也不要把整页写成第二份设计正文。
 - 设计页保留方案总览，不重复写所有争论细节。
 
 ### 1.9.6 决策到开发
@@ -460,6 +515,98 @@
 - 开发页记录实际推进。
 - 如果开发过程中发现决策不成立，先回到决策页，不要在开发页里悄悄改口径。
 - 开发页如果发现稳定背景有变化，回写 `projects/memory/`。
+
+### 1.9.6.1 完整架构包到研发拆解
+
+当完整架构包已经成型，而下一步要进入实现拆解时，默认按这条链推进：
+
+`完整架构包 -> 功能点 -> 接口 / 数据变更 -> 验证项 -> 发布项`
+
+先后顺序不要反过来。不要一上来直接写功能点实现卡，也不要跳过验证和发布回填。
+
+#### 第一步：先读完整架构包
+
+1. 先看 `projects/design/README.md`，确认当前完整架构包是否已经收口。
+2. 再按顺序读：
+   - `projects/design/tech-selection.md`
+   - `projects/design/architecture.md`
+   - `projects/design/backend-frontend-structure.md`
+   - `projects/design/permission-boundary.md`
+   - `projects/design/write-boundary.md`
+   - `projects/design/database.md`
+   - `projects/design/deployment.md`
+   - `projects/design/runtime-quality.md`
+3. 读完后先回答 5 个问题：
+   - 这轮要落的主链路是哪一段
+   - 这段链路对应哪些页面 / 角色 / 动作
+   - 涉及哪些 API / 服务端动作
+   - 涉及哪些表、字段、状态机或迁移
+   - 涉及哪些验证、发布、回滚或补偿约束
+
+如果这 5 个问题还答不清，就先回设计层补齐，不进入研发拆解。
+
+#### 第二步：从架构包拆成功能点
+
+1. 先按业务闭环拆，不按技术文件拆。
+2. 一个功能点至少要能回答：
+   - 它属于哪个模块
+   - 它完成的是哪一段用户动作或运营动作
+   - 它的验收口径是什么
+   - 它依赖哪几个设计页和决策页
+3. 功能点粒度要满足“单独推进、单独验证、单独记录结果”。
+4. 如果一个条目同时跨太多页面、接口、状态和角色，就继续往下拆。
+5. 如果一个条目只是很小的实现细节，不足以独立验收，就并回所属功能点，不单开卡。
+
+拆完后，把功能点写进 `projects/development/feature-points/`，并让 `projects/development/README.md` 只保留活跃入口和整体推进状态。
+
+#### 第三步：为每个功能点补接口 / 数据变更
+
+每个功能点至少补齐这 4 件事：
+
+1. 相关页面或入口动作
+2. 相关 API / 服务端动作
+3. 相关数据表、字段、状态机或迁移
+4. 相关部署、运行质量或补偿约束
+
+如果某个功能点需要新增接口、迁移或运行约束，而设计页还没有对应口径，先回设计页补，不直接在功能点页发明第二套方案。
+
+#### 第四步：为每个功能点补验证项
+
+验证项不要等到发布前再补。功能点拆出来时就一起写。
+
+最少覆盖：
+
+1. 主链路成功路径
+2. 关键状态迁移
+3. 权限和角色边界
+4. 失败路径或异常路径
+5. 如果涉及上传、异步、补偿或回滚，再补运行侧验证
+
+#### 第五步：为每个功能点补发布项
+
+不是所有功能点都立即进入发布，但每个功能点都要提前判断发布影响。
+
+至少回答：
+
+1. 是否涉及数据库迁移
+2. 是否涉及配置变更
+3. 是否涉及上传 / 下载链路变更
+4. 是否需要补监控、告警或补偿任务
+5. 上线后如果失败，最小回滚动作是什么
+
+当一组功能点准备上线时，再把这些内容汇总到 `projects/releases.md`，不要等发布时重新从头猜。
+
+#### 第六步：同步回写
+
+默认同步关系：
+
+- 功能点目录和实体页：`projects/development/feature-points/`
+- 整体推进状态：`projects/development/README.md`
+- 过程流水：`projects/development/worklog.md`
+- 实现口径变化：`projects/trace.md`
+- 新取舍或冲突：`projects/decisions.md`
+- 稳定背景：`projects/memory/README.md`
+- 发布结论：`projects/releases.md`
 
 ### 1.9.7 开发到发布
 
@@ -529,12 +676,23 @@
 - 正式会议优先有一个明确的会议标题、目标和结论记录，不把逐字转录当主正文。
 - 会前材料和议程先收在 `inbox/` 或 `raw/`，确认是项目内材料后，归入 `projects/meetings/` 所辖的会议入口。
 - 如果会前需要发给对方提前看，就先单独做一页可分享的会前材料 / 议程页；`projects/meetings/worklog.md` 主要承担会后归档和时间线，不作为对外预读的唯一入口。
+- 如果某场会已经有独立会前材料页，这张页就是会前信息的单一信息源；`projects/meetings/worklog.md` 不再重复维护讨论方式、会议节奏、完整议题、会前材料清单和预期结果，只保留链接、会后结论、待办和分流。
+- 如果同一场会同时在独立会议页和 `projects/meetings/worklog.md` 出现了大段重复正文，优先保留独立会议页里的会前内容，并在同一轮把 `worklog` 收平；不要接受“两边都保留完整信息，之后再慢慢整理”的中间态。
 - 会中只记结论、待办、风险、owner 和需要继续确认的问题。
+- 正式会议默认要有“会后可回看”的结论和待办清单，不能长期停留在“待会议确认”的空壳状态。
+- 会议待办默认至少写清：动作内容、owner、时间、当前状态。
+- 会议待办正文放在各自会议记录里：普通会议写在 `projects/meetings/worklog.md` 对应条目下；大型会议如果单独拆页，就写在该会议文件内部；`WORKFLOW` 只定义维护规则，不汇总各场会的任务清单。
+- 单条会议记录内部也要职责分离：
+  - `议题` 只写待回答问题，不重复结论。
+  - `结论` 只写会后确认结果，不重复背景、链接或动作说明。
+  - `行动项` 只保留会后仍需跟踪的事项；已经完成且不再需要追踪的同步动作，优先并入 `结论` 或直接删除，不再占一个 action。
+  - `分流` 和 `关联链接` 只保留这场会真正需要额外指向的页面；默认分流、重复链接和模板占位不保留。
 - 会后按结果分流：
   - 拍板和取舍进 `projects/decisions.md`
   - 需求变化和范围收敛进 `projects/trace.md`
   - 开发动作和验证进 `projects/development/worklog.md`
   - 稳定背景进 `projects/memory/README.md`
+- 当分流后的承接页推进了会议中的某条事项，同轮把对应会议记录里的结论或待办状态一起回写；这里要求显式同步，不做隐藏自动流控。
 - 如果只是开发过程中的临时讨论、联调插会或排障沟通，可以直接记到 `projects/development/worklog.md`；如果是正式会议，默认写 `projects/meetings/worklog.md`
 - 会议记录默认一场会对应一条记录，不把多场会揉成一条总记录
 - 如果某类会议开始反复出现，再考虑把固定字段继续收紧成模板或索引；会议记录模板优先看 [[templates/meeting-entry-template]]

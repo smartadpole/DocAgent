@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-13
+updated: 2026-04-25
 tags: [entry, root]
 ---
 
@@ -24,7 +24,7 @@ tags: [entry, root]
 当前物理结构再补一句：
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
-- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[log-writing-rules]]、[[trace-writing-rules]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
 
@@ -51,6 +51,10 @@ tags: [entry, root]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
+- 想知道“其他项目进化出的结构怎么反哺模板” -> 读 [[template-feedback-rules]]
+- 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
+- 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量
+- 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“会议很多时怎么收口会议材料” -> 读 [[projects/meetings/README]]
@@ -110,6 +114,7 @@ tags: [entry, root]
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
 - 流程控制：不做自动流控，由人读项目主页后手动推进
+- 模板反哺：下游项目里被真实使用验证过的结构、流程、规则和模板，抽掉项目事实后按 [[template-feedback-rules]] 回写模板库
 
 ## 角色和 memory 的关系
 
@@ -124,6 +129,7 @@ tags: [entry, root]
 
 如果你正在做研发，先看 [[projects/README]]。
 如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
+如果你想按一条固定顺序看完整架构，直接看 [[projects/design/README]] 里的 `完整架构包` 和 `查看顺序`。
 
 如果你想看这套文档库的整体设计思路，去看 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]。
 如果你想看分层记忆的设计，去看 [[articles/2026-04-09-layered-memory-research]] 和 [[concepts/layered-memory]]。
@@ -141,6 +147,7 @@ tags: [entry, root]
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
 8. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
+9. 如果某个下游项目进化出了可复用的系统能力，按 [[template-feedback-rules]] 反哺回模板。
 
 ## 为什么入口页不写太多
 

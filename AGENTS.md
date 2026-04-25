@@ -21,7 +21,10 @@
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
 - `projects/`：活跃研发项目层。需求、设计、会议、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
 - `projects/trace.md`：需求演进链层。记录原始意图、约束变化、修补性需求、关键取舍和最终实现口径之间的串联。
+- `projects/codebase/`：代码基线审计层。承接现实实现、既有工程、外部模板或旧系统的页面图、schema 图、基础设施、冲突和复用边界；它不反向定义主工程口径。
+- `projects/design/`：正式设计层。`README.md` 做总入口；`tech-selection.md`、`architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md` 共同组成完整软件架构包；`topics/` 承接重要设计专题和专项储备。
 - `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
+- `projects/design/topics/`：设计专题层。承接未拍板但需要持续推进的设计问题，以及当前不进入完整架构包、但要长期保留的专项设计储备；会议页只引用，不重复维护主正文。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
 - 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/meetings/README.md` 偏会议协作视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
@@ -65,6 +68,7 @@
 - 研发项目的阶段和状态由人读项目主页手动推进，不做隐藏自动流控。
 - 活跃研发项目先读项目主页，再改需求、设计、决策、记忆、发布或运行记录。
 - 极简小项目默认只保留一个项目主页，除非内容明显变多，否则不要先建空的需求、设计、发布之类页面。
+- 下游项目反哺模板时，先按 [[template-feedback-rules]] 判断是否属于可复用系统能力；只回写结构、流程、规则、模板和通用写法，不复制项目事实、业务名、具体技术拍板或一次性状态。
 
 ## 会话级规则
 
@@ -103,6 +107,10 @@
 - 概念类信息以 `concepts/` 主页面为主，项目页只写与当前项目直接相关的上下文。
 - 导航类信息放 `indexes/`，不要在多个说明页里重复堆导航列表。
 - 需要在别处提及时，优先链接、摘一句、或写简短引用说明，不复制整段内容。
+- 会议相关信息也遵守单一信息源：如果某场会已经拆出独立会前材料页，那么议程、目标、阅读顺序、讨论方式、会前材料和预期输出只保留在该页；`projects/meetings/worklog.md` 只保留这场会的时间线摘要、结论、待办和分流，不再维护第二份完整会前正文。
+- 如果一场会目前只存在于 `projects/meetings/worklog.md`，可以先在同一条记录里承接必要的会前信息；但只要后续拆出了独立会议页，就必须同轮把 `worklog` 里的重复段落收回成链接和简述，不能让两份正文并存。
+- 单条会议记录内部也要去重：`议题` 只写这次要回答什么，`结论` 只写最终确认了什么，`行动项` 只写会后仍需要跟踪的事项；同一件事不要在三个字段里换句话重复写。
+- 会议记录里的固定字段按需保留：如果 `会前材料`、`分流` 或 `关联链接` 只是在重复同一批默认链接或默认分流，就删到最小，不为了模板完整性保留冗余段落。
 
 ## 记忆路由
 
@@ -114,6 +122,7 @@
 - 稳定的个人偏好、命名习惯、表达偏好，进入 `workspace-memory`。
 - 项目阶段出现的思维碰撞、方案冲突和最终取舍，进入 `projects/decisions.md`。
 - 只反映时间降序、按对话组织的主题化过程记录，进入 `log.md`，但 `log.md` 不是主动背景。
+- 下游项目已经验证过的结构、流程、规则和模板，需要先按 [[template-feedback-rules]] 抽象成系统能力，再回写模板库对应入口。
 
 ## 上下文模型
 
@@ -132,8 +141,9 @@
 - `projects/README.md` 是项目运行层主入口，连接项目层其他主页面。
 - 需求页上连项目主页，下连设计页和决策页，外连相关 `raw/` 来源。
 - `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链。
-- `projects/meetings/README.md` 上连项目主页、需求页、设计页、决策页和开发页，横向连接正式会议记录、行动项和会后分流。
-- 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出架构页、数据库页等子页，它们仍然属于同一个设计层。
+- `projects/codebase/README.md` 上连项目主页、需求页、设计页和决策页，横向连接页面图、schema 图、基础设施、冲突和复用边界；它只记录现实实现事实和复用判断，不反向覆盖主需求或主设计。
+- `projects/meetings/README.md` 上连项目主页、需求页、设计页、设计专题页、决策页和开发页，横向连接正式会议记录、行动项和会后分流。
+- 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署、运行质量等子页，它们仍然属于同一个设计层。
 - 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页、记忆页或事故目录。
 - 记忆页连接项目主页、决策、设计和运行记录，是稳定背景，不是过程日志。
 - 开发页连接项目主页、决策和实际推进记录，是过程上下文，不是长期知识主入口。
@@ -169,7 +179,8 @@
 - 如果目标涉及规则、优先级或自动沉淀边界，再读 [[POLICY]]。
 - 如果目标涉及项目级稳定记忆，再读 `projects/memory/README.md`。
 - 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、会议、决策、记忆、开发页面。
-- 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面。
+- 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
+- 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
@@ -192,10 +203,11 @@
 - 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
 - 改 `projects/trace.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有设计页、已有决策页、当前相关开发页；如果 trace 涉及记忆或规则边界，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
-- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有决策页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
+- 改代码基线页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、需求页、设计页和已有决策页；如果现实实现和主线冲突，先写 [[projects/codebase/conflicts]]，再升级到 [[projects/decisions]]。
+- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/README.md`、`projects/design/topics/README.md`、需求页、已有决策页、相关设计子页 / 专题页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
-- 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
+- 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
 - 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
@@ -250,6 +262,7 @@
 - 正文默认中文；英文只保留文件名、产品名、代码标识、API 名和必要的专有术语。
 - 如果页面本身是术语表、代码示例、外部资源清单或产品原名说明，可以保留原始英文表达。
 - 同一页面里必须保持一种主语言，除必要专有名词外，不得随意中英混排。
+- 新增正式决策时，默认使用 `**背景**`、`**要决策什么**`、`**可选项**`、`**最终决策**`、`**影响**`、`**各自优劣**`、`**风险点**` 这组骨架；其中 `**最终决策**` 和 `**影响**` 必须放在 `**各自优劣**`、`**风险点**` 之前，不要只写结论不写比较过程，也不要补成另一份需求或设计全文。
 
 ## 规则治理
 

@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-13
+updated: 2026-04-25
 tags: [index, root]
 ---
 
@@ -37,6 +37,7 @@ tags: [index, root]
 - [[projects/trace]]：需求演进链入口
 - [[projects/meetings/README]]：项目正式会议入口
 - [[trace-writing-rules]]：`[[projects/trace]]` 的记录规则入口
+- [[template-feedback-rules]]：下游项目结构、流程、规则和模板反哺入口
 
 ## 设计思路
 
@@ -49,6 +50,27 @@ tags: [index, root]
 
 - [[concepts/prd-writing]]：PRD 写作方法
 - [[articles/2026-04-13-prd-writing-guide]]：PRD 写作指南摘要卡片
+
+## 模板治理
+
+- [[template-feedback-rules]]：其他项目进化出的系统能力如何反哺模板库
+
+## 项目接手与代码基线
+
+- [[projects/codebase/README]]：现实代码、旧工程或外部模板的审计入口
+
+## 软件架构包
+
+- [[projects/design/README]]：软件架构总入口和推荐阅读顺序
+- [[projects/design/topics/README]]：重要设计专题入口，承接未拍板专题和专项储备
+- [[projects/design/tech-selection]]：技术选型
+- [[projects/design/architecture]]：业务架构、页面动作和状态机
+- [[projects/design/backend-frontend-structure]]：前后端工程结构、接口约定和代码落点
+- [[projects/design/permission-boundary]]：权限真相源、角色可见性和业务授权边界
+- [[projects/design/write-boundary]]：写操作分级和服务端收口边界
+- [[projects/design/database]]：数据模型、约束、索引和迁移策略
+- [[projects/design/deployment]]：环境、部署、发布和回滚
+- [[projects/design/runtime-quality]]：监控、告警、幂等、重试和补偿
 
 ## 层级
 

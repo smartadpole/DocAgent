@@ -6,7 +6,7 @@ scope: shared
 status: confirmed
 priority: highest
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-25
 tags: [policy]
 ---
 
@@ -31,6 +31,7 @@ tags: [policy]
 - 不放逐条对话转录，那留在会话历史
 - 不放单轮会话草稿，那留在会话 / 临时收口区
 - 不放共享背景正文，那是 [[BRAIN]]
+- 不放下游项目事实或业务决策；模板反哺只吸收抽象后的系统规则和结构，具体执行看 [[template-feedback-rules]]
 
 ## 读取优先级
 
@@ -87,6 +88,7 @@ tags: [policy]
 - agent 可以自动写入 [[log]]，但只记录按对话整理后的主题、用户意图、关键动作、结构变化和结论，不机械转录每个提问
 - agent 可以自动写入 [[projects/trace]]，前提是这轮已经形成明确的项目推进内容；写入时要提炼原始意图、范围变化、修补性需求和最终口径，不把它写成第二份 `[[log]]`
 - agent 可以自动执行格式归一化：把本库内错误的 Markdown 页面引用收敛成 `[[wikilink]]`，把明显失效的空链接、占位链接和本机绝对路径引用修正掉
+- agent 可以在用户要求反哺模板时，按 [[template-feedback-rules]] 把下游项目中已经验证的结构、流程、模板和写法抽象回模板库；抽象时不得复制项目事实、业务状态或具体技术拍板
 - agent 需要先形成明确结论再写入：[[BRAIN]]、[[projects/memory/shared]]
 - agent 不应直接拍板写入：高优先级规则、冲突结论、覆盖旧规则的变更
 - 任何会改变后续执行方式的内容，优先先进入 [[projects/decisions]] 再回写
@@ -101,6 +103,7 @@ tags: [policy]
 - 会改变后续执行方式的内容，进入 [[POLICY]]
 - 项目冲突和最终拍板，进入 [[projects/decisions]]
 - 文档库本体的框架级说明和层级边界，默认写根 [[README]]；如果需要补背景，写 [[BRAIN]]；如果需要写规则，写 [[POLICY]]
+- 下游项目反哺模板时，先进入 [[template-feedback-rules]] 的判断流程；可复用的结构写入口和结构页，可复用的执行顺序写 [[WORKFLOW]]，硬约束写 [[AGENTS]]，规则边界写 [[POLICY]]
 - 除非明确是当前项目的结论，否则不要把这类内容写进 `projects/`、`projects/memory/` 或 `projects/design/memory/`
 
 ## 优先级顺序
