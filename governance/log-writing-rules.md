@@ -4,7 +4,7 @@ id: GUIDE-LOG-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-25
 tags: [log, guide]
 ---
 
@@ -161,7 +161,7 @@ tags: [log, guide]
 
 ## 默认骨架
 
-- 对话：一句话概括这次对话。
+- 三级标题：直接用一句话概括这次对话，不加旧版固定前缀。
 - 记录人：需要标注时，优先写 `git user.name`；如果仓库没有配置，就留空，不回退到本机用户名。
 - 用户意图：这轮真正想解决什么问题，为什么现在要解决。
 - 主题：列出 1 个或多个主题。
