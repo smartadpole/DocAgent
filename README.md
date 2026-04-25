@@ -51,7 +51,7 @@ tags: [entry, root]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
-- 想知道“其他项目进化出的结构怎么反哺模板” -> 读 [[template-feedback-rules]]
+- 想知道“其他项目进化出的系统层信息怎么反哺模板” -> 读 [[template-feedback-rules]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
@@ -114,7 +114,7 @@ tags: [entry, root]
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
 - 流程控制：不做自动流控，由人读项目主页后手动推进
-- 模板反哺：下游项目里被真实使用验证过的结构、流程、规则和模板，抽掉项目事实后按 [[template-feedback-rules]] 回写模板库
+- 模板反哺：下游项目里被真实使用验证过的结构、流程、规则、记忆路由、写法、模板和自动化契约，抽掉项目事实后按 [[template-feedback-rules]] 回写模板库
 
 ## 角色和 memory 的关系
 
@@ -147,7 +147,7 @@ tags: [entry, root]
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
 8. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
-9. 如果某个下游项目进化出了可复用的系统能力，按 [[template-feedback-rules]] 反哺回模板。
+9. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
 
 ## 为什么入口页不写太多
 

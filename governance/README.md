@@ -20,7 +20,7 @@ tags: [entry, governance]
 - [[BRAIN]]：共享背景。回答“哪些已确认前提要自动带入后续工作”
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
-- [[template-feedback-rules]]：下游项目结构、流程、规则和模板反哺规则
+- [[template-feedback-rules]]：下游项目系统层信息反哺规则
 - 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
 ## 逻辑结构

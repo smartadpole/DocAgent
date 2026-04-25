@@ -4,7 +4,7 @@ id: GUIDE-TRACE-001
 scope: project
 status: active
 source_of_truth: true
-updated: 2026-04-12
+updated: 2026-04-25
 tags: [trace, guide]
 ---
 
@@ -19,6 +19,7 @@ tags: [trace, guide]
 ## 这页负责什么
 
 - 定义 `[[projects/trace]]` 的记录单位和默认骨架。
+- 定义 `[[projects/trace]]` 只承接具体需求、功能点和实现口径的演进，不承接原始来源材料本身。
 - 定义 trace 主链与迭代块的关系。
 - 定义 trace 和 `[[log]]`、[[projects/decisions]]、[[projects/memory/README]] 的边界。
 - 给出续写旧主题还是新开主题的最小判断顺序。
@@ -26,22 +27,30 @@ tags: [trace, guide]
 ## 这页不负责什么
 
 - 不承接逐轮历史正文，那是 `[[projects/trace]]` 的职责。
+- 不承接原始来源材料的出处、文件名变更、下载链接或格式转换过程，那些留在 `raw/`、[[projects/requirements]] 或 [[log]]。
 - 不重复维护模板正文，那是 [[templates/trace-entry-template]] 的职责。
 - 不代替项目总流程，那是 [[WORKFLOW]] 的职责。
 
 ## 核心标准
 
-- `[[projects/trace]]` 记录的是“需求如何收敛成当前实现口径”，不是对话逐句转录。
+- `[[projects/trace]]` 记录的是“具体需求 / 功能如何收敛成当前实现口径”，不是原始来源整理，也不是对话逐句转录。
 - 记录单位是“需求主题主链”，不是“每天一条”，也不是“每次对话一条”。
 - 同一主题默认只保留一条主链，后续变化优先写成新的迭代块，而不是平行复制第二条主链。
 - 主链优先回答：原始意图是什么、后来怎么变化、现在真正生效的范围是什么。
 - 迭代块优先回答：这一轮新增了什么约束、修补了什么偏差、最终口径变成了什么。
 - trace 重点看需求主题和当前有效口径，不按日期分组。
 
+## 什么时候同步更新
+
+- `[[projects/trace]]` 不是等其他文档都写完以后再回来补的后置记录。
+- 只要这轮改动会改变当前需求主题的实现口径，就和 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/worklog]] 等相关页面同轮同步更新。
+- 如果这轮只是整理来源材料、改文件名、做 PDF 到 Markdown / PDF->md、清理链接或补来源索引，不写进 [[projects/trace]]。
+
 ## 和相邻页面的边界
 
 - `[[log]]` 记录这轮对话在推进什么主题、做了哪些关键动作。
 - [[projects/trace]] 记录需求怎样从原始意图、约束变化、修补性需求一路收敛到当前实现口径。
+- 原始来源材料的索引、出处和文件整理过程，留在 `raw/`、[[projects/requirements]] 或 [[log]]，不进入 [[projects/trace]]。
 - [[projects/decisions]] 只记录真正需要拍板的冲突和取舍，不重复抄整条演进链。
 - [[projects/memory/README]] 只记录项目长期稳定背景，不承接某一轮需求如何变化。
 
