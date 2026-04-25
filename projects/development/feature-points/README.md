@@ -3,7 +3,7 @@ type: feature_points
 id: DEV-FP-INDEX-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-10
+updated: 2026-04-25
 tags: [development, feature-points]
 ---
 
@@ -24,6 +24,30 @@ tags: [development, feature-points]
 - `status` 看生命周期，`phase` 看串联步骤
 - `blocked` 是叠加态，不是单独一条流程
 - 旧的 `in_progress` 统一拆成 `status=active + phase=*`
+
+## 怎么从架构包新建功能点
+
+默认不是从“我要写哪个文件”开始，而是从“我要落哪一段业务闭环”开始。
+
+### 拆解顺序
+
+1. 先从 [[projects/design/architecture]] 找到对应的页面、角色、动作和状态机。
+2. 再从 [[projects/design/backend-frontend-structure]] 找到代码落点和接口边界。
+3. 再从 [[projects/design/database]] 找到表、字段、状态和迁移。
+4. 如果涉及上传、部署、监控、补偿或回滚，再补读 [[projects/design/deployment]] 和 [[projects/design/runtime-quality]]。
+5. 然后再新建功能点页。
+
+### 每个功能点最少要带什么
+
+除了模板里的基础字段，还应至少补齐：
+
+- 相关页面 / 动作
+- 相关 API / 服务端动作
+- 相关数据变更
+- 验证项
+- 发布影响
+
+如果这些信息还答不清，说明还没拆到可以执行的粒度，先回设计层补，不要硬开卡。
 
 ## 状态轴
 
@@ -60,6 +84,11 @@ tags: [development, feature-point]
 - 目标：
 - 范围：
 - 验收：
+- 相关页面 / 动作：
+- 相关 API / 服务端动作：
+- 相关数据变更：
+- 验证项：
+- 发布影响：
 - 负责人：
 - 下一步：
 - 阻塞：

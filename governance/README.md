@@ -4,7 +4,7 @@ id: ENTRY-GOV-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-13
+updated: 2026-04-25
 tags: [entry, governance]
 ---
 
@@ -20,6 +20,7 @@ tags: [entry, governance]
 - [[BRAIN]]：共享背景。回答“哪些已确认前提要自动带入后续工作”
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
+- [[template-feedback-rules]]：下游项目结构、流程、规则和模板反哺规则
 - 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
 ## 逻辑结构
@@ -51,7 +52,7 @@ tags: [entry, governance]
 3. 如果涉及规则、优先级或记忆路由，再看 [[POLICY]]
 4. 如果要实际执行修改，再看 [[WORKFLOW]]
 5. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
-6. 如果要治理 `[[log]]` 或 [[projects/trace]]，再看对应规则页
+6. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
 
 ## `POLICY` 和 `AGENTS` 的权衡
 
@@ -66,5 +67,6 @@ tags: [entry, governance]
 - 如果问题是“agent 修改时必须怎么做”，优先写 [[AGENTS]]
 - 如果问题是“通常按什么顺序推进”，优先写 [[WORKFLOW]]
 - 如果问题是“哪些背景以后默认成立”，优先写 [[BRAIN]]
+- 如果问题是“下游项目的进化能不能带回模板”，优先写 [[template-feedback-rules]]
 
 优先级上，先看 [[POLICY]] 的裁定，再由 [[AGENTS]] 把它落实成执行纪律。

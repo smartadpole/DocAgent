@@ -7,6 +7,45 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-04-25
+
+### 对话：把 DocFilmCommunity 的系统级进化反哺回 wiki 模板
+
+- **记录人**：sunhao
+- **用户意图**：解决不同项目各自演化后如何反哺模板库的问题，并把 DocFilmCommunity 中已经验证过的系统性规则、结构和模板抽象回当前 wiki 模板，但不带入具体项目事实。
+- **主题**：
+  1. 建立跨项目模板反哺机制。
+  2. 抽象 DocFilmCommunity 的结构性演进。
+  3. 同步项目层、设计层、会议层、决策写法和研发拆解流程。
+- **关键动作**：
+  1. **主机制**：新增 [[template-feedback-rules]]，明确下游项目反哺模板时要先区分项目事实和系统能力，再按结构、流程、规则、模板和知识沉淀分流。
+  2. **主结构**：新增 [[projects/codebase/README]] 与代码基线子页，补入现实实现审计、冲突收口和复用边界；新增 [[projects/design/topics/README]]，承接未拍板设计专题和后续储备。
+  3. **主设计包**：把设计层扩展成完整架构包，补齐 [[projects/design/backend-frontend-structure]]、[[projects/design/permission-boundary]]、[[projects/design/write-boundary]]、[[projects/design/deployment]] 和 [[projects/design/runtime-quality]]。
+  4. **主流程**：更新 [[WORKFLOW]]、[[AGENTS]]、[[projects/STRUCTURE]] 和项目入口，补上模板反哺模式、代码基线读取顺序、设计专题路由、完整架构包到功能点拆解、会议去重和决策写法骨架。
+  5. **主模板**：新增 [[templates/decision-entry-template]]，并收紧 [[templates/meeting-entry-template]] 中会议行动项、会后回写和单条记录内去重的写法。
+- **影响页面**：
+  1. [[template-feedback-rules]]
+  2. [[README]]
+  3. [[INDEX]]
+  4. [[governance/README]]
+  5. [[BRAIN]]
+  6. [[POLICY]]
+  7. [[WORKFLOW]]
+  8. [[AGENTS]]
+  9. [[projects/README]]
+  10. [[projects/STRUCTURE]]
+  11. [[projects/status]]
+  12. [[projects/codebase/README]]
+  13. [[projects/design/README]]
+  14. [[projects/design/topics/README]]
+  15. [[projects/decisions]]
+  16. [[projects/development/README]]
+  17. [[projects/development/feature-points/README]]
+  18. [[projects/meetings/README]]
+  19. [[templates/decision-entry-template]]
+  20. [[templates/meeting-entry-template]]
+  21. [[log]]
+
 ## 2026-04-14
 ### 对话：把拉流资料沉淀成文档，并在本地订单中心做初步实测
 
