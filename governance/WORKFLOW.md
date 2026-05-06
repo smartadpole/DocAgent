@@ -696,7 +696,7 @@
 - `status` 和 `phase` 不是平级标签，而是串联关系。
 - `blocked` 是叠加态，可以落在任何 `phase` 上。
 - 旧的 `in_progress` 口径以后统一拆成 `status=active + phase=*`，不再作为单字段主轴。
-- 功能点模板放在 [[projects/development/README]]。
+- 功能点模板放在 [[templates/development-feature-point-template]]。
 - 功能点实体页放在 [[projects/development/feature-points/README]]，每个功能点一页，不把多个功能点正文塞在同一页。
 - `status` 和 `phase` 写在功能点页的 frontmatter 或页面属性里。
 - 三层职责固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和其下实体页偏工程师视角。

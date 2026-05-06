@@ -27,16 +27,4 @@ tags: [development, gates]
 
 ## Gate 模板
 
-```md
-## Gate 名称
-
-- 目标：
-- 准入条件：
-- 准出条件：
-- 冻结对象：
-- 不进入本 Gate 的内容：
-- 测试和报告：
-- 风险和待确认项：
-- 关联 TODO：
-- 关联功能点：
-```
+默认复制 [[templates/development-gate-template]]，不要在本页维护第二份模板正文。

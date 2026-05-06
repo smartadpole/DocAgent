@@ -73,37 +73,7 @@ tags: [development, feature-points]
 
 ## 单页模板
 
-```md
----
-type: feature_point
-id: FP-001
-project: PROJ-WIKI-001
-status: active
-phase: implementation
-updated: 2026-04-10
-tags: [development, feature-point]
----
-
-# FP-001 | 功能点名称
-
-- 模块：
-- 目标：
-- 范围：
-- 验收：
-- 相关页面 / 动作：
-- 相关 API / 服务端动作：
-- 相关数据变更：
-- 验证项：
-- 发布影响：
-- 负责人：
-- 下一步：
-- 阻塞：
-- 相关设计：
-- 相关决策：
-- 过程日志：
-- 发布/事故：
-- 结果：
-```
+默认复制 [[templates/development-feature-point-template]]，不要在本页维护第二份模板正文。
 
 ## 当前实体
 

@@ -48,15 +48,7 @@ tags: [development, feedback, correction, validation]
 
 ## 最小反馈格式
 
-```md
-- 任务 / 候选 ID：
-- 改动代码位置：
-- 新增或修改的接口 / 表 / 状态 / 配置：
-- 跑过的测试：
-- 测试结果：
-- 发现的问题：
-- 需要判断或协调的事项：
-```
+默认复制 [[templates/engineering-feedback-template]]，不要在本页维护第二份模板正文。
 
 “需要判断或协调的事项”不是闲聊，而是正式回传内容。涉及接口、数据、验收、平台增强边界或业务 owner 判断不清时，都要写出来并分流。
 

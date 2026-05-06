@@ -61,6 +61,7 @@ tags: [index, root]
 
 ## 模板治理
 
+- [[templates/README]]：可复制模板入口
 - [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库
 
 ## 项目接手与代码基线

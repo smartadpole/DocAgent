@@ -9,6 +9,21 @@
 
 ## 2026-05-06
 
+### 补齐研发协作模板并明确主控与实现工程边界
+
+- **记录人**：sunhao
+- **用户意图**：检查项目层规则采纳后，相关模板目录和模板文件是否齐全，以及现有规则是否覆盖当前文档主控系统和实现工程子模块之间的协作。
+- **主题**：
+  1. 研发层新增结构已经有目录和入口，但模板层没有同步补齐，且部分模板正文散在开发页里。
+  2. 主控系统和实现工程之间已有回传包、写权限模式和反馈闭环，但需要把协作边界显式写清。
+  3. 模板正文应回到 [[templates/README]] 及其模板页，项目页只保留入口链接，避免两份正文漂移。
+- **关键动作**：
+  1. **主模板**：新增功能点、事项矩阵、TODO、Gate、测试报告、风险、开发过程记录、编码任务执行单、代码工程回传包和工程反馈模板，并统一挂到 [[templates/README]]。
+  2. **主收口**：把 [[projects/development/feature-points/README]]、[[projects/development/execution/todo]]、[[projects/development/gates/README]]、[[projects/development/reports/README]]、[[projects/development/risks/README]]、[[projects/development/execution/worklog]]、[[projects/development/execution/developer-execution-workflow]] 和 [[projects/development/execution/engineering-feedback-loop]] 里的内联模板正文收回成模板链接。
+  3. **主协作**：在 [[projects/development/execution/developer-execution-workflow]] 中补清主控系统和实现工程的任务下发、开发执行、测试反馈、回传吸收和冲突升级边界。
+  4. **主入口**：更新 [[README]]、[[INDEX]]、[[WORKFLOW]]、[[projects/status]] 和 [[projects/memory/policy-links]]，让模板入口和功能点模板口径回到单一信息源。
+- **影响页面**：[[README]]、[[INDEX]]、[[WORKFLOW]]、[[templates/README]]、[[templates/development-feature-point-template]]、[[templates/development-work-item-matrix-template]]、[[templates/development-todo-template]]、[[templates/development-gate-template]]、[[templates/development-test-report-template]]、[[templates/development-risk-template]]、[[templates/development-worklog-entry-template]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/engineering-feedback-template]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/execution/developer-execution-workflow]]、[[projects/development/execution/engineering-feedback-loop]]、[[projects/development/execution/todo]]、[[projects/development/execution/worklog]]、[[projects/development/feature-points/README]]、[[projects/development/gates/README]]、[[projects/development/reports/README]]、[[projects/development/risks/README]]、[[projects/status]]、[[projects/memory/policy-links]]、[[log]]。
+
 ### 抽象采纳项目层研发规则而不同步项目事实
 
 - **记录人**：sunhao

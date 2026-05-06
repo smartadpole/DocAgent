@@ -66,10 +66,7 @@ tags: [development, planning, work-items, traceability]
 
 ## 推荐矩阵
 
-```md
-| 上游需求 / 目标 | Gate | 功能点 / 候选项 | TODO | 关系类型 | 主责模块 | 当前状态 | 输出物 | 关闭证据 | 反馈回写 | 未确认项 | 备注 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-```
+默认参考 [[templates/development-work-item-matrix-template]]，不要在本页维护第二份模板正文。
 
 ## 防跑偏策略
 

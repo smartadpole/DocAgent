@@ -20,7 +20,8 @@ tags: [memory, policy]
 - [[projects/memory/shared]]：项目级稳定记忆
 - [[BRAIN]]：共享背景
 - [[projects/status]]：当前功能点状态镜像
-- [[projects/development/README]]：活跃功能点模板和清单
+- [[templates/development-feature-point-template]]：功能点实体模板
+- [[projects/development/feature-points/README]]：活跃功能点清单
 - [[projects/development/execution/worklog]]：过程记录
 
 ## 使用方式

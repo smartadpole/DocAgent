@@ -26,7 +26,4 @@ tags: [development, risks]
 
 ## 风险模板
 
-```md
-| ID | 风险 | 影响阶段 | 当前状态 | owner / 归口 | 处理方式 | 解除条件 |
-| --- | --- | --- | --- | --- | --- | --- |
-```
+默认复制 [[templates/development-risk-template]]，不要在本页维护第二份模板正文。

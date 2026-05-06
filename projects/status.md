@@ -40,7 +40,7 @@ tags: [status]
 - 研发总控和当前执行入口看 [[projects/development/plan/README]]
 - 当前待办和关闭证据看 [[projects/development/execution/todo]]
 - 测试方案和准出证据看 [[projects/development/reports/README]]
-- 实体模板和活跃实体清单看 [[projects/development/feature-points/README]]
+- 功能点模板看 [[templates/development-feature-point-template]]，活跃实体清单看 [[projects/development/feature-points/README]]
 - 过程流水看 [[projects/development/execution/worklog]]
 - 正式会议看 [[projects/meetings/worklog]]
 - 功能点用 `status` + `phase` 双轴管理
