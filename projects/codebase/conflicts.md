@@ -27,5 +27,5 @@ tags: [project, codebase, conflicts]
 ## 维护说明
 
 - 这里先收集冲突，不直接拍板。
-- 能明确修正的实现 bug，可以分流到 [[projects/development/worklog]] 或功能点页。
+- 能明确修正的实现 bug，可以分流到 [[projects/development/execution/worklog]] 或功能点页。
 - 会改变需求、设计或复用边界的冲突，升级到 [[projects/decisions]]。

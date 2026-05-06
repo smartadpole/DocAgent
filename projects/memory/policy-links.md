@@ -21,7 +21,7 @@ tags: [memory, policy]
 - [[BRAIN]]：共享背景
 - [[projects/status]]：当前功能点状态镜像
 - [[projects/development/README]]：活跃功能点模板和清单
-- [[projects/development/worklog]]：过程记录
+- [[projects/development/execution/worklog]]：过程记录
 
 ## 使用方式
 

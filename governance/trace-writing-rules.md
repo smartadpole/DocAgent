@@ -43,7 +43,7 @@ tags: [trace, guide]
 ## 什么时候同步更新
 
 - `[[projects/trace]]` 不是等其他文档都写完以后再回来补的后置记录。
-- 只要这轮改动会改变当前需求主题的实现口径，就和 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/worklog]] 等相关页面同轮同步更新。
+- 只要这轮改动会改变当前需求主题的实现口径，就和 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/execution/worklog]] 等相关页面同轮同步更新。
 - 如果这轮只是整理来源材料、改文件名、做 PDF 到 Markdown / PDF->md、清理链接或补来源索引，不写进 [[projects/trace]]。
 
 ## 和相邻页面的边界

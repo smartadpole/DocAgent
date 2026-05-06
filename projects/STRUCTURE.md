@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-04-25
+updated: 2026-05-06
 ---
 
 # 项目层结构
@@ -66,12 +66,28 @@ projects/
   decisions.md
   development/
     README.md
+    plan/
+      README.md
+      work-item-system-model.md
+    execution/
+      README.md
+      todo.md
+      developer-execution-workflow.md
+      engineering-feedback-loop.md
+      worklog.md
+    gates/
+      README.md
+    implementation/
+      README.md
+    reports/
+      README.md
+    risks/
+      README.md
     feature-points/
       README.md
       FP-001.md
       FP-002.md
       FP-003.md
-    worklog.md
   meetings/
     README.md
     worklog.md
@@ -207,6 +223,15 @@ projects/
 - `projects/development/README.md`
   这是研发推进主入口，偏研发经理视角
   负责整体推进、状态镜像、阻塞协调和下一步
+- `projects/development/plan/README.md`
+  这是研发执行总控页
+  负责当前阶段、执行入口、目录职责和支撑文件分组
+- `projects/development/plan/work-item-system-model.md`
+  这是事项关系模型页
+  负责需求、目标、功能点、TODO、反馈和证据之间的关系类型、关闭守卫和防跑偏策略
+- `projects/development/execution/README.md`
+  这是执行控制入口
+  负责待办、编码交接、反馈纠偏和过程记录的入口分流
 - `projects/meetings/README.md`
   这是会议主入口，偏项目协作视角
   负责正式会议材料、纪要、行动项和会后分流
@@ -220,14 +245,45 @@ projects/
 - 回答：当前研发推进状态、活跃功能点入口、卡在哪里、下一步做什么
 - 偏研发经理视角
 
-#### 3.5.2 功能点执行目录
+#### 3.5.2 研发执行总控
+
+- `projects/development/plan/README.md`
+  适合放当前阶段、当前主入口、支撑文件分组和开发层目录职责
+- `projects/development/plan/work-item-system-model.md`
+  适合放事项类型、关系类型、TODO 关闭守卫、反馈回写和证据矩阵
+
+#### 3.5.3 执行控制目录
+
+- `projects/development/execution/README.md`
+  适合放待办、编码交接、反馈纠偏和过程记录的入口
+- `projects/development/execution/todo.md`
+  适合放当前可执行待办和关闭证据
+- `projects/development/execution/developer-execution-workflow.md`
+  适合放编码任务执行单、代码工程回传包和受控回写规则
+- `projects/development/execution/engineering-feedback-loop.md`
+  适合放实现偏差、测试失败、待确认项和设计反馈的分流规则
+- `projects/development/execution/worklog.md`
+  适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
+
+#### 3.5.4 阶段门、实现、报告和风险
+
+- `projects/development/gates/README.md`
+  适合放阶段门、准入准出、冻结对象和 Gate 报告入口
+- `projects/development/implementation/README.md`
+  适合放服务 / 模块实现指导和候选功能点池
+- `projects/development/reports/README.md`
+  适合放测试方案、测试用例、测试结论、相关回归和准出报告
+- `projects/development/risks/README.md`
+  适合放风险、卡点、待确认项和会议归口
+
+#### 3.5.5 功能点执行目录
 
 - `projects/development/feature-points/README.md`
   这是功能点实体目录，一页一个功能点
   适合放当前活跃、完成待发布和已发布功能点的索引与执行规则
   偏工程师视角
 
-#### 3.5.3 功能点实体页
+#### 3.5.6 功能点实体页
 
 - `projects/development/feature-points/FP-001.md`
   这是功能点实体页
@@ -237,12 +293,6 @@ projects/
 - `projects/development/feature-points/FP-003.md`
   这是已发布的功能点实体页
 
-#### 3.5.4 开发过程记录
-
-- `projects/development/worklog.md`
-  适合放复杂排障、联调过程、验证过程和时间顺序的实现记录
-  正式会议记录放在 `projects/meetings/worklog.md`，这里只保留开发过程里的同步和排障
-
 ### 3.6 会议层
 
 - `projects/meetings/README.md`
@@ -251,7 +301,7 @@ projects/
 - `projects/meetings/worklog.md`
   这是正式会议的时间线记录页
   适合放按时间顺序整理的会议纪要、行动项和回看链接
-- 会议层负责把正式会议里的拍板送到 [[projects/decisions]]，把需求变化送到 [[projects/trace]]，把实现动作送到 [[projects/development/worklog]]
+- 会议层负责把正式会议里的拍板送到 [[projects/decisions]]，把需求变化送到 [[projects/trace]]，把实现动作送到 [[projects/development/execution/worklog]]
 - 如果某个待确认问题本身已是未决设计专题，会议层只引用 [[projects/design/topics/README]] 下的专题页，不重复维护主正文
 
 ### 3.7 发布层
@@ -339,7 +389,7 @@ projects/
 10. 涉及运行、发布和稳定性时再读 [[projects/design/deployment]] 和 [[projects/design/runtime-quality]]
 11. 有关键取舍时再读 [[projects/decisions]]
 12. 如果涉及记忆或规则，再读 [[projects/memory/README]] 和 [[POLICY]]
-13. 实施复杂时再读 [[projects/development/worklog]]
+13. 实施复杂时再读 [[projects/development/execution/worklog]]
 
 ### 5.2 做记忆 / 规则改动时
 
@@ -357,7 +407,7 @@ projects/
 2. 再读 [[projects/design/README]]
 3. 再读 [[projects/decisions]]
 4. 发布看 [[projects/releases]]
-5. 故障看 [[projects/incidents/README]] 和 [[projects/development/worklog]]
+5. 故障看 [[projects/incidents/README]] 和 [[projects/development/execution/worklog]]
 
 ## 6. 什么时候建新文件
 

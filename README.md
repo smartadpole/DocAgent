@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-06
 tags: [entry, root]
 ---
 
@@ -55,6 +55,7 @@ tags: [entry, root]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
+- 想看“研发执行、TODO、测试报告和 Gate 准出怎么组织” -> 读 [[projects/development/plan/README]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“会议很多时怎么收口会议材料” -> 读 [[projects/meetings/README]]
@@ -127,7 +128,7 @@ tags: [entry, root]
 - 如果未来要做角色专属 memory，需要额外补 ownership 和 routing 设计，那会是框架层变更，不是项目层内容
 - 这类框架级说明以后优先维护在 [[README]]、[[governance/README]]、[[BRAIN]] 和 [[POLICY]]，不要下放到 `projects/` 及其子页
 
-如果你正在做研发，先看 [[projects/README]]。
+如果你正在做研发，先看 [[projects/README]]；如果已经进入拆解、执行或准出阶段，再看 [[projects/development/plan/README]]。
 如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
 如果你想按一条固定顺序看完整架构，直接看 [[projects/design/README]] 里的 `完整架构包` 和 `查看顺序`。
 
@@ -146,8 +147,9 @@ tags: [entry, root]
 5. 把按对话整理后的主题、用户意图、关键动作和关键决策写进 [[log]]。
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
-8. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
-9. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
+8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把功能点、TODO、证据、风险和反馈关系理清。
+9. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
+10. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
 
 ## 为什么入口页不写太多
 

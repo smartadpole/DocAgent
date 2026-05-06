@@ -26,5 +26,5 @@ tags: [design, runtime-quality]
 
 ## 维护说明
 
-- 如果运行质量要求影响实现拆解，同步到功能点页和 [[projects/development/worklog]]。
+- 如果运行质量要求影响实现拆解，同步到功能点页和 [[projects/development/execution/worklog]]。
 - 如果上线验证或回滚策略变化，同步 [[projects/releases]]。

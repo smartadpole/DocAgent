@@ -3,7 +3,7 @@ type: development
 id: DEV-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-25
+updated: 2026-05-06
 tags: [development]
 ---
 
@@ -11,13 +11,21 @@ tags: [development]
 
 这页是研发经理视角的开发主入口。
 
+如果只想判断“现在进度到哪、下一步做什么、这些文件分别看哪一个”，先看 [[projects/development/plan/README]]。本页保留开发层总入口和推进说明，不重复维护总控页正文。
+
 上游：[[projects/design/README]]、[[projects/trace]]、[[projects/decisions]]、[[projects/memory/README]]、[[POLICY]]  \
 下游：[[projects/releases]]、[[projects/incidents/README]]
 
 子页：
 
-- [[projects/development/feature-points/README]]
-- [[projects/development/worklog]]
+- [[projects/development/plan/README]]：研发执行总控。
+- [[projects/development/plan/work-item-system-model]]：需求、目标、功能点、TODO、反馈和证据的事项关系模型。
+- [[projects/development/execution/README]]：待办、编码交接、反馈纠偏和过程记录。
+- [[projects/development/gates/README]]：阶段门和准出规则。
+- [[projects/development/implementation/README]]：实现指导和候选功能点池。
+- [[projects/development/reports/README]]：测试方案、测试用例、测试结论和准出报告。
+- [[projects/development/risks/README]]：风险、卡点和待确认项。
+- [[projects/development/feature-points/README]]：功能点实体目录。
 - [[projects/meetings/README]]
 
 ## 这页负责什么
@@ -52,7 +60,7 @@ tags: [development]
 
 - 这页只保留整体推进状态、阻塞和下一步
 - 具体功能点的 `status`、`phase` 和正文都只改对应实体页，不在这里重复维护
-- 过程流水写到 [[projects/development/worklog]]
+- 过程流水写到 [[projects/development/execution/worklog]]
 - 正式会议纪要和行动项写到 [[projects/meetings/worklog]]
 - 需求为什么这样收敛、哪些修补属于实现纠偏，优先回看 [[projects/trace]]
 - 关键取舍写到 [[projects/decisions]]
@@ -70,5 +78,5 @@ tags: [development]
 ## 维护说明
 
 - 开发推进时如果发现项目记忆、规则边界或决策发生变化，先回写到 [[projects/memory/README]]、[[POLICY]] 和 [[projects/decisions]]
-- 功能点状态发生变化时，同步更新对应实体页、[[projects/status]] 和 [[projects/development/worklog]]；如果已经发布，再看 [[projects/releases]]
+- 功能点状态发生变化时，同步更新对应实体页、[[projects/status]] 和 [[projects/development/execution/worklog]]；如果已经发布，再看 [[projects/releases]]
 - 开发页只记录推进过程，不重复写设计正文

@@ -3,18 +3,21 @@ type: feature_points
 id: DEV-FP-INDEX-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-25
+updated: 2026-05-06
 tags: [development, feature-points]
 ---
 
 # 功能点实体目录
 
 主入口：[[projects/development/README]]  \
-配套：[[projects/development/worklog]]
+上游：[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]  \
+配套：[[projects/development/execution/todo]]、[[projects/development/execution/worklog]]、[[projects/development/reports/README]]
 
 这页是工程师视角的执行目录，不承载多个功能点正文。每个功能点一页，`status` 和 `phase` 写在各自页面的 frontmatter 里。
 同一个功能点只对应一个文件，状态变化只改同一页的 frontmatter。
 这页负责单个功能点的执行、验收和结果，不负责整体排期和跨功能点协调。
+
+候选项进入这里之前，必须先能说明它服务哪个需求 / 目标、属于哪条事项关系、由哪个 TODO 或 Gate 推动、需要什么关闭证据。候选项还没达到可独立推进、可独立验证、可独立记录结果的粒度时，先留在 [[projects/development/implementation/README]]、[[projects/development/execution/todo]] 或 [[projects/development/risks/README]]，不要提前建成功能点实体。
 
 ## 约定
 
@@ -24,6 +27,7 @@ tags: [development, feature-points]
 - `status` 看生命周期，`phase` 看串联步骤
 - `blocked` 是叠加态，不是单独一条流程
 - 旧的 `in_progress` 统一拆成 `status=active + phase=*`
+- 候选项提升为实体页前，先按 [[projects/development/plan/work-item-system-model]] 补齐上游目标、关系类型、输出物、关闭证据和反馈回写位置
 
 ## 怎么从架构包新建功能点
 
@@ -48,6 +52,8 @@ tags: [development, feature-points]
 - 发布影响
 
 如果这些信息还答不清，说明还没拆到可以执行的粒度，先回设计层补，不要硬开卡。
+
+如果功能点来源于复验失败、工程反馈或风险解除，必须在功能点页写明来源 TODO、关系类型和反馈回写位置；不要把派生修复伪装成全新的独立需求。
 
 ## 状态轴
 

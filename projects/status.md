@@ -5,7 +5,7 @@ project: PROJ-WIKI-001
 status: active
 stage: design
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-06
 next_action: slim-development-manager-view
 current_entry: projects/README.md
 blockers:
@@ -37,8 +37,11 @@ tags: [status]
 
 - 这页只保留全局状态镜像，不展开所有功能点细节
 - 整体推进看 [[projects/development/README]]
+- 研发总控和当前执行入口看 [[projects/development/plan/README]]
+- 当前待办和关闭证据看 [[projects/development/execution/todo]]
+- 测试方案和准出证据看 [[projects/development/reports/README]]
 - 实体模板和活跃实体清单看 [[projects/development/feature-points/README]]
-- 过程流水看 [[projects/development/worklog]]
+- 过程流水看 [[projects/development/execution/worklog]]
 - 正式会议看 [[projects/meetings/worklog]]
 - 功能点用 `status` + `phase` 双轴管理
 - `status` 看生命周期：`planned`、`active`、`blocked`、`done`、`released`、`archived`

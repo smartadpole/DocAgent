@@ -16,6 +16,11 @@
 - 适用场景
 - 未解决的问题
 
+## 方法入口
+
+- [[concepts/prd-writing]]：PRD 写作方法
+- [[concepts/progressive-design-freeze]]：阶段门滚动冻结
+
 ## 维护原则
 
 - 同一个概念只保留一个主页面。

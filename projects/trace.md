@@ -15,7 +15,7 @@ tags: [trace, project]
 - 默认模板见 [[templates/trace-entry-template]]。
 
 上游：[[projects/README]]、[[projects/requirements]]、[[projects/design/README]]  \
-横向：[[projects/decisions]]、[[projects/development/README]]、[[projects/development/worklog]]  \
+横向：[[projects/decisions]]、[[projects/development/README]]、[[projects/development/execution/worklog]]  \
 下游：[[projects/releases]]、[[projects/incidents/README]]
 
 ## 这页负责什么
@@ -89,5 +89,5 @@ tags: [trace, project]
   - **主补充**：把会议组织规则、会前材料、会后分流和记录模板补进治理层和项目入口。
 - **当前实现口径**：
   - 正式会议默认走 `projects/meetings/README.md` 和 `projects/meetings/worklog.md`。
-  - 如果会议结果已经稳定成拍板、需求变化或实现动作，再分别回写到 `projects/decisions.md`、`projects/trace.md` 或 `projects/development/worklog.md`。
-  - `projects/development/worklog.md` 继续只承接开发过程中的排障、联调、验证和临时同步。
+  - 如果会议结果已经稳定成拍板、需求变化或实现动作，再分别回写到 `projects/decisions.md`、`projects/trace.md` 或 `projects/development/execution/worklog.md`。
+  - `projects/development/execution/worklog.md` 继续只承接开发过程中的排障、联调、验证和临时同步。

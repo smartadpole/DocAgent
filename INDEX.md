@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-06
 tags: [index, root]
 ---
 
@@ -50,6 +50,14 @@ tags: [index, root]
 
 - [[concepts/prd-writing]]：PRD 写作方法
 - [[articles/2026-04-13-prd-writing-guide]]：PRD 写作指南摘要卡片
+
+## 研发方法
+
+- [[concepts/progressive-design-freeze]]：阶段门滚动冻结
+- [[projects/development/plan/README]]：研发执行总控
+- [[projects/development/plan/work-item-system-model]]：需求到事项的系统模型
+- [[projects/development/execution/README]]：研发执行层入口
+- [[projects/development/reports/README]]：测试、复验和准出报告入口
 
 ## 模板治理
 

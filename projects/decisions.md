@@ -36,15 +36,15 @@ tags: [decision]
 
 ### 2026-04-13 会议材料拆出到 meetings 模块
 
-- 背景：项目管理中的正式会议越来越多，如果继续把会议纪要和开发过程混写在 `projects/development/worklog.md`，会把实现流水、会议结论和会后分流混成一层，后续检索和回看都会变难。
+- 背景：项目管理中的正式会议越来越多，如果继续把会议纪要和开发过程混写在 `projects/development/execution/worklog.md`，会把实现流水、会议结论和会后分流混成一层，后续检索和回看都会变难。
 - 决定：
   - 新增 `projects/meetings/` 作为项目侧会议主入口
   - 正式会议的纪要、行动项和回看链接优先写到 [[projects/meetings/worklog]]
-  - 开发过程的联调、排障、验证和临时同步继续留在 [[projects/development/worklog]]
+  - 开发过程的联调、排障、验证和临时同步继续留在 [[projects/development/execution/worklog]]
   - 会议组织规则和会后分流流程统一收进 [[governance/WORKFLOW]]
 - 影响：
   - 后续正式会议不再默认写进开发 worklog
-  - 如果会议结果已经形成拍板、需求收敛或实现动作，再分别回写到 [[projects/decisions]]、[[projects/trace]] 或 [[projects/development/worklog]]
+  - 如果会议结果已经形成拍板、需求收敛或实现动作，再分别回写到 [[projects/decisions]]、[[projects/trace]] 或 [[projects/development/execution/worklog]]
   - 项目主页、结构说明、状态页、开发入口、项目记忆页和总入口都要补上会议入口的链接
 
 ### 2026-04-09 分层 memory 落点
@@ -67,7 +67,7 @@ tags: [decision]
   - 以功能点作为最小执行单位
   - 用 [[projects/development/README]] 维护模板和活跃清单
   - 用 [[projects/development/feature-points/README]] 维护一页一个功能点的实体页
-  - 用 [[projects/development/worklog]] 维护过程流水
+  - 用 [[projects/development/execution/worklog]] 维护过程流水
   - 用 [[projects/status]] 维护全局状态镜像
   - 用 [[projects/releases]] 维护完成和发布结果
   - 用 [[projects/incidents/README]] 维护异常和复盘

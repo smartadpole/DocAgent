@@ -2,7 +2,10 @@
 
 这页是开发层的过程记录页。
 
-主入口：[[projects/development/README]]
+主入口：[[projects/development/execution/README]]
+
+上游：[[projects/development/plan/README]]、[[projects/development/execution/todo]]  \
+横向：[[projects/development/reports/README]]、[[projects/development/risks/README]]
 
 ## 这页负责什么
 
@@ -49,3 +52,4 @@
 - 过程记录里如果提到某个功能点，优先链接到对应实体页
 - 如果这条开发记录来源于正式会议，回看 [[projects/meetings/worklog]]
 - 如果某次实现改变了范围、口径或修补边界，记得同步回写 [[projects/trace]]
+- 如果某次验证影响 TODO 关闭、Gate 准出或回归范围，记得同步回写 [[projects/development/reports/README]]

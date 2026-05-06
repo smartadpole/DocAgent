@@ -9,7 +9,7 @@ updated: 2026-04-09
 
 这页是事故目录总览。
 
-上游：[[projects/releases]]、[[projects/development/worklog]]、[[projects/decisions]]、[[projects/memory/README]]  \
+上游：[[projects/releases]]、[[projects/development/execution/worklog]]、[[projects/decisions]]、[[projects/memory/README]]  \
 下游：每一条独立事故记录
 
 ## 这页负责什么

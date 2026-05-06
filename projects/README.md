@@ -7,7 +7,7 @@ stage: design
 next_action: define-policy-and-memory-routing
 owner: team
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-06
 tags: [project]
 ---
 
@@ -88,8 +88,13 @@ tags: [project]
 - [[projects/design/memory/README]]：记忆研究层入口。这里放研究稿、工具调研和运行层设计草稿。
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
 - [[projects/development/README]]：开发主入口。这里放研发经理视角的整体推进、状态镜像、阻塞和下一步。
+- [[projects/development/plan/README]]：研发执行总控。这里放当前阶段、当前主入口和开发层目录职责。
+- [[projects/development/plan/work-item-system-model]]：事项关系模型。这里放需求、目标、功能点、TODO、反馈和证据之间的关系。
+- [[projects/development/execution/README]]：执行控制入口。这里放待办、编码交接、反馈纠偏和过程记录入口。
+- [[projects/development/execution/todo]]：待办看板。这里放当前下一步和关闭证据。
+- [[projects/development/reports/README]]：测试和准出报告入口。这里放测试方案、用例、结论和 Gate 准出证据。
 - [[projects/development/feature-points/README]]：功能点实体目录。这里放工程师视角的单功能点执行页和状态索引。
-- [[projects/development/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
+- [[projects/development/execution/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
 - [[projects/meetings/README]]：会议主入口。这里放会前材料、纪要、行动项和会后分流规则。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
 - [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。

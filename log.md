@@ -9,6 +9,21 @@
 
 ## 2026-05-06
 
+### 抽象采纳项目层研发规则而不同步项目事实
+
+- **记录人**：sunhao
+- **用户意图**：在已经沉淀跨项目反哺红线后，重新处理“从下游项目采纳新设计”的任务，重点采纳项目层面的通用规则更新，同时避免再次把具体项目事实同步进模板库。
+- **主题**：
+  1. 只把研发计划、执行、阶段门、实现、报告和风险这些可复用项目层结构抽象回模板。
+  2. 把需求、目标、功能点、TODO、反馈、证据、风险和 Gate 准出的关系沉淀成通用事项模型。
+  3. 明确不采纳下游项目里的具体业务范围、结果表、字段、运行证据、具体 Gate 内容和测试结论。
+- **关键动作**：
+  1. **主结构**：把开发层扩展为 [[projects/development/plan/README]]、[[projects/development/execution/README]]、[[projects/development/gates/README]]、[[projects/development/implementation/README]]、[[projects/development/reports/README]] 和 [[projects/development/risks/README]]，并把原开发流水迁到 [[projects/development/execution/worklog]]。
+  2. **主模型**：新增 [[projects/development/plan/work-item-system-model]]、[[projects/development/execution/todo]]、[[projects/development/execution/developer-execution-workflow]] 和 [[projects/development/execution/engineering-feedback-loop]]，收口研发事项关系、TODO 关闭守卫、工程协作回传和反馈纠偏。
+  3. **主方法**：新增 [[concepts/progressive-design-freeze]]，只保留阶段门滚动冻结的方法定义、冻结节奏和候选功能点提升标准，不带入下游项目应用页。
+  4. **主同步**：更新 [[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]] 和 [[projects/development/feature-points/README]]，让新项目层结构进入入口、读取顺序、同步规则和交付检查。
+- **影响页面**：[[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[concepts/README]]、[[concepts/progressive-design-freeze]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/development/README]]、[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/execution/README]]、[[projects/development/execution/todo]]、[[projects/development/execution/developer-execution-workflow]]、[[projects/development/execution/engineering-feedback-loop]]、[[projects/development/execution/worklog]]、[[projects/development/gates/README]]、[[projects/development/implementation/README]]、[[projects/development/reports/README]]、[[projects/development/risks/README]]、[[projects/development/feature-points/README]]、[[log]]。
+
 ### 把跨项目误同步教训沉淀成反哺红线
 
 - **记录人**：sunhao
@@ -142,9 +157,9 @@
   3. 把会议组织规则和流程写进治理层与项目层。
 - **关键动作**：
   1. **主新增**：创建 [[projects/meetings/README]] 和 [[projects/meetings/worklog]]，把正式会议入口、记录模板和时间线记录单独收口。
-  2. **主同步**：更新 [[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/status]]、[[projects/memory/README]]、[[INDEX]] 和 [[README]]，让项目主入口、结构页和常用入口都能直接找到会议层。
+  2. **主同步**：更新 [[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/execution/worklog]]、[[projects/status]]、[[projects/memory/README]]、[[INDEX]] 和 [[README]]，让项目主入口、结构页和常用入口都能直接找到会议层。
   3. **主治理**：在 [[governance/WORKFLOW]] 和 [[AGENTS]] 里补上会议材料的收集、记录、分流和阅读顺序，并用 [[projects/decisions]]、[[projects/trace]] 记录这次结构拆分。
-- **影响页面**：[[projects/meetings/README]]、[[projects/meetings/worklog]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/status]]、[[projects/memory/README]]、[[governance/README]]、[[governance/WORKFLOW]]、[[AGENTS]]、[[projects/decisions]]、[[projects/trace]]、[[INDEX]]、[[README]]、[[log]]。
+- **影响页面**：[[projects/meetings/README]]、[[projects/meetings/worklog]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/execution/worklog]]、[[projects/status]]、[[projects/memory/README]]、[[governance/README]]、[[governance/WORKFLOW]]、[[AGENTS]]、[[projects/decisions]]、[[projects/trace]]、[[INDEX]]、[[README]]、[[log]]。
 
 ### 把 Obsidian 的依赖说明写清楚
 
@@ -272,9 +287,9 @@
 - **关键动作**：
   1. **主新增**：新建 [[projects/trace]]，把它定义成项目层里记录原始意图、约束变化、修补性需求、关键决策变化和最终实现口径的主文件。
   2. 在 [[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]] 中同步补上 trace 的职责、边界和路由，明确它不是第二份 `[[log]]`，也不是第二份 `[[projects/decisions]]`。
-  3. 在 [[projects/README]]、[[projects/STRUCTURE]]、[[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/development/worklog]] 和 [[projects/memory/README]] 中补上 trace 的入口、依赖关系和读取顺序。
+  3. 在 [[projects/README]]、[[projects/STRUCTURE]]、[[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/development/execution/worklog]] 和 [[projects/memory/README]] 中补上 trace 的入口、依赖关系和读取顺序。
   4. 把当前文档系统项目自身的“从知识库底座到项目运行链路”的收敛过程写成 [[projects/trace]] 的首条主题，给后续使用留一个最小样例。
-- **影响页面**：[[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/requirements]]、[[projects/trace]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/memory/README]]、[[log]]。
+- **影响页面**：[[README]]、[[INDEX]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/requirements]]、[[projects/trace]]、[[projects/design/README]]、[[projects/decisions]]、[[projects/development/README]]、[[projects/development/execution/worklog]]、[[projects/memory/README]]、[[log]]。
 
 ### 区分 `[[log]]` 与需求演进 trace，并把收尾模式补成显式协议
 
@@ -504,18 +519,18 @@
   3. 强化 [[POLICY]]，明确默认不自动晋升、晋升条件、只有拍板后才进入 policy，以及冲突不直接覆盖的固定流程。
   4. 在 `projects/memory/` 增加 `policy-links.md` 作为运行层到规则层的桥接页，并同步更新 [[projects/README]]、[[projects/STRUCTURE]] 和 [[README]] 的入口说明。
   5. 强化 Markdown 引用约束，统一 vault 内页面引用必须使用 `[[wikilink]]` 及其变体，禁止继续保留内部 `.md` 链接、本机绝对路径、空链接和占位链接，并把引用校验加入 [[WORKFLOW]] 的交付前必检项。
-  6. 把功能点推进流程正式沉淀到项目层，[[WORKFLOW]] 补了功能点状态机，[[projects/development/README]] 和 [[projects/development/worklog]] 补了模板与示例，[[projects/status]] 变成全局状态镜像，`projects/memory/`、[[projects/decisions]] 和 [[projects/README]] 也同步收口了对应入口。
-  7. 把开发示例独立成 `projects/development/examples.md`，并把 [[projects/development/README]]、[[projects/development/worklog]]、[[projects/STRUCTURE]]、[[projects/README]] 和 [[WORKFLOW]] 的示例入口同步改为指向该文件。
+  6. 把功能点推进流程正式沉淀到项目层，[[WORKFLOW]] 补了功能点状态机，[[projects/development/README]] 和 [[projects/development/execution/worklog]] 补了模板与示例，[[projects/status]] 变成全局状态镜像，`projects/memory/`、[[projects/decisions]] 和 [[projects/README]] 也同步收口了对应入口。
+  7. 把开发示例独立成 `projects/development/examples.md`，并把 [[projects/development/README]]、[[projects/development/execution/worklog]]、[[projects/STRUCTURE]]、[[projects/README]] 和 [[WORKFLOW]] 的示例入口同步改为指向该文件。
   8. 把功能点管理从单字段 `in_progress` 改成双轴模型，由 `status` 管生命周期、`phase` 管串联步骤；同时把开发入口、示例页、工作日志、状态页、决策页和项目记忆页都同步沉淀，避免设计、实现、验证混写在一个字段里。
   9. 进一步把项目级状态和功能点双轴分开，让项目入口只保留项目级状态词，功能点推进统一用 `status + phase`，避免不同层级的“进行中”概念互相污染。
   10. 明确功能点卡的最小填写要求，每张卡都必须同时写 `status` 和 `phase`，不能只留一个“进行中”的笼统字段；并把这条约束写进项目共享背景。
-  11. 把过程记录也同步拆轴，让 [[projects/development/worklog]] 分开记录 `status` 变化和 `phase` 变化，避免把两条线重新揉回 `in_progress`。
+  11. 把过程记录也同步拆轴，让 [[projects/development/execution/worklog]] 分开记录 `status` 变化和 `phase` 变化，避免把两条线重新揉回 `in_progress`。
   12. 把开发示例进一步显式化，同时展示进行中、完成待发布、已发布三种卡片，并把已发布示例的阶段口径收口到 `release`。
-  13. 把开发示例从“同页多卡”进一步拆成真实功能点实体页，新增 `projects/development/feature-points/` 目录，拆出 `README.md` 索引页和 `FP-001.md`、`FP-002.md`、`FP-003.md` 三个实体页；同时把 [[WORKFLOW]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/decisions]]、[[projects/memory/shared]] 和 [[AGENTS]] 的口径一起改成实体页优先。
+  13. 把开发示例从“同页多卡”进一步拆成真实功能点实体页，新增 `projects/development/feature-points/` 目录，拆出 `README.md` 索引页和 `FP-001.md`、`FP-002.md`、`FP-003.md` 三个实体页；同时把 [[WORKFLOW]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/development/README]]、[[projects/development/execution/worklog]]、[[projects/decisions]]、[[projects/memory/shared]] 和 [[AGENTS]] 的口径一起改成实体页优先。
   14. 进一步把 [[projects/development/README]] 收成研发经理看板，移走状态轴、阶段轴、实体模板和当前实体清单；把这些执行细节集中到 [[projects/development/feature-points/README]]，让开发主入口只负责整体推进、阻塞、下一步和协调。
   15. 把目录入口标题统一收成中文，并补了一条写作约定：正文默认中文，英文只保留文件名、产品名、代码标识和必要术语；继续把说明性英文收口为中文表达，不动历史事实记录。
   16. 把随意中英混排正式沉淀为 [[AGENTS]] 的硬约束，延续同一天前面的正文中文化收口，把规则明确成后续新增或修改内容都要检查的维护约束。
-- 影响页面：[[projects/status]]、[[projects/memory/README]]、[[projects/memory/policy-links]]、[[projects/design/memory/README]]、[[projects/development/README]]、[[projects/development/worklog]]、[[projects/development/feature-points/README]]、[[projects/README]]、[[projects/STRUCTURE]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]、[[AGENTS]]。
+- 影响页面：[[projects/status]]、[[projects/memory/README]]、[[projects/memory/policy-links]]、[[projects/design/memory/README]]、[[projects/development/README]]、[[projects/development/execution/worklog]]、[[projects/development/feature-points/README]]、[[projects/README]]、[[projects/STRUCTURE]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]、[[AGENTS]]。
 
 ## 2026-04-09
 

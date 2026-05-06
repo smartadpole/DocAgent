@@ -25,8 +25,13 @@
 - `projects/design/`：正式设计层。`README.md` 做总入口；`tech-selection.md`、`architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md` 共同组成完整软件架构包；`topics/` 承接重要设计专题和专项储备。
 - `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
 - `projects/design/topics/`：设计专题层。承接未拍板但需要持续推进的设计问题，以及当前不进入完整架构包、但要长期保留的专项设计储备；会议页只引用，不重复维护主正文。
+- `projects/development/plan/`：研发总控层。承接当前阶段、阶段门摘要、执行入口、事项关系模型和支撑文件分组。
+- `projects/development/execution/`：执行控制层。承接待办、编码交接、工程反馈闭环和开发过程记录。
+- `projects/development/gates/`：阶段门层。承接准入、准出、冻结对象、验收证据和风险边界。
+- `projects/development/reports/`：验证证据层。承接测试方案、测试用例、测试结论、相关回归和准出报告。
+- `projects/development/risks/`：研发风险层。承接阻塞、待确认项、owner 归口和会议 / 决策分流。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
-- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/meetings/README.md` 偏会议协作视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
+- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 和 `projects/development/plan/README.md` 偏研发经理视角，`projects/development/execution/README.md` 偏执行协调视角，`projects/meetings/README.md` 偏会议协作视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
 - `concepts/`：概念和实体层。工具、项目、术语都放这里。
 - `indexes/`：导航层。只负责入口、分类和检索。
@@ -186,6 +191,7 @@
 - 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、会议、决策、记忆、开发页面。
 - 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
 - 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
+- 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`reports/`、`risks/` 或功能点实体页。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
@@ -212,6 +218,7 @@
 - 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/README.md`、`projects/design/topics/README.md`、需求页、已有决策页、相关设计子页 / 专题页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
+- 改开发执行页、待办、测试报告、Gate 或风险页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、当前相关 TODO / FP / Gate / 报告页和必要设计页。
 - 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。

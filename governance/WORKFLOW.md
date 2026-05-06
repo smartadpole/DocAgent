@@ -63,11 +63,15 @@
 - 环境、发布和回滚：看 `projects/design/deployment.md`
 - 监控、告警、重试和补偿：看 `projects/design/runtime-quality.md`
 - 关键取舍：看 `projects/decisions.md`
+- 研发总控和当前执行入口：看 `projects/development/plan/README.md`
+- 事项关系、关闭证据和防跑偏：看 `projects/development/plan/work-item-system-model.md`
+- 当前待办：看 `projects/development/execution/todo.md`
+- 测试方案和准出证据：看 `projects/development/reports/README.md`
 - 项目级稳定记忆：看 `projects/memory/README.md`
 - 治理层总边界：看 [[governance/README]]
 - 共享背景：看 [[BRAIN]]
 - 规则和优先级：看 [[POLICY]]
-- 过程记录和排障：看 `projects/development/worklog.md`
+- 过程记录和排障：看 `projects/development/execution/worklog.md`
 - 发布和回滚：看 `projects/releases.md`
 - 事故和复盘：看 `projects/incidents/README.md`
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
@@ -184,9 +188,12 @@
 - `projects/design/architecture.md`、`projects/design/backend-frontend-structure.md`、`projects/design/permission-boundary.md`、`projects/design/write-boundary.md`、`projects/design/database.md`、`projects/design/deployment.md`、`projects/design/runtime-quality.md`、`projects/design/topics/*.md`：先读 `projects/design/README.md`，再按主题补读相邻设计子页 / 专题页、`projects/requirements.md`、[[projects/trace]] 和 `projects/decisions.md`
 - [[projects/trace]]：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`、当前相关开发页
 - `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、[[projects/trace]]、`projects/memory/README.md`、[[POLICY]]、相关过程记录
-- `projects/development/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
+- `projects/development/plan/README.md`：`projects/README.md`、`projects/status.md`、`projects/development/README.md`、`projects/development/plan/work-item-system-model.md`、当前相关执行页
+- `projects/development/execution/todo.md`：`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、相关功能点、相关 Gate、相关测试报告
+- `projects/development/reports/README.md`：`projects/development/execution/todo.md`、相关功能点、相关 Gate、相关 worklog 和验证证据
+- `projects/development/execution/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
-- `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
+- `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
 - `indexes/`：它所指向的主页面
@@ -567,6 +574,8 @@
 
 拆完后，把功能点写进 `projects/development/feature-points/`，并让 `projects/development/README.md` 只保留活跃入口和整体推进状态。
 
+如果这轮研发拆解已经跨多个阶段、多个工程角色或多个证据来源，先把阶段路线、事项关系和关闭证据写到 [[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]] 和 [[projects/development/execution/todo]]。不要把 TODO、测试证据、风险和 Gate 准出条件都挤进 [[projects/development/README]] 或单个功能点页。
+
 #### 第三步：为每个功能点补接口 / 数据变更
 
 每个功能点至少补齐这 4 件事：
@@ -600,7 +609,8 @@
 验证记录的落点：
 
 - 功能点自己的验收和结果，写在对应功能点页
-- 时间顺序的实现、联调、排障和验证过程，写到 `projects/development/worklog.md`
+- 时间顺序的实现、联调、排障和验证过程，写到 `projects/development/execution/worklog.md`
+- 如果测试结果会影响 TODO 关闭、Gate 准出、回归范围或待人工确认项，写到 [[projects/development/reports/README]]
 - 如果验证结果改变了当前实现口径，再同步回 `projects/trace.md`
 
 #### 第五步：为每个功能点补发布项
@@ -625,7 +635,12 @@
 
 - 功能点目录和实体页：`projects/development/feature-points/`
 - 整体推进状态：`projects/development/README.md`
-- 过程流水：`projects/development/worklog.md`
+- 阶段路线和事项关系：[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]
+- 当前执行项和关闭守卫：[[projects/development/execution/todo]]
+- 工程反馈和返工吸收：[[projects/development/execution/engineering-feedback-loop]]
+- 测试方案、复验和准出证据：[[projects/development/reports/README]]
+- 风险、卡点和待人工确认项：[[projects/development/risks/README]]
+- 过程流水：`projects/development/execution/worklog.md`
 - 实现口径变化：`projects/trace.md`
 - 新取舍或冲突：`projects/decisions.md`
 - 稳定背景：`projects/memory/README.md`
@@ -685,7 +700,7 @@
 - 功能点实体页放在 [[projects/development/feature-points/README]]，每个功能点一页，不把多个功能点正文塞在同一页。
 - `status` 和 `phase` 写在功能点页的 frontmatter 或页面属性里。
 - 三层职责固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 偏研发经理视角，`projects/development/feature-points/README.md` 和其下实体页偏工程师视角。
-- 过程日志放在 [[projects/development/worklog]]。
+- 过程日志放在 [[projects/development/execution/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。
 - 异常和复盘放在 [[projects/incidents/README]]。
@@ -723,9 +738,9 @@
 - 会后按结果分流：
   - 拍板和取舍进 `projects/decisions.md`
   - 需求变化和范围收敛进 `projects/trace.md`
-  - 开发动作和验证进 `projects/development/worklog.md`
+  - 开发动作和验证进 `projects/development/execution/worklog.md`
   - 稳定背景进 `projects/memory/README.md`
 - 当分流后的承接页推进了会议中的某条事项，同轮把对应会议记录里的结论或待办状态一起回写；这里要求显式同步，不做隐藏自动流控。
-- 如果只是开发过程中的临时讨论、联调插会或排障沟通，可以直接记到 `projects/development/worklog.md`；如果是正式会议，默认写 `projects/meetings/worklog.md`
+- 如果只是开发过程中的临时讨论、联调插会或排障沟通，可以直接记到 `projects/development/execution/worklog.md`；如果是正式会议，默认写 `projects/meetings/worklog.md`
 - 会议记录默认一场会对应一条记录，不把多场会揉成一条总记录
 - 如果某类会议开始反复出现，再考虑把固定字段继续收紧成模板或索引；会议记录模板优先看 [[templates/meeting-entry-template]]

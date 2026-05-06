@@ -5,7 +5,7 @@
 这页记录正式会议的时间线。
 
 如果会议很多，就让这页专门承接“会议发生了什么、结论是什么、要分流到哪”。
-如果只是开发过程里的临时讨论，优先写到 [[projects/development/worklog]]。
+如果只是开发过程里的临时讨论，优先写到 [[projects/development/execution/worklog]]。
 默认按时间倒序维护，新的会议记录放前面。
 模板可先复制 [[templates/meeting-entry-template]]。
 
@@ -20,7 +20,7 @@
 
 - 不做逐字转录
 - 不保存原始录音、截图或下载附件本体
-- 不替代 [[projects/decisions]]、[[projects/trace]] 或 [[projects/development/worklog]]
+- 不替代 [[projects/decisions]]、[[projects/trace]] 或 [[projects/development/execution/worklog]]
 
 ## 记录模板
 
