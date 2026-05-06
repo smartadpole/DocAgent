@@ -6,7 +6,7 @@ scope: shared
 status: confirmed
 priority: highest
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-06
 tags: [policy]
 ---
 
@@ -89,6 +89,7 @@ tags: [policy]
 - agent 可以自动写入 [[projects/trace]]，前提是这轮已经形成明确的项目推进内容，而且该变化会影响当前需求主题的实现口径；写入时要和相关 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]] 同轮联动，不把它写成第二份 [[log]]，也不记录原始来源材料清单、出处或格式转换过程
 - agent 可以自动执行格式归一化：把本库内错误的 Markdown 页面引用收敛成 `[[wikilink]]`，把明显失效的空链接、占位链接和本机绝对路径引用修正掉
 - agent 可以在用户要求反哺模板时，按 [[template-feedback-rules]] 把下游项目中已经验证的结构、流程、规则、记忆路由、模板、写法和自动化契约抽象回模板库；抽象时不得复制项目事实、业务状态或具体技术拍板；“规则默认反哺”只表示默认进入候选，写入前必须通过抽象、冲突和单一信息源检查
+- agent 不可以把“采纳某项目设计”自动解释成整库同步、整目录复制或原样搬运下游项目设计；跨项目采纳必须先列候选分类和不反哺边界，禁止先写入项目事实再事后筛选
 - agent 需要先形成明确结论再写入：[[BRAIN]]、[[projects/memory/shared]]
 - agent 不应直接拍板写入：高优先级规则、冲突结论、覆盖旧规则的变更
 - 任何会改变后续执行方式的内容，优先先进入 [[projects/decisions]] 再回写
