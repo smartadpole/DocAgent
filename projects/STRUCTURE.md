@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-05-06
+updated: 2026-05-07
 ---
 
 # 项目层结构
@@ -111,6 +111,7 @@ projects/
 这不是要求一次性建全，而是推荐的扩展方向。
 
 - 极简项目：只保留 [[projects/README]]
+- 新应用探索期：如果还在比较多个候选方向，先留在 `inbox/`、`raw/`、`articles/`、`concepts/`；只有方向已经成为当前项目，才进入 [[projects/README]]、[[projects/requirements]] 和 [[projects/trace]]
 - 小项目：优先平铺单文件；只有明显会长成多文件模块时再建子目录
 - 复杂项目：再细分到 `architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md`、`worklog.md`、`shared.md` 等子页
 

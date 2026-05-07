@@ -479,6 +479,37 @@
 
 软件研发模式不是另一套系统，而是 `projects/` 的运行方式。
 
+### 1.9.0 新应用探索模式
+
+当用户想探索一个全新的桌面端、web 或 app 产品时，先判断是在“多方向探索”，还是已经进入“当前项目推进”。
+
+如果还在多方向探索：
+
+1. 把灵感、竞品、截图、访谈、工具调研和零散约束先放进 `inbox/` 或 `raw/`。
+2. 对有复用价值的材料，整理成 `articles/` 摘要卡或 `concepts/` 概念页。
+3. 用问题、人群、使用场景、替代方案、平台约束和风险来比较候选方向。
+4. 不要为每个候选应用都建立完整 `projects/` 结构。
+5. 不要把探索期的多个候选方向写成当前项目事实、当前状态或正式设计决策。
+
+当某个方向开始成为当前要推进的应用：
+
+1. 先用 [[projects/README]] 记录项目一句话、当前状态、下一步和关键入口。
+2. 再把问题、目标用户、核心场景、范围、非目标和验收写进 [[projects/requirements]]。
+3. 如果这轮已经从原始意图收敛到可执行范围，同步写 [[projects/trace]]。
+4. 未拍板的平台、技术栈、关键交互或商业边界，先放 [[projects/design/topics/README]] 或 [[projects/decisions]]，不要直接塞进完整架构包。
+5. 等问题、人群、范围和验收稳定后，再补 [[projects/design/README]] 的完整架构包。
+6. 只有准备拆功能点、排期、验证或发布时，才进入 [[projects/development/plan/README]] 和事项模型。
+
+推荐演进链：
+
+`inbox/` / `raw/` -> `articles/` / `concepts/` -> [[projects/requirements]] -> [[projects/trace]] -> [[projects/design/topics/README]] -> [[projects/decisions]] -> [[projects/design/README]] -> [[projects/development/README]]
+
+交付判断：
+
+- 还在找方向时，交付物是候选方向比较、关键问题、证据卡片和下一步验证。
+- 已选方向但未进入研发时，交付物是轻量项目主页、需求页和 trace。
+- 已进入研发时，交付物才是设计包、功能点、TODO、验证证据和发布项。
+
 ### 1.9.1 项目推进先读什么
 
 1. 先读 `projects/README.md`

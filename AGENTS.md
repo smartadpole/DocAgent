@@ -71,6 +71,7 @@
 - [[POLICY]] 是规则和优先级层，承接自动沉淀边界、冲突处理和路由约束。
 - `projects/memory/README.md` 是项目级记忆入口，承接只对当前项目长期有效的事实。
 - `projects/trace.md` 是项目演进链入口，承接需求从原始意图到当前实现的结构化收敛过程。
+- 探索全新应用时，先判断是否仍是多方向探索；如果还没有明确选定当前项目，默认使用 `inbox/`、`raw/`、`articles/`、`concepts/` 轻量收集和比较，不为每个候选应用铺完整 `projects/` 结构。
 - 研发项目的阶段和状态由人读项目主页手动推进，不做隐藏自动流控。
 - 活跃研发项目先读项目主页，再改需求、设计、决策、记忆、发布或运行记录。
 - 极简小项目默认只保留一个项目主页，除非内容明显变多，否则不要先建空的需求、设计、发布之类页面。
@@ -132,6 +133,7 @@
 - 会影响路由、优先级和自动沉淀边界的规则，进入 [[POLICY]]。
 - 只反映当前项目长期有效事实的内容，进入 `projects/memory/README.md`。
 - 只反映当前项目里需求、功能、约束、修补和最终范围如何收敛的内容，进入 `projects/trace.md`；原始来源材料的索引、出处、文件改名和格式转换过程不进入 trace。
+- 全新应用探索期的多个候选方向，先留在 `inbox/`、`raw/`、`articles/`、`concepts/`；只有某个方向明确成为当前项目，才进入 [[projects/requirements]]、[[projects/trace]] 和设计 / 研发链路。
 - 稳定的个人偏好、命名习惯、表达偏好，进入 `workspace-memory`。
 - 项目阶段出现的思维碰撞、方案冲突和最终取舍，进入 `projects/decisions.md`。
 - 只反映时间降序、按对话组织的主题化过程记录，进入 `log.md`，但 `log.md` 不是主动背景。
@@ -169,6 +171,7 @@
 
 - 默认演进链路是：`raw/inbox -> projects -> articles/concepts/indexes -> archive/log.md`。
 - 新信息先作为来源进入 `raw/` 或 `inbox/`。
+- 全新应用探索的早期链路是：`inbox/` / `raw/` -> `articles/` / `concepts/` -> [[projects/requirements]] -> [[projects/trace]] -> [[projects/design/topics/README]] -> [[projects/decisions]] -> [[projects/design/README]] -> [[projects/development/README]]；进入 `projects/` 前，先确认它已经不是多个候选方向之一，而是当前要推进的应用。
 - 当信息开始参与当前项目判断和推进时，进入 `projects/`。
 - 当正式会议材料、会议纪要和行动项开始参与当前项目判断和推进时，优先进入 `projects/meetings/`。
 - 当项目里的某些结论已经脱离当前阶段、可以跨阶段或跨问题复用时，提升到 `articles/` 或 `concepts/`。

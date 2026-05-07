@@ -6,7 +6,7 @@ scope: shared
 status: confirmed
 priority: highest
 source_of_truth: true
-updated: 2026-05-06
+updated: 2026-05-07
 tags: [policy]
 ---
 
@@ -100,6 +100,7 @@ tags: [policy]
 - 临时会话信息先留在会话或 `inbox/`
 - 时间顺序上的历史记录进入 [[log]]；记录单位是“每次对话”，不是“每个问题”或“每天一个主题”；如果要写用户提问，只记录能代表该次对话主题的提炼意图，相关问题可合并，不抄问题清单
 - 需求从原始意图到当前实现的演进链进入 [[projects/trace]]；它按需求主题维护，不按日期分组，也不替代 [[log]]。原始来源整理、文件改名、PDF 到 Markdown / PDF->md、链接清理和出处索引不进入 [[projects/trace]]
+- 全新应用探索期如果同时存在多个候选方向，默认先走 `inbox/`、`raw/`、`articles/`、`concepts/` 的轻量路由；只有某个方向被明确选为当前项目，才把它写进 `projects/`、[[projects/requirements]] 和 [[projects/trace]]
 - 重复出现、且只对当前项目长期有用的信息，先进入 [[projects/memory/README]]
 - 跨任务、跨会话、但仍属于共享背景的信息，进入 [[BRAIN]]
 - 会改变后续执行方式的内容，进入 [[POLICY]]

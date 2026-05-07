@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-06
+updated: 2026-05-07
 tags: [index, root]
 ---
 
@@ -53,6 +53,7 @@ tags: [index, root]
 
 ## 研发方法
 
+- [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
 - [[projects/development/plan/work-item-system-model]]：需求到事项的系统模型

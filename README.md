@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-06
+updated: 2026-05-07
 tags: [entry, root]
 ---
 
@@ -118,6 +118,14 @@ tags: [entry, root]
 - 流程控制：不做自动流控，由人读项目主页后手动推进
 - 模板反哺：下游项目里被真实使用验证过的结构、流程、规则、记忆路由、写法、模板和自动化契约，抽掉项目事实后按 [[template-feedback-rules]] 回写模板库
 
+如果是在探索一个全新的桌面端、web 或 app 产品，先进入“新应用探索模式”，不要一上来铺满完整研发结构：
+
+- 多个候选方向、竞品、访谈、截图和灵感，先放 `inbox/`、`raw/`、`articles/`、`concepts/`。
+- 只有当某个方向开始变成当前要推进的应用，才正式进入 `projects/`。
+- 刚进入项目层时，先轻量维护 [[projects/README]]、[[projects/requirements]] 和 [[projects/trace]]。
+- 等问题、人群、范围和验收开始稳定，再补 [[projects/design/topics/README]]、[[projects/decisions]]、完整架构包和研发拆解。
+- 推荐路径是：`inbox/` / `raw/` -> `articles/` / `concepts/` -> [[projects/requirements]] -> [[projects/trace]] -> [[projects/design/topics/README]] -> [[projects/decisions]] -> [[projects/design/README]] -> [[projects/development/README]]。
+
 ## 角色和 memory 的关系
 
 这套文档库里的角色分层，和 memory 分层不是一回事。
@@ -136,7 +144,7 @@ tags: [entry, root]
 如果你想看这套文档库的整体设计思路，去看 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]。
 如果你想看分层记忆的设计，去看 [[articles/2026-04-09-layered-memory-research]] 和 [[concepts/layered-memory]]。
 
-研发阶段的详细说明、阶段映射和推进方式，统一看 [[WORKFLOW]] 里的 `1.9 软件研发模式`。
+研发阶段的详细说明、阶段映射和推进方式，统一看 [[WORKFLOW]] 里的 `1.9 软件研发模式`；新应用从模糊想法到立项的轻量路径，看 [[WORKFLOW]] 里的 `1.9.0 新应用探索模式`。
 如果你要让智能体直接推进一个具体功能，也统一看 [[WORKFLOW]] 里的 `1.9.9` 到 `1.9.12`。
 
 ## 最短工作流

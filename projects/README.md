@@ -7,7 +7,7 @@ stage: design
 next_action: define-policy-and-memory-routing
 owner: team
 source_of_truth: true
-updated: 2026-05-06
+updated: 2026-05-07
 tags: [project]
 ---
 
@@ -33,6 +33,8 @@ tags: [project]
 - 已经稳定、能复用的结论再进入 `articles/`、`concepts/`、`indexes/`
 - 不再承担当前入口职责但仍有历史价值的内容进入 `archive/`
 
+如果是在探索一个全新的应用，先判断它是否已经从多个候选方向里收敛成“当前项目”。没有收敛前，调研、竞品、访谈、截图和灵感仍优先走 `inbox/`、`raw/`、`articles/`、`concepts/`；不要把每个候选方向都提前写成项目主页、正式需求或完整架构包。
+
 ## 默认运行方式
 
 - 一个文档库只对应一个项目，所以项目主页固定是 [[projects/README]]
@@ -55,6 +57,12 @@ tags: [project]
 - 根目录 [[log]]
 
 其余文件都按需添加，不要为了完整性先建空文件。
+
+新应用刚从探索期进入项目层时，优先采用极简版本：
+
+- 先用 [[projects/README]] 定一句话目标、状态、下一步和关键链接。
+- 再按需要补 [[projects/requirements]] 和 [[projects/trace]]。
+- 等问题、人群、范围和验收稳定后，再补 [[projects/design/README]]、[[projects/design/topics/README]]、[[projects/decisions]] 和研发拆解。
 
 ## 这层不负责什么
 

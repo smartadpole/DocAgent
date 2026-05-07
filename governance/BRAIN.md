@@ -5,7 +5,7 @@ memory_layer: shared
 scope: project
 status: confirmed
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-07
 tags: [memory, shared]
 ---
 
@@ -40,6 +40,7 @@ tags: [memory, shared]
 - 这套系统不是“只会记录”的文档库，而是后续工作的共享脑和上下文底座。
 - 一个文档库只对应一个项目。
 - 知识库模式和软件研发模式不是两套平行系统，而是一体化演进关系。
+- 探索全新应用时，先把多个候选方向放在知识库模式里轻量收集和比较；只有某个方向明确成为当前项目，才进入 `projects/` 并逐步补需求、trace、设计、决策和研发拆解。
 - 文档库本体的框架级说明、层级边界和 memory 关系，统一由根 [[README]] 承接；`projects/` 只承载项目运行层，不接这类说明正文。
 - 这套模板会被复制到不同项目中使用；下游项目可以各自演化，但只有抽掉项目事实后仍能跨项目复用的结构、流程、规则和模板，才按 [[template-feedback-rules]] 反哺回模板库。
 
