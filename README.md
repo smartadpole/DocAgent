@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-07
+updated: 2026-05-09
 tags: [entry, root]
 ---
 
@@ -54,6 +54,8 @@ tags: [entry, root]
 - 想知道“其他项目进化出的系统层信息怎么反哺模板” -> 读 [[template-feedback-rules]]
 - 想找“可复制模板” -> 读 [[templates/README]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
+- 想看“源码工程深度解读怎么分级推进” -> 读 [[projects/codebase/source-code-audit-workflow]]
+- 想看“真实服务实例现在在哪里运行、怎么健康检查” -> 读 [[projects/service-registry]]
 - 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想看“研发执行、TODO、测试报告和 Gate 准出怎么组织” -> 读 [[projects/development/plan/README]]

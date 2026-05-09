@@ -4,7 +4,7 @@ id: GOV-TEMPLATE-FEEDBACK-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-06
+updated: 2026-05-09
 tags: [governance, template-feedback]
 ---
 
@@ -40,6 +40,7 @@ tags: [governance, template-feedback]
 6. **模板信息**：`templates/` 下可复制骨架、模板入口、模板使用说明，以及“模板正文唯一”的约束。
 7. **自动化契约信息**：frontmatter 字段、状态轴、阶段轴、agent 最小读取集、交付前检查、机器可读镜像页。
 8. **治理说明信息**：某类系统信息应该由哪一页裁定、哪一页执行、哪一页记录历史。
+9. **运行治理信息**：服务实例台账、服务组 / 组件层级、健康检查 / preflight 记录方式、服务实例事实和部署原则的单一信息源分工。
 
 一句话规则：
 
@@ -73,6 +74,7 @@ tags: [governance, template-feedback]
 - 某个项目的业务范围、用户角色、产品决策、技术栈拍板和阶段状态
 - 某次会议的具体结论、行动项、参会人和项目待办
 - 某个现成工程的具体页面、表名、字段、bug 和复用结论
+- 某个服务实例的具体 IP、端口、进程号、代码目录、数据目录、日志路径、profile id、提交号和一次性更新方式
 - 某份原始材料的摘要、出处、数据、样例和项目证据
 - 某个项目的结果表、字段、SQL、灰度范围、测试报告、Gate、TODO、运行证据和验收状态
 - 只对当前项目长期有效的事实

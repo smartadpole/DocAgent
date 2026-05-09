@@ -5,7 +5,7 @@ project: wiki
 status: optional
 stage: analysis
 source_of_truth: false
-updated: 2026-04-25
+updated: 2026-05-09
 tags: [project, codebase]
 ---
 
@@ -31,6 +31,7 @@ tags: [project, codebase]
 
 ## 子页
 
+- [[projects/codebase/source-code-audit-workflow]]：源码工程深度解读工作流、覆盖等级和终态自审
 - [[projects/codebase/page-map]]：路由、页面家族、布局壳、角色入口和主流程
 - [[projects/codebase/schema-map]]：表、字段、状态、写入口、RPC 和生成类型
 - [[projects/codebase/infra]]：部署、服务、脚本、观测、压测和回滚
@@ -41,13 +42,15 @@ tags: [project, codebase]
 
 1. 先看 [[projects/requirements]]、[[projects/trace]] 和 [[projects/design/README]]，确认目标系统要做成什么。
 2. 再看这页，确认现实实现现在长什么样。
-3. 再看 [[projects/codebase/page-map]] 和 [[projects/codebase/schema-map]]，把页面、数据和写入口放平。
-4. 再看 [[projects/codebase/conflicts]]，把冲突、漂移和 bug 收口。
-5. 再看 [[projects/codebase/reuse-boundary]]，决定哪些能继承、哪些只能参考。
-6. 最后回到 [[projects/decisions]] 和 [[projects/development/README]]，把差异收成接入策略和功能点拆解。
+3. 如果要深入理解源码工程，先按 [[projects/codebase/source-code-audit-workflow]] 定目标等级、证据矩阵和终态自审。
+4. 再看 [[projects/codebase/page-map]] 和 [[projects/codebase/schema-map]]，把页面、数据和写入口放平。
+5. 再看 [[projects/codebase/conflicts]]，把冲突、漂移和 bug 收口。
+6. 再看 [[projects/codebase/reuse-boundary]]，决定哪些能继承、哪些只能参考。
+7. 最后回到 [[projects/decisions]] 和 [[projects/development/README]]，把差异收成接入策略和功能点拆解。
 
 ## 维护说明
 
 - 如果现实实现和主线需求 / 设计冲突，先记到 [[projects/codebase/conflicts]]，再升级到 [[projects/decisions]]。
 - 如果代码事实已经被确认能复用，再写到 [[projects/codebase/reuse-boundary]]。
+- 源码工程解读必须先声明目标等级和实际达到等级；没有完成 L3 自审时，不得暗示已经完成完整源码审计或已经可以做生产接入结论。
 - 如果代码审计产生了可跨项目复用的方法，再沉淀到 `concepts/` 或 `articles/`。

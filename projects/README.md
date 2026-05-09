@@ -7,7 +7,7 @@ stage: design
 next_action: define-policy-and-memory-routing
 owner: team
 source_of_truth: true
-updated: 2026-05-07
+updated: 2026-05-09
 tags: [project]
 ---
 
@@ -81,6 +81,7 @@ tags: [project]
 
 - [[projects/README]]：项目运行层主入口。这里放目标、状态、关键链接和下一步。
 - [[projects/status]]：项目状态页。这里放当前阶段、活跃功能点双轴状态镜像和当前主入口。
+- [[projects/service-registry]]：服务实例台账。这里放已确认的运行实例事实、健康检查、版本、配置 profile、数据目录和更新方式。
 - [[projects/codebase/README]]：代码基线审计入口。这里放现实代码的页面图、schema 图、基础设施图、冲突和复用边界，不承接主工程定义。
 - [[projects/STRUCTURE]]：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
 - [[projects/requirements]]：需求主文件。这里放问题定义、范围、非目标和验收标准。
@@ -131,10 +132,11 @@ tags: [project]
 如果你想再判断“现有代码能继承什么、哪里已经偏了”，再继续看：
 
 1. [[projects/codebase/README]]
-2. [[projects/codebase/page-map]]
-3. [[projects/codebase/schema-map]]
-4. [[projects/codebase/conflicts]]
-5. [[projects/codebase/reuse-boundary]]
+2. [[projects/codebase/source-code-audit-workflow]]
+3. [[projects/codebase/page-map]]
+4. [[projects/codebase/schema-map]]
+5. [[projects/codebase/conflicts]]
+6. [[projects/codebase/reuse-boundary]]
 
 这样会先把目标系统看清，再用现实实现做差异审计，不容易被现有代码带偏。
 

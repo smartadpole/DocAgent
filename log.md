@@ -7,6 +7,27 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-09
+
+### 从 重治理主控工程 抽象吸收研发治理规则
+
+- **记录人**：sunhao
+- **用户意图**：检查下游项目 重治理主控工程 中是否存在可反哺当前模板库的规则，并只吸收抽象后的系统层信息，不带入下游项目事实。
+- **主题**：
+  1. 下游项目暴露出运行服务治理、源码审计、跨工程 handoff 和验收证据分层四类可复用规则。
+  2. 服务 IP、端口、代码提交、业务 TODO、具体测试报告和项目状态属于下游项目材料，不进入当前模板库。
+  3. 反哺时优先更新既有主入口、规则页和模板页，避免复制第二份正文。
+- **关键动作**：
+  1. **运行治理**：新增 [[projects/service-registry]] 和 [[templates/service-registry-template]]，把服务实例台账、服务组 / 组件层级、健康检查、配置 profile、数据目录和脱敏字段口径抽象为可选项目层结构。
+  2. **源码审计**：新增 [[projects/codebase/source-code-audit-workflow]] 和 [[templates/source-code-audit-report-template]]，固化 L0 到 L3 的源码工程解读等级、证据矩阵、自动推进和终态自审边界。
+  3. **验收规则**：更新 [[POLICY]]、[[projects/development/reports/README]] 和 [[templates/development-test-report-template]]，吸收验收对象分层、`local validation` / `service-side validation` / `end-to-end validation`、非默认参数验证、人工确认项和报告双向关联规则。
+  4. **跨工程协作**：更新 [[projects/development/execution/developer-execution-workflow]]、[[templates/code-handoff-template]] 和 [[templates/developer-task-brief-template]]，强化只读上下文、受控回写、handoff 入库、独立抽插和下游吸收边界。
+  5. **入口同步**：更新 [[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[BRAIN]]、[[template-feedback-rules]]、[[projects/README]]、[[projects/STRUCTURE]] 和 [[projects/codebase/README]]，补齐新页面类型的主入口、上下游关系、读取顺序和反哺边界。
+- **不反哺内容**：下游项目中的具体服务实例、IP / 端口、进程、提交号、业务 TODO、测试结论、灰度状态、项目技术拍板和一次性排障过程均保留在下游项目，不写入当前模板库。
+- **模板检查结果**：新增服务实例台账条目模板和源码审计报告模板；既有测试报告、编码任务执行单和代码工程回传包模板已同步扩展，项目页只链接模板，不维护第二份模板正文。
+- **协作契约检查结果**：主控文档库与实现工程仍按“只读上下文 + 代码工程回传包 + 本库侧吸收”作为默认模式；直接回写本库或修改子工程都必须有明确授权。
+- **影响页面**：[[README]]、[[INDEX]]、[[AGENTS]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[template-feedback-rules]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/service-registry]]、[[projects/codebase/README]]、[[projects/codebase/source-code-audit-workflow]]、[[projects/development/execution/developer-execution-workflow]]、[[projects/development/reports/README]]、[[templates/README]]、[[templates/service-registry-template]]、[[templates/source-code-audit-report-template]]、[[templates/code-handoff-template]]、[[templates/developer-task-brief-template]]、[[templates/development-test-report-template]]、[[log]]。
+
 ## 2026-05-07
 
 ### 固化新应用探索从调研到研发的轻量路径

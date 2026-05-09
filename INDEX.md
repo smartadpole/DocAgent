@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-07
+updated: 2026-05-09
 tags: [index, root]
 ---
 
@@ -35,6 +35,7 @@ tags: [index, root]
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
 - [[projects/trace]]：需求演进链入口
+- [[projects/service-registry]]：服务实例台账入口
 - [[projects/meetings/README]]：项目正式会议入口
 - [[trace-writing-rules]]：`[[projects/trace]]` 的记录规则入口
 - [[template-feedback-rules]]：下游项目系统层信息反哺入口
@@ -68,6 +69,7 @@ tags: [index, root]
 ## 项目接手与代码基线
 
 - [[projects/codebase/README]]：现实代码、旧工程或外部模板的审计入口
+- [[projects/codebase/source-code-audit-workflow]]：源码工程深度解读工作流
 
 ## 软件架构包
 

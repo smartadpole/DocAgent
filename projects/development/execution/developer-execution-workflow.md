@@ -3,7 +3,7 @@ type: development_workflow
 id: DEV-DEVELOPER-EXECUTION-WORKFLOW-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-06
+updated: 2026-05-09
 tags: [development, workflow]
 ---
 
@@ -11,7 +11,7 @@ tags: [development, workflow]
 
 主入口：[[projects/development/execution/README]]
 
-上游：[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/execution/todo]]  \
+上游：[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]、[[projects/status]]、[[projects/development/execution/todo]]  \
 下游：[[projects/development/feature-points/README]]、[[projects/development/execution/engineering-feedback-loop]]、[[projects/development/reports/README]]、[[projects/development/execution/worklog]]、[[projects/trace]]
 
 ## 这页解决什么
@@ -19,6 +19,7 @@ tags: [development, workflow]
 这页回答：
 
 - 开发开始前先看哪几页
+- 现在到底先改哪一批能力
 - 候选功能点什么时候需要变成实体页
 - 代码工程最终要交付什么回传包
 - 代码改完后应该同步哪些文档
@@ -37,6 +38,15 @@ tags: [development, workflow]
 | 冲突升级 | 把需求变化、设计不成立、业务 owner 判断不清的问题分流到 trace、决策、风险或会议 | 标出偏差和待确认项，不代替拍板 | 在实现工程里私自形成新口径 |
 
 默认协作方式是“主控下发上下文，实现工程回传证据，主控吸收回写”。只有任务说明明确授权时，实现工程 agent 才能进入受控回写模式。
+
+## 最短使用方式
+
+1. 从 [[projects/development/plan/README]] 和 [[projects/status]] 确认当前阶段。
+2. 从 [[projects/development/execution/todo]] 选择当前待办，先确认该条的主责模块、上游需求 / 目标、功能点 / 候选项、关系类型和关闭证据。
+3. 如果待办已经是 `review`，先读最新测试报告、worklog 和回传包，再判断是补修、补测还是关闭。
+4. 开发前补齐任务执行单里的依赖、接口、数据、测试方案、核心用例、相关功能回归范围、联调流程、验收流程和阻塞项。
+5. 完成一个可回看的节点后，在代码工程生成回传包，再由本库侧 Codex 消化并更新 TODO、FP、测试报告、worklog、风险、trace 或会议页。
+6. 只有测试证据、失败分流、worklog、下游吸收和功能点结果都闭合，且本轮验收对象确实覆盖 TODO 的关闭语义时，TODO 才能关闭为 `done`。
 
 ## 单功能开发闭环
 
@@ -59,6 +69,8 @@ tags: [development, workflow]
 代码工程处理 TODO / FP 时，默认在代码工程内生成回传包。模板见 [[templates/code-handoff-template]]，不要在本页维护第二份模板正文。
 
 回传包不是第二份设计正文，也不是把本库页面复制进代码工程；它只记录实现工程本次读了什么、改了什么、测了什么、还差什么，以及主控文档应该回写到哪里。
+
+代码工程 handoff 是实现证据源，不是普通说明页，也不是本库项目事实源的替代品。每个影响代码语义、联调闭环或验收判断的 TODO / FP，默认至少随代码工程提交 `docs/handoffs/<work-id>/README.md`；原始日志、截图、大样本输出、机器路径、runtime 目录、下载缓存和敏感配置不提交，只写脱敏摘要、命令、相对路径规则和可复现方式。本库侧验收时仍要独立抽插代码、测试、fixture、artifact 或日志，不能因为 handoff 已提交就直接把 TODO 关闭为 `done`。
 
 ## 写权限模式
 

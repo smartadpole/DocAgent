@@ -20,8 +20,10 @@
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
 - `projects/`：活跃研发项目层。需求、设计、会议、任务、决策、记忆、发布和复盘放这里，具体目录和文件组织以 `projects/STRUCTURE.md` 为准。
+- `projects/service-registry.md`：服务实例台账层。承接已确认的服务运行事实、健康检查、配置 profile、数据目录、日志、代码版本和更新方式；不承接真实密钥或一次性排障流水。同一代码工程 / 部署上下文下的 API、UI、scheduler、worker 或 sidecar 默认作为一个服务组的组件记录。
 - `projects/trace.md`：需求演进链层。记录原始意图、约束变化、修补性需求、关键取舍和最终实现口径之间的串联。
 - `projects/codebase/`：代码基线审计层。承接现实实现、既有工程、外部模板或旧系统的页面图、schema 图、基础设施、冲突和复用边界；它不反向定义主工程口径。
+- `projects/codebase/source-code-audit-workflow.md`：源码工程深度解读工作流。遇到源码解读、既有系统审计或生产接入判断时，必须先按该页定义目标等级、证据矩阵和终态自审，不允许把首轮核心链路理解说成完整审计。
 - `projects/design/`：正式设计层。`README.md` 做总入口；`tech-selection.md`、`architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md` 共同组成完整软件架构包；`topics/` 承接重要设计专题和专项储备。
 - `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
 - `projects/design/topics/`：设计专题层。承接未拍板但需要持续推进的设计问题，以及当前不进入完整架构包、但要长期保留的专项设计储备；会议页只引用，不重复维护主正文。
@@ -58,6 +60,13 @@
 - 先读 [[BRAIN]]，把已经确认过的共享背景带入当前工作，不要让用户重复说明同一件事。
 - 如果这次内容会改变规则、优先级或自动沉淀边界，先读 [[POLICY]]。
 - 如果这次内容是项目级稳定事实，先读 `projects/memory/README.md`。
+- 每一次有新的知识、材料、代码事实、会议结论或验收结果进入，都要从上层主题和全局方案重新思考它解决了哪些旧疑问、引出了哪些新问题、是否冲击已有需求 / 设计 / 决策 / 记忆 / 状态，并同步到对应主页面、风险、会议或决策页。
+- 对外 API、调度入口、服务间回调、webhook、跨工程数据合同和数据库写入接口变更时，不能只沉淀在 handoff 或最终回复里；必须同步写入正式中文文档，handoff 只承接执行证据和临时问题。
+- 做验收或复验时，必须先说明本轮验收对象、测试方案、核心用例 / 检查点、相关功能回归范围、分层验证结论和人工确认边界；缺少 `local validation`、`service-side validation` 或 `end-to-end validation` 中关键层级时，不能把局部通过写成完整闭环。
+- 做验收或复验时，如果涉及请求参数、配置参数、profile、feature flag、限流值、采样数量、筛选条件或 retry context，不得只用默认值 happy path 或接口回显判定通过；至少验证一个非默认值 / 边界值，并证明它真实改变了执行结果。
+- 代码工程或外部工程里的 agent 处理本库 TODO / FP 时，默认把本库作为只读上下文源；除非任务明确授权“受控回写”，否则不得直接改本库文档、改 TODO 状态、关闭 Gate 或提交文档仓库。
+- 本库侧 agent 默认不直接修改代码工程或子工程文件、handoff 或代码；除非用户明确授权修改该子工程，否则只在本库测试报告、TODO、风险和最终回复中写清需要子工程吸收的证据与建议。
+- 源码工程解读必须先使用 [[projects/codebase/source-code-audit-workflow]]，明确本次目标等级、实际达到等级、证据覆盖矩阵和未读 / 阻塞清单；没有完成 L3 自审时，不得暗示已经完成完整源码审计或已经可以做生产接入结论。
 - 优先更新已有页，不要无脑新建重复页。
 - 新页面先写最小可用版本，再补链接。
 - 所有重要概念都要双向链接，避免孤岛页。
@@ -118,6 +127,7 @@
 
 - 同一类信息只保留一个主入口，不允许在多个页面复制粘贴同一段正文。
 - 状态类信息以 `projects/README.md` 为主，其他页面引用或链接它，不重复维护第二份状态说明。
+- 服务实例类信息以 `projects/service-registry.md` 为主，部署页只保留部署原则、环境治理和配置边界，不重复维护每台机器的当前运行事实。
 - 概念类信息以 `concepts/` 主页面为主，项目页只写与当前项目直接相关的上下文。
 - 导航类信息放 `indexes/`，不要在多个说明页里重复堆导航列表。
 - 需要在别处提及时，优先链接、摘一句、或写简短引用说明，不复制整段内容。
@@ -145,7 +155,7 @@
 - 这里的“上下文”，不是当前文件附近几段话，而是为了正确更新目标内容，必须一起判断的最小相关信息集合。
 - 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、知识沉淀层、导航层、历史层。
 - 证据层是 `raw/`、`inbox/`、`assets/`，回答“信息从哪里来”。
-- 项目运行层是 `projects/README.md` 加上需求、设计、会议、决策、记忆、开发、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了”。
+- 项目运行层是 `projects/README.md` 加上需求、设计、会议、决策、记忆、开发、服务实例台账、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了，以及真实服务现在在哪里运行”。
 - 其中 `projects/trace.md` 专门回答“这轮需求是怎样收敛到当前实现口径的”，它属于项目运行层，不属于历史层或规则层，也不承接原始来源材料整理。
 - 知识沉淀层是 `articles/`、`concepts/`、`indexes/`，回答“哪些结论已经稳定、哪些概念可以复用、入口如何组织”。
 - 历史层是 `archive/` 和 `log.md`，回答“那次对话在解决什么主题、怎么演进、哪些内容已退役、这次结构调整从何时开始生效”。
@@ -155,6 +165,7 @@
 ## 关联关系
 
 - `projects/README.md` 是项目运行层主入口，连接项目层其他主页面。
+- `projects/service-registry.md` 上连项目主页和部署页，横向连接相关代码基线、开发执行、测试报告和事故记录；它只记录已确认的运行实例事实，不替代部署设计、服务合同或密钥治理。
 - 需求页上连项目主页，下连设计页和决策页，外连相关 `raw/` 来源。
 - `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链；原始来源材料的出处和整理过程不放进去。
 - `projects/codebase/README.md` 上连项目主页、需求页、设计页和决策页，横向连接页面图、schema 图、基础设施、冲突和复用边界；它只记录现实实现事实和复用判断，不反向覆盖主需求或主设计。
@@ -198,6 +209,7 @@
 - 如果目标涉及规则、优先级或自动沉淀边界，再读 [[POLICY]]。
 - 如果目标涉及项目级稳定记忆，再读 `projects/memory/README.md`。
 - 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、会议、决策、记忆、开发页面。
+- 如果目标是服务实例台账或服务运行事实，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/service-registry.md`、`projects/design/deployment.md`，再按服务补读相关代码基线、开发执行、测试报告或事故页。
 - 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
 - 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
 - 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`reports/`、`risks/` 或功能点实体页。
@@ -221,6 +233,7 @@
 ## 目标文件的最小读取集
 
 - 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
+- 改 `projects/service-registry.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/deployment.md`、相关代码基线页、相关测试报告或运维记录；如果新增服务会影响阶段、风险、owner 或准出，再同步检查 `projects/status.md`、`projects/development/execution/todo.md`、风险页和会议页。
 - 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
 - 改 `projects/trace.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有设计页、已有决策页、当前相关开发页；如果 trace 涉及记忆或规则边界，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改代码基线页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、需求页、设计页和已有决策页；如果现实实现和主线冲突，先写 [[projects/codebase/conflicts]]，再升级到 [[projects/decisions]]。

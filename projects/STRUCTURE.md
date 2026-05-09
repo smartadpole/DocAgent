@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-05-07
+updated: 2026-05-09
 ---
 
 # 项目层结构
@@ -39,8 +39,10 @@ projects/
   README.md
   STRUCTURE.md
   status.md
+  service-registry.md
   codebase/
     README.md
+    source-code-audit-workflow.md
     page-map.md
     schema-map.md
     infra.md
@@ -129,12 +131,20 @@ projects/
 - 回答：当前状态、当前阶段、下一步、阻塞项、功能点双轴状态镜像和当前主入口
 - 这是项目主页的状态镜像页，适合后续自动化读取
 
-### 3.1.2 代码基线分析入口
+### 3.1.2 服务实例台账
+
+- `projects/service-registry.md`
+- 回答：真实服务现在在哪里运行、怎样健康检查、运行代码版本是什么、配置 profile 和数据目录如何定位
+- 这里只记录脱敏后的运行实例事实，不替代 [[projects/design/deployment]] 的部署原则、密钥治理、发布和回滚
+- 同一个代码工程 / 部署上下文下的 API、UI、scheduler、worker 或 sidecar 默认先作为一个服务组记录，再把进程写成组件
+
+### 3.1.3 代码基线分析入口
 
 - `projects/codebase/README.md`
 - 回答：当前现实实现或既有工程是什么、页面怎么分、schema 怎么对、基础设施怎么跑、哪里有冲突、哪些能复用
 - 这是现实实现审计与复用边界的主入口，但它不是项目主工程入口
 - 子页：
+  - `projects/codebase/source-code-audit-workflow.md`
   - `projects/codebase/page-map.md`
   - `projects/codebase/schema-map.md`
   - `projects/codebase/infra.md`
@@ -189,6 +199,9 @@ projects/
 - `projects/design/deployment.md`
   这是部署子页
   适合放环境、运行拓扑、上传链路、发布和回滚
+- `projects/service-registry.md`
+  这是服务实例台账
+  适合放已经确认的运行实例事实、健康检查、版本、配置 profile、数据目录、日志定位和更新方式；不放真实密钥或一次性排障流水
 - `projects/design/runtime-quality.md`
   这是运行质量子页
   适合放监控、告警、幂等、重试、补偿、限流和稳定性口径

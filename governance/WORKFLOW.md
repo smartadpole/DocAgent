@@ -68,6 +68,7 @@
 - 事项关系、关闭证据和防跑偏：看 `projects/development/plan/work-item-system-model.md`
 - 当前待办：看 `projects/development/execution/todo.md`
 - 测试方案和准出证据：看 `projects/development/reports/README.md`
+- 服务实例和运行事实：看 `projects/service-registry.md`
 - 项目级稳定记忆：看 `projects/memory/README.md`
 - 治理层总边界：看 [[governance/README]]
 - 共享背景：看 [[BRAIN]]
@@ -186,6 +187,8 @@
 - `projects/README.md`：`requirements.md`、`design/README.md`、`decisions.md`、`development/README.md`、`projects/memory/README.md`、[[POLICY]]
 - `projects/requirements.md`：`projects/README.md`、相关 `raw/`、已有 `projects/design/README.md`、[[projects/trace]]
 - `projects/codebase/README.md`：`projects/README.md`、`projects/STRUCTURE.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`
+- `projects/service-registry.md`：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/deployment.md`、相关代码基线、测试报告或运维记录
+- `projects/codebase/source-code-audit-workflow.md`：`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`
 - `projects/design/README.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/topics/README.md`、[[projects/trace]]、`projects/decisions.md`、`projects/memory/README.md`、[[POLICY]]、相关 `concepts/`
 - `projects/design/architecture.md`、`projects/design/backend-frontend-structure.md`、`projects/design/permission-boundary.md`、`projects/design/write-boundary.md`、`projects/design/database.md`、`projects/design/deployment.md`、`projects/design/runtime-quality.md`、`projects/design/topics/*.md`：先读 `projects/design/README.md`，再按主题补读相邻设计子页 / 专题页、`projects/requirements.md`、[[projects/trace]] 和 `projects/decisions.md`
 - [[projects/trace]]：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`、当前相关开发页
