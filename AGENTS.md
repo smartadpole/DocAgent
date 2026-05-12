@@ -6,6 +6,7 @@
 
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
@@ -16,6 +17,7 @@
 ## 角色分工
 
 - `governance/`：治理层目录。放流程、规则、共享背景和写法指南；具体由 [[governance/README]] 收口。
+- `skills/`：项目内 agent 技能层。放面向当前项目的可复用分析流程、判断框架和执行套路；技能可以带项目语境，但不替代项目状态、需求、设计、TODO 或测试报告的单一信息源。
 - `raw/`：原始资料层。优先保持原样，少改动。
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
@@ -86,7 +88,8 @@
 - 极简小项目默认只保留一个项目主页，除非内容明显变多，否则不要先建空的需求、设计、发布之类页面。
 - 下游项目反哺模板时，先按 [[template-feedback-rules]] 判断是否属于可复用系统层信息；回写结构、流程、规则、记忆路由、模板、通用写法和自动化契约，不复制项目事实、业务名、具体技术拍板或一次性状态。
 - 模板反哺里的“规则默认反哺”指默认进入候选并必须判断，不表示原样写入；写入前必须完成抽象、事实剥离、冲突、单一信息源和规则体积检查。
-- 跨项目采纳设计时，禁止整库同步、整目录复制或把对方项目设计页原样搬进当前库；必须先列候选项并标注系统层信息 / 项目材料，只有通过事实剥离后的系统规则、结构、流程、模板和自动化契约才能写入。
+- 下游项目出现可复用 agent 技能时，只吸收任务触发条件、事实源分层、定位方法、输出格式、回写守卫和禁止项；不要把下游项目的业务链路、服务名、数据表、运行 ID、仓库路径或本地 handoff 规则原样写入模板技能。
+- 跨项目采纳设计时，禁止整库同步、整目录复制或把对方项目设计页原样搬进当前库；必须先列候选项并标注系统层信息 / 项目材料，只有通过事实剥离后的系统规则、结构、流程、技能、模板和自动化契约才能写入。
 - 如果具体工程或下游项目提供“不适合吸收”的清单，只把它当作下游处理项目材料和反哺边界的参考；当前库作为上游模板库，只从具体工程中抽象吸收系统层信息，不在本库维护模板到项目的吸收状态或项目侧同步记录。
 
 ## 会话级规则
@@ -153,10 +156,11 @@
 ## 上下文模型
 
 - 这里的“上下文”，不是当前文件附近几段话，而是为了正确更新目标内容，必须一起判断的最小相关信息集合。
-- 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、知识沉淀层、导航层、历史层。
+- 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、技能层、知识沉淀层、导航层、历史层。
 - 证据层是 `raw/`、`inbox/`、`assets/`，回答“信息从哪里来”。
 - 项目运行层是 `projects/README.md` 加上需求、设计、会议、决策、记忆、开发、服务实例台账、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了，以及真实服务现在在哪里运行”。
 - 其中 `projects/trace.md` 专门回答“这轮需求是怎样收敛到当前实现口径的”，它属于项目运行层，不属于历史层或规则层，也不承接原始来源材料整理。
+- 技能层是 `skills/`，回答“agent 遇到高频任务时按什么可复用流程分析和执行”；它可以引用项目主页面，但不能复制项目事实正文或替代正式回写。
 - 知识沉淀层是 `articles/`、`concepts/`、`indexes/`，回答“哪些结论已经稳定、哪些概念可以复用、入口如何组织”。
 - 历史层是 `archive/` 和 `log.md`，回答“那次对话在解决什么主题、怎么演进、哪些内容已退役、这次结构调整从何时开始生效”。
 - 同一段内容至少同时拥有四个属性：所属模式、所属阶段、主入口、受影响页面。
@@ -176,6 +180,7 @@
 - 开发页连接项目主页、决策和实际推进记录，是过程上下文，不是长期知识主入口。
 - 发布页连接项目主页、设计、决策和验证结果；事故目录连接发布、运行现象、根因和修复动作。
 - `articles/` 连接原始来源和稳定结论；`concepts/` 连接多个文章页和项目页；`indexes/` 只负责把这些主页面串起来。
+- [[skills/README]] 上连入口层和治理层，横向连接会被技能使用的项目主页面；具体技能页只承接分析流程和输出格式，不承接项目事实的单一信息源。
 - `archive/` 只承接退役内容，不承担当前主入口职责。
 
 ## 演进关系
@@ -186,6 +191,7 @@
 - 当信息开始参与当前项目判断和推进时，进入 `projects/`。
 - 当正式会议材料、会议纪要和行动项开始参与当前项目判断和推进时，优先进入 `projects/meetings/`。
 - 当项目里的某些结论已经脱离当前阶段、可以跨阶段或跨问题复用时，提升到 `articles/` 或 `concepts/`。
+- 当某类 agent 分析动作在当前项目中反复出现，且需要项目语境、证据链、分工和验证格式保持稳定时，可以沉淀到 `skills/`。
 - 当一个主题需要长期导航、分类和检索时，再由 `indexes/` 收口。
 - 当页面不再承担当前入口职责但仍有历史价值时，转入 `archive/`，同时在 `log.md` 留痕。
 
@@ -213,6 +219,7 @@
 - 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
 - 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
 - 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`reports/`、`risks/` 或功能点实体页。
+- 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
@@ -244,6 +251,7 @@
 - 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
+- 改 `skills/` 时，至少读：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
 - 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
 - 改 `concepts/` 时，至少读：相关 `articles/`、相关项目页、相关 `indexes/`。
 - 改 `indexes/` 时，至少读：它要导航到的主页面，不允许只看索引本身闭门重排。
@@ -261,6 +269,7 @@
 - 模板正文只允许维护在对应的 `templates/` 页面；其他页面只做入口说明、使用约束和跳转，不重复粘贴第二份模板正文。
 - 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/`、`meetings/` 这类天然按条目累积的模块默认保留目录。
 - 新建文件先确认它属于 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`。
+- 如果是当前项目内可复用的 agent 分析流程或执行技能，优先放 `skills/`，并补 [[skills/README]] 入口；不要塞进 `templates/` 或项目状态页。
 - 如果是支持性附件，优先放 `assets/`；如果是退役页面，优先放 `archive/`。
 - 如果是活跃研发项目的文档，优先放 `projects/`。
 - 对单一小项目，优先一页到底，拆分目录和子文件必须有明确理由。

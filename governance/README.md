@@ -4,7 +4,7 @@ id: ENTRY-GOV-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-04-25
+updated: 2026-05-12
 tags: [entry, governance]
 ---
 
@@ -25,14 +25,15 @@ tags: [entry, governance]
 
 ## 逻辑结构
 
-当前整套系统按六层理解：
+当前整套系统按七层理解：
 
 1. 入口层：[[README]]、[[INDEX]]
 2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
-3. 运行层：[[projects/README]] 和 `projects/`
-4. 沉淀层：`articles/`、`concepts/`、`indexes/`
-5. 历史层：[[log]]、`archive/`
-6. 证据层：`raw/`、`inbox/`、`assets/`
+3. 技能层：[[skills/README]] 和 `skills/`
+4. 运行层：[[projects/README]] 和 `projects/`
+5. 沉淀层：`articles/`、`concepts/`、`indexes/`
+6. 历史层：[[log]]、`archive/`
+7. 证据层：`raw/`、`inbox/`、`assets/`
 
 ## 物理结构
 

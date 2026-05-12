@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-09
+updated: 2026-05-12
 tags: [index, root]
 ---
 
@@ -32,6 +32,8 @@ tags: [index, root]
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
+- [[skills/README]]：项目内可复用 agent 技能入口
+- [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
 - [[projects/trace]]：需求演进链入口
@@ -55,6 +57,7 @@ tags: [index, root]
 ## 研发方法
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
+- [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
 - [[projects/development/plan/work-item-system-model]]：需求到事项的系统模型
@@ -88,6 +91,7 @@ tags: [index, root]
 
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 技能层：[[skills/README]] 和 `skills/`
 - 运行层：`projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
@@ -97,6 +101,7 @@ tags: [index, root]
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
 - `governance/` 收治理页和规则页
+- `skills/` 收项目内可复用 agent 技能
 - `projects/` 收运行层
 - `articles/`、`concepts/`、`indexes/` 收知识沉淀
 - `archive/` 收退役历史，`raw/`、`inbox/`、`assets/` 收证据

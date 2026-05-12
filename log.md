@@ -7,6 +7,26 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-12
+
+### 从 重治理主控工程 抽象吸收技能层和 issue-analysis 技能
+
+- **记录人**：sunhao
+- **用户意图**：继续检查下游项目 重治理主控工程 中可反哺当前模板库的技能和规则，吸收项目内 agent 技能层与问题分析方法，同时避免把下游项目事实、运行状态和业务链路带入模板库。
+- **主题**：
+  1. 下游项目新增的 `skills/` 层属于可复用系统结构，适合进入模板库，作为项目内 agent 分析流程、判断框架和输出格式的主入口。
+  2. `issue-analysis` 技能中的事实源分层、最小根因链、计数 / 状态单位归一、跨工程分工、三层验证和回写守卫具备通用性。
+  3. 下游项目里的具体业务 pipeline、服务实例、表名、运行 ID、handoff 路径和一次性事故材料属于项目材料，不进入模板技能正文。
+- **关键动作**：
+  1. **新增技能层**：新增 [[skills/README]]，把项目内 agent 技能和 [[templates/README]]、治理层、项目事实源区分开。
+  2. **新增问题分析技能**：新增 [[skills/issue-analysis/SKILL]]，抽象沉淀主控侧 issue / incident 分析流程，覆盖问题框、上下文读取、事实源地图、状态单位归一、最小根因链、责任边界、跨工程分工、联测方案、回写守卫和禁止项。
+  3. **补技能模板**：新增 [[templates/skill-template]] 并挂入 [[templates/README]]，让后续项目内技能有可复制骨架，避免每次从空白页起步。
+  4. **同步入口和规则**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[BRAIN]]、[[POLICY]] 和 [[template-feedback-rules]]，把技能层纳入七层模型、读取顺序、路由规则、反哺范围和项目材料红线。
+- **不反哺内容**：重治理主控工程 的具体业务业务链路、服务名、数据表、运行 ID、服务实例、生产状态、TODO / Gate / 测试结论、本地路径和一次性 handoff 不进入当前模板库。
+- **模板检查结果**：新增 [[templates/skill-template]]；技能正文只保留可复用流程和回写守卫，未复制第二份项目状态、TODO、测试报告或服务台账正文。
+- **协作契约检查结果**：技能层仍遵守主控文档库与子工程的只读上下文和受控回写边界；技能可指导读取子工程 `AGENTS.md`、技能和 handoff，但默认不直接修改子工程。
+- **影响页面**：[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[BRAIN]]、[[POLICY]]、[[template-feedback-rules]]、[[skills/README]]、[[skills/issue-analysis/SKILL]]、[[templates/README]]、[[templates/skill-template]]、[[log]]。
+
 ## 2026-05-09
 
 ### 从 重治理主控工程 抽象吸收研发治理规则

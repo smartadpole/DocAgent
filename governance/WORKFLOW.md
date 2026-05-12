@@ -76,6 +76,7 @@
 - 过程记录和排障：看 `projects/development/execution/worklog.md`
 - 发布和回滚：看 `projects/releases.md`
 - 事故和复盘：看 `projects/incidents/README.md`
+- 项目内 agent 技能：看 [[skills/README]]
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
 ### 0.1 共享脑怎么用
@@ -99,6 +100,7 @@
 - [[projects/trace]]：写需求从原始意图、约束变化到最终实现范围的演进链。
 - `workspace-memory`：写个人稳定偏好和重复习惯。
 - `projects/decisions.md`：写项目阶段的冲突、取舍和正式决策。
+- [[skills/README]] 和 `skills/`：写项目内可复用的 agent 分析流程、判断框架和执行套路。
 - [[log]]：写时间降序、按对话组织的主题化记录，收口用户意图、关键动作和结构调整。
 
 ### 0.2.1 收尾怎么执行
@@ -129,6 +131,7 @@
 - 跨任务、跨会话、后续还会持续影响工作的共享背景，写进 [[BRAIN]]
 - 会改变后续判断方式、优先级或自动沉淀边界的内容，写进 [[POLICY]]
 - 发生项目内冲突或取舍时，先写进 `projects/decisions.md`
+- 高频 agent 分析流程、定位套路、输出格式和回写守卫，写进 `skills/`
 - 已经稳定到可以复用的结论，再提炼到 `articles/`、`concepts/` 或 `indexes/`
 
 ### 0.3.1 需求演进 trace 怎么写
@@ -162,7 +165,7 @@
 
 建立上下文时，建议按这个顺序做：
 
-1. 先判断目标属于证据层、项目运行层、知识沉淀层、导航层还是历史层。
+1. 先判断目标属于证据层、项目运行层、技能层、知识沉淀层、导航层还是历史层。
 2. 再判断它在当前项目里属于哪个阶段：调研、设计、开发、发布、事故、归档。
 3. 找到这个目标的主入口页，不允许绕开主入口直接写局部文件。
 4. 找到它的上游文件和下游文件。
@@ -179,6 +182,7 @@
 
 - 外部来源进入 `raw/` 或 `inbox/`
 - 当前项目判断和推进进入 `projects/`
+- 高频 agent 分析流程进入 `skills/`
 - 稳定结论沉到 `articles/`、`concepts/`、`indexes/`
 - 失去主入口职责但仍需保留的内容进入 `archive/`
 
@@ -199,6 +203,7 @@
 - `projects/development/execution/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
+- `skills/`：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能带项目语境，再补读对应项目主入口、设计、TODO、测试报告或服务台账
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
 - `indexes/`：它所指向的主页面
@@ -358,6 +363,7 @@
 - 原始资料，放 `raw/`
 - 临时收口，放 `inbox/`
 - 支持性附件，放 `assets/`
+- 项目内可复用的 agent 分析流程或执行技能，放 `skills/`
 - 活跃研发项目文档，放 `projects/`
 - 正式会议入口和会议纪要，放 `projects/meetings/`
 - 摘要卡片，放 `articles/`

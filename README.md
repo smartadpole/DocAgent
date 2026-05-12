@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-09
+updated: 2026-05-12
 tags: [entry, root]
 ---
 
@@ -12,10 +12,11 @@ tags: [entry, root]
 
 这个文档库的目标很简单：把散乱资料变成能查、能连、能持续更新的知识网络，同时给未来的半自动 / 自动化项目推进留好路由。
 
-如果只记一件事，就记住这套六层模型：
+如果只记一件事，就记住这套七层模型：
 
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
@@ -25,6 +26,7 @@ tags: [entry, root]
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
 - `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
+- `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
 
@@ -53,6 +55,7 @@ tags: [entry, root]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
 - 想知道“其他项目进化出的系统层信息怎么反哺模板” -> 读 [[template-feedback-rules]]
 - 想找“可复制模板” -> 读 [[templates/README]]
+- 想使用或维护“项目内 agent 技能” -> 读 [[skills/README]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“源码工程深度解读怎么分级推进” -> 读 [[projects/codebase/source-code-audit-workflow]]
 - 想看“真实服务实例现在在哪里运行、怎么健康检查” -> 读 [[projects/service-registry]]
@@ -110,10 +113,11 @@ tags: [entry, root]
 
 可以把原有底座理解成只有知识库模式。
 
-知识库模式负责长期沉淀，研发模式负责项目推进。
+知识库模式负责长期沉淀，研发模式负责项目推进，技能层负责把高频 agent 分析套路沉淀成可复用执行流程。
 
 - 知识库模式：收集资料，整理成 `articles/`、`concepts/`、`indexes/`
 - 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘
+- 技能层：在 `skills/` 里维护项目内 agent 技能，服务问题分析、定位、分工、验证和回写等高频动作
 - 路由层：[[BRAIN]] 放共享背景，[[POLICY]] 放规则，[[projects/memory/README]] 放项目级稳定记忆
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
@@ -159,8 +163,9 @@ tags: [entry, root]
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
 8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把功能点、TODO、证据、风险和反馈关系理清。
-9. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
-10. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
+9. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页。
+10. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
+11. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
 
 ## 为什么入口页不写太多
 
