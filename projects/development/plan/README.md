@@ -30,7 +30,6 @@ tags: [development, plan, progress]
 
 - [[projects/development/plan/README]]：研发总控、路线图和阶段推进摘要。
 - [[projects/development/plan/work-item-system-model]]：需求、目标、功能点、TODO、反馈和证据之间的事项关系模型。
-- [[projects/development/plan/agent-response-efficiency-upgrade-plan]]：agent 响应效率治理升级计划，承接快速诊断、计划沉淀和规则升级的模式分层草案。
 - [[projects/development/execution/README]]：待办、编码交接、反馈纠偏和过程记录。
 - [[projects/development/gates/README]]：阶段门、准入准出和 Gate 报告入口。
 - [[projects/development/implementation/README]]：服务 / 模块实现指导和候选功能点池。
@@ -43,9 +42,9 @@ tags: [development, plan, progress]
 按项目实际补充：
 
 - 当前阶段 / Gate：
-- 当前 P0：评估 [[projects/development/plan/agent-response-efficiency-upgrade-plan]]，决定是否把快速诊断模式升级为正式流程。
+- 当前 P0：
 - 当前阻塞：
-- 下一步：先把计划沉淀为待办，再判断是否更新 [[WORKFLOW]]、[[AGENTS]] 或相关技能。
+- 下一步：
 - 需要会议或决策的问题：
 
 ## 维护规则

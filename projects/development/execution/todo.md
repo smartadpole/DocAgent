@@ -43,13 +43,4 @@ tags: [development, todo]
 
 ## 当前待办
 
-### TODO-AGENT-EFFICIENCY-001：评估并落地 agent 响应模式分层
-
-- **状态**：review
-- **上游**：[[projects/development/plan/agent-response-efficiency-upgrade-plan]]
-- **目标**：确认是否把快速诊断、计划沉淀和规则升级三种模式写入 [[WORKFLOW]]、[[AGENTS]] 或相关技能。
-- **关闭证据**：
-  1. 明确哪些场景可以快速诊断，哪些场景必须进入完整主控治理流程。
-  2. 若写入规则，完成规则改动守卫、入口同步和 [[log]] 记录。
-  3. 确认新模式没有削弱验收分层、主控 / 子工程写权限边界和 commit 闭环。
-- **当前边界**：本轮只沉淀计划，不把快速诊断模式直接升格为硬规则。
+按项目实际补充。

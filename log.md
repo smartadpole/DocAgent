@@ -25,21 +25,20 @@
 - **二阶反思**：这次专题与当前文档库已有七层模型高度相关，但本轮仍属于知识沉淀，不直接改 [[AGENTS]]、[[WORKFLOW]] 或 [[POLICY]]；后续若要吸收为执行机制，应优先补链接检查、frontmatter 检查等 feedback sensor，而不是继续加规则正文。
 - **影响页面**：[[articles/2026-05-25-harness-engineering-research]]、[[concepts/harness-engineering]]、[[INDEX]]、[[concepts/README]]、[[log]]、`raw/harness-engineering/`、`assets/harness-engineering/`。
 
-### 沉淀 agent 响应效率治理升级计划
+### 纠正 agent 响应效率治理反思的层级归属
 
 - **记录人**：sunhao
-- **用户意图**：把对 重治理主控工程 响应特别慢的分析沉淀成当前模板库的整体反思和升级计划，而不是只留在对话解释里。
+- **用户意图**：指出前一轮把 agent 响应效率治理反思放进 `projects/development/plan/` 是错误归类；这不是特定研发项目计划，而是对文档 / agent 工程自身运行方式的知识沉淀和规则候选。
 - **主题**：
   1. 重治理主控工程 的慢主要来自主控治理链路过重，不是默认检查脚本本身慢。
   2. 当前模板库缺少针对单个简单问题的“快速诊断模式”，只有批量材料处理的轻量模式。
-  3. 提速不能削弱验收分层、主控 / 子工程边界、文档沉淀和 commit 闭环，只能先做响应模式分流。
+  3. 该结论当前只应进入知识沉淀层，不能伪装成项目研发待办或已生效硬规则。
 - **关键动作**：
-  1. **新增升级计划**：新增 [[projects/development/plan/agent-response-efficiency-upgrade-plan]]，记录跨仓库规则对比、问题定义、快速诊断 / 计划沉淀 / 规则升级三种建议模式、升级步骤和验收标准。
-  2. **同步研发总控**：更新 [[projects/development/plan/README]]，把 agent 响应效率治理计划挂入研发计划入口，并把当前 P0 指向该计划评估。
-  3. **补待办入口**：更新 [[projects/development/execution/todo]]，新增 `TODO-AGENT-EFFICIENCY-001`，明确本轮只沉淀计划，不直接把快速诊断模式升格为硬规则。
-  4. **同步状态和导航**：更新 [[projects/status]] 和 [[INDEX]]，让后续 agent 能从状态页和研发方法入口找到该计划。
-- **当前边界**：本轮没有修改 [[AGENTS]]、[[WORKFLOW]] 或 [[POLICY]] 的硬规则；下一步需要先评估是否正式引入快速诊断模式。
-- **影响页面**：[[projects/development/plan/agent-response-efficiency-upgrade-plan]]、[[projects/development/plan/README]]、[[projects/development/execution/todo]]、[[projects/status]]、[[INDEX]]、[[log]]。
+  1. **迁移沉淀页**：把原 `projects/development/plan/agent-response-efficiency-upgrade-plan` 改迁到 [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]，作为知识沉淀和规则候选。
+  2. **撤回项目化挂载**：清理 [[projects/development/plan/README]]、[[projects/development/execution/todo]] 和 [[projects/status]] 中关于该事项的项目计划、待办和状态入口。
+  3. **保留知识入口**：更新 [[INDEX]]，把该反思挂到设计思路 / 知识沉淀入口，而不是研发方法入口。
+- **当前边界**：本轮仍没有修改 [[AGENTS]]、[[WORKFLOW]] 或 [[POLICY]] 的硬规则；如果后续要正式引入快速诊断模式，需要另起规则升级流程。
+- **影响页面**：[[articles/2026-05-25-agent-response-efficiency-governance-reflection]]、[[projects/development/plan/README]]、[[projects/development/execution/todo]]、[[projects/status]]、[[INDEX]]、[[log]]。
 
 ## 2026-05-12
 
