@@ -4,10 +4,10 @@ id: PROJ-WIKI-001
 project: wiki
 status: active
 stage: design
-next_action: add-feedback-sensors-and-rule-diet
+next_action: observe-work-item-governance-and-expand-sensors
 owner: team
 source_of_truth: true
-updated: 2026-05-09
+updated: 2026-05-25
 tags: [project]
 ---
 
@@ -81,7 +81,7 @@ tags: [project]
 
 - [[projects/README]]：项目运行层主入口。这里放目标、状态、关键链接和下一步。
 - [[projects/status]]：项目状态页。这里放当前阶段、活跃功能点双轴状态镜像和当前主入口。
-- [[projects/service-registry]]：服务实例台账。这里放已确认的运行实例事实、健康检查、版本、配置 profile、数据目录和更新方式。
+- [[projects/service-registry]]：服务实例台账。这里放已确认的运行实例事实、健康检查、版本、配置 profile、数据目录、UI / API 配对和配置恢复方式。
 - [[projects/codebase/README]]：代码基线审计入口。这里放现实代码的页面图、schema 图、基础设施图、冲突和复用边界，不承接主工程定义。
 - [[projects/STRUCTURE]]：项目层结构主说明。这里放目录、文件、依赖和读取顺序。
 - [[projects/requirements]]：需求主文件。这里放问题定义、范围、非目标和验收标准。
@@ -98,9 +98,13 @@ tags: [project]
 - [[projects/decisions]]：决策主文件。这里放关键取舍和 ADR 风格记录。
 - [[projects/development/README]]：开发主入口。这里放研发经理视角的整体推进、状态镜像、阻塞和下一步。
 - [[projects/development/plan/README]]：研发执行总控。这里放当前阶段、当前主入口和开发层目录职责。
-- [[projects/development/plan/work-item-system-model]]：事项关系模型。这里放需求、目标、功能点、TODO、反馈和证据之间的关系。
-- [[projects/development/execution/README]]：执行控制入口。这里放待办、编码交接、反馈纠偏和过程记录入口。
+- [[projects/development/plan/work-item-system-model]]：事项关系模型。这里放 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和台账关系节点。
+- [[projects/development/plan/task-design-model]]：TASK 设计模型。这里放父 EP 下状态化交付合同、Done Contract 和证据回写规则。
+- [[projects/development/execution/README]]：执行控制入口。这里放 EP、TASK、待办、编码交接、反馈纠偏和过程记录入口。
+- [[projects/development/execution/execution-packages/README]]：EP 执行包入口。
+- [[projects/development/execution/tasks/README]]：TASK 任务入口。
 - [[projects/development/execution/todo]]：待办看板。这里放当前下一步和关闭证据。
+- [[projects/development/issues/README]]：Issue 案件入口。这里放已发生问题、bug 和偏差的原始现象、复现、修复和复验链。
 - [[projects/development/reports/README]]：测试和准出报告入口。这里放测试方案、用例、结论和 Gate 准出证据。
 - [[projects/development/feature-points/README]]：功能点实体目录。这里放工程师视角的单功能点执行页和状态索引。
 - [[projects/development/execution/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
@@ -158,7 +162,7 @@ tags: [project]
 ## 手动流控
 
 - 建议项目级状态词：`idea`、`active`、`blocked`、`released`、`archived`
-- 功能点细化用 [[projects/development/feature-points/README]] 里的实体页；每页一个功能点，`status` 和 `phase` 写在 frontmatter
+- 功能点细化用 [[projects/development/feature-points/README]] 里的实体页；执行闭环继续拆到 [[projects/development/execution/execution-packages/README]] 和 [[projects/development/execution/tasks/README]]；每页一个功能点，`status` 和 `phase` 写在 frontmatter
 - 每次切状态前先读项目主页
 - 如果多个文档冲突，以项目主页和 [[projects/decisions]] 为准
 - 如果项目结束，把可复用内容提炼回知识库，把项目特有内容保留在项目目录或归档层

@@ -15,6 +15,9 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；如
 - 新研发项目可以复制 [[templates/project-template]]，也可以直接手写项目主页；极简小项目不必先用模板
 - 新功能点实体可以复制 [[templates/development-feature-point-template]]
 - 新研发事项矩阵可以参考 [[templates/development-work-item-matrix-template]]
+- 新 EP 执行包可以复制 [[templates/development-execution-package-template]]
+- 新 TASK 任务可以复制 [[templates/development-task-template]]
+- 新 Issue 案件可以复制 [[templates/development-issue-template]]
 - 新研发待办可以参考 [[templates/development-todo-template]]
 - 新阶段门可以参考 [[templates/development-gate-template]]
 - 新测试或准出报告可以参考 [[templates/development-test-report-template]]

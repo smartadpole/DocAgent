@@ -3,7 +3,7 @@ type: development
 id: DEV-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-06
+updated: 2026-05-25
 tags: [development]
 ---
 
@@ -19,10 +19,12 @@ tags: [development]
 子页：
 
 - [[projects/development/plan/README]]：研发执行总控。
-- [[projects/development/plan/work-item-system-model]]：需求、目标、功能点、TODO、反馈和证据的事项关系模型。
-- [[projects/development/execution/README]]：待办、编码交接、反馈纠偏和过程记录。
+- [[projects/development/plan/work-item-system-model]]：`Gate -> FP -> EP -> TASK` 事项关系模型，以及 risk / issue / test / 验收关系节点。
+- [[projects/development/plan/task-design-model]]：TASK 作为父级 EP 下状态化交付合同的设计规则。
+- [[projects/development/execution/README]]：EP、TASK、待办、编码交接、反馈纠偏和过程记录。
 - [[projects/development/gates/README]]：阶段门和准出规则。
 - [[projects/development/implementation/README]]：实现指导和候选功能点池。
+- [[projects/development/issues/README]]：已发生问题、bug 和偏差的案件档案入口。
 - [[projects/development/reports/README]]：测试方案、测试用例、测试结论和准出报告。
 - [[projects/development/risks/README]]：风险、卡点和待确认项。
 - [[projects/development/feature-points/README]]：功能点实体目录。
@@ -51,8 +53,9 @@ tags: [development]
 2. 如果有既有代码或外部工程，再用 [[projects/codebase/README]]、[[projects/codebase/conflicts]] 和 [[projects/codebase/reuse-boundary]] 对照现实实现，明确可继承、需改造和应舍弃的部分。
 3. 发生冲突时先升级到 [[projects/decisions]]，不要直接顺着代码改需求或改设计。
 4. 再把已经拍板的主链路拆成功能点，落到 [[projects/development/feature-points/README]] 及其实体页。
-5. 再为每个功能点补接口、数据变更、验证项和发布影响。
-6. 整体推进状态、阻塞和优先级，才回收到这页。
+5. 再按父 Gate / FP 拆 EP 执行包，并把具体可交付切片拆成 TASK。
+6. 再为每个 EP / TASK 补接口、数据变更、验证项、risk / issue / test / 验收关系节点和发布影响。
+7. 整体推进状态、阻塞和优先级，才回收到这页。
 
 更细的正式 SOP 统一看 [[WORKFLOW]] 里的 `1.9.6.1 完整架构包到研发拆解`。
 
@@ -65,7 +68,7 @@ tags: [development]
 - 需求为什么这样收敛、哪些修补属于实现纠偏，优先回看 [[projects/trace]]
 - 关键取舍写到 [[projects/decisions]]
 - 可复用结论写到 [[projects/memory/README]] 或知识库层
-- 如果这轮是从架构包进入实现拆解，先检查功能点页里有没有补上接口、数据、验证和发布影响，不要只留下标题卡
+- 如果这轮是从架构包进入实现拆解，先检查 FP、EP 和 TASK 是否补上接口、数据、验证、服务台账影响和发布影响，不要只留下标题卡
 
 ## 当前关注点
 

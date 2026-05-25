@@ -6,7 +6,7 @@ status: active
 stage: design
 source_of_truth: true
 updated: 2026-05-25
-next_action: observe-harness-h5-and-expand-sensors
+next_action: observe-work-item-governance-and-expand-sensors
 current_entry: projects/README.md
 blockers:
   - remaining-page-normalization
@@ -26,8 +26,8 @@ tags: [status]
 
 ## 下一步
 
-- 基于 [[response-mode-routing]] 和 [[harness-evolution]] 观察后续任务是否能更早给出快速诊断 checkpoint，并把真实纠偏沉淀进 [[harness-feedback-ledger]]
-- 优先把 Markdown / wikilink、frontmatter、技能质量和模板完整性检查继续扩展成 `scripts/check_all.py` 下的 feedback sensor
+- 基于 [[projects/development/plan/work-item-system-model]] 观察后续研发任务是否能稳定按 `Gate -> FP -> EP -> TASK` 拆解，并把 Issue、risk、test、验收和服务台账关系补齐
+- 继续把 Markdown / wikilink、frontmatter、技能质量、模板完整性和研发事项矩阵检查扩展成 `scripts/check_all.py` 下的 feedback sensor
 - 定期做规则减肥：合并重复入口、删除过期补丁，把可执行约束迁到模板或检查脚本
 
 ## 功能点镜像
@@ -39,6 +39,10 @@ tags: [status]
 - 这页只保留全局状态镜像，不展开所有功能点细节
 - 整体推进看 [[projects/development/README]]
 - 研发总控和当前执行入口看 [[projects/development/plan/README]]
+- 正式事项主链看 [[projects/development/plan/work-item-system-model]]
+- EP 执行包看 [[projects/development/execution/execution-packages/README]]
+- TASK 交付合同看 [[projects/development/execution/tasks/README]]
+- Issue 案件看 [[projects/development/issues/README]]
 - 当前待办和关闭证据看 [[projects/development/execution/todo]]
 - 测试方案和准出证据看 [[projects/development/reports/README]]
 - 功能点模板看 [[templates/development-feature-point-template]]，活跃实体清单看 [[projects/development/feature-points/README]]
@@ -73,4 +77,4 @@ tags: [status]
 ## 阻塞项
 
 - 还没有把更大范围的页面批量规范化
-- Harness H5 和首个 `harness-governance` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖
+- Harness H5、`harness-governance` sensor 和 `work-item-matrix` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖

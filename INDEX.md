@@ -71,13 +71,21 @@ tags: [index, root]
 - [[harness-evolution]]：把用户纠偏、检查失败、模式切换和重复失守转成可复盘 episode。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
-- [[projects/development/plan/work-item-system-model]]：需求到事项的系统模型
+- [[projects/development/plan/work-item-system-model]]：`Gate -> FP -> EP -> TASK` 事项系统模型
+- [[projects/development/plan/task-design-model]]：TASK 状态化交付合同模型
 - [[projects/development/execution/README]]：研发执行层入口
+- [[projects/development/execution/execution-packages/README]]：EP 执行包入口
+- [[projects/development/execution/tasks/README]]：TASK 任务入口
+- [[projects/development/issues/README]]：Issue 案件入口
 - [[projects/development/reports/README]]：测试、复验和准出报告入口
 
 ## 模板治理
 
 - [[templates/README]]：可复制模板入口
+- [[templates/development-work-item-matrix-template]]：Gate / FP / EP / TASK 事项矩阵模板
+- [[templates/development-execution-package-template]]：EP 执行包模板
+- [[templates/development-task-template]]：TASK 任务模板
+- [[templates/development-issue-template]]：Issue 案件模板
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义最终状态、验证面、约束、迭代策略和阻塞停止条件。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板

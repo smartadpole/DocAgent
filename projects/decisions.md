@@ -26,15 +26,37 @@ tags: [decision]
 
 ## 当前生效决策摘要
 
-1. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
-2. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
-3. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
-4. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
-5. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
-6. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
-7. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
+1. [[projects/decisions#2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链|Gate / FP / EP / TASK 成为研发事项默认主链]]：risk、Issue、test、验收、报告和服务台账作为关系节点接入。影响：不能再用单个 TODO 或报告替代 EP / TASK / Gate 闭环。
+2. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
+3. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
+4. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
+5. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
+6. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
+7. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
+8. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
 
 ## 正式决策记录
+
+### 2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链
+
+- **背景**：用户明确要求完整吸收 `DocCustomeranalysis` 中 Gate、FP、EP、TASK、Issue、risk、test、验收和台账等工程设计。对照后确认，可复用部分是事项主链、关系节点、Issue / report 分工、验收执行包和服务台账规则，不是下游项目事实。
+- **要决策什么**：是否把当前 wiki 的研发事项模型从“功能点 / TODO / 报告”升级为更完整的 `Gate -> FP -> EP -> TASK` 主链，并让 Issue、risk、test、验收和服务台账进入默认关闭守卫。
+- **可选项**：
+  - 只在回复里说明已经吸收。
+  - 原样复制下游项目目录和业务规则。
+  - 抽象为模板级研发事项系统，并补模板、入口和 sensor。
+- **最终决策**：采用 `Gate -> FP -> EP -> TASK` 作为默认主链；risk、Issue、test、验收、报告和服务台账作为关系节点；新增 EP、TASK、Issue 入口和模板，并把 `work-item-matrix` 纳入 `scripts/check_all.py`。
+- **影响**：
+  - TASK 是父 EP 下的状态化交付合同，不能无父 EP 直接派发为正式编码任务。
+  - Issue 是案件档案，报告是每次验证记录；报告不能替代 Issue，也不能自动上推关闭父项。
+  - 验收和服务台账成为关闭守卫的一部分，尤其涉及真实服务、UI / API 配对、配置恢复和服务组验证时。
+- **各自优劣**：
+  - 只回复最快，但不会改变后续执行默认。
+  - 原样复制最完整，但会带入项目事实和过重结构。
+  - 抽象吸收需要同步更多入口，但能保留模板库边界，并由 sensor 约束关键 wiring。
+- **风险点**：
+  - 如果所有轻量任务都强制建 EP / TASK，会增加管理成本；因此 TODO 仍保留为轻量待办和过渡视图。
+  - 如果 sensor 只查关键词，仍不能替代真实验收；因此 `work-item-matrix` 只检查系统 wiring，关闭结论仍按报告和人工确认边界执行。
 
 ### 2026-05-25 响应模式路由成为 wiki Harness 默认入口
 

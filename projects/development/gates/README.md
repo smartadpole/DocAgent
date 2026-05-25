@@ -3,7 +3,7 @@ type: development_gates
 id: DEV-GATES-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-06
+updated: 2026-05-25
 tags: [development, gates]
 ---
 
@@ -21,6 +21,7 @@ tags: [development, gates]
 ## 使用规则
 
 - Gate 只记录阶段准入、准出、冻结对象和验收证据，不重复写完整设计正文。
+- Gate 准出默认读取 `Gate -> FP -> EP -> TASK` 覆盖矩阵；risk / issue / test / 验收节点缺失时，不能判定完整准出。
 - 每个 Gate 必须说明：目标、准入条件、准出条件、测试要求、风险和未确认项。
 - 未达到准出条件时，不用局部实现成功替代 Gate 准出。
 - Gate 准出必须回看 [[projects/development/reports/README]]。

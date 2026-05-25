@@ -11,6 +11,7 @@ from pathlib import Path
 
 CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),
+    ("work-item-matrix", "work item governance matrix", (sys.executable, "scripts/check_work_item_matrix.py", "--strict")),
     ("git-diff-whitespace", "git diff whitespace", ("git", "diff", "--check")),
     ("git-staged-diff-whitespace", "git staged diff whitespace", ("git", "diff", "--cached", "--check")),
 )

@@ -3,7 +3,7 @@ type: development_risks
 id: DEV-RISKS-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-06
+updated: 2026-05-25
 tags: [development, risks]
 ---
 
@@ -21,8 +21,9 @@ tags: [development, risks]
 ## 使用规则
 
 - 不阻塞当前 Gate 的问题，不把当前开发停住；放入风险登记或下一 Gate 准入项。
+- risk 是事前风险或未确认项；已经发生的 bug、偏差、验收失败或用户可见问题进入 [[projects/development/issues/README]]，不要继续留在风险页消化。
 - 需要业务、权限、资源或 owner 拍板的问题，进入 [[projects/meetings/README]] 或 [[projects/decisions]]。
-- 风险解除后，回写 [[projects/development/execution/todo]]、[[projects/status]] 和相关 Gate 方案。
+- 风险解除后，回写相关 EP / TASK、[[projects/development/execution/todo]]、[[projects/status]] 和相关 Gate 方案。
 
 ## 风险模板
 

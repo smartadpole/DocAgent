@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-05-09
+updated: 2026-05-25
 ---
 
 # 项目层结构
@@ -71,12 +71,19 @@ projects/
     plan/
       README.md
       work-item-system-model.md
+      task-design-model.md
     execution/
       README.md
+      execution-packages/
+        README.md
+      tasks/
+        README.md
       todo.md
       developer-execution-workflow.md
       engineering-feedback-loop.md
       worklog.md
+    issues/
+      README.md
     gates/
       README.md
     implementation/
@@ -138,7 +145,7 @@ projects/
 
 - `projects/service-registry.md`
 - 回答：真实服务现在在哪里运行、怎样健康检查、运行代码版本是什么、配置 profile 和数据目录如何定位
-- 这里只记录脱敏后的运行实例事实，不替代 [[projects/design/deployment]] 的部署原则、密钥治理、发布和回滚
+- 这里只记录脱敏后的运行实例事实、UI / API 配对、配置恢复方式和主线代码 / 实例配置差异，不替代 [[projects/design/deployment]] 的部署原则、密钥治理、发布和回滚
 - 同一个代码工程 / 部署上下文下的 API、UI、scheduler、worker 或 sidecar 默认先作为一个服务组记录，再把进程写成组件
 
 ### 3.1.3 代码基线分析入口
@@ -245,7 +252,10 @@ projects/
   负责当前阶段、执行入口、目录职责和支撑文件分组
 - `projects/development/plan/work-item-system-model.md`
   这是事项关系模型页
-  负责需求、目标、功能点、TODO、反馈和证据之间的关系类型、关闭守卫和防跑偏策略
+  负责 `Gate -> FP -> EP -> TASK` 主链、risk / issue / test / 验收关系节点、关闭守卫和防跑偏策略
+- `projects/development/plan/task-design-model.md`
+  这是 TASK 设计模型页
+  负责父 EP 下状态化交付合同、Done Contract、验证要求和反馈回写
 - `projects/development/execution/README.md`
   这是执行控制入口
   负责待办、编码交接、反馈纠偏和过程记录的入口分流
@@ -267,12 +277,18 @@ projects/
 - `projects/development/plan/README.md`
   适合放当前阶段、当前主入口、支撑文件分组和开发层目录职责
 - `projects/development/plan/work-item-system-model.md`
-  适合放事项类型、关系类型、TODO 关闭守卫、反馈回写和证据矩阵
+  适合放事项类型、关系类型、EP / TASK 关闭守卫、反馈回写和证据矩阵
+- `projects/development/plan/task-design-model.md`
+  适合放 TASK 合同字段、状态流转、验证要求和不上推边界
 
 #### 3.5.3 执行控制目录
 
 - `projects/development/execution/README.md`
   适合放待办、编码交接、反馈纠偏和过程记录的入口
+- `projects/development/execution/execution-packages/README.md`
+  适合放 EP 执行包索引和维护规则
+- `projects/development/execution/tasks/README.md`
+  适合放 TASK 任务索引和维护规则
 - `projects/development/execution/todo.md`
   适合放当前可执行待办和关闭证据
 - `projects/development/execution/developer-execution-workflow.md`
@@ -292,6 +308,8 @@ projects/
   适合放测试方案、测试用例、测试结论、相关回归和准出报告
 - `projects/development/risks/README.md`
   适合放风险、卡点、待确认项和会议归口
+- `projects/development/issues/README.md`
+  适合放已发生问题、bug、偏差和验收失败的案件档案；Issue 记录原始现象和修复链，报告记录每次验证过程
 
 #### 3.5.5 功能点执行目录
 
