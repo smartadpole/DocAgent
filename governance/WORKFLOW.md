@@ -241,7 +241,7 @@
 - `projects/development/execution/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
-- `skills/`：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能带项目语境，再补读对应项目主入口、设计、TODO、测试报告或服务台账
+- `skills/`：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能带项目语境，再补读对应项目主入口、设计、EP / TASK、轻量 TODO、测试报告或服务台账
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
 - `indexes/`：它所指向的主页面
@@ -555,7 +555,7 @@
 
 - 还在找方向时，交付物是候选方向比较、关键问题、证据卡片和下一步验证。
 - 已选方向但未进入研发时，交付物是轻量项目主页、需求页和 trace。
-- 已进入研发时，交付物才是设计包、功能点、TODO、验证证据和发布项。
+- 已进入研发时，交付物才是设计包、Gate / FP / EP / TASK、Issue / 验证证据、服务台账和发布项。
 
 ### 1.9.1 项目推进先读什么
 
@@ -618,7 +618,7 @@
 
 当完整架构包已经成型，而下一步要进入实现拆解时，默认按这条链推进：
 
-`完整架构包 -> 功能点 -> 接口 / 数据变更 -> 验证项 -> 发布项`
+`完整架构包 -> Gate / FP -> EP / TASK -> 接口 / 数据变更 -> 验证项 -> 发布项`
 
 先后顺序不要反过来。不要一上来直接写功能点实现卡，也不要跳过验证和发布回填。
 
@@ -643,21 +643,21 @@
 
 如果这 5 个问题还答不清，就先回设计层补齐，不进入研发拆解。
 
-#### 第二步：从架构包拆成功能点
+#### 第二步：从架构包拆成 Gate / FP / EP / TASK
 
 1. 先按业务闭环拆，不按技术文件拆。
-2. 一个功能点至少要能回答：
+2. 一个 FP 至少要能回答：
    - 它属于哪个模块
    - 它完成的是哪一段用户动作或运营动作
    - 它的验收口径是什么
    - 它依赖哪几个设计页和决策页
-3. 功能点粒度要满足“单独推进、单独验证、单独记录结果”。
-4. 如果一个条目同时跨太多页面、接口、状态和角色，就继续往下拆。
-5. 如果一个条目只是很小的实现细节，不足以独立验收，就并回所属功能点，不单开卡。
+3. FP 是能力实体；实际执行闭环要继续拆到父 EP 和 TASK，TASK 才承接具体 Done Contract、验收证据和不上推边界。
+4. 如果一个条目同时跨太多页面、接口、状态和角色，就继续往下拆成多个 EP / TASK。
+5. 如果一个条目只是很小的实现细节，不足以独立验收，就并回所属 TASK 或父 EP，不单开卡。
 
-拆完后，把功能点写进 `projects/development/feature-points/`，并让 `projects/development/README.md` 只保留活跃入口和整体推进状态。
+拆完后，把 FP 写进 `projects/development/feature-points/`，把执行包和具体任务写进 `projects/development/execution/execution-packages/` 与 `projects/development/execution/tasks/`，并让 `projects/development/README.md` 只保留活跃入口和整体推进状态。
 
-如果这轮研发拆解已经跨多个阶段、多个工程角色或多个证据来源，先把阶段路线、事项关系和关闭证据写到 [[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]] 和 [[projects/development/execution/todo]]。不要把 TODO、测试证据、风险和 Gate 准出条件都挤进 [[projects/development/README]] 或单个功能点页。
+如果这轮研发拆解已经跨多个阶段、多个工程角色或多个证据来源，先把阶段路线、事项关系和关闭证据写到 [[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/execution/execution-packages/README]] 和 [[projects/development/execution/tasks/README]]。不要把 TASK、测试证据、风险、Issue 和 Gate 准出条件都挤进 [[projects/development/README]] 或单个 FP 页；TODO 只作轻量兼容视图。
 
 #### 第三步：为每个功能点补接口 / 数据变更
 
@@ -675,7 +675,7 @@
 - 表、字段、索引、迁移，回链到 `projects/design/database.md`
 - 上传、环境、回滚、监控、幂等、补偿，回链到 `projects/design/deployment.md` 和 `projects/design/runtime-quality.md`
 
-如果某个功能点需要新增接口、迁移或运行约束，而设计页还没有对应口径，先回设计页补，不直接在功能点页发明第二套方案。
+如果某个 FP / EP / TASK 需要新增接口、迁移或运行约束，而设计页还没有对应口径，先回设计页补，不直接在执行页发明第二套方案。
 
 #### 第四步：为每个功能点补验证项
 
@@ -691,9 +691,9 @@
 
 验证记录的落点：
 
-- 功能点自己的验收和结果，写在对应功能点页
+- FP 自己的能力验收口径写在对应功能点页；具体执行结果写到父 EP / TASK 和测试报告
 - 时间顺序的实现、联调、排障和验证过程，写到 `projects/development/execution/worklog.md`
-- 如果测试结果会影响 TODO 关闭、Gate 准出、回归范围或待人工确认项，写到 [[projects/development/reports/README]]
+- 如果测试结果会影响 TASK / EP / FP / Gate 关闭、回归范围、Issue 或待人工确认项，写到 [[projects/development/reports/README]]
 - 如果验证结果改变了当前实现口径，再同步回 `projects/trace.md`
 
 #### 第五步：为每个功能点补发布项

@@ -17,7 +17,7 @@
 ## 角色分工
 
 - `governance/`：治理层目录。放流程、规则、共享背景和写法指南；具体由 [[governance/README]] 收口。
-- `skills/`：项目内 agent 技能层。放面向当前项目的可复用分析流程、判断框架和执行套路；技能可以带项目语境，但不替代项目状态、需求、设计、TODO 或测试报告的单一信息源。
+- `skills/`：项目内 agent 技能层。放面向当前项目的可复用分析流程、判断框架和执行套路；技能可以带项目语境，但不替代项目状态、需求、设计、EP / TASK 状态、轻量 TODO 或测试报告的单一信息源。
 - `raw/`：原始资料层。优先保持原样，少改动。
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
@@ -76,8 +76,8 @@
 - TASK 是父 EP 下的状态化交付合同；没有父 EP 的任务只能作为待关系校准候选，不能直接派发为正式编码任务。
 - risk 是事前风险或待确认项；已发生 bug、偏差、验收失败或用户可见问题必须进入 [[projects/development/issues/README]]，并保留原始现象，不让日志、API 错误或推测根因改写问题陈述。
 - 测试报告是验证证据，不是案件单一信息源。已发生问题的主档案在 Issue；报告必须回链 Issue / EP / TASK / FP / Gate，并写明本次证据能关闭哪一层、不能上推到哪一层。
-- 代码工程或外部工程里的 agent 处理本库 TODO / FP 时，默认把本库作为只读上下文源；除非任务明确授权“受控回写”，否则不得直接改本库文档、改 TODO 状态、关闭 Gate 或提交文档仓库。
-- 本库侧 agent 默认不直接修改代码工程或子工程文件、handoff 或代码；除非用户明确授权修改该子工程，否则只在本库测试报告、TODO、风险和最终回复中写清需要子工程吸收的证据与建议。
+- 代码工程或外部工程里的 agent 处理本库 TASK / EP / FP / Gate 时，默认把本库作为只读上下文源；TODO 只作轻量兼容视图。除非任务明确授权“受控回写”，否则不得直接改本库文档、改 TASK / EP 状态、关闭 Gate 或提交文档仓库。
+- 本库侧 agent 默认不直接修改代码工程或子工程文件、handoff 或代码；除非用户明确授权修改该子工程，否则只在本库测试报告、TASK、父 EP、风险和最终回复中写清需要子工程吸收的证据与建议。
 - 源码工程解读必须先使用 [[projects/codebase/source-code-audit-workflow]]，明确本次目标等级、实际达到等级、证据覆盖矩阵和未读 / 阻塞清单；没有完成 L3 自审时，不得暗示已经完成完整源码审计或已经可以做生产接入结论。
 - 优先更新已有页，不要无脑新建重复页。
 - 新页面先写最小可用版本，再补链接。
@@ -240,7 +240,7 @@
 - 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
 - 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
 - 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`reports/`、`risks/` 或功能点实体页。
-- 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
+- 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
@@ -272,7 +272,7 @@
 - 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
-- 改 `skills/` 时，至少读：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
+- 改 `skills/` 时，至少读：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
 - 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
 - 改 `concepts/` 时，至少读：相关 `articles/`、相关项目页、相关 `indexes/`。
 - 改 `indexes/` 时，至少读：它要导航到的主页面，不允许只看索引本身闭门重排。

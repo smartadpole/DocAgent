@@ -252,6 +252,47 @@ STRICT_TERMS: dict[str, tuple[str, ...]] = {
     "governance/POLICY.md": ("Gate -> FP -> EP -> TASK", "Issue 是案件档案", "服务台账"),
 }
 
+FORBIDDEN_MAIN_LOOP_PHRASES = (
+    "TODO / FP",
+    "TODO / Gate",
+    "TODO / FP / Gate",
+    "TODO / 测试报告",
+    "TODO / worklog",
+    "测试报告 / TODO / FP",
+    "不关闭 TODO",
+    "关闭 TODO",
+    "TODO 状态",
+    "TODO / FP / Gate / release",
+    "需求 / TODO / FP / Gate",
+    "处理本库 TODO / FP",
+    "相关 TODO / FP / Gate",
+    "实现 / 测试 -> TODO",
+    "设计、TODO 或测试报告",
+    "设计、TODO、测试报告",
+    "设计、TODO、测试报告或服务台账",
+    "设计包、功能点、TODO",
+    "影响 TODO 关闭",
+    "关联 TODO",
+    "来源 TODO / 候选项",
+    "功能点成为最小执行单位",
+    "以功能点作为最小执行单位",
+)
+
+FORBIDDEN_SCAN_FILES = (
+    "AGENTS.md",
+    "governance/BRAIN.md",
+    "governance/POLICY.md",
+    "governance/WORKFLOW.md",
+    "governance/response-mode-routing.md",
+    "projects/development/execution/engineering-feedback-loop.md",
+    "projects/development/execution/worklog.md",
+    "projects/decisions.md",
+    "projects/trace.md",
+    "templates/development-feature-point-template.md",
+    "templates/development-gate-template.md",
+    "templates/skill-template.md",
+)
+
 
 def read_text(repo: Path, rel_path: str, errors: list[str]) -> str:
     path = repo / rel_path
@@ -325,6 +366,16 @@ def require_table_columns(repo: Path, rel_path: str, first_column: str, columns:
         errors.append(f"{rel_path}: table missing column(s): {', '.join(missing)}")
 
 
+def forbid_legacy_main_loop_phrases(repo: Path, errors: list[str]) -> None:
+    for rel_path in FORBIDDEN_SCAN_FILES:
+        text = read_text(repo, rel_path, errors)
+        if not text:
+            continue
+        for phrase in FORBIDDEN_MAIN_LOOP_PHRASES:
+            if phrase in text:
+                errors.append(f"{rel_path}: legacy TODO/FP main-loop phrase remains: {phrase!r}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--strict", action="store_true", help="Run strict entrypoint checks.")
@@ -360,6 +411,7 @@ def main() -> int:
         ("协作环节", "主控系统职责", "实现工程职责", "禁止事项"),
         errors,
     )
+    forbid_legacy_main_loop_phrases(repo, errors)
 
     if args.strict:
         for rel_path, links in ENTRYPOINT_LINKS.items():

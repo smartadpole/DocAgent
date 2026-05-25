@@ -38,4 +38,4 @@
 - 过程记录里如果提到某个功能点，优先链接到对应实体页
 - 如果这条开发记录来源于正式会议，回看 [[projects/meetings/worklog]]
 - 如果某次实现改变了范围、口径或修补边界，记得同步回写 [[projects/trace]]
-- 如果某次验证影响 TODO 关闭、Gate 准出或回归范围，记得同步回写 [[projects/development/reports/README]]
+- 如果某次验证影响 TASK / EP / FP / Gate 关闭、Issue 或回归范围，记得同步回写 [[projects/development/reports/README]]

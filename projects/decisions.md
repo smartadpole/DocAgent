@@ -30,7 +30,7 @@ tags: [decision]
 2. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
 3. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
 4. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
-5. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
+5. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为能力实体页。影响：执行闭环后续已由 EP / TASK 承接，FP 不再作为最小执行单位。
 6. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
 7. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
 8. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
@@ -76,7 +76,7 @@ tags: [decision]
   - 写进 [[AGENTS]] 最容易被 agent 看到，但会让根入口继续膨胀。
   - 独立治理页需要同步多个入口，但最符合短入口和单一信息源原则。
 - **风险点**：
-  - 如果快速诊断被误用来关闭状态，会破坏验收边界；因此 [[POLICY]] 明确快速诊断默认不写状态、不关闭 TODO / FP / Gate。
+  - 如果快速诊断被误用来关闭状态，会破坏验收边界；因此 [[POLICY]] 明确快速诊断默认不写状态、不关闭 TASK / EP / FP / Gate。
   - 如果后续只继续加自然语言规则，Harness 会变重；因此下一步优先补 feedback sensor 和模板校验。
 
 ### 2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑
@@ -130,7 +130,7 @@ tags: [decision]
 
 - 背景：设计拆到模块之后，推进粒度需要落到功能点，否则状态、阻塞和验证会散落在多个页面里。
 - 决定：
-  - 以功能点作为最小执行单位
+  - 以功能点作为当时的能力执行实体；2026-05-25 后，正式执行闭环升级为 `Gate -> FP -> EP -> TASK`，FP 不再作为最小执行单位
   - 用 [[projects/development/README]] 维护模板和活跃清单
   - 用 [[projects/development/feature-points/README]] 维护一页一个功能点的实体页
   - 用 [[projects/development/execution/worklog]] 维护过程流水

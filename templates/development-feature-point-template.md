@@ -28,7 +28,7 @@ tags: [development, feature-point]
 - 验证项：
 - 发布影响：
 - 负责人：
-- 来源 TODO / 候选项：
+- 来源 Gate / 候选项 / 轻量 TODO：
 - 关闭证据：
 - 反馈回写：
 - 下一步：

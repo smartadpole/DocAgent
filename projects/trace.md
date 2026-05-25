@@ -108,7 +108,7 @@ tags: [trace, project]
   - **关系节点补齐**：risk、Issue、test、验收、报告和服务台账不再散落为平行清单，而是作为事项关闭守卫和反馈节点。
   - **模板和 sensor**：新增 EP、TASK、Issue 模板与入口，并把 `work-item-matrix` 接入 `scripts/check_all.py`。
 - **当前实现口径**：
-  - 研发拆解不能只停在 TODO / FP；正式执行闭环需要说明父 Gate、FP、EP、TASK、关闭证据、回归守卫和不上推边界。
+  - 研发拆解不能停在轻量 TODO 或单独 FP；正式执行闭环需要说明父 Gate、FP、EP、TASK、关闭证据、回归守卫和不上推边界。
   - Issue 是案件档案，报告是每次验证记录；服务台账是运行实例事实的单一信息源。
   - 子工程沟通同样按 Gate / FP / EP / TASK 下发和回传；实现工程只生产代码、配置、测试和运行证据，主控侧负责吸收回写和关闭裁决。
   - 维护者日常入口顺序收口到 [[projects/development/plan/README]]；`work-item-matrix` sensor 改为结构化检查，避免靠关键词堆叠维持一致性。
