@@ -28,15 +28,17 @@
 ### 纠正 agent 响应效率治理反思的层级归属
 
 - **记录人**：sunhao
-- **用户意图**：指出前一轮把 agent 响应效率治理反思放进 `projects/development/plan/` 是错误归类；这不是特定研发项目计划，而是对文档 / agent 工程自身运行方式的知识沉淀和规则候选。
+- **用户意图**：指出前一轮把 agent 响应效率治理反思放进 `projects/development/plan/` 是错误归类，并继续要求对 重治理主控工程 慢的问题做全面、客观分析，目标是功能完善且高效，而不是简单把治理闭环砍掉。
 - **主题**：
   1. 重治理主控工程 的慢主要来自主控治理链路过重，不是默认检查脚本本身慢。
   2. 当前模板库缺少针对单个简单问题的“快速诊断模式”，只有批量材料处理的轻量模式。
-  3. 该结论当前只应进入知识沉淀层，不能伪装成项目研发待办或已生效硬规则。
+  3. issue 分析 + 沉淀本身是合理需求；真正要拆分的是必要成本、可优化成本和应避免成本。
+  4. 该结论当前只应进入知识沉淀层，不能伪装成项目研发待办或已生效硬规则。
 - **关键动作**：
   1. **迁移沉淀页**：把原 `projects/development/plan/agent-response-efficiency-upgrade-plan` 改迁到 [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]，作为知识沉淀和规则候选。
   2. **撤回项目化挂载**：清理 [[projects/development/plan/README]]、[[projects/development/execution/todo]] 和 [[projects/status]] 中关于该事项的项目计划、待办和状态入口。
   3. **保留知识入口**：更新 [[INDEX]]，把该反思挂到设计思路 / 知识沉淀入口，而不是研发方法入口。
+  4. **补全面分析**：扩展 [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]，加入必要成本、可优化成本、应避免成本、五类响应模式、判定表和阶段性反馈目标，明确“慢的核心工作有必要，但当前慢法仍可优化”。
 - **当前边界**：本轮仍没有修改 [[AGENTS]]、[[WORKFLOW]] 或 [[POLICY]] 的硬规则；如果后续要正式引入快速诊断模式，需要另起规则升级流程。
 - **影响页面**：[[articles/2026-05-25-agent-response-efficiency-governance-reflection]]、[[projects/development/plan/README]]、[[projects/development/execution/todo]]、[[projects/status]]、[[INDEX]]、[[log]]。
 
