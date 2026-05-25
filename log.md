@@ -9,6 +9,22 @@
 
 ## 2026-05-25
 
+### 调研 Codex Goals 并沉淀为长时任务完成契约专题
+
+- **记录人**：sunhao
+- **用户意图**：围绕用户提供的本地译文材料，调研 Codex Goals 这个专题，并把它整理成可回看的知识沉淀，而不是只停留在一次对话解释。
+- **主题**：
+  1. Codex Goals 的本质是线程级持久目标和完成契约，不是全局 memory，也不是仓库级规则。
+  2. 强 Goal 的关键在于把结果、证据、约束、边界、迭代策略和阻塞停止条件写清楚。
+  3. Goals 对性能调优、flaky test 调查、复杂迁移和研究复现这类“终点明确、路径不明确”的长时任务特别有价值。
+- **关键动作**：
+  1. **归档来源**：把用户提供的微信 HTML 和资源目录归档到 `raw/codex-goals/`，保留本地原始材料，避免后续结论失去证据源。
+  2. **新增专题卡片**：新增 [[articles/2026-05-25-codex-goals-research]]，整理 Goals 的定义、适用场景、强弱写法、生命周期控制、和 Agent Harness 的关系，以及可直接复用的 Goal 模板。
+  3. **新增概念页**：新增 [[concepts/codex-goals]]，把 Codex Goals 收口为线程级完成契约的概念单一信息源。
+  4. **补入口链接**：更新 [[INDEX]] 和 [[concepts/README]]，把 Codex Goals 纳入研发方法和概念入口，方便后续回链。
+- **二阶反思**：这轮沉淀说明“长期委托给 Agent 的任务”不能只靠更长 prompt；后续如果要把这类能力进一步制度化，重点应放在可审计完成条件和证据检查，而不是再叠一层模糊规则。
+- **影响页面**：[[articles/2026-05-25-codex-goals-research]]、[[concepts/codex-goals]]、[[INDEX]]、[[concepts/README]]、[[log]]、`raw/codex-goals/`。
+
 ### 将响应模式路由升级为 wiki Harness 默认机制
 
 - **记录人**：sunhao

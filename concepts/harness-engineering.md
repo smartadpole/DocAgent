@@ -34,6 +34,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - Sub Agent：按阶段或专业分工的 agent 角色。
 - Scripts / Sensors：lint、测试、CI、静态分析、架构检查、trace、日志、SLO。
 - MCP / Tools：外部系统、宿主环境和受控工具能力。
+- Goal Contract：像 [[concepts/codex-goals]] 这样的线程级完成契约，用来让长时任务在多轮之间保留终点线和证据审计面。
 - Memory：会话延续和偏好辅助；团队真相源应优先文件化。
 - Observability：运行记录、失败归因、干预记录和 harness 变更证据。
 
@@ -66,6 +67,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 ## 相关页面
 
 - [[articles/2026-05-25-harness-engineering-research]]
+- [[concepts/codex-goals]]
 - [[AGENTS]]
 - [[WORKFLOW]]
 - [[response-mode-routing]]
