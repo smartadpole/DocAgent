@@ -9,6 +9,22 @@
 
 ## 2026-05-25
 
+### 调研 Harness Engineering 并沉淀为知识库专题
+
+- **记录人**：sunhao
+- **用户意图**：围绕用户提供的两份 Harness Engineering 本地材料做全面深入调研，形成可回看的专题沉淀，而不是只在对话里给出概念解释。
+- **主题**：
+  1. Harness Engineering 的核心不是提示词，而是 `Agent = Model + Harness` 这一工程系统视角。
+  2. 有效 Harness 由规格、上下文、规则、Skill、Workflow、Sub Agent、脚本反馈、MCP / 工具、Memory 和可观测演化共同组成。
+  3. OpenAI、LangChain、Vercel、本地 JK Launcher 案例和 X 图文都指向同一条实践线：少堆料，多用工程判断，把可判定约束下沉成脚本或反馈传感器。
+- **关键动作**：
+  1. **归档来源**：把用户提供的两份 HTML 归档到 `raw/harness-engineering/`，并把 X 图文里的关键图片归档到 `assets/harness-engineering/`。
+  2. **新增专题卡片**：新增 [[articles/2026-05-25-harness-engineering-research]]，系统整理定义、组件地图、案例信号、成熟度模型、落地顺序、反模式和对当前文档库的启发。
+  3. **新增概念页**：新增 [[concepts/harness-engineering]]，作为 Harness Engineering 的概念单一信息源。
+  4. **补入口链接**：更新 [[INDEX]] 和 [[concepts/README]]，把专题和概念纳入研发方法入口。
+- **二阶反思**：这次专题与当前文档库已有七层模型高度相关，但本轮仍属于知识沉淀，不直接改 [[AGENTS]]、[[WORKFLOW]] 或 [[POLICY]]；后续若要吸收为执行机制，应优先补链接检查、frontmatter 检查等 feedback sensor，而不是继续加规则正文。
+- **影响页面**：[[articles/2026-05-25-harness-engineering-research]]、[[concepts/harness-engineering]]、[[INDEX]]、[[concepts/README]]、[[log]]、`raw/harness-engineering/`、`assets/harness-engineering/`。
+
 ### 沉淀 agent 响应效率治理升级计划
 
 - **记录人**：sunhao

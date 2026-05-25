@@ -20,6 +20,7 @@
 
 - [[concepts/prd-writing]]：PRD 写作方法
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
+- [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法
 
 ## 维护原则
 
