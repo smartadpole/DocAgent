@@ -24,6 +24,7 @@ tags: [agent, harness, feedback, episode]
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-05-25 | Codex Goals 转主控 / 子工程契约 | 用户要求基于 Goals 专题给出主控和子工程升级建议并落实 | 规则升级 | 可优化成本 | 新增 Goal Contract 模板，并把完成契约字段写入 Harness 接入、编码任务、回传包和 episode 模板 | [[templates/goal-contract-template]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
+| 2026-05-25 | 研发事项入口顺序和结构化 sensor | 用户指出规则分布虽清楚但维护者需要知道入口顺序，且 `work-item-matrix` 关键词检查未来可能脆弱 | 规则升级 | 可优化成本 | 在研发总控页新增维护者入口顺序；把 `work-item-matrix` 从关键词检查升级为文件、章节、表头、模板字段和入口链接结构检查 | [[projects/development/plan/README]] / `python3 scripts/check_all.py --only work-item-matrix` | promoted |
 | 2026-05-25 | 响应效率治理入口 | 简单诊断容易直接进入完整治理闭环 | 规则升级 | 可优化成本 | 新增 [[response-mode-routing]]，拆分快速诊断、沉淀、验收、规则升级和子工程回传 | [[templates/harness-adoption-template]] | promoted |
 | 2026-05-25 | DocCustomeranalysis Harness 反哺 | 用户指出同定位工程的 harness 设计和系统流程更健全 | 规则升级 | 可优化成本 | 新增 [[harness-evolution]]、本 ledger、episode / evolution 模板、`.codex/AGENTS.md` 和统一检查脚本 | `python3 scripts/check_all.py --only harness-governance` | promoted |
 
@@ -34,6 +35,7 @@ tags: [agent, harness, feedback, episode]
 | Markdown / wikilink / frontmatter 检查 | 多入口文档库容易出现链接和元数据漂移 | 后续可补 `scripts/check_project_docs.py` 或扩展 `check_harness_governance.py` | observed |
 | 技能质量检查 | 技能页可能复制项目事实或缺少触发 / 输出边界 | 后续可补技能结构检查 | observed |
 | 模板完整性检查 | 新增模板后可能忘记挂入口或字段漂移 | 当前由 `check_harness_governance.py` 覆盖 Harness 模板入口 | active |
+| 研发事项结构检查 | 关键词式 wiring 检查可能随着字段增加变脆 | 当前由 `check_work_item_matrix.py` 检查矩阵列顺序、模板字段、章节、表头和入口链接 | active |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 
 ## Rule Promotion Queue
@@ -44,6 +46,7 @@ tags: [agent, harness, feedback, episode]
 | 工作阶段跑专项 sensor，收尾和提交前跑完整门禁 | DocCustomeranalysis Harness 反哺 | [[harness-evolution]] / `scripts/check_all.py` | promoted |
 | H5 episode 不直接晋升硬规则，先进入 ledger 和复盘 | DocCustomeranalysis Harness 反哺 | [[harness-evolution]] | promoted |
 | 规则不能只停在自然语言，重复失守要升级为模板字段、sensor、技能或最终证明 | DocCustomeranalysis Harness 反哺 | [[response-mode-routing]] / [[WORKFLOW]] / `scripts/check_harness_governance.py` | active |
+| 研发事项日常维护先走总控页入口顺序，治理层只在改变默认规则时修改 | 研发事项入口顺序和结构化 sensor | [[projects/development/plan/README]] / [[WORKFLOW]] | promoted |
 
 ## Rule Prune Queue
 
@@ -51,3 +54,4 @@ tags: [agent, harness, feedback, episode]
 | --- | --- | --- |
 | 多处手写检查脚本清单 | 已由 `scripts/check_all.py --list` 和 `--only` 承接 | observed |
 | 已被 sensor 覆盖的重复自然语言规则 | 避免入口页继续膨胀 | observed |
+| `work-item-matrix` 旧关键词堆叠 | 已改为结构化检查，后续优先补字段 / 表头 / 章节断言 | promoted |

@@ -112,6 +112,8 @@
 - 项目内 agent 技能：看 [[skills/README]]
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
+研发事项维护的日常入口顺序统一看 `projects/development/plan/README.md#维护者入口顺序`。只有当本轮要改变默认规则、写权限、自动沉淀边界或入口顺序时，才回到 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 修改治理层。
+
 ### 0.1 共享脑怎么用
 
 - [[log]] 只负责按时间降序呈现每次对话的主题、用户意图、关键动作和结构变化，不负责主动参与后续思考。

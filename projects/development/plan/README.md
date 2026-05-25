@@ -41,6 +41,19 @@ tags: [development, plan, progress]
 - [[projects/development/risks/README]]：风险、卡点、待确认项和会议归口。
 - [[projects/development/feature-points/README]]：单功能点实体页。
 
+## 维护者入口顺序
+
+日常维护研发事项时，先从本页进入，不要在 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和各子页之间来回猜入口。
+
+1. 先按 [[response-mode-routing]] 判断本轮是快速诊断、Issue 分析、验收关闭、规则升级还是子工程回传。
+2. 如果是新建、拆解或关闭研发事项，读 [[projects/development/plan/work-item-system-model]]，确认 `Gate -> FP -> EP -> TASK` 主链和 `risk:`、`test:`、`验收:`、`issue-trigger:` 覆盖。
+3. 如果要派发或关闭 TASK，读 [[projects/development/plan/task-design-model]] 和 [[projects/development/execution/tasks/README]]，确认父 EP、Done Contract、验证要求和不上推边界。
+4. 如果要处理已发生 bug、偏差或验收失败，读 [[projects/development/issues/README]]；Issue 是案件档案，报告只记录每次验证。
+5. 如果要验收、复验或准出，读 [[projects/development/reports/README]]；涉及真实服务时同时读 [[projects/service-registry]]。
+6. 如果要和子工程沟通，读 [[projects/development/execution/developer-execution-workflow]]，再复制 [[templates/developer-task-brief-template]] 或 [[templates/code-handoff-template]]。
+7. 只有当本轮要改变默认规则、写权限、自动沉淀边界或入口顺序时，才回到 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 修改治理层。
+8. 改完后先跑 `python3 scripts/check_all.py --only work-item-matrix`；收尾或提交前跑 `python3 scripts/check_all.py`。
+
 ## 当前摘要
 
 按项目实际补充：

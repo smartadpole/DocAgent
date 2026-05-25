@@ -111,6 +111,7 @@ tags: [trace, project]
   - 研发拆解不能只停在 TODO / FP；正式执行闭环需要说明父 Gate、FP、EP、TASK、关闭证据、回归守卫和不上推边界。
   - Issue 是案件档案，报告是每次验证记录；服务台账是运行实例事实的单一信息源。
   - 子工程沟通同样按 Gate / FP / EP / TASK 下发和回传；实现工程只生产代码、配置、测试和运行证据，主控侧负责吸收回写和关闭裁决。
+  - 维护者日常入口顺序收口到 [[projects/development/plan/README]]；`work-item-matrix` sensor 改为结构化检查，避免靠关键词堆叠维持一致性。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

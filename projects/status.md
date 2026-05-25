@@ -27,7 +27,7 @@ tags: [status]
 ## 下一步
 
 - 基于 [[projects/development/plan/work-item-system-model]] 观察后续研发任务是否能稳定按 `Gate -> FP -> EP -> TASK` 拆解，并把 Issue、risk、test、验收和服务台账关系补齐
-- 继续把 Markdown / wikilink、frontmatter、技能质量、模板完整性和研发事项矩阵检查扩展成 `scripts/check_all.py` 下的 feedback sensor
+- 继续把 Markdown / wikilink、frontmatter、技能质量和模板完整性检查扩展成 `scripts/check_all.py` 下的 feedback sensor；研发事项矩阵已升级为结构化字段 / 表头 / 章节检查
 - 定期做规则减肥：合并重复入口、删除过期补丁，把可执行约束迁到模板或检查脚本
 
 ## 功能点镜像
@@ -77,4 +77,4 @@ tags: [status]
 ## 阻塞项
 
 - 还没有把更大范围的页面批量规范化
-- Harness H5、`harness-governance` sensor 和 `work-item-matrix` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖
+- Harness H5、`harness-governance` sensor 和结构化 `work-item-matrix` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖
