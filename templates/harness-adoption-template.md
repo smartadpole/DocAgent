@@ -42,6 +42,15 @@ tags: [template, harness, agent]
 - **进入规则升级的触发条件**：
 - **首次 checkpoint 目标**：
 
+## Goal Contract
+
+- **适合使用 Goal 的任务类型**：
+- **不适合使用 Goal 的任务类型**：
+- **主控侧 Goal 定义入口**：
+- **子工程 Goal 接收方式**：
+- **完成证据必须回写到哪里**：
+- **阻塞停止条件**：
+
 ## 验证层级
 
 - **local validation**：

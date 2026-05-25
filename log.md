@@ -9,6 +9,22 @@
 
 ## 2026-05-25
 
+### 将 Codex Goals 转成主控和子工程协作契约
+
+- **记录人**：sunhao
+- **用户意图**：基于刚沉淀的 Codex Goals 专题，判断自有主控工程和子工程是否有升级建议，并把可执行的部分直接落实到当前模板库。
+- **主题**：
+  1. 长时任务升级点不是让 agent 无限后台运行，而是先写清线程级完成契约。
+  2. 主控侧负责定义最终状态、验证面、约束、状态关闭条件和人工确认边界。
+  3. 子工程侧负责按主控契约执行实现、本地验证、失败项、未验证边界和可吸收回传。
+- **关键动作**：
+  1. **新增模板**：新增 [[templates/goal-contract-template]]，把最终状态、验证面、约束、迭代策略、阻塞停止条件和主控 / 子工程分工收成可复制骨架。
+  2. **升级协作模板**：更新 [[templates/harness-adoption-template]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]] 和 [[templates/harness-episode-package-template]]，加入 Goal Contract 字段和完成判断。
+  3. **同步规则和入口**：更新 [[response-mode-routing]]、[[WORKFLOW]]、[[AGENTS]]、[[POLICY]]、[[README]]、[[INDEX]]、[[templates/README]] 和 [[concepts/harness-engineering]]，明确 Goal Contract 不替代验收关闭。
+  4. **补 sensor 和 ledger**：更新 `scripts/check_harness_governance.py` 和 [[harness-feedback-ledger]]，让 Goal Contract 的关键入口和模板字段进入 Harness 检查。
+- **二阶反思**：这轮说明 Goals 最适合先转成模板字段和 sensor，而不是直接新增一组重规则；主控和子工程之间真正需要固化的是“谁定义完成、谁生产证据、谁关闭状态”。
+- **影响页面**：[[templates/goal-contract-template]]、[[templates/harness-adoption-template]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/harness-episode-package-template]]、[[response-mode-routing]]、[[WORKFLOW]]、[[AGENTS]]、[[POLICY]]、[[README]]、[[INDEX]]、[[templates/README]]、[[concepts/harness-engineering]]、[[harness-feedback-ledger]]、[[log]]。
+
 ### 吸收 DocCustomeranalysis 的 H5 Harness 与本地门禁
 
 - **记录人**：sunhao

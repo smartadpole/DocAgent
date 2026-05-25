@@ -21,6 +21,11 @@ docs/handoffs/<work-id>-<short-topic>.md
 - 对应 TODO：
 - 对应 FP / 候选 ID：
 - 上游需求 / 目标：
+- Goal Contract：
+- 期望最终状态：
+- 验证面：
+- 约束保持情况：
+- 阻塞停止条件：
 - 关系类型：
 - 当前 Gate / 阶段：
 - 主责模块：
@@ -32,6 +37,7 @@ docs/handoffs/<work-id>-<short-topic>.md
 - 测试方案和用例执行情况：
 - 相关功能回归范围：
 - 参数生效证据：
+- Goal 完成判断：
 - 独立抽插证据：
 - 失败项：
 - 未验证项：

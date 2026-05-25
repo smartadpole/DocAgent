@@ -12,6 +12,8 @@ REQUIRED_FILES = (
     "governance/harness-evolution.md",
     "governance/harness-feedback-ledger.md",
     "concepts/harness-engineering.md",
+    "concepts/codex-goals.md",
+    "templates/goal-contract-template.md",
     "templates/harness-adoption-template.md",
     "templates/harness-episode-package-template.md",
     "templates/harness-evolution-review-template.md",
@@ -50,6 +52,7 @@ ROUTING_REQUIRED_TERMS = (
     "输出节奏",
     "禁止项",
     "Harness 维护检查",
+    "Goal Contract",
     "工作阶段",
     "sensor",
     "scripts/check_harness_governance.py",
@@ -63,6 +66,7 @@ TEMPLATE_REQUIRED_SECTIONS = (
     "## 单一信息源",
     "## 写权限和边界",
     "## 响应模式路由",
+    "## Goal Contract",
     "## 验证层级",
     "## Handoff 和回写",
     "## Feedback Sensors",
@@ -70,6 +74,7 @@ TEMPLATE_REQUIRED_SECTIONS = (
 )
 
 EPISODE_TEMPLATE_REQUIRED_SECTIONS = (
+    "## Goal Contract",
     "## 首次 Checkpoint",
     "## 执行轨迹",
     "## 证据边界",
@@ -118,7 +123,16 @@ CODEX_ADAPTER_REQUIRED_TERMS = (
     "response-mode-routing",
     "harness-evolution",
     "harness-feedback-ledger",
+    "Goal Contract",
     "scripts/check_all.py --only",
+)
+
+GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS = (
+    "## 完成契约",
+    "## 迭代策略",
+    "## 阻塞停止条件",
+    "## 主控 / 子工程分工",
+    "## `/goal` 草稿",
 )
 
 
@@ -212,11 +226,12 @@ def check_concept_and_template(repo: Path) -> list[str]:
     errors: list[str] = []
     concept = read_text(repo, "concepts/harness-engineering.md", errors)
     template = read_text(repo, "templates/harness-adoption-template.md", errors)
+    goal_template = read_text(repo, "templates/goal-contract-template.md", errors)
     episode_template = read_text(repo, "templates/harness-episode-package-template.md", errors)
     evolution_template = read_text(repo, "templates/harness-evolution-review-template.md", errors)
 
     if concept:
-        for term in ("Agent = Model + Harness", "Scripts / Sensors", "harness-evolution"):
+        for term in ("Agent = Model + Harness", "Scripts / Sensors", "harness-evolution", "goal-contract-template"):
             if term not in concept:
                 errors.append(f"concepts/harness-engineering.md: missing harness concept term {term}")
 
@@ -224,6 +239,10 @@ def check_concept_and_template(repo: Path) -> list[str]:
         for section in TEMPLATE_REQUIRED_SECTIONS:
             if section not in template:
                 errors.append(f"templates/harness-adoption-template.md: missing section {section}")
+    if goal_template:
+        for section in GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS:
+            if section not in goal_template:
+                errors.append(f"templates/goal-contract-template.md: missing section {section}")
     if episode_template:
         for section in EPISODE_TEMPLATE_REQUIRED_SECTIONS:
             if section not in episode_template:

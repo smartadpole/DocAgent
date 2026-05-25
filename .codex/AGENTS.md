@@ -7,6 +7,7 @@
 - 先读根目录 `AGENTS.md`。
 - 再按 [[response-mode-routing]] 判断响应模式：快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
 - 如果涉及 Harness 自演进、用户纠偏、检查失败、模式切换或规则反哺，再读 [[harness-evolution]] 和 [[harness-feedback-ledger]]。
+- 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[concepts/codex-goals]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
 
 ## 工作阶段检查
 
