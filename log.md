@@ -12,18 +12,20 @@
 ### 完整吸收 Gate / FP / EP / TASK 研发事项体系
 
 - **记录人**：sunhao
-- **用户意图**：在前一轮吸收 H5 Harness 后，继续完整吸收 `DocCustomeranalysis` 中更成熟的 Gate、FP、EP、TASK、Issue、risk、test、项目验收、测试和服务台账规则，并固化为当前 wiki 的默认工程设计。
+- **用户意图**：在前一轮吸收 H5 Harness 后，继续完整吸收 `DocCustomeranalysis` 中更成熟的 Gate、FP、EP、TASK、Issue、risk、test、项目验收、测试、服务台账和子工程沟通规则，并固化为当前 wiki 的默认工程设计。
 - **主题**：
   1. 正式研发事项主链升级为 `Gate -> FP -> EP -> TASK`，不再只靠 FP / TODO / 报告表达执行闭环。
   2. risk、Issue、test、验收、报告和服务台账作为关系节点和关闭守卫，而不是平行堆放的清单。
   3. Issue 是案件档案，报告是每次验证记录，服务台账是运行实例事实单一信息源。
+  4. 子工程只读上下文、受控回写和无写权限回传都必须按 EP / TASK / Issue / 报告 / 服务台账边界沟通。
 - **关键动作**：
   1. **补事项模型**：更新 [[projects/development/plan/work-item-system-model]]，新增 [[projects/development/plan/task-design-model]]、[[projects/development/execution/execution-packages/README]]、[[projects/development/execution/tasks/README]] 和 [[projects/development/issues/README]]。
   2. **补模板**：新增 [[templates/development-execution-package-template]]、[[templates/development-task-template]] 和 [[templates/development-issue-template]]，升级 [[templates/development-work-item-matrix-template]]、[[templates/development-test-report-template]] 和 [[templates/service-registry-template]]。
   3. **同步入口和治理**：更新 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/plan/README]]、[[projects/development/execution/README]]、Gate、FP、risk、报告和台账入口。
-  4. **新增 sensor**：新增 `scripts/check_work_item_matrix.py` 并接入 `scripts/check_all.py`，让事项矩阵、模板和入口 wiring 可检查。
-- **二阶反思**：这轮说明“完整吸收”不能只靠口头记忆；高价值工程设计必须同时落到模型、模板、入口、治理规则和本地 sensor，后续才能在新任务中自然执行。
-- **影响页面**：[[projects/development/plan/work-item-system-model]]、[[projects/development/plan/task-design-model]]、[[projects/development/execution/execution-packages/README]]、[[projects/development/execution/tasks/README]]、[[projects/development/issues/README]]、[[projects/development/reports/README]]、[[projects/service-registry]]、[[templates/development-work-item-matrix-template]]、[[templates/development-execution-package-template]]、[[templates/development-task-template]]、[[templates/development-issue-template]]、[[templates/development-test-report-template]]、[[templates/service-registry-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/trace]]、[[projects/decisions]]、[[log]]、`scripts/check_work_item_matrix.py`、`scripts/check_all.py`。
+  4. **补子工程沟通**：升级 [[projects/development/execution/developer-execution-workflow]]、[[templates/developer-task-brief-template]] 和 [[templates/code-handoff-template]]，让任务下发、代码回传、验收评审和受控回写都使用 EP / TASK 主链。
+  5. **新增 sensor**：新增并扩展 `scripts/check_work_item_matrix.py`，接入 `scripts/check_all.py`，让事项矩阵、模板、入口和子工程回传 wiring 可检查。
+- **二阶反思**：这轮说明“完整吸收”不能只靠口头记忆；高价值工程设计必须同时落到模型、模板、入口、治理规则、子工程协作契约和本地 sensor，后续才能在新任务中自然执行。
+- **影响页面**：[[projects/development/plan/work-item-system-model]]、[[projects/development/plan/task-design-model]]、[[projects/development/execution/execution-packages/README]]、[[projects/development/execution/tasks/README]]、[[projects/development/execution/developer-execution-workflow]]、[[projects/development/issues/README]]、[[projects/development/reports/README]]、[[projects/service-registry]]、[[templates/development-work-item-matrix-template]]、[[templates/development-execution-package-template]]、[[templates/development-task-template]]、[[templates/development-issue-template]]、[[templates/development-test-report-template]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/service-registry-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/trace]]、[[projects/decisions]]、[[log]]、`scripts/check_work_item_matrix.py`、`scripts/check_all.py`。
 
 ### 将 Codex Goals 转成主控和子工程协作契约
 

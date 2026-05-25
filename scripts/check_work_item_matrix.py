@@ -22,6 +22,9 @@ REQUIRED_FILES = (
     "templates/development-issue-template.md",
     "templates/development-test-report-template.md",
     "templates/service-registry-template.md",
+    "templates/code-handoff-template.md",
+    "templates/developer-task-brief-template.md",
+    "projects/development/execution/developer-execution-workflow.md",
 )
 
 REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
@@ -119,6 +122,29 @@ REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
         "config_restore",
         "ui_api_contract",
         "UI / API",
+    ),
+    "templates/code-handoff-template.md": (
+        "对应 EP",
+        "对应 TASK",
+        "对应 ISSUE / issue-trigger",
+        "TASK Done Contract",
+        "服务台账",
+        "不上推边界",
+    ),
+    "templates/developer-task-brief-template.md": (
+        "父 EP",
+        "TASK",
+        "ISSUE / issue-trigger",
+        "TASK Done Contract",
+        "服务台账",
+        "不上推边界",
+    ),
+    "projects/development/execution/developer-execution-workflow.md": (
+        "Gate / FP / EP / TASK",
+        "父 EP",
+        "TASK Done Contract",
+        "服务台账",
+        "上推边界",
     ),
 }
 
