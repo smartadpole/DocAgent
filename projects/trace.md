@@ -51,12 +51,13 @@ tags: [trace, project]
   - **技能分支**：[[skills/issue-analysis/SKILL]] 增加快速根因链和完整沉淀链的分支，防止所有问题都走同一条重路径。
 - **最终范围**：
   - 生效入口：[[response-mode-routing]]。
+  - H5 自演进入口：[[harness-evolution]] 和 [[harness-feedback-ledger]]。
   - 同步入口：[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]。
-  - 执行支撑：[[skills/issue-analysis/SKILL]]、[[templates/harness-adoption-template]]。
+  - 执行支撑：[[skills/issue-analysis/SKILL]]、[[templates/harness-adoption-template]]、[[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]]、`scripts/check_all.py`、`scripts/check_harness_governance.py`。
   - 来源分析继续保留在 [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]。
 - **假设与未决项**：
-  - 本轮先完成治理和模板升级，不新增脚本化 sensor。
-  - 下一步优先补 Markdown / wikilink、frontmatter、技能质量和模板完整性检查，减少自然语言规则继续膨胀。
+  - 本轮先完成 H5、ledger 和首个 Harness wiring sensor。
+  - 下一步优先把 Markdown / wikilink、frontmatter、技能质量和模板完整性检查继续扩展进统一门禁，减少自然语言规则继续膨胀。
 - **关联页面**：
   - [[concepts/harness-engineering]]
   - [[articles/2026-05-25-harness-engineering-research]]
@@ -65,8 +66,12 @@ tags: [trace, project]
   - [[AGENTS]]
   - [[WORKFLOW]]
   - [[POLICY]]
+  - [[harness-evolution]]
+  - [[harness-feedback-ledger]]
   - [[skills/issue-analysis/SKILL]]
   - [[templates/harness-adoption-template]]
+  - [[templates/harness-episode-package-template]]
+  - [[templates/harness-evolution-review-template]]
   - [[projects/decisions]]
 - **迭代**：
 
@@ -81,6 +86,18 @@ tags: [trace, project]
 - **当前实现口径**：
   - 简单定位先给最小可信 checkpoint；只有触发沉淀、验收、规则升级或授权实现时，才升级到对应完整读取和回写链。
   - 响应效率优化不得绕过证据分层、权限边界、非默认值验证、人工确认和提交闭环。
+
+#### 2026-05-25 H5 与 sensor 吸收
+
+- **记录人**：sunhao
+- **角色**：agent
+- **本轮变化**：
+  - **来源对照**：从 `DocCustomeranalysis` 只吸收系统层 Harness 能力，包括 H5 自演进、episode ledger、统一本地门禁、工作阶段专项 sensor、Codex 本地适配和复盘模板。
+  - **事实剥离**：没有吸收下游项目的业务 issue、运行环境、测试报告状态、141 / 149 边界或 GitLab 平台假设。
+  - **首个 sensor**：新增 `scripts/check_all.py` 和 `scripts/check_harness_governance.py`，先检查响应路由、H5 ledger、模板、入口 wiring 和本地适配。
+- **当前实现口径**：
+  - 用户纠偏、检查失败、模式切换和重复失守先写成 Harness episode；只有重复、影响面大或可脚本化时才晋升为规则。
+  - 本库的门禁真相源是 `scripts/check_all.py`；CI 或平台配置只作为后续适配层。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

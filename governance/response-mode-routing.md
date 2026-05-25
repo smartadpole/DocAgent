@@ -10,7 +10,7 @@ tags: [agent, workflow, efficiency, harness]
 
 # 响应模式路由
 
-这页是 agent 响应效率治理的单一信息源。它把 [[concepts/harness-engineering]] 的方法落到当前 wiki：先判断本轮属于哪种执行模式，再决定读取深度、默认写入、验证边界和收尾动作。
+这页是 agent 响应效率治理的单一信息源。它把 [[concepts/harness-engineering]] 的方法落到当前 wiki：先判断本轮属于哪种执行模式，再决定读取深度、默认写入、验证边界和收尾动作。Harness 自演进和 episode 记录看 [[harness-evolution]] 与 [[harness-feedback-ledger]]。
 
 它不削弱 [[POLICY]]、[[AGENTS]] 和 [[WORKFLOW]] 里的证据、权限、提交和回写规则。它只解决一个问题：不要让所有问题一上来都进入同样重的治理链。
 
@@ -21,6 +21,8 @@ tags: [agent, workflow, efficiency, harness]
 - 轻模式不能替代验收、关闭、准出或规则升级。
 - 重模式不能伪装成还在分析；进入沉淀、验收、规则升级或收尾时要显式说明。
 - 能脚本化或模板化的约束，优先沉淀成 sensor、模板或技能，不继续堆在入口页。
+- 工作阶段用 `python3 scripts/check_all.py --only <check-key>` 跑专项 sensor，收尾和提交前用 `python3 scripts/check_all.py` 跑统一门禁。
+- 长时任务先写 Goal Contract，再决定是否使用 `/goal` 或仅作为人工可审计契约；Goal Contract 不替代验收、状态关闭或人工确认。
 
 ## 模式表
 
@@ -33,6 +35,15 @@ tags: [agent, workflow, efficiency, harness]
 | 规则升级 | “以后都这样”“升级规则”“写进 AGENTS / WORKFLOW / POLICY” | 先判断改旧规则、补澄清还是新增模式 | [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、相关技能 / 模板 | 是 | 同步入口、log、必要模板和二阶反思 |
 | 子工程实现 / 回传 | 明确授权改代码仓库或子工程 | 明确主控输入、实现范围、回传格式 | 主控裁决 + 子工程入口规则 + 目标代码上下文 | 在被授权仓库内 | 产出测试证据、handoff 和主控吸收建议 |
 | 批处理 | 大量同类摘要、归类、补链接 | 批次级校准和共享读取集 | 共享入口 + 单份直接来源 | 是 | 每小批回看链接和落点，异常即退出批处理 |
+
+## Goal Contract 路由
+
+当任务同时满足“终点明确、路径依赖中间证据、可能跨多轮继续推进”时，先用 [[templates/goal-contract-template]] 写出完成契约，再开始实现或沉淀。常见触发包括性能优化、flaky test、复杂迁移、跨工程联调、研究复现和长期审计。
+
+- 主控侧负责定义最终状态、验证面、约束、状态关闭条件和人工确认边界。
+- 子工程侧负责按主控 Goal Contract 执行实现、local validation、失败项和未验证边界，并在回传包里写清 Goal 完成判断。
+- 如果 Goal Contract 的完成证据会影响 TODO / FP / Gate / release，必须切到验收关闭模式，不得由 `/goal` 自述直接关闭状态。
+- 如果路径不清且完成条件也不清，先停在快速诊断或知识沉淀，不能把模糊任务包装成 Goal。
 
 ## 模式切换
 
@@ -80,3 +91,6 @@ tags: [agent, workflow, efficiency, harness]
 - 是否有一条自然语言规则可以下沉成模板、脚本、schema、检查命令或技能？
 - 是否有重复入口、过期补丁或已经被新流程覆盖的规则可以删除或合并？
 - 是否需要新增或更新 [[templates/harness-adoption-template]]，让其他系统接入时少走弯路？
+- 是否应该把本轮记录为 [[harness-feedback-ledger]] 的 H5 episode，而不是直接新增硬规则？
+- 当前 Harness wiring 可用 `python3 scripts/check_all.py --only harness-governance` 检查，具体实现为 `scripts/check_harness_governance.py`。
+- 如果 episode 后续证明可复用，再按 [[harness-evolution]] 进入模板、sensor、技能、[[WORKFLOW]]、[[AGENTS]] 或 [[POLICY]]。

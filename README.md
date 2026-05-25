@@ -25,7 +25,7 @@ tags: [entry, root]
 当前物理结构再补一句：
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
-- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
@@ -51,6 +51,7 @@ tags: [entry, root]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“本轮该先轻量诊断还是进入沉淀 / 验收 / 规则升级” -> 读 [[response-mode-routing]]
+- 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
@@ -86,6 +87,7 @@ tags: [entry, root]
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
 - [[response-mode-routing]] 负责把每轮 agent 工作先分成快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理，减少无谓重启动。
+- [[harness-evolution]] 和 [[harness-feedback-ledger]] 负责把用户纠偏、检查失败、模式切换和重复失守记录成 episode，再决定是否晋升为 sensor、模板、技能或规则。
 - [[BRAIN]] 承接跨多轮确认、后续需要自动进入思考背景的共享内容。
 - [[POLICY]] 承接共享规则、优先级和记忆路由。
 - [[projects/memory/README]] 承接项目级稳定记忆。
@@ -170,6 +172,7 @@ tags: [entry, root]
 9. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页。
 10. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 11. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
+12. 如果这次反哺暴露的是 Harness 自身缺口，先写 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否升级模板、sensor 或规则。
 
 ## 为什么入口页不写太多
 

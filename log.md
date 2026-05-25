@@ -9,6 +9,22 @@
 
 ## 2026-05-25
 
+### 吸收 DocCustomeranalysis 的 H5 Harness 与本地门禁
+
+- **记录人**：sunhao
+- **用户意图**：把 `DocCustomeranalysis` 中更健全的 Harness 设计和整体系统流程抽象吸收到当前 wiki 模板库里，因为两者定位一致，但不能复制下游项目事实。
+- **主题**：
+  1. 当前 wiki 已有响应模式路由，但缺少 H5 自演进、episode ledger 和可执行 sensor 闭环。
+  2. 可复用的是系统层能力：episode 数据、晋升 / 降级机制、统一本地门禁、工作阶段专项检查、Codex 本地入口和复盘模板。
+  3. 不反哺的是下游项目业务 issue、运行环境、具体测试报告、141 / 149 边界、GitLab 平台假设和一次性状态。
+- **关键动作**：
+  1. **新增 H5 治理入口**：新增 [[harness-evolution]] 和 [[harness-feedback-ledger]]，让用户纠偏、检查失败、模式切换和重复失守先沉淀为 episode，再决定是否晋升规则。
+  2. **新增模板和本地适配**：新增 [[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]] 和 `.codex/AGENTS.md`。
+  3. **新增统一门禁**：新增 `scripts/check_all.py` 和 `scripts/check_harness_governance.py`，先覆盖 Harness wiring、模板、入口链接和 H5 ledger。
+  4. **同步入口和项目链路**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[concepts/harness-engineering]]、[[templates/README]]、[[skills/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/decisions]] 和 [[projects/trace]]。
+- **二阶反思**：这轮说明“更健全”不是继续堆自然语言规则，而是把规则的生命线做出来：episode -> ledger -> sensor / template / skill -> 必要时再升规则；后续要优先扩展 Markdown / wikilink、frontmatter、技能质量和模板完整性 sensor。
+- **影响页面**：[[harness-evolution]]、[[harness-feedback-ledger]]、[[response-mode-routing]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[governance/README]]、[[concepts/harness-engineering]]、[[skills/README]]、[[templates/README]]、[[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/decisions]]、[[projects/trace]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_all.py`、`scripts/check_harness_governance.py`。
+
 ### 调研 Codex Goals 并沉淀为长时任务完成契约专题
 
 - **记录人**：sunhao

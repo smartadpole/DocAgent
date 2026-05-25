@@ -109,6 +109,8 @@ projects/
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和自动沉淀边界
 - [[response-mode-routing]]：响应效率路由，决定每轮先轻量诊断还是进入沉淀、验收、规则升级或实现回传
+- [[harness-evolution]]：Harness H5 自演进，决定 episode 如何晋升为 sensor、模板、技能或规则
+- [[harness-feedback-ledger]]：Harness episode 台账，记录 sensor backlog、晋升和降级候选
 - [[log]]：主题化的历史记录
 
 这不是要求一次性建全，而是推荐的扩展方向。

@@ -6,10 +6,11 @@ status: active
 stage: design
 source_of_truth: true
 updated: 2026-05-25
-next_action: add-feedback-sensors-and-rule-diet
+next_action: observe-harness-h5-and-expand-sensors
 current_entry: projects/README.md
 blockers:
   - remaining-page-normalization
+  - wider-sensor-coverage
 tags: [status]
 ---
 
@@ -25,8 +26,8 @@ tags: [status]
 
 ## 下一步
 
-- 基于 [[response-mode-routing]] 观察后续任务是否能更早给出快速诊断 checkpoint
-- 优先补 Markdown / wikilink、frontmatter、技能质量和模板完整性检查这类 feedback sensor
+- 基于 [[response-mode-routing]] 和 [[harness-evolution]] 观察后续任务是否能更早给出快速诊断 checkpoint，并把真实纠偏沉淀进 [[harness-feedback-ledger]]
+- 优先把 Markdown / wikilink、frontmatter、技能质量和模板完整性检查继续扩展成 `scripts/check_all.py` 下的 feedback sensor
 - 定期做规则减肥：合并重复入口、删除过期补丁，把可执行约束迁到模板或检查脚本
 
 ## 功能点镜像
@@ -72,4 +73,4 @@ tags: [status]
 ## 阻塞项
 
 - 还没有把更大范围的页面批量规范化
-- response mode 已完成治理吸收，但 feedback sensor 仍未脚本化
+- Harness H5 和首个 `harness-governance` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖

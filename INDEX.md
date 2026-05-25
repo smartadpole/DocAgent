@@ -32,6 +32,8 @@ tags: [index, root]
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
+- [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
+- [[harness-feedback-ledger]]：Harness episode、sensor backlog、规则晋升和降级队列
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
@@ -66,6 +68,7 @@ tags: [index, root]
 - [[articles/2026-05-25-codex-goals-research]]：Codex Goals 专题调研，整理 Goal 的完成契约、生命周期、强弱写法和研究型任务用法。
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法，关注上下文、工具、规则、工作流、验证和演化闭环。
 - [[articles/2026-05-25-harness-engineering-research]]：Harness Engineering 深度调研，汇总本地材料、OpenAI、Martin Fowler、LangChain、Vercel 和近期论文案例。
+- [[harness-evolution]]：把用户纠偏、检查失败、模式切换和重复失守转成可复盘 episode。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
 - [[projects/development/plan/work-item-system-model]]：需求到事项的系统模型
@@ -76,6 +79,8 @@ tags: [index, root]
 
 - [[templates/README]]：可复制模板入口
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
+- [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
+- [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板
 - [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库
 
 ## 项目接手与代码基线

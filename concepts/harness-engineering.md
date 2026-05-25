@@ -43,10 +43,14 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 当前 wiki 把自己定位成模板级 Agent Harness，而不是某个具体业务项目的第二真相源。
 
 - [[response-mode-routing]] 承接响应效率治理：每轮先判快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理。
+- [[harness-evolution]] 和 [[harness-feedback-ledger]] 承接 H5 自演进：把真实 episode、用户纠偏、检查失败和重复失守先沉淀成数据，再决定是否晋升为 sensor、模板、技能或规则。
 - [[AGENTS]] 保持硬约束和短入口，不承担百科全书式正文。
 - [[WORKFLOW]] 承接执行顺序，[[POLICY]] 承接自动写入边界和优先级。
 - [[skills/issue-analysis/SKILL]] 承接高频问题分析方法，并区分快速根因链和完整沉淀链。
 - [[templates/harness-adoption-template]] 承接新系统接入时的主控关系、单一信息源、写权限、验证层级、handoff 和 feedback sensor。
+- [[templates/goal-contract-template]] 承接长时任务的最终状态、验证面、约束、迭代策略和阻塞停止条件。
+- [[templates/harness-episode-package-template]] 和 [[templates/harness-evolution-review-template]] 承接单次 episode 和周期复盘。
+- `scripts/check_all.py` 是本库本地门禁入口，`scripts/check_harness_governance.py` 先覆盖 Harness wiring。
 
 ## 适用场景
 
@@ -71,6 +75,8 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[AGENTS]]
 - [[WORKFLOW]]
 - [[response-mode-routing]]
+- [[harness-evolution]]
+- [[harness-feedback-ledger]]
 - [[POLICY]]
 - [[BRAIN]]
 - [[skills/README]]

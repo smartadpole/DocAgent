@@ -111,6 +111,8 @@ tags: [project]
 - [[governance/README]]：治理层入口。这里放规则边界、流程和治理页分工。
 - [[POLICY]]：规则、优先级和记忆路由。
 - [[response-mode-routing]]：响应模式路由。这里放快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级和批处理的读取 / 写入边界。
+- [[harness-evolution]]：Harness 自演进入口。这里放 episode、sensor、模板、技能和规则晋升 / 降级节奏。
+- [[harness-feedback-ledger]]：Harness feedback 台账。这里放 episode ledger、sensor backlog 和规则晋升队列。
 - [[BRAIN]]：共享背景和共同前提。
 
 ## 当前项目怎么读

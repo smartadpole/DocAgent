@@ -18,6 +18,8 @@ tags: [entry, governance]
 - [[AGENTS]]：执行约束。回答“agent 必须怎么做、不能怎么做”
 - [[WORKFLOW]]：流程编排。回答“事情通常按什么顺序推进”
 - [[response-mode-routing]]：响应模式路由。回答“本轮该先快速诊断、沉淀、验收、实现还是升级规则”
+- [[harness-evolution]]：Harness H5 自演进。回答“用户纠偏、检查失败和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
+- [[harness-feedback-ledger]]：Harness episode ledger。回答“哪些 episode 已观察、已晋升、待补 sensor 或待降级”
 - [[BRAIN]]：共享背景。回答“哪些已确认前提要自动带入后续工作”
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
@@ -29,7 +31,7 @@ tags: [entry, governance]
 当前整套系统按七层理解：
 
 1. 入口层：[[README]]、[[INDEX]]
-2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
+2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[POLICY]]、[[BRAIN]]
 3. 技能层：[[skills/README]] 和 `skills/`
 4. 运行层：[[projects/README]] 和 `projects/`
 5. 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -53,9 +55,10 @@ tags: [entry, governance]
 2. 再看 [[BRAIN]]
 3. 如果涉及规则、优先级或记忆路由，再看 [[POLICY]]
 4. 如果要判断先轻量诊断还是进入重治理闭环，再看 [[response-mode-routing]]
-5. 如果要实际执行修改，再看 [[WORKFLOW]]
-6. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
-7. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
+5. 如果要判断本轮偏差是否应沉淀成 episode，再看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
+6. 如果要实际执行修改，再看 [[WORKFLOW]]
+7. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
+8. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
 
 ## `POLICY` 和 `AGENTS` 的权衡
 
@@ -70,6 +73,7 @@ tags: [entry, governance]
 - 如果问题是“agent 修改时必须怎么做”，优先写 [[AGENTS]]
 - 如果问题是“通常按什么顺序推进”，优先写 [[WORKFLOW]]
 - 如果问题是“先快后重怎么路由”，优先写 [[response-mode-routing]]
+- 如果问题是“Harness 怎样从真实 episode 里自我修正”，优先写 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 如果问题是“哪些背景以后默认成立”，优先写 [[BRAIN]]
 - 如果问题是“下游项目的进化能不能带回模板”，优先写 [[template-feedback-rules]]
 

@@ -27,11 +27,12 @@ tags: [decision]
 ## 当前生效决策摘要
 
 1. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
-2. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
-3. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
-4. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
-5. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
-6. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
+2. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
+3. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
+4. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
+5. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
+6. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
+7. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
 
 ## 正式决策记录
 
@@ -55,6 +56,27 @@ tags: [decision]
 - **风险点**：
   - 如果快速诊断被误用来关闭状态，会破坏验收边界；因此 [[POLICY]] 明确快速诊断默认不写状态、不关闭 TODO / FP / Gate。
   - 如果后续只继续加自然语言规则，Harness 会变重；因此下一步优先补 feedback sensor 和模板校验。
+
+### 2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑
+
+- **背景**：用户指出同定位的 `DocCustomeranalysis` 工程在 Harness 设计和整体系统流程上更健全。对照后确认，可复用部分不是具体项目事实，而是 H5 自演进、episode ledger、统一本地门禁、工作阶段专项 sensor 和周期复盘模板。
+- **要决策什么**：是否把这些能力从下游项目抽象吸收进当前 wiki 模板库，并决定它们的单一信息源。
+- **可选项**：
+  - 只在最终回复里总结差距。
+  - 直接复制下游项目完整治理页和 CI 配置。
+  - 抽象成模板级 H5 机制，保留当前库的 GitHub remote 和项目事实边界。
+- **最终决策**：新增 [[harness-evolution]]、[[harness-feedback-ledger]]、[[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]]、`.codex/AGENTS.md`、`scripts/check_all.py` 和 `scripts/check_harness_governance.py`。
+- **影响**：
+  - 用户纠偏、检查失败、模式切换和重复失守先形成 episode 数据，不直接新增硬规则。
+  - 工作阶段可以跑 `python3 scripts/check_all.py --only harness-governance`，收尾和提交前跑 `python3 scripts/check_all.py`。
+  - 后续 sensor 扩展优先覆盖 Markdown / wikilink、frontmatter、技能质量和模板完整性。
+- **各自优劣**：
+  - 只总结最快，但无法改变后续执行。
+  - 原样复制最完整，但会夹带 DocCustomeranalysis 的项目事实和 GitLab 平台假设。
+  - 抽象吸收需要同步多个入口，但能保持模板库边界，并让规则减肥和 sensor 晋升形成闭环。
+- **风险点**：
+  - 如果 episode ledger 变成新流水账，会增加维护负担；因此 [[harness-feedback-ledger]] 只记录可反哺 Harness 的结构性信号。
+  - 如果 `scripts/check_all.py` 长期只覆盖 Harness wiring，还不足以替代更广泛的文档质量检查；因此状态页保留 wider sensor coverage 作为后续缺口。
 
 ### 2026-04-13 会议材料拆出到 meetings 模块
 
