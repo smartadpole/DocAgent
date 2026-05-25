@@ -31,6 +31,7 @@ tags: [index, root]
 - [[governance/README]]：治理层入口
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
+- [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
@@ -48,7 +49,8 @@ tags: [index, root]
 - [[concepts/document-os]]：文档操作系统概念定义
 - [[articles/2026-04-09-layered-memory-research]]：分层 memory 研究
 - [[concepts/layered-memory]]：分层 memory 概念定义
-- [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]：agent 响应效率治理反思，记录快速诊断和治理闭环分层的候选方案
+- [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]：agent 响应效率治理反思，记录快速诊断和治理闭环分层的来源分析
+- [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
 
 ## 产品写作
 
@@ -58,6 +60,7 @@ tags: [index, root]
 ## 研发方法
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
+- [[response-mode-routing]]：agent 工作先快后重的统一路由，避免简单诊断默认进入完整治理闭环。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法，关注上下文、工具、规则、工作流、验证和演化闭环。
 - [[articles/2026-05-25-harness-engineering-research]]：Harness Engineering 深度调研，汇总本地材料、OpenAI、Martin Fowler、LangChain、Vercel 和近期论文案例。
@@ -70,6 +73,7 @@ tags: [index, root]
 ## 模板治理
 
 - [[templates/README]]：可复制模板入口
+- [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库
 
 ## 项目接手与代码基线
@@ -93,7 +97,7 @@ tags: [index, root]
 ## 层级
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：`projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`

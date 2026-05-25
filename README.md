@@ -15,7 +15,7 @@ tags: [entry, root]
 如果只记一件事，就记住这套七层模型：
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -25,7 +25,7 @@ tags: [entry, root]
 当前物理结构再补一句：
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
-- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
@@ -50,6 +50,7 @@ tags: [entry, root]
 - 想知道“治理层是怎么分的” -> 读 [[governance/README]]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
+- 想知道“本轮该先轻量诊断还是进入沉淀 / 验收 / 规则升级” -> 读 [[response-mode-routing]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
@@ -84,6 +85,7 @@ tags: [entry, root]
 - `Codex CLI` 用来读取、改写、批量生成 Markdown。
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
+- [[response-mode-routing]] 负责把每轮 agent 工作先分成快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理，减少无谓重启动。
 - [[BRAIN]] 承接跨多轮确认、后续需要自动进入思考背景的共享内容。
 - [[POLICY]] 承接共享规则、优先级和记忆路由。
 - [[projects/memory/README]] 承接项目级稳定记忆。
@@ -100,6 +102,7 @@ tags: [entry, root]
 - [[POLICY]]：系统裁定规则。回答“什么允许、什么不允许、冲突时先按谁”
 - [[AGENTS]]：执行约束。回答“agent 修改时必须怎么做”
 - [[WORKFLOW]]：流程编排。回答“通常按什么顺序推进”
+- [[response-mode-routing]]：响应模式路由。回答“先快后重、读取深度和模式切换怎么判”
 - [[BRAIN]]：共享背景。回答“哪些前提以后默认带入”
 
 一句话记忆：
@@ -107,6 +110,7 @@ tags: [entry, root]
 - [[POLICY]] 决定怎么判
 - [[AGENTS]] 决定怎么执行
 - [[WORKFLOW]] 决定怎么走
+- [[response-mode-routing]] 决定先轻还是先重
 - [[BRAIN]] 决定默认带什么背景
 
 ## 软件研发模式怎么叠加

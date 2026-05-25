@@ -26,4 +26,5 @@
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]
+- 新系统、主控仓库或子工程接入 Agent Harness 可以参考 [[templates/harness-adoption-template]]
 - 如果你启用了 Obsidian 的 Templates 插件，这个目录可以直接作为模板目录

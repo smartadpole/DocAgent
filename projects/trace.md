@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-04-13
+updated: 2026-05-25
 tags: [trace, project]
 ---
 
@@ -34,6 +34,53 @@ tags: [trace, project]
 - 不重复写完整设计正文或开发流水
 
 ## 当前主题
+
+### TRACE-002 Agent Harness 与响应效率治理升级
+
+- **原始意图**：
+  - 综合 Harness Engineering 调研，把当前 wiki 升级成更智能、更高效的 Agent Harness。
+  - 至少要处理好响应效率治理问题，避免简单诊断默认进入完整重治理闭环。
+- **收敛后的可执行需求**：
+  - 将响应模式路由从知识沉淀候选升级为正式治理机制。
+  - 明确每轮先判快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+  - 保持治理完整性不降级：快速 checkpoint 不能替代验收关闭，重治理闭环也不能伪装成仍在分析。
+  - 为新系统接入准备 Harness 模板，明确单一信息源、写权限、验证层级、handoff 和 feedback sensor。
+- **关键决策变化**：
+  - **主收敛**：新增 [[response-mode-routing]] 作为响应效率治理的单一信息源，而不是把长规则直接塞进 [[AGENTS]]。
+  - **规则吸收**：[[AGENTS]]、[[WORKFLOW]] 和 [[POLICY]] 只承接短入口和硬边界；详细模式表、读取预算和模式切换放在 [[response-mode-routing]]。
+  - **技能分支**：[[skills/issue-analysis/SKILL]] 增加快速根因链和完整沉淀链的分支，防止所有问题都走同一条重路径。
+- **最终范围**：
+  - 生效入口：[[response-mode-routing]]。
+  - 同步入口：[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]。
+  - 执行支撑：[[skills/issue-analysis/SKILL]]、[[templates/harness-adoption-template]]。
+  - 来源分析继续保留在 [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]。
+- **假设与未决项**：
+  - 本轮先完成治理和模板升级，不新增脚本化 sensor。
+  - 下一步优先补 Markdown / wikilink、frontmatter、技能质量和模板完整性检查，减少自然语言规则继续膨胀。
+- **关联页面**：
+  - [[concepts/harness-engineering]]
+  - [[articles/2026-05-25-harness-engineering-research]]
+  - [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]
+  - [[response-mode-routing]]
+  - [[AGENTS]]
+  - [[WORKFLOW]]
+  - [[POLICY]]
+  - [[skills/issue-analysis/SKILL]]
+  - [[templates/harness-adoption-template]]
+  - [[projects/decisions]]
+- **迭代**：
+
+#### 2026-05-25
+
+- **记录人**：sunhao
+- **角色**：agent
+- **本轮变化**：
+  - **主收敛**：把“先快后重”从文章候选升级为正式响应模式路由。
+  - **结构选择**：新增独立治理页，避免 [[AGENTS]] 继续膨胀成百科全书。
+  - **模板补齐**：新增 Harness 接入模板，给后续系统接入提供可复制骨架。
+- **当前实现口径**：
+  - 简单定位先给最小可信 checkpoint；只有触发沉淀、验收、规则升级或授权实现时，才升级到对应完整读取和回写链。
+  - 响应效率优化不得绕过证据分层、权限边界、非默认值验证、人工确认和提交闭环。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

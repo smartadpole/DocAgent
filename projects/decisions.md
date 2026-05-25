@@ -4,7 +4,7 @@ id: DECISION-LOG-001
 project: PROJ-WIKI-001
 status: active
 priority: high
-updated: 2026-04-25
+updated: 2026-05-25
 tags: [decision]
 ---
 
@@ -26,13 +26,35 @@ tags: [decision]
 
 ## 当前生效决策摘要
 
-1. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
-2. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
-3. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
-4. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
-5. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
+1. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
+2. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
+3. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为最小执行单位。影响：执行正文、状态和验证结果收口到功能点实体页。
+4. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
+5. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
+6. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
 
 ## 正式决策记录
+
+### 2026-05-25 响应模式路由成为 wiki Harness 默认入口
+
+- **背景**：[[articles/2026-05-25-agent-response-efficiency-governance-reflection]] 已经确认，当前系统的慢不应简单理解为治理多余；真正缺口是所有问题容易默认进入同一条重治理链，导致首次反馈慢、模式切换不清楚。
+- **要决策什么**：是否把响应效率治理从知识沉淀候选升级为正式执行机制，并决定它的单一信息源和入口同步方式。
+- **可选项**：
+  - 继续只保留在文章里，作为后续参考。
+  - 直接把长规则塞进 [[AGENTS]]。
+  - 新增独立治理页做单一信息源，[[AGENTS]]、[[WORKFLOW]] 和 [[POLICY]] 只保留短入口和硬边界。
+- **最终决策**：新增 [[response-mode-routing]] 作为响应模式路由的单一信息源，并同步 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[skills/issue-analysis/SKILL]] 和 [[templates/harness-adoption-template]]。
+- **影响**：
+  - agent 每轮先判快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+  - 快速诊断可以先给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出或规则升级。
+  - 治理闭环继续保留；进入沉淀、验收、规则升级或收尾时必须显式说明当前阶段。
+- **各自优劣**：
+  - 继续留在文章里最轻，但不会改变默认执行。
+  - 写进 [[AGENTS]] 最容易被 agent 看到，但会让根入口继续膨胀。
+  - 独立治理页需要同步多个入口，但最符合短入口和单一信息源原则。
+- **风险点**：
+  - 如果快速诊断被误用来关闭状态，会破坏验收边界；因此 [[POLICY]] 明确快速诊断默认不写状态、不关闭 TODO / FP / Gate。
+  - 如果后续只继续加自然语言规则，Harness 会变重；因此下一步优先补 feedback sensor 和模板校验。
 
 ### 2026-04-13 会议材料拆出到 meetings 模块
 

@@ -9,6 +9,24 @@
 
 ## 2026-05-25
 
+### 将响应模式路由升级为 wiki Harness 默认机制
+
+- **记录人**：sunhao
+- **用户意图**：综合 Harness 设计，对当前 wiki 做一轮正式升级，让它更智能、更高效，并且至少把 agent 响应效率治理问题处理成可执行规则，而不是继续停留在候选反思。
+- **主题**：
+  1. 响应效率治理的关键是先判模式、先给 checkpoint，再决定是否进入沉淀、验收、规则升级或实现回传。
+  2. [[AGENTS]] 继续保持短入口和硬约束，详细模式表、读取预算和切换规则由 [[response-mode-routing]] 做单一信息源。
+  3. 快速诊断不能替代验收关闭，重治理闭环也不能伪装成仍在分析。
+  4. 新系统接入 Agent Harness 需要模板化主控关系、单一信息源、写权限、验证层级、handoff 和 feedback sensor。
+- **关键动作**：
+  1. **新增治理入口**：新增 [[response-mode-routing]]，正式定义快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传和批处理模式。
+  2. **同步硬规则和流程**：更新 [[AGENTS]]、[[WORKFLOW]] 和 [[POLICY]]，让每轮先判响应模式，并明确快速诊断默认不写状态、不关闭 TODO / FP / Gate、不替代验收。
+  3. **升级技能与模板**：更新 [[skills/issue-analysis/SKILL]]，增加快速根因链和完整沉淀链分支；新增 [[templates/harness-adoption-template]] 并挂入 [[templates/README]]。
+  4. **同步入口和项目链路**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[concepts/harness-engineering]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/trace]] 和 [[projects/decisions]]。
+  5. **更新来源分析边界**：把 [[articles/2026-05-25-agent-response-efficiency-governance-reflection]] 从候选反思更新为来源分析和升级参考，生效入口改指 [[response-mode-routing]]。
+- **二阶反思**：这轮暴露的不是缺少更多规则，而是需要把规则变成 Harness 里的路由器和反馈传感器；下一步不应继续堆入口正文，应优先补 wikilink、frontmatter、技能质量和模板完整性检查。
+- **影响页面**：[[response-mode-routing]]、[[templates/harness-adoption-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[governance/README]]、[[skills/README]]、[[skills/issue-analysis/SKILL]]、[[templates/README]]、[[concepts/harness-engineering]]、[[articles/2026-05-25-agent-response-efficiency-governance-reflection]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/status]]、[[projects/trace]]、[[projects/decisions]]、[[log]]。
+
 ### 沉淀 Agent 系统升级参考方案
 
 - **记录人**：sunhao

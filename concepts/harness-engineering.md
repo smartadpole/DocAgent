@@ -37,6 +37,16 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - Memory：会话延续和偏好辅助；团队真相源应优先文件化。
 - Observability：运行记录、失败归因、干预记录和 harness 变更证据。
 
+## 在本库的落地
+
+当前 wiki 把自己定位成模板级 Agent Harness，而不是某个具体业务项目的第二真相源。
+
+- [[response-mode-routing]] 承接响应效率治理：每轮先判快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理。
+- [[AGENTS]] 保持硬约束和短入口，不承担百科全书式正文。
+- [[WORKFLOW]] 承接执行顺序，[[POLICY]] 承接自动写入边界和优先级。
+- [[skills/issue-analysis/SKILL]] 承接高频问题分析方法，并区分快速根因链和完整沉淀链。
+- [[templates/harness-adoption-template]] 承接新系统接入时的主控关系、单一信息源、写权限、验证层级、handoff 和 feedback sensor。
+
 ## 适用场景
 
 - AI coding agent 在真实代码仓库中持续工作。
@@ -58,6 +68,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[articles/2026-05-25-harness-engineering-research]]
 - [[AGENTS]]
 - [[WORKFLOW]]
+- [[response-mode-routing]]
 - [[POLICY]]
 - [[BRAIN]]
 - [[skills/README]]

@@ -4,7 +4,7 @@ id: PROJ-WIKI-001
 project: wiki
 status: active
 stage: design
-next_action: define-policy-and-memory-routing
+next_action: add-feedback-sensors-and-rule-diet
 owner: team
 source_of_truth: true
 updated: 2026-05-09
@@ -110,6 +110,7 @@ tags: [project]
 - [[projects/memory/README]]：项目级稳定记忆入口。这里放项目长期背景和路由。
 - [[governance/README]]：治理层入口。这里放规则边界、流程和治理页分工。
 - [[POLICY]]：规则、优先级和记忆路由。
+- [[response-mode-routing]]：响应模式路由。这里放快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级和批处理的读取 / 写入边界。
 - [[BRAIN]]：共享背景和共同前提。
 
 ## 当前项目怎么读

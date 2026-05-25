@@ -1,7 +1,7 @@
 ---
 type: article
 id: ARTICLE-AGENT-EFFICIENCY-20260525
-status: review
+status: active
 source_of_truth: true
 updated: 2026-05-25
 tags: [agent, efficiency, governance, workflow]
@@ -13,7 +13,7 @@ tags: [agent, efficiency, governance, workflow]
 
 本页来自 2026-05-25 对 重治理主控工程、当前模板库、子工程 子工程和 子工程 的 agent 规则、技能和工作流对比分析。
 
-这不是某个研发项目的执行计划，而是对这套文档 / agent 工程自身运行方式的反思。它先作为知识沉淀保留；只有后续明确拍板后，才进入 [[WORKFLOW]]、[[AGENTS]]、[[POLICY]] 或具体技能页。
+这不是某个研发项目的执行计划，而是对这套文档 / agent 工程自身运行方式的反思。2026-05-25 后续已把“响应模式路由”吸收到 [[response-mode-routing]]、[[WORKFLOW]]、[[AGENTS]]、[[POLICY]] 和 [[skills/issue-analysis/SKILL]]；本页继续作为来源分析和升级参考，不再作为唯一生效入口。
 
 ## 一句话总结
 
@@ -257,7 +257,7 @@ tags: [agent, efficiency, governance, workflow]
 
 建议方向：
 
-- 把响应模式分层先保留在本页，后续确认后再进入 [[WORKFLOW]] 和 [[AGENTS]]。
+- 响应模式分层已进入 [[response-mode-routing]]、[[WORKFLOW]] 和 [[AGENTS]]，本页只保留分析背景和后续参考。
 - 保持 [[AGENTS]] 短入口：只写硬约束、读取顺序和模式路由，细节继续放 [[WORKFLOW]]、[[POLICY]]、技能和模板。
 - 优先补 feedback sensor：Markdown / wikilink 检查、frontmatter schema 检查、技能质量检查、模板完整性检查。
 - 为新系统接入准备最小模板：系统类型、主控关系、单一信息源、写权限、验证层级、handoff 格式、提交要求和规则反哺路径。
@@ -318,16 +318,21 @@ Wiki 的目标是做“模板与方法的主控”，不做具体项目事实的
 2. **规则升级阶段**：如果用户确认要生效，再把统一执行路由写入 [[WORKFLOW]] 和 [[AGENTS]]，并检查是否需要更新 [[POLICY]]、[[skills/issue-analysis/SKILL]] 和模板。
 3. **传感器阶段**：优先补脚本化检查和模板校验，把自然语言规则逐步变成可执行反馈。
 
+截至 2026-05-25，本库已完成第 2 步，下一步重点是第 3 步。
+
+## 当前吸收状态
+
+- [[response-mode-routing]] 已成为响应效率治理的单一信息源，正式承接快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传和批处理。
+- [[AGENTS]]、[[WORKFLOW]] 和 [[POLICY]] 已补入短引用和执行边界，避免把入口页继续扩成百科全书。
+- [[skills/issue-analysis/SKILL]] 已补入快速根因链和完整沉淀链的分支，防止所有问题默认进入同一条重治理流程。
+- [[templates/harness-adoption-template]] 已作为新系统接入 Agent Harness 的最小模板，承接单一信息源、写权限、验证层级、handoff 和 feedback sensor。
+
 ## 后续动作
 
-- 先保留为知识沉淀和规则候选。
-- 若后续确认要落地，把快速诊断、Issue 分析 + 沉淀、沉淀候选、验收关闭、规则升级几种模式写成 [[WORKFLOW]] 中的流程段落。
-- 检查 [[skills/issue-analysis/SKILL]] 是否需要增加“快速分析”分支，避免所有 issue 类问题都默认进入完整主控分析。
-- 必要时在 [[README]] 或 [[INDEX]] 的治理 / 研发方法入口补一句模式分层，避免新 agent 只看到重路径。
-- 如果要支持任意系统接入，补一个系统接入模板，要求填写主控关系、单一信息源、验证层级、handoff 格式、权限边界和规则反哺路径。
-- 优先把 wikilink、frontmatter、技能质量和模板完整性做成 feedback sensor，再考虑继续增加规则正文。
+- 继续补 feedback sensor：Markdown / wikilink 检查、frontmatter schema 检查、技能质量检查、模板完整性检查。
+- 在真实下游项目里验证 [[templates/harness-adoption-template]] 是否足够指导主控 / 子工程 / 服务运行仓库接入。
 - 回归确认新模式不会绕过文档沉淀、验收分层、非默认参数验证、主控 / 子工程只读边界和 commit 闭环。
 
 ## 当前结论
 
-本页目前是知识沉淀和规则候选，不是已经生效的流程。当前判断是：重治理主控工程 的慢有相当一部分是主控系统功能完整性所必需，但不是所有体感慢都不可优化。后续如果要真正改变 agent 默认行为，应进入规则升级模式，再修改 [[WORKFLOW]]、[[AGENTS]]、[[POLICY]] 或相关技能。
+本页目前是来源分析和升级参考，不再承担已生效流程的单一信息源。已生效的响应模式、读取预算和模式切换统一看 [[response-mode-routing]]。当前判断仍是：重治理主控工程 的慢有相当一部分是主控系统功能完整性所必需，但不是所有体感慢都不可优化。
