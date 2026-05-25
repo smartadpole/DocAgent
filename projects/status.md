@@ -5,8 +5,8 @@ project: PROJ-WIKI-001
 status: active
 stage: design
 source_of_truth: true
-updated: 2026-05-06
-next_action: slim-development-manager-view
+updated: 2026-05-25
+next_action: evaluate-agent-response-efficiency-mode
 current_entry: projects/README.md
 blockers:
   - remaining-page-normalization
@@ -25,6 +25,7 @@ tags: [status]
 
 ## 下一步
 
+- 评估 [[projects/development/plan/agent-response-efficiency-upgrade-plan]]，决定是否把“快速诊断 / 计划沉淀 / 规则升级”写成正式流程。
 - 把项目主页、开发主入口、会议主入口和功能点实体目录的职责分层进一步收口
 - 继续把高频页面的链接和字段收敛成机器可读格式
 - 如果某个结论已经稳定，再回写到 [[projects/memory/README]] 或知识库层
@@ -71,4 +72,5 @@ tags: [status]
 
 ## 阻塞项
 
+- agent 响应模式分层尚未拍板；当前仍以既有重治理流程为准。
 - 还没有把更大范围的页面批量规范化

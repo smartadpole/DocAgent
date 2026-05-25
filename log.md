@@ -7,6 +7,24 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-25
+
+### 沉淀 agent 响应效率治理升级计划
+
+- **记录人**：sunhao
+- **用户意图**：把对 重治理主控工程 响应特别慢的分析沉淀成当前模板库的整体反思和升级计划，而不是只留在对话解释里。
+- **主题**：
+  1. 重治理主控工程 的慢主要来自主控治理链路过重，不是默认检查脚本本身慢。
+  2. 当前模板库缺少针对单个简单问题的“快速诊断模式”，只有批量材料处理的轻量模式。
+  3. 提速不能削弱验收分层、主控 / 子工程边界、文档沉淀和 commit 闭环，只能先做响应模式分流。
+- **关键动作**：
+  1. **新增升级计划**：新增 [[projects/development/plan/agent-response-efficiency-upgrade-plan]]，记录跨仓库规则对比、问题定义、快速诊断 / 计划沉淀 / 规则升级三种建议模式、升级步骤和验收标准。
+  2. **同步研发总控**：更新 [[projects/development/plan/README]]，把 agent 响应效率治理计划挂入研发计划入口，并把当前 P0 指向该计划评估。
+  3. **补待办入口**：更新 [[projects/development/execution/todo]]，新增 `TODO-AGENT-EFFICIENCY-001`，明确本轮只沉淀计划，不直接把快速诊断模式升格为硬规则。
+  4. **同步状态和导航**：更新 [[projects/status]] 和 [[INDEX]]，让后续 agent 能从状态页和研发方法入口找到该计划。
+- **当前边界**：本轮没有修改 [[AGENTS]]、[[WORKFLOW]] 或 [[POLICY]] 的硬规则；下一步需要先评估是否正式引入快速诊断模式。
+- **影响页面**：[[projects/development/plan/agent-response-efficiency-upgrade-plan]]、[[projects/development/plan/README]]、[[projects/development/execution/todo]]、[[projects/status]]、[[INDEX]]、[[log]]。
+
 ## 2026-05-12
 
 ### 从 重治理主控工程 抽象吸收技能层和 issue-analysis 技能

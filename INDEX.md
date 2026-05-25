@@ -57,6 +57,7 @@ tags: [index, root]
 ## 研发方法
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
+- [[projects/development/plan/agent-response-efficiency-upgrade-plan]]：agent 响应效率治理升级计划，记录快速诊断、计划沉淀和规则升级的模式分层草案
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
