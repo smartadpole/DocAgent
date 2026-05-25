@@ -9,6 +9,24 @@
 
 ## 2026-05-25
 
+### 继续吸收 DocCustomeranalysis 的 Goal Contract 防线设计
+
+- **记录人**：sunhao
+- **用户意图**：从 `DocCustomeranalysis` 读取新补强的 goal 设计，把其中可复用的系统层规则吸收到当前 wiki 模板库，而不是复制下游项目事实。
+- **主题**：
+  1. Goal Contract 的切入点应固定在响应模式判断之后、正式长时执行之前。
+  2. Goal Contract 只解决防跑偏、防证据漂移和防无限探索，不替代项目状态、验收报告、规则层或 memory。
+  3. `health`、日志、子工程自述、handoff 和任务中间态只能作为辅助证据，不能因为写进 Goal 就上推为真正闭环。
+- **关键动作**：
+  1. **升级模板正文**：重写 [[templates/goal-contract-template]]，补齐适用性判断、原始目标 / 用户最新目标、完成判定、探索分支上限、阻塞后汇报格式、证据审计和辅助证据边界。
+  2. **同步路由和规则**：更新 [[response-mode-routing]]、[[WORKFLOW]] 和 [[POLICY]]，把 Goal Contract 的切入位置、三条防线和不上推边界写入当前治理链。
+  3. **同步协作模板**：更新 [[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/harness-episode-package-template]] 和 [[templates/harness-adoption-template]]，让主控下发、子工程回传和 episode 复盘都能记录完成判定与证据边界。
+  4. **同步概念和入口**：更新 [[concepts/codex-goals]]、[[concepts/harness-engineering]]、[[INDEX]] 和 [[templates/README]]，避免入口仍停留在旧版“最终状态 + 验证面 + 阻塞条件”的粗口径。
+  5. **升级 sensor**：更新 `scripts/check_harness_governance.py`，把 Goal Contract 新字段和关键防线纳入 Harness 检查。
+- **不反哺边界**：本轮没有复制 `DocCustomeranalysis` 的业务事项、141 / 149 环境语义、具体 issue、服务实例或项目状态；只吸收抽象后的 Goal Contract 触发位置、字段结构、证据审计和 sensor 要求。
+- **二阶反思**：这轮说明“吸收 goal 设计”不能只改模板正文；长时任务契约如果不进入路由、协作模板和 sensor，很快会退回成一段可选提示词。后续同类反哺应继续遵守“先分类候选、剥离项目事实、同步可检查入口”的顺序。
+- **影响页面**：[[templates/goal-contract-template]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/harness-episode-package-template]]、[[templates/harness-adoption-template]]、[[concepts/codex-goals]]、[[concepts/harness-engineering]]、[[INDEX]]、[[templates/README]]、[[log]]、`scripts/check_harness_governance.py`。
+
 ### 完整吸收 Gate / FP / EP / TASK 研发事项体系
 
 - **记录人**：sunhao

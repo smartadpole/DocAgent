@@ -48,7 +48,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[WORKFLOW]] 承接执行顺序，[[POLICY]] 承接自动写入边界和优先级。
 - [[skills/issue-analysis/SKILL]] 承接高频问题分析方法，并区分快速根因链和完整沉淀链。
 - [[templates/harness-adoption-template]] 承接新系统接入时的主控关系、单一信息源、写权限、验证层级、handoff 和 feedback sensor。
-- [[templates/goal-contract-template]] 承接长时任务的最终状态、验证面、约束、迭代策略和阻塞停止条件。
+- [[templates/goal-contract-template]] 承接长时任务的期望最终状态、完成判定、验证面 / 证据边界、约束、预算、探索边界和阻塞停止条件。
 - [[templates/harness-episode-package-template]] 和 [[templates/harness-evolution-review-template]] 承接单次 episode 和周期复盘。
 - `scripts/check_all.py` 是本库本地门禁入口，`scripts/check_harness_governance.py` 先覆盖 Harness wiring。
 

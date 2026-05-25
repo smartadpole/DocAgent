@@ -26,9 +26,13 @@ docs/handoffs/<work-id>-<short-topic>.md
 - 对应 TODO（轻量 / 兼容）：
 - 上游需求 / 目标：
 - Goal Contract：
+- 原始目标 / 用户最新目标：
 - 期望最终状态：
+- 完成判定：
 - 验证面：
+- 证据边界：
 - 约束保持情况：
+- 探索分支上限：
 - 阻塞停止条件：
 - 关系类型：
 - 当前阶段：
@@ -50,6 +54,7 @@ docs/handoffs/<work-id>-<short-topic>.md
 - end-to-end validation：
 - 服务台账 / UI API / 配置回写：
 - Goal 完成判断：
+- 明确不足以闭环的证据：
 - 独立抽插证据：
 - 失败项：
 - 未验证项：

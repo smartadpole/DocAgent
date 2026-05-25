@@ -60,6 +60,11 @@ ROUTING_REQUIRED_TERMS = (
     "--only",
     "harness-evolution",
     "harness-feedback-ledger",
+    "期望最终状态防跑偏",
+    "验证面 / 证据边界防漂移",
+    "预算 / 阻塞停止条件防无限探索",
+    "响应模式判断之后、正式长时执行之前",
+    "主控和子工程之间的长任务回传",
 )
 
 TEMPLATE_REQUIRED_SECTIONS = (
@@ -128,11 +133,26 @@ CODEX_ADAPTER_REQUIRED_TERMS = (
 )
 
 GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS = (
+    "## 适用性判断",
     "## 完成契约",
-    "## 迭代策略",
-    "## 阻塞停止条件",
+    "## 迭代和停止",
+    "## 证据审计",
     "## 主控 / 子工程分工",
-    "## `/goal` 草稿",
+)
+
+GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = (
+    "防止任务跑偏",
+    "防止证据漂移",
+    "防止无限探索",
+    "原始目标 / 用户最新目标",
+    "完成判定",
+    "探索分支上限",
+    "阻塞后汇报格式",
+    "辅助证据",
+    "明确不足以闭环的证据",
+    "health、日志、子工程自述或中间态误当成真正闭环",
+    "响应模式判断之后、正式长时执行之前",
+    "复杂 bug 复现、性能优化、迁移、跨轮调研、反复验证的修复、主控和子工程之间的长任务回传",
 )
 
 
@@ -243,6 +263,9 @@ def check_concept_and_template(repo: Path) -> list[str]:
         for section in GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS:
             if section not in goal_template:
                 errors.append(f"templates/goal-contract-template.md: missing section {section}")
+        for term in GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS:
+            if term not in goal_template:
+                errors.append(f"templates/goal-contract-template.md: missing Goal Contract term {term}")
     if episode_template:
         for section in EPISODE_TEMPLATE_REQUIRED_SECTIONS:
             if section not in episode_template:

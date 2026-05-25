@@ -20,10 +20,15 @@ tags: [template, harness, episode, observability]
 
 ## Goal Contract
 
+- **原始目标 / 用户最新目标**：
 - **期望最终状态**：
+- **完成判定**：
 - **验证面**：
+- **证据边界**：
 - **约束**：
+- **探索分支上限**：
 - **阻塞停止条件**：
+- **明确不足以闭环的证据**：
 
 ## 首次 Checkpoint
 

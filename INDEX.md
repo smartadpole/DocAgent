@@ -86,7 +86,7 @@ tags: [index, root]
 - [[templates/development-execution-package-template]]：EP 执行包模板
 - [[templates/development-task-template]]：TASK 任务模板
 - [[templates/development-issue-template]]：Issue 案件模板
-- [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义最终状态、验证面、约束、迭代策略和阻塞停止条件。
+- [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
 - [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板
