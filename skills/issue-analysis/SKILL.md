@@ -78,7 +78,7 @@ description: 主控侧 issue / incident 分析技能。用于处理模糊问题�
 - `orchestration`：调度、状态机、flow / task、重试、取消、并发、定时任务、运行参数和运行日志。
 - `service_contract`：服务请求 / 响应、状态查询、错误码、callback、receipt、取消 / 重跑合同。
 - `service_internal`：子工程内部实际处理到哪一步、当前对象、worker、adapter 调用、内部日志。
-- `domain_units`：进度或正确性的业务单位，例如批次、业务对象、订单、图片、frame、record、row、artifact。
+- `domain_units`：进度或正确性的业务单位，例如批次、业务对象、业务记录、图片、frame、record、row、artifact。
 - `persistence`：数据库写入、readback、manifest、snapshot、ledger、object store、缓存或持久化历史。
 - `presentation`：UI、报告、图表、日志渲染、artifact 摘要、用户可见状态文本。
 - `agent_process`：Codex 本轮或近期改了什么、声称了什么、漏查了什么、未验证什么、是否误放文件或越界修改。
