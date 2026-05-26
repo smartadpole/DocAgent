@@ -7,6 +7,26 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-26
+
+### 吸收 DocCustomeranalysis 的测试成熟度和口径漂移治理
+
+- **记录人**：sunhao
+- **用户意图**：从 `/Users/hai/Documents/Code/DocCustomeranalysis` 最近完善的 harness 设计、测试环节规则和口径漂移治理中抽象可复用系统层信息，回写到当前 wiki 模板库，不复制下游项目事实。
+- **主题**：
+  1. 规则已有但执行失守时，优先升级为触发矩阵、模板字段、sensor、门禁或最终证明，而不是继续堆自然语言规则。
+  2. 执行类页面必须保持当前裁决单值，防止参考规则、非目标、条件路由或上层证据漂成隐形待办。
+  3. 测试、验收和上线需要分层：测试计划 / AP 先于测试报告，环境是证据面不是荣誉阶梯。
+- **关键动作**：
+  1. **新增治理页**：新增 [[instruction-adherence]] 和 [[execution-contract-semantics]]，分别承接规则执行覆盖和执行合同语义防漂移。
+  2. **新增测试概念和计划层**：新增 [[concepts/software-testing-acceptance-release]]、[[projects/development/plan/test-acceptance-planning-model]]、[[projects/development/acceptance/README]] 和 [[projects/development/acceptance/plans/README]]。
+  3. **补模板和报告字段**：新增 [[templates/development-acceptance-plan-template]]，升级 [[templates/development-test-report-template]]，让报告记录计划来源、AP、fixture / oracle 和不上推边界。
+  4. **同步入口和研发链路**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[projects/STRUCTURE]]、[[projects/development/README]]、研发总控、事项模型、TASK 模型和报告入口。
+  5. **新增 sensor**：新增 `scripts/check_testing_system_maturity.py` 和 `scripts/check_execution_contract_semantics.py`，并接入 `scripts/check_all.py` 和 `scripts/check_harness_governance.py`。
+- **不反哺边界**：没有复制 `DocCustomeranalysis` 的业务 issue、服务器编号、项目状态、具体测试报告、服务实例、灰度 / 生产事实或一次性任务结论；只吸收抽象后的规则覆盖层、执行合同语义、测试成熟度模型、AP 计划层和可检查 sensor。
+- **二阶反思**：这轮说明“测试规则更完善”不能只写进报告模板；如果没有前置 AP / 计划来源和执行合同语义检查，后续仍会把报告当计划、把高环境当阶梯、把非目标写成隐形待办。后续同类吸收应继续按“抽象候选 -> 入口/模板 -> sensor -> log/commit”的闭环执行。
+- **影响页面**：[[instruction-adherence]]、[[execution-contract-semantics]]、[[concepts/software-testing-acceptance-release]]、[[projects/development/plan/test-acceptance-planning-model]]、[[projects/development/acceptance/README]]、[[projects/development/acceptance/plans/README]]、[[templates/development-acceptance-plan-template]]、[[templates/development-test-report-template]]、[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[harness-feedback-ledger]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/plan/task-design-model]]、[[projects/development/reports/README]]、[[templates/README]]、[[concepts/README]]、[[log]]、`scripts/check_all.py`、`scripts/check_harness_governance.py`、`scripts/check_testing_system_maturity.py`、`scripts/check_execution_contract_semantics.py`。
+
 ## 2026-05-25
 
 ### 继续吸收 DocCustomeranalysis 的 Goal Contract 防线设计

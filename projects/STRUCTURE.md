@@ -72,6 +72,7 @@ projects/
       README.md
       work-item-system-model.md
       task-design-model.md
+      test-acceptance-planning-model.md
     execution/
       README.md
       execution-packages/
@@ -84,6 +85,10 @@ projects/
       worklog.md
     issues/
       README.md
+    acceptance/
+      README.md
+      plans/
+        README.md
     gates/
       README.md
     implementation/
@@ -116,6 +121,8 @@ projects/
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和自动沉淀边界
 - [[response-mode-routing]]：响应效率路由，决定每轮先轻量诊断还是进入沉淀、验收、规则升级或实现回传
+- [[instruction-adherence]]：指令遵循治理，决定已有规则如何升级成触发器、模板字段、sensor、门禁和最终证明
+- [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进，决定 episode 如何晋升为 sensor、模板、技能或规则
 - [[harness-feedback-ledger]]：Harness episode 台账，记录 sensor backlog、晋升和降级候选
 - [[log]]：主题化的历史记录

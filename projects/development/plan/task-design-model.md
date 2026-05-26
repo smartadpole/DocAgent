@@ -13,7 +13,7 @@ tags: [development, planning, task, delivery-contract]
 主入口：[[projects/development/plan/README]]
 
 上游：[[projects/development/plan/work-item-system-model]]、[[projects/development/execution/execution-packages/README]]  \
-下游：[[projects/development/execution/tasks/README]]、[[projects/development/reports/README]]、[[projects/development/execution/developer-execution-workflow]]
+下游：[[projects/development/execution/tasks/README]]、[[projects/development/acceptance/README]]、[[projects/development/reports/README]]、[[projects/development/execution/developer-execution-workflow]]
 
 ## 这页解决什么
 
@@ -91,6 +91,7 @@ TASK 的验证要求至少覆盖：
 - `service-side validation`。
 - `end-to-end validation`。
 - 相关功能回归。
+- 计划来源或 `AP-*` / 不适用原因。
 - 非默认值 / 边界值。
 - readback、artifact、UI、日志或回传包证据。
 - 未验证风险。
@@ -177,6 +178,7 @@ TASK 级测试通过只能作为父 EP 输入证据，不能自动关闭父 EP�
 ## 验证要求
 
 - 开发者自测证据：
+- 测试计划来源 / AP：
 - local validation：
 - service-side validation：
 - end-to-end validation：

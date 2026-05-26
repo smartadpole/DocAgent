@@ -5,7 +5,7 @@
 ## 分层总览
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -32,7 +32,8 @@
 - `projects/development/plan/`：研发总控层。承接当前阶段、阶段门摘要、执行入口、事项关系模型和支撑文件分组。
 - `projects/development/execution/`：执行控制层。承接 EP 执行包、TASK、待办、编码交接、工程反馈闭环和开发过程记录。
 - `projects/development/gates/`：阶段门层。承接准入、准出、冻结对象、验收证据和风险边界。
-- `projects/development/reports/`：验证证据层。承接测试方案、测试用例、测试结论、相关回归和准出报告。
+- `projects/development/acceptance/`：验收计划层。承接复杂验收的 AP 计划、长用例索引、fixture / oracle、人工确认和发布 runbook，不承接测试报告正文。
+- `projects/development/reports/`：验证证据层。承接测试方案执行后的证据、测试结论、相关回归和准出报告。
 - `projects/development/risks/`：研发风险层。承接阻塞、待确认项、owner 归口和会议 / 决策分流。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
 - `projects/development/issues/`：Issue 案件层。承接已发生问题、bug、偏差和验收失败的原始现象、分层事实、修复、复验和关闭裁决；报告只记录每次验证过程，不替代 Issue 案件档案。
@@ -49,6 +50,8 @@
 - [[AGENTS]]：执行约束层。回答“agent 修改时必须怎么做”
 - [[WORKFLOW]]：流程编排层。回答“通常按什么顺序推进”
 - [[response-mode-routing]]：响应效率路由层。回答“本轮先快诊断、沉淀、验收、实现还是升级规则”
+- [[instruction-adherence]]：指令遵循层。回答“已有规则怎样升级成触发器、模板字段、sensor、门禁和最终证明”
+- [[execution-contract-semantics]]：执行合同语义层。回答“当前执行合同是否被参考规则、非目标或上层证据污染”
 - [[harness-evolution]]：Harness 自演进层。回答“用户纠偏、检查失败、模式切换和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
 - [[harness-feedback-ledger]]：Harness episode 台账。回答“哪些 episode 已观察、已晋升、待补 sensor 或待降级”
 - [[BRAIN]]：共享背景层。回答“哪些已确认前提要自动带入后续工作”
@@ -59,6 +62,8 @@
 - 如果问题是“怎么执行”，先看 [[AGENTS]]
 - 如果问题是“怎么推进”，先看 [[WORKFLOW]]
 - 如果问题是“要不要先轻量诊断、何时进入重治理”，先看 [[response-mode-routing]]
+- 如果问题是“规则已有但没有执行”，先看 [[instruction-adherence]]
+- 如果问题是“当前事项到底要不要做、做到哪算关闭”，先看 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，先看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 如果问题是“默认背景是什么”，先看 [[BRAIN]]
 
@@ -105,6 +110,8 @@
 ## 会话级规则
 
 - 每轮动手前先按 [[response-mode-routing]] 判断响应模式：快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+- 如果用户指出“规则已有但没有执行”、或本轮发现提交、证据、验收边界、最终回复扫描等失守，必须按 [[instruction-adherence]] 判断该补触发器、模板字段、sensor、门禁还是最终证明，不得只追加一句更严厉的自然语言规则。
+- 写入 TASK、issue、AP、EP、FP、Gate、报告目标包、handoff、状态页或会议行动项时，必须按 [[execution-contract-semantics]] 检查执行合同语义：当前裁决单值，非目标不展开成后续任务，参考规则不下沉到下层事项，证据层级不回流成普通修复闭环。
 - 快速诊断只默认读取入口规则和最相关的少量事实源；它可以给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出、提交或规则升级。
 - 如果根因已经形成而后续是在沉淀、验收、规则升级或收尾，必须显式告诉用户当前阶段，不要把治理闭环伪装成仍在分析。
 - 当用户要求长时间持续推进、反复尝试、直到完成或跨多轮跟进时，先判断是否需要 Goal Contract；主控侧定义完成契约，子工程侧按契约回传证据，不用 Goal 自述替代验收关闭。
@@ -115,7 +122,7 @@
 - 批量处理同类材料时，先判断这次是不是“批处理模式”，不要把单篇深度判断的读取负担机械复制到每一份材料上。
 - 如果用户明确下达“收尾 / 执行收尾 / finalize”这类执行命令，本轮进入收尾模式；如果用户是在讨论收尾规则、排查收尾问题或询问怎么收尾，不进入收尾模式。
 - 收尾模式禁止继续扩需求、追加新功能或顺手做下一轮结构调整；只允许完成与本轮已发生改动直接相关的同步、核对、补记和提交。
-- 工作阶段按本轮范围优先跑专项 sensor，例如 `python3 scripts/check_all.py --only harness-governance` 或 `python3 scripts/check_all.py --only work-item-matrix`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
+- 工作阶段按本轮范围优先跑专项 sensor，例如 `python3 scripts/check_all.py --only harness-governance`、`python3 scripts/check_all.py --only work-item-matrix`、`python3 scripts/check_all.py --only testing-system-maturity` 或 `python3 scripts/check_all.py --only execution-contract-semantics`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
 - 只要这次对话产生了实际内容变更或结构变更，保底在对话结束前做一次 commit。
 - 只要这次对话产生了实际内容变更或结构变更，就必须同步更新 `log.md`；即使只是同一大主题下的后续修正，也不能跳过。
 - 如果这次改动会影响 `projects/trace.md` 的当前需求主题，就和相关页面同轮同步更新 trace，不要等其他文档都写完后再回来补。
@@ -189,6 +196,8 @@
 - `projects/README.md` 是项目运行层主入口，连接项目层其他主页面。
 - `projects/service-registry.md` 上连项目主页和部署页，横向连接相关代码基线、开发执行、测试报告和事故记录；它只记录已确认的运行实例事实，不替代部署设计、服务合同或密钥治理。
 - `projects/development/plan/work-item-system-model.md` 上连研发总控、需求、设计和决策，下连 Gate、FP、EP、TASK、risk、issue、test、报告和服务台账；它是事项关系和关闭守卫的单一信息源。
+- `projects/development/plan/test-acceptance-planning-model.md` 上连事项模型和 TASK 模型，下连 `projects/development/acceptance/`、报告、issue、TASK、EP、FP 和 Gate；它是测试计划与验收合同的单一信息源。
+- `projects/development/acceptance/README.md` 横向连接 AP 计划索引、报告和事项页；它承接测试前计划，不承接测试后证据正文。
 - `projects/development/issues/README.md` 横向连接 EP、TASK、测试报告、风险、服务台账和事故目录；它保存已发生问题的案件档案，不能被单次测试报告替代。
 - 需求页上连项目主页，下连设计页和决策页，外连相关 `raw/` 来源。
 - `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链；原始来源材料的出处和整理过程不放进去。
@@ -239,7 +248,7 @@
 - 如果目标是服务实例台账或服务运行事实，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/service-registry.md`、`projects/design/deployment.md`，再按服务补读相关代码基线、开发执行、测试报告或事故页。
 - 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
 - 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
-- 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`reports/`、`risks/` 或功能点实体页。
+- 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`acceptance/`、`reports/`、`risks/` 或功能点实体页。
 - 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
@@ -268,7 +277,7 @@
 - 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/README.md`、`projects/design/topics/README.md`、需求页、已有决策页、相关设计子页 / 专题页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
-- 改开发执行页、EP、TASK、待办、Issue、测试报告、Gate 或风险页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、当前相关 EP / TASK / FP / Gate / Issue / 报告页和必要设计页。
+- 改开发执行页、EP、TASK、待办、Issue、AP、测试报告、Gate 或风险页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、`projects/development/plan/test-acceptance-planning-model.md`、当前相关 EP / TASK / FP / Gate / Issue / AP / 报告页和必要设计页。
 - 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。

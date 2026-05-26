@@ -11,16 +11,17 @@ tags: [development, reports, testing]
 
 主入口：[[projects/development/plan/README]]
 
-上游：[[projects/development/execution/todo]]、[[projects/development/gates/README]]  \
+上游：[[projects/development/plan/test-acceptance-planning-model]]、[[projects/development/acceptance/README]]、[[projects/development/execution/todo]]、[[projects/development/gates/README]]  \
 下游：[[projects/status]]、[[projects/releases]]、[[projects/incidents/README]]
 
 ## 这页负责什么
 
 这页收口测试方案、测试用例 / 检查点、测试结论、相关功能回归范围、Issue 复验记录和 Gate 准出报告。
 
-它不是命令流水，也不是只写“通过 / 失败”。测试报告要能说明：
+它不是命令流水，也不是测试计划单一信息源。测试计划和环境路由先看 [[projects/development/plan/test-acceptance-planning-model]] 与 [[projects/development/acceptance/README]]；本页只记录计划执行后的证据、结果和裁决。测试报告要能说明：
 
 - 验证对象是什么，是 handoff / artifact 包、代码实现、联调闭环、TASK、EP、FP、Issue 还是 Gate 准出。
+- 计划来源是什么，是事项页测试计划、轻量检查点还是 `AP-*`。
 - 用什么方案验证，覆盖哪些核心用例、非默认值 / 边界值和相关回归。
 - 本轮自己做了哪些独立取证动作，而不是只引用子工程 handoff、历史报告或口头结论。
 - 哪些失败项、未验证项和人工确认项仍然存在。
@@ -37,6 +38,7 @@ Issue 是案件档案，报告是每次庭审记录。同一个 ISSUE 可以有�
 - 多工程联调接口验收必须写清请求接收、状态查询、后台副作用和最终 artifact / DB / UI 投影之间的关系。
 - 如果本轮涉及参数、配置、profile、feature flag、限流、采样或筛选条件，至少验证一个非默认值或边界值，并证明它真实改变了执行结果。
 - 报告必须回链对应 EP / TASK / FP / Gate / ISSUE；对应 EP / TASK / FP / Gate / ISSUE 也要回链最新有效报告。
+- 报告必须引用计划来源。没有事项页测试计划或 `AP-*` 的报告只能作为临时观察或排障记录，不能单独作为关闭、准出或发布确认依据。
 - 新 bug、漏测、复验失败或合同变化要升级成后续测试项、回归用例或准出守卫。
 - 新报告可以覆盖旧结论，但不删除旧报告的证据价值。
 - 已发生 bug、Issue 复验失败、用户现场测试未通过、事故或关闭争议，必须设计 bug 反向用例：原始复现路径、同场景代表样本、修复前失败 / 修复后通过或等价证据、漏测原因和回归守卫入驻位置。
@@ -44,6 +46,16 @@ Issue 是案件档案，报告是每次庭审记录。同一个 ISSUE 可以有�
 - 异步任务、调度、worker、写库或外部副作用，必须区分引擎状态和业务状态；请求接收、状态查询、worker / 日志、artifact / DB / UI 最终投影缺一不可。
 - UI、图片、mask / overlay、看板、人工操作或用户截图参与验收时，必须判断是否保留截图；不保留时写清结构化证据为什么足够。
 - Gate 准出不按“代码写完”判断，而按 P0 EP 关闭、必要 TASK 完成、测试报告结论、失败项归口、服务台账事实和剩余风险判断。
+
+## 测试质量指标
+
+定期复盘时至少看：AP 覆盖率、复验失败率、逃逸缺陷、回归守卫入驻率、环境上推违规、未验证风险滞留和人工确认超期。
+
+## 数据、fixture 和 oracle 治理
+
+- 报告引用固定样本时，写明样本来源、版本和可复跑性。
+- 没有 oracle 的执行结果只能写成观察，不能写成通过。
+- oracle 失效、样本过期或数据来源变化时，回写对应 `AP-*` 或事项页测试计划。
 
 ## 验收执行包触发矩阵
 

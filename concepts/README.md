@@ -22,6 +22,7 @@
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约
+- [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念
 
 ## 维护原则
 

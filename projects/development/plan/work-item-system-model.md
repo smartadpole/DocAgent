@@ -13,8 +13,8 @@ tags: [development, planning, work-items, traceability]
 主入口：[[projects/development/plan/README]]
 
 上游：[[projects/requirements]]、[[projects/trace]]、[[projects/design/README]]  \
-横向：[[projects/development/feature-points/README]]、[[projects/development/execution/execution-packages/README]]、[[projects/development/execution/tasks/README]]、[[projects/development/execution/engineering-feedback-loop]]、[[projects/development/risks/README]]、[[projects/development/issues/README]]  \
-下游：[[projects/development/reports/README]]、[[projects/status]]
+横向：[[projects/development/feature-points/README]]、[[projects/development/execution/execution-packages/README]]、[[projects/development/execution/tasks/README]]、[[projects/development/execution/engineering-feedback-loop]]、[[projects/development/risks/README]]、[[projects/development/issues/README]]、[[projects/development/plan/test-acceptance-planning-model]]  \
+下游：[[projects/development/acceptance/README]]、[[projects/development/reports/README]]、[[projects/status]]
 
 ## 这页解决什么
 
@@ -53,7 +53,7 @@ tags: [development, planning, work-items, traceability]
 | TASK | 父 EP 下的状态化交付合同，推动一个功能切片从 `planned` 到 `done` | 不单独代表 Gate 准出；不替代父 EP / FP / Gate 的关闭证据 | [[projects/development/execution/tasks/README]]、[[templates/development-task-template]] |
 | risk | 风险评估、影响对象、缓解方案、剩余风险和准出影响 | 不等同 bug，不承担具体复现和修复包 | [[projects/development/risks/README]]、[[templates/development-risk-template]] |
 | issue | 已发生问题、复现、根因边界、关闭标准、最新有效报告和报告链 | 不替代 risk，也不绕过 EP / TASK 修复 | [[projects/development/issues/README]]、[[templates/development-issue-template]] |
-| test / 验收 / 报告 | 验证对象、环境、样本、证据、结论和上推边界 | 不自动关闭上游目标 | [[projects/development/reports/README]]、[[templates/development-test-report-template]] |
+| test / 验收 / AP / 报告 | 测试计划、环境路由、样本、证据、结论和上推边界 | 不自动关闭上游目标；报告不临场发明测试计划 | [[projects/development/plan/test-acceptance-planning-model]]、[[projects/development/acceptance/README]]、[[projects/development/reports/README]]、[[templates/development-acceptance-plan-template]]、[[templates/development-test-report-template]] |
 | 决策 / 会议 | 冲突拍板、人工确认和跨 owner 协调 | 不承担实现本身 | [[projects/decisions]]、[[projects/meetings/README]] |
 
 ## 核心不变量
@@ -100,7 +100,7 @@ tags: [development, planning, work-items, traceability]
 | 节点 | 必须写清 | 不能做什么 |
 | --- | --- | --- |
 | `risk:` | 发现来源、影响对象、缓解动作、关闭证据、剩余风险 | 不把未发生风险改名成 issue |
-| `test:` | 验证对象、核心用例、环境、样本、回归范围 | 不用默认 happy path 替代边界值 / 非默认值 |
+| `test:` | 计划来源、验证对象、核心用例、环境、样本、回归范围、AP 或不适用原因 | 不用默认 happy path 替代边界值 / 非默认值；不让报告替代测试计划 |
 | `验收:` | local / service-side / end-to-end 证据层级、能否上推、不能上推边界 | 不把 TASK 通过直接写成 EP / FP / Gate 通过 |
 | `issue-trigger:` | 当前是否已有已发生 issue；没有时写触发条件和创建 / 复用规则 | 不把候选风险、漏测或未实现事项预建成 issue |
 
@@ -146,6 +146,7 @@ Issue 是案件档案，报告是每次庭审记录。
 - **进入不等于吸收**：issue 页记录了新事实，只说明信息进入了 issue；源 TASK / EP 必须抽象总结到当前状态、done 差距、验证要求、关闭证据和不能上推边界，才算吸收。
 - **吸收不等于上推**：TASK 吸收 issue 后，只证明 TASK 局部状态变化；父 EP 是否更新，取决于它是否影响父 EP 输出物、联调路径、关闭证据、共享接口 / 数据 / 配置或下游消费。
 - **上推不等于能力完成**：父 EP 更新后，只有影响 FP 能力边界、用户可见行为、验收口径、Gate 准出输入且无替代证据时，才更新 FP / Gate。
+- **报告不等于计划**：测试报告是计划执行记录；如果报告发现测试计划缺失、环境路由错误或验收对象变化，必须回写事项页或 `AP-*`，不能只在报告里形成新关闭标准。
 - **父项变化要检查兄弟项**：共享接口、数据、配置、fixture、回归守卫或依赖输出的兄弟 TASK 必须重新判断状态。
 - **派生生命周期持续联动**：新建子 TASK、issue、risk、测试报告或 handoff 时，父 EP / 源 TASK 立即记录派生原因、影响范围、期望回收方式和证据入口；派生项关闭时再总结修正结果、仍保留的缺口和是否上推。
 

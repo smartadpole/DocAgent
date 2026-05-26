@@ -31,6 +31,7 @@ tags: [development, plan, progress]
 - [[projects/development/plan/README]]：研发总控、路线图和阶段推进摘要。
 - [[projects/development/plan/work-item-system-model]]：`Gate -> FP -> EP -> TASK` 事项关系模型，以及 risk / issue / test / 验收关系节点。
 - [[projects/development/plan/task-design-model]]：TASK 作为父级 EP 下状态化交付合同的设计规则。
+- [[projects/development/plan/test-acceptance-planning-model]]：测试计划、AP 验收计划、环境路由和报告计划来源的合同模型。
 - [[projects/development/execution/README]]：执行包、TASK、待办、编码交接、反馈纠偏和过程记录。
 - [[projects/development/execution/execution-packages/README]]：EP 执行包索引。
 - [[projects/development/execution/tasks/README]]：TASK 任务索引。
@@ -49,7 +50,7 @@ tags: [development, plan, progress]
 2. 如果是新建、拆解或关闭研发事项，读 [[projects/development/plan/work-item-system-model]]，确认 `Gate -> FP -> EP -> TASK` 主链和 `risk:`、`test:`、`验收:`、`issue-trigger:` 覆盖。
 3. 如果要派发或关闭 TASK，读 [[projects/development/plan/task-design-model]] 和 [[projects/development/execution/tasks/README]]，确认父 EP、Done Contract、验证要求和不上推边界。
 4. 如果要处理已发生 bug、偏差或验收失败，读 [[projects/development/issues/README]]；Issue 是案件档案，报告只记录每次验证。
-5. 如果要验收、复验或准出，读 [[projects/development/reports/README]]；涉及真实服务时同时读 [[projects/service-registry]]。
+5. 如果要验收、复验或准出，先读 [[projects/development/plan/test-acceptance-planning-model]]，再读 [[projects/development/acceptance/README]] 和 [[projects/development/reports/README]]；涉及真实服务时同时读 [[projects/service-registry]]。
 6. 如果要和子工程沟通，读 [[projects/development/execution/developer-execution-workflow]]，再复制 [[templates/developer-task-brief-template]] 或 [[templates/code-handoff-template]]。
 7. 只有当本轮要改变默认规则、写权限、自动沉淀边界或入口顺序时，才回到 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 修改治理层。
 8. 改完后先跑 `python3 scripts/check_all.py --only work-item-matrix`；收尾或提交前跑 `python3 scripts/check_all.py`。
@@ -70,4 +71,5 @@ tags: [development, plan, progress]
 - 正式执行主链按 `Gate -> FP -> EP -> TASK` 维护；TODO 只做轻量待办和过渡视图，不替代 EP / TASK。
 - 关闭任何 Gate / FP / EP / TASK 前，必须回看关系节点覆盖：`risk:`、`test:`、`验收:`、`issue-trigger:`。
 - 阶段准入准出看 [[projects/development/gates/README]] 和 [[projects/development/reports/README]]。
+- 标准验收和 Gate / 发布验收先看 [[projects/development/plan/test-acceptance-planning-model]]，需要复杂验收时补 [[projects/development/acceptance/README]] 下的 `AP-*`，报告只记录执行后的证据。
 - 如果实现反馈改变需求、范围、设计口径或决策，必须同步 [[projects/trace]]、[[projects/design/README]] 或 [[projects/decisions]]。

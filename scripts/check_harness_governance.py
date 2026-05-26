@@ -9,16 +9,21 @@ from pathlib import Path
 
 REQUIRED_FILES = (
     "governance/response-mode-routing.md",
+    "governance/instruction-adherence.md",
+    "governance/execution-contract-semantics.md",
     "governance/harness-evolution.md",
     "governance/harness-feedback-ledger.md",
     "concepts/harness-engineering.md",
     "concepts/codex-goals.md",
     "templates/goal-contract-template.md",
+    "templates/development-acceptance-plan-template.md",
     "templates/harness-adoption-template.md",
     "templates/harness-episode-package-template.md",
     "templates/harness-evolution-review-template.md",
     ".codex/AGENTS.md",
     "scripts/check_all.py",
+    "scripts/check_testing_system_maturity.py",
+    "scripts/check_execution_contract_semantics.py",
     "AGENTS.md",
     "governance/WORKFLOW.md",
     "governance/POLICY.md",
@@ -103,6 +108,8 @@ ISSUE_SKILL_REQUIRED_TERMS = (
 CHECK_ALL_REQUIRED_TERMS = (
     "--only",
     "harness-governance",
+    "testing-system-maturity",
+    "execution-contract-semantics",
     "git-diff-whitespace",
     "git-staged-diff-whitespace",
 )
@@ -126,6 +133,8 @@ H5_LEDGER_REQUIRED_TERMS = (
 
 CODEX_ADAPTER_REQUIRED_TERMS = (
     "response-mode-routing",
+    "instruction-adherence",
+    "execution-contract-semantics",
     "harness-evolution",
     "harness-feedback-ledger",
     "Goal Contract",
@@ -308,6 +317,22 @@ def check_h5_evolution(repo: Path) -> list[str]:
     return errors
 
 
+def check_instruction_and_semantics_wiring(repo: Path) -> list[str]:
+    errors: list[str] = []
+    instruction = read_text(repo, "governance/instruction-adherence.md", errors)
+    semantics = read_text(repo, "governance/execution-contract-semantics.md", errors)
+
+    if instruction:
+        for term in ("Rule Coverage Ladder", "触发矩阵", "L5", "最终回复证明", "execution-contract-semantics"):
+            if term not in instruction:
+                errors.append(f"governance/instruction-adherence.md: missing instruction adherence term {term}")
+    if semantics:
+        for term in ("执行合同语义污染", "裁决必须单值", "非目标变潜在任务", "伪 optional", "证据层级回流"):
+            if term not in semantics:
+                errors.append(f"governance/execution-contract-semantics.md: missing semantics term {term}")
+    return errors
+
+
 def check_harness_governance(repo: Path) -> list[str]:
     errors: list[str] = []
     errors.extend(check_required_files(repo))
@@ -317,6 +342,7 @@ def check_harness_governance(repo: Path) -> list[str]:
     errors.extend(check_concept_and_template(repo))
     errors.extend(check_quality_gate_script(repo))
     errors.extend(check_h5_evolution(repo))
+    errors.extend(check_instruction_and_semantics_wiring(repo))
     return errors
 
 

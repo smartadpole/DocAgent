@@ -20,6 +20,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；如
 - 新 Issue 案件可以复制 [[templates/development-issue-template]]
 - 新研发待办可以参考 [[templates/development-todo-template]]
 - 新阶段门可以参考 [[templates/development-gate-template]]
+- 新复杂验收计划可以参考 [[templates/development-acceptance-plan-template]]
 - 新测试或准出报告可以参考 [[templates/development-test-report-template]]
 - 新研发风险登记可以参考 [[templates/development-risk-template]]
 - 新开发过程记录可以参考 [[templates/development-worklog-entry-template]]

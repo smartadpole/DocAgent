@@ -25,7 +25,7 @@ tags: [entry, root]
 当前物理结构再补一句：
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
-- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
@@ -52,6 +52,8 @@ tags: [entry, root]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“本轮该先轻量诊断还是进入沉淀 / 验收 / 规则升级” -> 读 [[response-mode-routing]]
 - 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
+- 想知道“规则已有但为什么执行会漏、如何升级成触发器 / 模板 / sensor / 最终证明” -> 读 [[instruction-adherence]]
+- 想知道“当前执行页有没有把参考规则、非目标或证据说明漂成隐形待办” -> 读 [[execution-contract-semantics]]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
@@ -65,6 +67,7 @@ tags: [entry, root]
 - 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想看“Gate、FP、EP、TASK、Issue、risk、test、验收和台账怎么组织” -> 读 [[projects/development/plan/work-item-system-model]]
+- 想看“测试计划、AP 验收计划、环境路由和测试报告怎么分工” -> 读 [[projects/development/plan/test-acceptance-planning-model]] 和 [[projects/development/acceptance/README]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“会议很多时怎么收口会议材料” -> 读 [[projects/meetings/README]]
@@ -88,6 +91,8 @@ tags: [entry, root]
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
 - [[response-mode-routing]] 负责把每轮 agent 工作先分成快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理，减少无谓重启动。
+- [[instruction-adherence]] 负责把关键规则从自然语言推进到触发矩阵、模板字段、sensor、门禁和最终回复证明。
+- [[execution-contract-semantics]] 负责防止参考规则、条件路由、非目标和上层证据污染当前执行合同。
 - [[harness-evolution]] 和 [[harness-feedback-ledger]] 负责把用户纠偏、检查失败、模式切换和重复失守记录成 episode，再决定是否晋升为 sensor、模板、技能或规则。
 - [[BRAIN]] 承接跨多轮确认、后续需要自动进入思考背景的共享内容。
 - [[POLICY]] 承接共享规则、优先级和记忆路由。

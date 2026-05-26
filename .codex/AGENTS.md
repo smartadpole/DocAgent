@@ -1,17 +1,21 @@
 # Codex Local Adapter
 
-本文件是当前 wiki 的 Codex 本地入口适配层。完整维护约束仍以根目录 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]] 和 [[harness-evolution]] 为准。
+本文件是当前 wiki 的 Codex 本地入口适配层。完整维护约束仍以根目录 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]] 和 [[harness-evolution]] 为准。
 
 ## 每轮启动
 
 - 先读根目录 `AGENTS.md`。
 - 再按 [[response-mode-routing]] 判断响应模式：快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
 - 如果涉及 Harness 自演进、用户纠偏、检查失败、模式切换或规则反哺，再读 [[harness-evolution]] 和 [[harness-feedback-ledger]]。
+- 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
+- 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
 - 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[concepts/codex-goals]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
 
 ## 工作阶段检查
 
 - 工作阶段优先跑专项 sensor：`python3 scripts/check_all.py --only harness-governance`。
+- 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。
+- 执行合同语义、非目标或环境路由改动跑：`python3 scripts/check_all.py --only execution-contract-semantics`。
 - 收尾或提交前跑完整门禁：`python3 scripts/check_all.py`。
 - `scripts/check_all.py` 是本库本地门传真相源；CI 或平台配置只是适配层。
 

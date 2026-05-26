@@ -32,6 +32,8 @@ tags: [index, root]
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
+- [[instruction-adherence]]：指令遵循治理，决定已有规则如何进入触发矩阵、模板字段、sensor、门禁和最终证明
+- [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
 - [[harness-feedback-ledger]]：Harness episode、sensor backlog、规则晋升和降级队列
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
@@ -69,9 +71,13 @@ tags: [index, root]
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法，关注上下文、工具、规则、工作流、验证和演化闭环。
 - [[articles/2026-05-25-harness-engineering-research]]：Harness Engineering 深度调研，汇总本地材料、OpenAI、Martin Fowler、LangChain、Vercel 和近期论文案例。
 - [[harness-evolution]]：把用户纠偏、检查失败、模式切换和重复失守转成可复盘 episode。
+- [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念，强调环境是证据面而不是荣誉阶梯。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
 - [[projects/development/plan/work-item-system-model]]：`Gate -> FP -> EP -> TASK` 事项系统模型
+- [[projects/development/plan/test-acceptance-planning-model]]：测试计划与验收合同模型
+- [[projects/development/acceptance/README]]：验收计划入口
+- [[projects/development/acceptance/plans/README]]：AP 验收计划索引
 - [[projects/development/plan/task-design-model]]：TASK 状态化交付合同模型
 - [[projects/development/execution/README]]：研发执行层入口
 - [[projects/development/execution/execution-packages/README]]：EP 执行包入口
@@ -86,6 +92,7 @@ tags: [index, root]
 - [[templates/development-execution-package-template]]：EP 执行包模板
 - [[templates/development-task-template]]：TASK 任务模板
 - [[templates/development-issue-template]]：Issue 案件模板
+- [[templates/development-acceptance-plan-template]]：AP 验收计划模板
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
@@ -113,7 +120,7 @@ tags: [index, root]
 ## 层级
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：`projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`

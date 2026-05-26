@@ -33,6 +33,8 @@
 
 - 当前只改 Harness wiring、模板入口或响应路由时，优先跑 `python3 scripts/check_all.py --only harness-governance`。
 - 当前只改 Gate / FP / EP / TASK / Issue / risk / test / 验收 / 服务台账 wiring 时，优先跑 `python3 scripts/check_all.py --only work-item-matrix`。
+- 当前只改测试计划、AP、fixture / oracle、人工确认、报告计划来源或发布 runbook 时，优先跑 `python3 scripts/check_all.py --only testing-system-maturity`。
+- 当前只改执行合同语义、非目标、环境路由、下一步或关闭裁决时，优先跑 `python3 scripts/check_all.py --only execution-contract-semantics`。
 - 当前处在收尾、提交前或跨多个治理入口同步后，跑完整 `python3 scripts/check_all.py`。
 - 如果本轮出现用户纠偏、检查失败、模式切换、反复漏同步或规则失守，先判断是否形成 Harness episode；需要沉淀时写入 [[harness-feedback-ledger]]，并按 [[harness-evolution]] 判断是否升级模板、sensor、技能或规则。
 
@@ -97,6 +99,8 @@
 - 研发总控和当前执行入口：看 `projects/development/plan/README.md`
 - 事项关系、关闭证据和防跑偏：看 `projects/development/plan/work-item-system-model.md`
 - TASK 交付合同：看 `projects/development/plan/task-design-model.md`
+- 测试计划和验收合同：看 `projects/development/plan/test-acceptance-planning-model.md`
+- AP 验收计划：看 `projects/development/acceptance/README.md` 和 `projects/development/acceptance/plans/README.md`
 - EP 执行包：看 `projects/development/execution/execution-packages/README.md`
 - TASK 任务：看 `projects/development/execution/tasks/README.md`
 - 已发生 Issue：看 `projects/development/issues/README.md`
@@ -132,6 +136,8 @@
 - [[AGENTS]]：写硬约束和 agent 必须遵守的行为。
 - [[BRAIN]]：写多轮确认后的共享背景和共同前提。
 - [[POLICY]]：写规则、优先级和记忆路由边界。
+- [[instruction-adherence]]：写已有规则如何被触发、检查和最终证明。
+- [[execution-contract-semantics]]：写执行合同单值裁决、非目标和证据层级防漂移规则。
 - `projects/memory/README.md`：写项目级稳定记忆。
 - [[projects/trace]]：写需求从原始意图、约束变化到最终实现范围的演进链。
 - `workspace-memory`：写个人稳定偏好和重复习惯。
@@ -234,11 +240,13 @@
 - [[projects/trace]]：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、`projects/decisions.md`、当前相关开发页
 - `projects/decisions.md`：`projects/README.md`、`projects/requirements.md`、`projects/design/README.md`、[[projects/trace]]、`projects/memory/README.md`、[[POLICY]]、相关过程记录
 - `projects/development/plan/README.md`：`projects/README.md`、`projects/status.md`、`projects/development/README.md`、`projects/development/plan/work-item-system-model.md`、当前相关执行页
+- `projects/development/plan/test-acceptance-planning-model.md`：`projects/development/plan/work-item-system-model.md`、`projects/development/plan/task-design-model.md`、`projects/development/acceptance/README.md`、`projects/development/reports/README.md`
 - `projects/development/execution/execution-packages/README.md`：`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、相关 Gate、FP、TASK、测试报告和风险
 - `projects/development/execution/tasks/README.md`：`projects/development/plan/README.md`、`projects/development/plan/task-design-model.md`、父 EP、相关测试报告、Issue 和服务台账
 - `projects/development/execution/todo.md`：`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、相关功能点、相关 Gate、相关 EP / TASK、相关测试报告
 - `projects/development/issues/README.md`：`projects/development/plan/work-item-system-model.md`、相关 EP / TASK、相关测试报告、风险、服务台账和原始证据
-- `projects/development/reports/README.md`：相关 EP / TASK、Issue、功能点、Gate、worklog、服务台账和验证证据
+- `projects/development/acceptance/README.md`：`projects/development/plan/test-acceptance-planning-model.md`、相关 EP / TASK、Issue、功能点、Gate、报告入口和服务台账
+- `projects/development/reports/README.md`：相关 EP / TASK、Issue、功能点、Gate、AP、worklog、服务台账和验证证据
 - `projects/development/execution/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
