@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [ai-agent, software-engineering]
 ---
 
@@ -52,6 +52,17 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[templates/harness-episode-package-template]] 和 [[templates/harness-evolution-review-template]] 承接单次 episode 和周期复盘。
 - `scripts/check_all.py` 是本库本地门禁入口，`scripts/check_harness_governance.py` 先覆盖 Harness wiring。
 
+## 当前研究状态
+
+截至 2026-05-28，当前库对 Harness Engineering 的沉淀状态可以概括为：
+
+- **基础框架已成型**：定义、组件、路由、模板、episode ledger 和本地门禁已经建立。
+- **还不能宣称完全完成**：目前更接近“基础完整”，还不是“完整、前沿、深入全部封口”。
+- **前沿增量刚完成一次补校准**：2026-05-21/2026-05-27 的 runtime harness adaptation、2026-05-26 的 governed evolution、以及 Martin Fowler 2026-04-02 的 user-side harness / regulation categories 需要继续往本库的可执行结构里吸收。
+- **当前主要缺口不在概念定义，而在研究分层**：还需要持续区分哪些是稳定共识，哪些是前沿假说，哪些已经变成当前 wiki 的模板、sensor 和治理机制。
+
+如果要看截至今天更完整的判断，优先回到 [[articles/2026-05-25-harness-engineering-research]]。
+
 ## 适用场景
 
 - AI coding agent 在真实代码仓库中持续工作。
@@ -67,6 +78,12 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - 只有自然语言规则，没有脚本、测试或 CI 反馈。
 - 把隐藏 memory 当团队单一信息源。
 - 多 Agent 没有交接材料、打回规则和完成定义。
+
+## 未解决问题
+
+- 哪些 Harness 结构能跨模型迁移，哪些高度依赖当前模型能力和工具接口。
+- runtime adaptation 与 governed self-evolution 应该如何进入当前 wiki，而不让治理层变成新一轮噪音。
+- trace-based evaluation 和 episode package 应怎样从研究表达进一步变成当前库的可执行检查表。
 
 ## 相关页面
 

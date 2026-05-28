@@ -1,7 +1,7 @@
 ---
 type: article
 date: 2026-05-25
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [ai-agent, harness-engineering, software-engineering]
 ---
 
@@ -9,13 +9,26 @@ tags: [ai-agent, harness-engineering, software-engineering]
 
 - 来源：
   - 本地归档：[[raw/harness-engineering/2026-05-25-ren-x-harness-engineering.html]]、[[raw/harness-engineering/2026-05-25-wechat-harness-engineering.html]]
-  - 外部参考：[Martin Fowler - Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)、[OpenAI - Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)、[LangChain - Improving Deep Agents with harness engineering](https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering)、[Vercel - We removed 80% of our agent's tools](https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools)、[arXiv:2605.13357](https://arxiv.org/abs/2605.13357)、[arXiv:2604.25850](https://arxiv.org/abs/2604.25850)
+  - 外部参考：[Martin Fowler - Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html)、[OpenAI - Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)、[LangChain - Improving Deep Agents with harness engineering](https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering)、[Vercel - We removed 80% of our agent's tools](https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools)、[arXiv:2605.13357](https://arxiv.org/abs/2605.13357)、[arXiv:2604.25850](https://arxiv.org/abs/2604.25850)、[arXiv:2605.22166](https://arxiv.org/abs/2605.22166)、[arXiv:2605.27328](https://arxiv.org/abs/2605.27328)
 - 类型：专题调研
 - 关联概念：[[concepts/harness-engineering]]
 
 ## 一句话总结
 
 Harness Engineering 不是给 AI 多写几句提示词，而是把模型之外的上下文、工具、规则、权限、工作流、验证、日志、记忆和人类决策做成一套可约束、可观测、可校验、可持续演化的工程系统。
+
+## 当前评估（截至 2026-05-28）
+
+如果直接回答“这份 harness 调研做好了吗，完整、前沿、深入吗”，更诚实的结论是：
+
+- **已经做好基础沉淀，但还不能宣称完全完成**。当前库里已经有专题卡片、概念页、路由、模板、episode ledger 和本地检查，足够支撑“把 Harness 当工程系统而不是一句口号”。
+- **完整性达到第一层，但不是最终层**。定义、组件、案例、成熟度、落地顺序和反模式都有了，但还缺一层明确分叉：哪些是稳定共识，哪些是前沿假说，哪些已经被当前 wiki 吸收，哪些仍只是研究材料。
+- **前沿性在 2026-05-25 那版之后出现了增量缺口**。2026-05-21/2026-05-27 的 runtime harness adaptation 论文，以及 2026-05-26 的 governed runtime evolution 论文，当时还没有被系统吸收进本页。
+- **深入度偏工程直觉，弱于研究协议层**。当前页对工程实践、结构设计和落地顺序解释得够深，但对 trace-based evaluation、跨模型迁移、runtime adaptation、governed self-evolution 这些更靠近研究前沿的机制还不够展开。
+
+因此，当前最准确的说法不是“已经完整前沿”，而是：
+
+> 这份调研已经建立了可靠的基础框架，但截至 2026-05-28 仍处于“基础完整、前沿未封口、研究深水区待继续补齐”的状态。
 
 ## 核心判断
 
@@ -208,6 +221,88 @@ Vercel 删除大量自定义工具后，用文件系统作为主抽象，结果�
 
 这可以作为 Harness 体检的轻量准则：少一点堆料，多一点工程判断。
 
+## 2026-05-28 前沿增量
+
+这部分补的是 2026-05-25 版本之后，值得进入当前知识库视野的前沿信号。
+
+### 1. Martin Fowler 在 2026-04-02 把“用户侧 Harness”讲清了
+
+[[https://martinfowler.com/articles/harness-engineering.html|Harness engineering for coding agent users]] 把 Harness 明确拆成 `feedforward guides` 和 `feedback sensors`，并强调要把质量控制尽量左移到变更生命周期前段。相比“Agent = Model + Harness”的总公式，这篇文章更进一步给了三个可直接复用的深化点：
+
+- Harness 不只是 builder 侧系统，也有 user-side harness。
+- 反馈不只发生在提交前；还包括持续 drift sensor 和 runtime sensor。
+- Harness 可以按 `maintainability`、`architecture fitness`、`behaviour` 这类 regulation category 继续分型，而不是只说“规则很多”。
+
+这意味着：当前 wiki 对 guides / sensors 已有吸收，但对 regulation categories 和“持续 drift / runtime sensor”的分型吸收还不够显式。
+
+### 2. LangChain 在 2026-02-17 给出了固定模型、只改 Harness 的实验路径
+
+[[https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering|Improving Deep Agents with harness engineering]] 的价值不只是结论，而是实验方法：
+
+- 固定 `gpt-5.2-codex`，只改 harness。
+- 用 trace 做失败模式分析。
+- 把 trace analysis 本身做成 Skill。
+- 聚焦 `system prompt`、`tools`、`middleware` 这三个可控旋钮。
+
+它把 Harness 从“经验总结”推进成“可重复优化对象”。当前本页已经吸收了它的方向，但还没有把“trace analyzer skill”与“避免过拟合的实验协议”单独拆出来。
+
+### 3. OpenAI 的重点不只是结构清晰，而是让仓库成为系统记录
+
+[[https://openai.com/index/harness-engineering/|Harness engineering: leveraging Codex in an agent-first world]] 已经明确几件事：
+
+- 仓库内、可版本化的资产应成为 agent 的主真相源。
+- 架构约束不该只写文档，还要靠 custom lint 和结构性测试机械执行。
+- fully agent-generated codebase 会持续积累熵，需要像垃圾回收一样持续清理坏模式。
+- OpenAI 自己也明确承认“长期多年演化下的架构一致性、人类判断最值得编码在哪、以及模型继续变强后系统会如何演化”仍在学习中。
+
+这说明：即使是一线实践方，也没有把 Harness 讲成“已定型学科”；前沿状态本身仍然在快速演化。
+
+### 4. Vercel 在 2025-12-22 给出了“少工具更强”的硬指标
+
+[[https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools|We removed 80% of our agent's tools]] 的关键不是观点，而是指标：
+
+- 3.5x faster
+- 37% fewer tokens
+- 100% success rate
+- 42% fewer steps
+
+它强化了一个容易被忽略的前沿判断：Harness 优化不总是做加法，很多时候是通过减少工具、减少抽象层、直接暴露高质量文件系统语义来改善结果。
+
+### 5. 2026-05-13 的 AI Harness Engineering 论文把职责和 episode package 形式化了
+
+[[https://arxiv.org/abs/2605.13357|AI Harness Engineering: A Runtime Substrate for Foundation-Model Software Agents]] 进一步把 Harness 定义成 runtime substrate，并形式化出 11 个职责：
+
+- task specification
+- context selection
+- tool access
+- project memory
+- task state
+- observability
+- failure attribution
+- verification
+- permissions
+- entropy auditing
+- intervention recording
+
+它还提出 H0-H3 ladder 和 trace-based episode package。当前 wiki 已经吸收了 episode / ledger / H5 演进方向，但还没有把这 11 类职责映射成一张显式检查表。
+
+### 6. 2026-05-27 的 Life-Harness 论文把“跨模型迁移”拉进了主问题
+
+[[https://arxiv.org/abs/2605.22166|Adapting the Interface, Not the Model: Runtime Harness Adaptation for Deterministic LLM Agents]] 是这次补校准里最值得注意的增量之一。它不改模型权重，而改 runtime harness，并报告：
+
+- 在 7 个 deterministic benchmark environment 上，
+- 覆盖 126 个 model-environment setting 中的 116 个，
+- 平均相对提升 88.5%，
+- 而且只用一个模型的训练轨迹演化出的 harness，还能迁移到另外 17 个模型。
+
+这把“Harness 是否可迁移”从口头猜想推进成了明确研究问题。对当前 wiki 的启发是：我们不能只讨论“本项目好不好用”，还要开始区分“项目事实绑定的 harness”与“环境侧可迁移的 harness 结构”。
+
+### 7. 2026-05-26 的 Governed Evolution 论文把 self-evolution 的治理问题正面拉出来了
+
+[[https://arxiv.org/abs/2605.27328|Governed Evolution of Agent Runtimes through Executable Operational Cognition]] 强调的不是 agent 自改本身，而是 `validation`、`traceability`、`evaluation` 和 `rollback constraint` 下的受治理演化。它提出 `HarnessMutation` 这一类有边界的 runtime adaptation 机制。
+
+这和当前 wiki 的 [[harness-evolution]] / [[harness-feedback-ledger]] 方向相近，但论文把“自演进要可观测、可回滚、可审计”讲得更硬。说明我们现在的治理骨架方向是对的，但前沿深度还没有完全追平。
+
 ### 学术化趋势：Harness 正在变成运行时研究对象
 
 arXiv:2605.13357 把 Harness 形式化为运行时基底，列出任务规格、上下文选择、工具访问、项目记忆、任务状态、可观测性、失败归因、验证、权限、熵审计和干预记录等职责，并提出 H0-H3 阶梯和 episode package。
@@ -338,6 +433,8 @@ CI、发布、签名、数据库写入、工单状态回写都不该一开始暴
 - 增加 frontmatter schema 检查，减少页面类型漂移。
 - 增加 source-to-article 模板，把 `raw -> articles -> concepts -> indexes -> log` 的链路变成可复用动作。
 - 给 `skills/` 增加验证清单：触发条件、事实源、禁止项、输出格式、回写边界是否齐全。
+- 给 Harness 研究页增加“稳定共识 / 前沿增量 / 当前库已吸收 / 待吸收”的显式分层，避免旧调研页看起来像已经封口。
+- 后续如果要继续追前沿，优先补 `runtime adaptation`、`cross-model transfer`、`governed evolution` 和 `trace-based evaluation protocol` 的结构化吸收，而不是重复扩写通用定义。
 
 ## 未解决问题
 
