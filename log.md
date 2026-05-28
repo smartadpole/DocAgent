@@ -9,6 +9,22 @@
 
 ## 2026-05-28
 
+### 把计划型问题升级为状态与约束推演方法
+
+- **记录人**：sunhao
+- **用户意图**：把“我缺的是把信息放进系统约束里推演的能力”这件事做成正式知识沉淀和专业方法，而不是停留在一次搬家反思或口头提醒。
+- **主题**：
+  1. 这次真正缺的不是“前置条件意识”本身，而是先做系统状态建模、约束传播、未知变量标注和可执行性判断，再更新计划的能力。
+  2. 这类问题横跨搬家、旅行、办证、采购、部署、上线、签合同等计划型场景，不能只用生活经验表述，需要把自动规划、时间约束网络、约束规划、项目调度、MBSE / Statecharts 和系统思维组合起来。
+  3. 如果只写研究卡片和概念页，方法仍可能停留在“知道了”；需要同步进入治理入口和 discovery 模板，改变默认执行。
+- **关键动作**：
+  1. **新增研究卡片**：新增 [[articles/2026-05-28-state-constraint-planning-research]]，系统整理自动规划、时间约束网络、约束规划 / 调度、项目调度、MBSE / Statecharts 和系统思维各自能解决什么，以及它们对当前问题的组合价值。
+  2. **新增概念与治理入口**：新增 [[concepts/state-constraint-planning]] 和 [[state-constraint-reasoning]]，把“新信息进入 -> 状态更新 -> 约束传播 -> 可执行性判断 -> 计划更新”升级为当前库的正式方法。
+  3. **同步默认执行**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[response-mode-routing]]、[[proactive-dialogue-system]] 和 [[templates/guided-discovery-session-template]]，让计划型问题默认先判状态与约束，不直接写动作安排。
+  4. **补项目主链**：更新 [[projects/trace]] 和 [[projects/decisions]]，把这次方法升级纳入当前 wiki 项目的正式演进和决策链。
+- **二阶反思**：这轮说明“更成熟的计划能力”不能只靠多写几个 TODO 字段，而要把意图、事实、约束、假设、阻塞和外部不确定拆开，再让约束传播进入默认执行。后续如果还出现“意图直接写成计划”的失守，应优先补检查或更强模板字段，而不是只重复提醒。
+- **影响页面**：[[articles/2026-05-28-state-constraint-planning-research]]、[[concepts/state-constraint-planning]]、[[state-constraint-reasoning]]、[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]、[[projects/trace]]、[[projects/decisions]]、[[log]]。
+
 ### 建立项目复盘专题和软件研发项目复盘子专题
 
 - **记录人**：sunhao

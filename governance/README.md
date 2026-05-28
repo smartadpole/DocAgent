@@ -19,6 +19,7 @@ tags: [entry, governance]
 - [[WORKFLOW]]：流程编排。回答“事情通常按什么顺序推进”
 - [[response-mode-routing]]：响应模式路由。回答“本轮该先快速诊断、沉淀、验收、实现还是升级规则”
 - [[proactive-dialogue-system]]：主动对话与引导式设计。回答“目标还没完整表达时，agent 该如何自动判定场景、少量提问、假设推进并产物化”
+- [[state-constraint-reasoning]]：状态与约束推演。回答“新信息进入系统后，哪些状态、依赖、阻塞和可执行性会被改变”
 - [[instruction-adherence]]：指令遵循治理。回答“已有规则怎样变成触发器、模板字段、sensor、门禁和最终证明”
 - [[execution-contract-semantics]]：执行合同语义。回答“当前执行裁决是否被参考规则、非目标或上层证据污染”
 - [[harness-evolution]]：Harness H5 自演进。回答“用户纠偏、检查失败和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
@@ -34,7 +35,7 @@ tags: [entry, governance]
 当前整套系统按七层理解：
 
 1. 入口层：[[README]]、[[INDEX]]
-2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[POLICY]]、[[BRAIN]]
+2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[POLICY]]、[[BRAIN]]
 3. 技能层：[[skills/README]] 和 `skills/`
 4. 运行层：[[projects/README]] 和 `projects/`
 5. 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -59,12 +60,13 @@ tags: [entry, governance]
 3. 如果涉及规则、优先级或记忆路由，再看 [[POLICY]]
 4. 如果要判断先轻量诊断还是进入重治理闭环，再看 [[response-mode-routing]]
 5. 如果要设计新系统、新工具或把粗糙目标想完整，再看 [[proactive-dialogue-system]]
-6. 如果要判断规则已有但没执行的问题，再看 [[instruction-adherence]]
-7. 如果要判断执行页是否出现口径漂移，再看 [[execution-contract-semantics]]
-8. 如果要判断本轮偏差是否应沉淀成 episode，再看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
-9. 如果要实际执行修改，再看 [[WORKFLOW]]
-10. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
-11. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
+6. 如果要判断一条新信息进入系统后会怎样改写状态、依赖和可执行性，再看 [[state-constraint-reasoning]]
+7. 如果要判断规则已有但没执行的问题，再看 [[instruction-adherence]]
+8. 如果要判断执行页是否出现口径漂移，再看 [[execution-contract-semantics]]
+9. 如果要判断本轮偏差是否应沉淀成 episode，再看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
+10. 如果要实际执行修改，再看 [[WORKFLOW]]
+11. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
+12. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
 
 ## `POLICY` 和 `AGENTS` 的权衡
 
@@ -80,6 +82,7 @@ tags: [entry, governance]
 - 如果问题是“通常按什么顺序推进”，优先写 [[WORKFLOW]]
 - 如果问题是“先快后重怎么路由”，优先写 [[response-mode-routing]]
 - 如果问题是“该不该主动问、问什么、怎么把想法想完整”，优先写 [[proactive-dialogue-system]]
+- 如果问题是“这条新信息进入系统后会影响哪些状态和可执行性”，优先写 [[state-constraint-reasoning]]
 - 如果问题是“规则已有但执行失守”，优先写 [[instruction-adherence]]
 - 如果问题是“执行裁决被参考规则、非目标或上层证据污染”，优先写 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，优先写 [[harness-evolution]] 和 [[harness-feedback-ledger]]

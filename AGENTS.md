@@ -5,7 +5,7 @@
 ## 分层总览
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -51,6 +51,7 @@
 - [[WORKFLOW]]：流程编排层。回答“通常按什么顺序推进”
 - [[response-mode-routing]]：响应效率路由层。回答“本轮先快诊断、沉淀、验收、实现还是升级规则”
 - [[proactive-dialogue-system]]：主动对话与引导式设计层。回答“目标不完整时，agent 怎么自动判定场景、少量提问、带假设推进并产物化”
+- [[state-constraint-reasoning]]：状态与约束推演层。回答“新信息进入系统后，哪些状态、依赖、阻塞和可执行性会被改变”
 - [[instruction-adherence]]：指令遵循层。回答“已有规则怎样升级成触发器、模板字段、sensor、门禁和最终证明”
 - [[execution-contract-semantics]]：执行合同语义层。回答“当前执行合同是否被参考规则、非目标或上层证据污染”
 - [[harness-evolution]]：Harness 自演进层。回答“用户纠偏、检查失败、模式切换和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
@@ -64,6 +65,7 @@
 - 如果问题是“怎么推进”，先看 [[WORKFLOW]]
 - 如果问题是“要不要先轻量诊断、何时进入重治理”，先看 [[response-mode-routing]]
 - 如果问题是“用户只有粗糙目标、需要把想法想完整或要更智能地推进”，先看 [[proactive-dialogue-system]]
+- 如果问题是“计划在当前系统状态下是否可执行、哪些条件会连锁传播”，先看 [[state-constraint-reasoning]]
 - 如果问题是“规则已有但没有执行”，先看 [[instruction-adherence]]
 - 如果问题是“当前事项到底要不要做、做到哪算关闭”，先看 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，先看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
@@ -114,6 +116,7 @@
 
 - 每轮动手前先按 [[response-mode-routing]] 判断响应模式：快速诊断、引导式设计、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
 - 引导式设计不是轻模式例外；只要本轮形成用户意图、场景、范围、约束、风险、验收、候选决策、拆解关系或 agent 判断，就必须按 [[proactive-dialogue-system]] 做产物化落地判定。还不适合进正式项目链路时，使用 [[templates/guided-discovery-session-template]] 承接轻量 discovery。
+- 只要本轮在处理搬家、旅行、办证、采购、部署、上线、签合同等计划型问题，且动作依赖权限、资源、时间窗或外部确认，就必须先按 [[state-constraint-reasoning]] 更新状态变量、做约束传播并判可执行性，再决定是否把动作写进计划。
 - 如果用户指出“规则已有但没有执行”、或本轮发现提交、证据、验收边界、最终回复扫描等失守，必须按 [[instruction-adherence]] 判断该补触发器、模板字段、sensor、门禁还是最终证明，不得只追加一句更严厉的自然语言规则。
 - 写入 TASK、issue、AP、EP、FP、Gate、报告目标包、handoff、状态页或会议行动项时，必须按 [[execution-contract-semantics]] 检查执行合同语义：当前裁决单值，非目标不展开成后续任务，参考规则不下沉到下层事项，证据层级不回流成普通修复闭环。
 - 快速诊断只默认读取入口规则和最相关的少量事实源；它可以给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出、提交或规则升级。
@@ -174,6 +177,7 @@
 - 多轮确认后会持续影响判断的共享背景，进入 [[BRAIN]]。
 - 会影响路由、优先级和自动沉淀边界的规则，进入 [[POLICY]]。
 - 会影响“先轻后重”、首次反馈、读取预算和模式切换的响应效率规则，进入 [[response-mode-routing]]，再由 [[AGENTS]]、[[WORKFLOW]] 和 [[POLICY]] 保持短引用。
+- 会影响计划型问题里“先判状态与约束、再写动作”的默认方法，进入 [[state-constraint-reasoning]]，再由 [[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]] 和 [[proactive-dialogue-system]] 保持短引用。
 - 只反映当前项目长期有效事实的内容，进入 `projects/memory/README.md`。
 - 只反映当前项目里需求、功能、约束、修补和最终范围如何收敛的内容，进入 `projects/trace.md`；原始来源材料的索引、出处、文件改名和格式转换过程不进入 trace。
 - 全新应用探索期的多个候选方向，先留在 `inbox/`、`raw/`、`articles/`、`concepts/`；只有某个方向明确成为当前项目，才进入 [[projects/requirements]]、[[projects/trace]] 和设计 / 研发链路。

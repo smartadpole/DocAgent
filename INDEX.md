@@ -33,6 +33,7 @@ tags: [index, root]
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
 - [[proactive-dialogue-system]]：主动对话与引导式设计，决定目标未成形时如何自动判定场景、少量提问、带假设推进并产物化
+- [[state-constraint-reasoning]]：状态与约束推演，决定新信息进入系统后如何识别受影响状态、做约束传播并先判可执行性
 - [[instruction-adherence]]：指令遵循治理，决定已有规则如何进入触发矩阵、模板字段、sensor、门禁和最终证明
 - [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
@@ -56,8 +57,10 @@ tags: [index, root]
 - [[concepts/layered-memory]]：分层 memory 概念定义
 - [[articles/2026-05-28-openclaw-memory-system-research]]：OpenClaw 记忆系统调研，覆盖 workspace memory、active memory、dreaming、QMD 和 `memory-wiki`
 - [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]：agent 响应效率治理反思，记录快速诊断和治理闭环分层的来源分析
+- [[articles/2026-05-28-state-constraint-planning-research]]：系统状态模型、约束传播与计划可执行性调研，收口自动规划、时间约束网络、约束规划、MBSE 和系统思维的组合方法
 - [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
 - [[proactive-dialogue-system]]：主动对话和引导式设计系统，承接场景包、置信度、无感交流等级、性能预算和每轮产物化落地判定
+- [[state-constraint-reasoning]]：计划型问题的治理入口，承接状态变量、约束传播、未知变量和可执行性判断
 
 ## 产品写作
 
@@ -68,6 +71,8 @@ tags: [index, root]
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
 - [[response-mode-routing]]：agent 工作先快后重的统一路由，避免简单诊断默认进入完整治理闭环。
+- [[concepts/state-constraint-planning]]：把计划问题表示成状态变量、约束关系、外部不确定和可执行性判断的方法概念。
+- [[state-constraint-reasoning]]：把“先判可执行性，再写安排”落成治理页，适用于搬家、旅行、采购、部署、上线等计划型问题。
 - [[concepts/project-retrospective]]：项目复盘专题，沉淀目标、过程、结果、偏差、原因和改进行动的通用框架。
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题，把需求、设计、拆解、实现、测试验收、发布运行和协作治理串成一条交付链回看。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
@@ -126,7 +131,7 @@ tags: [index, root]
 ## 层级
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：`projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`

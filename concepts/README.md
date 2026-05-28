@@ -25,6 +25,7 @@
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约
 - [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念
+- [[concepts/state-constraint-planning]]：把计划问题表示成状态变量、约束关系和可执行性判断的方法
 
 ## 工具入口
 

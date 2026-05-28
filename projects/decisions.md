@@ -4,7 +4,7 @@ id: DECISION-LOG-001
 project: PROJ-WIKI-001
 status: active
 priority: high
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [decision]
 ---
 
@@ -28,14 +28,36 @@ tags: [decision]
 
 1. [[projects/decisions#2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链|Gate / FP / EP / TASK 成为研发事项默认主链]]：risk、Issue、test、验收、报告和服务台账作为关系节点接入。影响：不能再用单个 TODO 或报告替代 EP / TASK / Gate 闭环。
 2. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
-3. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
-4. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
-5. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为能力实体页。影响：执行闭环后续已由 EP / TASK 承接，FP 不再作为最小执行单位。
-6. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
-7. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
-8. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
+3. [[projects/decisions#2026-05-28 状态与约束推演成为计划型问题的默认前置方法|状态与约束推演成为计划型问题的默认前置方法]]：先做状态变量、约束传播和可执行性判断，再更新计划。影响：不再把用户意图直接写成当前安排。
+4. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
+5. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
+6. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为能力实体页。影响：执行闭环后续已由 EP / TASK 承接，FP 不再作为最小执行单位。
+7. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
+8. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
+9. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
 
 ## 正式决策记录
+
+### 2026-05-28 状态与约束推演成为计划型问题的默认前置方法
+
+- **背景**：用户明确指出，真正的缺口不是少记一个前置条件，而是没有把“新信息进入系统后会如何改写状态、依赖、资源、时间窗和外部确认”作为正式推理步骤。当前 wiki 已有响应模式、主动对话、执行合同和 Harness 自演进，但还缺一个专门处理计划可执行性的统一方法入口。
+- **要决策什么**：是否把这次抽象出的“先做状态变量更新、约束传播和可执行性判断，再更新计划”升级为跨搬家、旅行、办证、采购、部署、上线、签合同等计划型问题的默认方法。
+- **可选项**：
+  - 只新增一篇研究卡片，保留为知识层参考。
+  - 只新增概念页，不改变执行默认。
+  - 新增治理页并同步响应模式、主动对话和 discovery 模板。
+- **最终决策**：采用第三项。新增 [[state-constraint-reasoning]] 作为治理级真相源；新增 [[articles/2026-05-28-state-constraint-planning-research]] 和 [[concepts/state-constraint-planning]]；同步 [[AGENTS]]、[[README]]、[[INDEX]]、[[governance/README]]、[[response-mode-routing]]、[[proactive-dialogue-system]] 和 [[templates/guided-discovery-session-template]]。
+- **影响**：
+  - 今后处理明显依赖权限、资源、时间窗或外部确认的计划型问题时，不能直接把用户意图写成当前安排。
+  - discovery / 引导式设计需要显式记录状态变量、约束传播和当前可执行性。
+  - 这套方法先作为治理和模板能力生效；若后续继续失守，再按 [[instruction-adherence]] 与 [[harness-feedback-ledger]] 判断是否升级为更强门禁。
+- **各自优劣**：
+  - 只写研究卡片最轻，但不会改变默认执行方式。
+  - 只写概念页比研究更稳定，但仍可能停留在“知道了”而不是“会自动用”。
+  - 治理页 + 模板同步成本更高，但能把方法真正接进当前系统。
+- **风险点**：
+  - 如果把方法写得过重，日常简单安排会被过度形式化；因此本轮只要求在“明显依赖权限、资源、时间窗或外部确认”的计划型问题里强制使用。
+  - 如果只补治理页不补模板，未来仍可能回到线性记录；因此同步给 [[templates/guided-discovery-session-template]] 增加状态模型字段。
 
 ### 2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链
 

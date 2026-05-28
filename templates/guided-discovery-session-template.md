@@ -56,6 +56,17 @@ tags: [template, discovery, dialogue, design, performance]
 - **待人工确认**：
 - **blocked**：
 
+## 状态模型与约束传播
+
+- **新信息**：
+- **信息类型**：事实 / 意图 / 硬约束 / 软偏好 / 假设 / 动作候选 / blocker / 外部不确定
+- **受影响状态变量**：事实 / 权限 / 资源 / 时间 / 承诺 / 外部不确定
+- **前置依赖**：
+- **后续影响**：
+- **资源 / 互斥检查**：
+- **当前可执行性**：executable / conditionally executable / contingent / blocked / not-in-scope
+- **不能直接写进计划的项**：
+
 ## 阶段产物
 
 - **需求 / 范围**：

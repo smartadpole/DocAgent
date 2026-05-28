@@ -220,7 +220,7 @@ tags: [agent, harness, dialogue, discovery, design, performance]
 | --- | --- | --- |
 | 运行排障 / 验收 | 原始现象是什么，在哪个入口可见，证据来自哪一层，关闭需要什么证据？ | checkpoint、issue / report、复验动作 |
 | 研究 / 决策 | 要决策的问题是什么，候选是什么，比较维度和不可接受风险是什么？ | 候选矩阵、推荐倾向、待拍板项 |
-| 个人 / 生活系统 | 当前要解决的动作是什么，哪些是一次性动作，哪些值得变成可复用流程？ | 当前行动清单、长期规则、提醒 |
+| 个人 / 生活系统 | 当前要解决的动作是什么，哪些状态变量、权限、资源、时间窗和外部确认会影响可执行性，哪些值得变成可复用流程？ | 当前行动清单、状态变量表、长期规则、提醒 |
 | 规则 / 模板 / Harness 治理 | 是补充、澄清、迁移、瘦身、sensor 还是模板字段？ | 规则改动、模板、sensor、ledger |
 
 ## 性能预算
@@ -251,9 +251,10 @@ tags: [agent, harness, dialogue, discovery, design, performance]
 默认规则：
 
 1. 只要本轮新增了用户意图、场景、范围、非目标、约束、风险、验收、候选决策、拆解关系或待确认项，就必须同轮落文件。
-2. 如果还不适合进入正式 `requirements / trace / design / FP / EP / TASK`，先用 [[templates/guided-discovery-session-template]] 在合适的主页面或轻量会话记录中承接，不把早期信息只留在聊天。
-3. 如果本轮确实没有任何新信息、只是在解释已有页面或等待用户回答，最终回复必须写明“本轮无新增可沉淀信息”，并给出已回看的 owning page。
-4. 一旦产生实际文件变更，回到 [[instruction-adherence]] 的提交闭环：跑检查、区分脏改、提交或说明例外，并在最终回复给 commit hash。
+2. 如果本轮是计划型问题，且动作依赖权限、资源、时间窗或外部确认，还必须同轮记录状态变量、约束传播结果和当前可执行性判断；不要只写动作清单。
+3. 如果还不适合进入正式 `requirements / trace / design / FP / EP / TASK`，先用 [[templates/guided-discovery-session-template]] 在合适的主页面或轻量会话记录中承接，不把早期信息只留在聊天。
+4. 如果本轮确实没有任何新信息、只是在解释已有页面或等待用户回答，最终回复必须写明“本轮无新增可沉淀信息”，并给出已回看的 owning page。
+5. 一旦产生实际文件变更，回到 [[instruction-adherence]] 的提交闭环：跑检查、区分脏改、提交或说明例外，并在最终回复给 commit hash。
 
 ## 完成标准
 

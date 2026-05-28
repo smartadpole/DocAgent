@@ -4,7 +4,7 @@ id: ENTRY-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [entry, root]
 ---
 
@@ -15,7 +15,7 @@ tags: [entry, root]
 如果只记一件事，就记住这套七层模型：
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -25,7 +25,7 @@ tags: [entry, root]
 当前物理结构再补一句：
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
-- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
@@ -51,6 +51,7 @@ tags: [entry, root]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
 - 想知道“本轮该先轻量诊断还是进入沉淀 / 验收 / 规则升级” -> 读 [[response-mode-routing]]
+- 想知道“新信息进入系统后，会改哪些状态、依赖和可执行性，什么时候不能直接写成安排” -> 读 [[state-constraint-reasoning]]
 - 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 想知道“规则已有但为什么执行会漏、如何升级成触发器 / 模板 / sensor / 最终证明” -> 读 [[instruction-adherence]]
 - 想知道“当前执行页有没有把参考规则、非目标或证据说明漂成隐形待办” -> 读 [[execution-contract-semantics]]
@@ -91,6 +92,7 @@ tags: [entry, root]
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
 - [[response-mode-routing]] 负责把每轮 agent 工作先分成快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理，减少无谓重启动。
+- [[state-constraint-reasoning]] 负责把计划型问题先变成状态变量、约束传播和可执行性判断，而不是直接写动作流水。
 - [[instruction-adherence]] 负责把关键规则从自然语言推进到触发矩阵、模板字段、sensor、门禁和最终回复证明。
 - [[execution-contract-semantics]] 负责防止参考规则、条件路由、非目标和上层证据污染当前执行合同。
 - [[harness-evolution]] 和 [[harness-feedback-ledger]] 负责把用户纠偏、检查失败、模式切换和重复失守记录成 episode，再决定是否晋升为 sensor、模板、技能或规则。
@@ -105,12 +107,13 @@ tags: [entry, root]
 - 逻辑上，治理层负责约束、流程、裁定、背景和写法指南
 - 物理上，治理页统一收进 `governance/`，只保留 [[AGENTS]] 在根目录做 agent 特殊入口
 
-最容易混的是这四页：
+最容易混的是这几页：
 
 - [[POLICY]]：系统裁定规则。回答“什么允许、什么不允许、冲突时先按谁”
 - [[AGENTS]]：执行约束。回答“agent 修改时必须怎么做”
 - [[WORKFLOW]]：流程编排。回答“通常按什么顺序推进”
 - [[response-mode-routing]]：响应模式路由。回答“先快后重、读取深度和模式切换怎么判”
+- [[state-constraint-reasoning]]：状态与约束推演。回答“新信息进入系统后，哪些状态、依赖、阻塞和可执行性会被改变”
 - [[BRAIN]]：共享背景。回答“哪些前提以后默认带入”
 
 一句话记忆：
@@ -119,6 +122,7 @@ tags: [entry, root]
 - [[AGENTS]] 决定怎么执行
 - [[WORKFLOW]] 决定怎么走
 - [[response-mode-routing]] 决定先轻还是先重
+- [[state-constraint-reasoning]] 决定计划型问题里先判哪些状态和约束
 - [[BRAIN]] 决定默认带什么背景
 
 ## 软件研发模式怎么叠加

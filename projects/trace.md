@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [trace, project]
 ---
 
@@ -34,6 +34,47 @@ tags: [trace, project]
 - 不重复写完整设计正文或开发流水
 
 ## 当前主题
+
+### TRACE-003 计划型问题的系统状态模型与约束传播方法
+
+- **原始意图**：
+  - 用户指出自己缺的不是“多记一个前置条件”，而是把新信息放进整个系统里做状态与约束传播推演的能力。
+  - 这类缺口不仅会出现在搬家，也会出现在旅行、办证、采购、部署、上线、看病和签合同等所有依赖权限、资源、时间窗或外部确认的计划型问题里。
+- **收敛后的可执行需求**：
+  - 把“先更新状态变量、做约束传播、判可执行性，再更新计划”升级为当前 wiki 的正式方法。
+  - 研究层要系统调研自动规划、时间约束网络、约束规划 / 调度、项目调度、MBSE / Statecharts 和系统思维各自提供什么能力。
+  - 治理层要补一个跨场景可复用的方法入口，并把它接进响应模式、主动对话和 discovery 模板。
+- **关键决策变化**：
+  - **主收敛**：不把这次问题只沉淀成一篇“思考反思”，而是正式新增 [[state-constraint-reasoning]] 作为计划型问题的方法真相源。
+  - **结构分层**：外部知识进入 [[articles/2026-05-28-state-constraint-planning-research]]，稳定方法进入 [[concepts/state-constraint-planning]]，可执行默认进入治理页和模板。
+  - **执行改口**：今后遇到明显依赖权限、资源、时间窗或外部确认的计划型问题，默认先做状态变量和约束传播，不直接写动作安排。
+- **最终范围**：
+  - 生效入口：[[state-constraint-reasoning]]
+  - 知识沉淀：[[articles/2026-05-28-state-constraint-planning-research]]、[[concepts/state-constraint-planning]]
+  - 同步入口：[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]
+- **假设与未决项**：
+  - 本轮先完成方法入口、研究卡片和模板落位，不额外引入新的 sensor。
+  - 后续若再次出现“意图直接写成计划”的失守，再按 [[instruction-adherence]] 和 [[harness-feedback-ledger]] 判断是否补检查项或更强模板字段。
+- **关联页面**：
+  - [[articles/2026-05-28-state-constraint-planning-research]]
+  - [[concepts/state-constraint-planning]]
+  - [[state-constraint-reasoning]]
+  - [[response-mode-routing]]
+  - [[proactive-dialogue-system]]
+  - [[projects/decisions]]
+- **迭代**：
+
+#### 2026-05-28
+
+- **记录人**：sunhao
+- **角色**：agent
+- **本轮变化**：
+  - **主收敛**：把“系统状态模型意识缺失”从单次生活规划反思上升为跨场景可复用方法，并进入治理层。
+  - **研究补齐**：补做自动规划、时间约束网络、约束规划 / 调度、项目调度、MBSE / Statecharts 和系统思维的组合调研。
+  - **模板落地**：给引导式设计模板增加状态模型、约束传播和可执行性判断字段，减少以后只写动作清单。
+- **当前实现口径**：
+  - 新信息进入系统后，默认先归类为事实、意图、约束、假设、动作候选或阻塞，再做状态变量更新与约束传播。
+  - 没有通过可执行性判断的动作，不直接写进正式安排或当前计划。
 
 ### TRACE-002 Agent Harness 与响应效率治理升级
 
