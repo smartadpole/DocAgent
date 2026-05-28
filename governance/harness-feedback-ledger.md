@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-05-28 | Agent 治理专题落位纠偏 | 用户指出“这不是项目开发，属于知识库”，纠正 agent 将专题误放入 `projects/design/topics/` 和 `projects/trace` 的路由错误 | 知识沉淀 | 可优化成本 | 撤回项目开发链路改动，改为新增 [[concepts/agent-governance]]，并从 [[concepts/README]]、[[INDEX]] 和治理入口回链 | [[concepts/agent-governance]] | observed |
 | 2026-05-28 | 模板落位二分纠偏 | 用户指出不是一说模板就沉淀到 `templates/`，要区分知识库模板和系统治理模板 | 规则升级 | 可优化成本 | 更新 [[template-feedback-rules]]、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、[[POLICY]]、[[templates/README]] 和入口说明，明确知识库模板进专题成果，系统治理模板才进 `templates/` | [[template-feedback-rules]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-28 | 主动对话和性能预算升级 | 用户要求把 wiki 智能体系统升级得更前沿、更智能，同时注意性能 | 规则升级 | 可优化成本 | 新增 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]，把场景自动判定、无感交流等级、每轮产物化和读取 / 问题 / 检查 / 产物大小预算写入 Harness | `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-26 | DocCustomeranalysis 测试成熟度与口径漂移反哺 | 用户要求吸收同定位工程最近完善的 harness 设计、测试环节规则和口径漂移治理 | 规则升级 | 可优化成本 | 新增 [[instruction-adherence]]、[[execution-contract-semantics]]、[[concepts/software-testing-acceptance-release]]、测试计划 / AP 层和对应 sensors | `python3 scripts/check_all.py --only testing-system-maturity,execution-contract-semantics,harness-governance` | promoted |

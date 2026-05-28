@@ -9,6 +9,22 @@
 
 ## 2026-05-28
 
+### 开启 Agent 治理专题
+
+- **记录人**：sunhao
+- **用户意图**：开启一个专门承接 agent 治理能力演进的专题，让现有 Harness、规则、技能、模板、sensor 和复盘机制有统一议题入口。
+- **主题**：
+  1. Agent 治理属于知识库方法专题，不是项目开发专题，不能落到 `projects/design/topics/` 或续写项目开发 trace。
+  2. Agent 治理不是再堆一层硬规则，而是把响应路由、主动对话、指令遵循、执行合同、H5 自演进和工作复盘放到同一张知识库专题地图里。
+  3. 后续 agent 能力升级应先判断属于硬约束、执行路由、任务语义、能力复用还是反馈学习，再决定回写位置。
+- **关键动作**：
+  1. **新增知识库专题**：新增 [[concepts/agent-governance]]，定义 Agent 治理的核心问题、治理对象、分层模型、当前基线、使用口径和反模式。
+  2. **撤回错误落位**：撤回 `projects/design/topics/` 和 [[projects/trace]] 中的项目开发链路改动，保留知识库层沉淀。
+  3. **补入口回链**：更新 [[concepts/README]]、[[INDEX]] 和 [[governance/README]]，让概念入口、总索引和治理入口都能找到 Agent 治理专题。
+  4. **记录纠偏 episode**：更新 [[harness-feedback-ledger]]，把“知识库专题误落项目开发层”的路由偏差记为 observed episode。
+- **二阶反思**：这轮暴露的是专题落位路由缺口：不能只看到“专题”就进入项目设计专题；应先判断它是知识库方法、系统治理、项目运行还是研发开发。后续同类内容要先按知识库 / 项目开发分层判断，再决定是否进入 `projects/`。
+- **影响页面**：[[concepts/agent-governance]]、[[concepts/README]]、[[INDEX]]、[[governance/README]]、[[harness-feedback-ledger]]、[[log]]。
+
 ### 区分知识库模板和系统治理模板
 
 - **记录人**：sunhao
