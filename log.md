@@ -9,6 +9,22 @@
 
 ## 2026-05-28
 
+### 把状态与约束推演模板拆成多维报告资产
+
+- **记录人**：sunhao
+- **用户意图**：把已经形成的方法模板继续沉淀成资产库，不只保留一张总模板，而是能按不同分析维度复用出多种报告资产。
+- **主题**：
+  1. 模板不是一次性回答的附属物，而应作为可复用资产沉淀下来。
+  2. 状态与约束推演类问题不适合永远只用一张大模板；应按总览、可执行性、依赖传播、时间资源、阻塞不确定等维度拆成资产族。
+  3. 报告资产需要接回治理入口和模板入口，避免新增模板很快变成孤岛。
+- **关键动作**：
+  1. **新增资产模板**：新增 [[templates/state-constraint-overview-template]]、[[templates/state-executability-report-template]]、[[templates/dependency-propagation-report-template]]、[[templates/time-resource-window-report-template]] 和 [[templates/blocker-uncertainty-report-template]]。
+  2. **补模板入口**：更新 [[templates/README]]，把这组资产纳入模板层的正式使用入口，并明确按问题重心选模板。
+  3. **补治理说明**：更新 [[state-constraint-reasoning]] 和 [[concepts/state-constraint-planning]]，把“报告资产化”写成这套方法的正式落地方式，而不是口头建议。
+  4. **补项目主链**：续写 [[projects/trace]]，把这次从“单模板”升级到“多维资产族”的变化纳入当前方法主题的迭代链。
+- **二阶反思**：这轮说明真正可复用的方法论，通常不会停在一张万能模板；更稳定的做法是保留一个统一总模型，再围绕高频判断维度沉淀一组报告资产。后续若某类计划报告继续高频出现，应优先判断是否再拆成独立资产，而不是继续把总模板越写越厚。
+- **影响页面**：[[templates/state-constraint-overview-template]]、[[templates/state-executability-report-template]]、[[templates/dependency-propagation-report-template]]、[[templates/time-resource-window-report-template]]、[[templates/blocker-uncertainty-report-template]]、[[templates/README]]、[[state-constraint-reasoning]]、[[concepts/state-constraint-planning]]、[[projects/trace]]、[[log]]。
+
 ### 把计划型问题升级为状态与约束推演方法
 
 - **记录人**：sunhao

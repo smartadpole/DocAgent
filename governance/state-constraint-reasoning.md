@@ -130,6 +130,24 @@ tags: [governance, planning, constraint-propagation, executability]
 - **当前可执行性**：对相关动作逐个给 `executable / conditional / contingent / blocked`
 - **计划更新**：只写通过可执行性检查后的动作调整
 
+## 报告资产
+
+这套方法不只是一张总模板，也可以拆成多张按维度复用的报告资产：
+
+- [[templates/state-constraint-overview-template]]：首轮统一建模，总览状态、约束和计划更新。
+- [[templates/state-executability-report-template]]：单个动作或子计划的可执行性裁决。
+- [[templates/dependency-propagation-report-template]]：关键变化后的上下游传播分析。
+- [[templates/time-resource-window-report-template]]：时间窗口、资源可用性和互斥冲突分析。
+- [[templates/blocker-uncertainty-report-template]]：阻塞项、外部不确定和推进边界分析。
+
+使用原则：
+
+- 问题还没看清时，先用 `overview`。
+- 用户真正要的是“现在能不能做”，优先用 `executability`。
+- 核心是某条变化会怎样连锁扩散，优先用 `dependency propagation`。
+- 核心是排时间和资源，优先用 `time-resource window`。
+- 核心是卡在哪和哪些没被证明，优先用 `blocker-uncertainty`。
+
 ## 一个最小例子
 
 输入新信息：
@@ -182,6 +200,7 @@ tags: [governance, planning, constraint-propagation, executability]
 
 - 纯知识沉淀：优先回写 `articles/`、`concepts/` 和 [[log]]。
 - 引导式设计：同时更新 [[templates/guided-discovery-session-template]] 对应的状态模型、传播结果和可执行性判断。
+- 模板资产化：若某一类计划分析反复出现，优先从这组报告资产里挑对应模板，而不是临时再写一版自由格式说明。
 - 项目型计划：根据成熟度回写 [[projects/requirements]]、[[projects/trace]]、[[projects/decisions]] 或正式执行入口。
 - 收尾前，不把 `goal / intent`、`assumption` 或 `contingent` 动作伪装成已确认执行计划。
 

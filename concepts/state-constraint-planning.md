@@ -92,6 +92,7 @@ State-Constraint Planning 是一种把计划问题先建模为 `系统状态 + �
 - [[response-mode-routing]]：决定什么时候应先做状态与约束推演，而不是直接写计划。
 - [[proactive-dialogue-system]]：在目标仍粗糙时，把状态变量、依赖、未知和阻塞纳入主动引导。
 - [[templates/guided-discovery-session-template]]：给引导式设计补状态模型、传播结果和可执行性判断。
+- `templates/` 下已经拆出一组报告资产，覆盖总览、可执行性、依赖传播、时间资源窗口和阻塞不确定五个维度。
 
 ## 适用场景
 
