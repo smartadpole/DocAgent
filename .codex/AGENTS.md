@@ -15,6 +15,8 @@
 ## 工作阶段检查
 
 - 工作阶段优先跑专项 sensor：`python3 scripts/check_all.py --only harness-governance`。
+- H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
+- 入口、wikilink 或治理元数据改动跑：`python3 scripts/check_all.py --only project-docs`。
 - 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。
 - 执行合同语义、非目标或环境路由改动跑：`python3 scripts/check_all.py --only execution-contract-semantics`。
 - 收尾或提交前跑完整门禁：`python3 scripts/check_all.py`。

@@ -5,7 +5,7 @@ scope: shared
 status: active
 source_of_truth: true
 truth_scope: instruction_adherence_execution_coverage
-updated: 2026-05-26
+updated: 2026-05-28
 tags: [agent, harness, instruction-following]
 ---
 
@@ -47,6 +47,14 @@ tags: [agent, harness, instruction-following]
 | 执行页出现“默认不需要，但如果”、`可选 / 视情况 / 后续可能` 或非目标展开 | 按 [[governance/execution-contract-semantics]] 上移参考规则，当前事项只保留单值裁决 | `scripts/check_execution_contract_semantics.py` | 该句是否承担当前执行裁决 |
 | 用户指出规则没有被遵循 | 写入或更新 [[harness-feedback-ledger]]，判断是否晋升模板 / sensor / 流程 | [[harness-evolution]] | 一次性失误还是可复用缺口 |
 | 规则改动或规则迁移 | 做原始规则保全，判断补充、澄清、弱化、替换或冲突 | [[POLICY]] / [[template-feedback-rules]] | 改动是否降低旧规则强度 |
+
+## 当前 sensor 覆盖
+
+- `scripts/check_instruction_adherence.py` 检查本页触发矩阵、边界、收尾证明、ledger 回链和 `scripts/check_all.py` 接线，避免规则执行覆盖只停在自然语言。
+- `scripts/check_harness_feedback_ledger.py` 检查 [[harness-feedback-ledger]] 的四张表、状态词表、active episode、sensor backlog 和晋升来源回链。
+- `scripts/check_project_docs.py` 检查 wiki 入口页、治理元数据和本地 wikilink，避免入口漂移或链接断裂。
+- `scripts/check_harness_governance.py` 仍检查整体 Harness wiring、主动对话、Goal Contract、模板和治理入口；新拆出的专项 sensor 负责细颗粒度红灯。
+- 这些 sensor 只能覆盖结构和可见文本；证据是否足以关闭、规则是否该晋升、一次性偏好是否值得沉淀，仍由本页、[[harness-evolution]] 和人工语义判断共同裁定。
 
 ## 提交闭环防漏
 

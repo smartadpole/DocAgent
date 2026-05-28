@@ -4,7 +4,7 @@ id: GOV-HARNESS-EVOLUTION-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [agent, harness, feedback, evolution]
 ---
 
@@ -61,6 +61,7 @@ H5 同时要求清理噪音。以下内容要进入降级 / 删除候选：
 ## 工作节奏
 
 - 工作阶段：按 [[response-mode-routing]] 先判模式，再用 `python3 scripts/check_all.py --only <check-key>` 跑相关 sensor。
+- Ledger 结构更新后运行 `python3 scripts/check_all.py --only harness-feedback-ledger`；指令遵循覆盖更新后运行 `python3 scripts/check_all.py --only instruction-adherence`；入口、frontmatter 或 wikilink 改动运行 `python3 scripts/check_all.py --only project-docs`。
 - 阶段边界：如果发生模式切换、用户纠偏、检查失败或扩大编辑面，回看是否需要写入 [[harness-feedback-ledger]]，再跑相关专项 sensor。
 - 收尾阶段：完整门禁、提交和最终回复之后，判断本轮是否产生新的 H5 episode。
 - 周期复盘：用 [[templates/harness-evolution-review-template]] 汇总一段时间内的 episode，决定晋升、降级、删除或继续观察。

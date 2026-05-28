@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-05-28 | wiki 独立治理 sensor 拆分 | 跨 `wiki`、`DocCustomeranalysis`、`DocFilmCommunity` 对比后发现 wiki 作为模板级 Harness 已有规则页，但 H5 ledger、指令遵循和入口结构检查仍集中在 `check_harness_governance.py`，缺少可单独运行的工作阶段 sensor | 规则升级 | 可优化成本 | 新增 `scripts/check_harness_feedback_ledger.py`、`scripts/check_instruction_adherence.py`、`scripts/check_project_docs.py`，接入 `scripts/check_all.py --list` 和 `.codex/AGENTS.md` 工作阶段检查；同步 [[instruction-adherence]]、[[harness-evolution]] 和本 ledger | `python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence,project-docs` | active |
 | 2026-05-28 | 主动对话和性能预算升级 | 用户要求把 wiki 智能体系统升级得更前沿、更智能，同时注意性能 | 规则升级 | 可优化成本 | 新增 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]，把场景自动判定、无感交流等级、每轮产物化和读取 / 问题 / 检查 / 产物大小预算写入 Harness | `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-26 | DocCustomeranalysis 测试成熟度与口径漂移反哺 | 用户要求吸收同定位工程最近完善的 harness 设计、测试环节规则和口径漂移治理 | 规则升级 | 可优化成本 | 新增 [[instruction-adherence]]、[[execution-contract-semantics]]、[[concepts/software-testing-acceptance-release]]、测试计划 / AP 层和对应 sensors | `python3 scripts/check_all.py --only testing-system-maturity,execution-contract-semantics,harness-governance` | promoted |
 | 2026-05-25 | Codex Goals 转主控 / 子工程契约 | 用户要求基于 Goals 专题给出主控和子工程升级建议并落实 | 规则升级 | 可优化成本 | 新增 Goal Contract 模板，并把完成契约字段写入 Harness 接入、编码任务、回传包和 episode 模板 | [[templates/goal-contract-template]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
@@ -34,7 +35,9 @@ tags: [agent, harness, feedback, episode]
 
 | 候选项 | 触发来源 | 拟补 sensor / 模板 | 当前状态 |
 | --- | --- | --- | --- |
-| Markdown / wikilink / frontmatter 检查 | 多入口文档库容易出现链接和元数据漂移 | 后续可补 `scripts/check_project_docs.py` 或扩展 `check_harness_governance.py` | observed |
+| H5 ledger 独立 sensor | wiki 独立治理 sensor 拆分 | `scripts/check_harness_feedback_ledger.py` 检查四张表、状态词表、active episode、sensor backlog 和 promotion 来源回链 | active |
+| 指令遵循独立 sensor | wiki 独立治理 sensor 拆分 | `scripts/check_instruction_adherence.py` 检查 [[instruction-adherence]]、ledger、`.codex/AGENTS.md` 和 `scripts/check_all.py` 的执行覆盖接线 | active |
+| Markdown / wikilink / frontmatter 检查 | 多入口文档库容易出现链接和元数据漂移 | `scripts/check_project_docs.py` 检查入口页、治理 frontmatter 和本地 wikilink | active |
 | 技能质量检查 | 技能页可能复制项目事实或缺少触发 / 输出边界 | 后续可补技能结构检查 | observed |
 | 模板完整性检查 | 新增模板后可能忘记挂入口或字段漂移 | 当前由 `check_harness_governance.py` 覆盖 Harness 模板入口 | active |
 | 研发事项结构检查 | 关键词式 wiring 检查可能随着字段增加变脆 | 当前由 `check_work_item_matrix.py` 检查矩阵列顺序、模板字段、章节、表头和入口链接 | active |
@@ -47,6 +50,7 @@ tags: [agent, harness, feedback, episode]
 
 | 候选规则 | 来自 episode | 晋升目标 | 状态 |
 | --- | --- | --- | --- |
+| 模板级 H5 不能只靠聚合式 harness 检查；ledger、instruction-adherence 和入口结构应可按工作阶段独立运行 | wiki 独立治理 sensor 拆分 | `scripts/check_harness_feedback_ledger.py` / `scripts/check_instruction_adherence.py` / `scripts/check_project_docs.py` / `scripts/check_all.py --list` | active |
 | 长时任务先写 Goal Contract，主控定义完成契约，子工程回传证据 | Codex Goals 转主控 / 子工程契约 | [[response-mode-routing]] / [[WORKFLOW]] / [[templates/goal-contract-template]] | promoted |
 | 工作阶段跑专项 sensor，收尾和提交前跑完整门禁 | DocCustomeranalysis Harness 反哺 | [[harness-evolution]] / `scripts/check_all.py` | promoted |
 | H5 episode 不直接晋升硬规则，先进入 ledger 和复盘 | DocCustomeranalysis Harness 反哺 | [[harness-evolution]] | promoted |
@@ -61,6 +65,7 @@ tags: [agent, harness, feedback, episode]
 
 | 候选清理 | 原因 | 当前状态 |
 | --- | --- | --- |
+| `check_harness_governance.py` 承担所有细节检查 | 已拆出 ledger、instruction-adherence 和 project-docs 专项 sensor，聚合检查后续只保留 wiring / 模板 / Harness 主干 | active |
 | 多处手写检查脚本清单 | 已由 `scripts/check_all.py --list` 和 `--only` 承接 | observed |
 | 已被 sensor 覆盖的重复自然语言规则 | 避免入口页继续膨胀 | observed |
 | `work-item-matrix` 旧关键词堆叠 | 已改为结构化检查，后续优先补字段 / 表头 / 章节断言 | promoted |

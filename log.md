@@ -9,6 +9,19 @@
 
 ## 2026-05-28
 
+### 拆分 wiki 独立治理 sensor
+
+- **记录人**：sunhao
+- **用户意图**：先治理 wiki 的 agent 系统，不继续只停留在跨工程对比结论。
+- **复核结论**：wiki 作为模板级 Harness 已有主动对话、Goal Contract、H5 ledger、instruction-adherence 和执行合同语义页面，但 H5 ledger、指令遵循和入口结构检查仍主要收在 `check_harness_governance.py` 里，不利于工作阶段按改动面单独验证。
+- **关键动作**：
+  1. 新增 `scripts/check_harness_feedback_ledger.py`，检查 [[harness-feedback-ledger]] 四张表、状态词表、active episode、sensor backlog 和 promotion 来源回链。
+  2. 新增 `scripts/check_instruction_adherence.py`，检查 [[instruction-adherence]] 的触发矩阵、sensor 覆盖、收尾证明和 `scripts/check_all.py` 接线。
+  3. 新增 `scripts/check_project_docs.py`，检查 wiki 入口页、治理 frontmatter 和本地 wikilink。
+  4. 更新 `scripts/check_all.py`、`.codex/AGENTS.md`、[[harness-evolution]] 和 [[harness-feedback-ledger]]，让三个专项 sensor 可用 `--only` 独立运行。
+- **二阶反思**：这次治理不应照搬 `DocCustomeranalysis` 的重 finalizer / 外部子工程写入边界，而应先把 wiki 自己的模板级 H5 检查拆细；后续若 wiki 变成具体主控工程，再考虑更强收尾证明。
+- **影响页面**：[[harness-feedback-ledger]]、[[harness-evolution]]、[[instruction-adherence]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_all.py`、`scripts/check_harness_governance.py`、`scripts/check_harness_feedback_ledger.py`、`scripts/check_instruction_adherence.py`、`scripts/check_project_docs.py`。
+
 ### 同步 Customer 架构图绘制规范
 
 - **记录人**：sunhao

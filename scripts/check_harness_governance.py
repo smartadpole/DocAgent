@@ -24,6 +24,9 @@ REQUIRED_FILES = (
     "templates/harness-evolution-review-template.md",
     ".codex/AGENTS.md",
     "scripts/check_all.py",
+    "scripts/check_project_docs.py",
+    "scripts/check_harness_feedback_ledger.py",
+    "scripts/check_instruction_adherence.py",
     "scripts/check_testing_system_maturity.py",
     "scripts/check_execution_contract_semantics.py",
     "AGENTS.md",
@@ -170,7 +173,10 @@ ISSUE_SKILL_REQUIRED_TERMS = (
 
 CHECK_ALL_REQUIRED_TERMS = (
     "--only",
+    "project-docs",
     "harness-governance",
+    "harness-feedback-ledger",
+    "instruction-adherence",
     "testing-system-maturity",
     "execution-contract-semantics",
     "git-diff-whitespace",
