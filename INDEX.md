@@ -110,7 +110,7 @@ tags: [index, root]
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
 - [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板
-- [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库
+- [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库，并区分知识库模板与系统治理模板
 
 ## 项目接手与代码基线
 

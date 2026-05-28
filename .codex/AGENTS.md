@@ -24,4 +24,5 @@
 
 - 当前库是模板级 Harness，只吸收系统层规则、流程、模板、技能和自动化契约。
 - 从下游工程反哺时，不复制项目事实、业务名、运行实例、具体状态或一次性测试证据。
+- 提到模板时先按 [[template-feedback-rules]] 区分知识库模板和系统治理模板；知识库模板写 owning topic，系统治理模板才写 `templates/`。
 - episode 先写入 [[harness-feedback-ledger]]，不要因为单次纠偏直接新增硬规则。

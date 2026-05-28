@@ -105,6 +105,7 @@ tags: [policy]
 - agent 可以自动执行格式归一化：把本库内错误的 Markdown 页面引用收敛成 `[[wikilink]]`，把明显失效的空链接、占位链接和本机绝对路径引用修正掉
 - agent 可以在收尾或被用户指出重复 / 同类问题时，做二阶反思并自动更新既有流程、执行约束、模板入口或 [[log]]；如果反思会新增高优先级规则、改变自动写入边界、改变优先级或覆盖旧规则，必须先按冲突流程升级。
 - agent 可以在用户要求反哺模板时，按 [[template-feedback-rules]] 把下游项目中已经验证的结构、流程、规则、记忆路由、模板、写法和自动化契约抽象回模板库；抽象时不得复制项目事实、业务状态或具体技术拍板；“规则默认反哺”只表示默认进入候选，写入前必须通过抽象、冲突和单一信息源检查
+- 当用户说“模板 / template / 模板化”时，agent 不得自动把内容写入 `templates/`；必须先区分知识库模板和系统治理模板。知识库模板属于专题成果，优先进入 owning topic、`articles/`、`concepts/` 或项目专题页；系统治理模板才进入 `templates/`。
 - agent 可以把用户纠偏、检查失败、模式切换、重复失守或明显可脚本化缺口写入 [[harness-feedback-ledger]]；episode 记录只代表 Harness 反馈数据，不自动晋升为 [[AGENTS]]、[[POLICY]] 硬规则，也不自动关闭项目事项。
 - agent 可以自动写入 `skills/` 下的项目内技能页，前提是该技能只承接可复用分析流程、判断框架、输出格式和回写守卫；技能页不得替代项目状态、需求、设计、EP / TASK 状态、轻量 TODO、测试报告或服务台账的单一信息源。
 - 下游项目的技能可以反哺为模板技能，但只能吸收抽象后的触发条件、事实源分层、定位方法、分工方式、验证方案、输出格式和禁止项；项目业务链路、数据表、运行 ID、服务实例、本地路径、仓库提交规则和一次性 handoff 不进入模板技能。
@@ -149,6 +150,7 @@ tags: [policy]
 - 项目冲突和最终拍板，进入 [[projects/decisions]]
 - 文档库本体的框架级说明和层级边界，默认写根 [[README]]；如果需要补背景，写 [[BRAIN]]；如果需要写规则，写 [[POLICY]]
 - 下游项目反哺模板时，先进入 [[template-feedback-rules]] 的判断流程；可复用的结构写入口和结构页，可复用的执行顺序写 [[WORKFLOW]]，硬约束写 [[AGENTS]]，规则边界和记忆路由写 [[POLICY]]，共享背景写 [[BRAIN]]，可复制写法和模板骨架写 `templates/`
+- 模板类内容先进入 [[template-feedback-rules]] 的知识库模板 / 系统治理模板二分：专题成果写 owning topic，可复制治理骨架才写 `templates/`
 - Harness 自演进先进入 [[harness-evolution]] 和 [[harness-feedback-ledger]]；只有重复出现、影响面大或已经能由 sensor / 模板稳定表达的 episode，才继续晋升到 [[WORKFLOW]]、[[AGENTS]]、[[POLICY]]、技能或脚本。
 - 可复用的 agent 技能写 [[skills/README]] 和对应 `skills/<name>/SKILL.md`；如果技能页成为高频文件类型，再补 [[templates/skill-template]]。
 - 如果反哺候选和既有规则冲突，或者会覆盖旧规则、扩大自动写入边界、改变优先级顺序，先按冲突处理流程升级，不直接写入模板默认规则

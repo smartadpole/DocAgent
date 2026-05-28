@@ -9,6 +9,22 @@
 
 ## 2026-05-28
 
+### 区分知识库模板和系统治理模板
+
+- **记录人**：sunhao
+- **用户意图**：纠正“只要一说模板就沉淀到 `templates/`”的落位偏差，要求先判断这是知识库模板还是系统治理模板。
+- **主题**：
+  1. 知识库模板属于专题成果，承接方法框架、报告结构、分析维度或内容骨架，优先落在 owning topic、`articles/`、`concepts/` 或项目专题页。
+  2. 系统治理模板属于 `templates/`，只承接跨项目、跨页面类型复用的可复制页面骨架、字段、证据边界和检查口径。
+  3. “模板化”不是自动新建模板文件的理由，必须先过模板分类、单一信息源和规则体积检查。
+- **关键动作**：
+  1. **升级裁定页**：更新 [[template-feedback-rules]]，新增知识库模板 / 系统治理模板二分、落位规则、进入 `templates/` 的最低条件和反哺分类标签。
+  2. **同步执行约束**：更新 [[AGENTS]]、`.codex/AGENTS.md`、[[POLICY]] 和 [[WORKFLOW]]，把“先分类再落位”写入 agent 执行、自动写入边界和反哺流程。
+  3. **收窄模板目录职责**：更新 [[templates/README]]，明确本目录只放系统治理可复制骨架，不承接所有专题模板化成果。
+  4. **补入口和 episode**：更新 [[README]]、[[INDEX]] 和 [[harness-feedback-ledger]]，让入口能指向这次二分规则，并把用户纠偏记录为 promoted episode。
+- **二阶反思**：这轮暴露的是术语路由缺口：同一个“模板”词在知识沉淀和治理骨架里含义不同。后续同类纠偏应优先补分类触发和路由，而不是继续新增模板文件。
+- **影响页面**：[[template-feedback-rules]]、[[AGENTS]]、`.codex/AGENTS.md`、[[POLICY]]、[[WORKFLOW]]、[[templates/README]]、[[README]]、[[INDEX]]、[[harness-feedback-ledger]]、[[log]]。
+
 ### 补充 Agent 工作复盘子专题
 
 - **记录人**：sunhao

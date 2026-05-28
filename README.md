@@ -58,7 +58,7 @@ tags: [entry, root]
 - 想知道“项目级稳定记忆放哪” -> 读 [[projects/memory/README]]
 - 想知道“一轮需求是怎么从原始意图收敛成当前实现口径的” -> 读 [[projects/trace]]
 - 想知道“`[[projects/trace]]` 应该怎么写、怎么续写旧主题” -> 读 [[trace-writing-rules]]
-- 想知道“其他项目进化出的系统层信息怎么反哺模板” -> 读 [[template-feedback-rules]]
+- 想知道“其他项目进化出的系统层信息怎么反哺模板，或怎么区分知识库模板和系统治理模板” -> 读 [[template-feedback-rules]]
 - 想把长时任务写成可审计完成契约 -> 读 [[concepts/codex-goals]] 和 [[templates/goal-contract-template]]
 - 想找“可复制模板” -> 读 [[templates/README]]
 - 想使用或维护“项目内 agent 技能” -> 读 [[skills/README]]
@@ -138,7 +138,7 @@ tags: [entry, root]
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
 - 流程控制：不做自动流控，由人读项目主页后手动推进
-- 模板反哺：下游项目里被真实使用验证过的结构、流程、规则、记忆路由、写法、模板和自动化契约，抽掉项目事实后按 [[template-feedback-rules]] 回写模板库
+- 模板反哺：下游项目里被真实使用验证过的结构、流程、规则、记忆路由、写法、模板和自动化契约，抽掉项目事实后按 [[template-feedback-rules]] 回写；其中知识库模板进专题成果，系统治理模板才进 `templates/`
 
 如果是在探索一个全新的桌面端、web 或 app 产品，先进入“新应用探索模式”，不要一上来铺满完整研发结构：
 
