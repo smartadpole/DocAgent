@@ -27,6 +27,7 @@
 - `projects/codebase/`：代码基线审计层。承接现实实现、既有工程、外部模板或旧系统的页面图、schema 图、基础设施、冲突和复用边界；它不反向定义主工程口径。
 - `projects/codebase/source-code-audit-workflow.md`：源码工程深度解读工作流。遇到源码解读、既有系统审计或生产接入判断时，必须先按该页定义目标等级、证据矩阵和终态自审，不允许把首轮核心链路理解说成完整审计。
 - `projects/design/`：正式设计层。`README.md` 做总入口；`tech-selection.md`、`architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md` 共同组成完整软件架构包；`topics/` 承接重要设计专题和专项储备。
+- `projects/design/diagrams/`：设计图资产层。承接正式架构图、服务拓扑图、业务到实现总览图和设计推演图；Excalidraw 是当前主力源文件格式，Diagrams.Net 只用于架构稳定后的正式交付版，Markdown 正文默认嵌入 SVG / PNG 作为可读预览，并在同段落回链 Excalidraw 源文件用于编辑。
 - `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
 - `projects/design/topics/`：设计专题层。承接未拍板但需要持续推进的设计问题，以及当前不进入完整架构包、但要长期保留的专项设计储备；会议页只引用，不重复维护主正文。
 - `projects/development/plan/`：研发总控层。承接当前阶段、阶段门摘要、执行入口、事项关系模型和支撑文件分组。
@@ -77,6 +78,7 @@
 - 如果这次内容是项目级稳定事实，先读 `projects/memory/README.md`。
 - 每一次有新的知识、材料、代码事实、会议结论或验收结果进入，都要从上层主题和全局方案重新思考它解决了哪些旧疑问、引出了哪些新问题、是否冲击已有需求 / 设计 / 决策 / 记忆 / 状态，并同步到对应主页面、风险、会议或决策页。
 - 对外 API、调度入口、服务间回调、webhook、跨工程数据合同和数据库写入接口变更时，不能只沉淀在 handoff 或最终回复里；必须同步写入正式中文文档，handoff 只承接执行证据和临时问题。
+- 大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图不得继续默认用 Mermaid 承载。当前图工具固定为 Excalidraw 和 Diagrams.Net：Excalidraw 负责当前主力推演图和持续维护图；Diagrams.Net 只负责架构冻结后的正式交付 / 汇报图；Markdown 正文默认嵌入 SVG / PNG 作为可读预览，并在同段落回链 Excalidraw 源文件用于编辑。Mermaid 只保留给局部小流程、状态机或短链路说明；不得新增 D2 或其他图工具，除非用户重新拍板。
 - 做验收或复验时，必须先说明本轮验收对象、测试方案、核心用例 / 检查点、相关功能回归范围、分层验证结论和人工确认边界；缺少 `local validation`、`service-side validation` 或 `end-to-end validation` 中关键层级时，不能把局部通过写成完整闭环。
 - 做验收或复验时，如果涉及请求参数、配置参数、profile、feature flag、限流值、采样数量、筛选条件或 retry context，不得只用默认值 happy path 或接口回显判定通过；至少验证一个非默认值 / 边界值，并证明它真实改变了执行结果。
 - 研发事项默认主链是 `Gate -> FP -> EP -> TASK`；risk、issue、test、验收、报告和服务台账是关系节点。新增或关闭 Gate / FP / EP / TASK 时，必须补齐 `risk:`、`test:`、`验收:`、`issue-trigger:` 覆盖，不得把 issue-trigger 当成已发生 Issue。

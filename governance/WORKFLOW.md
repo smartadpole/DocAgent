@@ -524,10 +524,13 @@
 - 只有空文件、误建页、无引用重复页，才考虑删除。
 - 任何归档、合并、删除动作都要同步更新链接、索引和 `log.md`。
 
-## 1.8 附件和 Canvas
+## 1.8 附件、Canvas 和设计图资产
 
 - 原始 PDF、图片、下载包等如果是证据来源，继续放 `raw/`。
-- 截图、图表导出、示意图、Canvas、Excalidraw 这类支持性文件，优先放 `assets/`。
+- 截图、临时图表导出、示意图、Canvas 这类支持性文件，优先放 `assets/`。
+- 大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图，优先进入 `projects/design/diagrams/`，不要继续默认塞进 `assets/` 或写成长 Mermaid。
+- Excalidraw 是当前主力源文件格式；Diagrams.Net 只在架构冻结后用于正式交付 / 汇报版；Mermaid 只保留给局部小流程、状态机或短链路说明。
+- 正式 Markdown 正文默认嵌入 SVG / PNG 预览图，并在同段落回链 Excalidraw 源文件，确保普通阅读页可直接看图，编辑时也能找到源文件。
 - 这类文件的名字尽量稳定，最好能看出日期、主题和用途。
 - 如果某个 Canvas 只是在表达结构关系，优先在 `indexes/` 或 `concepts/` 里挂入口，再把可视化文件放到 `assets/`。
 
@@ -535,7 +538,7 @@
 
 - 不要为了看起来模块化，就把只有一个 `README.md` 的内容放进子目录。
 - 如果一个模块当前只有一个主文件，优先平铺，例如 `releases.md`。
-- 如果一个模块已经有多个职责明确的文件，就保留目录，例如设计主入口 `design/README.md` 加上它的子页 `design/architecture.md`、`design/backend-frontend-structure.md`、`design/permission-boundary.md`、`design/write-boundary.md`、`design/database.md`、`design/deployment.md`、`design/runtime-quality.md`。
+- 如果一个模块已经有多个职责明确的文件，就保留目录，例如设计主入口 `design/README.md` 加上它的子页 `design/architecture.md`、`design/backend-frontend-structure.md`、`design/permission-boundary.md`、`design/write-boundary.md`、`design/database.md`、`design/deployment.md`、`design/runtime-quality.md` 和设计图资产目录 `design/diagrams/`。
 - `incidents/` 这类天然会累积多条独立记录的模块，默认保留目录。
 - 现有内容优先保留；先根据内容是否已经长成多文件模块判断，再决定要不要收平。
 

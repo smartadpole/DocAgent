@@ -4,7 +4,7 @@ id: DECISION-LOG-001
 project: PROJ-WIKI-001
 status: active
 priority: high
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [decision]
 ---
 
@@ -26,16 +26,39 @@ tags: [decision]
 
 ## 当前生效决策摘要
 
-1. [[projects/decisions#2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链|Gate / FP / EP / TASK 成为研发事项默认主链]]：risk、Issue、test、验收、报告和服务台账作为关系节点接入。影响：不能再用单个 TODO 或报告替代 EP / TASK / Gate 闭环。
-2. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
-3. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
-4. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
-5. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为能力实体页。影响：执行闭环后续已由 EP / TASK 承接，FP 不再作为最小执行单位。
-6. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
-7. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
-8. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
+1. [[projects/decisions#2026-05-28 设计图工具采用 Excalidraw 主力和 Diagrams.Net 正式版|设计图工具采用 Excalidraw 主力和 Diagrams.Net 正式版]]：大型架构图、服务拓扑和业务到实现总览图统一进入 [[projects/design/diagrams/README|diagrams]]。影响：Mermaid 退回局部小流程，正文预览图必须回链可编辑源文件。
+2. [[projects/decisions#2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链|Gate / FP / EP / TASK 成为研发事项默认主链]]：risk、Issue、test、验收、报告和服务台账作为关系节点接入。影响：不能再用单个 TODO 或报告替代 EP / TASK / Gate 闭环。
+3. [[projects/decisions#2026-05-25 响应模式路由成为 wiki Harness 默认入口|响应模式路由成为 wiki Harness 默认入口]]：每轮先判快速诊断、沉淀、验收、实现或规则升级。影响：简单问题先给 checkpoint，重治理闭环显式切换。
+4. [[projects/decisions#2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑|H5 自演进和本地 sensor 成为 Harness 默认支撑]]：episode 先入 ledger，再按证据晋升。影响：规则不直接膨胀，优先补模板和 `scripts/check_all.py` sensor。
+5. [[projects/decisions#2026-04-13 会议材料拆出到 meetings 模块|会议材料拆出到 meetings 模块]]：正式会议进入会议层。影响：会议纪要、行动项和会后分流不再默认写进开发 worklog。
+6. [[projects/decisions#2026-04-10 功能点推进采用实体页状态机|功能点推进采用实体页状态机]]：功能点成为能力实体页。影响：执行闭环后续已由 EP / TASK 承接，FP 不再作为最小执行单位。
+7. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
+8. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
+9. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
 
 ## 正式决策记录
+
+### 2026-05-28 设计图工具采用 Excalidraw 主力和 Diagrams.Net 正式版
+
+- **背景**：`DocCustomeranalysis` 已经把大型系统图从长 Mermaid 迁移为“SVG / PNG 正文预览 + Excalidraw 可编辑源文件”的图资产模式。当前 wiki 仍只有 `assets/` 对截图、Canvas 和 Excalidraw 的泛化描述，缺少正式设计图资产入口。
+- **要决策什么**：wiki 后续大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图使用什么工具、图源文件放哪里、Markdown 正文如何同时满足可读和可编辑。
+- **可选项**：
+  - 继续用 Mermaid 承接所有图。
+  - 把所有图都放 `assets/`，不区分临时附件和正式设计图。
+  - 建立 `projects/design/diagrams/` 作为正式设计图资产入口，并固定工具分工。
+- **最终决策**：采用 `projects/design/diagrams/` 作为正式设计图资产入口。Excalidraw 是当前主力源文件格式；Diagrams.Net 只用于架构稳定后的正式交付 / 汇报版；Mermaid 只保留给局部小流程、状态机和短链路说明。
+- **影响**：
+  - [[projects/design/README|design]]、[[projects/STRUCTURE|STRUCTURE]]、[[AGENTS]] 和 [[WORKFLOW]] 都必须承认 `projects/design/diagrams/` 的职责。
+  - Markdown 正文默认嵌入 SVG / PNG 作为可读预览，并在同段落回链 Excalidraw 源文件。
+  - `.obsidian/community-plugins.json` 启用 `obsidian-excalidraw-plugin` 和 `obsidian-diagrams-net`，插件文件随 vault 放在 `.obsidian/plugins/`。
+  - `assets/` 继续承接截图、临时导图、支持性附件和非正式 Canvas，不承接大型正式系统图的单一入口。
+- **各自优劣**：
+  - Mermaid 最轻，但大图容易横向裁切、空白巨大和布局不可控。
+  - 全放 `assets/` 最省结构，但会混淆临时附件和正式设计资产。
+  - 独立 diagrams 入口需要多页同步，但能让图源、导出物和正文预览保持单一管理。
+- **风险点**：
+  - SVG / PNG 是快照，不是源文件；只改导出图会造成维护断链。
+  - Diagrams.Net 不应过早替代 Excalidraw 推演图；只有进入汇报 / 交付场景时才做正式版。
 
 ### 2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链
 

@@ -111,6 +111,7 @@ tags: [index, root]
 
 - [[projects/design/README]]：软件架构总入口和推荐阅读顺序
 - [[projects/design/topics/README]]：重要设计专题入口，承接未拍板专题和专项储备
+- [[projects/design/diagrams/README]]：设计图资产入口，承接 Excalidraw 源文件、Diagrams.Net 正式图和 SVG / PNG 预览图
 - [[projects/design/tech-selection]]：技术选型
 - [[projects/design/architecture]]：业务架构、页面动作和状态机
 - [[projects/design/backend-frontend-structure]]：前后端工程结构、接口约定和代码落点

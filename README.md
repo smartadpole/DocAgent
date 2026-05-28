@@ -64,7 +64,8 @@ tags: [entry, root]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“源码工程深度解读怎么分级推进” -> 读 [[projects/codebase/source-code-audit-workflow]]
 - 想看“真实服务实例现在在哪里运行、怎么健康检查” -> 读 [[projects/service-registry]]
-- 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量
+- 想看“完整软件架构包” -> 按 [[projects/design/README]] 里的顺序读技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署、运行质量和设计图资产
+- 想看“大型架构图 / 服务拓扑图怎么画、放哪、怎么维护” -> 读 [[projects/design/diagrams/README]]
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想看“Gate、FP、EP、TASK、Issue、risk、test、验收和台账怎么组织” -> 读 [[projects/development/plan/work-item-system-model]]
 - 想看“测试计划、AP 验收计划、环境路由和测试报告怎么分工” -> 读 [[projects/development/plan/test-acceptance-planning-model]] 和 [[projects/development/acceptance/README]]
@@ -157,7 +158,7 @@ tags: [entry, root]
 
 如果你正在做研发，先看 [[projects/README]]；如果已经进入拆解、执行或准出阶段，再看 [[projects/development/plan/README]]。
 如果你想先看项目层的目录、文件、依赖和读取顺序，直接看 [[projects/STRUCTURE]]。
-如果你想按一条固定顺序看完整架构，直接看 [[projects/design/README]] 里的 `完整架构包` 和 `查看顺序`。
+如果你想按一条固定顺序看完整架构，直接看 [[projects/design/README]] 里的 `完整架构包` 和 `查看顺序`；如果要维护大型架构图、服务拓扑图或业务到实现总览图，再看 [[projects/design/diagrams/README]]。
 
 如果你想看这套文档库的整体设计思路，去看 [[articles/2026-04-09-obsidian-doc-system-design]] 和 [[concepts/document-os]]。
 如果你想看分层记忆的设计，去看 [[articles/2026-04-09-layered-memory-research]] 和 [[concepts/layered-memory]]。

@@ -2,7 +2,7 @@
 type: structure
 project: wiki
 status: active
-updated: 2026-05-25
+updated: 2026-05-28
 ---
 
 # 项目层结构
@@ -60,6 +60,8 @@ projects/
     database.md
     deployment.md
     runtime-quality.md
+    diagrams/
+      README.md
     topics/
       README.md
     memory/
@@ -222,6 +224,9 @@ projects/
 - `projects/design/runtime-quality.md`
   这是运行质量子页
   适合放监控、告警、幂等、重试、补偿、限流和稳定性口径
+- `projects/design/diagrams/README.md`
+  这是设计图资产入口
+  适合放正式架构图、服务拓扑图、业务到实现总览图、设计推演图、Excalidraw 源文件、Diagrams.Net 正式图和 SVG / PNG 阅读预览；不替代设计正文
 - `projects/design/topics/README.md`
   这是设计专题入口
   适合放未拍板但需要持续推进的设计专题，以及当前不进入完整架构包、但要长期保留的专项储备

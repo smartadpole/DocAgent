@@ -6,10 +6,10 @@
 
 - 截图
 - 图片
-- 图表导出
+- 临时图表导出
 - 示意图
 - Canvas
-- Excalidraw
+- 支持性 Excalidraw 草图
 - 其他不是原始来源、但会被页面引用的文件
 
 ## 不适合放什么
@@ -17,6 +17,7 @@
 - 原始来源文档
 - 已整理好的摘要正文
 - 应该进入 `articles/`、`concepts/` 或 `indexes/` 的内容
+- 正式架构图、服务拓扑图、业务到实现总览图和跨模块数据流图；这些进入 [[projects/design/diagrams/README]]
 
 ## 维护原则
 

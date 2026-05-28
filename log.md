@@ -9,6 +9,19 @@
 
 ## 2026-05-28
 
+### 同步 Customer 架构图绘制规范
+
+- **记录人**：sunhao
+- **用户意图**：用户指出 Customer 中已有架构图绘制规范，wiki 不应继续缺失同步；重点是大型架构图不使用不实用的 Mermaid，而采用另一套可维护图工具。
+- **复核结论**：本轮只同步抽象后的图工具规则，不复制 `DocCustomeranalysis` 的业务图、服务事实或项目状态。正式大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图应进入 `projects/design/diagrams/`；Excalidraw 是主力源文件，Diagrams.Net 只用于稳定后的正式交付 / 汇报图，Mermaid 退回局部小流程、状态机和短链路。
+- **关键动作**：
+  1. 新增 [[projects/design/diagrams/README]]，作为设计图资产入口，固定 Excalidraw、Diagrams.Net、Mermaid 和其他图工具分工。
+  2. 更新 [[projects/design/README]]、[[projects/STRUCTURE]]、[[projects/decisions]]、[[INDEX]] 和 [[README]]，把设计图资产纳入架构阅读和结构入口。
+  3. 更新 [[AGENTS]]、[[WORKFLOW]] 和 [[assets/README]]，明确正式大图不再默认放 `assets/` 或写成长 Mermaid，`assets/` 只承接临时支持性附件和草图。
+  4. 从 `DocCustomeranalysis` 同步 Obsidian 插件包 `obsidian-excalidraw-plugin` 和 `obsidian-diagrams-net`，并更新 `.obsidian/community-plugins.json`。
+- **二阶反思**：这次漏同步说明跨项目吸收不能只查“设计正文”，还要查源项目的 `AGENTS`、`decisions`、`STRUCTURE` 和专门资产入口；后续用户提到“Customer 中已有规范”时，应优先用 Customer 作为源头而不是只查目标仓库是否已有关键词。
+- **影响页面**：[[projects/design/diagrams/README]]、[[projects/design/README]]、[[projects/STRUCTURE]]、[[projects/decisions]]、[[AGENTS]]、[[WORKFLOW]]、[[INDEX]]、[[README]]、[[assets/README]]、[[log]]、`.obsidian/community-plugins.json`、`.obsidian/plugins/obsidian-excalidraw-plugin/`、`.obsidian/plugins/obsidian-diagrams-net/`。
+
 ### 升级主动对话和性能预算 Harness
 
 - **记录人**：sunhao

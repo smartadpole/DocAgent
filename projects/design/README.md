@@ -4,8 +4,8 @@ id: DES-001
 project: PROJ-WIKI-001
 status: active
 stage: design
-updated: 2026-04-25
-tags: [design]
+updated: 2026-05-28
+tags: [design, diagrams]
 ---
 
 # 设计
@@ -27,11 +27,13 @@ tags: [design]
 - [[projects/design/database]]
 - [[projects/design/deployment]]
 - [[projects/design/runtime-quality]]
+- [[projects/design/diagrams/README]]
 - [[projects/design/memory/README]]
 
 设计专题目录：
 
 - [[projects/design/topics/README]]
+- [[projects/design/diagrams/README]]
 
 ## 这页负责什么
 
@@ -42,13 +44,14 @@ tags: [design]
 - 说明设计总览，并链接技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量子页
 - 说明哪些未拍板但重要的设计问题，已经被收成独立专题页
 - 说明 memory 路由和 policy 接线应该如何落到项目结构里
+- 说明大型设计图、服务拓扑图和业务到实现总览图的图工具分工与资产入口
 - 承接需求演进链当前生效的范围和约束，把它落成可实现方案
 
 相关方法：[[concepts/prd-writing]]
 
 ## 完整架构包
 
-当前完整软件架构包默认由这 8 张主设计页组成：
+当前完整软件架构包默认由 8 张主设计页和 1 个设计图资产入口组成：
 
 1. [[projects/design/tech-selection]]：先看为什么选这条底座，不选什么。
 2. [[projects/design/architecture]]：再看业务模块、页面、动作、状态机和权限边界。
@@ -58,6 +61,8 @@ tags: [design]
 6. [[projects/design/database]]：再看数据模型、约束、索引和迁移边界。
 7. [[projects/design/deployment]]：再看环境、部署拓扑、发布和回滚。
 8. [[projects/design/runtime-quality]]：最后看监控、告警、幂等、重试、补偿和运行稳定性。
+
+[[projects/design/diagrams/README]] 是设计图资产入口。大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图优先放这里：Excalidraw 作为主力源文件，Diagrams.Net 只用于架构冻结后的正式交付 / 汇报版，Markdown 正文默认嵌入 SVG / PNG 预览并回链可编辑源文件。
 
 [[projects/design/topics/README]] 不属于当前完整架构包。它承接未拍板但已需要持续推进的设计专题，以及暂不进入当前范围但需要长期保留的专项储备。
 
@@ -72,6 +77,7 @@ tags: [design]
 5. 再看 [[projects/design/write-boundary]]，确认写操作边界。
 6. 再看 [[projects/design/database]]，确认状态、字段、约束和迁移真相源。
 7. 最后看 [[projects/design/deployment]] 和 [[projects/design/runtime-quality]]，确认运行、发布和稳定性口径。
+8. 如果需要看大型结构图或维护图源文件，再看 [[projects/design/diagrams/README]]。
 
 ### 先动实现时
 
@@ -106,6 +112,7 @@ tags: [design]
 - 如果输入是一份 PRD，先按 [[concepts/prd-writing]] 收成问题、目标、范围、规则和验收，再落到这里
 - 如果某一块设计长成了独立主题，再从这个主入口往下拆子页
 - 如果某个未决问题会跨多张设计页反复出现，就优先沉淀到 [[projects/design/topics/README]]
+- 如果某张图已经是正式架构图、服务拓扑图、业务到实现总览图或跨模块数据流图，就进入 [[projects/design/diagrams/README]]，不要只塞进 `assets/` 或写成长 Mermaid
 - 如果这轮是在“对新稿逐项做决策”，那这项决策相关的原稿信息不能只停留在 [[projects/decisions]] 里；必须同轮沉淀到当前主设计页或对应储备页，避免后续还要重新翻原稿
 - 如果设计改变了当前实现口径、范围边界或修补结论，记得同步回写 [[projects/trace]]
 - 如果设计判断会影响项目记忆或规则边界，先同步 [[projects/memory/README]] 和 [[POLICY]]
