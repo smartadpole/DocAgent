@@ -68,6 +68,8 @@ tags: [index, root]
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
 - [[response-mode-routing]]：agent 工作先快后重的统一路由，避免简单诊断默认进入完整治理闭环。
+- [[concepts/project-retrospective]]：项目复盘专题，沉淀目标、过程、结果、偏差、原因和改进行动的通用框架。
+- [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题，把需求、设计、拆解、实现、测试验收、发布运行和协作治理串成一条交付链回看。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。
 - [[articles/2026-05-25-codex-goals-research]]：Codex Goals 专题调研，整理 Goal 的完成契约、生命周期、强弱写法和研究型任务用法。
