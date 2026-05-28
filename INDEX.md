@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-25
+updated: 2026-05-28
 tags: [index, root]
 ---
 
@@ -54,6 +54,7 @@ tags: [index, root]
 - [[concepts/document-os]]：文档操作系统概念定义
 - [[articles/2026-04-09-layered-memory-research]]：分层 memory 研究
 - [[concepts/layered-memory]]：分层 memory 概念定义
+- [[articles/2026-05-28-openclaw-memory-system-research]]：OpenClaw 记忆系统调研，覆盖 workspace memory、active memory、dreaming、QMD 和 `memory-wiki`
 - [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]：agent 响应效率治理反思，记录快速诊断和治理闭环分层的来源分析
 - [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
 - [[proactive-dialogue-system]]：主动对话和引导式设计系统，承接场景包、置信度、无感交流等级、性能预算和每轮产物化落地判定

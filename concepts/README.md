@@ -24,6 +24,10 @@
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约
 - [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念
 
+## 工具入口
+
+- [[concepts/openclaw]]：带 workspace memory、active memory 和 compiled knowledge layer 的 agent runtime
+
 ## 维护原则
 
 - 同一个概念只保留一个主页面。

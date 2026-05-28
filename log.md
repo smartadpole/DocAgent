@@ -9,6 +9,22 @@
 
 ## 2026-05-28
 
+### 调研 OpenClaw 的记忆系统并沉淀为知识卡片
+
+- **记录人**：sunhao
+- **用户意图**：调研 `OpenClaw`，重点理解它的记忆系统如何组织、检索、晋升和编译，并把高价值结论沉淀到当前文档库，而不是只在对话里口头总结。
+- **主题**：
+  1. OpenClaw 的 memory 核心不是单独向量库，而是以 workspace Markdown 为真相源的分层记忆体系。
+  2. 它把长期记忆、每日工作记忆、active recall、dreaming consolidation 和 wiki compilation 拆成不同职责层。
+  3. 当前 wiki 最值得借鉴的是 file-first truth、daily -> curated 提纯链、action-sensitive memory 和 compiled knowledge layer，而不是直接照搬具体插件。
+- **关键动作**：
+  1. **新增研究卡片**：新增 [[articles/2026-05-28-openclaw-memory-system-research]]，整理 `MEMORY.md`、`memory/YYYY-MM-DD.md`、`DREAMS.md`、builtin / QMD search、active memory、memory flush、dreaming 和 `memory-wiki` 的结构与判断。
+  2. **新增概念入口**：新增 [[concepts/openclaw]]，作为工具级概念页，承接后续关于 OpenClaw workspace / memory / runtime 的统一跳转入口。
+  3. **补导航入口**：更新 [[INDEX]] 和 [[concepts/README]]，把专题与概念接到当前知识沉淀层入口，避免新卡片成为孤岛页。
+  4. **保留边界**：本轮属于知识沉淀，不直接修改 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或项目运行层状态。
+- **二阶反思**：这轮再次说明“记忆系统”不能只看 embedding 或向量检索；真正可长期工作的 memory 需要同时处理真相源、分层、召回、提纯、预算和可审阅中间层。后续若要吸收到当前 wiki，应优先补 action-sensitive memory 和 compiled knowledge layer 的抽象设计。
+- **影响页面**：[[articles/2026-05-28-openclaw-memory-system-research]]、[[concepts/openclaw]]、[[concepts/README]]、[[INDEX]]、[[log]]。
+
 ### 校准 Harness 调研的完整性、前沿性和深入度
 
 - **记录人**：sunhao
