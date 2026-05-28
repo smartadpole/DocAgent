@@ -58,6 +58,7 @@ tags: [index, root]
 - [[articles/2026-05-28-openclaw-memory-system-research]]：OpenClaw 记忆系统调研，覆盖 workspace memory、active memory、dreaming、QMD 和 `memory-wiki`
 - [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]：agent 响应效率治理反思，记录快速诊断和治理闭环分层的来源分析
 - [[articles/2026-05-28-state-constraint-planning-research]]：系统状态模型、约束传播与计划可执行性调研，收口自动规划、时间约束网络、约束规划、MBSE 和系统思维的组合方法
+- [[articles/2026-05-28-state-constraint-template-pack]]：状态与约束推演模板样式包，覆盖超简版、生活版和工程版三类专题成果
 - [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
 - [[proactive-dialogue-system]]：主动对话和引导式设计系统，承接场景包、置信度、无感交流等级、性能预算和每轮产物化落地判定
 - [[state-constraint-reasoning]]：计划型问题的治理入口，承接状态变量、约束传播、未知变量和可执行性判断

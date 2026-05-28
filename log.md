@@ -33,12 +33,26 @@
   2. 状态与约束推演类问题不适合永远只用一张大模板；应按总览、可执行性、依赖传播、时间资源、阻塞不确定等维度拆成资产族。
   3. 报告资产需要接回治理入口和模板入口，避免新增模板很快变成孤岛。
 - **关键动作**：
-  1. **新增资产模板**：新增 [[templates/state-constraint-overview-template]]、[[templates/state-executability-report-template]]、[[templates/dependency-propagation-report-template]]、[[templates/time-resource-window-report-template]] 和 [[templates/blocker-uncertainty-report-template]]。
-  2. **补模板入口**：更新 [[templates/README]]，把这组资产纳入模板层的正式使用入口，并明确按问题重心选模板。
-  3. **补治理说明**：更新 [[state-constraint-reasoning]] 和 [[concepts/state-constraint-planning]]，把“报告资产化”写成这套方法的正式落地方式，而不是口头建议。
-  4. **补项目主链**：续写 [[projects/trace]]，把这次从“单模板”升级到“多维资产族”的变化纳入当前方法主题的迭代链。
+  1. **主尝试**：先把状态与约束推演按总览、可执行性、依赖传播、时间资源、阻塞不确定几类维度拆成资产族，验证这种拆法是否比一张万能模板更稳。
+  2. **补治理说明**：更新 [[state-constraint-reasoning]] 和 [[concepts/state-constraint-planning]]，先把“报告资产化”写成这套方法的落地方向。
+  3. **补项目主链**：续写 [[projects/trace]]，把这次从“单模板”升级到“多维资产族”的变化纳入当前方法主题的迭代链。
 - **二阶反思**：这轮说明真正可复用的方法论，通常不会停在一张万能模板；更稳定的做法是保留一个统一总模型，再围绕高频判断维度沉淀一组报告资产。后续若某类计划报告继续高频出现，应优先判断是否再拆成独立资产，而不是继续把总模板越写越厚。
-- **影响页面**：[[templates/state-constraint-overview-template]]、[[templates/state-executability-report-template]]、[[templates/dependency-propagation-report-template]]、[[templates/time-resource-window-report-template]]、[[templates/blocker-uncertainty-report-template]]、[[templates/README]]、[[state-constraint-reasoning]]、[[concepts/state-constraint-planning]]、[[projects/trace]]、[[log]]。
+- **影响页面**：[[templates/README]]、[[state-constraint-reasoning]]、[[concepts/state-constraint-planning]]、[[projects/trace]]、[[log]]。
+
+### 纠正状态推演模板的归属边界并补齐三类专题样式
+
+- **记录人**：sunhao
+- **用户意图**：纠正“状态推演模板已经进入系统模板层”的归属错误，明确它们只是知识库专题成果，并确认是否已经覆盖超简版、生活版和工程版三类模板。
+- **主题**：
+  1. 这组模板写法当前属于专题成果，不应直接放进 `templates/` 作为系统模板。
+  2. 用户点名要求覆盖三类版本：超简版、生活版、工程版。
+  3. 治理页和概念页可以引用专题成果，但不应把它误写成已经晋升为正式系统模板。
+- **关键动作**：
+  1. **新增专题样式包**：新增 [[articles/2026-05-28-state-constraint-template-pack]]，统一收口超简版、生活版和工程版三类模板样式。
+  2. **撤回系统模板归属**：删除 `templates/` 下那组状态推演报告资产文件，并更新 [[templates/README]]、[[state-constraint-reasoning]]、[[concepts/state-constraint-planning]] 和研究卡片的相关表述。
+  3. **补主链纠偏**：续写 [[projects/trace]]，明确这次是“专题成果 / 系统模板”边界纠偏，而不是继续扩大系统模板层。
+- **二阶反思**：这轮说明“有价值的写法”不自动等于“应进入系统模板层”。更稳的顺序应该是：先作为知识库专题成果沉淀，等跨场景复用稳定后，再决定是否晋升为正式模板。
+- **影响页面**：[[articles/2026-05-28-state-constraint-template-pack]]、[[articles/2026-05-28-state-constraint-planning-research]]、[[concepts/state-constraint-planning]]、[[state-constraint-reasoning]]、[[templates/README]]、[[projects/trace]]、[[log]]。
 
 ### 把计划型问题升级为状态与约束推演方法
 
