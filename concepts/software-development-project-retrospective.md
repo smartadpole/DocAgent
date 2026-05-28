@@ -11,7 +11,7 @@ tags: [concept, retrospective, software-engineering, project-management]
 
 上级专题：[[concepts/project-retrospective]]
 
-相关页面：[[concepts/software-testing-acceptance-release]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/plan/test-acceptance-planning-model]]、[[projects/incidents/README]]
+相关页面：[[concepts/software-testing-acceptance-release]]、[[concepts/agent-work-retrospective]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/plan/test-acceptance-planning-model]]、[[projects/incidents/README]]
 
 软件研发项目复盘是项目复盘在软件交付场景下的子专题。它把需求、设计、研发拆解、实现、测试、验收、发布、运行和协作治理放在同一条交付链里回看。
 
@@ -27,6 +27,7 @@ tags: [concept, retrospective, software-engineering, project-management]
 - 实现是否和设计、接口、数据、权限、部署边界一致。
 - 测试、验收和发布证据是否足以支撑当前结论。
 - 事故、返工和沟通成本暴露了哪些系统缺口。
+- 如果 agent 参与执行，它的工作方式、效率、质量和边界控制是否可靠。
 - 哪些经验应该回到模板、规则、技能或项目记忆。
 
 ## 复盘主线
@@ -40,6 +41,7 @@ tags: [concept, retrospective, software-engineering, project-management]
 | 测试验收 | 证据是否覆盖关闭口径 | 测试计划、报告、fixture、回归、人工确认 |
 | 发布运行 | 能力是否进入目标环境 | 发布记录、服务台账、监控、回滚、事故 |
 | 协作治理 | 信息是否在正确位置流动 | 会议、决策、log、模板、规则和 sensor |
+| Agent 工作 | agent 是否高质量、高效率、守边界地完成任务 | [[concepts/agent-work-retrospective]]、commentary、diff、验证、提交 |
 
 ## 推荐输出结构
 
@@ -50,9 +52,10 @@ tags: [concept, retrospective, software-engineering, project-management]
 3. **实际结果**：已交付、未交付、延期、降级、超出预期和遗留风险。
 4. **交付链回放**：需求 -> 设计 -> 拆解 -> 实现 -> 测试验收 -> 发布运行。
 5. **偏差和原因**：把需求偏差、设计偏差、实现偏差、验证偏差和协作偏差分开。
-6. **保留项**：下轮仍应复用的结构、流程、模板、工具、检查或协作方式。
-7. **改进行动**：写清 owner、落点、完成口径和检查方式。
-8. **沉淀路由**：项目事实留项目层，可复用方法回知识库层，规则候选走治理层。
+6. **Agent 工作回看**：如果 agent 参与执行，补看目标理解、读取预算、工具使用、验证证据、沟通节奏和沉淀质量。
+7. **保留项**：下轮仍应复用的结构、流程、模板、工具、检查或协作方式。
+8. **改进行动**：写清 owner、落点、完成口径和检查方式。
+9. **沉淀路由**：项目事实留项目层，可复用方法回知识库层，规则候选走治理层。
 
 ## 证据读取顺序
 

@@ -11,7 +11,7 @@ tags: [concept, retrospective, project-management]
 
 主入口：[[INDEX]]
 
-子专题：[[concepts/software-development-project-retrospective]]
+子专题：[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]
 
 这页是项目复盘专题的主入口，沉淀跨项目可复用的复盘方法。它不记录某个具体项目的历史细节；具体项目事实、事故、决策和状态仍回到项目层对应页面。
 
@@ -45,6 +45,7 @@ tags: [concept, retrospective, project-management]
 - 计划和资源：时间、人员、预算、工具、依赖和约束。
 - 决策和取舍：关键判断、备选方案、冲突和最终拍板。
 - 执行和协作：分工、节奏、交接、阻塞和反馈链。
+- 执行主体：人、团队、agent 或混合协作方式的工作质量和效率。
 - 质量和风险：缺陷、验收、事故、回滚、遗漏和风险暴露。
 - 结果和影响：用户价值、业务结果、工程资产、组织学习。
 
@@ -68,6 +69,7 @@ tags: [concept, retrospective, project-management]
 - [[projects/memory/README]]：承接只对当前项目长期有效的稳定事实。
 - [[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、`templates/`：只有抽象后仍跨项目复用的规则、流程和模板才进入这些位置。
 - [[concepts/software-development-project-retrospective]]：承接软件研发项目的复盘子专题。
+- [[concepts/agent-work-retrospective]]：承接 agent 作为执行主体时的工作方式、效率、质量和 Harness 改进复盘。
 
 ## 常见反模式
 

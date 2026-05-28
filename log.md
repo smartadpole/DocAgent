@@ -9,6 +9,21 @@
 
 ## 2026-05-28
 
+### 补充 Agent 工作复盘子专题
+
+- **记录人**：sunhao
+- **用户意图**：指出当前项目复盘还漏了“agent 在工作”这个执行主体视角，需要把 agent 的工作方式、效率、质量和改进也纳入复盘体系。
+- **主题**：
+  1. 当执行主体是 agent 时，复盘不能只看项目产物，还要看目标理解、阶段判断、上下文读取、工具使用、验证质量、沟通节奏和边界控制。
+  2. Agent 工作复盘应和 Harness 自演进分工：单次表现先复盘，重复失守或机制缺口再进入 episode、sensor、模板、技能或规则升级。
+  3. 软件研发项目复盘在 agent 参与执行时，需要显式补看 agent 工作质量，而不是把它隐含在协作治理里。
+- **关键动作**：
+  1. **新增子专题**：新增 [[concepts/agent-work-retrospective]]，定义 Agent 工作复盘的维度、触发场景、推荐输出、Harness 分工、沉淀路由和反模式。
+  2. **同步专题关系**：更新 [[concepts/project-retrospective]] 和 [[concepts/software-development-project-retrospective]]，把 agent 作为执行主体和软件研发交付链中的复盘对象接入。
+  3. **补入口链接**：更新 [[INDEX]]、[[concepts/README]] 和 [[concepts/harness-engineering]]，让 Agent 工作复盘同时能从复盘专题和 Harness Engineering 入口找到。
+- **二阶反思**：这次暴露的是复盘对象建模缺口：在 agent 协作越来越常见的工作里，只复盘项目结果会漏掉执行主体本身的质量反馈。后续如果 Agent 工作复盘被反复使用，再考虑补模板或 sensor，不在本轮提前扩成硬规则。
+- **影响页面**：[[concepts/agent-work-retrospective]]、[[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/harness-engineering]]、[[concepts/README]]、[[INDEX]]、[[log]]。
+
 ### 把状态与约束推演模板拆成多维报告资产
 
 - **记录人**：sunhao
