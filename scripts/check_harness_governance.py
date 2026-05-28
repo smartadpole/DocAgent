@@ -9,6 +9,7 @@ from pathlib import Path
 
 REQUIRED_FILES = (
     "governance/response-mode-routing.md",
+    "governance/proactive-dialogue-system.md",
     "governance/instruction-adherence.md",
     "governance/execution-contract-semantics.md",
     "governance/harness-evolution.md",
@@ -16,6 +17,7 @@ REQUIRED_FILES = (
     "concepts/harness-engineering.md",
     "concepts/codex-goals.md",
     "templates/goal-contract-template.md",
+    "templates/guided-discovery-session-template.md",
     "templates/development-acceptance-plan-template.md",
     "templates/harness-adoption-template.md",
     "templates/harness-episode-package-template.md",
@@ -42,6 +44,7 @@ ENTRYPOINT_REFERENCES = (
 
 RESPONSE_MODES = (
     "快速诊断",
+    "引导式设计",
     "知识沉淀",
     "Issue 分析 + 沉淀",
     "验收关闭",
@@ -70,6 +73,66 @@ ROUTING_REQUIRED_TERMS = (
     "预算 / 阻塞停止条件防无限探索",
     "响应模式判断之后、正式长时执行之前",
     "主控和子工程之间的长任务回传",
+    "proactive-dialogue-system",
+    "场景包",
+    "置信度",
+    "性能预算",
+)
+
+PROACTIVE_DIALOGUE_REQUIRED_TERMS = (
+    "## 策略定位",
+    "## 目标",
+    "## 双层架构",
+    "## 场景包",
+    "## 触发信号",
+    "## 决策模型",
+    "## 上下文自动判定",
+    "## 提问协议",
+    "## 引导阶段",
+    "## 通用问题库",
+    "## 知识库问题包",
+    "## 软件研发问题包：角色 × 环节矩阵",
+    "## 其他场景问题包",
+    "## 性能预算",
+    "## 产物路由",
+    "## 完成标准",
+    "## 无感交流等级",
+    "通用主动对话内核",
+    "场景化问题包",
+    "场景包",
+    "置信度",
+    "可直接判断",
+    "可先假设",
+    "必须现在问",
+    "可归为待确认",
+    "当前 blocked",
+    "产品意图",
+    "核心场景",
+    "验收标准",
+    "输入采集层",
+    "对话所得",
+    "agent 思考结果",
+    "每轮产物化落地判定",
+    "本轮无新增可沉淀信息",
+    "读取预算",
+    "问题预算",
+    "检查预算",
+    "产物大小预算",
+    "commit hash",
+)
+
+GUIDED_DISCOVERY_TEMPLATE_REQUIRED_SECTIONS = (
+    "## 基本信息",
+    "## 当前理解",
+    "## 场景问题包",
+    "## 本轮关键假设",
+    "## 本轮只问的问题",
+    "## 回答吸收",
+    "## 阶段产物",
+    "## 性能预算",
+    "## 路由",
+    "## 产物化与提交闭环",
+    "## 收尾",
 )
 
 TEMPLATE_REQUIRED_SECTIONS = (
@@ -219,6 +282,40 @@ def check_entrypoint_wiring(repo: Path) -> list[str]:
     return errors
 
 
+def check_proactive_dialogue(repo: Path) -> list[str]:
+    errors: list[str] = []
+    text = read_text(repo, "governance/proactive-dialogue-system.md", errors)
+    template = read_text(repo, "templates/guided-discovery-session-template.md", errors)
+    workflow = read_text(repo, "governance/WORKFLOW.md", errors)
+    policy = read_text(repo, "governance/POLICY.md", errors)
+    agents = read_text(repo, "AGENTS.md", errors)
+    codex_adapter = read_text(repo, ".codex/AGENTS.md", errors)
+    templates_readme = read_text(repo, "templates/README.md", errors)
+    index = read_text(repo, "INDEX.md", errors)
+    ledger = read_text(repo, "governance/harness-feedback-ledger.md", errors)
+
+    if text:
+        for term in PROACTIVE_DIALOGUE_REQUIRED_TERMS:
+            if term not in text:
+                errors.append(f"governance/proactive-dialogue-system.md: missing proactive dialogue term {term}")
+    if template:
+        for section in GUIDED_DISCOVERY_TEMPLATE_REQUIRED_SECTIONS:
+            if section not in template:
+                errors.append(f"templates/guided-discovery-session-template.md: missing section {section}")
+    for rel, doc in (
+        ("governance/WORKFLOW.md", workflow),
+        ("governance/POLICY.md", policy),
+        ("AGENTS.md", agents),
+        (".codex/AGENTS.md", codex_adapter),
+        ("templates/README.md", templates_readme),
+        ("INDEX.md", index),
+        ("governance/harness-feedback-ledger.md", ledger),
+    ):
+        if doc and "proactive-dialogue-system" not in doc:
+            errors.append(f"{rel}: missing proactive-dialogue-system wiring")
+    return errors
+
+
 def check_rule_and_skill_wiring(repo: Path) -> list[str]:
     errors: list[str] = []
     agents = read_text(repo, "AGENTS.md", errors)
@@ -230,6 +327,9 @@ def check_rule_and_skill_wiring(repo: Path) -> list[str]:
         for term in ("每轮动手前先按", "快速诊断", "显式告诉用户", "harness-feedback-ledger"):
             if term not in agents:
                 errors.append(f"AGENTS.md: missing response routing or H5 guard {term}")
+        for term in ("引导式设计", "性能预算"):
+            if term not in agents:
+                errors.append(f"AGENTS.md: missing proactive dialogue or performance guard {term}")
         if "| 模式 |" in agents:
             errors.append("AGENTS.md: must stay a short guard, not duplicate the response mode table")
 
@@ -338,6 +438,7 @@ def check_harness_governance(repo: Path) -> list[str]:
     errors.extend(check_required_files(repo))
     errors.extend(check_response_mode_routing(repo))
     errors.extend(check_entrypoint_wiring(repo))
+    errors.extend(check_proactive_dialogue(repo))
     errors.extend(check_rule_and_skill_wiring(repo))
     errors.extend(check_concept_and_template(repo))
     errors.extend(check_quality_gate_script(repo))

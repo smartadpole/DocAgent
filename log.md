@@ -7,6 +7,26 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-28
+
+### 升级主动对话和性能预算 Harness
+
+- **记录人**：sunhao
+- **用户意图**：把当前 wiki 的智能体系统升级得更前沿、更智能，同时注意性能，避免只堆规则或照搬 `DocCustomeranalysis` 的业务事实。
+- **主题**：
+  1. 智能化升级应落到主动对话、场景自动判定、带假设推进和每轮产物化，而不是只增加说明文字。
+  2. 性能优化应落到读取预算、问题预算、检查预算和产物大小预算，避免为了“智能”无限扩读、长问卷或铺满项目结构。
+  3. 下游工程的成熟经验只抽象为模板级 Harness 能力，不复制具体业务状态、环境语义或一次性证据。
+- **关键动作**：
+  1. **新增治理页**：新增 [[proactive-dialogue-system]]，定义通用主动对话内核、场景化问题包、上下文自动判定、无感交流等级、性能预算和每轮产物化落地判定。
+  2. **新增模板**：新增 [[templates/guided-discovery-session-template]]，承接场景包、置信度、关键假设、对话所得、agent 思考结果、性能预算、路由和提交闭环。
+  3. **同步入口和路由**：更新 [[AGENTS]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、`.codex/AGENTS.md` 和 [[templates/README]]，把“引导式设计”加入默认响应模式。
+  4. **升级 sensor**：扩展 `scripts/check_harness_governance.py`，检查主动对话页、引导式模板、入口 wiring、性能预算和产物化字段。
+  5. **记录 H5 episode**：更新 [[harness-feedback-ledger]]，把本轮作为“主动对话和性能预算升级”的 promoted episode。
+- **不反哺边界**：没有复制 `DocCustomeranalysis` 的业务 issue、141 / 149 环境语义、服务实例、项目状态或具体报告；只吸收抽象后的主动对话、引导式设计、产物化闭环和性能预算。
+- **二阶反思**：这轮说明“更智能”必须变成可触发、可模板化、可检查的机制；否则会退化成聊天风格偏好。后续同类升级应继续按“场景判断 -> 产物落地 -> sensor 守卫 -> 性能预算”的顺序推进。
+- **影响页面**：[[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]、[[AGENTS]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[templates/README]]、[[harness-feedback-ledger]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_harness_governance.py`。
+
 ## 2026-05-26
 
 ### 吸收 DocCustomeranalysis 的测试成熟度和口径漂移治理

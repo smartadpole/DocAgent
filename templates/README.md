@@ -2,7 +2,7 @@
 
 这里放可复制的笔记模板。
 
-Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；如果模板使用中暴露重复偏差，再按 [[harness-evolution]] 判断是否写入 episode、升级 sensor 或调整模板字段。
+Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引导式设计和主动对话看 [[proactive-dialogue-system]]。如果模板使用中暴露重复偏差，再按 [[harness-evolution]] 判断是否写入 episode、升级 sensor 或调整模板字段。
 
 ## 用法
 
@@ -33,6 +33,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；如
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]
 - 新长时任务需要防跑偏、防证据漂移、防无限探索时，可以参考 [[templates/goal-contract-template]]
+- 新引导式设计、主动对话或轻量 discovery 可以参考 [[templates/guided-discovery-session-template]]
 - 新系统、主控仓库或子工程接入 Agent Harness 可以参考 [[templates/harness-adoption-template]]
 - 新单次 Harness episode 可以参考 [[templates/harness-episode-package-template]]
 - 新周期性 Harness 演进复盘可以参考 [[templates/harness-evolution-review-template]]

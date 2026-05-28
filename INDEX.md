@@ -32,6 +32,7 @@ tags: [index, root]
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
+- [[proactive-dialogue-system]]：主动对话与引导式设计，决定目标未成形时如何自动判定场景、少量提问、带假设推进并产物化
 - [[instruction-adherence]]：指令遵循治理，决定已有规则如何进入触发矩阵、模板字段、sensor、门禁和最终证明
 - [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
@@ -55,6 +56,7 @@ tags: [index, root]
 - [[concepts/layered-memory]]：分层 memory 概念定义
 - [[articles/2026-05-25-agent-response-efficiency-governance-reflection]]：agent 响应效率治理反思，记录快速诊断和治理闭环分层的来源分析
 - [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
+- [[proactive-dialogue-system]]：主动对话和引导式设计系统，承接场景包、置信度、无感交流等级、性能预算和每轮产物化落地判定
 
 ## 产品写作
 
@@ -94,6 +96,7 @@ tags: [index, root]
 - [[templates/development-issue-template]]：Issue 案件模板
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
+- [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
 - [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板

@@ -5,7 +5,7 @@
 ## 分层总览
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -50,6 +50,7 @@
 - [[AGENTS]]：执行约束层。回答“agent 修改时必须怎么做”
 - [[WORKFLOW]]：流程编排层。回答“通常按什么顺序推进”
 - [[response-mode-routing]]：响应效率路由层。回答“本轮先快诊断、沉淀、验收、实现还是升级规则”
+- [[proactive-dialogue-system]]：主动对话与引导式设计层。回答“目标不完整时，agent 怎么自动判定场景、少量提问、带假设推进并产物化”
 - [[instruction-adherence]]：指令遵循层。回答“已有规则怎样升级成触发器、模板字段、sensor、门禁和最终证明”
 - [[execution-contract-semantics]]：执行合同语义层。回答“当前执行合同是否被参考规则、非目标或上层证据污染”
 - [[harness-evolution]]：Harness 自演进层。回答“用户纠偏、检查失败、模式切换和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
@@ -62,6 +63,7 @@
 - 如果问题是“怎么执行”，先看 [[AGENTS]]
 - 如果问题是“怎么推进”，先看 [[WORKFLOW]]
 - 如果问题是“要不要先轻量诊断、何时进入重治理”，先看 [[response-mode-routing]]
+- 如果问题是“用户只有粗糙目标、需要把想法想完整或要更智能地推进”，先看 [[proactive-dialogue-system]]
 - 如果问题是“规则已有但没有执行”，先看 [[instruction-adherence]]
 - 如果问题是“当前事项到底要不要做、做到哪算关闭”，先看 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，先看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
@@ -98,6 +100,7 @@
 - `projects/memory/README.md` 是项目级记忆入口，承接只对当前项目长期有效的事实。
 - `projects/trace.md` 是项目演进链入口，承接需求从原始意图到当前实现的结构化收敛过程。
 - 探索全新应用时，先判断是否仍是多方向探索；如果还没有明确选定当前项目，默认使用 `inbox/`、`raw/`、`articles/`、`concepts/` 轻量收集和比较，不为每个候选应用铺完整 `projects/` 结构。
+- 当用户提出新系统、新工具、新应用、粗糙产品想法，或只给出“更智能 / 更前沿 / 更高效”这类质量目标时，先按 [[proactive-dialogue-system]] 自动判定场景包和置信度；高置信可带假设推进，中低置信只问会改变结构、权限、成本或验收的关键问题。
 - 研发项目的阶段和状态由人读项目主页手动推进，不做隐藏自动流控。
 - 活跃研发项目先读项目主页，再改需求、设计、决策、记忆、发布或运行记录。
 - 极简小项目默认只保留一个项目主页，除非内容明显变多，否则不要先建空的需求、设计、发布之类页面。
@@ -109,7 +112,8 @@
 
 ## 会话级规则
 
-- 每轮动手前先按 [[response-mode-routing]] 判断响应模式：快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+- 每轮动手前先按 [[response-mode-routing]] 判断响应模式：快速诊断、引导式设计、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+- 引导式设计不是轻模式例外；只要本轮形成用户意图、场景、范围、约束、风险、验收、候选决策、拆解关系或 agent 判断，就必须按 [[proactive-dialogue-system]] 做产物化落地判定。还不适合进正式项目链路时，使用 [[templates/guided-discovery-session-template]] 承接轻量 discovery。
 - 如果用户指出“规则已有但没有执行”、或本轮发现提交、证据、验收边界、最终回复扫描等失守，必须按 [[instruction-adherence]] 判断该补触发器、模板字段、sensor、门禁还是最终证明，不得只追加一句更严厉的自然语言规则。
 - 写入 TASK、issue、AP、EP、FP、Gate、报告目标包、handoff、状态页或会议行动项时，必须按 [[execution-contract-semantics]] 检查执行合同语义：当前裁决单值，非目标不展开成后续任务，参考规则不下沉到下层事项，证据层级不回流成普通修复闭环。
 - 快速诊断只默认读取入口规则和最相关的少量事实源；它可以给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出、提交或规则升级。
@@ -123,6 +127,7 @@
 - 如果用户明确下达“收尾 / 执行收尾 / finalize”这类执行命令，本轮进入收尾模式；如果用户是在讨论收尾规则、排查收尾问题或询问怎么收尾，不进入收尾模式。
 - 收尾模式禁止继续扩需求、追加新功能或顺手做下一轮结构调整；只允许完成与本轮已发生改动直接相关的同步、核对、补记和提交。
 - 工作阶段按本轮范围优先跑专项 sensor，例如 `python3 scripts/check_all.py --only harness-governance`、`python3 scripts/check_all.py --only work-item-matrix`、`python3 scripts/check_all.py --only testing-system-maturity` 或 `python3 scripts/check_all.py --only execution-contract-semantics`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
+- 性能优化不能靠跳过关键语义边界实现。每轮先守性能预算：读取预算、问题预算、检查预算和产物大小预算。能用 1 到 3 个事实源判断时不扩读，能用专项 sensor 证明时不先跑全量，早期探索先写轻量 discovery，不为未定方向铺完整项目结构。
 - 只要这次对话产生了实际内容变更或结构变更，保底在对话结束前做一次 commit。
 - 只要这次对话产生了实际内容变更或结构变更，就必须同步更新 `log.md`；即使只是同一大主题下的后续修正，也不能跳过。
 - 如果这次改动会影响 `projects/trace.md` 的当前需求主题，就和相关页面同轮同步更新 trace，不要等其他文档都写完后再回来补。
