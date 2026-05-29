@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-29
+
+### 沉淀历史对话与 Agent 工作流复盘技能
+
+- **记录人**：sunhao
+- **用户意图**：在已有项目复盘、软件研发复盘和 Agent 工作复盘专题之上，进一步把历史对话复盘做成可启动技能，用来检查 agent 工作是否有偏差，并发现整个深度 agent 工作流协作的可改进点。
+- **主题**：
+  1. 历史对话复盘不能只看单一材料；需要同时区分 [[harness-feedback-ledger]] 的结构性 episode、[[log]] 的主题化历史、当前对话上下文、原始 session / rollout、git diff / commit、检查输出和受影响页面。
+  2. 复盘目标不仅是总结历史，还要判断 agent 的目标理解、路由、读取、执行、验证、沟通、沉淀和收尾是否偏离。
+  3. workflow 改进不能直接一律升级硬规则，应按单次表现、episode、模板、sensor、技能、[[WORKFLOW]]、[[AGENTS]]、[[POLICY]] 和 memory 路由分流。
+- **关键动作**：
+  1. **新增技能**：新增 [[skills/historical-dialogue-retrospective/SKILL]]，定义历史对话与 Agent 工作流复盘的触发场景、证据源分层、复盘框架、偏差分类、效率质量判断、改进路由和输出格式。
+  2. **接入复盘专题**：更新 [[concepts/agent-work-retrospective]] 和 [[concepts/project-retrospective]]，把历史对话、当前上下文、log、Harness episode、git 和检查证据纳入 Agent 工作复盘体系。
+  3. **接入 Harness 与技能入口**：更新 [[concepts/harness-engineering]]、[[concepts/agent-governance]]、[[skills/README]] 和 [[INDEX]]，让该技能能从 Harness、Agent 治理、复盘专题和技能层入口被发现。
+- **二阶反思**：这轮补上的不是一张报告模板，而是一条复盘执行流程。历史对话复盘的难点在证据分层和改进路由：只看 log 会丢过程，只看当前上下文会丢历史，只看 ledger 会忽略普通执行流水。后续如果该技能使用中反复暴露字段缺口，再考虑升级模板或 sensor。
+- **影响页面**：[[skills/historical-dialogue-retrospective/SKILL]]、[[skills/README]]、[[concepts/agent-work-retrospective]]、[[concepts/project-retrospective]]、[[concepts/harness-engineering]]、[[concepts/agent-governance]]、[[INDEX]]、[[log]]。
+
 ## 2026-05-28
 
 ### 开启 Agent 治理专题

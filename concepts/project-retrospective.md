@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-PROJECT-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-05-29
 tags: [concept, retrospective, project-management]
 ---
 
@@ -70,6 +70,7 @@ tags: [concept, retrospective, project-management]
 - [[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、`templates/`：只有抽象后仍跨项目复用的规则、流程和模板才进入这些位置。
 - [[concepts/software-development-project-retrospective]]：承接软件研发项目的复盘子专题。
 - [[concepts/agent-work-retrospective]]：承接 agent 作为执行主体时的工作方式、效率、质量和 Harness 改进复盘。
+- [[skills/historical-dialogue-retrospective/SKILL]]：承接历史对话、当前上下文、log、Harness episode 和 git / 检查证据共同参与的 agent 工作流复盘。
 
 ## 常见反模式
 

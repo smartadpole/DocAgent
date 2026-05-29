@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-05-28
+updated: 2026-05-29
 tags: [ai-agent, software-engineering]
 ---
 
@@ -51,6 +51,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[templates/goal-contract-template]] 承接长时任务的期望最终状态、完成判定、验证面 / 证据边界、约束、预算、探索边界和阻塞停止条件。
 - [[templates/harness-episode-package-template]] 和 [[templates/harness-evolution-review-template]] 承接单次 episode 和周期复盘。
 - [[concepts/agent-work-retrospective]] 承接 agent 作为执行主体时的工作方式、效率、质量、边界和沉淀路由复盘。
+- [[skills/historical-dialogue-retrospective/SKILL]] 承接从历史对话、[[log]]、[[harness-feedback-ledger]]、git 证据和检查输出中复盘 agent 偏差与 workflow 改进的可执行流程。
 - `scripts/check_all.py` 是本库本地门禁入口，`scripts/check_harness_governance.py` 先覆盖 Harness wiring。
 
 ## 当前研究状态
@@ -91,6 +92,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[articles/2026-05-25-harness-engineering-research]]
 - [[concepts/codex-goals]]
 - [[concepts/agent-work-retrospective]]
+- [[skills/historical-dialogue-retrospective/SKILL]]
 - [[AGENTS]]
 - [[WORKFLOW]]
 - [[response-mode-routing]]

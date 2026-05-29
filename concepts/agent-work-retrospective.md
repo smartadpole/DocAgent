@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-AGENT-WORK-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-05-29
 tags: [concept, retrospective, ai-agent, harness, workflow]
 ---
 
@@ -14,6 +14,8 @@ tags: [concept, retrospective, ai-agent, harness, workflow]
 相关页面：[[concepts/harness-engineering]]、[[response-mode-routing]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 Agent 工作复盘关注 agent 作为执行主体时，它的工作方式、效率、质量、边界感和自我改进是否可靠。它不是对项目结果的替代复盘，而是对“这个 agent 是怎样完成工作的”做结构化回看。
+
+可启动技能：[[skills/historical-dialogue-retrospective/SKILL]]
 
 ## 定义
 
@@ -47,10 +49,25 @@ Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一�
 优先在这些场景做 Agent 工作复盘：
 
 - 长时任务结束，尤其是跨多轮、跨仓库、跨环境的任务。
+- 需要复盘历史对话、当前对话上下文、[[log]] 或 [[harness-feedback-ledger]] 中的 agent 协作链。
 - 用户指出 agent 理解错、做慢了、做重了、漏验证、漏提交或漏沉淀。
 - 任务出现明显返工、偏航、重复读取、过度治理或证据不足。
 - 一次任务暴露出可复用流程缺口、模板缺口、sensor 缺口或协作契约缺口。
 - 周期性回看某段时间内 agent 的效率、质量和用户体验。
+
+## 历史对话复盘
+
+历史对话复盘要同时区分材料角色：
+
+- [[harness-feedback-ledger]]：结构性 episode 和已观察到的 Harness 缺口。
+- [[log]]：按对话整理后的主题、意图、关键动作和影响页面。
+- 当前对话上下文：用户最新目标、约束、纠偏和本轮复盘触发点。
+- 原始 session / rollout：真实对话、tool call、执行顺序和状态更新。
+- git diff / commit：实际改动、提交边界和文件落位。
+- 受影响主页面：当前单一信息源和最终沉淀状态。
+- 检查 / 测试输出：agent 是否做了足够验证，以及验证能证明什么。
+
+如果复盘目标是找 agent 偏差或 workflow 改进，优先启动 [[skills/historical-dialogue-retrospective/SKILL]]，不要只凭 [[log]] 或当前记忆下结论。
 
 ## 推荐输出
 
