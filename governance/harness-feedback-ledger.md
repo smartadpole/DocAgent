@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-05-29
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-05-29 | Finalizer 写入范围证明缺口 | 用户指出 agent 在被要求“只提交相关内容”后，仍沿事项归属链继续同步 EP / FP / status / log，finalizer 只证明外部残留被明示，不能证明主控内部写入范围符合最新收窄指令 | 知识沉淀 + Agent 工作复盘 | 可优化成本 | 新增 [[articles/2026-05-29-finalizer-write-scope-case]]，把问题归类为 Scope Lock / Scope Proof 缺口；本页补 sensor backlog 和晋升候选 | [[articles/2026-05-29-finalizer-write-scope-case]] | observed |
 | 2026-05-28 | Agent 治理专题落位纠偏 | 用户指出“这不是项目开发，属于知识库”，纠正 agent 将专题误放入 `projects/design/topics/` 和 `projects/trace` 的路由错误 | 知识沉淀 | 可优化成本 | 撤回项目开发链路改动，改为新增 [[concepts/agent-governance]]，并从 [[concepts/README]]、[[INDEX]] 和治理入口回链 | [[concepts/agent-governance]] | observed |
 | 2026-05-28 | 模板落位二分纠偏 | 用户指出不是一说模板就沉淀到 `templates/`，要区分知识库模板和系统治理模板 | 规则升级 | 可优化成本 | 更新 [[template-feedback-rules]]、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、[[POLICY]]、[[templates/README]] 和入口说明，明确知识库模板进专题成果，系统治理模板才进 `templates/` | [[template-feedback-rules]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-28 | 主动对话和性能预算升级 | 用户要求把 wiki 智能体系统升级得更前沿、更智能，同时注意性能 | 规则升级 | 可优化成本 | 新增 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]，把场景自动判定、无感交流等级、每轮产物化和读取 / 问题 / 检查 / 产物大小预算写入 Harness | `python3 scripts/check_all.py --only harness-governance` | promoted |
@@ -43,6 +44,7 @@ tags: [agent, harness, feedback, episode]
 | 测试成熟度检查 | 测试计划、AP、报告、fixture / oracle 和发布 runbook 容易漂移 | 当前由 `check_testing_system_maturity.py` 覆盖入口、模板字段和 AP 基本结构 | active |
 | 执行合同语义检查 | 非目标、上层规则或证据说明容易漂移成隐形待办 | 当前由 `check_execution_contract_semantics.py` 覆盖入口 wiring 和可见污染模式 | active |
 | 主动对话产物化检查 | 引导式设计容易只停在聊天，或为了智能化扩大读取和结构成本 | 当前由 `check_harness_governance.py` 检查 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]、性能预算和入口 wiring | active |
+| 写入范围证明 / Scope Proof | 用户即时收窄写入范围后，finalizer 可能只证明 working tree clean 或 external residual 明示，无法证明本轮 diff 仍在允许范围内 | 后续可补 finalizer scope manifest 或 `--allowed-path` 检查：比较本轮 diff / latest commit 文件与用户最新写入白名单 | observed |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 
 ## Rule Promotion Queue
@@ -59,6 +61,7 @@ tags: [agent, harness, feedback, episode]
 | 研发事项日常维护先走总控页入口顺序，治理层只在改变默认规则时修改 | 研发事项入口顺序和结构化 sensor | [[projects/development/plan/README]] / [[WORKFLOW]] | promoted |
 | 主动对话先自动判定场景包和置信度，再用少量问题、明确假设和性能预算推进产物化 | 主动对话和性能预算升级 | [[proactive-dialogue-system]] / [[templates/guided-discovery-session-template]] / `scripts/check_harness_governance.py` | promoted |
 | 提到模板时先区分知识库模板和系统治理模板，专题成果不自动进入 `templates/` | 模板落位二分纠偏 | [[template-feedback-rules]] / [[AGENTS]] / `.codex/AGENTS.md` / [[POLICY]] / [[WORKFLOW]] / [[templates/README]] | promoted |
+| 用户收窄写入范围后，收尾必须证明 scope，而不只是证明 clean | Finalizer 写入范围证明缺口 | finalizer scope manifest / [[instruction-adherence]] / [[response-mode-routing]] | active |
 
 ## Rule Prune Queue
 

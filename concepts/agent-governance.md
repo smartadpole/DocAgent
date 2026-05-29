@@ -68,3 +68,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 - 把日志、报告、handoff 或模型自述当作验收闭环。
 - 把“更智能”理解成无限扩读、长问卷或一次铺满结构。
 - 只做复盘不改模板、sensor 或技能，导致同类问题反复靠人工提醒。
+
+## 典型案例
+
+- [[articles/2026-05-29-finalizer-write-scope-case]]：finalizer 只证明 working tree clean / external residual 明示，却没有证明本轮提交仍符合用户最新写入范围；该案例把问题归类为 Scope Lock / Scope Proof 缺口，而不是业务 issue。

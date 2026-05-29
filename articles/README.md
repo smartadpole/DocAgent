@@ -19,3 +19,7 @@
 
 - 尽量只写一次摘要，不重复抄原文。
 - 如果文章涉及很多工具，优先加链接，不要堆长段解释。
+
+## Agent / Harness 案例
+
+- [[articles/2026-05-29-finalizer-write-scope-case]]：finalizer 写入范围失守案例，分析 clean proof 与 scope proof 混淆的问题。

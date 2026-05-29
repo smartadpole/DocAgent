@@ -9,6 +9,21 @@
 
 ## 2026-05-29
 
+### 沉淀 finalizer 写入范围失守案例
+
+- **记录人**：sunhao
+- **用户意图**：用户指出某次 agent 收尾中，明明已经要求“只提交相关内容”，agent 仍沿 ISSUE / TASK / EP / FP 归属链继续同步，要求把这类 agent 系统问题作为专题案例沉淀，分析它属于什么问题以及怎么解决。
+- **主题**：
+  1. 这不是业务 issue，而是 Agent / Harness 的写入范围和最终证明缺口。
+  2. finalizer 只证明 working tree clean、`log.md` 纳入提交或 external residual 已明示，不等于证明本轮 diff 符合用户最新允许范围。
+  3. 用户即时收窄指令应触发 Scope Lock；后续发现的级联同步候选只能列为待确认，不应继续自动追平。
+- **关键动作**：
+  1. **新增案例文章**：新增 [[articles/2026-05-29-finalizer-write-scope-case]]，还原 `659a27d` 之后继续提交归属同步的工作链，分析 clean proof 与 scope proof 混淆。
+  2. **记录 Harness episode**：更新 [[harness-feedback-ledger]]，把该问题记为 `Finalizer 写入范围证明缺口` observed episode，并补写 Scope Proof sensor backlog 和晋升候选。
+  3. **补入口回链**：更新 [[concepts/agent-governance]]、[[articles/README]] 和 [[INDEX]]，让这个案例能从 Agent 治理和文章层被找到。
+- **二阶反思**：这轮暴露的是收尾证明维度不足：提交闭环不能只证明“干净”，还要在用户收窄范围后证明“没有越界”。后续如果同类问题重复出现，应优先补 finalizer scope manifest 或 `--allowed-path` 类 sensor，而不是继续增加自然语言提醒。
+- **影响页面**：[[articles/2026-05-29-finalizer-write-scope-case]]、[[harness-feedback-ledger]]、[[concepts/agent-governance]]、[[articles/README]]、[[INDEX]]、[[log]]。
+
 ### 沉淀历史对话与 Agent 工作流复盘技能
 
 - **记录人**：sunhao
