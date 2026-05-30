@@ -26,16 +26,16 @@ tags: [agent, governance, harness, cross-project, synthesis, solution]
 
 ## 各工程现状速览
 
-| 工程 | 类型 | 语言 | AGENTS.md 规模 | Episode 数量 | Sensor 数量 | 成熟度 |
+| 工程 | 角色 | 语言 | AGENTS.md 规模 | Episode 数量 | Sensor 数量 | 成熟度 |
 |---|---|---|---|---|---|---|
 | DocCustomeranalysis | 主控 | 中文 | ~360 行 | 60+ 条（全 active） | ~15 个 | 最高 |
-| AcknowledgeBase | 治理中控/知识库 | 中文 | ~350 行 | ~10 条 | ~8 个 | 高 |
-| Software/wiki | 模板源 | 中文 | ~370 行 | ~8 条 | ~8 个 | 高（基准版本） |
 | DocFilmCommunity | 主控 | 中文 | ~300 行 | 5 条 | ~8 个（从 Doc 吸收） | 中 |
 | fetch-adapter | 子工程 | 英文 | ~120 行 | 3 条 | 2 个 | 中低 |
 | train_platform | 子工程 | 英文 | ~100 行 | 3 条 | 1 个 | 低 |
 | prefect | 子工程 | 英文 | ~100 行 | — | — | 低 |
 | customeranalysis | 子工程 | — | 无 AGENTS.md | — | — | 无 |
+| Software/wiki | 模板源 | 中文 | ~370 行 | ~8 条 | ~8 个 | 高（基准版本） |
+| AcknowledgeBase | 治理中控/知识库 | 中文 | ~350 行 | ~10 条 | ~8 个 | 高 |
 
 ---
 
@@ -241,13 +241,14 @@ wiki/governance/rules/
 | P0 立即 | 写入边界字段化 scope proof（方案四） | 低 | 减少最高频失守 | 现在 |
 | P1 近期 | 跨工程 Episode 注册表（方案六） | 低 | 避免重复发明 | 本季度 |
 | P2 中期 | wiki 分区 + AcknowledgeBase 漂移监控（方案一） | 中 | 让模板改进可被追踪 | 下季度规划 |
-| P2 中期 | git worktree 物理隔离（方案五） | 中 | 系统层代替规则层 | 工具链成熟后 |
+| P2 中期 | 模块化规则版本化（方案二，前置：方案一落地） | 中 | 漂移检测变版本号对比，大幅减少全文 diff 成本 | 方案一稳定后 |
+| P3 远期 | git worktree 物理隔离（方案五） | 高 | 系统层代替规则层 | 工具链成熟后 |
 
 ---
 
 ## 一句话总结
 
-这 8 个工程的共同问题是：**治理知识是多份手动同步的本地副本，改进无法自动传播，规则靠积累不靠剪枝，边界靠声明不靠执行**。可行出路是把治理层提取为共享内核，让业务层只维护自己的上下文，短期先从 AGENTS.md 精简和 scope 声明字段化两个低成本动作切入。
+这 8 个工程的共同问题是：**治理知识是多份手动同步的本地副本，改进无法自动传播，规则靠积累不靠剪枝，边界靠声明不靠执行**。可行出路是让漂移可见、让传播有协议——wiki 做模板分区，AcknowledgeBase 做漂移监控，短期先从 AGENTS.md 精简和 scope proof 字段化两个零迁移成本动作切入。
 
 ## 后续参考
 
