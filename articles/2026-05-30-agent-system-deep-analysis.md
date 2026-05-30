@@ -271,7 +271,7 @@ wiki 是所有工程的**模板源**——各工程从 wiki fork 出来后独立
 
 **目标**：减轻认知负担，建立最小可验证约束。
 
-1. **AGENTS.md 压缩**：三档分类执行（P0 ≤15行，P1 跳转链接，P2 进 Prune Queue）
+1. **AGENTS.md 压缩**：三档分类执行（P0 硬约束保留在根入口，P1 移到 owning page 只留跳转，P2 进 Prune Queue；行数由分类和检查器可读性决定，不硬定固定数字）
 2. **Episode 加终态**：给 ledger 加 `closed` / `superseded` 状态，每季度执行一次 prune
 3. **Action-sensitive memory 字段**：在 BRAIN.md 或专用文件里为写入权限、审批状态加 expiry 字段
 4. **Scope 声明前置**：复杂任务开始时强制声明 `allowed_write_roots`，作为 finalizer 的检查依据

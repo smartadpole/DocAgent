@@ -29,7 +29,8 @@ tags: [agent, governance, harness, cross-project, synthesis, solution]
 | 工程 | 类型 | 语言 | AGENTS.md 规模 | Episode 数量 | Sensor 数量 | 成熟度 |
 |---|---|---|---|---|---|---|
 | DocCustomeranalysis | 主控 | 中文 | ~360 行 | 60+ 条（全 active） | ~15 个 | 最高 |
-| AcknowledgeBase/wiki | 主控/知识库 | 中文 | ~350 行 | ~10 条 | ~8 个 | 高 |
+| AcknowledgeBase | 治理中控/知识库 | 中文 | ~350 行 | ~10 条 | ~8 个 | 高 |
+| Software/wiki | 模板源 | 中文 | ~370 行 | ~8 条 | ~8 个 | 高（基准版本） |
 | DocFilmCommunity | 主控 | 中文 | ~300 行 | 5 条 | ~8 个（从 Doc 吸收） | 中 |
 | fetch-adapter | 子工程 | 英文 | ~120 行 | 3 条 | 2 个 | 中低 |
 | train_platform | 子工程 | 英文 | ~100 行 | 3 条 | 1 个 | 低 |
@@ -213,7 +214,7 @@ wiki/governance/rules/
 
 这是对写入边界最彻底的系统层解法，但依赖工具链对 worktree 的支持，属于中期目标，不能在文档里写得像立即可推进。
 
-### 方案四：跨工程 Episode 共享注册表
+### 方案六：跨工程 Episode 共享注册表
 
 **当前问题**：同一类问题（commit closure、写入边界、response mode 分流过重）在每个工程里独立出现，独立修复。
 
@@ -237,10 +238,10 @@ wiki/governance/rules/
 | 优先级 | 方案 | 难度 | 收益 | 建议时机 |
 |---|---|---|---|---|
 | P0 立即 | AGENTS.md 三档精简（方案三） | 低 | 直接降低认知负担 | 现在 |
-| P0 立即 | 写入边界字段化（方案二中的 scope 声明） | 低 | 减少最高频失守 | 现在 |
-| P1 近期 | 跨工程 Episode 注册表（方案四） | 低 | 避免重复发明 | 本季度 |
-| P2 中期 | 共享治理内核建立（方案一） | 高 | 从根本上解决副本问题 | 下季度规划 |
-| P2 中期 | git worktree 物理隔离（方案二完整版） | 中 | 系统层代替规则层 | 工具链成熟后 |
+| P0 立即 | 写入边界字段化 scope proof（方案四） | 低 | 减少最高频失守 | 现在 |
+| P1 近期 | 跨工程 Episode 注册表（方案六） | 低 | 避免重复发明 | 本季度 |
+| P2 中期 | wiki 分区 + AcknowledgeBase 漂移监控（方案一） | 中 | 让模板改进可被追踪 | 下季度规划 |
+| P2 中期 | git worktree 物理隔离（方案五） | 中 | 系统层代替规则层 | 工具链成熟后 |
 
 ---
 
