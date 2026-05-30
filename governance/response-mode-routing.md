@@ -18,6 +18,7 @@ tags: [agent, workflow, efficiency, harness]
 
 - 先判模式，再判读取深度。
 - 先给最小可信 checkpoint，再进入重治理闭环。
+- 治理动作先按 [[agent-governance-strategy]] 区分 P0 硬约束和 P1 语义门；`[[log]]`、产物化、完整检查、二阶反思、Goal Contract 和模板反哺都先判资格，不默认变成每轮仪式。
 - 遇到目标未成形、用户要求“更智能 / 更前沿 / 更高效”或需要共同想完整时，先进入引导式设计，而不是直接铺完整项目结构。
 - 遇到搬家、旅行、办证、采购、部署、上线、签合同等计划型问题时，先用 [[state-constraint-reasoning]] 判状态变量、约束传播和可执行性，再决定是否写动作安排。
 - 轻模式不能替代验收、关闭、准出或规则升级。
@@ -101,3 +102,4 @@ Goal Contract 的位置固定在响应模式判断之后、正式长时执行之
 - 是否应该把本轮记录为 [[harness-feedback-ledger]] 的 H5 episode，而不是直接新增硬规则？
 - 当前 Harness wiring 可用 `python3 scripts/check_all.py --only harness-governance` 检查，具体实现为 `scripts/check_harness_governance.py`。
 - 如果 episode 后续证明可复用，再按 [[harness-evolution]] 进入模板、sensor、技能、[[WORKFLOW]]、[[AGENTS]] 或 [[POLICY]]。
+- 如果发现规则正在把低价值动作硬化成固定仪式，先回到 [[agent-governance-strategy]] 做降级、合并或 prune 判断。

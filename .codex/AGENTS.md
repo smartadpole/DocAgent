@@ -1,11 +1,12 @@
 # Codex Local Adapter
 
-本文件是当前 wiki 的 Codex 本地入口适配层。完整维护约束仍以根目录 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]] 和 [[harness-evolution]] 为准。
+本文件是当前 wiki 的 Codex 本地入口适配层。完整维护约束仍以根目录 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]] 和 [[harness-evolution]] 为准。
 
 ## 每轮启动
 
 - 先读根目录 `AGENTS.md`。
 - 再按 [[response-mode-routing]] 判断响应模式：快速诊断、引导式设计、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+- 如果治理动作本身变重，或 `[[log]]`、产物化、完整检查、二阶反思、Goal Contract、模板反哺被当成无条件仪式，读 [[agent-governance-strategy]]，先做 P0 / P1 / P2 / P3 分级。
 - 如果用户要求设计新系统、新工具、把粗糙想法想完整，或只给出“更智能 / 更前沿 / 更高效”目标，读 [[proactive-dialogue-system]]，并用 [[templates/guided-discovery-session-template]] 承接轻量 discovery。
 - 如果涉及 Harness 自演进、用户纠偏、检查失败、模式切换或规则反哺，再读 [[harness-evolution]] 和 [[harness-feedback-ledger]]。
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。

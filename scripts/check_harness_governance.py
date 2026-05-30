@@ -9,6 +9,7 @@ from pathlib import Path
 
 REQUIRED_FILES = (
     "governance/response-mode-routing.md",
+    "governance/agent-governance-strategy.md",
     "governance/proactive-dialogue-system.md",
     "governance/instruction-adherence.md",
     "governance/execution-contract-semantics.md",
@@ -30,6 +31,19 @@ REQUIRED_FILES = (
     "governance/WORKFLOW.md",
     "governance/POLICY.md",
     "skills/issue-analysis/SKILL.md",
+)
+
+AGENT_STRATEGY_REQUIRED_TERMS = (
+    "Log Eligibility",
+    "Artifactization Eligibility",
+    "Check Budget",
+    "Rule Upgrade Budget",
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "提交税",
+    "语义门",
 )
 
 ENTRYPOINT_REFERENCES = (
@@ -282,6 +296,44 @@ def check_entrypoint_wiring(repo: Path) -> list[str]:
     return errors
 
 
+def check_agent_governance_strategy(repo: Path) -> list[str]:
+    errors: list[str] = []
+    strategy = read_text(repo, "governance/agent-governance-strategy.md", errors)
+    if strategy:
+        for term in AGENT_STRATEGY_REQUIRED_TERMS:
+            if term not in strategy:
+                errors.append(f"governance/agent-governance-strategy.md: missing strategy term {term}")
+
+    for rel in (
+        "README.md",
+        "INDEX.md",
+        "governance/README.md",
+        "concepts/agent-governance.md",
+        "AGENTS.md",
+        ".codex/AGENTS.md",
+        "governance/WORKFLOW.md",
+        "governance/POLICY.md",
+        "governance/instruction-adherence.md",
+        "governance/log-writing-rules.md",
+        "governance/harness-feedback-ledger.md",
+    ):
+        text = read_text(repo, rel, errors)
+        if text and "agent-governance-strategy" not in text:
+            errors.append(f"{rel}: missing agent-governance-strategy wiring")
+
+    for rel in (
+        "AGENTS.md",
+        "governance/WORKFLOW.md",
+        "governance/POLICY.md",
+        "governance/instruction-adherence.md",
+        "governance/log-writing-rules.md",
+    ):
+        text = read_text(repo, rel, errors)
+        if text and "log eligibility" not in text:
+            errors.append(f"{rel}: missing log eligibility gate")
+    return errors
+
+
 def check_proactive_dialogue(repo: Path) -> list[str]:
     errors: list[str] = []
     text = read_text(repo, "governance/proactive-dialogue-system.md", errors)
@@ -438,6 +490,7 @@ def check_harness_governance(repo: Path) -> list[str]:
     errors.extend(check_required_files(repo))
     errors.extend(check_response_mode_routing(repo))
     errors.extend(check_entrypoint_wiring(repo))
+    errors.extend(check_agent_governance_strategy(repo))
     errors.extend(check_proactive_dialogue(repo))
     errors.extend(check_rule_and_skill_wiring(repo))
     errors.extend(check_concept_and_template(repo))

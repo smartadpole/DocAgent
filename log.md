@@ -9,6 +9,21 @@
 
 ## 2026-05-30
 
+### 收窄 Agent 治理硬性条目
+
+- **记录人**：sunhao
+- **用户意图**：用户追问当前 agent 治理方案是否合理，特别是入口缩减是否会导致能力下降、`log` 硬性条目是否不合理，并要求检查其他设计里的同类问题，完成治理策略整改。
+- **主题**：
+  1. 横向识别类似过硬点：`[[log]]`、响应模式、引导式设计产物化、二阶反思、完整检查、模板反哺、Goal Contract、入口同步和事项链路都存在被写成无条件仪式的风险。
+  2. 明确整改策略：入口缩减不等于能力下降，能力应下沉到 owning page、技能、模板和 sensor；根入口只保留 P0 防线、路由和短触发。
+  3. 把 `[[log]]` 从“文件变更必写”改成 log eligibility：必须判断是否影响未来理解，再决定必写、合并写或免写。
+- **关键动作**：
+  1. **新增策略入口**：新增 [[agent-governance-strategy]]，定义 P0 硬约束、P1 语义门、P2 流程和 P3 backlog，并列出 Log / Artifactization / Check / Rule Upgrade 四个关键语义门。
+  2. **收窄执行规则**：更新 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[instruction-adherence]]、[[log-writing-rules]] 和 `.codex/AGENTS.md`，把 `[[log]]`、产物化、完整检查和二阶反思改成资格判断，不再作为每轮硬性仪式。
+  3. **接入治理入口和 sensor**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[concepts/agent-governance]]、[[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，让策略页成为可检查的治理接线。
+- **二阶反思**：这轮暴露的不是单个 `log` 规则问题，而是 Harness 把防漏动作持续硬化的系统倾向。后续新增任何规则、模板字段或 sensor 时，都要先问它是 P0 guard 还是 P1/P2/P3；如果不是 P0，就必须保留免做条件和降级出口。
+- **影响页面**：[[agent-governance-strategy]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[instruction-adherence]]、[[log-writing-rules]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[concepts/agent-governance]]、[[README]]、[[INDEX]]、[[governance/README]]、`.codex/AGENTS.md`、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 跨工程治理中控基础设施落地
 
 - **记录人**：sunhao

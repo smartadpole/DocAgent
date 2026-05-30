@@ -15,7 +15,7 @@ tags: [agent, harness, instruction-following]
 
 核心判断：
 
-> 重大规则不能长期停在自然语言。重复失守、影响证据 / 验收 / 提交 / 权限 / 用户原始事实的规则，必须升级为触发信号、模板字段、sensor、统一门禁或最终回复证明。
+> 重大规则不能长期停在自然语言。重复失守、影响证据 / 验收 / 提交 / 权限 / 用户原始事实的规则，必须升级为触发信号、模板字段、sensor、统一门禁或最终回复证明；但非 P0 规则先按 [[agent-governance-strategy]] 做资格判断，不能把防漏动作硬化成每轮仪式。
 
 ## 边界
 
@@ -41,7 +41,7 @@ tags: [agent, harness, instruction-following]
 
 | 触发信号 | 必须执行 | 当前可检查点 | 人工语义边界 |
 | --- | --- | --- | --- |
-| 本轮产生实际文件变更 | 更新 [[log]]、跑相关 sensor、收尾跑 `python3 scripts/check_all.py`、区分本轮改动和预存脏改、提交或说明例外 | [[WORKFLOW]] / `scripts/check_all.py` | 哪些脏改属于本轮 |
+| 本轮产生实际文件变更 | 做 log eligibility、跑相关 sensor 或说明免跑、区分本轮改动和预存脏改、提交或说明例外 | [[agent-governance-strategy]] / [[WORKFLOW]] / `scripts/check_all.py` | 哪些脏改属于本轮；这次是否真的需要 `[[log]]` |
 | 用户提供截图、日志、接口响应或运行输出 | 在 issue / incident / 报告里转成结构化证据；拿不到原始二进制时写明原因和待补路径 | 模板字段 / 项目文档检查 | 当前工具是否真实取得原图 |
 | 用户要求验收、复验、关闭、准出或写 `done` | 先锁定验收对象、测试计划来源、证据层级、人工确认边界和不上推边界 | [[projects/development/plan/test-acceptance-planning-model]] / [[projects/development/reports/README]] | 证据是否足以关闭当前层级 |
 | 执行页出现“默认不需要，但如果”、`可选 / 视情况 / 后续可能` 或非目标展开 | 按 [[governance/execution-contract-semantics]] 上移参考规则，当前事项只保留单值裁决 | `scripts/check_execution_contract_semantics.py` | 该句是否承担当前执行裁决 |
@@ -52,7 +52,7 @@ tags: [agent, harness, instruction-following]
 
 只要本轮产生实际文件变更，最终回复前按固定顺序：
 
-1. 运行相关专项 sensor；收尾或提交前运行 `python3 scripts/check_all.py`。
+1. 按 [[agent-governance-strategy]] 判断 log eligibility、artifactization eligibility 和 check budget；运行相关专项 sensor，收尾或跨入口 / 规则 / 结构变更提交前运行 `python3 scripts/check_all.py`。
 2. 运行 `git status --short`，区分本轮同主题改动和预存无关改动。
 3. 用户没有明确禁止提交时，提交本轮同一主题改动；无法提交时写出具体例外原因。
 4. 提交后再次检查状态和 `git log -1 --oneline`；最终回复给出 commit hash 和剩余脏改归属。
@@ -75,3 +75,4 @@ tags: [agent, harness, instruction-following]
 - 跑了哪些检查，结果是什么。
 - 是否提交；未提交时说明例外。
 - 哪些已被 sensor 覆盖，哪些仍是人工语义边界。
+- `[[log]]`、产物化、完整检查或二阶反思是否触发资格；免做时说明免做类别。

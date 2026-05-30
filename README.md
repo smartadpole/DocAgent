@@ -15,7 +15,7 @@ tags: [entry, root]
 如果只记一件事，就记住这套七层模型：
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -25,7 +25,7 @@ tags: [entry, root]
 当前物理结构再补一句：
 
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
-- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
+- `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
 - 其他目录分别承接沉淀、历史和证据
@@ -50,6 +50,7 @@ tags: [entry, root]
 - 想知道“治理层是怎么分的” -> 读 [[governance/README]]
 - 想知道“之前确认过哪些前提，以后不用重复说” -> 读 [[BRAIN]]
 - 想知道“规则、优先级和自动沉淀边界” -> 读 [[POLICY]]
+- 想知道“治理规则是不是过硬、哪些该保留硬约束、哪些改成资格判断” -> 读 [[agent-governance-strategy]]
 - 想知道“本轮该先轻量诊断还是进入沉淀 / 验收 / 规则升级” -> 读 [[response-mode-routing]]
 - 想知道“新信息进入系统后，会改哪些状态、依赖和可执行性，什么时候不能直接写成安排” -> 读 [[state-constraint-reasoning]]
 - 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
@@ -83,7 +84,7 @@ tags: [entry, root]
 - 这是新文件，还是对已有文件的修改？
 - 这份材料该进 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`？
 - 这次改动会不会影响链接、目录名或索引？
-- 这次处理是不是有长期价值，需要把按对话整理后的主题、用户意图和关键动作写进 [[log]]，或把稳定偏好写进 `workspace-memory`？
+- 这次处理是不是有长期价值，需要按 [[agent-governance-strategy]] 和 [[log-writing-rules]] 做 log eligibility 判断，或把稳定偏好写进 `workspace-memory`？
 
 ## 这组工具怎么配合
 
@@ -92,6 +93,7 @@ tags: [entry, root]
 - `workspace-filesystem` 让 Codex 直接操作当前工作区下的文件。
 - `workspace-memory` 记录长期规则、偏好、命名习惯和稳定结论。
 - [[response-mode-routing]] 负责把每轮 agent 工作先分成快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理，减少无谓重启动。
+- [[agent-governance-strategy]] 负责区分 P0 硬约束、P1 语义门、P2 流程和 P3 backlog，避免防漏规则变成无条件仪式。
 - [[state-constraint-reasoning]] 负责把计划型问题先变成状态变量、约束传播和可执行性判断，而不是直接写动作流水。
 - [[instruction-adherence]] 负责把关键规则从自然语言推进到触发矩阵、模板字段、sensor、门禁和最终回复证明。
 - [[execution-contract-semantics]] 负责防止参考规则、条件路由、非目标和上层证据污染当前执行合同。

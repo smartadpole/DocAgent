@@ -8,7 +8,7 @@ tags: [agent, governance, harness, knowledge-base]
 
 # Agent 治理
 
-相关：[[concepts/harness-engineering]]、[[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[concepts/harness-engineering]]、[[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验证、复盘和自演进机制组织成一套可维护系统的方法。它关注的不是“写更多提示词”，而是让 agent 在不同任务里能正确判断响应模式、保留事实边界、遵守执行合同、生成证据、回写知识，并从真实失误中改进。
 
@@ -24,6 +24,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 
 | 对象 | 关注点 | 当前入口 |
 | --- | --- | --- |
+| 治理策略 | 硬约束、语义门、流程、建议和 backlog 如何分级 | [[agent-governance-strategy]] |
 | 响应模式 | 本轮先轻还是重，是否需要切换模式 | [[response-mode-routing]] |
 | 主动对话 | 目标不完整时如何少问、假设推进并产物化 | [[proactive-dialogue-system]] |
 | 指令遵循 | 已有规则怎样进入触发器、模板字段、sensor、门禁和最终证明 | [[instruction-adherence]] |
@@ -33,6 +34,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 
 ## 分层模型
 
+- **治理策略层**：[[agent-governance-strategy]]。回答哪些防线保留为 P0 硬约束，哪些降成 P1 语义门、P2 流程或 P3 backlog。
 - **硬约束层**：[[AGENTS]]、[[POLICY]]。回答 agent 必须怎么做、什么可以自动写入、冲突时谁优先。
 - **执行路由层**：[[response-mode-routing]]、[[WORKFLOW]]。回答本轮该用什么模式、按什么顺序推进。
 - **任务语义层**：[[instruction-adherence]]、[[execution-contract-semantics]]。回答规则如何落到执行，以及执行页怎样保持单值裁决。
@@ -43,6 +45,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 
 当前知识库已经有一组 Agent Harness 基线：
 
+- 治理瘦身和分级策略：[[agent-governance-strategy]]
 - 响应效率治理：[[response-mode-routing]]
 - 引导式设计和产物化：[[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]
 - 计划型问题状态推演：[[state-constraint-reasoning]]
@@ -65,6 +68,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 
 - 把 agent 治理误写成某个项目开发专题，导致知识库方法被塞进 `projects/`。
 - 把每次纠偏都升级成 [[AGENTS]] 硬规则，最后入口页变成百科全书。
+- 把防漏规则写成无条件仪式，导致 `[[log]]`、完整检查、二阶反思或产物化变成低价值固定动作。
 - 把日志、报告、handoff 或模型自述当作验收闭环。
 - 把“更智能”理解成无限扩读、长问卷或一次铺满结构。
 - 只做复盘不改模板、sensor 或技能，导致同类问题反复靠人工提醒。

@@ -31,6 +31,7 @@ tags: [index, root]
 - [[governance/README]]：治理层入口
 - [[BRAIN]]：共享背景
 - [[POLICY]]：规则、优先级和 memory 路由
+- [[agent-governance-strategy]]：Agent 治理策略，区分 P0 硬约束、P1 语义门、P2 流程和 P3 backlog
 - [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
 - [[proactive-dialogue-system]]：主动对话与引导式设计，决定目标未成形时如何自动判定场景、少量提问、带假设推进并产物化
 - [[state-constraint-reasoning]]：状态与约束推演，决定新信息进入系统后如何识别受影响状态、做约束传播并先判可执行性
@@ -79,6 +80,7 @@ tags: [index, root]
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题，把需求、设计、拆解、实现、测试验收、发布运行和协作治理串成一条交付链回看。
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，回看 agent 的目标理解、读取预算、工具使用、验证质量、沟通节奏和沉淀路由。
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
+- [[agent-governance-strategy]]：Agent 治理策略整改入口，收口入口瘦身、log eligibility、产物化资格、检查预算和规则升级预算。
 - [[articles/2026-05-29-finalizer-write-scope-case]]：Finalizer 写入范围失守案例，分析用户收窄写入范围后，finalizer 只证明 clean 而不证明 scope 的 Harness 缺口。
 - [[articles/2026-05-30-agent-governance-reflection-doccustomer]]：Agent 治理整体反思，以 DocCustomer 为例，归纳规则膨胀、角色边界、分流过重、状态冗余等八类结构性问题和改进方向。
 - [[articles/2026-05-30-agent-governance-cross-project-synthesis]]：跨 8 个工程的 Agent 治理横向对比，抽象出独立重发明、规则只增不减、边界靠声明、协议不统一等共性问题，提出共享治理内核方案。

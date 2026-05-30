@@ -5,7 +5,7 @@
 ## 分层总览
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -47,6 +47,7 @@
 ## 治理层边界
 
 - [[POLICY]]：规则裁定层。回答“什么允许自动晋升、什么必须人工确认、冲突时先按谁”
+- [[agent-governance-strategy]]：Agent 治理策略层。回答“哪些防线是 P0 硬约束，哪些应降成语义门、流程或 backlog”
 - [[AGENTS]]：执行约束层。回答“agent 修改时必须怎么做”
 - [[WORKFLOW]]：流程编排层。回答“通常按什么顺序推进”
 - [[response-mode-routing]]：响应效率路由层。回答“本轮先快诊断、沉淀、验收、实现还是升级规则”
@@ -61,6 +62,7 @@
 判断时优先用这条：
 
 - 如果问题是“怎么判”，先看 [[POLICY]]
+- 如果问题是“治理规则是不是过硬、是否该降级或先做资格判断”，先看 [[agent-governance-strategy]]
 - 如果问题是“怎么执行”，先看 [[AGENTS]]
 - 如果问题是“怎么推进”，先看 [[WORKFLOW]]
 - 如果问题是“要不要先轻量诊断、何时进入重治理”，先看 [[response-mode-routing]]
@@ -120,6 +122,7 @@
 - 只要本轮在处理搬家、旅行、办证、采购、部署、上线、签合同等计划型问题，且动作依赖权限、资源、时间窗或外部确认，就必须先按 [[state-constraint-reasoning]] 更新状态变量、做约束传播并判可执行性，再决定是否把动作写进计划。
 - 如果用户指出“规则已有但没有执行”、或本轮发现提交、证据、验收边界、最终回复扫描等失守，必须按 [[instruction-adherence]] 判断该补触发器、模板字段、sensor、门禁还是最终证明，不得只追加一句更严厉的自然语言规则。
 - 写入 TASK、issue、AP、EP、FP、Gate、报告目标包、handoff、状态页或会议行动项时，必须按 [[execution-contract-semantics]] 检查执行合同语义：当前裁决单值，非目标不展开成后续任务，参考规则不下沉到下层事项，证据层级不回流成普通修复闭环。
+- 发现 `[[log]]`、产物化、完整检查、二阶反思、Goal Contract、模板反哺或入口同步开始变成无条件仪式时，先按 [[agent-governance-strategy]] 做资格判断；P0 防线保留，P1/P2/P3 不硬化成每轮必做。
 - 快速诊断只默认读取入口规则和最相关的少量事实源；它可以给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出、提交或规则升级。
 - 如果根因已经形成而后续是在沉淀、验收、规则升级或收尾，必须显式告诉用户当前阶段，不要把治理闭环伪装成仍在分析。
 - 当用户要求长时间持续推进、反复尝试、直到完成或跨多轮跟进时，先判断是否需要 Goal Contract；主控侧定义完成契约，子工程侧按契约回传证据，不用 Goal 自述替代验收关闭。
@@ -132,22 +135,22 @@
 - 收尾模式禁止继续扩需求、追加新功能或顺手做下一轮结构调整；只允许完成与本轮已发生改动直接相关的同步、核对、补记和提交。
 - 工作阶段按本轮范围优先跑专项 sensor，例如 `python3 scripts/check_all.py --only harness-governance`、`python3 scripts/check_all.py --only work-item-matrix`、`python3 scripts/check_all.py --only testing-system-maturity` 或 `python3 scripts/check_all.py --only execution-contract-semantics`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
 - 性能优化不能靠跳过关键语义边界实现。每轮先守性能预算：读取预算、问题预算、检查预算和产物大小预算。能用 1 到 3 个事实源判断时不扩读，能用专项 sensor 证明时不先跑全量，早期探索先写轻量 discovery，不为未定方向铺完整项目结构。
-- 只要这次对话产生了实际内容变更或结构变更，保底在对话结束前做一次 commit。
-- 只要这次对话产生了实际内容变更或结构变更，就必须同步更新 `log.md`；即使只是同一大主题下的后续修正，也不能跳过。
+- 只要这次对话产生了实际内容变更或结构变更，保底在对话结束前做一次 commit，除非用户明确禁止或存在无法提交的例外。
+- 只要这次对话产生了实际内容变更或结构变更，就必须按 [[agent-governance-strategy]] 和 [[log-writing-rules]] 做 log eligibility 判断：影响规则、结构、状态、决策、验收、跨工程边界或长期知识时写入 `[[log]]`；纯格式、错别字、无语义链接修复或临时本地状态可免写但要在收尾中说明。
 - 如果这次改动会影响 `projects/trace.md` 的当前需求主题，就和相关页面同轮同步更新 trace，不要等其他文档都写完后再回来补。
 - 维护 `log.md` 时，默认先判断“这是在续写上一条记录，还是已经进入新的对话意图”；不要因为它们发生在同一天，或都在改同一个页面，就压成单日总记录。
 - 纯本地状态、临时草稿、界面缓存这类不影响文档内容和结构的变化，不要求 commit。
 - 如果问题明显复杂，中间节点完成后就提交，不要把多个大变化混成一个 commit。
 - commit 只包含同一主题的改动，不把无关内容打包进去。
 - commit message 必须使用英文；正文、说明和文档内容仍然可以使用中文。
-- 每次对话收尾前必须做一次二阶反思：本轮问题是否只是单点修补，还是暴露了同类漏检、流程缺口、模板缺口、协作契约缺口或记忆路由缺口；如果属于可复用教训，要同轮回写到对应主入口，不等用户再次提醒。
+- 每次对话收尾前必须做一次二阶反思资格判断：本轮问题是否只是单点修补，还是暴露了同类漏检、流程缺口、模板缺口、协作契约缺口或记忆路由缺口；只有属于可复用教训、重复失守或 P0 风险时，才同轮回写到对应主入口。
 - 二阶反思不是追加新需求；它只回答“这次为什么会错 / 为什么会漏 / 下次怎样提前发现同类问题”，并按 [[POLICY]] 判断写入 [[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]]、`templates/` 或 [[log]]。
 
 ### 收尾模式
 
 - 收尾模式的目标是把当前轮已经完成的工作收口成一个可回看、可校验、可提交的结果，不负责继续推进下一轮开发。
-- 进入收尾模式后，默认按这个顺序执行：确认本轮范围、检查受影响页面、补齐必要文档同步、补写 `log.md`、做一致性检查、做二阶反思、提交当前主题。
-- 一致性检查至少覆盖：主入口是否已同步、内部链接是否可点击、受影响页面职责是否仍然清楚、`log.md` 是否已记录本轮真实用户意图和关键动作。
+- 进入收尾模式后，默认按这个顺序执行：确认本轮范围、检查受影响页面、补齐必要文档同步、做 log eligibility 判断、做一致性检查、做二阶反思资格判断、提交当前主题。
+- 一致性检查至少覆盖：主入口是否已同步、内部链接是否可点击、受影响页面职责是否仍然清楚、`log.md` 是否按资格判断记录了本轮真实用户意图和关键动作，或明确属于免写。
 - 二阶反思至少覆盖：同类问题是否会再次出现、是否需要补模板 / 入口 / 读取顺序 / 协作边界 / 自动沉淀边界、是否已有规则但没有执行、是否需要把旧规则改得更可执行。
 - 如果这轮改动涉及规则、结构或入口页，收尾时只补与这轮 diff 直接相关的同步页，不扩大成整库巡检。
 - 如果工作区里存在本轮未触及的预存脏改动，默认不把它们并入本次收尾或 commit，除非用户明确要求一起纳入。
@@ -177,6 +180,7 @@
 - 会影响所有后续工作的硬约束，进入 [[AGENTS]]。
 - 多轮确认后会持续影响判断的共享背景，进入 [[BRAIN]]。
 - 会影响路由、优先级和自动沉淀边界的规则，进入 [[POLICY]]。
+- 会影响“哪些治理动作应硬化、哪些只做资格判断、哪些应降级或删除”的策略，进入 [[agent-governance-strategy]]，再由 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和相关规则页保持短引用。
 - 会影响“先轻后重”、首次反馈、读取预算和模式切换的响应效率规则，进入 [[response-mode-routing]]，再由 [[AGENTS]]、[[WORKFLOW]] 和 [[POLICY]] 保持短引用。
 - 会影响计划型问题里“先判状态与约束、再写动作”的默认方法，进入 [[state-constraint-reasoning]]，再由 [[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]] 和 [[proactive-dialogue-system]] 保持短引用。
 - 只反映当前项目长期有效事实的内容，进入 `projects/memory/README.md`。
