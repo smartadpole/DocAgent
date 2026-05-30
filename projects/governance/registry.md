@@ -36,15 +36,13 @@ tags: [governance, registry, cross-project]
 | 工程 | 角色 | 语言 | 本机路径 | 整体成熟度 | 治理阶段 | 上次审计 | 备注 |
 |---|---|---|---|---|---|---|---|
 | AcknowledgeBase | 治理中控 / 知识库 | 中文 | `/Users/hai/Documents/Docs/AcknowledgeBase` | L3+ | `reference` | 2026-05-30 | 基准工程，不接受外部治理 |
-| Software/wiki | 模板源 | 中文 | 待补充 | L3 | `reference` | 2026-05-30 | fork 起点，独立维护 |
-| DocCustomeranalysis | 主控 | 中文 | 待补充 | L3 | `assessed` | 2026-05-30 | episode 60+条全 active，规则闭环缺口 |
-| DocFilmCommunity | 主控 | 中文 | 待补充 | L2 | `assessed` | 2026-05-30 | 从 DocCustomer 吸收，episode 5条 |
-| fetch-adapter | 子工程（Customer pipeline） | 英文 | 待补充 | L2 | `unenrolled` | 2026-05-30 | 有 3 条 episode，2 个 sensor |
-| train_platform | 子工程（训练平台） | 英文 | 待补充 | L1-L2 | `unenrolled` | 2026-05-30 | 有 sensor，有 promoted-replaced 终态 |
-| prefect | 子工程（调度平台） | 英文 | 待补充 | L1 | `unenrolled` | 2026-05-30 | 有规则但无 episode、无 sensor |
-| customeranalysis | 子工程（识别服务） | — | 待补充 | 特殊 | `unenrolled` | 2026-05-30 | 用 .cursor/rules/*.mdc 模块化，AGENTS.md 自动生成，值得借鉴 |
-
-> **路径补充**：首次运行审计前，请把"待补充"替换为各工程的本机绝对路径，否则审计技能无法读取对应文件。
+| Software/wiki | 模板源 | 中文 | `/Users/hai/Documents/Software/wiki` | L3 | `reference` | 2026-05-30 | fork 起点（git@github.com:smartadpole/DocAgent.git），独立维护 |
+| DocCustomeranalysis | 主控 | 中文 | `/Users/hai/Documents/Code/DocCustomeranalysis` | L3 | `assessed` | 2026-05-30 | git@gitlab.com:tools_/doccustomeranalysis.git；episode 60+条全 active，规则闭环缺口 |
+| DocFilmCommunity | 主控 | 中文 | `/Users/hai/Documents/Code/DocFilmCommunity` | L2 | `assessed` | 2026-05-30 | git@github.com:smartadpole/DocFilmCommunity.git；从 DocCustomer 吸收，episode 5条 |
+| fetch-adapter | 子工程（Customer pipeline） | 英文 | `/Users/hai/Documents/Code/Customer/fetch-adapter` | L2 | `unenrolled` | 2026-05-30 | git@gitlab.com:tools_/fetch_service.git；有 3 条 episode，2 个 sensor |
+| train_platform | 子工程（训练平台） | 英文 | `/Users/hai/Documents/Code/train_platform` | L1-L2 | `unenrolled` | 2026-05-30 | git@gitlab.com:haidilao/train_platform.git；有 sensor，有 promoted-replaced 终态 |
+| prefect | 子工程（调度平台） | 英文 | `/Users/hai/Documents/Code/prefect` | L1 | `unenrolled` | 2026-05-30 | git@gitlab.com:tools_/prefect.git；有规则但无 episode、无 sensor |
+| customeranalysis | 子工程（识别服务） | — | `/Users/hai/Documents/Code/customeranalysis` | 特殊 | `unenrolled` | 2026-05-30 | git@gitlab.com:tools_/customeranalysis.git；用 .cursor/rules/*.mdc 模块化，AGENTS.md 自动生成，值得借鉴 |
 
 ---
 
@@ -64,3 +62,4 @@ tags: [governance, registry, cross-project]
 | 日期 | 变更内容 |
 |---|---|
 | 2026-05-30 | 初版建立，录入 2026-05-30 跨工程分析结果 |
+| 2026-05-30 | 补全所有工程本机路径和 git remote 地址 |
