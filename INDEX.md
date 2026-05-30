@@ -80,6 +80,10 @@ tags: [index, root]
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，回看 agent 的目标理解、读取预算、工具使用、验证质量、沟通节奏和沉淀路由。
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
 - [[articles/2026-05-29-finalizer-write-scope-case]]：Finalizer 写入范围失守案例，分析用户收窄写入范围后，finalizer 只证明 clean 而不证明 scope 的 Harness 缺口。
+- [[articles/2026-05-30-agent-governance-reflection-doccustomer]]：Agent 治理整体反思，以 DocCustomer 为例，归纳规则膨胀、角色边界、分流过重、状态冗余等八类结构性问题和改进方向。
+- [[articles/2026-05-30-agent-governance-cross-project-synthesis]]：跨 8 个工程的 Agent 治理横向对比，抽象出独立重发明、规则只增不减、边界靠声明、协议不统一等共性问题，提出共享治理内核方案。
+- [[articles/2026-05-30-agent-system-deep-analysis]]：基于 Karpathy Software 3.0、OpenClaw memory、AHE 可观测性支柱和多 agent 架构理论，对当前 8 工程 agent 体系做深度诊断，归纳六大根本性设计缺陷和三阶演进路径。
+- [[articles/2026-05-30-acknowledgebase-governance-hub-design]]：AcknowledgeBase 作为跨工程治理中控的具体设计：四类治理动作、调度频率、中控职责边界、wiki template-changelog 最小改动方案。
 - [[skills/historical-dialogue-retrospective/SKILL]]：从历史对话、当前上下文、log、Harness episode、git 证据和检查输出中复盘 agent 偏差、效率质量与 workflow 改进。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。

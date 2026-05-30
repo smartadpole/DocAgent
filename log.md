@@ -7,6 +7,52 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-30
+
+### AcknowledgeBase 治理中控设计
+
+- **记录人**：sunhao
+- **用户意图**：用户提出以 AcknowledgeBase 为中控，定期对各工程做针对性治理，解决模板传播和跨工程治理问题。
+- **主题**：设计 AcknowledgeBase 中控的四类治理动作（漂移检查、episode 对比、规则健康度、handoff 包生成）、调度频率（主控月度/子工程季度）、职责边界（只读+建议，不直接写入其他工程）、起步路径（WORKFLOW 模式 → 技能化 → 调度化）、wiki 最小改动（只需加 template-changelog.md）。
+- **关键动作**：新增 [[articles/2026-05-30-acknowledgebase-governance-hub-design]]，校准前两篇文章的拓扑描述，在 [[INDEX]] 中补入口。
+
+### Agent 体系深度分析：前沿理论与工程现实对照
+
+- **记录人**：sunhao
+- **用户意图**：用户补充工程拓扑说明（wiki 是模板、AcknowledgeBase 是知识库兼管理层、各主控-子工程归属），并要求结合 Karpathy 设计、OpenClaw memory、harness 和分流设计做前沿调研，依据调研结果深度分析现有 agent 设计问题，沉淀结果。
+- **主题**：
+  1. WebSearch 调研 Karpathy Software 3.0 / Agentic Engineering、多 agent 路由架构（hub-and-spoke/hierarchical）、CoALA memory 四类型、AHE 三可观测性支柱、agent 权限边界安全数据。
+  2. 结合知识库已有 harness/openclaw/codex-goals 文章，做五层对照分析：Karpathy 框架、多 agent 拓扑、OpenClaw memory、AHE 成熟度、权限边界安全现实。
+  3. 诊断六大根本性设计缺陷：规则当程序用、容错设计缺失、memory 未分层、orchestrator 层缺失、episode 无闭环、wiki 模板地位未落地。
+  4. 提出三阶演进路径（Phase 0/1/2）。
+- **关键动作**：新增 [[articles/2026-05-30-agent-system-deep-analysis]]，在 [[INDEX]] 中补入口。
+
+### Agent 治理跨工程横向分析与方案探索
+
+- **记录人**：sunhao
+- **用户意图**：用户要求横向对比主控工程（DocCustomeranalysis、wiki、DocFilmCommunity）、子工程（fetch-adapter、customeranalysis、prefect、train_platform）和 AcknowledgeBase，综合分析共性问题并探索可行方案，结果沉淀到文档。
+- **主题**：
+  1. 跨 8 工程读取 AGENTS.md、harness-feedback-ledger、governance/ 核心文件和 sensor 脚本清单。
+  2. 发现 8 类共性问题：独立重发明同一治理轮子、episode 永久 active、边界靠自然语言声明、分流在每工程独立实现、commit closure 高频失守、协调协议不统一、中英文双语概念漂移、治理演进机制只在主控完整。
+  3. 提出四条可行方案：共享治理内核仓库（核心方向）、写入边界字段化（scope 声明前置）、AGENTS.md 三档精简（P0/P1/P2）、跨工程 Episode 注册表。
+  4. 建议优先序：先做 AGENTS.md 精简和 scope 声明字段化，再建跨工程注册表，最后规划共享内核。
+- **关键动作**：新增 [[articles/2026-05-30-agent-governance-cross-project-synthesis]]，在 [[INDEX]] 中补入口。
+
+### Agent 治理整体反思（DocCustomer 案例）
+
+- **记录人**：sunhao
+- **用户意图**：用户要求以 DocCustomer 为例反思 agent 治理体系，归纳结构性问题并沉淀到文档中。
+- **主题**：
+  1. 规则只增不减的正反馈陷阱：Rule Prune Queue 停留在 backlog，无硬性触发机制。
+  2. 角色边界模糊：agent 同时指模型、Harness 和 sensor，缺少授权层级矩阵。
+  3. 响应模式分流过重：单次任务需跨 5+ 文件推导当前模式。
+  4. 状态层次过多（7 层工作项），缺少写入权限矩阵，导致 agent 频繁误写。
+  5. Finalizer 例外参数膨胀，说明前置流程不可靠。
+  6. 子工程写入边界靠自然语言声明，应升级为系统层硬隔离。
+  7. log.md 治理规则精力投入与实际价值不对等。
+  8. 治理层自参照无独立人工审核卡口。
+- **关键动作**：新增 [[articles/2026-05-30-agent-governance-reflection-doccustomer]]，在 [[INDEX]] 中补入口。
+
 ## 2026-05-29
 
 ### 沉淀 finalizer 写入范围失守案例
