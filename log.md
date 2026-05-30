@@ -7,6 +7,24 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-05-31
+
+### 收口项目复盘触发、粒度和行动跟踪口径
+
+- **记录人**：sunhao
+- **用户意图**：用户追问项目复盘后续会形成 skill 时，概念页里的复盘触发是否仍有必要，并要求把这轮判断沉淀到对应知识库。
+- **主题**：
+  1. 明确概念页只保留“是否启动复盘、启动到哪里”的粗路由，不承接完整执行流程，避免和未来 skill 维护两份触发逻辑。
+  2. 把项目复盘分成轻量 checkpoint、标准复盘和深度复盘，防止小事过度治理、大事复盘过浅。
+  3. 明确复盘改进行动必须落到 Issue、事故、事项、会议 / 决策、项目记忆、模板 / 规则 / skill 或 Harness ledger 等可跟踪单一信息源。
+  4. 补齐软件研发复盘里的协作治理主线，把信息流、事项关系、证据边界和沉淀路由纳入复盘检查。
+- **关键动作**：
+  1. 更新 [[concepts/project-retrospective]]，新增启动判断与路由、复盘粒度、改进行动跟踪三节。
+  2. 更新 [[concepts/software-development-project-retrospective]]，新增协作治理回看，并把推荐输出结构补上协作治理项。
+  3. 更新 [[concepts/agent-work-retrospective]]，把适用触发收口为启动判断与技能边界，明确详细流程由历史对话复盘 skill 承接。
+- **二阶反思**：这轮暴露的是概念页和 skill 的职责边界问题。概念页应该给入口判断、语义边界和沉淀路由；skill 才负责具体执行步骤、证据读取和输出模板。后续新增方法类页面时，也应先区分“概念边界”和“可执行技能”，避免同一判断逻辑在两层漂移。
+- **影响页面**：[[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[log]]。
+
 ## 2026-05-30
 
 ### 修正 Agent 治理设计里的过度缩减风险

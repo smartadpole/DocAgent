@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-AGENT-WORK-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-29
+updated: 2026-05-31
 tags: [concept, retrospective, ai-agent, harness, workflow]
 ---
 
@@ -44,9 +44,11 @@ Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一�
 | 边界控制 | 是否守住权限、路径、环境和非目标 | AGENTS、POLICY、工作区状态、未触碰文件 |
 | 沉淀能力 | 是否把可复用经验放到正确位置 | log、concept、template、skill、ledger |
 
-## 适用触发
+## 启动判断与技能边界
 
-优先在这些场景做 Agent 工作复盘：
+本页只保留 Agent 工作复盘的粗启动判断和概念边界。详细触发、证据读取、输出结构和质量自检由 [[skills/historical-dialogue-retrospective/SKILL]] 承接，避免概念页和 skill 维护两份执行流程。
+
+优先在这些场景考虑 Agent 工作复盘：
 
 - 长时任务结束，尤其是跨多轮、跨仓库、跨环境的任务。
 - 需要复盘历史对话、当前对话上下文、[[log]] 或 [[harness-feedback-ledger]] 中的 agent 协作链。
@@ -54,6 +56,8 @@ Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一�
 - 任务出现明显返工、偏航、重复读取、过度治理或证据不足。
 - 一次任务暴露出可复用流程缺口、模板缺口、sensor 缺口或协作契约缺口。
 - 周期性回看某段时间内 agent 的效率、质量和用户体验。
+
+如果只是单次普通执行过程，写入 [[log]] 或对应项目记录即可；如果只是项目结果复盘，优先回到 [[concepts/project-retrospective]] 或 [[concepts/software-development-project-retrospective]]。
 
 ## 历史对话复盘
 

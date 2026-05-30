@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-SOFTWARE-DEVELOPMENT-PROJECT-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-05-31
 tags: [concept, retrospective, software-engineering, project-management]
 ---
 
@@ -43,6 +43,16 @@ tags: [concept, retrospective, software-engineering, project-management]
 | 协作治理 | 信息是否在正确位置流动 | 会议、决策、log、模板、规则和 sensor |
 | Agent 工作 | agent 是否高质量、高效率、守边界地完成任务 | [[concepts/agent-work-retrospective]]、commentary、diff、验证、提交 |
 
+## 协作治理回看
+
+协作治理不是附属备注，而是软件交付链能否闭环的独立主线。复盘时至少检查：
+
+- 信息是否进入正确单一信息源，而不是只停在对话、handoff、测试报告或个人记忆里。
+- 需求变化、设计冲突、验收争议、人工确认和跨 owner 协调是否进入 trace、决策、风险或会议，而不是在执行页里隐式改口径。
+- Issue、risk、report、AP、TASK、EP、FP 和 Gate 之间的关系是否清楚，证据是否被上推过度或下沉成伪任务。
+- 会议和 log 是否记录真实意图、关键结论和后续动作，而不是复制完整正文或制造第二份状态。
+- 规则、模板、skill 或 sensor 的候选是否经过抽象、事实剥离、冲突检查和晋升判断。
+
 ## 推荐输出结构
 
 软件研发项目复盘可以按下面结构落地：
@@ -52,10 +62,11 @@ tags: [concept, retrospective, software-engineering, project-management]
 3. **实际结果**：已交付、未交付、延期、降级、超出预期和遗留风险。
 4. **交付链回放**：需求 -> 设计 -> 拆解 -> 实现 -> 测试验收 -> 发布运行。
 5. **偏差和原因**：把需求偏差、设计偏差、实现偏差、验证偏差和协作偏差分开。
-6. **Agent 工作回看**：如果 agent 参与执行，补看目标理解、读取预算、工具使用、验证证据、沟通节奏和沉淀质量。
-7. **保留项**：下轮仍应复用的结构、流程、模板、工具、检查或协作方式。
-8. **改进行动**：写清 owner、落点、完成口径和检查方式。
-9. **沉淀路由**：项目事实留项目层，可复用方法回知识库层，规则候选走治理层。
+6. **协作治理回看**：检查信息流、owner、会议 / 决策、事项关系、证据边界和沉淀路由是否清楚。
+7. **Agent 工作回看**：如果 agent 参与执行，补看目标理解、读取预算、工具使用、验证证据、沟通节奏和沉淀质量。
+8. **保留项**：下轮仍应复用的结构、流程、模板、工具、检查或协作方式。
+9. **改进行动**：写清 owner、落点、完成口径和检查方式。
+10. **沉淀路由**：项目事实留项目层，可复用方法回知识库层，规则候选走治理层。
 
 ## 证据读取顺序
 

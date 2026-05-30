@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-PROJECT-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-29
+updated: 2026-05-31
 tags: [concept, retrospective, project-management]
 ---
 
@@ -37,6 +37,40 @@ tags: [concept, retrospective, project-management]
 | 机制分析 | 找到导致结果的结构性原因 | 决策、流程、协作、资源和信息机制 |
 | 改进沉淀 | 把经验变成下一轮可用资产 | 行动项、模板、规则候选、记忆和专题 |
 
+## 启动判断与路由
+
+本页只承接复盘的粗启动判断，不承接详细执行流程。后续如果形成项目复盘 skill，skill 负责证据读取、问题展开、输出模板和质量自检；本页保留概念边界和分流口径，避免和 skill 维护两份触发逻辑。
+
+优先启动复盘的场景：
+
+- 项目、阶段、里程碑、发布、事故、长时任务或重要工作链结束。
+- 实际结果和原始目标出现明显偏差、返工、验收失败、协作失灵或风险暴露。
+- 用户明确要求复盘、总结经验、沉淀方法或检查某段协作质量。
+- 结论会影响后续项目、规则、模板、skill、记忆、决策或事项拆解。
+
+不需要启动完整复盘的场景：
+
+- 只是一次普通问答、轻量定位或没有后续影响的过程记录，写入 [[log]] 或不落文件即可。
+- 只是单个已发生 bug、验收失败或事故事实，先回到 Issue 或事故主档案保真，不直接扩成全项目复盘。
+- 只是可复用方法的一小条补充，直接回写 owning concept、template 或 skill，不为它单独做复盘报告。
+
+默认路由：
+
+- 项目结果和管理链路：使用本页。
+- 软件研发交付链：进入 [[concepts/software-development-project-retrospective]]。
+- Agent 执行和协作方式：进入 [[concepts/agent-work-retrospective]]，必要时启动 [[skills/historical-dialogue-retrospective/SKILL]]。
+- 已发生 Issue 或事故：先进入 [[projects/development/issues/README]] 或 [[projects/incidents/README]]，再判断是否提炼通用经验。
+
+## 复盘粒度
+
+复盘深度按影响范围分级，不把所有事情都做成同等重量。
+
+| 粒度 | 适用场景 | 最小输出 |
+| --- | --- | --- |
+| 轻量 checkpoint | 单个小偏差、短任务、一次局部纠偏 | 对象、事实、结论、一个后续动作或免动作理由 |
+| 标准复盘 | 阶段、发布、重要工作链、明显返工 | 目标结果、关键事实、原因判断、保留项、改进行动、沉淀路由 |
+| 深度复盘 | 跨阶段项目、重大事故、重复失守、会改变规则或模板的经验 | 完整证据矩阵、机制分析、行动跟踪、规则 / 模板 / skill 候选和复查口径 |
+
 ## 复盘对象
 
 项目复盘可以覆盖：
@@ -60,6 +94,17 @@ tags: [concept, retrospective, project-management]
 - **保留项**：下次仍应继续使用的做法。
 - **改进行动**：有 owner、触发条件、完成口径和跟踪位置的行动项。
 - **沉淀路由**：哪些进入项目记忆、决策、规则、模板、概念或归档。
+
+## 改进行动跟踪
+
+复盘行动项不单独漂浮在复盘正文里。每条行动都要落到一个后续可检查的位置：
+
+- 已发生 bug、实施偏差、验收失败或事故：进入 [[projects/development/issues/README]] 或 [[projects/incidents/README]]。
+- 研发交付动作：进入对应 Gate / FP / EP / TASK、risk 或 acceptance / report 链路。
+- 跨 owner 协调、人工确认或会议动作：进入 [[projects/meetings/README]] 或 [[projects/decisions]]。
+- 项目长期事实和稳定判断：进入 [[projects/memory/README]]、[[projects/trace]] 或 [[projects/decisions]]。
+- 可复用方法、模板、规则或 skill 候选：进入 owning concept、`templates/`、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 或 [[skills/README]]。
+- Agent / Harness 改进：进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升。
 
 ## 和其他页面的分工
 
