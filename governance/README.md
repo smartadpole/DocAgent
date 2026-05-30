@@ -94,3 +94,4 @@ tags: [entry, governance]
 ## 相关专题
 
 - [[concepts/agent-governance]]：Agent 治理专题总览。它不替代本层任何单一信息源，只用于统筹响应路由、指令遵循、执行合同、H5 自演进、技能、模板、sensor 和 Agent 工作复盘之间的知识库关系。
+- [[governance/platform-standards]]：平台级治理标准。定义主控工程 L3、子工程 L2 的各维度成熟度指标，供跨工程治理审计技能使用。

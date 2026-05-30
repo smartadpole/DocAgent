@@ -16,6 +16,7 @@
 
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能。用于从当前上下文、[[log]]、[[harness-feedback-ledger]]、原始 session / rollout、git diff / commit 和检查输出中复盘 agent 偏差、效率质量和 workflow 改进候选。
+- [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。定期或按需读取各工程关键治理文件，对照 [[governance/platform-standards]] 评估成熟度，生成漂移报告和 handoff 包；支持全量审计和单工程审计两种模式。
 
 ## 维护原则
 

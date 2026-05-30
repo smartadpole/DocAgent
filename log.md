@@ -9,6 +9,19 @@
 
 ## 2026-05-30
 
+### 跨工程治理中控基础设施落地
+
+- **记录人**：sunhao
+- **用户意图**：把 AcknowledgeBase 从"能做治理"的设计态，推进到"可定期自动执行治理"的运行态；要求统一标准、逐工程推进、handoff 包模式（中控只写建议，用户手动执行）。
+- **主题**：新增四个组件——平台级治理标准（L1-L4 成熟度矩阵）、工程注册表（8 工程、治理阶段、路径）、跨工程审计技能（全量/单工程两种模式）、每周一 9:00 定期调度任务。
+- **关键动作**：
+  - 新增 [[governance/platform-standards]]：5 维度、L1-L4 成熟度标准，基于 AcknowledgeBase 自身体系
+  - 新增 `projects/governance/`：含 [[projects/governance/registry]]（工程注册表）和 README
+  - 新增 [[skills/cross-project-governance-audit/SKILL]]：审计技能，输出漂移报告 + handoff 包
+  - 新增定期调度任务 `cross-project-governance-audit`，每周一 9:00 自动跑全量审计
+  - 更新 [[skills/README]]、[[governance/README]] 加入新文件入口
+- **待补充**：注册表中 7 个工程路径标注"待补充"，需要用户补全后首次审计才能完整运行
+
 ### AcknowledgeBase 治理中控设计
 
 - **记录人**：sunhao
