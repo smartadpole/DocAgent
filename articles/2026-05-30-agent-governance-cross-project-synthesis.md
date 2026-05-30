@@ -14,11 +14,13 @@ tags: [agent, governance, harness, cross-project, synthesis, solution]
 
 本页来自 2026-05-30 对以下 8 个工程的 AGENTS.md、governance/ 目录、harness-feedback-ledger 和 sensor 脚本的横向对比分析：
 
-**主控工程**：`DocCustomeranalysis`、`Software/wiki`（即 AcknowledgeBase）、`DocFilmCommunity`
+**主控工程**：`DocCustomeranalysis`、`DocFilmCommunity`
 
 **子工程**：`fetch-adapter`（Customer pipeline）、`customeranalysis`（识别服务）、`prefect`（调度平台）、`train_platform`（训练平台）
 
-**其他**：`AcknowledgeBase`（知识库）
+**模板源**：`Software/wiki`（所有工程的 fork 起点，独立存在，不归属任何主控）
+
+**治理中控 + 个人知识库**：`AcknowledgeBase`（双重角色：跨工程管理层 + 概念研究存档）
 
 ---
 
@@ -185,40 +187,31 @@ wiki/governance/rules/
 
 **优点**：版本化使漂移检测极其简单；规则可独立废弃；AGENTS.md 引用版本而非复制正文，大幅减少文本体积。
 
-### 方案三：写入边界字段化（可独立推进，不依赖拓扑）
+### 方案三：AGENTS.md 三档精简
+
+**三档分类**（行数由分类逻辑决定，不硬定上限）：
+- **P0（必须在 AGENTS.md）**：写入边界声明、响应模式路由入口、执行合同语义入口——这些是 agent 每轮必须加载的硬约束，不能跳转。
+- **P1（移到 owning page，AGENTS.md 只保留跳转链接）**：所有 `git log`、`commit`、`测试验收`、`子工程回写`、`AP 格式`规则——按需读取，不需要每轮全量加载。
+- **P2（不进 AGENTS.md，进入 Prune Queue）**：重复覆盖、已有 sensor 守住、低频触发的规则——候选清理，每季度执行一次。
+
+**执行触发器**：每次有新规则进入 AGENTS.md，同时必须有一条旧规则进入 Prune Queue；Prune Queue 清理是硬性约束，不是 backlog。
+
+### 方案四：写入边界字段化（最高杠杆，立即可做）
 
 不管传播机制怎么设计，这条可以立即在所有工程独立执行：
 
-- 任务开始时，agent 必须声明 `allowed_write_roots`（可以是 TASK_SCOPE.md 里的字段，也可以是 Goal Contract 里的字段）
-- finalizer 只接受有 scope 声明的收尾
+- 任务开始时，agent 必须声明 `allowed_write_roots`（TASK_SCOPE.md 字段或 Goal Contract 字段）
+- finalizer 在收尾时做 scope proof：比较本轮实际提交文件列表与声明的允许写入范围
 - 没有 scope 声明 → finalizer blocked → 要求用户显式声明
 
-这把写入边界从"agent 读规则自我约束"变成"任务起点的结构化字段"，不依赖规则文字的可靠执行。
+这把写入边界从"agent 读规则自我约束"变成"任务起点的结构化字段 + 收尾的可检查 proof"。注意：scope proof 是 **post-commit check**，不是写入前拦截；真正的 pre-write 拦截需要工具层或沙箱层支持，当前工具链里不具备，不应作为近期可执行目标。
 
-### 方案二：写入边界从规则层迁移到工具层
+### 方案五：git worktree 物理隔离（中期，依赖工具层支持）
 
-**当前问题**：子工程写入边界靠 AGENTS.md 里的自然语言声明，靠 agent 在每轮开头自我声明，效果不稳定。
+- 主控给每个跨工程任务创建独立 worktree，物理路径上隔离主控和子工程
+- Agent 在 worktree 里工作，无法操作 worktree 外的 git 路径
 
-**建议方案**：
-
-1. **git worktree 隔离**：主控给每个任务创建独立 worktree，物理路径上隔离主控和子工程。Agent 在 worktree 里工作，天然无法访问其他路径的 git 操作。
-
-2. **路径前缀检查前置**：`agent_finalizer.py` 不再只是事后检查，在写入动作执行前即做路径白名单验证（pre-write hook 而不只是 post-write check）。
-
-3. **写入范围声明字段化**：每个任务开始时，agent 必须在工具调用参数或固定文件（`TASK_SCOPE.md`）里声明 `allowed_write_roots`。finalizer 不接受没有 scope 声明的任务收尾。
-
-这三条不依赖内核仓库，可以独立推进，短期收益最快。
-
-### 方案三：AGENTS.md 三档精简规则
-
-**目标**：主控 AGENTS.md 从 350+ 行压缩到 60 行以内。
-
-**三档分类**：
-- **P0（必须在 AGENTS.md）**：写入边界声明、响应模式路由入口、执行合同语义入口。最多 15 行。
-- **P1（移到 owning page，AGENTS.md 只保留跳转链接）**：所有 `git log`、`commit`、`测试验收`、`子工程回写`、`AP 格式`规则。最多 15 个链接行。
-- **P2（移出 AGENTS.md，只保留在 ledger 的 prune queue 里）**：重复覆盖、已有 sensor 守住、低频触发的规则。
-
-**执行触发器**：每次有新规则进入 AGENTS.md，同时必须有一条旧规则进入 Prune Queue；每季度执行一次 Prune Queue 清理，不是 backlog 而是硬性约束。
+这是对写入边界最彻底的系统层解法，但依赖工具链对 worktree 的支持，属于中期目标，不能在文档里写得像立即可推进。
 
 ### 方案四：跨工程 Episode 共享注册表
 

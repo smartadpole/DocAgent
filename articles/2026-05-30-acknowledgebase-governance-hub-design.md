@@ -159,16 +159,18 @@ AcknowledgeBase 中控 2026-05 定期治理
 
 ### 在 AcknowledgeBase 内新建的文件
 
+**注意**：新建 `projects/governance/` 是结构变更，真正落地前必须先同步 `projects/STRUCTURE.md`、`projects/README.md` 和 AGENTS.md 的角色分工说明，否则会变成又一个孤岛。以下是目标结构，落地时按 owning page 规则补齐入口。
+
 ```
 AcknowledgeBase/
-  projects/governance/           # 中控治理层（新建）
-    cross-project-registry.md    # 跨工程工程台账（各工程基本信息 + 最后检查时间）
-    cross-project-episodes.md    # 跨工程 episode 注册表（平台级问题）
-    drift-reports/               # 按月的漂移报告
+  projects/governance/               # 中控治理层（结构变更，需同步 STRUCTURE.md）
+    cross-project-registry.md        # 各工程基本信息 + 最后检查时间台账
+    cross-project-episodes.md        # 平台级 episode 注册表（2+ 工程共现的问题）
+    drift-reports/                   # 按月漂移报告
       2026-05-drift-report.md
-    handoffs/                    # 生成的 handoff 包（待用户确认后转发）
-      2026-05-DocFilm-governance-handoff.md
-  governance/cross-project-routing.md  # 中控的响应模式（如何读、比、写建议）
+    handoffs/                        # 待用户确认后转发的 patch 建议包
+      2026-05-DocFilm-governance.md
+  governance/cross-project-routing.md  # 中控响应模式（如何读、比、写建议）
 ```
 
 ### wiki 需要做的最小改动
