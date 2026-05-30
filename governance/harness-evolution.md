@@ -58,6 +58,8 @@ H5 同时要求清理噪音。以下内容要进入降级 / 删除候选：
 - 增加读取成本，却没有在 episode 中发现真实问题的检查项。
 - 和当前平台、remote、目录结构或主控边界不再一致的旧适配层。
 
+降级和删除只针对噪音、重复说明和过期适配，不用于删除 P0 防线或压缩核心信息结构。Gate / FP / EP / TASK / risk / issue / AP / report、分层验收、写入边界、原始事实保真和人工确认边界只能通过权限矩阵、状态传播规则或 sensor 改进，不能为了瘦身被合并或删层。
+
 ## 工作节奏
 
 - 工作阶段：按 [[response-mode-routing]] 先判模式，再用 `python3 scripts/check_all.py --only <check-key>` 跑相关 sensor。
