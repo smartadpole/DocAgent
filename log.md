@@ -14,13 +14,13 @@
 - **记录人**：sunhao
 - **用户意图**：用户指出上传截图和问题描述后，issue 没有沉淀原始图片证据，要求分析为什么总出现此类问题，并把调研结果和完善高效方案沉淀为知识库内容。
 - **主题**：
-  1. 明确这不是“旧 skill 没有规则”，而是旧规则没有进入 issue 创建阶段的第一执行槽位。
+  1. 明确这不是“旧 skill 没有规则”，一级根因是场景分流错误：`用户上传图 + 创建 issue` 没有被识别为独立场景，导致旧规则没有进入 issue 创建阶段的第一执行槽位。
   2. 结合 OpenAI 图片 / 文件输入文档和 Codex skill / AGENTS.md 官方手册，确认“模型能理解图片”与“仓库已保存原图”之间必须有显式归档桥接。
   3. 提出 issue 创建的最小执行合同：先保存用户截图到 `assets/issues/<issue-id>/`，再在 issue 文档中用标准 Markdown 图片语法引用；截图、入口和期望行为已足够时不需要浏览器复现。
 - **关键动作**：
   1. 新增并修正 [[articles/2026-06-02-issue-original-evidence-asset-intake]]，沉淀旧 issue skill / AGENTS / issue README 已有截图保存规则却未在 issue 创建阶段生效的失效链。
   2. 更新 [[articles/README]] 和 [[concepts/agent-governance]]，把该案例作为 Agent / Harness 证据保真案例入口。
-- **二阶反思**：这轮暴露的是“快路径优化”和“证据资产化”之间的设计断层。后续处理用户截图类 issue 时，不能只问是否需要复现，还要先问原图是否已经成为本地可追溯资产；拿不到文件句柄时要显性标记待补，而不是用图片摘要替代原图。
+- **二阶反思**：这轮暴露的是场景分流能力不足，而不只是“快路径优化”和“证据资产化”之间的设计断层。后续处理用户截图类 issue 时，必须先识别 `用户上传图 + 创建 issue` 组合场景，再执行截图保存和 Markdown embed；不能只问是否需要复现，也不能用图片摘要替代原图。
 - **影响页面**：[[articles/2026-06-02-issue-original-evidence-asset-intake]]、[[articles/README]]、[[concepts/agent-governance]]、[[log]]。
 
 ## 2026-05-31
