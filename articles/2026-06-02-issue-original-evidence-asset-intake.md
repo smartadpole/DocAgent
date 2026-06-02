@@ -6,196 +6,184 @@ updated: 2026-06-02
 tags: [agent, harness, issue, evidence, screenshot, asset, intake]
 ---
 
-# Issue 原始证据资产入库缺口分析
+# Issue 创建阶段截图保存规则不生效分析
 
 相关：[[concepts/agent-governance]]、[[concepts/harness-engineering]]、[[instruction-adherence]]、[[response-mode-routing]]、[[skills/issue-analysis/SKILL]]、[[projects/development/issues/README]]
 
 ## 来源与调研依据
 
-- **用户纠偏**：用户上传截图和问题描述后，agent 生成 issue 时没有沉淀原始图片证据，只写了“截图已提供 / 图片文件尚未保存”一类状态。
-- **本库规则现状**：[[projects/development/issues/README]] 已要求原始现象保真；[[instruction-adherence]] 已把“用户提供截图、日志、接口响应或运行输出”列为触发信号；[[skills/issue-analysis/SKILL]] 已把截图列为直接证据。
+- **用户纠偏**：用户上传截图和问题描述后，agent 创建 issue 时没有把原始截图保存下来，也没有在 issue 文档里用 Markdown 图片语法引用；用户明确指出这一步不需要复现，要求的只是保存截图并在 issue 文档中引用。
+- **旧规则现状**：以 `DocCustomeranalysis` 为例，旧规则已经存在，而且写得很明确：
+  - `AGENTS.md` 已写明遇到用户图片时，先保存到目标页面对应的 `assets/` 子目录，再用标准 Markdown 图片语法嵌入预览；issue 用 `assets/issues/<issue-id>/`。
+  - `projects/development/issues/README.md` 已写明创建或更新 ISSUE 前必须先尝试把用户原始图落盘，并用 `![说明](../../../assets/issues/<issue-id>/<file>.png)` 引用实际存在的图片文件。
+  - `skills/issue-analysis/SKILL.md` 已写明用户上传截图或要求保存截图时，执行顺序必须是先保存图片，再在目标正文引用该文件。
+  - `governance/instruction-adherence.md` 已把用户截图 / 标注图 / 图片附件绑定为触发信号。
 - **官方技术依据**：
-  - OpenAI Images and vision 文档显示，图片输入可以通过 URL、Base64、字节数组或 `file_id` 进入模型；这说明“模型可理解图片”与“本地仓库已保存原图”是两个动作。来源：[Images and vision](https://developers.openai.com/api/docs/guides/images-vision)。
-  - OpenAI File inputs 文档显示，文件输入通过 Files API 创建文件并用 `file_id` 传入模型；这同样说明文件引用、模型输入和本地知识库归档之间需要显式桥接。来源：[File inputs](https://developers.openai.com/api/docs/guides/file-inputs)。
-  - Codex 官方手册说明 skill 是可复用工作流，依赖清晰 description 触发；`AGENTS.md` 是持久项目指导，但会受加载顺序、大小和层级影响。来源：[Codex skills](https://developers.openai.com/codex/skills)、[AGENTS.md](https://developers.openai.com/codex/guides/agents-md)。
+  - OpenAI Images and vision 文档说明图片可以通过 URL、Base64、字节数组或 `file_id` 进入模型；这说明“模型能看图”和“本地仓库已保存图片文件”是两个不同动作。来源：[Images and vision](https://developers.openai.com/api/docs/guides/images-vision)。
+  - OpenAI File inputs 文档说明文件输入通过 Files API 创建文件并用 `file_id` 传入模型；这说明文件引用、模型输入和知识库本地归档之间需要显式桥接。来源：[File inputs](https://developers.openai.com/api/docs/guides/file-inputs)。
+  - Codex 官方手册说明 skill 是可复用工作流，依赖触发匹配；`AGENTS.md` 是持久项目指导，但仍只是启动上下文里的自然语言，不天然等于执行门禁。来源：[Codex skills](https://developers.openai.com/codex/skills)、[AGENTS.md](https://developers.openai.com/codex/guides/agents-md)。
 
 ## 一句话总结
 
-这不是单纯“issue skill 没触发”，而是 **Issue Intake 把“模型看到了截图”误当成“知识库已经保存了原始证据资产”**。根因是证据资产入库没有成为独立的 intake 合同、模板字段和最终证明。
+这次失败不是“没有截图保存规则”，也不是“需要浏览器复现”。失败在于：**已有规则停在 skill / AGENTS / README 的文本层，没有在 issue 创建阶段变成不可跳过的第一步；Issue Intake 快路径把“截图足够，无需复现”执行成了“直接文字落档”，漏掉了“先保存截图并 Markdown 引用”这个动作。**
 
-## 为什么总出现
+## 正确执行目标
 
-### 1. 技术层：可见输入和可落盘文件不是一回事
+用户上传截图并要求创建 issue 时，issue 创建阶段只需要做：
 
-当前对话里，agent 可能能看到上传图片并理解其中内容，但这不代表它一定拿到了：
+1. 生成或确认 issue id。
+2. 把用户原始截图保存到 `assets/issues/<issue-id>/`。
+3. 在 issue 文档的 `## 现象保真` 或等价位置用标准 Markdown 图片语法引用：
 
-- 上传图片的本地文件路径。
-- 原始二进制字节。
-- 可下载 URL。
-- Files API 的可复用 `file_id`。
-- 能写入仓库的附件句柄。
+```markdown
+![用户原始截图](../../../assets/issues/<issue-id>/<file>.png)
+```
 
-所以正确判断应该是四层状态，而不是一句“截图已提供”：
+4. 再写必要的用户原始描述、期望行为、影响范围和关闭标准。
 
-| 层级 | 含义 | 是否足够关闭证据入库 |
+这一步 **不需要浏览器复现**。浏览器复现只在截图、入口或期望行为不足以形成案件档案时才需要。
+
+## 为什么旧 skill 已有规则但不生效
+
+### 1. 规则存在，但不在 issue 创建的第一执行槽位
+
+旧规则分布在 `AGENTS.md`、issue README、`issue-analysis` skill 和 `instruction-adherence` 中。它们说明了“应该怎么做”，但 issue 创建动作本身没有一个固定的第一槽位：
+
+```text
+create_issue()
+  1. persist_uploaded_screenshot()
+  2. embed_screenshot_markdown()
+  3. write_issue_body()
+```
+
+于是 agent 在执行时会先写 issue 正文，把截图当成“证据描述”处理，而不是先做“文件落盘动作”。当正文已经写完，再补图就变成额外工作，容易被省掉或写成“图片未保存”。
+
+### 2. Issue Intake 快路径优化了复现成本，却没有绑定截图落盘
+
+旧快路径的出发点是对的：用户已经提供截图、入口和期望行为时，不要默认打开浏览器复现。
+
+但这条规则只解决了“是否复现”，没有把“截图保存”写成跳过复现前的必做动作。结果路径变成：
+
+```text
+用户有截图 -> 不复现 -> 直接写 issue 文本
+```
+
+正确路径应该是：
+
+```text
+用户有截图 -> 保存截图 -> Markdown embed -> 不复现 -> 写 issue 文本
+```
+
+也就是说，快路径少了一道 Evidence Persistence Gate。这个 gate 不是复现，不增加浏览器成本，只是把用户原图变成 issue 文件的一部分。
+
+### 3. “模型能看见图片”被误当成“截图已进入证据链”
+
+多模态对话里，agent 可能能理解用户上传的截图内容，但这不等于它有可写入仓库的图片文件句柄。技术上至少有三种状态：
+
+| 状态 | 含义 | 应该怎么写 |
 | --- | --- | --- |
-| `visible_to_model` | 模型能看图并描述内容 | 否 |
-| `asset_handle_available` | agent 有路径、URL、字节或文件 ID | 否 |
-| `saved_in_repo` | 原图已进入 `assets/` 或 `raw/` 并被 issue 链接 | 是 |
-| `closure_evidence_complete` | issue 可用原图、复现、报告和回归守卫支持关闭 | 视关闭对象而定 |
+| `visible_only` | 模型能看图，但没有文件路径 / 字节 / URL / file id | 不能说已保存；应阻塞截图入库或要求补原图 |
+| `handle_available` | 有本地路径、字节、URL 或 file id | 必须保存到 `assets/issues/<issue-id>/` |
+| `saved_and_embedded` | 文件已在仓库里，issue 已 Markdown 引用 | 图片证据完成 |
 
-失败通常发生在第一层到第三层之间：agent 看得懂图，但没有把图片变成仓库资产。
+旧规则虽然说“能保存就保存，不能保存就说明”，但实际 issue 创建时没有强制输出这三个状态，导致 agent 用“截图已提供”替代了 `saved_and_embedded`。
 
-### 2. 规则层：已有规则强调“原始现象”，没有单独定义“原始资产”
+### 4. 检查器更多检查文案异常，不能替 agent 执行文件保存
 
-“原始现象保真”容易被 agent 理解成：
+旧规则里已经有 sensor / 检查器思路：如果图片没预览、却写“证据已补”，要红灯。但检查器通常只能在文件已经写完后发现文字和链接问题。
 
-- 把用户看到什么写下来。
-- 摘要图片中的文字或红框。
-- 标注“用户提供了截图”。
+它不能自动完成：
 
-但 issue 证据链需要的是更强的资产合同：
+- 从对话附件中取出原始图片。
+- 写入 `assets/issues/<issue-id>/`。
+- 生成正确相对路径。
+- 在 issue 正文插入 Markdown 图片引用。
 
-- 原图在哪里。
-- 是否可渲染。
-- 是否和 issue 同生命周期保存。
-- 若未保存，为什么未保存，谁补，补到哪里。
+所以如果 issue 创建阶段没有把保存截图作为第一动作，事后检查只能发现“不完整”，不能保证一开始就做对。
 
-没有这个资产合同，agent 会自然选择最省力的文字摘要，因为文字摘要也看起来像“保真”。
+### 5. 规则触发词和真实用户表达之间仍有缝隙
 
-### 3. 响应模式层：Issue 快路径只优化了“少复现”，没有保护“先归档”
+旧规则里触发词包括“截图保存 / 截图落库 / 图片归档 / 保存证据图”。但真实用户经常说的是：
 
-此前治理过一个相邻问题：用户已经给了截图、入口和期望行为时，不应默认再打开浏览器复现，避免 issue 归档变慢。
+- “我上传了一张图和问题描述。”
+- “按规则你应该保存截图到 issue。”
+- “生成 issue。”
 
-这个优化是对的，但缺了一个前置门：
-
-> 跳过浏览器复现之前，先判断用户截图是否已经成为本地证据资产。
-
-没有这个前置门，快路径会从“少复现”滑成“直接写文字 issue”，证据保存反而被跳过。
-
-### 4. 执行层：skill / AGENTS / 自然语言规则都不是强证明
-
-Codex 官方手册里，skill 依靠 description 和任务匹配触发；AGENTS.md 是持久指导，但仍是上下文里的自然语言。它们能提高概率，却不能证明某个附件已经落盘。
-
-因此这类问题不能靠“再写一句更严厉的规则”解决。高可靠方案必须把证据入库拆成可见字段、状态枚举和最终证明。
+这些表达对人很清楚，但对 skill 触发来说可能被归到“issue 创建”而不是“截图保存”。如果 issue 创建入口没有主动扫描“本轮是否带图片附件”，就会漏触发截图保存分支。
 
 ## 最完善且高效的方案
 
-### 核心原则
+### 方案原则
 
-最优解不是“每次都浏览器复现”，也不是“每次都问用户重传”。最优解是建立 **Issue Evidence Intake Protocol**：
+- 不新增浏览器复现。
+- 不要求用户重复描述图片内容。
+- 不把截图摘要当证据。
+- 不在 issue 正文展示路径、hash、尺寸或内部状态码。
+- 只做一个很小但不可跳过的动作：**先保存图，再 Markdown embed。**
 
-1. 用户已给截图、入口和期望行为时，跳过浏览器自主复现。
-2. 但在写 issue 正文前，必须先跑“原始证据资产门”。
-3. 只有原图已入库或明确标成待补，issue 才能继续落档。
-4. 证据入库状态和 issue 状态分离，避免把 `visible_to_model` 写成 `saved_in_repo`。
-
-### 证据资产门
-
-每次 issue intake 看到截图、图片、日志、接口响应、运行输出或附件，先做 5 个判断：
-
-| 判断 | 输出 |
-| --- | --- |
-| 用户提供了什么原始材料 | `screenshot / image / log / api_response / db_export / artifact / recording / other` |
-| 当前是否有可落盘句柄 | `path / bytes / url / file_id / none` |
-| 应该保存到哪里 | `assets/issues/<ISSUE-ID>/` 或 `raw/issues/<ISSUE-ID>/` |
-| 当前保存状态 | `saved / pending-user-reupload / original_asset_unreachable` |
-| 是否阻塞关闭 | `blocking / non-blocking / unknown` |
-
-### 推荐字段
-
-Issue 页面不需要很重，但必须有这个最小字段块：
-
-```markdown
-## 原始证据资产
-
-- 用户原始材料：
-- 可访问性：visible_to_model / asset_handle_available / saved_in_repo
-- 保存状态：saved / pending-user-reupload / original_asset_unreachable
-- 本地资产路径：
-- 嵌入预览：
-- 未入库原因：
-- 待补动作：
-- 是否阻塞关闭：
-```
-
-这个字段块的作用不是增加文档负担，而是防止 agent 用“我看到了”替代“我保存了”。
-
-### 推荐落点
-
-- 用户截图、复现截图、视觉红框、UI 状态图：`assets/issues/<ISSUE-ID>/`
-- 原始日志、API 响应、DB 导出、下载包、长文本来源：`raw/issues/<ISSUE-ID>/`
-- Issue 正文只放预览、路径、状态和结论，不复制大段二进制内容。
-
-### 状态语义
-
-| 状态 | 含义 | 允许说什么 | 禁止说什么 |
-| --- | --- | --- | --- |
-| `saved` | 原始资产已进入仓库路径并被 issue 引用 | 原图已入库 | 无 |
-| `pending-user-reupload` | 当前模型看得到，但没有文件句柄，需要用户重新以附件、路径或下载链接提供 | 已记录待补原图 | 原图已保存 |
-| `original_asset_unreachable` | 当前平台没有提供可取回原图的能力，且无法靠本轮工具补救 | 原图不可达，只有视觉摘要 | 证据完整 |
-
-### 高效执行路径
+### 推荐执行顺序
 
 ```mermaid
 flowchart TD
-  A["用户提交 issue 描述"] --> B{"是否有截图 / 附件"}
-  B -- "否" --> C["按文字 issue intake，必要时最小复现"]
-  B -- "是" --> D{"是否有可落盘句柄"}
-  D -- "有" --> E["保存到 assets/issues 或 raw/issues"]
-  E --> F["issue 写原始证据资产字段和预览"]
-  D -- "没有" --> G["写 pending-user-reupload 或 original_asset_unreachable"]
-  G --> H["issue 可先建立，但关闭证据保持 review / 待补"]
-  F --> I{"截图 + 入口 + 期望行为是否足够"}
-  I -- "足够" --> J["跳过浏览器复现，直接最小落档"]
-  I -- "不足" --> K["只做最小范围复现"]
+  A["用户要求创建 issue"] --> B{"本轮是否有用户上传图片 / 截图"}
+  B -- "否" --> C["按普通 issue intake 写原始现象"]
+  B -- "是" --> D["生成 issue id 和目标目录"]
+  D --> E{"是否拿到图片文件句柄"}
+  E -- "拿到" --> F["保存到 assets/issues/<issue-id>/"]
+  F --> G["在 issue 现象保真段插入 Markdown 图片 embed"]
+  G --> H["继续写 issue 正文"]
+  E -- "拿不到" --> I["停止声称图片已入库，只写需补原图"]
+  I --> H
 ```
 
-这条路径同时满足：
+### 最小执行合同
 
-- **更快**：用户截图足够时不默认浏览器复现。
-- **更真**：不丢原图，不把摘要当证据。
-- **更稳**：平台拿不到原图时，不假装已保存。
-- **更可维护**：issue 正文只多一个小字段块，不引入全量治理流程。
+把 issue 创建的第一段执行合同写成：
 
-## 采纳建议
+```text
+如果本轮用户消息含图片附件：
+1. 先保存用户原始图片到 assets/issues/<issue-id>/。
+2. issue 正文必须出现标准 Markdown 图片引用，且目标文件实际存在。
+3. 完成这两步后，才写其他 issue 正文。
+4. 若工具拿不到图片句柄，不能写“截图已保存 / 证据已沉淀”；只能写“已收到用户图片，但图片文件尚未保存，需补原图”。
+5. 不做浏览器复现，除非用户提供的信息不足以形成 issue。
+```
 
-### P0：先改 intake 语义
+### 推荐最小模板片段
 
-把“用户上传截图”从普通证据描述升级为“证据资产处理动作”。任何 issue intake 都先回答：
+不需要新开复杂的“证据资产”章节，直接放在 `## 现象保真` 里即可：
 
-- 这张图现在只是 `visible_to_model`，还是已经 `saved_in_repo`？
-- 如果不是 `saved_in_repo`，是否需要用户补原图？
+```markdown
+## 现象保真
 
-### P1：补 issue 模板字段
+- 用户原始描述：
 
-模板只需要新增 `原始证据资产` 小节，不需要把 issue 模板变成复杂报告。
+![用户原始截图](../../../assets/issues/<issue-id>/<file>.png)
+```
 
-### P2：补 issue skill 的 0 号步骤
+图片保存失败时，只写自然语言边界，不写内部状态码：
 
-`issue-analysis` skill 的第 0 步应先过证据资产门，再进入问题框、事实源地图和根因链。
+```markdown
+## 现象保真
 
-### P3：再考虑 sensor
+- 用户原始描述：
+- 已收到用户图片，但当前工具未取得可保存的图片文件，图片文件尚未保存，需补原图。
+```
 
-等模板和 skill 稳定后，再做轻量 sensor，检查：
+## 真正要解决的失效点
 
-- issue 模板是否保留 `原始证据资产` 字段。
-- issue skill 是否保留证据资产门。
-- 新 issue 如果出现“截图已提供”但没有路径和状态，提示人工复核。
-
-sensor 是后置防漏，不应替代 intake 语义。
-
-## 边界
-
-- 本页是知识库分析，不表示当前所有工程规则已经自动生效。
-- 这类问题不应被写成业务 issue；它属于 agent / harness 的证据保真缺口。
-- 如果当前平台没有给 agent 上传图的原始文件句柄，agent 最正确的行为不是硬编路径，而是明确写 `pending-user-reupload` 或 `original_asset_unreachable`。
-- “截图内容摘要”只能是辅助证据，不能替代本地原图资产。
+| 失效点 | 修法 |
+| --- | --- |
+| 旧规则在多个页面里，但 issue 创建没有第一步动作 | 给 issue 创建流程加固定第一步：保存并 embed 用户截图 |
+| 快路径只说不复现，没有说先保存图 | 把快路径改成“先保存图，再跳过复现” |
+| skill 可能没被隐式触发 | issue 创建入口自己扫描本轮是否有图片附件，不依赖用户说 `$issue-analysis` 或“截图落库” |
+| 检查器只能事后发现文字问题 | 检查器只做兜底；主修法是创建阶段强制执行保存动作 |
+| 平台可能不给图片文件句柄 | 不能伪造保存成功；必须阻塞图片入库或请求补原图 |
 
 ## 可复用结论
 
-1. **Issue Intake 的第一防线不是复现，而是证据资产化。**
-2. **模型可见不等于仓库可追溯。**
-3. **快路径必须先过证据资产门，否则会把效率优化变成证据丢失。**
-4. **最小字段块比长规则更有效，因为它强迫 agent 区分 `visible`、`handle` 和 `saved`。**
-5. **拿不到原图时，应显性阻塞证据完整性，而不是补一句“截图已提供”。**
+1. 这件事发生在 issue 创建阶段，不属于复现阶段。
+2. 旧 skill / 规则已有截图保存要求，但它没有成为 issue 创建动作的第一执行槽位。
+3. “截图足够所以不复现”必须理解为“保存截图后不复现”，不能理解为“直接文字落档”。
+4. issue 正文应使用标准 Markdown 图片语法引用实际存在的图片文件。
+5. 后续治理重点不是再写一条更长规则，而是让 create issue 流程先执行 `persist screenshot -> embed markdown -> write body`。

@@ -76,5 +76,5 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 
 ## 典型案例
 
-- [[articles/2026-06-02-issue-original-evidence-asset-intake]]：用户上传截图生成 issue 时，agent 只写截图摘要或“截图已提供”，却没有把原图保存成可回看的本地证据资产；该案例把问题归类为 Evidence Asset Gate 缺口，而不是单纯 issue skill 触发失败。
+- [[articles/2026-06-02-issue-original-evidence-asset-intake]]：用户上传截图生成 issue 时，旧 issue skill / AGENTS / issue README 已有“先保存图片、再 Markdown 引用”规则，但 issue 创建流程没有把它作为第一执行动作；该案例把问题归类为 Evidence Persistence Gate 未进入执行槽位，而不是缺少复现。
 - [[articles/2026-05-29-finalizer-write-scope-case]]：finalizer 只证明 working tree clean / external residual 明示，却没有证明本轮提交仍符合用户最新写入范围；该案例把问题归类为 Scope Lock / Scope Proof 缺口，而不是业务 issue。
