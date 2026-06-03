@@ -19,7 +19,7 @@ updated: 2026-05-28
 ## 1. 设计原则
 
 - 一个文档库只服务一个项目，所以 `projects/` 本身就是这个项目的运行层。
-- 项目层只放当前项目直接相关的需求、设计、会议、决策、过程、记忆和发布信息。
+- 项目层只放当前项目直接相关的需求、设计、会议、复盘、决策、过程、记忆和发布信息。
 - 可复用知识最终回写到 `articles/`、`concepts/`、`indexes/`，不要长期堆在项目层。
 - 需求、trace、设计和决策共同定义主工程口径；[[projects/codebase/README]] 只负责现实实现审计、冲突收口和复用边界，不反向定义主工程。
 - 单一信息源优先：同一类信息只保留一个主文件，其他页面链接它，不重复抄写。
@@ -107,6 +107,9 @@ projects/
   meetings/
     README.md
     worklog.md
+  retrospectives/
+    README.md
+    YYYY-MM-DD-topic.md
   releases.md
   incidents/
     README.md
@@ -127,6 +130,9 @@ projects/
 - [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进，决定 episode 如何晋升为 sensor、模板、技能或规则
 - [[harness-feedback-ledger]]：Harness episode 台账，记录 sensor backlog、晋升和降级候选
+- [[concepts/project-retrospective]]：项目复盘方法入口
+- [[concepts/software-development-project-retrospective]]：软件研发项目复盘维度
+- [[concepts/agent-work-retrospective]]：Agent 工作复盘维度
 - [[log]]：主题化的历史记录
 
 这不是要求一次性建全，而是推荐的扩展方向。
@@ -359,10 +365,20 @@ projects/
 ### 3.8 事故层
 
 - `projects/incidents/README.md`
-- 回答：当前事故总览、整体状态、索引和共性改进项
+- 回答：当前事故总览、整体状态、事故索引和修复闭环入口
 - 每一个具体事故单独成文，放在 `projects/incidents/` 目录下
+- 事故层负责保真记录事故事实，不承担跨阶段学习资产的主入口
 
-### 3.9 项目记忆层
+### 3.9 复盘层
+
+- `projects/retrospectives/README.md`
+  这是复盘档案入口
+  适合放阶段、专题、交付链、Issue 后、事故后和 Agent 协作复盘索引、共性主题和沉淀路由
+- 每一个具体复盘单独成文，放在 `projects/retrospectives/` 目录下
+- 复盘层不替代 [[log]]、Issue、事故、测试报告、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面
+- 复盘方法看 [[concepts/project-retrospective]]，软件研发维度看 [[concepts/software-development-project-retrospective]]，Agent 工作复盘看 [[concepts/agent-work-retrospective]]
+
+### 3.10 项目记忆层
 
 - `projects/memory/README.md`
 - `projects/memory/shared.md`
@@ -370,7 +386,7 @@ projects/
 - 回答：这个项目长期有效的背景、路由和稳定事实
 - 这里放的是项目级记忆，不是全局规则，也不是项目拍板
 
-### 3.10 共享规则层
+### 3.11 共享规则层
 
 - [[POLICY]]
 - 回答：什么可以自动沉淀、什么必须人工确认、优先级怎么排
@@ -380,7 +396,7 @@ projects/
 
 项目层依赖关系建议固定成这条主链：
 
-`[[projects/README]] -> codebase -> requirements -> trace -> design -> decisions -> development -> releases -> incidents`
+`[[projects/README]] -> codebase -> requirements -> trace -> design -> decisions -> development -> releases -> incidents -> retrospectives`
 
 具体来说：
 
@@ -395,6 +411,7 @@ projects/
 - 会议页横向连接需求、设计、决策、开发和记忆，承接正式会议材料和会后分流
 - 发布页依赖设计、决策和验证结果
 - 事故目录依赖发布记录、开发记录和证据
+- 复盘目录依赖项目主页、trace、决策、开发、Issue、事故、会议、log 和复盘概念页，向下游输出改进行动和沉淀路由
 
 横向依赖也要固定：
 

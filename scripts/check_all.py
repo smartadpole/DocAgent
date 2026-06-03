@@ -14,6 +14,7 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),
     ("harness-feedback-ledger", "harness feedback ledger", (sys.executable, "scripts/check_harness_feedback_ledger.py")),
     ("instruction-adherence", "instruction adherence", (sys.executable, "scripts/check_instruction_adherence.py")),
+    ("retrospective-system", "retrospective system", (sys.executable, "scripts/check_retrospective_system.py")),
     ("work-item-matrix", "work item governance matrix", (sys.executable, "scripts/check_work_item_matrix.py", "--strict")),
     (
         "testing-system-maturity",

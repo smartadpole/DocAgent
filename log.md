@@ -7,6 +7,22 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-03
+
+### 建立完整复盘体系
+
+- **记录人**：sunhao
+- **用户意图**：升级本工程复盘体系，参考 `AcknowledgeBase` 提交 `1be2f4d` 的已沉淀资料，但只吸收系统层信息，不复制项目事实、历史 log、案例原文或一次性治理记录。
+- **复核结论**：当前 wiki 已有 `projects/`、`skills/`、`templates/`、`governance/` 和本地检查脚本，复盘体系应优先落在 [[projects/retrospectives/README]]，方法论放在 `concepts/`，模板放在 `templates/`，历史对话 / Agent 工作流复盘放在 `skills/`，并用专项 sensor 保障入口和字段不漂移。
+- **关键动作**：
+  1. **新增复盘档案层**：新增 [[projects/retrospectives/README]]，固定复盘职责、不负责事项、文件命名、轻量 checkpoint / 标准复盘 / 深度复盘、当前索引、共性主题、行动项分流和沉淀路由。
+  2. **新增方法入口**：新增 [[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]] 和 [[concepts/agent-work-retrospective]]，分别承接通用复盘、软件研发交付链复盘和 Agent 工作复盘。
+  3. **新增模板和 skill**：新增 [[templates/project-retrospective-template]] 和 [[skills/historical-dialogue-retrospective/SKILL]]，让复盘对象、目标结果、关键事实、偏差原因、保留做法、改进行动、沉淀路由、未验证边界和历史对话证据分层都有可复制骨架。
+  4. **同步入口和边界**：更新 [[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[governance/README]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/incidents/README]]、[[projects/development/reports/README]]、[[projects/decisions]]、[[projects/trace]]、[[concepts/README]]、[[templates/README]]、[[skills/README]] 和 `.codex/AGENTS.md`，明确复盘不替代 log、Issue、事故、报告、决策、memory 或 trace。
+  5. **新增专项检查**：新增 `scripts/check_retrospective_system.py` 并接入 `scripts/check_all.py --only retrospective-system`，检查复盘方法页、档案入口、模板、skill、行动分流和入口 wiring。
+- **二阶反思**：复盘体系不能只新增目录或模板；长期可运行的关键是方法页、档案入口、模板、技能、行动分流、治理自演进和 sensor 同步接线。复盘结论也不能全部升级为硬规则，单次表现先记录，重复失守或可脚本化缺口再进入 Harness 自演进。
+- **影响页面**：[[projects/retrospectives/README]]、[[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[templates/project-retrospective-template]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[governance/README]]、[[projects/README]]、[[projects/STRUCTURE]]、[[projects/incidents/README]]、[[projects/development/reports/README]]、[[projects/decisions]]、[[projects/trace]]、[[concepts/README]]、[[templates/README]]、[[skills/README]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_all.py`、`scripts/check_retrospective_system.py`。
+
 ## 2026-05-28
 
 ### 拆分 wiki 独立治理 sensor

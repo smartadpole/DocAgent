@@ -11,6 +11,7 @@
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
 - 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
 - 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[concepts/codex-goals]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
+- 如果用户要求复盘阶段、专题、交付链、Issue / 事故后经验或 Agent 工作流，读 [[concepts/project-retrospective]]、[[projects/retrospectives/README]]；历史对话和 Agent 工作复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
 
 ## 工作阶段检查
 
@@ -19,6 +20,7 @@
 - 入口、wikilink 或治理元数据改动跑：`python3 scripts/check_all.py --only project-docs`。
 - 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。
 - 执行合同语义、非目标或环境路由改动跑：`python3 scripts/check_all.py --only execution-contract-semantics`。
+- 复盘体系、复盘模板或复盘 skill 改动跑：`python3 scripts/check_all.py --only retrospective-system`。
 - 收尾或提交前跑完整门禁：`python3 scripts/check_all.py`。
 - `scripts/check_all.py` 是本库本地门传真相源；CI 或平台配置只是适配层。
 

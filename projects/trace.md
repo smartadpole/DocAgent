@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-25
+updated: 2026-06-03
 tags: [trace, project]
 ---
 
@@ -16,7 +16,7 @@ tags: [trace, project]
 
 上游：[[projects/README]]、[[projects/requirements]]、[[projects/design/README]]  \
 横向：[[projects/decisions]]、[[projects/development/README]]、[[projects/development/execution/worklog]]  \
-下游：[[projects/releases]]、[[projects/incidents/README]]
+下游：[[projects/releases]]、[[projects/incidents/README]]、[[projects/retrospectives/README]]
 
 ## 这页负责什么
 
@@ -112,6 +112,19 @@ tags: [trace, project]
   - Issue 是案件档案，报告是每次验证记录；服务台账是运行实例事实的单一信息源。
   - 子工程沟通同样按 Gate / FP / EP / TASK 下发和回传；实现工程只生产代码、配置、测试和运行证据，主控侧负责吸收回写和关闭裁决。
   - 维护者日常入口顺序收口到 [[projects/development/plan/README]]；`work-item-matrix` sensor 改为结构化检查，避免靠关键词堆叠维持一致性。
+
+#### 2026-06-03 复盘体系升级
+
+- **记录人**：sunhao
+- **角色**：agent
+- **本轮变化**：
+  - **来源对照**：参考 `AcknowledgeBase` 提交 `1be2f4d`，只吸收复盘体系的系统层信息，包括复盘对象分类、方法论、模板字段、Agent 工作复盘证据分层、行动分流和 Harness 自演进关系。
+  - **结构升级**：新增 [[projects/retrospectives/README]] 作为复盘档案入口，新增 [[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]] 和 [[concepts/agent-work-retrospective]] 作为方法入口。
+  - **执行支撑**：新增 [[templates/project-retrospective-template]]、[[skills/historical-dialogue-retrospective/SKILL]] 和 `scripts/check_retrospective_system.py`，并接入 `scripts/check_all.py --only retrospective-system`。
+- **当前实现口径**：
+  - 复盘是长期学习工程，不替代 [[log]]、Issue、事故、测试报告、决策、memory 或 trace。
+  - 事故事实仍由 [[projects/incidents/README]] 保真；Issue 仍由 [[projects/development/issues/README]] 保真；复盘只承接跨阶段、跨交付链或 Agent 协作的学习资产。
+  - 复盘行动项必须分流到已有 owner 页面，不新建平行看板；重复失守或机制缺口先进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升模板、skill、sensor 或规则。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

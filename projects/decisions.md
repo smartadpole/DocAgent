@@ -159,7 +159,7 @@ tags: [decision]
   - 用 [[projects/development/execution/worklog]] 维护过程流水
   - 用 [[projects/status]] 维护全局状态镜像
   - 用 [[projects/releases]] 维护完成和发布结果
-  - 用 [[projects/incidents/README]] 维护异常和复盘
+  - 用 [[projects/incidents/README]] 维护异常事实；2026-06-03 后，复盘档案由 [[projects/retrospectives/README]] 承接
 - 影响：
   - 新功能先登记功能点实体页，再进入实现
   - 功能点字段统一，避免每页各写一套

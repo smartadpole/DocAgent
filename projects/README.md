@@ -109,6 +109,7 @@ tags: [project]
 - [[projects/development/feature-points/README]]：功能点实体目录。这里放工程师视角的单功能点执行页和状态索引。
 - [[projects/development/execution/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
 - [[projects/meetings/README]]：会议主入口。这里放会前材料、纪要、行动项和会后分流规则。
+- [[projects/retrospectives/README]]：复盘档案入口。这里放阶段、专题、交付链、Issue / 事故后和 Agent 协作复盘索引、共性主题和沉淀路由。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
 - [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。
 - [[projects/memory/README]]：项目级稳定记忆入口。这里放项目长期背景和路由。
@@ -151,7 +152,7 @@ tags: [project]
 
 - 项目主页已经装不下，并且某一类内容开始持续增长。
 - 同一类信息会反复被查，比如需求、设计、发布、会议或项目记忆。
-- 你希望某类内容有独立历史，比如决策记录或事故复盘。
+- 你希望某类内容有独立历史，比如决策记录、事故档案或复盘档案。
 
 ## 什么时候不拆
 

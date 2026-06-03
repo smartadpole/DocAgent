@@ -27,6 +27,7 @@ tags: [entry, governance]
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
 - [[template-feedback-rules]]：下游项目系统层信息反哺规则
+- 复盘方法看 [[concepts/project-retrospective]]，具体复盘档案看 [[projects/retrospectives/README]]；复盘暴露的重复失守或机制缺口再回到 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
 ## 逻辑结构

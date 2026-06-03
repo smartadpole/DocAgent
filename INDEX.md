@@ -40,11 +40,13 @@ tags: [index, root]
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
+- [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
 - [[projects/trace]]：需求演进链入口
 - [[projects/service-registry]]：服务实例台账入口
 - [[projects/meetings/README]]：项目正式会议入口
+- [[projects/retrospectives/README]]：复盘档案入口，承接阶段、专题、交付链、Issue / 事故后和 Agent 协作复盘
 - [[trace-writing-rules]]：`[[projects/trace]]` 的记录规则入口
 - [[template-feedback-rules]]：下游项目系统层信息反哺入口
 
@@ -73,6 +75,9 @@ tags: [index, root]
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法，关注上下文、工具、规则、工作流、验证和演化闭环。
 - [[articles/2026-05-25-harness-engineering-research]]：Harness Engineering 深度调研，汇总本地材料、OpenAI、Martin Fowler、LangChain、Vercel 和近期论文案例。
 - [[harness-evolution]]：把用户纠偏、检查失败、模式切换和重复失守转成可复盘 episode。
+- [[concepts/project-retrospective]]：项目复盘方法入口，说明复盘和 log、Issue、事故、决策、memory、trace 的分工。
+- [[concepts/software-development-project-retrospective]]：软件研发项目复盘维度，覆盖需求、设计、事项、实现、测试、发布、运行和协作治理。
+- [[concepts/agent-work-retrospective]]：Agent 工作复盘维度，覆盖目标理解、阶段判断、上下文读取、工具使用、验证、沟通、边界和收尾质量。
 - [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念，强调环境是证据面而不是荣誉阶梯。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
@@ -95,6 +100,7 @@ tags: [index, root]
 - [[templates/development-task-template]]：TASK 任务模板
 - [[templates/development-issue-template]]：Issue 案件模板
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
+- [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘模板
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
@@ -126,7 +132,7 @@ tags: [index, root]
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
-- 运行层：`projects/`
+- 运行层：`projects/`，其中复盘档案入口是 [[projects/retrospectives/README]]
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
 - 证据层：`raw/`、`inbox/`、`assets/`

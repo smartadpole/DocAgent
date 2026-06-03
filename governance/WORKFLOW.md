@@ -121,7 +121,8 @@
 - 规则和优先级：看 [[POLICY]]
 - 过程记录和排障：看 `projects/development/execution/worklog.md`
 - 发布和回滚：看 `projects/releases.md`
-- 事故和复盘：看 `projects/incidents/README.md`
+- 事故事实：看 `projects/incidents/README.md`
+- 复盘档案：看 `projects/retrospectives/README.md`
 - 项目内 agent 技能：看 [[skills/README]]
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
@@ -258,6 +259,7 @@
 - `projects/development/execution/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
+- `projects/retrospectives/README.md`：`projects/README.md`、`projects/STRUCTURE.md`、[[concepts/project-retrospective]]、相关 trace、决策、开发、Issue、事故、会议或 log 页面
 - `skills/`：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能带项目语境，再补读对应项目主入口、设计、EP / TASK、轻量 TODO、测试报告或服务台账
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
@@ -272,6 +274,7 @@
 5. 检查它是否跨当前文档库和外部实现工程 / 代码仓库 / 子模块协作：如果跨工程，就必须同步写清任务下发、证据回传、写权限、状态关闭和冲突升级边界。
 6. 如果它影响总入口理解，再补 `README.md`。
 7. 在 [[log]] 记录这次结构扩展，并写明对应主题和用户意图、模板检查结果和跨工程协作边界检查结果。
+8. 如果新增的是复盘体系或复盘高频文件类型，同轮补齐 [[concepts/project-retrospective]]、[[projects/retrospectives/README]]、[[templates/project-retrospective-template]]、必要 skill 和 `retrospective-system` sensor 接线。
 
 如果新增的是设计层高频子页，还要再补这一步：
 
@@ -766,8 +769,9 @@
 
 ### 1.9.8 发布到事故
 
-- 事故页只负责事故总览、单条事故和复盘入口。
-- 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、[[POLICY]] 或 `projects/decisions.md`。
+- 事故页只负责事故总览、单条事故、事故事实保真和修复闭环入口。
+- 事故主档案负责事故事实、影响、修复、恢复和回滚；如果事故经验上升为跨事故、跨阶段或会影响研发实践 / 方案设计 / 工程治理的学习主题，再进入 [[projects/retrospectives/README]]。
+- 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、[[POLICY]]、`projects/decisions.md`、[[concepts/project-retrospective]] 或对应复盘档案。
 
 ### 1.9.9 智能体功能研发：从需求到设计
 
@@ -787,7 +791,7 @@
 
 ### 1.9.12 智能体功能研发：从开发到上线
 
-- 上线前先回看发布页和事故入口。
+- 上线前先回看发布页、事故入口和必要的复盘档案入口。
 - 如果上线后产生了稳定结论，把它们回写到 `projects/memory/`、[[POLICY]] 或知识库层。
 
 ### 1.9.13 功能点双轴模型
@@ -806,7 +810,7 @@
 - 过程日志放在 [[projects/development/execution/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。
-- 异常和复盘放在 [[projects/incidents/README]]。
+- 异常事实放在 [[projects/incidents/README]]，复盘档案放在 [[projects/retrospectives/README]]。
 - 稳定背景回写 [[projects/memory/README]]，取舍回写 [[projects/decisions]]，规则变化回写 [[POLICY]]。
 
 ### 1.9.14 状态怎么维护
@@ -847,3 +851,39 @@
 - 如果只是开发过程中的临时讨论、联调插会或排障沟通，可以直接记到 `projects/development/execution/worklog.md`；如果是正式会议，默认写 `projects/meetings/worklog.md`
 - 会议记录默认一场会对应一条记录，不把多场会揉成一条总记录
 - 如果某类会议开始反复出现，再考虑把固定字段继续收紧成模板或索引；会议记录模板优先看 [[templates/meeting-entry-template]]
+
+### 1.9.16 复盘管理：从事实到学习资产
+
+复盘启动前先判断对象和粒度：
+
+- 轻量 checkpoint：只写 [[log]]、工作记录或 owning page。
+- 标准复盘：阶段、专题、交付链、明显返工、验收偏差、Issue / 事故后机制缺口进入 [[projects/retrospectives/README]]。
+- 深度复盘：跨阶段、重大事故、重复失守或会改变模板 / skill / sensor / 规则的经验进入复盘档案，并同步相关治理页。
+
+复盘和其他页面的分工固定如下：
+
+- [[log]] 记录对话主题、用户意图、关键动作和结构变化，不替代复盘。
+- Issue 保存已发生 bug、偏差和验收失败的原始现象、根因边界、关闭标准和最新有效报告。
+- 事故保存事故事实、影响、修复、恢复、回滚和状态。
+- 测试报告保存每轮验证证据，不解释长期机制。
+- [[projects/decisions]] 保存关键取舍和最终拍板。
+- [[projects/memory/README]] 保存项目长期稳定事实。
+- [[projects/trace]] 保存需求从原始意图到当前实现口径的演进链。
+
+复盘行动项必须分流到已有 owner 页面，不在复盘正文里形成平行看板：
+
+- bug、偏差、验收失败进 Issue。
+- 事故事实和修复闭环进 incidents。
+- 研发交付动作进 Gate / FP / EP / TASK / risk / acceptance / report。
+- 跨 owner 协调进 meetings。
+- 关键取舍进 decisions。
+- 项目长期事实进 memory。
+- 需求演进进 trace。
+- 可复用方法进 concepts。
+- 可复制骨架进 templates。
+- 高频 agent 流程进 skills。
+- 重复失守或机制缺口进 [[harness-feedback-ledger]]。
+- 可脚本化检查进 sensor 或 check script。
+- 执行规则变化进 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或等价规则入口。
+
+如果复盘对象是历史对话或 Agent 工作流，优先使用 [[skills/historical-dialogue-retrospective/SKILL]]。不要只凭 [[log]] 或当前上下文判断完整历史；必要时补读原始 session / rollout、git diff / commit、检查输出、memory 和最终回复 / handoff。

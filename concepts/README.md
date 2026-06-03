@@ -23,6 +23,9 @@
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约
 - [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念
+- [[concepts/project-retrospective]]：项目复盘方法入口
+- [[concepts/software-development-project-retrospective]]：软件研发项目复盘方法
+- [[concepts/agent-work-retrospective]]：Agent 工作复盘方法
 
 ## 维护原则
 

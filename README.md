@@ -28,6 +28,7 @@ tags: [entry, root]
 - `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
+- `projects/retrospectives/` 收阶段、专题、交付链、Issue / 事故后和 Agent 协作复盘档案
 - 其他目录分别承接沉淀、历史和证据
 
 ## 怎么用这个总入口
@@ -69,6 +70,8 @@ tags: [entry, root]
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想看“Gate、FP、EP、TASK、Issue、risk、test、验收和台账怎么组织” -> 读 [[projects/development/plan/work-item-system-model]]
 - 想看“测试计划、AP 验收计划、环境路由和测试报告怎么分工” -> 读 [[projects/development/plan/test-acceptance-planning-model]] 和 [[projects/development/acceptance/README]]
+- 想看“复盘体系、复盘档案和经验沉淀怎么运行” -> 读 [[concepts/project-retrospective]]、[[projects/retrospectives/README]] 和 [[templates/project-retrospective-template]]
+- 想复盘“历史对话或 Agent 工作流” -> 读 [[concepts/agent-work-retrospective]] 和 [[skills/historical-dialogue-retrospective/SKILL]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“会议很多时怎么收口会议材料” -> 读 [[projects/meetings/README]]
@@ -176,10 +179,11 @@ tags: [entry, root]
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
 8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和服务台账关系理清。
-9. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页。
-10. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
-11. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
-12. 如果这次反哺暴露的是 Harness 自身缺口，先写 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否升级模板、sensor 或规则。
+9. 如果这轮暴露了阶段、事故、Issue、交付链或 Agent 协作里的长期学习价值，把复盘档案写进 [[projects/retrospectives/README]]；方法看 [[concepts/project-retrospective]]，模板看 [[templates/project-retrospective-template]]。
+10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页。
+11. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
+12. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
+13. 如果这次反哺暴露的是 Harness 自身缺口，先写 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否升级模板、sensor 或规则。
 
 ## 为什么入口页不写太多
 

@@ -18,7 +18,7 @@ tags: [development, reports, testing]
 
 这页收口测试方案、测试用例 / 检查点、测试结论、相关功能回归范围、Issue 复验记录和 Gate 准出报告。
 
-它不是命令流水，也不是测试计划单一信息源。测试计划和环境路由先看 [[projects/development/plan/test-acceptance-planning-model]] 与 [[projects/development/acceptance/README]]；本页只记录计划执行后的证据、结果和裁决。测试报告要能说明：
+它不是命令流水，也不是测试计划单一信息源，也不是复盘档案。测试计划和环境路由先看 [[projects/development/plan/test-acceptance-planning-model]] 与 [[projects/development/acceptance/README]]；长期学习和机制改进看 [[projects/retrospectives/README]]。本页只记录计划执行后的证据、结果和裁决。测试报告要能说明：
 
 - 验证对象是什么，是 handoff / artifact 包、代码实现、联调闭环、TASK、EP、FP、Issue 还是 Gate 准出。
 - 计划来源是什么，是事项页测试计划、轻量检查点还是 `AP-*`。

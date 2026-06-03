@@ -1,0 +1,138 @@
+---
+type: concept
+id: CONCEPT-PROJECT-RETROSPECTIVE
+status: active
+source_of_truth: true
+updated: 2026-06-03
+tags: [concept, retrospective, project-management]
+---
+
+# 项目复盘
+
+主入口：[[INDEX]]
+
+子专题：[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]
+
+当前项目复盘档案入口：[[projects/retrospectives/README]]
+
+模板：[[templates/project-retrospective-template]]
+
+这页是项目复盘的通用方法入口。它沉淀跨项目可复用的复盘方法，不记录某个具体项目的历史细节。具体项目事实、事故、决策和状态仍回到项目层对应页面，具体复盘档案默认进入 [[projects/retrospectives/README]]。
+
+## 定义
+
+项目复盘是在项目、阶段、里程碑、事故、Issue、交付链或重要协作结束后，把目标、过程、结果、证据、偏差、原因和改进行动串起来的结构化学习过程。
+
+它回答的不是“这件事好不好”，而是：
+
+- 原本想达成什么。
+- 实际发生了什么。
+- 差异从哪里来。
+- 哪些做法值得保留。
+- 哪些问题需要修正。
+- 哪些经验可以进入下一轮项目、规则、模板、skill、sensor 或记忆。
+
+复盘的长期价值不止是解释过去。它要把问题总结、经验沉淀和机制修正连接起来，持续服务未来研发实践、方案设计、工程实现、测试验收、运行治理和 agent 协作质量。
+
+## 文件落位
+
+复盘方法和分类放在本页及子专题；具体复盘文件默认放在 [[projects/retrospectives/README]] 所在目录。
+
+默认分工：
+
+- `projects/retrospectives/`：承接当前项目的阶段复盘、专题复盘、交付链复盘、Issue / 事故后专题复盘和 Agent 协作复盘档案。
+- [[projects/incidents/README]]：承接事故主档案和事故事实保真；事故经验上升为长期学习主题时，再回链到 `projects/retrospectives/`。
+- [[projects/development/issues/README]]：承接已发生 bug、偏差、验收失败的案件档案；Issue 暴露机制缺口时，再形成复盘。
+- [[projects/development/reports/README]]：承接测试、复验和准出证据；报告不能替代复盘。
+- [[log]]：承接对话主题、用户意图和关键动作，不替代复盘正文。
+- `articles/` 和 `concepts/`：承接抽象后可复用的方法、模型和专题成果，不保存具体项目复盘流水。
+
+如果一篇复盘只对当前项目有意义，留在 `projects/retrospectives/`；如果其中某个结论抽象后能跨项目复用，再回写本页、子专题、模板、skill 或治理页。
+
+## 复盘层级
+
+| 层级 | 目标 | 典型输出 |
+| --- | --- | --- |
+| 事实回放 | 对齐真实发生过什么 | 时间线、关键节点、证据清单 |
+| 差异分析 | 对齐目标和结果之间的偏差 | 目标差距、范围变化、未完成项 |
+| 机制分析 | 找到导致结果的结构性原因 | 决策、流程、协作、资源、信息和治理机制 |
+| 改进沉淀 | 把经验变成下一轮可用资产 | 行动项、模板、规则候选、记忆、skill 和 sensor |
+
+## 启动判断与路由
+
+优先启动复盘的场景：
+
+- 项目、阶段、里程碑、发布、事故、长时任务或重要工作链结束。
+- 实际结果和原始目标出现明显偏差、返工、验收失败、协作失灵或风险暴露。
+- 用户明确要求复盘、总结经验、沉淀方法或检查某段协作质量。
+- 结论会影响后续项目、规则、模板、skill、sensor、记忆、决策或事项拆解。
+
+不需要启动完整复盘的场景：
+
+- 普通问答、轻量定位或没有后续影响的过程记录，写入 [[log]] 或不落文件即可。
+- 单个已发生 bug、验收失败或事故事实，先回到 Issue 或事故主档案保真，不直接扩成全项目复盘。
+- 可复用方法的一小条补充，直接回写 owning concept、template 或 skill，不为它单独做复盘报告。
+
+默认路由：
+
+- 项目结果和管理链路：使用本页。
+- 软件研发交付链：进入 [[concepts/software-development-project-retrospective]]。
+- Agent 执行和协作方式：进入 [[concepts/agent-work-retrospective]]，必要时启动 [[skills/historical-dialogue-retrospective/SKILL]]。
+- 已发生 Issue 或事故：先进入 [[projects/development/issues/README]] 或 [[projects/incidents/README]]，再判断是否提炼通用经验。
+
+## 复盘粒度
+
+| 粒度 | 适用场景 | 最小输出 |
+| --- | --- | --- |
+| 轻量 checkpoint | 单个小偏差、短任务、一次局部纠偏 | 对象、事实、结论、一个后续动作或免动作理由 |
+| 标准复盘 | 阶段、发布、重要工作链、明显返工 | 目标结果、关键事实、原因判断、保留项、改进行动、沉淀路由 |
+| 深度复盘 | 跨阶段项目、重大事故、重复失守、会改变规则或模板的经验 | 完整证据矩阵、机制分析、行动跟踪、规则 / 模板 / skill / sensor 候选和复查口径 |
+
+## 最小产出
+
+一次可回看的项目复盘至少应留下：
+
+- **复盘对象**：复盘的是整个项目、某个阶段、某次发布、一次事故，还是一条工作链。
+- **目标和结果**：原目标、实际结果、差距和超出预期的部分。
+- **关键事实**：能支持判断的时间线、证据、报告、决策记录或项目文档。
+- **原因判断**：区分直接原因、系统性原因和仍未确认的假设。
+- **保留项**：下次仍应继续使用的做法。
+- **改进行动**：有 owner、触发条件、完成口径和跟踪位置的行动项。
+- **沉淀路由**：哪些进入项目记忆、trace、决策、规则、模板、概念、skill、sensor 或归档。
+
+具体页面骨架见 [[templates/project-retrospective-template]]。模板只是最小字段，不要求所有轻量 checkpoint 都新建复盘文件。
+
+## 改进行动跟踪
+
+复盘行动项不单独漂浮在复盘正文里。每条行动都要落到一个后续可检查的位置：
+
+- 已发生 bug、实施偏差、验收失败或事故：进入 [[projects/development/issues/README]] 或 [[projects/incidents/README]]。
+- 研发交付动作：进入对应 Gate / FP / EP / TASK、risk、acceptance 或 report 链路。
+- 跨 owner 协调、人工确认或会议动作：进入 [[projects/meetings/README]]。
+- 关键取舍：进入 [[projects/decisions]]。
+- 项目长期事实和稳定判断：进入 [[projects/memory/README]]。
+- 需求演进：进入 [[projects/trace]]。
+- 可复用方法、模板、规则或 skill 候选：进入 owning concept、`templates/`、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 或 [[skills/README]]。
+- Agent / Harness 改进：进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升。
+- 可脚本化检查：进入 `scripts/check_all.py` 或专项 sensor。
+
+## 治理自演进
+
+复盘结论不自动变成硬规则：
+
+- **单次表现**：记录复盘或 log，继续观察。
+- **重复失守**：进入 [[harness-feedback-ledger]]。
+- **可模板化**：更新模板。
+- **可技能化**：更新 skill。
+- **可脚本化**：新增 sensor 或检查。
+- **影响执行顺序**：更新 [[WORKFLOW]] 或 [[response-mode-routing]]。
+- **影响必须 / 禁止行为**：更新 [[AGENTS]]。
+- **影响优先级或自动沉淀边界**：更新 [[POLICY]]。
+
+## 常见反模式
+
+- 只写情绪总结，没有事实和证据。
+- 只追责个人，不分析目标、流程、信息和约束。
+- 只列问题，不写下轮可执行的改进行动。
+- 把一次项目事实直接升级成通用规则，没有抽象和冲突检查。
+- 把复盘写成流水账，无法看出哪些经验会影响下一轮项目。

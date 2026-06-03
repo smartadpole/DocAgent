@@ -15,6 +15,7 @@
 ## 当前技能
 
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
+- [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能。用于复盘当前上下文、log、Harness ledger、原始 session / rollout、git diff / commit、检查输出、memory 和最终回复里的 agent 协作质量、偏差和改进路由。
 
 ## 维护原则
 
