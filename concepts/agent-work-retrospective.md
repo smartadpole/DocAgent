@@ -17,6 +17,8 @@ Agent 工作复盘关注 agent 作为执行主体时，它的工作方式、效�
 
 可启动技能：[[skills/historical-dialogue-retrospective/SKILL]]
 
+具体复盘档案默认放在 [[projects/retrospectives/README]] 所在目录；结构性 Harness episode 仍进入 [[harness-feedback-ledger]]。
+
 ## 定义
 
 Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一次明显偏差之后，回看 agent 从理解目标到交付结果的全过程。
@@ -97,6 +99,7 @@ Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一�
 
 ## 沉淀路由
 
+- 具体复盘档案：进入 [[projects/retrospectives/README]] 所在目录，除非只是轻量 checkpoint。
 - 单次任务过程：进入 [[log]] 或对应项目工作记录。
 - 可复用方法：进入本页、[[concepts/harness-engineering]] 或相关概念页。
 - 重复失守或机制缺口：进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升。

@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-03
+
+### 明确复盘档案作为长期学习工程的落位
+
+- **记录人**：sunhao
+- **用户意图**：用户指出复盘是长期工程，不只是总结文件；它应总结问题、沉淀经验，并实质帮助未来项目研发实践、方案设计和工程本身，要求检查现有复盘方案是否明确了复盘文件放在哪里，并完善知识库设计。
+- **主题**：
+  1. 明确用户判断成立：现有复盘专题已经有方法、触发和行动分流，但缺少“具体复盘档案”的主入口和目录落位。
+  2. 将具体复盘文件落到 `projects/retrospectives/` 运行层，保持 `concepts/` 只承接方法论、`templates/` 只承接可复制页面骨架、`log` 只承接主题化历史。
+  3. 明确复盘行动项不形成新平行看板，仍回到 Issue / 事故、事项链、会议 / 决策、项目记忆、trace、模板、skill 或治理页。
+- **关键动作**：
+  1. 新增 [[projects/retrospectives/README]]，定义复盘档案入口、文件命名、粒度、最小字段、当前索引和沉淀路由。
+  2. 新增 [[templates/project-retrospective-template]]，提供具体复盘档案的最小骨架。
+  3. 更新 [[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[projects/STRUCTURE]]、[[projects/README]]、[[projects/status]]、[[README]]、[[INDEX]]、[[templates/README]]、[[concepts/README]]、[[AGENTS]] 和 [[WORKFLOW]]，补齐复盘文件落位、上下文模型和入口链接。
+- **二阶反思**：这轮暴露的是复盘体系的承载层缺口，而不是复盘触发条件缺口。以后设计“长期学习工程”类能力时，应同时定义方法页、实例档案入口、行动分流和模板骨架，避免只有概念没有可持续存放位置。
+- **影响页面**：[[projects/retrospectives/README]]、[[templates/project-retrospective-template]]、[[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[projects/STRUCTURE]]、[[projects/README]]、[[projects/status]]、[[README]]、[[INDEX]]、[[templates/README]]、[[concepts/README]]、[[AGENTS]]、[[WORKFLOW]]、[[log]]。
+
 ## 2026-06-02
 
 ### 沉淀 Issue 截图原始证据入库缺口分析

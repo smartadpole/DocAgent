@@ -48,6 +48,7 @@ tags: [index, root]
 - [[projects/trace]]：需求演进链入口
 - [[projects/service-registry]]：服务实例台账入口
 - [[projects/meetings/README]]：项目正式会议入口
+- [[projects/retrospectives/README]]：项目复盘档案入口
 - [[trace-writing-rules]]：`[[projects/trace]]` 的记录规则入口
 - [[template-feedback-rules]]：下游项目系统层信息反哺入口
 
@@ -77,6 +78,7 @@ tags: [index, root]
 - [[concepts/state-constraint-planning]]：把计划问题表示成状态变量、约束关系、外部不确定和可执行性判断的方法概念。
 - [[state-constraint-reasoning]]：把“先判可执行性，再写安排”落成治理页，适用于搬家、旅行、采购、部署、上线等计划型问题。
 - [[concepts/project-retrospective]]：项目复盘专题，沉淀目标、过程、结果、偏差、原因和改进行动的通用框架。
+- [[projects/retrospectives/README]]：具体复盘档案入口，承接当前项目的阶段、专题、事故后、Issue 后和 Agent 协作复盘。
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题，把需求、设计、拆解、实现、测试验收、发布运行和协作治理串成一条交付链回看。
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，回看 agent 的目标理解、读取预算、工具使用、验证质量、沟通节奏和沉淀路由。
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
@@ -120,6 +122,7 @@ tags: [index, root]
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
 - [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板
+- [[templates/project-retrospective-template]]：项目复盘档案模板
 - [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库，并区分知识库模板与系统治理模板
 
 ## 项目接手与代码基线

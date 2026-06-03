@@ -48,6 +48,7 @@ tags: [status]
 - 功能点模板看 [[templates/development-feature-point-template]]，活跃实体清单看 [[projects/development/feature-points/README]]
 - 过程流水看 [[projects/development/execution/worklog]]
 - 正式会议看 [[projects/meetings/worklog]]
+- 复盘档案看 [[projects/retrospectives/README]]
 - 功能点用 `status` + `phase` 双轴管理
 - `status` 看生命周期：`planned`、`active`、`blocked`、`done`、`released`、`archived`
 - `phase` 看串联步骤：`design`、`implementation`、`verification`、`release`

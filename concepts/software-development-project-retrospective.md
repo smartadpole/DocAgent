@@ -15,6 +15,8 @@ tags: [concept, retrospective, software-engineering, project-management]
 
 软件研发项目复盘是项目复盘在软件交付场景下的子专题。它把需求、设计、研发拆解、实现、测试、验收、发布、运行和协作治理放在同一条交付链里回看。
 
+具体软件研发复盘档案默认放在 [[projects/retrospectives/README]] 所在目录；本页只维护可复用方法和读取框架。
+
 ## 定义
 
 软件研发项目复盘关注一个软件项目或阶段是否把“要解决的问题”稳定转成了“可运行、可验证、可维护的交付物”。
@@ -85,6 +87,7 @@ tags: [concept, retrospective, software-engineering, project-management]
 
 ## 沉淀路由
 
+- 具体复盘档案：进入 [[projects/retrospectives/README]] 所在目录，并回链本页或 [[concepts/project-retrospective]]。
 - 项目特有事实：进入 [[projects/memory/README]]、[[projects/decisions]]、[[projects/trace]]、Issue、报告或事故页。
 - 可复用方法：进入 [[concepts/project-retrospective]]、本页或其他概念页。
 - 可复制骨架：进入 `templates/`，但必须先确认会重复使用。

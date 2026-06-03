@@ -123,7 +123,8 @@
 - 规则和优先级：看 [[POLICY]]
 - 过程记录和排障：看 `projects/development/execution/worklog.md`
 - 发布和回滚：看 `projects/releases.md`
-- 事故和复盘：看 `projects/incidents/README.md`
+- 事故事实：看 `projects/incidents/README.md`
+- 复盘档案：看 `projects/retrospectives/README.md`
 - 项目内 agent 技能：看 [[skills/README]]
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
@@ -260,6 +261,7 @@
 - `projects/development/execution/worklog.md`：`projects/README.md`、[[projects/trace]]、当前相关 `projects/decisions.md`
 - `projects/releases.md`：`projects/README.md`、`projects/design/README.md`、`projects/decisions.md`、[[POLICY]]
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
+- `projects/retrospectives/README.md`：`projects/README.md`、`projects/STRUCTURE.md`、[[concepts/project-retrospective]]、相关 trace、决策、开发、Issue、事故、会议或 log 页面
 - `skills/`：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能带项目语境，再补读对应项目主入口、设计、EP / TASK、轻量 TODO、测试报告或服务台账
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
@@ -767,8 +769,9 @@
 
 ### 1.9.8 发布到事故
 
-- 事故页只负责事故总览、单条事故和复盘入口。
-- 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、[[POLICY]] 或 `projects/decisions.md`。
+- 事故页只负责事故总览、单条事故和事实保真入口。
+- 事故复盘如果只是单条事故事实和修复闭环，留在事故主档案；如果上升为跨事故、跨阶段或会影响研发实践 / 方案设计 / 工程治理的学习主题，进入 `projects/retrospectives/`。
+- 事故复盘里得到的长期结论，优先回写到 `projects/memory/`、[[POLICY]]、`projects/decisions.md` 或对应复盘档案。
 
 ### 1.9.9 智能体功能研发：从需求到设计
 
@@ -788,7 +791,7 @@
 
 ### 1.9.12 智能体功能研发：从开发到上线
 
-- 上线前先回看发布页和事故入口。
+- 上线前先回看发布页、事故入口和必要的复盘档案入口。
 - 如果上线后产生了稳定结论，把它们回写到 `projects/memory/`、[[POLICY]] 或知识库层。
 
 ### 1.9.13 功能点双轴模型
@@ -807,7 +810,7 @@
 - 过程日志放在 [[projects/development/execution/worklog]]。
 - 全局状态镜像放在 [[projects/status]]。
 - 发布结论放在 [[projects/releases]]。
-- 异常和复盘放在 [[projects/incidents/README]]。
+- 异常事实放在 [[projects/incidents/README]]，复盘档案放在 [[projects/retrospectives/README]]。
 - 稳定背景回写 [[projects/memory/README]]，取舍回写 [[projects/decisions]]，规则变化回写 [[POLICY]]。
 
 ### 1.9.14 状态怎么维护

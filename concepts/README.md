@@ -19,7 +19,7 @@
 ## 方法入口
 
 - [[concepts/prd-writing]]：PRD 写作方法
-- [[concepts/project-retrospective]]：项目复盘专题，承接跨项目可复用的复盘框架
+- [[concepts/project-retrospective]]：项目复盘专题，承接跨项目可复用的复盘框架；具体复盘档案看 [[projects/retrospectives/README]]
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，承接 agent 的工作方式、效率、质量和 Harness 改进回看
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、路由、技能、模板、sensor、复盘和 H5 自演进

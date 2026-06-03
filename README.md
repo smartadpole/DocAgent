@@ -73,6 +73,7 @@ tags: [entry, root]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“会议很多时怎么收口会议材料” -> 读 [[projects/meetings/README]]
+- 想知道“复盘文件放哪里、怎么沉淀经验和改进行动” -> 读 [[projects/retrospectives/README]] 和 [[concepts/project-retrospective]]
 - 想知道“Codex 处理时有哪些约束” -> 读 [[AGENTS]]
 - 想知道“入口页、索引页、层级在哪” -> 读 [[INDEX]]
 
@@ -134,7 +135,7 @@ tags: [entry, root]
 知识库模式负责长期沉淀，研发模式负责项目推进，技能层负责把高频 agent 分析套路沉淀成可复用执行流程。
 
 - 知识库模式：收集资料，整理成 `articles/`、`concepts/`、`indexes/`
-- 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘
+- 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘；具体复盘档案默认进入 [[projects/retrospectives/README]]
 - 技能层：在 `skills/` 里维护项目内 agent 技能，服务问题分析、定位、分工、验证和回写等高频动作
 - 路由层：[[BRAIN]] 放共享背景，[[POLICY]] 放规则，[[projects/memory/README]] 放项目级稳定记忆
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联

@@ -28,6 +28,7 @@
 - `projects/codebase/source-code-audit-workflow.md`：源码工程深度解读工作流。遇到源码解读、既有系统审计或生产接入判断时，必须先按该页定义目标等级、证据矩阵和终态自审，不允许把首轮核心链路理解说成完整审计。
 - `projects/design/`：正式设计层。`README.md` 做总入口；`tech-selection.md`、`architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md` 共同组成完整软件架构包；`topics/` 承接重要设计专题和专项储备。
 - `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
+- `projects/retrospectives/`：复盘档案层。承接阶段、专题、事故后、Issue 后和 Agent 协作复盘文件；复盘行动项必须分流到已有 Issue / 事故、事项、会议 / 决策、项目记忆、trace、模板、skill 或治理页，不在这里形成平行看板。
 - `projects/design/topics/`：设计专题层。承接未拍板但需要持续推进的设计问题，以及当前不进入完整架构包、但要长期保留的专项设计储备；会议页只引用，不重复维护主正文。
 - `projects/development/plan/`：研发总控层。承接当前阶段、阶段门摘要、执行入口、事项关系模型和支撑文件分组。
 - `projects/development/execution/`：执行控制层。承接 EP 执行包、TASK、待办、编码交接、工程反馈闭环和开发过程记录。
@@ -37,7 +38,7 @@
 - `projects/development/risks/`：研发风险层。承接阻塞、待确认项、owner 归口和会议 / 决策分流。
 - `projects/development/feature-points/`：功能点实体层。一页一个功能点，`status` 和 `phase` 写在各自页面属性里，`README.md` 只做索引。
 - `projects/development/issues/`：Issue 案件层。承接已发生问题、bug、偏差和验收失败的原始现象、分层事实、修复、复验和关闭裁决；报告只记录每次验证过程，不替代 Issue 案件档案。
-- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 和 `projects/development/plan/README.md` 偏研发经理视角，`projects/development/execution/README.md` 偏执行协调视角，`projects/meetings/README.md` 偏会议协作视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
+- 角色分层固定为：`projects/README.md` 偏首席技术官 / 项目负责人视角，`projects/development/README.md` 和 `projects/development/plan/README.md` 偏研发经理视角，`projects/development/execution/README.md` 偏执行协调视角，`projects/meetings/README.md` 偏会议协作视角，`projects/retrospectives/README.md` 偏长期学习和改进闭环视角，`projects/development/feature-points/README.md` 和实体页偏工程师视角。
 - `articles/`：摘要卡片层。每篇材料一张主卡。
 - `concepts/`：概念和实体层。工具、项目、术语都放这里。
 - `indexes/`：导航层。只负责入口、分类和检索。
@@ -197,7 +198,7 @@
 - 这里的“上下文”，不是当前文件附近几段话，而是为了正确更新目标内容，必须一起判断的最小相关信息集合。
 - 每次更新都要先判断目标内容属于哪一层：证据层、项目运行层、技能层、知识沉淀层、导航层、历史层。
 - 证据层是 `raw/`、`inbox/`、`assets/`，回答“信息从哪里来”。
-- 项目运行层是 `projects/README.md` 加上需求、设计、会议、决策、记忆、开发、服务实例台账、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了，以及真实服务现在在哪里运行”。
+- 项目运行层是 `projects/README.md` 加上需求、设计、会议、复盘、决策、记忆、开发、服务实例台账、发布、事故这些页面，回答“当前项目正在做什么、为什么这样做、做到哪里了、哪些经验会影响下一轮，以及真实服务现在在哪里运行”。
 - 其中 `projects/trace.md` 专门回答“这轮需求是怎样收敛到当前实现口径的”，它属于项目运行层，不属于历史层或规则层，也不承接原始来源材料整理。
 - 技能层是 `skills/`，回答“agent 遇到高频任务时按什么可复用流程分析和执行”；它可以引用项目主页面，但不能复制项目事实正文或替代正式回写。
 - 知识沉淀层是 `articles/`、`concepts/`、`indexes/`，回答“哪些结论已经稳定、哪些概念可以复用、入口如何组织”。
@@ -217,6 +218,7 @@
 - `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链；原始来源材料的出处和整理过程不放进去。
 - `projects/codebase/README.md` 上连项目主页、需求页、设计页和决策页，横向连接页面图、schema 图、基础设施、冲突和复用边界；它只记录现实实现事实和复用判断，不反向覆盖主需求或主设计。
 - `projects/meetings/README.md` 上连项目主页、需求页、设计页、设计专题页、决策页和开发页，横向连接正式会议记录、行动项和会后分流。
+- `projects/retrospectives/README.md` 上连项目主页、trace、决策、开发、事故、Issue、log 和复盘概念页；它承接具体复盘档案、跨复盘共性主题和沉淀路由，不替代事实主档案、决策页或行动项 owner 页面。
 - 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署、运行质量等子页，它们仍然属于同一个设计层。
 - 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页、记忆页或事故目录。
 - 记忆页连接项目主页、决策、设计和运行记录，是稳定背景，不是过程日志。
@@ -262,6 +264,7 @@
 - 如果目标是服务实例台账或服务运行事实，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/service-registry.md`、`projects/design/deployment.md`，再按服务补读相关代码基线、开发执行、测试报告或事故页。
 - 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
 - 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
+- 如果目标在 `projects/retrospectives/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/retrospectives/README.md`、[[concepts/project-retrospective]]，再按对象补读 trace、决策、开发、Issue、事故、会议、log、Agent 复盘或软件研发复盘相关页面。
 - 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`acceptance/`、`reports/`、`risks/` 或功能点实体页。
 - 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
@@ -293,6 +296,7 @@
 - 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
 - 改开发执行页、EP、TASK、待办、Issue、AP、测试报告、Gate 或风险页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、`projects/development/plan/test-acceptance-planning-model.md`、当前相关 EP / TASK / FP / Gate / Issue / AP / 报告页和必要设计页。
 - 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
+- 改复盘页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/retrospectives/README.md`、[[concepts/project-retrospective]]；软件研发复盘补读 [[concepts/software-development-project-retrospective]]，Agent 工作复盘补读 [[concepts/agent-work-retrospective]] 和对应 skill，事故 / Issue 后复盘补读事实主档案。
 - 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
 - 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
 - 改 `skills/` 时，至少读：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
@@ -312,7 +316,7 @@
 - 新建目录前先确认是不是已有目录的子集。
 - 新建目录后先补 `README.md`；模板和索引按需补，不要为了完整性先铺满。
 - 模板正文只允许维护在对应的 `templates/` 页面；其他页面只做入口说明、使用约束和跳转，不重复粘贴第二份模板正文。
-- 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/`、`meetings/` 这类天然按条目累积的模块默认保留目录。
+- 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/`、`meetings/`、`retrospectives/` 这类天然按条目累积的模块默认保留目录。
 - 新建文件先确认它属于 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`。
 - 如果是当前项目内可复用的 agent 分析流程或执行技能，优先放 `skills/`，并补 [[skills/README]] 入口；不要塞进 `templates/` 或项目状态页。
 - 如果是支持性附件，优先放 `assets/`；如果是退役页面，优先放 `archive/`。
