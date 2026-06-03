@@ -138,12 +138,18 @@ TEMPLATE_REQUIRED_SECTIONS = (
     "## 实际结果",
     "## 关键事实",
     "## 偏差与原因",
-    "## 软件研发交付链回看",
-    "## Agent 工作回看",
     "## 保留做法",
     "## 改进行动",
     "## 沉淀路由",
     "## 未验证边界",
+)
+
+TEMPLATE_REQUIRED_TERMS = (
+    "project: <project-id>",
+    "## 可选回看模块",
+    "只保留和复盘对象相关的模块",
+    "### 软件研发交付链回看（适用时）",
+    "### Agent 工作回看（适用时）",
 )
 
 SKILL_REQUIRED_TERMS = (
@@ -217,6 +223,12 @@ def check_retrospective_content(repo: Path, errors: list[str]) -> None:
         "templates/project-retrospective-template.md",
         read_text(repo, "templates/project-retrospective-template.md", errors),
         TEMPLATE_REQUIRED_SECTIONS,
+        errors,
+    )
+    require_terms(
+        "templates/project-retrospective-template.md",
+        read_text(repo, "templates/project-retrospective-template.md", errors),
+        TEMPLATE_REQUIRED_TERMS,
         errors,
     )
     require_terms(

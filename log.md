@@ -9,6 +9,18 @@
 
 ## 2026-06-03
 
+### 收窄复盘模板和历史对话 skill 边界
+
+- **记录人**：Codex
+- **用户意图**：修正复盘体系审查中发现的两个边界问题：通用模板不应写死 wiki 项目 metadata，也不应把软件研发和 Agent 工作回看固化成所有复盘的必填骨架；同时收窄复盘档案入口里的历史对话 skill 文案。
+- **关键动作**：
+  1. 将 [[templates/project-retrospective-template]] 的 `project` frontmatter 改为 `<project-id>` 占位符，避免复制模板后静默串档。
+  2. 将模板里的软件研发交付链和 Agent 工作回看收拢到“可选回看模块”，明确只在复盘对象相关时保留。
+  3. 更新 `scripts/check_retrospective_system.py`，让 sensor 检查核心复盘字段和可选模块边界，而不是把软件研发 / Agent 回看当成通用必填章节。
+  4. 将 [[projects/retrospectives/README]] 中的“执行技能”收窄为“Agent / 历史对话复盘技能”，避免普通阶段复盘被误导到重证据路径。
+- **二阶反思**：模板越通用，越要避免把某一类高频场景固化成所有场景的必填结构；sensor 应守住边界和占位符，而不是把重场景噪音写成硬性结构。
+- **影响页面**：[[templates/project-retrospective-template]]、[[projects/retrospectives/README]]、[[concepts/project-retrospective]]、[[templates/README]]、[[INDEX]]、[[log]]、`scripts/check_retrospective_system.py`。
+
 ### 建立完整复盘体系
 
 - **记录人**：sunhao

@@ -100,7 +100,7 @@ tags: [concept, retrospective, project-management]
 - **改进行动**：有 owner、触发条件、完成口径和跟踪位置的行动项。
 - **沉淀路由**：哪些进入项目记忆、trace、决策、规则、模板、概念、skill、sensor 或归档。
 
-具体页面骨架见 [[templates/project-retrospective-template]]。模板只是最小字段，不要求所有轻量 checkpoint 都新建复盘文件。
+具体页面骨架见 [[templates/project-retrospective-template]]。模板只把核心复盘字段作为通用骨架，软件研发交付链和 Agent 工作回看是按对象启用的可选模块；轻量 checkpoint 不要求新建复盘文件。
 
 ## 改进行动跟踪
 

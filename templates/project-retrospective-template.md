@@ -1,6 +1,6 @@
 ---
 type: retrospective
-project: PROJ-WIKI-001
+project: <project-id>
 status: draft
 updated: YYYY-MM-DD
 tags: [retrospective]
@@ -48,7 +48,11 @@ tags: [retrospective]
 | --- | --- | --- | --- | --- |
 |  | 需求 / 设计 / 拆解 / 实现 / 验证 / 发布运行 / 协作治理 / Agent 工作 | confirmed / likely / possible / blocked |  |  |
 
-## 软件研发交付链回看
+## 可选回看模块
+
+只保留和复盘对象相关的模块；不适用的模块可以删除，或写明“不适用”及原因。
+
+### 软件研发交付链回看（适用时）
 
 - **需求是否清楚**：
 - **设计是否支撑实现和验收**：
@@ -58,7 +62,7 @@ tags: [retrospective]
 - **运行质量、服务台账、事故和回滚是否闭环**：
 - **协作治理是否进入正确单一信息源**：
 
-## Agent 工作回看
+### Agent 工作回看（适用时）
 
 - **目标理解**：
 - **阶段判断**：

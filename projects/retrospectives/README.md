@@ -16,7 +16,7 @@ tags: [project, retrospective, learning-loop]
 
 模板：[[templates/project-retrospective-template]]
 
-执行技能：[[skills/historical-dialogue-retrospective/SKILL]]
+Agent / 历史对话复盘技能：[[skills/historical-dialogue-retrospective/SKILL]]
 
 这页是当前项目的复盘档案入口。它负责把阶段、专题、事故后、Issue 后、交付链偏差和 Agent 协作偏差沉淀成可回看的学习资产，并把复盘结论分流到已有单一信息源。
 

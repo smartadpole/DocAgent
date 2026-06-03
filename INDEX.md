@@ -100,7 +100,7 @@ tags: [index, root]
 - [[templates/development-task-template]]：TASK 任务模板
 - [[templates/development-issue-template]]：Issue 案件模板
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
-- [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘模板
+- [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘的通用核心模板，可按对象启用软件研发或 Agent 回看模块
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
