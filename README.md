@@ -74,6 +74,7 @@ tags: [entry, root]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
 - 想知道“会议很多时怎么收口会议材料” -> 读 [[projects/meetings/README]]
 - 想知道“复盘文件放哪里、怎么沉淀经验和改进行动” -> 读 [[projects/retrospectives/README]] 和 [[concepts/project-retrospective]]
+- 想复盘历史对话或 Agent 工作流 -> 读 [[concepts/agent-work-retrospective]] 和 [[skills/historical-dialogue-retrospective/SKILL]]
 - 想知道“Codex 处理时有哪些约束” -> 读 [[AGENTS]]
 - 想知道“入口页、索引页、层级在哪” -> 读 [[INDEX]]
 

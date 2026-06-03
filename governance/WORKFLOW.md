@@ -17,6 +17,7 @@
 - **快速诊断**：用户只问“为什么 / 在哪 / 先分析 / 差异是什么”时，先读最小事实源，输出 `confirmed / likely / possible / blocked` checkpoint；不默认改文档、关状态或跑完整矩阵。
 - **引导式设计**：用户要求设计新系统、新工具、新应用，或只给出“更智能 / 更前沿 / 更高效”等目标时，按 [[proactive-dialogue-system]] 先自动判定场景包、置信度和关键假设；只问会改变结构、权限、成本、验收或长期组织方式的问题，并把对话所得和 agent 思考结果产物化。
 - **知识沉淀**：用户要求“沉淀 / 形成参考 / 记录反思”时，优先写 `articles/`、`concepts/`、入口链接和 [[log]]；候选规则不直接伪装成已生效硬规则。
+- **复盘体系**：用户要求复盘项目、阶段、事故、Issue、交付链偏差或 Agent 工作流时，先读 [[projects/retrospectives/README]] 和 [[concepts/project-retrospective]]；按轻量 checkpoint / 标准复盘 / 深度复盘决定是否新建档案，行动项分流到既有 owner 页面，不在复盘目录形成平行看板。
 - **Issue 分析 + 沉淀**：现场问题、联调失败、验收争议或跨工程阻塞需要后续消费时，先给根因 checkpoint，再进入 issue / TASK / report / status / risk / matrix 等主控闭环。
 - **验收关闭**：涉及验收、复验、关闭、准出或 `done` 时，先声明验收对象和证据层级，再按 local / service-side / end-to-end 和人工确认边界验证。
 - **规则升级**：要改变默认读取顺序、自动写入边界、优先级或 agent 行为时，先读 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和相关技能 / 模板，优先改旧规则或补澄清。

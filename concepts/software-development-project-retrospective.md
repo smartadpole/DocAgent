@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-SOFTWARE-DEVELOPMENT-PROJECT-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-31
+updated: 2026-06-03
 tags: [concept, retrospective, software-engineering, project-management]
 ---
 
@@ -44,6 +44,20 @@ tags: [concept, retrospective, software-engineering, project-management]
 | 发布运行 | 能力是否进入目标环境 | 发布记录、服务台账、监控、回滚、事故 |
 | 协作治理 | 信息是否在正确位置流动 | 会议、决策、log、模板、规则和 sensor |
 | Agent 工作 | agent 是否高质量、高效率、守边界地完成任务 | [[concepts/agent-work-retrospective]]、commentary、diff、验证、提交 |
+
+## 交付链检查点
+
+软件研发复盘至少覆盖这条链路，除非复盘对象明确更窄：
+
+- **需求**：问题、用户、范围、非目标、验收标准是否清楚，需求变化是否进入 [[projects/trace]]。
+- **设计**：架构、接口、数据、权限、写操作、部署和运行质量是否支撑实现和验收。
+- **事项关系**：Gate / FP / EP / TASK / risk / issue / AP / report 是否各有 owner，证据是否没有上推过度。
+- **实现合同**：代码、配置、迁移、服务和 handoff 是否按 TASK / EP / 设计合同落地。
+- **测试验收**：测试计划、AP、fixture / oracle、报告、人工确认和回归范围是否足够支撑结论。
+- **发布运行**：发布范围、服务台账、监控、事故、回滚和运行质量是否闭环。
+- **协作治理**：信息是否进入正确单一信息源，而不是只留在对话、测试报告、handoff 或最终回复里。
+
+不要把测试报告当复盘，不要把 Issue 关闭当复盘完成，也不要把一次事故直接泛化成全项目结论。
 
 ## 协作治理回看
 

@@ -19,6 +19,17 @@ tags: [project, retrospective, learning-loop]
 
 复盘不是普通总结，也不是 `[[log]]` 的加厚版。它是项目长期学习工程的一部分：把已经发生的目标偏差、设计取舍、执行成本、验证缺口、协作问题和有效做法，沉淀成未来需求判断、方案设计、研发实践、工程治理和 agent 协作都会用到的资产。
 
+## 系统运行闭环
+
+当前复盘体系按四层运行：
+
+1. **方法入口**：[[concepts/project-retrospective]] 定义复盘是什么、何时启动、和其他页面如何分工；软件研发和 Agent 工作分别看 [[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]。
+2. **档案入口**：本页承接具体复盘文件、命名、索引、共性主题和沉淀路由。
+3. **执行骨架**：[[templates/project-retrospective-template]] 提供复盘文件最小字段；历史对话和 Agent 工作流复盘由 [[skills/historical-dialogue-retrospective/SKILL]] 执行。
+4. **行动分流和自演进**：复盘行动项必须进入已有 owner 页面；重复失守、模板缺口、skill 缺口或可脚本化检查再进入 [[harness-feedback-ledger]] 和 [[harness-evolution]]。
+
+这四层缺一不可：只有方法没有档案会变成口号，只有模板没有行动分流会变成报告存档，只有行动没有自演进会让同类问题反复靠人工提醒。
+
 ## 这页负责什么
 
 - 汇总当前项目内已经形成的复盘档案。
@@ -30,6 +41,7 @@ tags: [project, retrospective, learning-loop]
 
 - 不替代 [[log]]；`[[log]]` 记录对话主题和关键动作，复盘解释目标、事实、偏差、原因和可复用经验。
 - 不替代 Issue 或事故主档案；已发生 bug、验收失败和事故先在 [[projects/development/issues/README]] 或 [[projects/incidents/README]] 保真。
+- 不替代测试报告；报告证明一次验证执行和证据边界，复盘才解释目标偏差、机制原因和下轮改进。
 - 不替代 [[projects/decisions]]；复盘可以提出决策候选，但最终拍板仍进决策页。
 - 不替代 [[projects/memory/README]]；只有稳定、后续会自动参与判断的结论才回写项目记忆。
 - 不新建平行动作看板；复盘行动项必须落到已有 owner 页面和可检查位置。
@@ -87,6 +99,41 @@ tags: [project, retrospective, learning-loop]
 - 测试、验收、发布和运行证据质量。
 - Agent 协作的目标理解、读取预算、工具使用、验证和收尾质量。
 - 治理规则、模板、技能和 sensor 的晋升 / 降级效果。
+
+## 行动分流
+
+复盘正文只记录行动为何产生、要解决什么机制问题；行动本身必须分流到可持续 owner 页面，不在复盘目录形成平行看板。
+
+| 行动类型 | 默认落点 | 说明 |
+| --- | --- | --- |
+| bug、偏差、验收失败 | [[projects/development/issues/README]] | 保留原始现象、复现、修复和复验链。 |
+| 事故事实和修复闭环 | [[projects/incidents/README]] | 事故主档案先保真，再从本页回链长期经验。 |
+| 研发交付动作 | Gate / FP / EP / TASK、risk、acceptance、report | 不把下轮研发动作藏在复盘正文里。 |
+| 跨 owner 协调 | [[projects/meetings/README]] | 需要人工确认、跨 owner 分工或会议推进时进入会议层。 |
+| 关键取舍 | [[projects/decisions]] | 复盘可以提出候选，正式拍板仍由决策页承接。 |
+| 项目长期事实 | [[projects/memory/README]] | 只有后续会自动参与判断的稳定事实才进入项目记忆。 |
+| 需求演进 | [[projects/trace]] | 原始意图、约束变化和最终范围变化进入 trace。 |
+| 可复用方法 | [[concepts/project-retrospective]] 或相关概念页 | 抽象后跨项目可用的方法才进入概念层。 |
+| 可复制骨架 | `templates/` | 先确认是系统治理模板，不把专题成果误塞进模板层。 |
+| 高频 agent 流程 | [[skills/README]] 或具体技能 | 需要可重复执行的证据读取、判断和输出格式时进入技能层。 |
+| 重复失守或机制缺口 | [[harness-feedback-ledger]] | 单次表现继续观察，重复或影响面大再进入 episode。 |
+| 可脚本化检查 | `scripts/check_all.py` 相关 sensor | 能稳定表达的检查优先脚本化。 |
+| 执行规则变化 | [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或等价规则页 | 只有影响必须 / 禁止行为、执行顺序或裁定边界时才升级。 |
+
+## 治理自演进关系
+
+复盘结论按影响面逐级上推：
+
+- 单次表现：写入复盘或 [[log]]，保留未验证边界，继续观察。
+- 重复失守：进入 [[harness-feedback-ledger]]，记录触发信号、成本类型、已采取改动和状态。
+- 可模板化：更新 [[templates/project-retrospective-template]] 或相关模板字段。
+- 可技能化：更新 [[skills/historical-dialogue-retrospective/SKILL]] 或新增更窄的技能。
+- 可脚本化：新增或扩展 sensor，并接入 `scripts/check_all.py`。
+- 影响执行顺序：更新 [[WORKFLOW]] 或 [[response-mode-routing]]。
+- 影响必须 / 禁止行为：更新 [[AGENTS]]。
+- 影响优先级、自动沉淀边界或裁定规则：更新 [[POLICY]]。
+
+不要把所有复盘结论都升级成硬规则；复盘体系本身也要按 [[agent-governance-strategy]] 做资格判断，避免变成新的治理噪音。
 
 ## 维护说明
 

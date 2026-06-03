@@ -79,6 +79,7 @@ tags: [index, root]
 - [[state-constraint-reasoning]]：把“先判可执行性，再写安排”落成治理页，适用于搬家、旅行、采购、部署、上线等计划型问题。
 - [[concepts/project-retrospective]]：项目复盘专题，沉淀目标、过程、结果、偏差、原因和改进行动的通用框架。
 - [[projects/retrospectives/README]]：具体复盘档案入口，承接当前项目的阶段、专题、事故后、Issue 后和 Agent 协作复盘。
+- [[templates/project-retrospective-template]]：复盘档案模板，覆盖证据地图、交付链、Agent 工作、行动分流和治理自演进判断。
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题，把需求、设计、拆解、实现、测试验收、发布运行和协作治理串成一条交付链回看。
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，回看 agent 的目标理解、读取预算、工具使用、验证质量、沟通节奏和沉淀路由。
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。

@@ -31,6 +31,12 @@ REQUIRED_FILES = (
     "governance/WORKFLOW.md",
     "governance/POLICY.md",
     "skills/issue-analysis/SKILL.md",
+    "concepts/project-retrospective.md",
+    "concepts/software-development-project-retrospective.md",
+    "concepts/agent-work-retrospective.md",
+    "projects/retrospectives/README.md",
+    "templates/project-retrospective-template.md",
+    "skills/historical-dialogue-retrospective/SKILL.md",
 )
 
 AGENT_STRATEGY_REQUIRED_TERMS = (
@@ -239,6 +245,52 @@ GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = (
     "health、日志、子工程自述或中间态误当成真正闭环",
     "响应模式判断之后、正式长时执行之前",
     "复杂 bug 复现、性能优化、迁移、跨轮调研、反复验证的修复、主控和子工程之间的长任务回传",
+)
+
+RETROSPECTIVE_SYSTEM_REQUIRED_TERMS = (
+    "复盘系统",
+    "行动分流",
+    "harness-feedback-ledger",
+    "harness-evolution",
+    "不替代",
+)
+
+RETROSPECTIVE_ARCHIVE_REQUIRED_TERMS = (
+    "系统运行闭环",
+    "轻量 checkpoint",
+    "标准复盘",
+    "深度复盘",
+    "行动分流",
+    "治理自演进关系",
+    "不在复盘目录形成平行看板",
+)
+
+RETROSPECTIVE_TEMPLATE_REQUIRED_SECTIONS = (
+    "## 复盘对象",
+    "## 原始目标",
+    "## 实际结果",
+    "## 关键事实",
+    "### 证据地图",
+    "## 交付链回看",
+    "## 偏差与原因",
+    "## Agent 工作回看",
+    "## 改进行动",
+    "## 沉淀路由",
+    "## 治理自演进判断",
+    "## 未验证边界",
+)
+
+HISTORICAL_RETROSPECTIVE_SKILL_REQUIRED_TERMS = (
+    "触发场景",
+    "响应模式",
+    "证据源分层",
+    "框定复盘对象",
+    "还原工作链",
+    "判断 agent 偏差",
+    "判断效率和质量",
+    "输出改进路由",
+    "质量自检",
+    "不把 [[log]] 当原始真相源",
 )
 
 
@@ -485,6 +537,46 @@ def check_instruction_and_semantics_wiring(repo: Path) -> list[str]:
     return errors
 
 
+def check_retrospective_system(repo: Path) -> list[str]:
+    errors: list[str] = []
+    concept = read_text(repo, "concepts/project-retrospective.md", errors)
+    software = read_text(repo, "concepts/software-development-project-retrospective.md", errors)
+    agent = read_text(repo, "concepts/agent-work-retrospective.md", errors)
+    archive = read_text(repo, "projects/retrospectives/README.md", errors)
+    template = read_text(repo, "templates/project-retrospective-template.md", errors)
+    skill = read_text(repo, "skills/historical-dialogue-retrospective/SKILL.md", errors)
+
+    if concept:
+        for term in RETROSPECTIVE_SYSTEM_REQUIRED_TERMS:
+            if term not in concept:
+                errors.append(f"concepts/project-retrospective.md: missing retrospective system term {term}")
+    if software:
+        for term in ("交付链检查点", "Gate / FP / EP / TASK / risk / issue / AP / report", "不要把测试报告当复盘"):
+            if term not in software:
+                errors.append(f"concepts/software-development-project-retrospective.md: missing delivery-chain term {term}")
+    if agent:
+        for term in ("目标理解", "阶段判断", "上下文读取", "工具使用", "验证质量", "收尾提交质量"):
+            if term not in agent:
+                errors.append(f"concepts/agent-work-retrospective.md: missing agent-retrospective term {term}")
+    if archive:
+        for term in RETROSPECTIVE_ARCHIVE_REQUIRED_TERMS:
+            if term not in archive:
+                errors.append(f"projects/retrospectives/README.md: missing archive term {term}")
+    if template:
+        for section in RETROSPECTIVE_TEMPLATE_REQUIRED_SECTIONS:
+            if section not in template:
+                errors.append(f"templates/project-retrospective-template.md: missing section {section}")
+    if skill:
+        for term in HISTORICAL_RETROSPECTIVE_SKILL_REQUIRED_TERMS:
+            if term not in skill:
+                errors.append(f"skills/historical-dialogue-retrospective/SKILL.md: missing skill term {term}")
+    for rel in ("README.md", "INDEX.md", "AGENTS.md", "governance/WORKFLOW.md", "skills/README.md", "templates/README.md"):
+        text = read_text(repo, rel, errors)
+        if text and "retrospective" not in text and "复盘" not in text:
+            errors.append(f"{rel}: missing retrospective system wiring")
+    return errors
+
+
 def check_harness_governance(repo: Path) -> list[str]:
     errors: list[str] = []
     errors.extend(check_required_files(repo))
@@ -497,6 +589,7 @@ def check_harness_governance(repo: Path) -> list[str]:
     errors.extend(check_quality_gate_script(repo))
     errors.extend(check_h5_evolution(repo))
     errors.extend(check_instruction_and_semantics_wiring(repo))
+    errors.extend(check_retrospective_system(repo))
     return errors
 
 
@@ -508,7 +601,7 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         print(f"FAILED: {len(errors)} harness governance issue(s)", file=sys.stderr)
         return 1
-    print("OK: harness governance routing, H5 ledger, templates, and sensors checked")
+    print("OK: harness governance routing, H5 ledger, retrospectives, templates, and sensors checked")
     return 0
 
 

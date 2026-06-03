@@ -9,6 +9,22 @@
 
 ## 2026-06-03
 
+### 升级复盘体系为可持续运行系统
+
+- **记录人**：sunhao
+- **用户意图**：用户要求不要只新增复盘目录或模板，而是把本工程自身复盘体系升级为能长期运行的系统，覆盖项目、阶段、事故、Issue、交付链偏差、Agent 协作偏差和治理缺口，并接入模板、skill、行动分流、Harness 自演进和检查。
+- **主题**：
+  1. 明确本工程已有 `projects/` 结构，复盘档案继续落在 [[projects/retrospectives/README]]，方法论保留在 [[concepts/project-retrospective]] 及子专题，模板在 [[templates/project-retrospective-template]]，执行 skill 在 [[skills/historical-dialogue-retrospective/SKILL]]。
+  2. 把复盘体系补成方法入口、档案入口、执行骨架、行动分流和治理自演进四层闭环，避免只有概念或模板、没有可持续 owner 和检查。
+  3. 补齐软件研发交付链和 Agent 工作复盘维度，明确测试报告、Issue 关闭、事故主档案、log、decision、memory、trace 和复盘之间的边界。
+- **关键动作**：
+  1. 更新 [[projects/retrospectives/README]]，新增系统运行闭环、行动分流和治理自演进关系。
+  2. 更新 [[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]，补齐复盘系统组成、页面分工、交付链检查点和 Agent 工作边界。
+  3. 更新 [[templates/project-retrospective-template]] 和 [[skills/historical-dialogue-retrospective/SKILL]]，补证据地图、交付链、Agent 工作回看、治理自演进判断和质量自检。
+  4. 更新 [[AGENTS]]、[[WORKFLOW]]、[[README]]、[[INDEX]]、[[skills/README]]、[[templates/README]] 和 `scripts/check_harness_governance.py`，让复盘系统从入口和 sensor 都能被发现。
+- **二阶反思**：这轮暴露的是“复盘能力”需要工程化闭环，而不是再加自然语言说明。以后新增长期学习类能力时，应同步定义方法、档案、模板 / skill、行动 owner、自演进路由和最小检查，防止能力停留在文档愿望。
+- **影响页面**：[[projects/retrospectives/README]]、[[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[templates/project-retrospective-template]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[AGENTS]]、[[WORKFLOW]]、[[README]]、[[INDEX]]、[[skills/README]]、[[templates/README]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 明确复盘档案作为长期学习工程的落位
 
 - **记录人**：sunhao

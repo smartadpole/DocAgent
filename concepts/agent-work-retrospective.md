@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-AGENT-WORK-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-31
+updated: 2026-06-03
 tags: [concept, retrospective, ai-agent, harness, workflow]
 ---
 
@@ -45,6 +45,8 @@ Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一�
 | 沟通节奏 | 是否及时说明当前阶段、发现和阻塞 | commentary 更新、最终回复、handoff |
 | 边界控制 | 是否守住权限、路径、环境和非目标 | AGENTS、POLICY、工作区状态、未触碰文件 |
 | 沉淀能力 | 是否把可复用经验放到正确位置 | log、concept、template、skill、ledger |
+
+这些维度评价的是 agent 的工作方式，不评价项目本身是否成功。项目结果要回到 [[concepts/project-retrospective]] 或 [[concepts/software-development-project-retrospective]]；Agent 工作复盘只回答目标理解、阶段判断、上下文读取、工具使用、执行策略、验证质量、沟通节奏、权限边界、沉淀路由和收尾提交质量是否可靠。
 
 ## 启动判断与技能边界
 

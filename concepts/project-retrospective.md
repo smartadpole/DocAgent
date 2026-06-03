@@ -3,7 +3,7 @@ type: concept
 id: CONCEPT-PROJECT-RETROSPECTIVE
 status: active
 source_of_truth: true
-updated: 2026-05-31
+updated: 2026-06-03
 tags: [concept, retrospective, project-management]
 ---
 
@@ -31,6 +31,19 @@ tags: [concept, retrospective, project-management]
 - 哪些经验可以进入下一轮项目、规则、模板或记忆。
 
 复盘的长期价值不止是解释过去。它要把问题总结、经验沉淀和机制修正连接起来，持续服务未来项目研发实践、方案设计、工程实现、测试验收、运行治理和 agent 协作质量。
+
+## 复盘系统
+
+复盘不是单篇模板，而是一套能持续运行的学习系统。最小组成是：
+
+- **方法论**：定义复盘对象、启动判断、证据读取、偏差分析和沉淀路由。
+- **档案层**：保存具体阶段、专题、事故后、Issue 后和 Agent 协作复盘文件。
+- **模板层**：提供可复制字段，确保目标、事实、偏差、行动、路由和未验证边界不丢。
+- **技能层**：对历史对话、Agent 工作流或高频复杂复盘执行证据分层、工作链还原和质量自检。
+- **行动 owner**：把改进行动分流到 Issue、事故、研发事项、会议、决策、memory、trace、模板、skill、sensor 或规则入口。
+- **治理自演进**：重复失守、可模板化、可技能化或可脚本化的经验进入 Harness 自演进链。
+
+这套系统的目标不是制造更多文档，而是让项目经验能被下一轮需求判断、方案设计、工程治理、测试验收、运行质量和 Agent 工作方式复用。
 
 ## 文件落位
 
@@ -79,6 +92,15 @@ tags: [concept, retrospective, project-management]
 - Agent 执行和协作方式：进入 [[concepts/agent-work-retrospective]]，必要时启动 [[skills/historical-dialogue-retrospective/SKILL]]。
 - 已发生 Issue 或事故：先进入 [[projects/development/issues/README]] 或 [[projects/incidents/README]]，再判断是否提炼通用经验。
 
+## 和其他页面的区别
+
+- 复盘和 [[log]]：`[[log]]` 记录一轮对话的主题、用户意图和关键动作；复盘解释目标、事实、偏差、原因、保留做法和下轮机制改进。
+- 复盘和 Issue / 事故：Issue / 事故保存已发生问题的原始事实、修复和复验链；复盘只在这些事实暴露机制缺口或可复用经验时启动。
+- 复盘和测试报告：测试报告证明某次验证如何执行、覆盖什么、不覆盖什么；复盘不能用“通过 / 失败”替代原因分析。
+- 复盘和 [[projects/decisions]]：复盘可以提出取舍候选；正式决策、最终拍板和影响边界仍进入决策页。
+- 复盘和 [[projects/memory/README]]：复盘产出不自动成为长期记忆；只有稳定、后续会自动参与判断的事实才进入项目记忆。
+- 复盘和 [[projects/trace]]：trace 记录需求从原始意图到当前口径的演进；复盘只在解释目标变化、约束传播或修补性需求时回写 trace。
+
 ## 复盘粒度
 
 复盘深度按影响范围分级，不把所有事情都做成同等重量。
@@ -125,6 +147,8 @@ tags: [concept, retrospective, project-management]
 - 项目长期事实和稳定判断：进入 [[projects/memory/README]]、[[projects/trace]] 或 [[projects/decisions]]。
 - 可复用方法、模板、规则或 skill 候选：进入 owning concept、`templates/`、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 或 [[skills/README]]。
 - Agent / Harness 改进：进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升。
+
+行动项写入复盘正文时，只写“为什么有这条行动、它分流到哪里、怎样检查完成”。不要在复盘目录里新建平行看板。
 
 ## 和其他页面的分工
 
