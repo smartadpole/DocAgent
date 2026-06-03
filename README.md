@@ -63,6 +63,7 @@ tags: [entry, root]
 - 想把长时任务写成可审计完成契约 -> 读 [[concepts/codex-goals]] 和 [[templates/goal-contract-template]]
 - 想找“可复制模板” -> 读 [[templates/README]]
 - 想使用或维护“项目内 agent 技能” -> 读 [[skills/README]]
+- 想把某个已沉淀技能升级到其他工程，并生成可复制给目标工程 agent 的提示词 -> 读 [[skills/cross-project-skill-adoption-prompt/SKILL]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“源码工程深度解读怎么分级推进” -> 读 [[projects/codebase/source-code-audit-workflow]]
 - 想看“真实服务实例现在在哪里运行、怎么健康检查” -> 读 [[projects/service-registry]]
@@ -138,6 +139,7 @@ tags: [entry, root]
 - 知识库模式：收集资料，整理成 `articles/`、`concepts/`、`indexes/`
 - 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘；具体复盘档案默认进入 [[projects/retrospectives/README]]
 - 技能层：在 `skills/` 里维护项目内 agent 技能，服务问题分析、定位、分工、验证和回写等高频动作
+- 技能迁移：高价值技能用 `TRANSFER.md` 维护迁移资料清单，再由 [[skills/cross-project-skill-adoption-prompt/SKILL]] 按需生成目标工程升级提示词
 - 路由层：[[BRAIN]] 放共享背景，[[POLICY]] 放规则，[[projects/memory/README]] 放项目级稳定记忆
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层

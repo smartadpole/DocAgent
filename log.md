@@ -9,6 +9,22 @@
 
 ## 2026-06-03
 
+### 建立跨工程技能升级提示词生成能力
+
+- **记录人**：sunhao
+- **用户意图**：用户指出刚才为复盘生成目标工程升级提示词的方式，以后会扩展到其他技能；要求判断是沉淀每个技能的提示词，还是形成一个特定技能，之后按需生成合格提示词，并落实这个能力。
+- **主题**：
+  1. 明确长期主资产不应是每个技能的一份固定完整提示词，而应是一个 meta-skill 加每个具体技能的迁移资料清单。
+  2. 将“跨工程技能升级”建模为：源技能本体、`TRANSFER.md` 迁移清单、相关 concept / template / governance / sensor 资料、目标工程自适配提示词。
+  3. 以复盘体系作为首个样板，为历史对话复盘技能补充迁移资料清单，后续 Issue、验收、代码基线审计等能力可按同一模式扩展。
+- **关键动作**：
+  1. 新增 [[skills/cross-project-skill-adoption-prompt/SKILL]]，定义生成跨工程技能升级提示词的触发场景、读取顺序、输出结构、自检和禁止项。
+  2. 新增 [[templates/skill-transfer-manifest-template]]，作为具体技能维护迁移资料清单的模板。
+  3. 新增 `skills/historical-dialogue-retrospective/TRANSFER.md`，把完整复盘体系迁移需要的资料路径、吸收边界、目标工程落位、行动分流和验证要求结构化。
+  4. 更新 [[skills/README]]、[[templates/README]]、[[README]]、[[INDEX]]、[[AGENTS]] 和 [[WORKFLOW]]，让 meta-skill 和 transfer manifest 模式进入入口、技能维护原则和目录归类规则。
+- **二阶反思**：这轮暴露的是“能力外迁”本身也是一种高频能力。以后不应把每次给目标工程的提示词当长期资产，而应让提示词按需生成；长期维护的是技能本体、迁移清单和生成器。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[templates/skill-transfer-manifest-template]]、[[skills/README]]、[[templates/README]]、[[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[log]]。
+
 ### 升级复盘体系为可持续运行系统
 
 - **记录人**：sunhao

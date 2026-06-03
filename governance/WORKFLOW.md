@@ -425,6 +425,7 @@
 - 临时收口，放 `inbox/`
 - 支持性附件，放 `assets/`
 - 项目内可复用的 agent 分析流程或执行技能，放 `skills/`
+- 跨工程技能升级提示词由 [[skills/cross-project-skill-adoption-prompt/SKILL]] 按需生成；具体技能的迁移资料清单可以放在该技能目录的 `TRANSFER.md`
 - 活跃研发项目文档，放 `projects/`
 - 正式会议入口和会议纪要，放 `projects/meetings/`
 - 摘要卡片，放 `articles/`

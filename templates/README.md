@@ -32,6 +32,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目复盘档案可以参考 [[templates/project-retrospective-template]]；它覆盖目标 / 结果、证据地图、交付链、Agent 工作、行动分流、治理自演进和未验证边界。
+- 新技能需要跨工程迁移资料清单时，可以参考 [[templates/skill-transfer-manifest-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]

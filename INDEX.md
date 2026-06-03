@@ -41,6 +41,7 @@ tags: [index, root]
 - [[harness-feedback-ledger]]：Harness episode、sensor backlog、规则晋升和降级队列
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
+- [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
 - [[projects/README]]：活跃软件研发项目的运行入口
@@ -89,6 +90,7 @@ tags: [index, root]
 - [[articles/2026-05-30-agent-governance-cross-project-synthesis]]：跨 8 个工程的 Agent 治理横向对比，抽象出独立重发明、规则只增不减、边界靠声明、协议不统一等共性问题，提出共享治理内核方案。
 - [[articles/2026-05-30-agent-system-deep-analysis]]：基于 Karpathy Software 3.0、OpenClaw memory、AHE 可观测性支柱和多 agent 架构理论，对当前 8 工程 agent 体系做深度诊断，归纳六大根本性设计缺陷和三阶演进路径。
 - [[articles/2026-05-30-acknowledgebase-governance-hub-design]]：AcknowledgeBase 作为跨工程治理中控的具体设计：四类治理动作、调度频率、中控职责边界、wiki template-changelog 最小改动方案。
+- [[skills/cross-project-skill-adoption-prompt/SKILL]]：把任意已沉淀 skill / 能力转换成目标工程可执行升级提示词，并附资料路径、吸收边界、落地步骤和验证要求。
 - [[skills/historical-dialogue-retrospective/SKILL]]：从历史对话、当前上下文、log、Harness episode、git 证据和检查输出中复盘 agent 偏差、效率质量与 workflow 改进。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。
@@ -124,6 +126,7 @@ tags: [index, root]
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
 - [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板
 - [[templates/project-retrospective-template]]：项目复盘档案模板
+- [[templates/skill-transfer-manifest-template]]：技能跨工程迁移资料清单模板
 - [[template-feedback-rules]]：其他项目进化出的系统层信息如何反哺模板库，并区分知识库模板与系统治理模板
 
 ## 项目接手与代码基线
