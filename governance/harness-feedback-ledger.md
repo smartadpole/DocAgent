@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-29
+updated: 2026-06-03
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-03 | 跨工程迁移提示词覆盖度不足 | 用户对比两段复盘体系迁移提示词后指出，第一段提示词弱于手写版本，暴露 meta-skill 只要求资料路径和结构自检，但没有强制源能力模块覆盖和目标工程差异化说明 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，补源能力覆盖矩阵、复合能力压缩防线和定制提示词差异化说明；更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，把复盘体系迁移最小模块清单写入源资料 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-30 | 硬性治理过度和 log 提交税 | 用户追问当前 agent 治理方案是否合理，指出入口过度缩减可能伤能力、`log` 设置硬性条目不合理，并要求检查其他设计是否也有类似问题 | 规则升级 | 可优化成本 | 新增 [[agent-governance-strategy]]，把治理动作分成 P0 硬约束、P1 语义门、P2 流程和 P3 backlog；同步 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[instruction-adherence]]、[[log-writing-rules]]，把 `[[log]]`、产物化、完整检查和二阶反思改成资格判断 | [[agent-governance-strategy]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-29 | Finalizer 写入范围证明缺口 | 用户指出 agent 在被要求“只提交相关内容”后，仍沿事项归属链继续同步 EP / FP / status / log，finalizer 只证明外部残留被明示，不能证明主控内部写入范围符合最新收窄指令 | 知识沉淀 + Agent 工作复盘 | 可优化成本 | 新增 [[articles/2026-05-29-finalizer-write-scope-case]]，把问题归类为 Scope Lock / Scope Proof 缺口；本页补 sensor backlog 和晋升候选 | [[articles/2026-05-29-finalizer-write-scope-case]] | observed |
 | 2026-05-28 | Agent 治理专题落位纠偏 | 用户指出“这不是项目开发，属于知识库”，纠正 agent 将专题误放入 `projects/design/topics/` 和 `projects/trace` 的路由错误 | 知识沉淀 | 可优化成本 | 撤回项目开发链路改动，改为新增 [[concepts/agent-governance]]，并从 [[concepts/README]]、[[INDEX]] 和治理入口回链 | [[concepts/agent-governance]] | observed |
@@ -47,6 +48,7 @@ tags: [agent, harness, feedback, episode]
 | 主动对话产物化检查 | 引导式设计容易只停在聊天，或为了智能化扩大读取和结构成本 | 当前由 `check_harness_governance.py` 检查 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]、性能预算和入口 wiring | active |
 | 治理策略分级检查 | `[[log]]`、产物化、完整检查、二阶反思、Goal Contract 或模板反哺容易被硬化成无条件仪式 | 当前由 `check_harness_governance.py` 检查 [[agent-governance-strategy]]、log eligibility 和入口 wiring | active |
 | 写入范围证明 / Scope Proof | 用户即时收窄写入范围后，finalizer 可能只证明 working tree clean 或 external residual 明示，无法证明本轮 diff 仍在允许范围内 | 后续可补 finalizer scope manifest 或 `--allowed-path` 检查：比较本轮 diff / latest commit 文件与用户最新写入白名单 | observed |
+| 跨工程迁移提示词覆盖度检查 | 复合能力迁移提示词可能压缩掉源资料中的方法、档案、模板、skill、行动分流、治理自演进或验证要求 | 后续可补技能迁移 manifest 字段检查，确认 `TRANSFER.md` 和 meta-skill 输出结构都含覆盖矩阵 / 最小模块清单 | observed |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 
 ## Rule Promotion Queue

@@ -9,6 +9,21 @@
 
 ## 2026-06-03
 
+### 修正跨工程迁移提示词覆盖度不足
+
+- **记录人**：sunhao
+- **用户意图**：用户对比 agent 生成的复盘体系迁移提示词和手写版提示词，指出手写版更完整，追问是否说明跨工程迁移技能提示词设计不够完善，以及能否解决。
+- **主题**：
+  1. 确认问题不只是单次生成表达偏短，而是 meta-skill 缺少“源能力覆盖矩阵”和“目标工程差异化说明”的强制质量门。
+  2. 将复合能力迁移提示词的最低要求从“列路径、边界和落位”升级为“保留方法、档案、模板、skill、行动分流、治理自演进、验证和入口同步的完整模块拆解”。
+  3. 把复盘体系迁移里更完整的手写结构吸收到 `TRANSFER.md`，避免后续再依赖临场对比才能发现缺口。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，补充源能力覆盖矩阵、复合能力压缩防线、定制提示词目标工程差异化说明和输出前自检。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，新增复盘体系迁移的最小模块清单，覆盖方法入口、档案入口、模板、软件研发复盘、Agent 工作复盘、历史对话 skill、行动分流、治理自演进和入口同步。
+  3. 更新 [[harness-feedback-ledger]]，把这次“迁移提示词覆盖度不足”记录为已晋升的 Harness episode，并留下后续 sensor 候选。
+- **二阶反思**：这轮暴露的是 meta-skill 生成质量门缺口。之后生成跨工程迁移提示词时，不能只证明“有路径、有边界、有落位”，还要证明源能力的关键模块没有被摘要压掉；定制提示词若已读取目标工程结构，也必须给出目标工程差异化落位建议。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[harness-feedback-ledger]]、[[log]]。
+
 ### 校准跨工程技能提示词的目标结构读取边界
 
 - **记录人**：sunhao
