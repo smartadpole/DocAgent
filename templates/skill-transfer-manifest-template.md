@@ -57,7 +57,7 @@ tags: [template, skill, transfer, adoption]
 
 - 
 
-## 目标工程落位建议
+## 目标工程结构自检与落位建议
 
 - **有 projects/ 结构时**：
 - **无 projects/ 结构时**：
@@ -79,6 +79,8 @@ tags: [template, skill, transfer, adoption]
 
 ## 生成提示词时必须包含
 
+- 通用提示词是否不预读目标工程：
+- 目标工程 agent 必须自检的入口：
 - 
 
 ## 验证要求

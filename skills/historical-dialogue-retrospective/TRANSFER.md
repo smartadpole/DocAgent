@@ -80,7 +80,7 @@ tags: [skill, transfer, retrospective, adoption]
 - 本机服务路径、工程路径、运行 ID、提交历史或用户偏好。
 - DocCustomer、wiki 或其他下游工程的业务事实。
 
-## 目标工程落位建议
+## 目标工程结构自检与落位建议
 
 - **有 projects/ 结构时**：复盘档案默认放 `projects/retrospectives/`，模板放 `templates/`，skill 放 `skills/`。
 - **无 projects/ 结构时**：复盘档案默认放 `docs/retrospectives/`，模板放 `docs/templates/` 或目标工程既有模板目录。
@@ -116,7 +116,7 @@ tags: [skill, transfer, retrospective, adoption]
 
 - 明确说明目标是升级完整复盘体系，不只是新增目录或模板。
 - 附上本 manifest 中的资料路径。
-- 要求目标工程先读取自身结构，再决定落位。
+- 要求目标工程 agent 先读取自身结构，再决定落位；通用提示词生成端不必预读目标工程。
 - 要求建立或完善方法入口、档案入口、模板、skill、规则入口和行动分流。
 - 要求跑目标工程已有检查并提交。
 

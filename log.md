@@ -9,6 +9,20 @@
 
 ## 2026-06-03
 
+### 校准跨工程技能提示词的目标结构读取边界
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“判断目标工程结构”这个环节不应让提示词生成端变重；目标工程 agent 拿到提示词后本来会自己读取和判断结构，要求校准跨工程技能升级提示词生成能力。
+- **主题**：
+  1. 明确通用提示词生成时不需要预读目标工程结构，只需要在提示词中要求目标工程 agent 先做结构自检。
+  2. 将目标工程结构处理分成三种模式：通用提示词、定制提示词、直接执行迁移。
+  3. 保留“目标工程必须自适配落位”的要求，防止目标工程无脑照搬 AcknowledgeBase 目录。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，把“目标工程信息”改成模式分级，并补充通用提示词不预读目标工程的禁止项。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md` 和 [[templates/skill-transfer-manifest-template]]，把“目标工程落位建议”改为“目标工程结构自检与落位建议”。
+- **二阶反思**：这轮校准说明 meta-skill 不能因为追求准确而默认变重。通用提示词负责把结构自检责任交给目标工程 agent；只有定制或直接执行时，当前 agent 才读取目标工程结构。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[templates/skill-transfer-manifest-template]]、[[log]]。
+
 ### 建立跨工程技能升级提示词生成能力
 
 - **记录人**：sunhao
