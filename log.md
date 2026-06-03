@@ -9,6 +9,21 @@
 
 ## 2026-06-03
 
+### 修正跨工程迁移提示词的任务书形态缺口
+
+- **记录人**：sunhao
+- **用户意图**：用户追问跨工程迁移 meta-skill 已经升级过一次，为什么生成的复盘体系迁移提示词仍弱于手写任务书，并要求判断是否还有办法解决。
+- **主题**：
+  1. 明确上次升级解决的是“源能力覆盖度不足”，这次暴露的是“最终提示词形态不足”：生成稿虽然有路径、边界、覆盖矩阵和差异化落位，但没有强制保留目标工程 agent 可逐项执行的任务书主干。
+  2. 将跨工程迁移提示词的质量门从“模块覆盖完整”继续升级为“任务书优先”：先让目标 agent 知道要做什么、按什么资料读、在哪些模块落地、如何验证提交，再把迁移边界和目标差异化作为防护层补进去。
+  3. 把复盘体系迁移的手写强结构沉淀为 `TRANSFER.md` 的推荐提示词骨架，避免下一次只靠临场比较发现同类缺口。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增可执行任务书要求、任务书优先顺序、对照样稿质量门和输出前自检。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，新增复盘体系迁移的推荐提示词骨架，覆盖参考资料、吸收边界、目标结构自检、模块落地、入口同步和最终交付。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，把“任务书形态缺口”作为独立 episode 和 active sensor 检查项。
+- **二阶反思**：覆盖矩阵只能证明“没少模块”，不能证明“目标 agent 拿到就能执行”。以后跨工程迁移类 meta-skill 必须同时守住两层质量：源能力覆盖完整，以及最终提示词像任务书而不是迁移说明书。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 修正跨工程迁移提示词覆盖度不足
 
 - **记录人**：sunhao

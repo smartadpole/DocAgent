@@ -37,6 +37,9 @@ REQUIRED_FILES = (
     "projects/retrospectives/README.md",
     "templates/project-retrospective-template.md",
     "skills/historical-dialogue-retrospective/SKILL.md",
+    "skills/cross-project-skill-adoption-prompt/SKILL.md",
+    "skills/historical-dialogue-retrospective/TRANSFER.md",
+    "templates/skill-transfer-manifest-template.md",
 )
 
 AGENT_STRATEGY_REQUIRED_TERMS = (
@@ -291,6 +294,26 @@ HISTORICAL_RETROSPECTIVE_SKILL_REQUIRED_TERMS = (
     "输出改进路由",
     "质量自检",
     "不把 [[log]] 当原始真相源",
+)
+
+SKILL_TRANSFER_PROMPT_REQUIRED_TERMS = (
+    "源能力覆盖矩阵",
+    "可执行任务书",
+    "任务书优先",
+    "对照样稿质量门",
+    "最终交付",
+    "逐项可执行",
+)
+
+RETROSPECTIVE_TRANSFER_REQUIRED_TERMS = (
+    "复盘体系迁移的最小模块清单",
+    "推荐提示词骨架",
+    "可执行任务书",
+    "最终交付",
+    "方法入口",
+    "档案入口",
+    "行动分流机制",
+    "治理自演进关系",
 )
 
 
@@ -577,6 +600,25 @@ def check_retrospective_system(repo: Path) -> list[str]:
     return errors
 
 
+def check_skill_transfer_prompt_system(repo: Path) -> list[str]:
+    errors: list[str] = []
+    meta_skill = read_text(repo, "skills/cross-project-skill-adoption-prompt/SKILL.md", errors)
+    retrospective_transfer = read_text(repo, "skills/historical-dialogue-retrospective/TRANSFER.md", errors)
+    ledger = read_text(repo, "governance/harness-feedback-ledger.md", errors)
+
+    if meta_skill:
+        for term in SKILL_TRANSFER_PROMPT_REQUIRED_TERMS:
+            if term not in meta_skill:
+                errors.append(f"skills/cross-project-skill-adoption-prompt/SKILL.md: missing transfer-prompt term {term}")
+    if retrospective_transfer:
+        for term in RETROSPECTIVE_TRANSFER_REQUIRED_TERMS:
+            if term not in retrospective_transfer:
+                errors.append(f"skills/historical-dialogue-retrospective/TRANSFER.md: missing retrospective transfer term {term}")
+    if ledger and "跨工程迁移提示词任务书形态检查" not in ledger:
+        errors.append("governance/harness-feedback-ledger.md: missing skill-transfer prompt shape sensor backlog")
+    return errors
+
+
 def check_harness_governance(repo: Path) -> list[str]:
     errors: list[str] = []
     errors.extend(check_required_files(repo))
@@ -590,6 +632,7 @@ def check_harness_governance(repo: Path) -> list[str]:
     errors.extend(check_h5_evolution(repo))
     errors.extend(check_instruction_and_semantics_wiring(repo))
     errors.extend(check_retrospective_system(repo))
+    errors.extend(check_skill_transfer_prompt_system(repo))
     return errors
 
 
