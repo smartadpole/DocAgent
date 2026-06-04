@@ -9,6 +9,21 @@
 
 ## 2026-06-04
 
+### 补齐复盘迁移提示词的字段级任务书要求
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“生成一段提示词，把复盘体系迁移到其他工程”的输出仍像迁移说明，不像目标工程 agent 可照着执行的任务书，尤其缺少每个模块的字段级展开、明确落位和具体禁止项。
+- **主题**：
+  1. 确认上一版虽然列出了复盘模块，但没有强制每个模块写清目标工程应写入的字段、判断项、反模式和验证点。
+  2. 将通用 meta skill 的模块展开要求抽象为“目标 / 字段或判断项 / 落位 / 禁止项 / 验证点”，适用于所有技能迁移。
+  3. 将复盘体系迁移的专属字段级要求写入 `historical-dialogue-retrospective/TRANSFER.md`，覆盖方法入口、档案入口、模板、软件研发复盘、Agent 工作复盘、历史对话 skill、行动分流和治理自演进。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，要求生成稿不能只列模块标题，必须展开每个模块的字段、判断项、禁止项和验证点。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，新增“字段级任务书展开要求”，把测试报告不是复盘、Issue 关闭不是复盘完成、不能只凭 log 做历史复盘等禁止项固化到复盘迁移任务书质量门。
+- **验证**：本轮收尾时运行专项和全量检查。
+- **二阶反思**：任务书质量不只取决于模块是否完整，还取决于目标 agent 是否知道每个模块里具体要写什么、不能用什么替代、如何验证。以后跨工程迁移提示词必须同时守住模块完整和字段级可执行性。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[log]]。
+
 ### 修正迁移 meta-skill 的全主题适用边界
 
 - **记录人**：sunhao

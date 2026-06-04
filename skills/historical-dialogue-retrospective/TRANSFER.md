@@ -128,6 +128,41 @@ tags: [skill, transfer, retrospective, adoption]
    - 按目标工程实际结构更新 README、INDEX、AGENTS、WORKFLOW、docs / projects 入口、skills 入口和 templates 入口中的相关位置。
    - 入口同步只做导航和短说明，不复制复盘正文。
 
+## 字段级任务书展开要求
+
+生成复盘体系迁移提示词时，`需要建立的复盘体系模块` 不能只列模块名。每个模块至少展开到下面的字段和反模式：
+
+1. **复盘方法入口**
+   - 必须写入：什么是复盘、什么时候启动复盘、复盘和 log / Issue / 事故 / 测试报告 / 决策 / memory / trace 的区别、复盘输出如何服务未来研发实践、方案设计、工程治理、测试验收、运行质量和 Agent 工作方式。
+   - 落位示例：`concepts/project-retrospective.md`、`docs/retrospective.md`，或目标工程已有方法论入口中的一节。
+   - 禁止压缩成：只写“新增复盘说明页”。
+2. **复盘档案入口**
+   - 必须写入：这页负责什么、不负责什么、复盘文件放哪里、命名规则、轻量 checkpoint / 标准复盘 / 深度复盘粒度、当前复盘索引、共性主题、维护说明、沉淀路由。
+   - 落位示例：`projects/retrospectives/README.md` 或 `docs/retrospectives/README.md`。
+   - 禁止压缩成：只建 `retrospectives/` 目录。
+3. **复盘模板**
+   - 必须包含：复盘对象、原始目标、实际结果、关键事实、偏差与原因、保留做法、改进行动、沉淀路由、未验证边界。
+   - 条件字段：软件研发对象保留交付链回看；Agent 深度参与时保留 Agent 工作回看。
+   - 禁止压缩成：只有时间线、问题列表或总结段落的模板。
+4. **软件研发项目复盘维度**
+   - 必须覆盖：需求是否清楚、设计是否支撑实现和验收、事项关系是否清楚、实现是否按合同落地、测试 / 验收 / 发布证据是否足够、运行质量 / 服务台账 / 事故 / 回滚是否闭环、协作治理是否进入正确单一信息源。
+   - 如果目标工程没有 Gate / FP / EP / TASK / AP / report 体系，必须映射到目标工程自己的 issue / task / milestone / acceptance / report 等等价事项。
+   - 禁止项：不要把测试报告当复盘；不要把 Issue 关闭当复盘完成；不要把一次事故直接泛化成全项目结论。
+5. **Agent 工作复盘维度**
+   - 必须覆盖：目标理解、阶段判断、上下文读取、工具使用、执行策略、验证质量、沟通节奏、权限和边界控制、沉淀路由、收尾和提交质量。
+   - 必须说明：Agent 工作复盘评价的是 agent 如何完成工作，不替代项目结果复盘。
+   - 禁止压缩成：只评价“agent 做得好不好”。
+6. **历史对话 / Agent 工作流复盘 skill**
+   - 必须定义：触发场景、响应模式、证据源分层、复盘对象框定、工作链还原、Agent 偏差分类、效率和质量判断、Workflow 改进路由、输出格式、禁止项。
+   - 证据源至少区分：当前对话上下文、log、harness ledger 或类似反馈台账、原始 session / rollout、git diff / commit、受影响主页面、检查 / 测试输出、memory、最终回复 / handoff。
+   - 禁止项：不要只凭 log 做历史对话复盘；不要只凭当前上下文判断完整历史；不要把一次偏差直接升级成硬规则。
+7. **行动分流机制**
+   - 必须逐项写清默认落点：bug / 偏差 / 验收失败进入 Issue；事故事实和修复闭环进入 incidents；研发交付动作进入目标工程等价事项系统；跨 owner 协调进入 meetings；关键取舍进入 decisions；长期事实进入 memory；需求演进进入 trace；可复用方法进入 concepts 或 docs 方法页；可复制骨架进入 templates；高频 agent 流程进入 skills；重复失守进入 ledger；可脚本化检查进入 sensor；执行规则变化进入 AGENTS / WORKFLOW / POLICY 或等价规则入口。
+   - 禁止项：行动项不能停留在复盘正文里，也不能新建平行看板。
+8. **治理自演进关系**
+   - 必须写清：单次表现记录复盘或 log 并继续观察；重复失守进入 feedback ledger / harness ledger；可模板化更新模板；可技能化更新 skill；可脚本化新增 sensor 或检查；影响执行顺序更新 WORKFLOW；影响必须 / 禁止行为更新 AGENTS；影响优先级或自动沉淀边界更新 POLICY 或等价规则页。
+   - 禁止项：不要把所有复盘结论都升级成硬规则；不要为了完整复盘无限扩读；不要让复盘体系变成新的治理噪音。
+
 ## 行动分流
 
 - bug、偏差、验收失败：Issue。
@@ -167,6 +202,8 @@ tags: [skill, transfer, retrospective, adoption]
 6. 写 `需要建立的复盘体系模块`：逐项展开方法入口、档案入口、模板、软件研发项目复盘维度、Agent 工作复盘维度、历史对话 / Agent 工作流复盘 skill、行动分流机制、治理自演进关系。
 7. 写 `需要更新的入口`：按目标工程实际结构选择 README、INDEX、AGENTS、WORKFLOW、docs/README、projects/STRUCTURE、projects/README、skills/README、templates/README，不机械照搬。
 8. 写 `最终交付`：读取目标结构、说明推荐落位、新增或完善方法入口 / 档案入口 / 模板 / skill、同步入口、跑检查、提交 commit，并在最终回复说明落位、方法论、模板、skill、行动分流、检查、commit hash、未验证边界和后续建议。
+
+其中第 6 节必须使用“字段级任务书展开要求”的粒度；不能只写八个模块标题，也不能把每个模块压成一句说明。
 
 如果参考样稿末尾重复了开头命令，例如又写一次“升级下本工程的复盘体系”，生成通用提示词时应删除末尾重复句，或把它移到开头作为第一句；不要让目标 agent 把重复句读成追加命令。
 
