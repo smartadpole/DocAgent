@@ -2,7 +2,7 @@
 type: skill-transfer-manifest
 skill: historical-dialogue-retrospective
 status: active
-updated: 2026-06-03
+updated: 2026-06-04
 tags: [skill, transfer, retrospective, adoption]
 ---
 
@@ -151,7 +151,9 @@ tags: [skill, transfer, retrospective, adoption]
 - 要求目标工程 agent 先读取自身结构，再决定落位；通用提示词生成端不必预读目标工程。
 - 要求建立或完善方法入口、档案入口、模板、软件研发复盘维度、Agent 工作复盘维度、历史对话复盘 skill、规则入口、行动分流和治理自演进。
 - 要求跑目标工程已有检查并提交。
+- 要求最终回复说明未验证边界和后续建议，不只报已改文件。
 - 如果已经读取目标工程结构，提示词必须写每个目标工程的差异化落位建议；如果没有读取，只要求目标工程 agent 自行判断，不编造。
+- 如果用户提供参考提交或版本锚点，只有确认它是当前源资料锚点时才写成事实；不确定时写成“如需版本锚点，先在源工程确认当前参考提交”。
 
 ## 推荐提示词骨架
 
@@ -164,7 +166,9 @@ tags: [skill, transfer, retrospective, adoption]
 5. 写 `目标工程中完成的设计`：要求先读取目标工程 README、AGENTS、docs、projects、issues、incidents、tasks、decisions、memory、trace、skills 等已有结构，再决定落位；有 `projects/` 优先 `projects/retrospectives/`，没有则优先 `docs/retrospectives/`，已有相近目录时优先复用。
 6. 写 `需要建立的复盘体系模块`：逐项展开方法入口、档案入口、模板、软件研发项目复盘维度、Agent 工作复盘维度、历史对话 / Agent 工作流复盘 skill、行动分流机制、治理自演进关系。
 7. 写 `需要更新的入口`：按目标工程实际结构选择 README、INDEX、AGENTS、WORKFLOW、docs/README、projects/STRUCTURE、projects/README、skills/README、templates/README，不机械照搬。
-8. 写 `最终交付`：读取目标结构、说明推荐落位、新增或完善方法入口 / 档案入口 / 模板 / skill、同步入口、跑检查、提交 commit，并在最终回复说明落位、方法论、模板、skill、行动分流、检查和 commit hash。
+8. 写 `最终交付`：读取目标结构、说明推荐落位、新增或完善方法入口 / 档案入口 / 模板 / skill、同步入口、跑检查、提交 commit，并在最终回复说明落位、方法论、模板、skill、行动分流、检查、commit hash、未验证边界和后续建议。
+
+如果参考样稿末尾重复了开头命令，例如又写一次“升级下本工程的复盘体系”，生成通用提示词时应删除末尾重复句，或把它移到开头作为第一句；不要让目标 agent 把重复句读成追加命令。
 
 这个骨架是复盘迁移的默认任务书形态。跨工程 meta-skill 的覆盖矩阵、目标差异化说明和验证要求只能补强它，不能替代它。
 
@@ -189,6 +193,7 @@ tags: [skill, transfer, retrospective, adoption]
 - **不能薄**：每个模块仍要保留字段级展开，不能把八类模块压成一句“建立复盘体系”。
 - **必须更通用**：不依赖某个目标工程名；目标工程落位写成结构自检条件。
 - **必须更稳**：补充 `TRANSFER.md`、版本 / 提交锚点、handoff 边界、同名目录防误用、未验证边界和检查替代方案。
+- **必须更干净**：清理参考样稿中的重复结尾命令；未确认的提交 / 版本锚点只作为待核对项，不写成已确认事实。
 - **必须可执行**：目标 agent 能按顺序读取、判断落位、创建或更新页面、同步入口、跑检查、提交并汇报。
 
 输出前用一句话自检：`本提示词完整覆盖示例，并在 <列出增益点> 上更强。` 如果做不到，继续修稿。
@@ -210,3 +215,4 @@ tags: [skill, transfer, retrospective, adoption]
 - 行动项如何分流。
 - 跑了哪些检查。
 - commit hash。
+- 未验证边界和后续建议。

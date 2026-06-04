@@ -9,6 +9,21 @@
 
 ## 2026-06-04
 
+### 固化迁移提示词任务书基线的收尾细节
+
+- **记录人**：sunhao
+- **用户意图**：用户提供多段对比结论，要求升级跨工程技能迁移 meta-skill，吸收更强任务书样稿的优点，让通用提示词生成技能更可执行、更稳。
+- **主题**：
+  1. 确认复合能力迁移提示词应继续以完整任务书为主干，meta-skill 只做补丁式增强，不重新压缩成迁移说明。
+  2. 补齐两个容易漏掉的收尾细节：参考提交 / 版本锚点必须先确认再写成事实，样稿末尾重复命令应删除或移到开头，避免目标 agent 误读。
+  3. 强化最终回复要求：目标工程 agent 不只汇报改了哪些文件和 commit hash，还要说明未验证边界和后续建议。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，在 Golden Baseline、Baseline 对比评分和输出前自检中加入重复命令清理、版本锚点确认和未验证边界要求。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，把这些收尾细节写入复盘体系迁移默认任务书骨架和最终回复要求。
+- **验证**：`python3 scripts/check_all.py --only harness-governance` 通过；`git diff --check` 通过。
+- **二阶反思**：这轮不是新增一个复盘模块，而是把用户已确认的强样稿差异变成生成质量门。以后 meta-skill 处理 golden baseline 时，应该优先保留任务书执行粒度，再做锚点、边界和最终交付的窄补强。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[log]]。
+
 ### 建立新增知识的网状关联自检机制
 
 - **记录人**：sunhao
