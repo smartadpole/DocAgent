@@ -9,6 +9,20 @@
 
 ## 2026-06-04
 
+### 收紧复盘迁移提示词的任务书粒度和目录误用防线
+
+- **记录人**：sunhao
+- **用户意图**：用户对比 agent 生成的复盘体系迁移提示词和一份更完整的手写任务书，要求判断哪个更好，并把本工程复盘体系继续升级到能生成更可执行的迁移提示词。
+- **主题**：
+  1. 确认手写任务书整体更好，因为它保留了目标、资料、边界、落位、模块、入口和最终交付的完整执行顺序；原生成稿的优势只在于对 `prefect` 和 `customeranalysis` 的目标工程差异化落位更具体。
+  2. 将生成规则收紧为“完整任务书主干 + 目标工程差异化补强”，避免多工程定制时把通用复盘体系模块压缩成短清单。
+  3. 补上同名目录职责冲突防线，要求识别业务 `templates/`、handoff、log、issue、incident 等相近目录，不能只按目录名机械落位。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，要求复合能力迁移保留完整编号任务书，并在对照样稿质量门中保留同等执行粒度。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，补充同名目录职责冲突处理和多目标工程提示词的“通用任务书先行、差异化说明后置”规则。
+- **二阶反思**：这轮不是新增复盘体系模块，而是修正复盘体系外迁时的生成质量门。未来判断迁移提示词优劣时，要同时看执行粒度和目标工程适配；两者不能互相替代。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[log]]。
+
 ### 沉淀 Claude Code 与 Codex 共享 agent 规则的方法
 
 - **记录人**：sunhao

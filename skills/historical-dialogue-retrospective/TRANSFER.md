@@ -85,6 +85,7 @@ tags: [skill, transfer, retrospective, adoption]
 - **有 projects/ 结构时**：复盘档案默认放 `projects/retrospectives/`，模板放 `templates/`，skill 放 `skills/`。
 - **无 projects/ 结构时**：复盘档案默认放 `docs/retrospectives/`，模板放 `docs/templates/` 或目标工程既有模板目录。
 - **已有相近模块时**：先复用已有 `retrospective`、`postmortem`、`incidents`、`lessons-learned` 或 `governance` 入口，避免新建平行体系；但要保留 Issue / 事故事实主档案和复盘档案的分工。
+- **同名目录职责冲突时**：不要只看目录名。若目标工程的 `templates/` 是前端 / 服务端渲染模板、生成物模板或业务运行资产，复盘模板应改落 `docs/templates/`、`.codex/agents/templates/` 或目标工程明确的文档模板目录。
 
 ## 目标工程应新增或更新
 
@@ -166,6 +167,8 @@ tags: [skill, transfer, retrospective, adoption]
 8. 写 `最终交付`：读取目标结构、说明推荐落位、新增或完善方法入口 / 档案入口 / 模板 / skill、同步入口、跑检查、提交 commit，并在最终回复说明落位、方法论、模板、skill、行动分流、检查和 commit hash。
 
 这个骨架是复盘迁移的默认任务书形态。跨工程 meta-skill 的覆盖矩阵、目标差异化说明和验证要求只能补强它，不能替代它。
+
+如果用户点名多个目标工程，最终提示词仍应先保留这份完整通用任务书，再追加每个目标工程的差异化落位说明。不要把多工程差异提前写成主叙事，导致“复盘体系目标、参考资料、模块清单、入口同步、最终交付”被压缩。差异化说明重点写结构事实、应复用入口、禁止误用目录、需要覆盖的默认落位和各仓库的检查 / 提交边界。
 
 ## 验证要求
 
