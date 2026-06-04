@@ -40,6 +40,7 @@ tags: [index, root]
 - [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
 - [[harness-feedback-ledger]]：Harness episode、sensor backlog、规则晋升和降级队列
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
+- [[knowledge-linking-rules]]：新增知识页、概念页和摘要卡片的网状关联规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能

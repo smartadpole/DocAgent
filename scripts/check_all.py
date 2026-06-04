@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
+    ("knowledge-linking", "knowledge linking graph", (sys.executable, "scripts/check_knowledge_linking.py")),
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),
     ("work-item-matrix", "work item governance matrix", (sys.executable, "scripts/check_work_item_matrix.py", "--strict")),
     (

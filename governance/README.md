@@ -28,6 +28,7 @@ tags: [entry, governance]
 - [[BRAIN]]：共享背景。回答“哪些已确认前提要自动带入后续工作”
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
+- [[knowledge-linking-rules]]：知识关联规则。回答“新增知识怎样形成入口、上位概念、邻接页面和反向承接，而不是成为孤岛页”
 - [[template-feedback-rules]]：下游项目系统层信息反哺规则
 - 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
@@ -69,6 +70,7 @@ tags: [entry, governance]
 11. 如果要实际执行修改，再看 [[WORKFLOW]]
 12. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
 13. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
+14. 如果要新增长期知识页、概念页或摘要卡片，再看 [[knowledge-linking-rules]]
 
 ## `POLICY` 和 `AGENTS` 的权衡
 
@@ -89,6 +91,7 @@ tags: [entry, governance]
 - 如果问题是“规则已有但执行失守”，优先写 [[instruction-adherence]]
 - 如果问题是“执行裁决被参考规则、非目标或上层证据污染”，优先写 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，优先写 [[harness-evolution]] 和 [[harness-feedback-ledger]]
+- 如果问题是“新增知识怎样避免孤岛页”，优先写 [[knowledge-linking-rules]]
 - 如果问题是“哪些背景以后默认成立”，优先写 [[BRAIN]]
 - 如果问题是“下游项目的进化能不能带回模板”，优先写 [[template-feedback-rules]]
 
@@ -97,5 +100,6 @@ tags: [entry, governance]
 ## 相关专题
 
 - [[concepts/agent-governance]]：Agent 治理专题总览。它不替代本层任何单一信息源，只用于统筹响应路由、指令遵循、执行合同、H5 自演进、技能、模板、sensor 和 Agent 工作复盘之间的知识库关系。
+- [[knowledge-linking-rules]]：长期知识、概念页和摘要卡片的网状关联规则，定义入口、上位概念、邻接页面、反向承接和 sensor 检查。
 - [[agent-governance-strategy]]：Agent 治理瘦身和分级策略。它把硬约束、语义门、流程和 backlog 区分开，避免 `[[log]]`、完整检查、产物化或二阶反思变成无条件仪式。
 - [[governance/platform-standards]]：平台级治理标准。定义主控工程 L3、子工程 L2 的各维度成熟度指标，供跨工程治理审计技能使用。

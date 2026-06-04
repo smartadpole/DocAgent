@@ -19,6 +19,7 @@
 
 - 尽量只写一次摘要，不重复抄原文。
 - 如果文章涉及很多工具，优先加链接，不要堆长段解释。
+- 新增或大改摘要卡片时，按 [[knowledge-linking-rules]] 同步相关概念、入口回链和必要的案例 / 上位页承接，并运行 `python3 scripts/check_all.py --only knowledge-linking`。
 
 ## Agent / Harness 案例
 

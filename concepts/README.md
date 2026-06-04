@@ -39,3 +39,4 @@
 - 同一个概念只保留一个主页面。
 - 看到新文章提到这个概念，就回连到它。
 - 如果某个概念开始频繁出现，再补一页，不要提前铺太多空页。
+- 新增或大改概念页时，按 [[knowledge-linking-rules]] 同步入口、上位概念、邻接页面和必要反向承接，并运行 `python3 scripts/check_all.py --only knowledge-linking`。

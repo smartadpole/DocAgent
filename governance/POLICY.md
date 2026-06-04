@@ -99,6 +99,7 @@ tags: [policy]
 - agent 可以自动写入 [[log]]，但必须先做 log eligibility 判断；只记录会影响未来理解的主题、用户意图、关键动作、结构变化、状态 / 决策 / 验收变化和长期结论，不机械转录每个提问，也不为纯格式、错别字或无语义链接修复制造低价值记录
 - agent 可以自动写入 [[projects/trace]]，前提是这轮已经形成明确的项目推进内容，而且该变化会影响当前需求主题的实现口径；写入时要和相关 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]] 同轮联动，不把它写成第二份 [[log]]，也不记录原始来源材料清单、出处或格式转换过程
 - agent 必须把有项目价值的新信息同轮沉淀到正确位置：需求变化、事实纠偏、架构判断、决策倾向、待讨论问题、实现计划、风险、环境约束和用户明确偏好，不得只留在最终回复里。
+- agent 新增或大改长期知识页时，必须按 [[knowledge-linking-rules]] 做知识关联自检：页面自身要有上位 / 邻接出链，入口或上位页要有反向承接，`[[log]]` 不能作为唯一发现路径；能由脚本检查的部分用 `python3 scripts/check_all.py --only knowledge-linking` 验证。
 - agent 必须显性化新发现的阻塞、问题和待拍板事项：只要影响当前阶段、Gate 准入、下一步、风险归口或会议议题，就同轮更新 [[projects/status]]、[[projects/development/risks/README]]、[[projects/meetings/README]]、[[projects/development/execution/todo]] 或 [[projects/decisions]]；需要用户或 owner 决议的事项只能标为待定 / 会议议题。
 - 对外 API、调度入口、服务间回调、webhook、跨工程数据合同和数据库写入接口属于稳定合同；新增或变更时必须进入正式中文文档，不能只留在 handoff、测试报告或最终回复中。
 - 代码工程或外部工程 agent 对本库默认是只读上下文；直接写入本库属于受控回写，必须由任务说明明确授权写哪些页面。未授权或无写权限时，自动输出边界是代码工程内的回传包。
@@ -150,6 +151,7 @@ tags: [policy]
 - 会改变后续执行方式的内容，进入 [[POLICY]]
 - 项目冲突和最终拍板，进入 [[projects/decisions]]
 - 文档库本体的框架级说明和层级边界，默认写根 [[README]]；如果需要补背景，写 [[BRAIN]]；如果需要写规则，写 [[POLICY]]
+- 长期知识进入 `articles/`、`concepts/` 或 `indexes/` 后，按 [[knowledge-linking-rules]] 补入口、上位概念、邻接页面和必要反向承接。
 - 下游项目反哺模板时，先进入 [[template-feedback-rules]] 的判断流程；可复用的结构写入口和结构页，可复用的执行顺序写 [[WORKFLOW]]，硬约束写 [[AGENTS]]，规则边界和记忆路由写 [[POLICY]]，共享背景写 [[BRAIN]]，可复制写法和模板骨架写 `templates/`
 - 模板类内容先进入 [[template-feedback-rules]] 的知识库模板 / 系统治理模板二分：专题成果写 owning topic，可复制治理骨架才写 `templates/`
 - Harness 自演进先进入 [[harness-evolution]] 和 [[harness-feedback-ledger]]；只有重复出现、影响面大或已经能由 sensor / 模板稳定表达的 episode，才继续晋升到 [[WORKFLOW]]、[[AGENTS]]、[[POLICY]]、技能或脚本。
