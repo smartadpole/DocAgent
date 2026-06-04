@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-03
+updated: 2026-06-04
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,8 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-04 | 跨工程迁移提示词缺少示例基准比较 | 用户要求设置目标并升级 meta-skill，直到依据它生成的复盘迁移提示词比用户给出的示例更优秀，暴露现有 meta-skill 没有把用户示例转成可验证 baseline rubric | 技能升级 + Goal Contract + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增 Baseline 对比评分和 `generated >= baseline` 输出前裁决；更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，新增优于示例的判定标准；扩展 `scripts/check_harness_governance.py` 检查 baseline / 优于示例关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
+| 2026-06-04 | 跨工程迁移提示词通用模式污染 | 用户要求直接做通用提示词、不要特定工程定制，并指出越改越差，暴露 meta-skill 仍会被历史上下文里的目标工程名带偏，把通用任务书和定制落位混写 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增输出模式三选一、最新指令优先、通用版锁定、Golden Baseline 补丁原则和模式污染防线；更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，补通用版生成规则；扩展 `scripts/check_harness_governance.py` 检查通用版和 Golden Baseline 关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-03 | 跨工程迁移提示词任务书形态缺口 | 用户继续追问 meta-skill 已升级后为什么生成稿仍弱于手写版，暴露上次只修了覆盖矩阵，未强制最终提示词保留目标 agent 可逐项执行的任务书主干 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增任务书优先和对照样稿质量门；更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，补复盘迁移推荐提示词骨架；扩展 `scripts/check_harness_governance.py` 检查任务书形态关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-03 | 跨工程迁移提示词覆盖度不足 | 用户对比两段复盘体系迁移提示词后指出，第一段提示词弱于手写版本，暴露 meta-skill 只要求资料路径和结构自检，但没有强制源能力模块覆盖和目标工程差异化说明 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，补源能力覆盖矩阵、复合能力压缩防线和定制提示词差异化说明；更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，把复盘体系迁移最小模块清单写入源资料 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-30 | 硬性治理过度和 log 提交税 | 用户追问当前 agent 治理方案是否合理，指出入口过度缩减可能伤能力、`log` 设置硬性条目不合理，并要求检查其他设计是否也有类似问题 | 规则升级 | 可优化成本 | 新增 [[agent-governance-strategy]]，把治理动作分成 P0 硬约束、P1 语义门、P2 流程和 P3 backlog；同步 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[instruction-adherence]]、[[log-writing-rules]]，把 `[[log]]`、产物化、完整检查和二阶反思改成资格判断 | [[agent-governance-strategy]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
@@ -51,6 +53,8 @@ tags: [agent, harness, feedback, episode]
 | 写入范围证明 / Scope Proof | 用户即时收窄写入范围后，finalizer 可能只证明 working tree clean 或 external residual 明示，无法证明本轮 diff 仍在允许范围内 | 后续可补 finalizer scope manifest 或 `--allowed-path` 检查：比较本轮 diff / latest commit 文件与用户最新写入白名单 | observed |
 | 跨工程迁移提示词覆盖度检查 | 复合能力迁移提示词可能压缩掉源资料中的方法、档案、模板、skill、行动分流、治理自演进或验证要求 | 后续可补技能迁移 manifest 字段检查，确认 `TRANSFER.md` 和 meta-skill 输出结构都含覆盖矩阵 / 最小模块清单 | observed |
 | 跨工程迁移提示词任务书形态检查 | 复合能力迁移提示词可能覆盖了资料路径和边界，但最终文本仍不像目标工程 agent 可执行的任务书 | 当前由 `check_harness_governance.py` 检查 cross-project meta-skill 和 retrospective transfer 中的任务书优先、对照样稿、推荐提示词骨架和最终交付要求 | active |
+| 跨工程迁移提示词通用模式检查 | 通用迁移提示词可能被历史上下文中的目标工程名污染，混入具体工程小节、具体路径读取清单或仓库级落位建议 | 当前由 `check_harness_governance.py` 检查 meta-skill 的三选一模式裁决、通用版锁定、Golden Baseline 补丁原则和 retrospective transfer 的通用版生成规则 | active |
+| 跨工程迁移提示词示例基准检查 | 用户提供强示例后，生成稿可能没有先完整覆盖示例就开始重写，导致越改越弱 | 当前由 `check_harness_governance.py` 检查 meta-skill 的 Baseline 对比评分、`generated >= baseline` 裁决和 retrospective transfer 的优于示例判定标准 | active |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 
 ## Rule Promotion Queue

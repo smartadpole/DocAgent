@@ -9,6 +9,21 @@
 
 ## 2026-06-04
 
+### 建立迁移提示词的示例基准比较门
+
+- **记录人**：sunhao
+- **用户意图**：用户要求设置目标并升级跨工程迁移 meta-skill，直到它针对“生成一段提示词，把复盘体系迁移到其他工程”产出的通用提示词，比用户提供的强示例更优秀。
+- **主题**：
+  1. 明确这轮缺口不是继续补某个章节，而是 meta-skill 缺少“用户示例 -> baseline rubric -> generated >= baseline”的比较门，导致生成稿可能在有强示例时仍然重写、压缩或混入旧上下文。
+  2. 将复盘迁移提示词的质量标准改成：先完整覆盖示例的目标、资料、边界、结构自检、八类模块、入口同步和最终交付，再通过 `TRANSFER.md`、通用模式、同名目录防误用、未验证边界和检查替代方案实现增益。
+  3. 明确“通用版”不是短版，也不是不适配目标结构；它应保留完整任务书粒度，只把具体工程定制改成结构自检条件。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增 Baseline 对比评分、`generated >= baseline` 输出前裁决、通用模式锁定、Golden Baseline 补丁原则和模式污染防线。
+  2. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，新增通用版生成规则和“优于示例的判定标准”。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，把示例基准比较做成 active sensor 检查项。
+- **二阶反思**：当用户已经给出强示例时，meta-skill 的任务不是“重新创作一份看起来更规整的提示词”，而是先证明没有损失示例的执行力，再做明确增益。之后同类 meta-skill 都应优先引入 baseline 比较，而不是反复追加自然语言提醒。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 收紧复盘迁移提示词的任务书粒度和目录误用防线
 
 - **记录人**：sunhao
