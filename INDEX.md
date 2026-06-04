@@ -164,7 +164,7 @@ tags: [index, root]
 
 ## 物理结构
 
-- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]；`CLAUDE.md` 只作为 Claude Code 适配入口导入 [[AGENTS]]
+- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]；`CLAUDE.md` 只作为 Claude Code 适配入口导入 [[AGENTS]]，不维护 `.codex/AGENTS.md` 规则副本
 - `governance/` 收治理页和规则页
 - `skills/` 收项目内可复用 agent 技能
 - `projects/` 收运行层

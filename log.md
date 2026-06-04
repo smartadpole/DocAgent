@@ -9,6 +9,22 @@
 
 ## 2026-06-04
 
+### 统一项目级 Agent 规则入口
+
+- **记录人**：sunhao
+- **用户意图**：用户指出当前方案仍可能让其他工程同时维护根 `AGENTS.md` 和 `.codex/AGENTS.md` 两份项目规则，要求只保留根目录 `AGENTS.md`，把 `.codex/AGENTS.md` 的有效内容归入根入口。
+- **主题**：
+  1. 确认 `.codex/AGENTS.md` 虽然是 Codex 适配壳，但仍会形成第二份项目级规则入口，和刚建立的 Claude / Codex 共享规则目标冲突。
+  2. 将项目级 agent 规则收口为唯一根 `AGENTS.md`；`CLAUDE.md` 只做 Claude Code import 壳，`.codex/` 只做 Codex 专用配置或 subagent 外壳。
+  3. 将本轮纠偏升级为设计裁决和 sensor：以后发现 `.codex/AGENTS.md`，应合并回根 `AGENTS.md`，而不是继续维护两份规则。
+- **关键动作**：
+  1. 删除 `.codex/AGENTS.md`，把其中有效启动、检查和写入边界规则并入 [[AGENTS]] 的“工具入口统一”段。
+  2. 更新 [[README]]、[[INDEX]]、[[governance/README]]、[[concepts/agent-instruction-sharing]]、[[governance/platform-standards]]、[[projects/decisions]]、[[harness-feedback-ledger]]、[[skills/cross-project-governance-audit/SKILL]] 和 [[skills/issue-analysis/SKILL]]，统一根 `AGENTS.md` 单一入口口径。
+  3. 更新 `scripts/check_harness_governance.py`，不再要求 `.codex/AGENTS.md` 存在，反而把它作为重复项目级规则入口报错。
+- **验证**：`python3 scripts/check_all.py --only harness-governance` 通过；`python3 scripts/check_all.py` 通过；`git diff --check` 通过。
+- **二阶反思**：工具适配壳也会变成规则漂移源。共享 agent 体系应区分“项目级规则单一入口”和“工具专用配置 / subagent 外壳”，不能因为 Codex 或 Claude 各有目录就复制项目规则。
+- **影响页面**：[[AGENTS]]、`CLAUDE.md`、[[README]]、[[INDEX]]、[[governance/README]]、[[concepts/agent-instruction-sharing]]、[[governance/platform-standards]]、[[projects/decisions]]、[[harness-feedback-ledger]]、[[skills/cross-project-governance-audit/SKILL]]、[[skills/issue-analysis/SKILL]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 接入 Claude Code 共享规则入口
 
 - **记录人**：sunhao

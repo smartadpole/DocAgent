@@ -24,7 +24,7 @@ tags: [entry, root]
 
 当前物理结构再补一句：
 
-- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]；`CLAUDE.md` 只作为 Claude Code 适配入口导入 [[AGENTS]]
+- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]；`CLAUDE.md` 只作为 Claude Code 适配入口导入 [[AGENTS]]，不维护 `.codex/AGENTS.md` 规则副本
 - `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[state-constraint-reasoning]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
 - `projects/` 收运行中的项目内容
@@ -111,7 +111,7 @@ tags: [entry, root]
 治理层现在已经逻辑和物理两次收口：
 
 - 逻辑上，治理层负责约束、流程、裁定、背景和写法指南
-- 物理上，治理页统一收进 `governance/`，只保留 [[AGENTS]] 在根目录做 agent 特殊入口；`CLAUDE.md` 是 Claude Code 适配壳，不承接第二份规则正文
+- 物理上，治理页统一收进 `governance/`，只保留 [[AGENTS]] 在根目录做 agent 特殊入口；`CLAUDE.md` 是 Claude Code 适配壳，不承接第二份规则正文；`.codex/` 不放项目级规则副本
 
 最容易混的是这几页：
 

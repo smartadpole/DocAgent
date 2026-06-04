@@ -12,7 +12,15 @@
 - 历史层：[[log]]、`archive/`
 - 证据层：`raw/`、`inbox/`、`assets/`
 
-治理层当前已经物理收口到 `governance/`，只有 [[AGENTS]] 保留在根目录作为共享 agent 规则入口。`CLAUDE.md` 可以作为 Claude Code 适配壳导入 [[AGENTS]]，但不承接第二份规则正文。
+治理层当前已经物理收口到 `governance/`，只有 [[AGENTS]] 保留在根目录作为共享 agent 规则入口。Codex 直接读取根 `AGENTS.md`；`CLAUDE.md` 可以作为 Claude Code 适配壳导入 [[AGENTS]]，但不承接第二份规则正文；`.codex/` 只用于 Codex 专用配置或自定义 subagent 外壳，不放项目级规则副本。
+
+## 工具入口统一
+
+- 项目级 agent 规则只维护根目录 `AGENTS.md` 一份。
+- Claude Code 通过根目录 `CLAUDE.md` 的 `@AGENTS.md` 导入共享规则，只追加 Claude 专用补充。
+- Codex 不再使用 `.codex/AGENTS.md` 作为本库规则适配入口；如需 Codex 专用配置或 subagent 定义，放在 `.codex/` 的专用配置文件中，并避免复制 `AGENTS.md` 正文。
+- 如果其他工程同时存在根 `AGENTS.md` 和 `.codex/AGENTS.md` 且内容重复，默认把 `.codex/AGENTS.md` 的有效规则并回根 `AGENTS.md`，再删除 `.codex/AGENTS.md`。
+- 工作阶段优先跑专项 sensor：`python3 scripts/check_all.py --only harness-governance`、`python3 scripts/check_all.py --only testing-system-maturity` 或 `python3 scripts/check_all.py --only execution-contract-semantics`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
 
 ## 角色分工
 

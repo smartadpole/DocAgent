@@ -56,7 +56,7 @@ description: 主控侧 issue / incident 分析技能。用于处理模糊问题�
 
 如果问题涉及某个子工程的 skill、agent 行为、handoff 或本地执行规则，不要只读 `SKILL.md`。把相关 agent context 作为一个单元读取：
 
-- 子工程根 `AGENTS.md` 或 `.codex/AGENTS.md` 中触发和边界规则。
+- 子工程根 `AGENTS.md` 中触发和边界规则；如果存在 `.codex/AGENTS.md`，只把它当作待合并的旧入口线索，不作为第二份单一信息源。
 - 子工程 `.agents/skills/`、`.codex/skills/`、`.claude/skills/` 中相关技能和同名 / 前身技能。
 - 技能本地元数据，如果存在，例如 `agents/openai.yaml`。
 - 子工程 `docs/handoffs/<skill-or-topic>/` 或当前 TODO / FP 的 handoff。

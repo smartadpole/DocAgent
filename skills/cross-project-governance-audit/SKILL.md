@@ -22,7 +22,7 @@ trigger:
 1. [[governance/platform-standards]]（评分基线）
 2. [[projects/governance/registry]]（工程列表、路径、当前状态）
 3. 对每个目标工程，按以下优先级读取：
-   - `AGENTS.md` 或 `.codex/AGENTS.md`
+   - 根目录 `AGENTS.md`
    - `governance/harness-feedback-ledger.md` 或等价台账
    - `governance/response-mode-routing.md` 或等价文件
    - `scripts/check_*.py` 或等价 sensor 脚本列表

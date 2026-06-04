@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-04 | 项目级 agent 规则重复入口 | 用户指出有些工程会同时维护根 `AGENTS.md` 和 `.codex/AGENTS.md`，导致同一套规则重复和漂移；本库刚新增 `CLAUDE.md` 后仍保留 `.codex/AGENTS.md`，说明共享入口设计还没彻底收口 | 规则升级 + 结构收口 + Sensor 更新 | 可优化成本 | 删除 `.codex/AGENTS.md`，把有效规则并入根 [[AGENTS]]；更新 [[concepts/agent-instruction-sharing]]、[[governance/platform-standards]]、审计 / issue 技能和 `scripts/check_harness_governance.py`，把重复入口改成检查失败 | [[AGENTS]] / [[concepts/agent-instruction-sharing]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 跨工程迁移提示词缺少产物级回归 | 用户追问 meta skill 为什么升级十几次仍做不好，并指出根本在 meta skill 设计以及 skill 每个环节如何思考、不遗漏且翔实，暴露现有 sensor 只查规则词，不查生成产物是否达到任务书基准 | 技能升级 + Sensor 升级 + Harness 反馈 | 可优化成本 | 新增 `skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md` 作为复盘迁移 golden 样例；更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，加入生成思考循环；扩展 `scripts/check_harness_governance.py` 检查 golden 样例章节、字段级模块和关键禁止项 | golden taskbook example / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 跨工程迁移 meta-skill 被复盘样例绑定 | 用户纠正“这个 meta skill 不是只针对某一个主题的，而是所有技能主题”，暴露前次把复盘样例里的 baseline 字段上浮成 meta-skill 通用 baseline，可能导致 Issue、验收、代码审计等技能迁移也套复盘模块 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，把 Baseline 对比评分改成“任意技能主题通用字段 + 当前源 skill / TRANSFER.md 主题专属模块”；更新 [[templates/skill-transfer-manifest-template]]，新增主题专属任务书基线字段；更新 `scripts/check_harness_governance.py` 检查所有技能主题和主题专属模块关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / [[templates/skill-transfer-manifest-template]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 跨工程迁移 meta-skill 过度模式化 | 用户指出“通用提示词、定制提示词、直接执行迁移、元技能维护这些都不要，只要一个通用提示词”，暴露前次修复把 meta-skill 变成多模式路由器，仍偏离了单一产物目标 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，把定位收敛为只生成通用迁移提示词，移除定制、直接执行和元技能维护模式；更新 `scripts/check_harness_governance.py`，改查唯一通用产物关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
@@ -63,6 +64,7 @@ tags: [agent, harness, feedback, episode]
 | 跨工程迁移提示词示例基准检查 | 用户提供强示例后，生成稿可能没有先完整覆盖示例就开始重写，导致越改越弱 | 当前由 `check_harness_governance.py` 检查 meta-skill 的 Baseline 对比评分、`generated >= baseline` 裁决和 retrospective transfer 的优于示例判定标准 | active |
 | 跨工程迁移提示词主题泛化检查 | 某个强样例的主题字段可能被误当成所有技能迁移的通用字段，导致 meta-skill 只适配首个样板主题 | 当前由 `check_harness_governance.py` 检查 meta-skill 明确适用于所有已沉淀 skill / 能力主题，并要求主题专属模块来自当前源 skill / `TRANSFER.md` | active |
 | 跨工程迁移提示词产物回归检查 | 规则和 `TRANSFER.md` 关键词都存在时，生成稿仍可能不像目标 agent 可执行的任务书 | 当前由 `check_harness_governance.py` 检查 `skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md` 中的任务书章节、字段级模块、关键禁止项和最终交付要求 | active |
+| 项目级 agent 规则重复入口检查 | 根 `AGENTS.md` 和 `.codex/AGENTS.md` 同时存在时容易形成两份项目规则正文并漂移 | 当前由 `check_harness_governance.py` 检查 `.codex/AGENTS.md` 不作为项目级规则入口存在，并要求根 [[AGENTS]] 写明工具入口统一规则 | active |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 
 ## Rule Promotion Queue
@@ -79,7 +81,8 @@ tags: [agent, harness, feedback, episode]
 | 研发事项日常维护先走总控页入口顺序，治理层只在改变默认规则时修改 | 研发事项入口顺序和结构化 sensor | [[projects/development/plan/README]] / [[WORKFLOW]] | promoted |
 | 主动对话先自动判定场景包和置信度，再用少量问题、明确假设和性能预算推进产物化 | 主动对话和性能预算升级 | [[proactive-dialogue-system]] / [[templates/guided-discovery-session-template]] / `scripts/check_harness_governance.py` | promoted |
 | 防漏规则先做 P0 / P1 / P2 / P3 分级；`[[log]]`、产物化、完整检查和二阶反思先判资格，不默认变成每轮仪式 | 硬性治理过度和 log 提交税 | [[agent-governance-strategy]] / [[log-writing-rules]] / [[instruction-adherence]] / `scripts/check_harness_governance.py` | promoted |
-| 提到模板时先区分知识库模板和系统治理模板，专题成果不自动进入 `templates/` | 模板落位二分纠偏 | [[template-feedback-rules]] / [[AGENTS]] / `.codex/AGENTS.md` / [[POLICY]] / [[WORKFLOW]] / [[templates/README]] | promoted |
+| 提到模板时先区分知识库模板和系统治理模板，专题成果不自动进入 `templates/` | 模板落位二分纠偏 | [[template-feedback-rules]] / [[AGENTS]] / [[POLICY]] / [[WORKFLOW]] / [[templates/README]] | promoted |
+| 项目级 agent 规则只保留根 `AGENTS.md`，工具专用入口只做导入、配置或 subagent 外壳 | 项目级 agent 规则重复入口 | [[AGENTS]] / [[concepts/agent-instruction-sharing]] / `scripts/check_harness_governance.py` | promoted |
 | 用户收窄写入范围后，收尾必须证明 scope，而不只是证明 clean | Finalizer 写入范围证明缺口 | finalizer scope manifest / [[instruction-adherence]] / [[response-mode-routing]] | active |
 
 ## Rule Prune Queue

@@ -4,7 +4,7 @@ id: GOV-PLATFORM-STANDARDS-001
 scope: cross-project
 status: active
 source_of_truth: true
-updated: 2026-05-30
+updated: 2026-06-04
 tags: [governance, standards, cross-project, maturity]
 ---
 
@@ -30,7 +30,7 @@ tags: [governance, standards, cross-project, maturity]
 
 ## 各维度标准
 
-### 维度 1：执行约束文件（AGENTS.md / .codex/AGENTS.md）
+### 维度 1：执行约束文件（根 AGENTS.md）
 
 | 能力点 | L1 | L2 | L3 | L4 |
 |---|---|---|---|---|
@@ -39,6 +39,7 @@ tags: [governance, standards, cross-project, maturity]
 | 有基础角色边界 | ✓ | ✓ | ✓ | ✓ |
 | 有明确读取顺序 | | ✓ | ✓ | ✓ |
 | 有跨工程写入边界规则 | | ✓ | ✓ | ✓ |
+| 项目级规则入口唯一，不维护 `.codex/AGENTS.md` 副本 | | ✓ | ✓ | ✓ |
 | 写入边界有 sensor 强化（非纯自然语言） | | | ✓ | ✓ |
 | 有 scope proof 要求（finalizer 级别） | | | ✓ | ✓ |
 | 规则有闭环机制（deprecated/pruned） | | | | ✓ |

@@ -4,7 +4,7 @@ id: DECISION-LOG-001
 project: PROJ-WIKI-001
 status: active
 priority: high
-updated: 2026-05-28
+updated: 2026-06-04
 tags: [decision]
 ---
 
@@ -35,8 +35,30 @@ tags: [decision]
 7. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
 8. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
 9. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
+10. [[projects/decisions#2026-06-04 项目级 Agent 规则只保留根 AGENTS.md|项目级 Agent 规则只保留根 AGENTS.md]]：Codex 和 Claude Code 共用根 `AGENTS.md`，工具专用文件只做薄适配或 subagent 外壳。影响：不再维护 `.codex/AGENTS.md` 项目级规则副本。
 
 ## 正式决策记录
+
+### 2026-06-04 项目级 Agent 规则只保留根 AGENTS.md
+
+- **背景**：本库已经新增 `CLAUDE.md` 让 Claude Code 通过 `@AGENTS.md` 导入共享规则，但仍保留 `.codex/AGENTS.md` 作为 Codex 本地适配入口。用户指出这会在其他工程中诱发根 `AGENTS.md` 和 `.codex/AGENTS.md` 重复，违背“入口只有一个”的目标。
+- **要决策什么**：是否继续保留 `.codex/AGENTS.md` 作为 Codex 适配入口，还是把其有效规则并回根 `AGENTS.md`，让项目级 agent 规则只有一份。
+- **可选项**：
+  - 保留根 `AGENTS.md`、`CLAUDE.md` 和 `.codex/AGENTS.md` 三个入口，各自写少量说明。
+  - 根 `AGENTS.md` 承接共享规则，`CLAUDE.md` 和 `.codex/AGENTS.md` 都做薄适配。
+  - 根 `AGENTS.md` 作为唯一项目级规则入口；`CLAUDE.md` 只导入，`.codex/` 不放项目级规则副本。
+- **最终决策**：采用第三项。删除 `.codex/AGENTS.md`，把其有效内容并入根 [[AGENTS]] 的“工具入口统一”段；`CLAUDE.md` 保留为 Claude Code 导入壳；`.codex/` 只用于 Codex 专用配置或自定义 subagent 外壳。
+- **影响**：
+  - 后续工程如果同时存在根 `AGENTS.md` 和 `.codex/AGENTS.md`，默认把 `.codex/AGENTS.md` 合并回根 `AGENTS.md` 并删除。
+  - 治理审计、Issue 分析和平台级标准都以根 `AGENTS.md` 作为项目规则单一信息源。
+  - `scripts/check_harness_governance.py` 不再要求 `.codex/AGENTS.md` 存在，反而检查该文件不能作为重复规则入口出现。
+- **各自优劣**：
+  - 保留三个入口兼容性强，但最容易漂移。
+  - 双薄适配看似对称，但 `.codex/AGENTS.md` 仍会被误当成规则正文。
+  - 根入口唯一最清晰，但要求 Codex 专用内容改走真正的 `.codex/` 配置或 subagent 外壳。
+- **风险点**：
+  - 如果未来需要 Codex 专用规则，不能重新写成 `.codex/AGENTS.md`；应判断它是工具配置、subagent 外壳，还是共享规则。
+  - 如果其他工程已有历史 `.codex/AGENTS.md`，迁移时要先合并有效规则，不要直接丢失仍有价值的边界和检查口径。
 
 ### 2026-05-28 状态与约束推演成为计划型问题的默认前置方法
 
@@ -109,7 +131,7 @@ tags: [decision]
   - 只在最终回复里总结差距。
   - 直接复制下游项目完整治理页和 CI 配置。
   - 抽象成模板级 H5 机制，保留当前库的 GitHub remote 和项目事实边界。
-- **最终决策**：新增 [[harness-evolution]]、[[harness-feedback-ledger]]、[[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]]、`.codex/AGENTS.md`、`scripts/check_all.py` 和 `scripts/check_harness_governance.py`。
+- **最终决策**：新增 [[harness-evolution]]、[[harness-feedback-ledger]]、[[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]]、`scripts/check_all.py` 和 `scripts/check_harness_governance.py`。2026-06-04 起，项目级 agent 规则入口统一为根 [[AGENTS]]，原 `.codex/AGENTS.md` 适配入口已退役。
 - **影响**：
   - 用户纠偏、检查失败、模式切换和重复失守先形成 episode 数据，不直接新增硬规则。
   - 工作阶段可以跑 `python3 scripts/check_all.py --only harness-governance`，收尾和提交前跑 `python3 scripts/check_all.py`。

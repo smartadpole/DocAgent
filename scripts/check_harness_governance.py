@@ -23,7 +23,6 @@ REQUIRED_FILES = (
     "templates/harness-adoption-template.md",
     "templates/harness-episode-package-template.md",
     "templates/harness-evolution-review-template.md",
-    ".codex/AGENTS.md",
     "scripts/check_all.py",
     "scripts/check_testing_system_maturity.py",
     "scripts/check_execution_contract_semantics.py",
@@ -218,7 +217,11 @@ H5_LEDGER_REQUIRED_TERMS = (
     "DocCustomeranalysis Harness 反哺",
 )
 
-CODEX_ADAPTER_REQUIRED_TERMS = (
+SHARED_AGENT_ENTRY_REQUIRED_TERMS = (
+    "项目级 agent 规则只维护根目录 `AGENTS.md` 一份",
+    "CLAUDE.md",
+    ".codex/AGENTS.md",
+    "不放项目级规则副本",
     "response-mode-routing",
     "instruction-adherence",
     "execution-contract-semantics",
@@ -424,7 +427,6 @@ def check_agent_governance_strategy(repo: Path) -> list[str]:
         "governance/README.md",
         "concepts/agent-governance.md",
         "AGENTS.md",
-        ".codex/AGENTS.md",
         "governance/WORKFLOW.md",
         "governance/POLICY.md",
         "governance/instruction-adherence.md",
@@ -455,7 +457,6 @@ def check_proactive_dialogue(repo: Path) -> list[str]:
     workflow = read_text(repo, "governance/WORKFLOW.md", errors)
     policy = read_text(repo, "governance/POLICY.md", errors)
     agents = read_text(repo, "AGENTS.md", errors)
-    codex_adapter = read_text(repo, ".codex/AGENTS.md", errors)
     templates_readme = read_text(repo, "templates/README.md", errors)
     index = read_text(repo, "INDEX.md", errors)
     ledger = read_text(repo, "governance/harness-feedback-ledger.md", errors)
@@ -472,7 +473,6 @@ def check_proactive_dialogue(repo: Path) -> list[str]:
         ("governance/WORKFLOW.md", workflow),
         ("governance/POLICY.md", policy),
         ("AGENTS.md", agents),
-        (".codex/AGENTS.md", codex_adapter),
         ("templates/README.md", templates_readme),
         ("INDEX.md", index),
         ("governance/harness-feedback-ledger.md", ledger),
@@ -566,7 +566,7 @@ def check_h5_evolution(repo: Path) -> list[str]:
     errors: list[str] = []
     evolution = read_text(repo, "governance/harness-evolution.md", errors)
     ledger = read_text(repo, "governance/harness-feedback-ledger.md", errors)
-    codex_adapter = read_text(repo, ".codex/AGENTS.md", errors)
+    agents = read_text(repo, "AGENTS.md", errors)
 
     if evolution:
         for term in H5_EVOLUTION_REQUIRED_TERMS:
@@ -576,10 +576,12 @@ def check_h5_evolution(repo: Path) -> list[str]:
         for term in H5_LEDGER_REQUIRED_TERMS:
             if term not in ledger:
                 errors.append(f"governance/harness-feedback-ledger.md: missing H5 ledger term {term}")
-    if codex_adapter:
-        for term in CODEX_ADAPTER_REQUIRED_TERMS:
-            if term not in codex_adapter:
-                errors.append(f".codex/AGENTS.md: missing Codex adapter term {term}")
+    if (repo / ".codex/AGENTS.md").exists():
+        errors.append(".codex/AGENTS.md: duplicate project-level rule entry; merge into root AGENTS.md")
+    if agents:
+        for term in SHARED_AGENT_ENTRY_REQUIRED_TERMS:
+            if term not in agents:
+                errors.append(f"AGENTS.md: missing shared agent entry term {term}")
     return errors
 
 
