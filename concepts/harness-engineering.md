@@ -28,6 +28,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 
 - 规格：SPEC、任务说明、验收标准、非目标、人工确认点。
 - 上下文：AGENTS / CLAUDE、README、架构文档、dev-map、任务看板、接口文档。
+- 指令共享：[[concepts/agent-instruction-sharing]]，让 Claude Code / Codex 等 coding agent 共用一份项目规则，并把工具专用补充留在薄入口。
 - 规则：底线、禁止项、路径边界、提交要求、验证要求。
 - Skill：编译、测试、审查、源码审计、发布等高频动作的 SOP。
 - Workflow：计划、实现、验证、审查、打回、提交、回写的接力规则。
@@ -76,6 +77,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 
 - 把 Harness 简化成提示词模板。
 - 把所有规则塞进一个巨大的 AGENTS / CLAUDE 文件。
+- 为不同 coding agent 复制多份项目规则文件，而不是维护一份共享主规则和工具专用薄入口。
 - 只增加工具，不分析工具补的是哪个行为缺口。
 - 只有自然语言规则，没有脚本、测试或 CI 反馈。
 - 把隐藏 memory 当团队单一信息源。
@@ -90,6 +92,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 ## 相关页面
 
 - [[articles/2026-05-25-harness-engineering-research]]
+- [[concepts/agent-instruction-sharing]]
 - [[concepts/codex-goals]]
 - [[concepts/agent-work-retrospective]]
 - [[skills/historical-dialogue-retrospective/SKILL]]

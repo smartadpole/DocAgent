@@ -33,9 +33,9 @@
   3. 区分共享“项目规则”和共享“自定义子 agent”：前者适合单一主文件，后者因 Claude / Codex 格式不同，应共享核心 prompt 文案，再生成各自包装文件。
 - **关键动作**：
   1. 新增 [[concepts/agent-instruction-sharing]]，沉淀目录结构、最小实现、全局共享、子 agent 边界、判断规则、常见误区和验证方式。
-  2. 更新 [[concepts/README]]、[[concepts/agent-governance]] 和 [[INDEX]]，把该方法挂到 Agent 治理和方法入口下。
+  2. 更新 [[concepts/README]]、[[concepts/agent-governance]]、[[concepts/harness-engineering]] 和 [[INDEX]]，把该方法挂到 Agent 治理、Harness 组件和方法入口下。
 - **二阶反思**：这轮是可复用知识沉淀，不是规则升级。正确做法是把“多工具共享同一份项目规则”的方法放进概念层，供未来项目采用；不要把当前库 `AGENTS.md` 继续扩成工具配置百科。
-- **影响页面**：[[concepts/agent-instruction-sharing]]、[[concepts/README]]、[[concepts/agent-governance]]、[[INDEX]]、[[log]]。
+- **影响页面**：[[concepts/agent-instruction-sharing]]、[[concepts/README]]、[[concepts/agent-governance]]、[[concepts/harness-engineering]]、[[INDEX]]、[[log]]。
 
 ## 2026-06-03
 
