@@ -7,6 +7,22 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-04
+
+### 沉淀 Claude Code 与 Codex 共享 agent 规则的方法
+
+- **记录人**：sunhao
+- **用户意图**：用户提供一套“让 Claude 和 Codex 共享同一份 agent 信息”的实践方案，要求沉淀成知识库内容，避免以后在多个工具入口之间复制规则并产生漂移。
+- **主题**：
+  1. 将该内容定位为跨项目可复用的 Agent 指令共享方法，而不是当前本库的新硬约束或项目运行状态。
+  2. 确认最小稳态方案：`AGENTS.md` 作为共享主规则，Codex 直接读取，Claude Code 通过 `CLAUDE.md` 的 `@AGENTS.md` 导入并追加 Claude 专用规则。
+  3. 区分共享“项目规则”和共享“自定义子 agent”：前者适合单一主文件，后者因 Claude / Codex 格式不同，应共享核心 prompt 文案，再生成各自包装文件。
+- **关键动作**：
+  1. 新增 [[concepts/agent-instruction-sharing]]，沉淀目录结构、最小实现、全局共享、子 agent 边界、判断规则、常见误区和验证方式。
+  2. 更新 [[concepts/README]]、[[concepts/agent-governance]] 和 [[INDEX]]，把该方法挂到 Agent 治理和方法入口下。
+- **二阶反思**：这轮是可复用知识沉淀，不是规则升级。正确做法是把“多工具共享同一份项目规则”的方法放进概念层，供未来项目采用；不要把当前库 `AGENTS.md` 继续扩成工具配置百科。
+- **影响页面**：[[concepts/agent-instruction-sharing]]、[[concepts/README]]、[[concepts/agent-governance]]、[[INDEX]]、[[log]]。
+
 ## 2026-06-03
 
 ### 修正跨工程迁移提示词的任务书形态缺口

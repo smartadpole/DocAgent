@@ -8,7 +8,7 @@ tags: [agent, governance, harness, knowledge-base]
 
 # Agent 治理
 
-相关：[[concepts/harness-engineering]]、[[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[concepts/harness-engineering]]、[[concepts/agent-instruction-sharing]]、[[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验证、复盘和自演进机制组织成一套可维护系统的方法。它关注的不是“写更多提示词”，而是让 agent 在不同任务里能正确判断响应模式、保留事实边界、遵守执行合同、生成证据、回写知识，并从真实失误中改进。
 
@@ -31,6 +31,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 | 执行合同 | 防止参考规则、非目标和证据说明漂移成隐形待办 | [[execution-contract-semantics]] |
 | H5 自演进 | episode 怎样观察、晋升、降级或删除 | [[harness-evolution]]、[[harness-feedback-ledger]] |
 | 工作复盘 | 回看目标理解、读取预算、工具使用、验证质量和沟通节奏 | [[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]] |
+| 指令共享 | Claude Code / Codex 等 coding agent 怎样共享项目规则且避免重复漂移 | [[concepts/agent-instruction-sharing]] |
 
 ## 分层模型
 
@@ -73,6 +74,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 - 把日志、报告、handoff 或模型自述当作验收闭环。
 - 把“更智能”理解成无限扩读、长问卷或一次铺满结构。
 - 只做复盘不改模板、sensor 或技能，导致同类问题反复靠人工提醒。
+- 为不同 coding agent 复制多份项目规则文件，而不是维护一份共享主规则和工具专用薄入口。
 
 ## 典型案例
 
