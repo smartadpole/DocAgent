@@ -16,9 +16,9 @@
 - **主题**：
   1. 确认历史失败不是单条规则缺失，而是只检查规则文本、不检查生成产物质量；此前多轮提交持续补自然语言质量门，但没有固定回归样例证明输出像任务书。
   2. 将 meta skill 的执行过程拆成执行合同判定、源能力抽取、模块展开、任务书成稿、失败模式审查和 golden regression 对照六个思考检查点。
-  3. 为“生成一段提示词，把复盘体系迁移到其他工程”建立 golden taskbook 样例，作为产物级回归基准，防止以后再次退化成迁移说明或模块标题清单。
+  3. 为“生成一段提示词，把复盘体系迁移到其他工程”建立 golden taskbook 样例，并将基准校准为用户确认更好的任务书形态，而不是 agent 自己生成的压缩版。
 - **关键动作**：
-  1. 新增 `skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md`，保存复盘迁移任务书 golden 样例和 regression requirements。
+  1. 新增并校准 `skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md`，保存复盘迁移任务书 golden 样例和 regression requirements。
   2. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增“生成思考循环”，要求每一环先做中间判断，再进入最终提示词。
   3. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md` 和 [[templates/skill-transfer-manifest-template]]，加入 golden regression 样例字段。
   4. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，把 golden 样例作为必需文件，并检查任务书章节、字段级模块和关键禁止项。
