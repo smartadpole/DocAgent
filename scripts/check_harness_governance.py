@@ -305,8 +305,10 @@ SKILL_TRANSFER_PROMPT_REQUIRED_TERMS = (
     "Baseline 对比评分",
     "generated >= baseline",
     "模式污染防线",
+    "元技能维护模式",
     "通用版",
-    "三选一",
+    "四选一",
+    "不能用一段单次提示词替代",
     "最终交付",
     "逐项可执行",
 )

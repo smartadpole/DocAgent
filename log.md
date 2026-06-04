@@ -9,6 +9,21 @@
 
 ## 2026-06-04
 
+### 修正 meta-skill 维护请求的路由失守
+
+- **记录人**：sunhao
+- **用户意图**：用户纠正前一轮不是要单次生成通用提示词，而是要重启 goal 并修改 meta-skill，处理现有 meta-skill 导致生成提示词不合理的问题。
+- **主题**：
+  1. 明确这轮缺口不是“生成稿是否足够通用”，而是任务模式路由错误：当用户要求升级 meta-skill 本身时，agent 必须进入元技能维护模式，不能用候选提示词替代技能文件修改。
+  2. 将跨工程迁移 meta-skill 的模式裁决从通用 / 定制 / 直接执行扩展为通用提示词、定制提示词、直接执行迁移、元技能维护四选一，并要求最新用户指令优先。
+  3. 把“不是单次生成 / 重启 goal / 修改 meta skill / 修生成机制”写成显式触发信号，要求同步技能、sensor、ledger、log 和 commit。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增元技能维护模式、四选一任务裁决、维护请求优先路由和禁止用单次提示词替代维护闭环。
+  2. 更新 [[harness-feedback-ledger]]，新增 “Meta-skill 维护请求被降级成单次生成” episode，并把通用模式 sensor 从三选一校准为四选一。
+  3. 更新 `scripts/check_harness_governance.py`，将元技能维护模式、四选一和禁止单次提示词替代纳入 harness-governance 检查。
+- **二阶反思**：候选提示词可以用作验证样本，但不能成为 meta-skill 维护请求的主交付。以后用户说“修技能 / 修生成机制 / 重启 goal”时，先改机制，再用样本验证机制是否有效。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 建立迁移提示词的示例基准比较门
 
 - **记录人**：sunhao
