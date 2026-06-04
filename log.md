@@ -9,6 +9,23 @@
 
 ## 2026-06-04
 
+### 为迁移 meta-skill 增加产物级回归和分阶段思考循环
+
+- **记录人**：sunhao
+- **用户意图**：用户追问为什么跨工程迁移 meta-skill 升级十几次仍做不好，并指出根本可能在 meta skill 设计，以及更深层如何让 skill 在每个环节做好思考、不遗漏且翔实。
+- **主题**：
+  1. 确认历史失败不是单条规则缺失，而是只检查规则文本、不检查生成产物质量；此前多轮提交持续补自然语言质量门，但没有固定回归样例证明输出像任务书。
+  2. 将 meta skill 的执行过程拆成执行合同判定、源能力抽取、模块展开、任务书成稿、失败模式审查和 golden regression 对照六个思考检查点。
+  3. 为“生成一段提示词，把复盘体系迁移到其他工程”建立 golden taskbook 样例，作为产物级回归基准，防止以后再次退化成迁移说明或模块标题清单。
+- **关键动作**：
+  1. 新增 `skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md`，保存复盘迁移任务书 golden 样例和 regression requirements。
+  2. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增“生成思考循环”，要求每一环先做中间判断，再进入最终提示词。
+  3. 更新 `skills/historical-dialogue-retrospective/TRANSFER.md` 和 [[templates/skill-transfer-manifest-template]]，加入 golden regression 样例字段。
+  4. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，把 golden 样例作为必需文件，并检查任务书章节、字段级模块和关键禁止项。
+- **验证**：本轮收尾时运行专项和全量检查。
+- **二阶反思**：skill 的翔实性不能只靠“写得更严格”的自然语言保证。高风险技能需要把思考链路拆成检查点，并保存至少一个产物级 golden 样例；sensor 要检查样例结构，而不只检查规则页关键词。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、`skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md`、`skills/historical-dialogue-retrospective/TRANSFER.md`、[[templates/skill-transfer-manifest-template]]、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 补齐复盘迁移提示词的字段级任务书要求
 
 - **记录人**：sunhao

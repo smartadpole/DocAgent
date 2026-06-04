@@ -190,6 +190,13 @@ tags: [skill, transfer, retrospective, adoption]
 - 如果已经读取目标工程结构，提示词必须写每个目标工程的差异化落位建议；如果没有读取，只要求目标工程 agent 自行判断，不编造。
 - 如果用户提供参考提交或版本锚点，只有确认它是当前源资料锚点时才写成事实；不确定时写成“如需版本锚点，先在源工程确认当前参考提交”。
 
+## Golden regression 样例
+
+- **样例路径**：`/Users/hai/Documents/Docs/AcknowledgeBase/skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md`
+- **用途**：校准“生成一段提示词，把复盘体系迁移到其他工程”的输出质量。
+- **要求**：生成稿不要求逐字复制样例，但必须达到同等任务书粒度，尤其是复盘体系模块必须展开到字段 / 判断项 / 落位 / 禁止项 / 验证点。
+- **失败判定**：如果生成稿只列模块标题、缺少“不要把测试报告当复盘 / 不要把 Issue 关闭当复盘完成 / 不要只凭 log 做历史对话复盘”等禁止项，或缺少验证提交和最终回复要求，视为低于 golden 样例。
+
 ## 推荐提示词骨架
 
 复盘体系迁移提示词优先写成目标工程可执行任务书，不要写成迁移说明书。推荐骨架如下：

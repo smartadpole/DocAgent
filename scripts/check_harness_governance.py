@@ -38,6 +38,7 @@ REQUIRED_FILES = (
     "templates/project-retrospective-template.md",
     "skills/historical-dialogue-retrospective/SKILL.md",
     "skills/cross-project-skill-adoption-prompt/SKILL.md",
+    "skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md",
     "skills/historical-dialogue-retrospective/TRANSFER.md",
     "templates/skill-transfer-manifest-template.md",
 )
@@ -298,6 +299,12 @@ HISTORICAL_RETROSPECTIVE_SKILL_REQUIRED_TERMS = (
 
 SKILL_TRANSFER_PROMPT_REQUIRED_TERMS = (
     "源能力覆盖矩阵",
+    "生成思考循环",
+    "执行合同判定",
+    "源能力抽取",
+    "模块展开",
+    "失败模式审查",
+    "Golden regression",
     "所有已沉淀 skill / 能力主题",
     "任意技能主题",
     "主题专属模块",
@@ -316,6 +323,8 @@ SKILL_TRANSFER_PROMPT_REQUIRED_TERMS = (
 
 RETROSPECTIVE_TRANSFER_REQUIRED_TERMS = (
     "复盘体系迁移的最小模块清单",
+    "字段级任务书展开要求",
+    "Golden regression 样例",
     "推荐提示词骨架",
     "可执行任务书",
     "通用版生成规则",
@@ -325,6 +334,24 @@ RETROSPECTIVE_TRANSFER_REQUIRED_TERMS = (
     "档案入口",
     "行动分流机制",
     "治理自演进关系",
+)
+
+RETROSPECTIVE_TRANSFER_GOLDEN_REQUIRED_TERMS = (
+    "请升级本工程的完整复盘体系",
+    "## 背景和目标",
+    "## 复盘体系参考资料",
+    "## 吸收边界",
+    "## 目标工程结构自检与落位",
+    "## 需要建立的复盘体系模块",
+    "目标：让人和 agent 知道什么场景应该复盘",
+    "必须写入：",
+    "禁止只写一句",
+    "不要把测试报告当复盘",
+    "不要把 Issue 关闭当复盘完成",
+    "不要只凭 log 做历史对话复盘",
+    "## 验证和提交要求",
+    "## 最终回复要求",
+    "Regression Requirements",
 )
 
 
@@ -615,6 +642,11 @@ def check_skill_transfer_prompt_system(repo: Path) -> list[str]:
     errors: list[str] = []
     meta_skill = read_text(repo, "skills/cross-project-skill-adoption-prompt/SKILL.md", errors)
     retrospective_transfer = read_text(repo, "skills/historical-dialogue-retrospective/TRANSFER.md", errors)
+    retrospective_golden = read_text(
+        repo,
+        "skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md",
+        errors,
+    )
     ledger = read_text(repo, "governance/harness-feedback-ledger.md", errors)
 
     if meta_skill:
@@ -625,8 +657,17 @@ def check_skill_transfer_prompt_system(repo: Path) -> list[str]:
         for term in RETROSPECTIVE_TRANSFER_REQUIRED_TERMS:
             if term not in retrospective_transfer:
                 errors.append(f"skills/historical-dialogue-retrospective/TRANSFER.md: missing retrospective transfer term {term}")
+    if retrospective_golden:
+        for term in RETROSPECTIVE_TRANSFER_GOLDEN_REQUIRED_TERMS:
+            if term not in retrospective_golden:
+                errors.append(
+                    "skills/cross-project-skill-adoption-prompt/examples/"
+                    f"retrospective-transfer-taskbook-golden.md: missing golden term {term}"
+                )
     if ledger and "跨工程迁移提示词任务书形态检查" not in ledger:
         errors.append("governance/harness-feedback-ledger.md: missing skill-transfer prompt shape sensor backlog")
+    if ledger and "跨工程迁移提示词产物回归检查" not in ledger:
+        errors.append("governance/harness-feedback-ledger.md: missing skill-transfer prompt golden regression sensor")
     return errors
 
 
