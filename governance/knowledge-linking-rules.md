@@ -12,6 +12,8 @@ tags: [knowledge, linking, wikilink, graph]
 
 这页定义新增知识怎样进入网状结构。它服务 `articles/`、`concepts/`、`indexes/` 和相关入口页，不替代 [[WORKFLOW]]、[[POLICY]] 或 [[log-writing-rules]]。
 
+实际执行时优先使用 [[skills/knowledge-linking/SKILL]]。本页回答“新增知识最少要形成哪些关系”，技能页回答“agent 本轮怎样完成调研、沉淀、总结方案、补链和验证”。
+
 核心目标不是让每篇笔记有很多链接，而是让新增知识至少回答：
 
 - 它属于哪一层？
@@ -71,6 +73,8 @@ tags: [knowledge, linking, wikilink, graph]
 - 摘要卡片是否能从 [[articles/README]]、[[INDEX]] 或相关知识页被发现。
 
 它不会自动生成语义链接，也不会判断某条链接是不是最佳上位概念。agent 仍要按本页做语义判断；sensor 只负责抓明显孤岛和入口漏挂。
+
+如果用户明确要求调研，或本轮事实依赖外部工具、官方约定、近期变化、可花钱 / 花时间决策，应按 [[skills/knowledge-linking/SKILL]] 先完成外部来源校准，再写入摘要卡片、概念、规则或技能。
 
 ## 禁止项
 

@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-29
+updated: 2026-06-04
 tags: [index, root]
 ---
 
@@ -43,6 +43,7 @@ tags: [index, root]
 - [[knowledge-linking-rules]]：新增知识页、概念页和摘要卡片的网状关联规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
+- [[skills/knowledge-linking/SKILL]]：知识关联技能，把调研、沉淀、总结方案、补链和 `knowledge-linking` sensor 验证做成可复用流程
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
 - [[projects/README]]：活跃软件研发项目的运行入口
@@ -85,6 +86,7 @@ tags: [index, root]
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题，把需求、设计、拆解、实现、测试验收、发布运行和协作治理串成一条交付链回看。
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，回看 agent 的目标理解、读取预算、工具使用、验证质量、沟通节奏和沉淀路由。
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
+- [[articles/2026-06-04-knowledge-linking-mechanism-research]]：新增知识关联机制调研，说明为什么语义关联不能只依赖自动图谱展示，并把本库方案收口为规则、技能、模板和 sensor 四层。
 - [[concepts/agent-instruction-sharing]]：Claude Code 和 Codex 共享 agent 项目规则的方法，推荐 `AGENTS.md` 作为唯一主文件、`CLAUDE.md` 只负责导入和追加 Claude 专用补充。
 - [[agent-governance-strategy]]：Agent 治理策略整改入口，收口入口瘦身、log eligibility、产物化资格、检查预算和规则升级预算。
 - [[articles/2026-05-29-finalizer-write-scope-case]]：Finalizer 写入范围失守案例，分析用户收窄写入范围后，finalizer 只证明 clean 而不证明 scope 的 Harness 缺口。
@@ -93,6 +95,7 @@ tags: [index, root]
 - [[articles/2026-05-30-agent-system-deep-analysis]]：基于 Karpathy Software 3.0、OpenClaw memory、AHE 可观测性支柱和多 agent 架构理论，对当前 8 工程 agent 体系做深度诊断，归纳六大根本性设计缺陷和三阶演进路径。
 - [[articles/2026-05-30-acknowledgebase-governance-hub-design]]：AcknowledgeBase 作为跨工程治理中控的具体设计：四类治理动作、调度频率、中控职责边界、wiki template-changelog 最小改动方案。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把任意已沉淀 skill / 能力转换成目标工程可执行升级提示词，并附资料路径、吸收边界、落地步骤和验证要求。
+- [[skills/knowledge-linking/SKILL]]：新增或大改长期知识页时，按调研、分层、关系画像、入口回链和 sensor 验证完成知识网络落地。
 - [[skills/historical-dialogue-retrospective/SKILL]]：从历史对话、当前上下文、log、Harness episode、git 证据和检查输出中复盘 agent 偏差、效率质量与 workflow 改进。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。

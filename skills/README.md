@@ -15,6 +15,7 @@
 ## 当前技能
 
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能。用于把已沉淀的 skill / 能力转换成可交给目标工程 agent 的升级提示词、附件资料清单、吸收边界、落地步骤和验证要求。
+- [[skills/knowledge-linking/SKILL]]：知识关联技能。用于把调研、沉淀知识、总结方案、入口 / 上位 / 邻接 / 反向链接和 `knowledge-linking` sensor 验证收敛成可复用流程，避免新增知识成为孤岛。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能。用于从当前上下文、[[log]]、[[harness-feedback-ledger]]、原始 session / rollout、git diff / commit 和检查输出中复盘 agent 偏差、效率质量和 workflow 改进候选。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。定期或按需读取各工程关键治理文件，对照 [[governance/platform-standards]] 评估成熟度，生成漂移报告和 handoff 包；支持全量审计和单工程审计两种模式。

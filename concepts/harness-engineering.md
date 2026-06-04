@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-05-29
+updated: 2026-06-04
 tags: [ai-agent, software-engineering]
 ---
 
@@ -31,6 +31,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - 指令共享：[[concepts/agent-instruction-sharing]]，让 Claude Code / Codex 等 coding agent 共用一份项目规则，并把工具专用补充留在薄入口。
 - 规则：底线、禁止项、路径边界、提交要求、验证要求。
 - Skill：编译、测试、审查、源码审计、发布等高频动作的 SOP。
+- Knowledge Linking：[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]] 和 [[articles/2026-06-04-knowledge-linking-mechanism-research]] 把调研、沉淀、总结方案和知识网络补链变成可验证流程。
 - Workflow：计划、实现、验证、审查、打回、提交、回写的接力规则。
 - Sub Agent：按阶段或专业分工的 agent 角色。
 - Scripts / Sensors：lint、测试、CI、静态分析、架构检查、trace、日志、SLO。
@@ -96,6 +97,8 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[concepts/codex-goals]]
 - [[concepts/agent-work-retrospective]]
 - [[skills/historical-dialogue-retrospective/SKILL]]
+- [[skills/knowledge-linking/SKILL]]
+- [[articles/2026-06-04-knowledge-linking-mechanism-research]]
 - [[AGENTS]]
 - [[WORKFLOW]]
 - [[response-mode-routing]]

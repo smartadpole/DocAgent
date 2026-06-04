@@ -2,13 +2,13 @@
 type: concept
 id: CONCEPT-AGENT-GOVERNANCE-001
 status: active
-updated: 2026-05-29
+updated: 2026-06-04
 tags: [agent, governance, harness, knowledge-base]
 ---
 
 # Agent 治理
 
-相关：[[concepts/harness-engineering]]、[[concepts/agent-instruction-sharing]]、[[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[concepts/harness-engineering]]、[[concepts/agent-instruction-sharing]]、[[concepts/agent-work-retrospective]]、[[skills/knowledge-linking/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[agent-governance-strategy]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验证、复盘和自演进机制组织成一套可维护系统的方法。它关注的不是“写更多提示词”，而是让 agent 在不同任务里能正确判断响应模式、保留事实边界、遵守执行合同、生成证据、回写知识，并从真实失误中改进。
 
@@ -30,6 +30,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 | 指令遵循 | 已有规则怎样进入触发器、模板字段、sensor、门禁和最终证明 | [[instruction-adherence]] |
 | 执行合同 | 防止参考规则、非目标和证据说明漂移成隐形待办 | [[execution-contract-semantics]] |
 | H5 自演进 | episode 怎样观察、晋升、降级或删除 | [[harness-evolution]]、[[harness-feedback-ledger]] |
+| 知识关联 | 新增知识怎样完成调研、沉淀、总结方案、入口 / 上位 / 邻接 / 反向链接和 sensor 验证 | [[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]、[[articles/2026-06-04-knowledge-linking-mechanism-research]] |
 | 工作复盘 | 回看目标理解、读取预算、工具使用、验证质量和沟通节奏 | [[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]] |
 | 指令共享 | Claude Code / Codex 等 coding agent 怎样共享项目规则且避免重复漂移 | [[concepts/agent-instruction-sharing]] |
 
@@ -55,6 +56,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 - 接入与复盘模板：[[templates/harness-adoption-template]]、[[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]]、[[templates/goal-contract-template]]
 - 复盘专题：[[concepts/agent-work-retrospective]]
 - 复盘技能：[[skills/historical-dialogue-retrospective/SKILL]]
+- 知识关联技能：[[skills/knowledge-linking/SKILL]]，用于把调研、沉淀知识、总结方案、补链和 sensor 验证落成可复用流程
 - 检查入口：`python3 scripts/check_all.py --list`
 
 这说明 Agent 治理专题不是新建项目开发任务，而是对既有知识库方法、治理页和 Harness 机制的总览与继续沉淀。

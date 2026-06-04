@@ -12,19 +12,22 @@
 ### 建立新增知识的网状关联自检机制
 
 - **记录人**：sunhao
-- **用户意图**：用户追问新增知识与既有知识库的关联是否自动生成，并要求设计和落实一个机制，分析历史知识库、做测试，直到新增知识能稳定形成网状关系而不是孤岛页。
+- **用户意图**：用户追问新增知识与既有知识库的关联是否自动生成，并要求设计和落实一个机制，分析历史知识库、做测试；随后追问这个能力是否已经落实为别人可学习使用的技能，以及是否按调研、沉淀知识、总结方案的链路完成。
 - **主题**：
   1. 明确当前状态：Obsidian 可以自动展示 `[[wikilink]]` 图谱，但语义关联选择不是自动生成；此前主要靠 agent 手动判断入口、上位概念和回链。
   2. 设计最小可执行机制：新增知识仍由 agent 做语义判断，但必须通过 sensor 检查结构性信号，包括页面出链、非 `[[log]]` 入链、入口 / 上位知识页回链。
   3. 用历史 `concepts/` 和 `articles/` 页面校准阈值，确认现有知识库已有入口和非 log 入链网络，再用临时孤岛页做负向测试，证明 sensor 能抓出新增孤岛。
+  4. 补齐调研和技能层：用 Obsidian、Evergreen notes、Zettelkasten 等外部资料校准“自动展示图谱”和“自动生成语义关联”的边界，并把流程写成可复用技能。
 - **关键动作**：
   1. 新增 [[knowledge-linking-rules]]，定义新增知识关联自检、概念页 / 摘要卡片最小通过标准、自动检查边界和禁止项。
   2. 新增 `scripts/check_knowledge_linking.py` 并接入 `scripts/check_all.py --only knowledge-linking`，把知识关联检查变成可运行 sensor。
-  3. 更新 [[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[README]]、[[concepts/README]]、[[articles/README]] 和概念 / 文章模板，让规则、入口、模板和检查命令形成闭环。
-  4. 更新 [[harness-feedback-ledger]]，把“新增知识关联依赖人工补链”记录为已晋升 episode，并把知识关联检查加入 active sensor backlog。
+  3. 新增 [[skills/knowledge-linking/SKILL]]，把调研、沉淀知识、总结方案、关系画像、入口回链和验证命令写成别人可学习使用的 agent 技能。
+  4. 新增 [[articles/2026-06-04-knowledge-linking-mechanism-research]]，沉淀外部调研来源、关键结论、历史知识库分析、机制方案和边界。
+  5. 更新 [[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[README]]、[[concepts/README]]、[[articles/README]]、[[skills/README]] 和概念 / 文章模板，让规则、入口、技能、模板和检查命令形成闭环。
+  6. 更新 [[harness-feedback-ledger]]，把“新增知识关联依赖人工补链”记录为已晋升 episode，并把知识关联检查加入 active sensor backlog。
 - **验证**：`python3 scripts/check_all.py --only knowledge-linking` 通过；临时创建 `concepts/__tmp_orphan_check.md` 时检查会失败并指出缺出链、缺非 log 入链、缺入口 / 知识页回链，删除测试文件后再次通过。
 - **二阶反思**：这轮暴露的是“图谱可视化自动”和“知识关联生成自动”之间的边界。未来新增知识不能只靠 agent 口头说已关联，也不能只靠 `[[log]]` 被发现；必须有可检查的入口、上位概念和邻接回链。
-- **影响页面**：[[knowledge-linking-rules]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[README]]、[[concepts/README]]、[[articles/README]]、[[templates/concept-template]]、[[templates/article-template]]、[[harness-feedback-ledger]]、`scripts/check_knowledge_linking.py`、`scripts/check_all.py`、[[log]]。
+- **影响页面**：[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]、[[articles/2026-06-04-knowledge-linking-mechanism-research]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[README]]、[[concepts/README]]、[[articles/README]]、[[skills/README]]、[[templates/concept-template]]、[[templates/article-template]]、[[harness-feedback-ledger]]、`scripts/check_knowledge_linking.py`、`scripts/check_all.py`、[[log]]。
 
 ### 收敛迁移 meta-skill 为单一通用提示词生成器
 
