@@ -9,6 +9,22 @@
 
 ## 2026-06-04
 
+### 接入 Claude Code 共享规则入口
+
+- **记录人**：sunhao
+- **用户意图**：用户确认当前工程是否已经能适配 Claude，并要求直接处理，让 Claude Code 与 Codex 共享本工程 agent 规则。
+- **主题**：
+  1. 确认当前工程已有根 [[AGENTS]] 和 `.codex/AGENTS.md`，但缺少 `CLAUDE.md`，Claude Code 还不能自动通过 `@AGENTS.md` 加载共享主规则。
+  2. 按 [[concepts/agent-instruction-sharing]] 的最小稳态方案，将 `CLAUDE.md` 做成薄适配入口，只导入 [[AGENTS]]，不复制第二份规则正文。
+  3. 同步根入口和治理入口中的物理结构表述，明确 `CLAUDE.md` 是 Claude Code adapter，不是新的治理单一信息源。
+- **关键动作**：
+  1. 新增 `CLAUDE.md`，通过 `@AGENTS.md` 导入共享主规则，并只保留 Claude Code 专用补充区。
+  2. 更新 `.gitignore`，加入 `CLAUDE.local.md`，防止本机私有 Claude 记忆误提交。
+  3. 更新 [[README]]、[[INDEX]]、[[governance/README]] 和 [[AGENTS]]，把 Claude 适配壳与共享规则入口的边界写清楚。
+- **验证**：`python3 scripts/check_all.py --only harness-governance` 通过；`python3 scripts/check_all.py` 通过；`git diff --check` 通过。
+- **二阶反思**：跨工具 agent 共享不应复制多份规则正文；正确结构是共享 `AGENTS.md` 作为规则单一信息源，工具专用入口只做 import 和薄补充。
+- **影响页面**：`CLAUDE.md`、`.gitignore`、[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[log]]。
+
 ### 为迁移 meta-skill 增加产物级回归和分阶段思考循环
 
 - **记录人**：sunhao

@@ -12,7 +12,7 @@
 - 历史层：[[log]]、`archive/`
 - 证据层：`raw/`、`inbox/`、`assets/`
 
-治理层当前已经物理收口到 `governance/`，只有 [[AGENTS]] 保留在根目录。原因不是例外随意，而是它本身就是 agent 的根级特殊入口。
+治理层当前已经物理收口到 `governance/`，只有 [[AGENTS]] 保留在根目录作为共享 agent 规则入口。`CLAUDE.md` 可以作为 Claude Code 适配壳导入 [[AGENTS]]，但不承接第二份规则正文。
 
 ## 角色分工
 

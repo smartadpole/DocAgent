@@ -4,7 +4,7 @@ id: ENTRY-GOV-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-06-04
 tags: [entry, governance]
 ---
 
@@ -46,12 +46,12 @@ tags: [entry, governance]
 
 ## 物理结构
 
-治理层现在统一收在 `governance/`，只有 [[AGENTS]] 保留在根目录。
+治理层现在统一收在 `governance/`，只有 [[AGENTS]] 保留在根目录作为共享 agent 规则入口。`CLAUDE.md` 可以作为 Claude Code 适配壳导入 [[AGENTS]]，但不承接第二份规则正文。
 
 这样做有两个目的：
 
 - 把散落在根目录的规则、流程、背景和写法指南收成一层，避免继续平铺
-- 保留 [[AGENTS]] 作为根级特殊入口，保证 agent 打开仓库时能先读到硬约束
+- 保留 [[AGENTS]] 作为根级特殊入口，保证 agent 打开仓库时能先读到硬约束；Claude Code 通过 `CLAUDE.md` 导入它
 
 ## 读取顺序
 
