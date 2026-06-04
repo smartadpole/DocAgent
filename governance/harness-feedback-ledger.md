@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-04 | 跨工程迁移 meta-skill 过度模式化 | 用户指出“通用提示词、定制提示词、直接执行迁移、元技能维护这些都不要，只要一个通用提示词”，暴露前次修复把 meta-skill 变成多模式路由器，仍偏离了单一产物目标 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，把定位收敛为只生成通用迁移提示词，移除定制、直接执行和元技能维护模式；更新 `scripts/check_harness_governance.py`，改查唯一通用产物关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 新增知识关联依赖人工补链 | 用户追问新增知识是否自动和已有知识库形成网状关联，暴露当前流程只有语义规则和 Obsidian 图谱展示，没有可执行的新增知识关联自检门 | 规则升级 + Harness 反馈 | 可优化成本 | 新增 [[knowledge-linking-rules]]，更新 [[WORKFLOW]]、[[POLICY]]、入口页和概念 / 文章模板；新增 `scripts/check_knowledge_linking.py` 并接入 `scripts/check_all.py --only knowledge-linking`，检查 `concepts/`、`articles/` 的出链、非 log 入链和入口 / 知识页回链 | [[knowledge-linking-rules]] / `python3 scripts/check_all.py --only knowledge-linking` | promoted |
 | 2026-06-04 | Meta-skill 维护请求被降级成单次生成 | 用户明确指出“不是单次生成，是重启 goal，修改 meta skill”，说明前一轮虽然升级了比较门，但最终回复仍把注意力滑回通用成稿，没有把 meta-skill 维护作为主交付 | 技能升级 + Goal Contract + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增元技能维护模式、任务模式四选一、维护请求优先路由和禁止用单次提示词替代文件修改 / sensor / ledger / log / commit；扩展 `scripts/check_harness_governance.py` 检查元技能维护关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 跨工程迁移提示词缺少示例基准比较 | 用户要求设置目标并升级 meta-skill，直到依据它生成的复盘迁移提示词比用户给出的示例更优秀，暴露现有 meta-skill 没有把用户示例转成可验证 baseline rubric | 技能升级 + Goal Contract + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增 Baseline 对比评分和 `generated >= baseline` 输出前裁决；更新 `skills/historical-dialogue-retrospective/TRANSFER.md`，新增优于示例的判定标准；扩展 `scripts/check_harness_governance.py` 检查 baseline / 优于示例关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
@@ -56,9 +57,8 @@ tags: [agent, harness, feedback, episode]
 | 写入范围证明 / Scope Proof | 用户即时收窄写入范围后，finalizer 可能只证明 working tree clean 或 external residual 明示，无法证明本轮 diff 仍在允许范围内 | 后续可补 finalizer scope manifest 或 `--allowed-path` 检查：比较本轮 diff / latest commit 文件与用户最新写入白名单 | observed |
 | 跨工程迁移提示词覆盖度检查 | 复合能力迁移提示词可能压缩掉源资料中的方法、档案、模板、skill、行动分流、治理自演进或验证要求 | 后续可补技能迁移 manifest 字段检查，确认 `TRANSFER.md` 和 meta-skill 输出结构都含覆盖矩阵 / 最小模块清单 | observed |
 | 跨工程迁移提示词任务书形态检查 | 复合能力迁移提示词可能覆盖了资料路径和边界，但最终文本仍不像目标工程 agent 可执行的任务书 | 当前由 `check_harness_governance.py` 检查 cross-project meta-skill 和 retrospective transfer 中的任务书优先、对照样稿、推荐提示词骨架和最终交付要求 | active |
-| 跨工程迁移提示词通用模式检查 | 通用迁移提示词可能被历史上下文中的目标工程名污染，混入具体工程小节、具体路径读取清单或仓库级落位建议 | 当前由 `check_harness_governance.py` 检查 meta-skill 的四选一任务裁决、通用版锁定、Golden Baseline 补丁原则和 retrospective transfer 的通用版生成规则 | active |
+| 跨工程迁移提示词通用产物检查 | 通用迁移提示词可能被历史上下文中的目标工程名污染，混入具体工程小节、具体路径读取清单或仓库级落位建议，或被扩成定制 / 执行 / 元技能维护多模式 | 当前由 `check_harness_governance.py` 检查 meta-skill 的唯一通用产物、Golden Baseline 补丁原则和 retrospective transfer 的通用版生成规则 | active |
 | 跨工程迁移提示词示例基准检查 | 用户提供强示例后，生成稿可能没有先完整覆盖示例就开始重写，导致越改越弱 | 当前由 `check_harness_governance.py` 检查 meta-skill 的 Baseline 对比评分、`generated >= baseline` 裁决和 retrospective transfer 的优于示例判定标准 | active |
-| Meta-skill 维护模式检查 | 用户要求修 meta-skill 时，agent 可能继续输出单次提示词而不是修改技能、sensor、ledger、log 并提交 | 当前由 `check_harness_governance.py` 检查 meta-skill 的元技能维护模式、四选一任务裁决和禁止用单次提示词替代维护闭环 | active |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 
 ## Rule Promotion Queue

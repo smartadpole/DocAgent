@@ -26,6 +26,21 @@
 - **二阶反思**：这轮暴露的是“图谱可视化自动”和“知识关联生成自动”之间的边界。未来新增知识不能只靠 agent 口头说已关联，也不能只靠 `[[log]]` 被发现；必须有可检查的入口、上位概念和邻接回链。
 - **影响页面**：[[knowledge-linking-rules]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[README]]、[[concepts/README]]、[[articles/README]]、[[templates/concept-template]]、[[templates/article-template]]、[[harness-feedback-ledger]]、`scripts/check_knowledge_linking.py`、`scripts/check_all.py`、[[log]]。
 
+### 收敛迁移 meta-skill 为单一通用提示词生成器
+
+- **记录人**：sunhao
+- **用户意图**：用户指出不需要“通用提示词、定制提示词、直接执行迁移、元技能维护”等多模式分类，只要 meta-skill 生成一个通用提示词。
+- **主题**：
+  1. 明确前次修复过度模式化：为了避免误路由，反而把跨工程迁移 meta-skill 做成了多模式路由器，偏离了用户想要的单一产物。
+  2. 将 meta-skill 职责收敛为只生成通用迁移提示词：不预读目标工程、不输出具体工程小节、不做定制落位、不执行迁移。
+  3. 保留 baseline 对比、Golden Baseline、任务书粒度和结构自检规则，但把它们全部服务于唯一通用提示词产物。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，删除定制、直接执行和元技能维护模式表述，改为“只有一个产物：通用迁移提示词”。
+  2. 更新 [[harness-feedback-ledger]]，新增“跨工程迁移 meta-skill 过度模式化” episode，并把 active sensor 从四选一模式检查改成唯一通用产物检查。
+  3. 更新 `scripts/check_harness_governance.py`，检查 `通用迁移提示词` 和 `只有一个产物`，不再要求四选一和元技能维护模式。
+- **二阶反思**：修路由问题不一定要增加路由分支；当用户要的是一个稳定产物时，最好的治理是减少模式数量，让所有防线服务同一个输出。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 修正 meta-skill 维护请求的路由失守
 
 - **记录人**：sunhao
