@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-SKILL-TRANSFER-MANIFEST
 status: active
-updated: 2026-06-03
+updated: 2026-06-04
 tags: [template, skill, transfer, adoption]
 ---
 
@@ -73,6 +73,16 @@ tags: [template, skill, transfer, adoption]
 - sensor / 检查：
 - README / INDEX / AGENTS：
 
+## 主题专属任务书基线
+
+- 开头命令：
+- 目标定义：
+- 参考资料分组：
+- 目标工程结构自检重点：
+- 必须建立或更新的主题模块：
+- 容易误用的相近目录 / 单一信息源：
+- 最终交付要求：
+
 ## 行动分流
 
 - 
@@ -81,6 +91,7 @@ tags: [template, skill, transfer, adoption]
 
 - 通用提示词是否不预读目标工程：
 - 目标工程 agent 必须自检的入口：
+- 本主题专属模块是否逐项覆盖：
 - 
 
 ## 验证要求

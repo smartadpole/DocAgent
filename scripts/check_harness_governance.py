@@ -298,6 +298,9 @@ HISTORICAL_RETROSPECTIVE_SKILL_REQUIRED_TERMS = (
 
 SKILL_TRANSFER_PROMPT_REQUIRED_TERMS = (
     "源能力覆盖矩阵",
+    "所有已沉淀 skill / 能力主题",
+    "任意技能主题",
+    "主题专属模块",
     "可执行任务书",
     "任务书优先",
     "对照样稿质量门",

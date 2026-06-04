@@ -9,6 +9,22 @@
 
 ## 2026-06-04
 
+### 修正迁移 meta-skill 的全主题适用边界
+
+- **记录人**：sunhao
+- **用户意图**：用户纠正跨工程技能迁移 meta-skill 不是只针对某一个主题，而是要服务所有已沉淀 skill / 能力主题，不能被复盘样例绑定。
+- **主题**：
+  1. 明确复盘只是首个高价值样板，不是 meta-skill 的通用字段来源；Issue 分析、验收、代码基线审计等技能迁移应使用各自 `TRANSFER.md` 的主题模块。
+  2. 将 Baseline 对比评分改成“任意技能主题通用字段 + 当前源 skill / `TRANSFER.md` 的主题专属模块”，避免把复盘档案入口、复盘维度等字段套到所有技能上。
+  3. 为以后新增技能迁移 manifest 补出“主题专属任务书基线”，让每个技能自己声明可执行任务书主干。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，加入“所有已沉淀 skill / 能力主题”边界，并泛化 baseline rubric、有效增益和污染防线。
+  2. 更新 [[templates/skill-transfer-manifest-template]]，新增主题专属任务书基线字段，承接开头命令、目标定义、结构自检重点、主题模块和最终交付。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，把“复盘样例绑定 meta-skill”记录为 episode，并用 sensor 检查全主题适用和主题专属模块。
+- **验证**：`python3 scripts/check_all.py --only harness-governance` 通过；完整 `python3 scripts/check_all.py` 通过。
+- **二阶反思**：样板可以帮助校准任务书质量，但不能上升为所有主题的字段模型。以后 meta-skill 从某个强样例吸收优点时，必须先抽象通用任务书结构，再把主题字段留在对应 `TRANSFER.md`。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[templates/skill-transfer-manifest-template]]、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 固化迁移提示词任务书基线的收尾细节
 
 - **记录人**：sunhao
