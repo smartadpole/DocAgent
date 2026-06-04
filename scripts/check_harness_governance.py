@@ -218,10 +218,12 @@ H5_LEDGER_REQUIRED_TERMS = (
 )
 
 SHARED_AGENT_ENTRY_REQUIRED_TERMS = (
-    "项目级 agent 规则只维护根目录 `AGENTS.md` 一份",
+    "项目级 agent 规则正文只维护根目录 `AGENTS.md` 一份",
     "CLAUDE.md",
     ".codex/AGENTS.md",
-    "不放项目级规则副本",
+    "thin Codex adapter",
+    "不承接第二份规则正文",
+    "@../AGENTS.md",
     "response-mode-routing",
     "instruction-adherence",
     "execution-contract-semantics",

@@ -9,6 +9,21 @@
 
 ## 2026-06-04
 
+### Agent 指令共享的 Codex thin adapter 口径校准
+
+- **记录人**：sunhao
+- **用户意图**：用户追问 DocCustomeranalysis 中“`.codex/AGENTS.md` 也仿照 `CLAUDE.md` 导入根 `AGENTS.md`”的新设计是否已经沉淀到本库 `concepts/agent-instruction-sharing.md` 及相关文档中。
+- **主题**：
+  1. 确认 [[concepts/agent-instruction-sharing]]、[[AGENTS]]、[[README]]、[[INDEX]]、[[governance/README]]、[[governance/platform-standards]]、[[projects/decisions]]、[[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py` 仍残留“删除 / 不维护 `.codex/AGENTS.md`”的旧口径。
+  2. 将概念页更新为“根 `AGENTS.md` 是唯一规则正文；`CLAUDE.md` 和可选 `.codex/AGENTS.md` 是工具入口壳；`.codex/AGENTS.md` 如存在必须通过 `@../AGENTS.md` 指回根规则，不能复制共享治理正文”。
+  3. 同步入口页、治理页、平台标准、决策记录、Harness ledger 和检查脚本，改为允许 thin Codex adapter、禁止重复规则正文。
+- **关键动作**：
+  1. 更新 [[concepts/agent-instruction-sharing]] 的推荐结构、Codex 适配入口处理、最小实现、判断规则和常见误区。
+  2. 更新 [[AGENTS]]、[[README]]、[[INDEX]]、[[concepts/README]] 和 [[governance/README]]，把“唯一入口”改为“唯一规则正文 + 工具薄入口”。
+  3. 更新 [[governance/platform-standards]]、[[projects/decisions]]、[[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，使 sensor 检查词覆盖 `thin Codex adapter` 和 `@../AGENTS.md`。
+- **结论**：Agent 指令共享知识已从“删除 `.codex/AGENTS.md`”校准为“规则正文唯一 + 工具入口薄适配”。后续跨工程采纳时，应先把 `.codex/AGENTS.md` 的有效规则并入根 [[AGENTS]]，再按项目需要删除旧文件或改成 `@../AGENTS.md` thin adapter。
+- **影响页面**：[[concepts/agent-instruction-sharing]]、[[AGENTS]]、[[README]]、[[INDEX]]、[[concepts/README]]、[[governance/README]]、[[governance/platform-standards]]、[[projects/decisions]]、[[harness-feedback-ledger]]、`scripts/check_harness_governance.py`、[[log]]。
+
 ### 统一项目级 Agent 规则入口
 
 - **记录人**：sunhao

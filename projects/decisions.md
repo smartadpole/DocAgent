@@ -35,23 +35,23 @@ tags: [decision]
 7. [[projects/decisions#2026-04-10 功能点改用 status + phase 双轴|功能点改用 status + phase 双轴]]：生命周期和推进阶段分开。影响：不再用单个 `in_progress` 表达所有状态。
 8. [[projects/decisions#2026-04-10 项目、开发、功能点三层职责分工|项目、开发、功能点三层职责分工]]：项目负责人、研发经理和工程师视角分层。影响：方向、协调和执行正文不再混写。
 9. [[projects/decisions#2026-04-09 分层 memory 落点|分层 memory 落点]]：共享背景、规则、项目记忆和决策分层。影响：稳定内容按作用域进入对应入口。
-10. [[projects/decisions#2026-06-04 项目级 Agent 规则只保留根 AGENTS.md|项目级 Agent 规则只保留根 AGENTS.md]]：Codex 和 Claude Code 共用根 `AGENTS.md`，工具专用文件只做薄适配或 subagent 外壳。影响：不再维护 `.codex/AGENTS.md` 项目级规则副本。
+10. [[projects/decisions#2026-06-04 项目级 Agent 规则正文只保留根 AGENTS.md|项目级 Agent 规则正文只保留根 AGENTS.md]]：Codex 和 Claude Code 共用根 `AGENTS.md` 作为唯一规则正文，工具专用文件只做薄适配或 subagent 外壳。影响：`.codex/AGENTS.md` 如存在只能是 thin adapter，不维护项目级规则副本。
 
 ## 正式决策记录
 
-### 2026-06-04 项目级 Agent 规则只保留根 AGENTS.md
+### 2026-06-04 项目级 Agent 规则正文只保留根 AGENTS.md
 
 - **背景**：本库已经新增 `CLAUDE.md` 让 Claude Code 通过 `@AGENTS.md` 导入共享规则，但仍保留 `.codex/AGENTS.md` 作为 Codex 本地适配入口。用户指出这会在其他工程中诱发根 `AGENTS.md` 和 `.codex/AGENTS.md` 重复，违背“入口只有一个”的目标。
-- **要决策什么**：是否继续保留 `.codex/AGENTS.md` 作为 Codex 适配入口，还是把其有效规则并回根 `AGENTS.md`，让项目级 agent 规则只有一份。
+- **要决策什么**：是否继续保留 `.codex/AGENTS.md` 作为 Codex 适配入口，还是把其有效规则并回根 `AGENTS.md`，让项目级 agent 规则正文只有一份。
 - **可选项**：
   - 保留根 `AGENTS.md`、`CLAUDE.md` 和 `.codex/AGENTS.md` 三个入口，各自写少量说明。
   - 根 `AGENTS.md` 承接共享规则，`CLAUDE.md` 和 `.codex/AGENTS.md` 都做薄适配。
-  - 根 `AGENTS.md` 作为唯一项目级规则入口；`CLAUDE.md` 只导入，`.codex/` 不放项目级规则副本。
-- **最终决策**：采用第三项。删除 `.codex/AGENTS.md`，把其有效内容并入根 [[AGENTS]] 的“工具入口统一”段；`CLAUDE.md` 保留为 Claude Code 导入壳；`.codex/` 只用于 Codex 专用配置或自定义 subagent 外壳。
+  - 根 `AGENTS.md` 作为唯一项目级规则正文；`CLAUDE.md` 只导入，`.codex/AGENTS.md` 如保留也只做 thin adapter。
+- **最终决策**：采用“规则正文唯一 + 工具入口薄适配”。把 `.codex/AGENTS.md` 的有效规则并入根 [[AGENTS]] 的“工具入口统一”段；`CLAUDE.md` 保留为 Claude Code 导入壳；`.codex/AGENTS.md` 如存在，只能通过 `@../AGENTS.md` 指回根规则并追加极少量 Codex Only 外壳说明；`.codex/agents/` 只用于 Codex 自定义 subagent 外壳。
 - **影响**：
-  - 后续工程如果同时存在根 `AGENTS.md` 和 `.codex/AGENTS.md`，默认把 `.codex/AGENTS.md` 合并回根 `AGENTS.md` 并删除。
+  - 后续工程如果同时存在根 `AGENTS.md` 和 `.codex/AGENTS.md`，默认把 `.codex/AGENTS.md` 的有效规则合并回根 `AGENTS.md`；随后删除它，或改成 `@../AGENTS.md` thin adapter。
   - 治理审计、Issue 分析和平台级标准都以根 `AGENTS.md` 作为项目规则单一信息源。
-  - `scripts/check_harness_governance.py` 不再要求 `.codex/AGENTS.md` 存在，反而检查该文件不能作为重复规则入口出现。
+  - `scripts/check_harness_governance.py` 不要求 `.codex/AGENTS.md` 存在；如果存在，应检查它是 thin adapter，而不是重复规则正文。
 - **各自优劣**：
   - 保留三个入口兼容性强，但最容易漂移。
   - 双薄适配看似对称，但 `.codex/AGENTS.md` 仍会被误当成规则正文。

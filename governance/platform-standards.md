@@ -39,7 +39,7 @@ tags: [governance, standards, cross-project, maturity]
 | 有基础角色边界 | ✓ | ✓ | ✓ | ✓ |
 | 有明确读取顺序 | | ✓ | ✓ | ✓ |
 | 有跨工程写入边界规则 | | ✓ | ✓ | ✓ |
-| 项目级规则入口唯一，不维护 `.codex/AGENTS.md` 副本 | | ✓ | ✓ | ✓ |
+| 项目级规则正文唯一；`.codex/AGENTS.md` 如存在只能是 thin adapter，不维护规则副本 | | ✓ | ✓ | ✓ |
 | 写入边界有 sensor 强化（非纯自然语言） | | | ✓ | ✓ |
 | 有 scope proof 要求（finalizer 级别） | | | ✓ | ✓ |
 | 规则有闭环机制（deprecated/pruned） | | | | ✓ |

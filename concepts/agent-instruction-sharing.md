@@ -10,9 +10,9 @@ tags: [ai-agent, codex, claude-code, agent-governance]
 
 相关：[[concepts/agent-governance]]、[[concepts/harness-engineering]]、[[AGENTS]]
 
-Agent 指令共享指的是让多个 coding agent 使用同一份项目规则、工作方式、代码规范和上下文说明，避免在 `AGENTS.md`、`CLAUDE.md`、其他工具配置之间复制多份内容后逐渐漂移。
+Agent 指令共享指的是让多个 coding agent 使用同一份项目规则、工作方式、代码规范和上下文说明，避免在 `AGENTS.md`、`CLAUDE.md`、`.codex/AGENTS.md` 或其他工具配置之间复制多份内容后逐渐漂移。
 
-截至 2026-06-04，最稳的 Claude Code + Codex 最小方案是：**把 `AGENTS.md` 作为共享主文件，Codex 直接读取它，Claude Code 通过 `CLAUDE.md` 导入它。**
+截至 2026-06-04，最稳的 Claude Code + Codex 最小方案是：**把根 `AGENTS.md` 作为唯一共享规则正文，Claude Code 通过 `CLAUDE.md` 导入它；Codex 直接读取根 `AGENTS.md`，如果工程需要保留 `.codex/AGENTS.md`，也只把它做成导入根规则的 thin adapter。**
 
 ## 推荐结构
 
@@ -21,35 +21,49 @@ your-project/
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── .codex/
+│   ├── AGENTS.md     # 可选：只导入 ../AGENTS.md，不写第二份规则正文
 │   └── agents/
 └── .claude/
     └── agents/
 ```
 
-- `AGENTS.md`：共享主规则，承接项目定位、工作方式、代码风格、验证要求和安全边界。
+- `AGENTS.md`：共享主规则正文，承接项目定位、工作方式、代码风格、验证要求和安全边界。
 - `CLAUDE.md`：Claude Code 入口，只导入共享规则，并追加 Claude 专用补充。
+- `.codex/AGENTS.md`：Codex 兼容入口，可选；如果存在，只导入 `../AGENTS.md` 并追加极少量 Codex Only 外壳说明，不承接独立规则。
 - `.codex/agents/`：Codex 项目级自定义 agent，可选。
 - `.claude/agents/`：Claude 项目级 subagent，可选。
 
-项目级共享规则只保留根 `AGENTS.md`。不要再新增或维护 `.codex/AGENTS.md` 作为第二份规则入口；`.codex/` 只承接 Codex 专用配置或自定义 agent 外壳。
+项目级共享规则正文只保留根 `AGENTS.md`。`.codex/AGENTS.md` 可以被治理和保留，但只能是 thin adapter；不能复制根规则，也不能成为第二份项目级规则正文。
 
-## Codex 旧适配入口合并
+## Codex 适配入口处理
 
-有些工程会同时出现根目录 `AGENTS.md` 和 `.codex/AGENTS.md`。这种结构看起来像“根规则 + Codex 专用入口”，但长期会造成三类问题：
+有些工程会同时出现根目录 `AGENTS.md` 和 `.codex/AGENTS.md`。这不一定冲突，关键看 `.codex/AGENTS.md` 的角色：
 
-- 规则漂移：两份文件都写项目规则时，后续维护者不知道哪一份是准。
-- 入口成本：agent 启动后要在两个项目级规则入口之间判断优先级。
-- 误分层：`.codex/` 应保留给 Codex 配置或 `.codex/agents/*.toml` 自定义 subagent，不应承担第二份项目规则正文。
+- 如果 `.codex/AGENTS.md` 复制了项目规则、响应路由、验证、写入边界或工作流正文，它就是重复规则源，必须收口。
+- 如果 `.codex/AGENTS.md` 只通过 `@../AGENTS.md` 导入根规则，并保留极少量 Codex Only 外壳说明，它只是兼容入口，可以和根 `AGENTS.md` 同时治理。
 
 默认迁移方式：
 
 1. 读取根 `AGENTS.md` 和 `.codex/AGENTS.md`，只识别后者里仍有效、且根文件尚未覆盖的规则。
 2. 把有效规则抽象后并入根 `AGENTS.md` 或对应 owning governance / skill / template 页面；根 `AGENTS.md` 只保留短入口和硬边界。
-3. 删除 `.codex/AGENTS.md`。
-4. 如果 `.codex/` 里需要保留内容，只保留 `.codex/config.toml`、`.codex/agents/*.toml` 等 Codex 专用配置或 subagent 外壳，不复制项目级规则正文。
+3. 如果不需要 Codex 兼容入口，可以删除 `.codex/AGENTS.md`。
+4. 如果需要保留 Codex 兼容入口，把 `.codex/AGENTS.md` 改成 thin adapter：
+
+```markdown
+@../AGENTS.md
+
+# Codex Only
+
+This file is the thin Codex adapter for this repository.
+
+- Treat `../AGENTS.md` as the single source of truth for shared project rules.
+- Do not copy shared governance rules, response routing, validation rules, write boundaries, Goal Contract rules, or finalizer rules here.
+- Keep Codex custom agent wrappers under `.codex/agents/*.toml`.
+```
+
 5. 跑项目自己的治理检查；在本库中对应 `python3 scripts/check_all.py --only harness-governance`。
 
-判断口诀：**根 `AGENTS.md` 是项目规则单一入口；`.codex/agents/` 是 Codex 子 agent 定义目录；两者不要互相替代。**
+判断口诀：**根 `AGENTS.md` 是规则正文；`CLAUDE.md` 和 `.codex/AGENTS.md` 是工具入口壳；`.codex/agents/` 是 Codex 子 agent 定义目录。**
 
 ## 最小实现
 
@@ -99,6 +113,23 @@ EOF
 ```
 
 这样以后优先维护 `AGENTS.md`。Claude 专用偏好只追加在 `CLAUDE.md` 的 import 后面，不复制共享正文。
+
+如果工程需要兼容 `.codex/AGENTS.md`，再创建 Codex thin adapter：
+
+```bash
+mkdir -p .codex
+cat > .codex/AGENTS.md <<'EOF'
+@../AGENTS.md
+
+# Codex Only
+
+This file is the thin Codex adapter for this repository.
+
+- Treat `../AGENTS.md` as the single source of truth for shared project rules.
+- Do not copy shared governance rules, response routing, validation rules, write boundaries, Goal Contract rules, or finalizer rules here.
+- Keep Codex custom agent wrappers under `.codex/agents/*.toml`.
+EOF
+```
 
 ## 官方事实
 
@@ -171,16 +202,17 @@ your-project/
 
 - 只要是团队共同规则，优先进入项目根 `AGENTS.md`。
 - 只要是 Claude Code 专用习惯，放在 `CLAUDE.md` 的 `@AGENTS.md` 之后。
+- 只要是 Codex 项目兼容入口，`.codex/AGENTS.md` 只能 `@../AGENTS.md` 并写极少量 Codex Only 外壳说明。
 - 只要是个人偏好，优先放用户级文件，例如 `~/.codex/AGENTS.md` 或 `~/.claude/CLAUDE.md`。
 - 只要是子 agent 角色定义，不要混进主规则文件；维护共享 prompt 原文，再生成各工具专用格式。
-- 只要发现项目内同时维护根 `AGENTS.md` 和 `.codex/AGENTS.md`，优先合并回根 `AGENTS.md`，删除 `.codex/AGENTS.md`，保持项目级入口唯一。
+- 只要发现项目内同时维护根 `AGENTS.md` 和 `.codex/AGENTS.md` 两份规则正文，优先合并回根 `AGENTS.md`；然后按项目需要删除 `.codex/AGENTS.md`，或把它改成 thin adapter。
 
 ## 常见误区
 
 - 把 `AGENTS.md` 和 `CLAUDE.md` 维护成两份复制文本，最后两边漂移。
 - 把 Claude 专用计划模式、工具权限或模型选择规则写进共享主文件，影响 Codex。
 - 把自定义子 agent 的工具格式当成通用项目规则。
-- 把 `.codex/AGENTS.md` 当作 Codex 项目规则副本长期维护；Codex 项目规则应回到根 `AGENTS.md`，`.codex/agents/` 只放自定义 subagent。
+- 把 `.codex/AGENTS.md` 当作 Codex 项目规则副本长期维护；Codex 项目规则正文应回到根 `AGENTS.md`，`.codex/AGENTS.md` 最多只是 thin adapter，`.codex/agents/` 只放自定义 subagent。
 - 把全局个人偏好写进团队项目规则，导致其他人继承不该继承的本机习惯。
 - `AGENTS.md` 无限膨胀；共享主文件应该是短入口，细节优先链接到项目文档、技能或模板。
 

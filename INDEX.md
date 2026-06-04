@@ -87,7 +87,7 @@ tags: [index, root]
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，回看 agent 的目标理解、读取预算、工具使用、验证质量、沟通节奏和沉淀路由。
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]：新增知识关联机制调研，说明为什么语义关联不能只依赖自动图谱展示，并把本库方案收口为规则、技能、模板和 sensor 四层。
-- [[concepts/agent-instruction-sharing]]：Claude Code 和 Codex 共享 agent 项目规则的方法，推荐 `AGENTS.md` 作为唯一主文件、`CLAUDE.md` 只负责导入和追加 Claude 专用补充。
+- [[concepts/agent-instruction-sharing]]：Claude Code 和 Codex 共享 agent 项目规则的方法，推荐根 `AGENTS.md` 作为唯一规则正文，`CLAUDE.md` 和可选 `.codex/AGENTS.md` 只做薄导入入口。
 - [[agent-governance-strategy]]：Agent 治理策略整改入口，收口入口瘦身、log eligibility、产物化资格、检查预算和规则升级预算。
 - [[articles/2026-05-29-finalizer-write-scope-case]]：Finalizer 写入范围失守案例，分析用户收窄写入范围后，finalizer 只证明 clean 而不证明 scope 的 Harness 缺口。
 - [[articles/2026-05-30-agent-governance-reflection-doccustomer]]：Agent 治理整体反思，以 DocCustomer 为例，归纳规则膨胀、角色边界、分流过重、状态冗余等八类结构性问题和改进方向。
@@ -164,7 +164,7 @@ tags: [index, root]
 
 ## 物理结构
 
-- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]；`CLAUDE.md` 只作为 Claude Code 适配入口导入 [[AGENTS]]，不维护 `.codex/AGENTS.md` 规则副本
+- 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]；`CLAUDE.md` 只作为 Claude Code 适配入口导入 [[AGENTS]]；`.codex/AGENTS.md` 如存在只能作为 thin Codex adapter 指回根 [[AGENTS]]，不维护规则副本
 - `governance/` 收治理页和规则页
 - `skills/` 收项目内可复用 agent 技能
 - `projects/` 收运行层
