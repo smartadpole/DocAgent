@@ -394,6 +394,7 @@ flowchart TD
 
 后续可继续演进的方向：
 
+- 在“源、索引、关系、界面、归档”五层之外，为复杂系统补一层 [[concepts/problem-focused-information-presentation|问题聚焦式信息呈现]]：每次先判断读者当前关注的是状态、计划、决策、故障、验收、知识还是资源，再生成对应 lens。
 - 给重要专题维护 `llms.txt` 风格的专题入口，让 agent 快速读取高信号材料。
 - 对长篇调研建立派生索引，但保留 Markdown 章节为引用单位。
 - 当调研结果进入评审或教学场景时，生成 HTML report / dashboard，而不是手工做 PPT。
@@ -411,6 +412,7 @@ flowchart TD
 ## 相关概念
 
 - [[concepts/ai-era-information-presentation]]
+- [[concepts/problem-focused-information-presentation]]
 - [[concepts/document-os]]
 - [[concepts/harness-engineering]]
 - [[knowledge-linking-rules]]

@@ -19,6 +19,7 @@
 ## 方法入口
 
 - [[concepts/ai-era-information-presentation]]：AI 时代信息记录、处理与呈现方式，区分 Markdown 真相源、向量检索索引、超链接关系网、语义 / 动态 HTML 和 PPT / PDF / WARC / MHTML 归档格式。
+- [[concepts/problem-focused-information-presentation]]：问题聚焦式信息呈现，按用户当前关注的问题为状态、计划、决策、故障、验收、知识、资源等信息类型选择合适的阅读 lens。
 - [[concepts/prd-writing]]：PRD 写作方法
 - [[concepts/project-retrospective]]：项目复盘专题，承接跨项目可复用的复盘框架；具体复盘档案看 [[projects/retrospectives/README]]
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题

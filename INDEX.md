@@ -60,6 +60,7 @@ tags: [index, root]
 - [[articles/2026-04-09-obsidian-doc-system-design]]：Obsidian 文档系统整体设计研究
 - [[concepts/document-os]]：文档操作系统概念定义
 - [[concepts/ai-era-information-presentation]]：AI 时代信息记录、处理与呈现方式，区分 Markdown 真相源、向量检索索引、超链接关系网、语义 / 动态 HTML 和 PPT / PDF / WARC / MHTML 归档格式
+- [[concepts/problem-focused-information-presentation]]：问题聚焦式信息呈现，按当前关注问题为所有信息类型选择合适 lens，而不是固定维护一次性总览。
 - [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息记录、处理与呈现方式调研，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现和 HTML 记录边界
 - [[articles/2026-04-09-layered-memory-research]]：分层 memory 研究
 - [[concepts/layered-memory]]：分层 memory 概念定义

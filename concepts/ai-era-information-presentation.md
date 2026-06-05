@@ -33,6 +33,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 - Markdown 更适合作为长期轻量真相源；HTML 要区分记录型和呈现型。
 - 向量库是派生索引，不是知识主库。
 - 超链接和入口页是语义结构的一部分，不能完全交给 embedding 代替。
+- 面向复杂系统的呈现不应只做固定总览；应按读者当前关注的问题生成 [[concepts/problem-focused-information-presentation|问题聚焦式信息呈现]] lens，并回链到源、证据和关系层。
 - 语义静态 HTML 可以成为记录格式；动态 HTML / SPA / dashboard 默认只是运行时呈现界面，除非补齐源、数据快照、构建方式和归档。
 - PPT / PDF 适合作为正式分发和归档格式，但不应反向定义调研、分析和 agent 协作的主链。
 - 面向 agent 的信息应保留可执行命令、路径、API、预期输出和权限边界。
@@ -69,6 +70,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 - [[knowledge-linking-rules]] 负责让 Markdown 知识源形成关系网。
 - [[skills/knowledge-linking/SKILL]] 负责调研、沉淀、补链和验证。
 - [[articles/2026-06-05-ai-era-information-presentation-research]] 记录本专题调研结论。
+- [[concepts/problem-focused-information-presentation]] 承接本专题在“每次关注某个具体问题时怎样选择展示 lens”的方案化延伸。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]] 是邻接研究，说明为什么语义关联不能只依赖自动图谱或最终回复。
 
 ## 常见误区
@@ -82,6 +84,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 ## 相关页面
 
 - [[articles/2026-06-05-ai-era-information-presentation-research]]
+- [[concepts/problem-focused-information-presentation]]
 - [[concepts/document-os]]
 - [[concepts/harness-engineering]]
 - [[knowledge-linking-rules]]
