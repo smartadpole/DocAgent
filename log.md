@@ -9,6 +9,22 @@
 
 ## 2026-06-05
 
+### 升级图文 lens 的 PDF 导出和打印版式能力
+
+- **记录人**：sunhao
+- **用户意图**：用户要求继续升级问题聚焦式图文呈现技能，使其支持导出；如果采用 HTML 样式，应支持导出 PDF，并且在设计阶段就适配 A4、A3 等页面大小，横排竖排不限制，便于下载和打印。
+- **主题**：
+  1. 将“导出 / 打印”从事后附加能力提升为图文 lens 的设计期能力。
+  2. 明确 HTML current lens、PDF export 和 snapshot 的分工：HTML 负责交互和当前视图，PDF 负责下载、打印、线下批注和分发，关键节点 PDF 才作为 snapshot 固化。
+  3. 补齐 `export_profile` 和 `print_profile`：页面尺寸、横竖版、边距、分页、页眉页脚、图表裁切、重复表头、来源和证据边界。
+  4. 强化迁移边界：目标工程迁移该技能时也要迁走 PDF / print view 能力，不能只迁走 lens 结构。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，把 PDF 导出、A4 / A3、横竖版、分页策略、print CSS 和 PDF 检查加入触发描述、关注合同、输出模板、持久化判断和自检。
+  2. 更新 [[concepts/problem-focused-information-presentation]]，把导出 / 打印加入最终呈现层级，并补充 `export_profile`、`print_profile` 和常见误区。
+  3. 更新 `skills/problem-focused-visual-presentation/TRANSFER.md`，要求跨工程迁移时同步吸收 HTML print view、PDF export、页面规格和打印验证。
+- **结论**：问题聚焦式图文呈现不应只停在“好看的 HTML 页面”。当用户可能下载、打印或线下流转时，agent 必须在设计阶段考虑 PDF 导出和页面版式；A4、A3、横排、竖排、边距、分页和图表裁切都是 lens 设计的一部分。PDF 是从 HTML / 图文 lens 派生的打印和分发产物，不替代 Markdown 真相源。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、[[concepts/problem-focused-information-presentation]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[log]]。
+
 ### 校准信息呈现趋势为页面化 lens
 
 - **记录人**：sunhao

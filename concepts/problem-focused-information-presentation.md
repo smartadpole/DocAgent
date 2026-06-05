@@ -52,11 +52,14 @@ tags: [information-architecture, presentation, knowledge-base, lens, context]
 | 真相源 / 生成输入 | Markdown、frontmatter、wikilink、报告、log、raw、数据快照 | 保存事实、关系、版本、证据和审计路径 |
 | 处理 / 组装 | 搜索、索引、RAG、agent 摘要、规则化 lens 模板 | 从真相源中抽取当前问题需要的上下文 |
 | 最终呈现 / 阅读界面 | HTML report、HTML card、Notebook、Artifact、dashboard、Obsidian webview、图表、脑图、框图 | 让人低成本比较、筛选、钻取、判断和行动 |
+| 导出 / 打印 | PDF、print view、A4 / A3 版式、图片或 slide | 让视图可下载、可打印、可线下批注和分发 |
 | 归档 / 分发 | 静态 HTML package、PDF、MHTML、WARC | 固化某次视图、筛选条件、数据快照和证据包 |
 
 因此，Markdown 不应被当作复杂信息的最终阅读体验。它更适合作为可维护、可 diff、可链接、agent 友好的真相源；HTML 更适合作为面向人的呈现层，尤其当信息需要折叠、过滤、排序、状态色、关系图、时间线、证据 drill-down 或多视角切换时。
 
 最小可行形态可以先用 Markdown 描述 lens 结构；但一旦信息复杂到影响阅读判断，就应生成图文 lens。HTML 如果能承载表格、脑图、框图、流程图、关系图、时间线、状态卡和证据 drill-down，就优先使用 HTML；如果 HTML 排版或交互表达不足，应补充 SVG、Canvas、Mermaid、ECharts / D3、Excalidraw 导出图、PDF / slide、独立图片或 HTML + assets 组合包。呈现层不能脱离源：页面必须暴露来源、更新时间、筛选条件、证据边界和回链，避免变成第二份不可审计的真相源。
+
+如果用户需要下载、打印、线下流转或批注，lens 在设计阶段就要考虑导出，而不是最后临时截图。HTML lens 应优先具备 print view，并能按 A4、A3 或自定义尺寸导出 PDF；横排和竖排不做固定限制，由内容决定。A4 更适合报告、验收、单文档 lens 和证据包；A3 更适合架构图、主题地图、关系图、长时间线和大矩阵。PDF 是呈现层派生产物；只有当它固化验收、决策、发布、事故或复盘节点时，才作为 snapshot 归档。
 
 ## 图文混排能力
 
@@ -154,6 +157,8 @@ HTML / 图文 lens 内部必须带最小 provenance：
 | snapshot_policy | 什么时候必须另存不可变快照 |
 | staleness_policy | 哪些源变化会让当前视图过期 |
 | refresh_trigger | 用户追问、源页面更新、报告新增、服务状态变化等刷新触发条件 |
+| export_profile | 是否支持 PDF / print view / slide / image，页面尺寸、横竖版、边距和分页策略 |
+| print_profile | `@page`、`@media print`、页眉页脚、重复表头、图表裁切和打印可读性要求 |
 
 ## 同一问题再次被问起
 
@@ -248,6 +253,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 | 决策比较 | decision matrix | 需要显式呈现候选、取舍维度、已确认和待确认 |
 | 项目 / 知识库长期维护 | canonical current lens + snapshot 归档 | 高频问题要刷新当前视图，关键节点要固化证据 |
 | 数据量大、需要筛选钻取 | HTML report / Notebook / dashboard / data app | 需要交互筛选、图表组合和复现 |
+| 需要下载、打印或线下流转 | HTML print view + PDF export | 需要 A4 / A3、横竖版、分页、页眉页脚和证据边界 |
 | 只是说明文档或稳定规则源 | Markdown | 真相源、版本管理、diff 和 agent 可读性优先 |
 
 ## 信息类型视角
@@ -284,6 +290,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 
 - 先定关注问题，再选展示结构。
 - 先判这是短答、说明源文档、页面化 lens、交互报告还是归档快照；不要把“HTML 呈现”当成唯一答案。
+- 如果用户可能下载、打印或分发，设计阶段就要声明导出形态、页面尺寸、横竖版、分页和 PDF / snapshot 边界。
 - 展示层优先面向图文混排 lens 演进，HTML 是默认容器但不是上限；它不做第二份真相源，只重组、压缩、引用、可视化和钻取。
 - 关系、结构、路径、比较和状态优先图形化；文字主要负责解释、边界和追溯。
 - 无论对象是一份文档还是跨多文档主题，都必须呈现它所处的上位背景、来源背景、历史背景、关系背景和使用边界。
@@ -298,6 +305,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 - 把 Life、DocCustomer 或某个工程当成目标对象，而不是用于校准复杂度的参考样本。
 - 因为真相源用 Markdown，就把最终阅读界面也停留在 Markdown。
 - 因为 HTML 适合复杂呈现，就把所有内容都 HTML 化。
+- 把 PDF 导出当成最后截图，导致 A4 / A3 分页、图表裁切、页脚来源和打印可读性失控。
 - 把 HTML / Artifact 当作方案本身，忽略表格、脑图、框图、时间线、关系图等真正降低认知成本的表达。
 - 只总结当前文档，不呈现它所处的主题背景、历史背景和关系背景。
 - 把所有信息类型都压成任务列表。
