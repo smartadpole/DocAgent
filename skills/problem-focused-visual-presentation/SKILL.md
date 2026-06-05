@@ -26,9 +26,11 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 - Markdown、数据、报告和原始材料仍是真相源；图文 lens 只负责呈现，不成为第二份事实源。
 - 不为了好看牺牲证据边界；必须写清来源、更新时间、未读来源和不可上推范围。
 - 不默认创建持久 HTML 文件；只有用户要求持久呈现、专题沉淀或当前仓库已有 `views/` 体系时，才落文件。
-- HTML 是默认容器但不是上限；HTML 不足时可用 Mermaid、SVG、Canvas、ECharts / D3、Excalidraw 导出图、PDF / slide、图片或 HTML + assets 组合包。
+- HTML 是默认容器但不是上限；HTML 不足时可用 Mermaid、SVG、Canvas、ECharts / D3、Excalidraw 图、PDF / slide、图片或 HTML + assets 组合包表达，但同一 lens 的 PDF / PNG / SVG 导出不能作为可提交资产重复保存。
 - 趋势不是把所有内容 HTML 化，而是按当前问题生成可交互、可视化、可追溯的页面化 lens；简单问题仍然短答，说明文档仍然优先 Markdown。
-- PDF 是导出 / 打印 / 分发产物，不是真相源；如果 PDF 固化验收、决策、发布、事故或复盘节点，应按 snapshot 处理并保留生成源、版式配置和证据边界。
+- PDF / PNG 是导出 / 打印 / 分发产物，不是真相源；如果 PDF 固化验收、决策、发布、事故或复盘节点，应按 snapshot 处理并保留生成源、版式配置和证据边界。
+- 同一 lens 的 HTML、PDF、PNG 或 slide 必须来自同一源和同一 export profile，信息、结论、证据边界和版式语义保持一致；允许的差异只限于分页、纸张尺寸、交互降级、链接脚注 / 二维码等介质适配。
+- 不在 Git 中同时提交同一 lens 的 HTML、PDF、PNG、SVG 等重复渲染物；可提交的是 canonical HTML / source / manifest，导出件进入 gitignore 忽略的 `views/exports/`、`views/.exports/`、`assets/views/` 等目录，或作为运行时下载生成。
 - 如果本轮涉及验收、准出、关闭、状态推进或规则升级，必须回到对应主入口，不能用图文 lens 替代正式裁决。
 
 ## 工作流
@@ -41,9 +43,9 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 | --- | --- |
 | 对象粒度 | 单文档 / 跨文档主题 / 项目状态 / 运行实例 / 决策 / 计划 / 风险 / 验收 / 知识 |
 | 判断目的 | 看懂 / 比较 / 行动 / 拍板 / 验收 / 追溯 / 复盘 / 学习 |
-| 输出载体 | 聊天图文 / Markdown + Mermaid / HTML / HTML + assets / PDF / slide / 临时 artifact / 持久 view |
+| 输出载体 | 聊天图文 / Markdown + Mermaid / HTML / HTML + assets / PDF download / PNG download / slide / 临时 artifact / 持久 view |
 | 持久性 | 临时回答 / canonical current / snapshot |
-| 导出需求 | 不导出 / HTML 可打印 / PDF 下载 / PDF snapshot / slide / 图片 |
+| 导出需求 | 不导出 / HTML 可打印 / PDF 下载 / PNG 下载 / PDF snapshot / slide |
 | 版式配置 | A4 / A3 / custom，portrait / landscape，边距、页眉页脚、分页策略 |
 
 如果用户只是要快速确认一个位置或名字，直接简答，不启动完整 lens。
@@ -61,7 +63,7 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 | 项目 / 知识库长期维护 | canonical current lens；关键节点另存 snapshot |
 | 数据量大、要筛选钻取 | HTML report、Notebook、dashboard、data app |
 | 只是说明文档或规则源 | Markdown 真相源 |
-| 需要下载、打印或线下流转 | HTML print view + PDF export |
+| 需要下载、打印或线下流转 | HTML print view + ignored PDF / PNG export |
 
 ### 2. 组装 source pack
 
@@ -156,8 +158,9 @@ source pack 要标明：
 | margins | print margins，默认留出装订和批注空间 |
 | print_mode | current export / snapshot export / handout / appendix |
 | pagination | 关键图表是否允许跨页、表格如何分页、页眉页脚是否重复 |
-| assets_policy | 图表、图片、字体和 CSS 是否自包含 |
+| assets_policy | 只允许提交源级支持资产；PDF / PNG / SVG 预览和下载件放 gitignore 导出目录 |
 | provenance_policy | 来源、生成时间、证据边界放在页脚、封底或附录 |
+| equivalence_policy | HTML / PDF / PNG / slide 的信息、结论、证据边界和版式语义如何保持一致 |
 
 HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以导出 PDF。设计时避免只适合屏幕滚动的结构：
 
@@ -166,15 +169,23 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - A4 适合报告、验收、单文档 lens；A3 适合架构图、主题地图、关系图、时间线和大矩阵。
 - 横排适合矩阵、流程图、时间线和架构图；竖排适合报告、清单、证据包和阅读型材料。
 - 打印版要保留来源、更新时间、lens id、证据边界和未覆盖边界，不能只留下漂亮图。
+- PDF / PNG / slide 不应重新排一套内容；必须由同一 HTML / source / manifest 生成，保持信息和版式语义一致。
 
-导出 PDF 时优先从 HTML / print CSS 生成；可用浏览器打印、Playwright / Chromium、系统 print-to-PDF 或项目既有导出工具。没有实际生成和检查 PDF 时，不要声称“已导出”，只能说明已具备导出配置或待执行导出。
+导出 PDF / PNG 时优先从 HTML / print CSS 生成；可用浏览器打印、Playwright / Chromium、系统 print-to-PDF / screenshot 或项目既有导出工具。没有实际生成和检查导出件时，不要声称“已导出”，只能说明已具备导出配置或待执行导出。
+
+存储规则：
+
+- `views/current/` 默认只提交 canonical HTML / source / manifest，不提交同名 PDF、PNG、SVG。
+- `views/snapshots/` 默认只提交 snapshot HTML / manifest / source_revision；PDF 只是可再生成的 snapshot export，除非用户明确要求归档外部分发件。
+- `views/exports/`、`views/.exports/`、`assets/views/` 或目标工程等价目录必须被 `.gitignore` 忽略，用于放 PDF / PNG / SVG 下载缓存。
+- `assets/` 只放源级支持材料、真实证据截图、原始图片或不可再生附件；不要把由 HTML lens 生成的 PNG 预览放进可提交 assets。
 
 ### 6. 持久化判断
 
 只有满足以下条件之一，才写入持久文件：
 
 - 用户明确要求生成或更新 HTML / 图文文件。
-- 用户明确要求可下载、可打印、PDF、A4 / A3、横排 / 竖排或对外分发。
+- 用户明确要求可下载、可打印、PDF / PNG、A4 / A3、横排 / 竖排或对外分发；这只触发导出配置或 ignored export，不等于把导出件提交进仓库。
 - 当前主题已稳定，适合成为 canonical current lens。
 - 本轮形成决策、验收、发布、事故、阶段复盘或外部分发 snapshot。
 - 当前仓库已有 `views/` / `artifacts` / `reports` 等明确呈现层。
@@ -190,7 +201,9 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - 是否避免把历史快照当 current。
 - 是否避免把图文 lens 当正式验收、关闭、准出或规则裁决。
 - 如果用户需要导出，是否在设计阶段声明 page size、orientation、margins、pagination、print CSS、PDF 生成方式和 snapshot 边界。
-- 如果声称已生成 PDF，是否实际导出并检查页数、分页、图表裁切、链接 / 来源和打印可读性。
+- 如果声称已生成 PDF / PNG，是否实际导出并检查页数、分页、图表裁切、链接 / 来源和打印可读性。
+- 是否确认 HTML / PDF / PNG / slide 来自同一源，信息、结论、证据边界和版式语义一致。
+- 是否确认导出件在 gitignore 忽略目录或运行时下载中，没有把同一 lens 的 PDF / PNG / SVG 作为重复渲染物提交。
 - 如果生成文件，是否遵守当前仓库目录规范并补入口 / 回链 / 检查。
 
 ## 相关页面

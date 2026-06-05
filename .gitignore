@@ -2,3 +2,11 @@
 .obsidian/graph.json
 .obsidian/community-plugins.json
 CLAUDE.local.md
+
+# Generated lens exports: keep canonical lens/source tracked, not duplicate renders
+views/exports/
+views/.exports/
+views/**/*.pdf
+views/**/*.png
+views/**/*.svg
+assets/views/

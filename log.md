@@ -9,6 +9,23 @@
 
 ## 2026-06-05
 
+### 校准图文 lens 导出存储边界和跨形态一致性
+
+- **记录人**：sunhao
+- **用户意图**：用户纠正“工程里同步存 PDF、HTML、PNG 是不对的”，指出已经有 HTML 时不应把 PNG / PDF / SVG 等重复渲染物放进提交资产层；可以提供 PNG / PDF 下载功能，也可以放到 gitignore 忽略目录。同时用户进一步指出，不同形态的信息和排版语义应保持一致。
+- **主题**：
+  1. 将“支持导出”从“同步保存多种文件”校准为“canonical lens + ignored export/download”。
+  2. 明确同一 lens 的 HTML、PDF、PNG、slide 必须同源同版，信息、结论、证据边界和版式语义一致；只允许分页、纸张尺寸、交互降级、链接脚注 / 二维码等介质适配差异。
+  3. 修正 `assets/` 边界：真实证据截图、原始图片和源级支持资产可进 `assets/`，但由 HTML lens 生成的 PNG / PDF / SVG 预览不进可提交 assets。
+  4. 增加导出缓存忽略规则，避免后续把 `views/exports/`、`views/.exports/` 或 `assets/views/` 中的下载件提交。
+- **关键动作**：
+  1. 更新 [[AGENTS]] 和 `.gitignore`，把 generated lens exports 与证据资产拆开，并忽略 `views/exports/`、`views/.exports/`、`views/**/*.pdf`、`views/**/*.png`、`views/**/*.svg` 和 `assets/views/`。
+  2. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，要求 canonical HTML / source / manifest 可提交，PDF / PNG / SVG 下载件默认进入 ignored export，并增加同源一致性自检。
+  3. 更新 [[concepts/problem-focused-information-presentation]]、[[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]、[[articles/2026-06-05-ai-era-information-presentation-research]] 和迁移清单，把导出存储边界和跨形态一致性写入专题方案。
+  4. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]] 和 [[skills/README]]，让入口摘要不再暗示 PDF / PNG 是要和 HTML 同步提交的产物。
+- **结论**：图文 lens 的持久提交层应只保留 canonical HTML / source / manifest 和必要源级支持资产；PDF、PNG、SVG 是可下载、可缓存、可忽略、可再生成的导出件，不应和 HTML 一起作为重复渲染物入库。不同形态必须共享同一信息源和版式语义，不能各自维护一套内容。
+- **影响页面**：[[AGENTS]]、`.gitignore`、[[skills/problem-focused-visual-presentation/SKILL]]、[[concepts/problem-focused-information-presentation]]、[[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]、[[articles/2026-06-05-ai-era-information-presentation-research]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[log]]。
+
 ### 同步 PDF 导出能力到专题方案页
 
 - **记录人**：sunhao

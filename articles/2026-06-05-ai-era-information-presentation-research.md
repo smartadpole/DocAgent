@@ -337,7 +337,7 @@ HtmlRAG 这类研究也说明：如果把网页 HTML 直接粗暴抽成 plain te
 | 决策比较 | decision matrix | 需要同时看候选、取舍维度、已确认和待确认 |
 | 项目 / 知识库长期维护 | current HTML lens + snapshot 归档 | 当前视图可刷新，关键节点可固化 |
 | 数据量大、要交互筛选 | HTML report、Notebook、Streamlit、dashboard | 读者需要筛选、钻取、复现和探索 |
-| 需要下载、打印、线下批注或外部分发 | HTML print view + PDF export | 需要 A4 / A3、横竖版、分页、页脚来源和打印可读性 |
+| 需要下载、打印、线下批注或外部分发 | HTML print view + ignored PDF / PNG export | 需要 A4 / A3、横竖版、分页、页脚来源和打印可读性；导出件不作为重复提交物 |
 | 只是说明文档 | Markdown | 真相源、版本管理和 agent 可读性优先 |
 
 ## 对知识库和团队的落地建议
@@ -394,6 +394,8 @@ PPT / PDF 适合最终分发，不适合做信息生产主链。合理分工是�
 - 横排或竖排由内容决定，不固定成规则。
 - PDF 导出必须保留来源、生成时间、证据边界、未覆盖边界和必要页脚。
 - PDF 是导出 / 打印 / 分发产物；只有用于验收、决策、发布、事故或复盘固化时，才作为 snapshot。
+- HTML、PDF、PNG 和 slide 必须由同一源和同一 export profile 生成，信息、结论、证据边界和版式语义保持一致；差异只能是分页、纸张尺寸、交互降级和链接脚注等介质适配。
+- 工程中不应同步提交同一 lens 的 HTML、PDF、PNG、SVG；可提交 canonical HTML / source / manifest，导出件进入 gitignore 忽略目录或运行时下载。
 
 ### 5. 给 agent 留可执行入口
 
@@ -439,7 +441,7 @@ flowchart TD
 - 给重要专题维护 `llms.txt` 风格的专题入口，让 agent 快速读取高信号材料。
 - 对长篇调研建立派生索引，但保留 Markdown 章节为引用单位。
 - 当调研结果进入评审或教学场景时，生成 HTML report / dashboard / Notebook / 图文 lens，而不是手工做 PPT。
-- 当图文 lens 需要下载、打印或线下流转时，设计阶段同步声明 `export_profile` 和 `print_profile`，支持 A4 / A3、横竖版、分页、页眉页脚和 PDF 导出验证。
+- 当图文 lens 需要下载、打印或线下流转时，设计阶段同步声明 `export_profile`、`print_profile` 和 `equivalence_profile`，支持 A4 / A3、横竖版、分页、页眉页脚、PDF / PNG 导出验证和同源一致性检查。
 - 对 HTML 产物先判定是记录型还是呈现型：记录型要语义化、版本化和可归档；呈现型要保留源 Markdown、数据快照、构建说明和导出归档。
 
 ## 仍需保留的判断边界
@@ -448,6 +450,8 @@ flowchart TD
 - 不要把“页面化 lens”误解成 HTML 本身成为趋势；趋势是从长文本输出转向可交互、可视化、可追溯的当前问题视图。
 - 不要把“HTML 可以记录信息”误解成所有 HTML 都是可靠记录；动态 HTML 默认只是运行时界面。
 - 不要把 PDF 导出当成最后截图；如果没有 A4 / A3、分页、页脚来源和图表裁切检查，打印体验会反过来破坏信息可信度。
+- 不要把同一 HTML lens 的 PDF / PNG / SVG 预览同步提交进仓库；导出件应可下载、可缓存、可忽略，而不是成为第二份渲染记录。
+- 不要让 HTML、PDF、PNG 各自重排和删减到信息不一致；不同形态应共享同一数据、结构、证据边界和版式语义。
 - 不要把“Markdown + 链接”误解成不需要搜索和向量检索。
 - 不要把 `llms.txt` 当作正式 Web 标准或排名保证；它更像 agent 友好的 discovery convention。
 - 不要把 RAG 召回结果当作事实裁决；它只是候选证据。
