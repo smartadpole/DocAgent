@@ -258,6 +258,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 - [[concepts/ai-era-information-presentation]] 回答信息的记录、组织、处理、呈现和归档如何分层。
 - [[articles/2026-06-05-ai-era-information-presentation-research]] 提供格式、技术和历史谱系上的调研依据。
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]] 用 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 校准 current / snapshot、源刷新和用户入口体系。
+- [[skills/problem-focused-visual-presentation/SKILL]] 把本专题升级为 agent 可执行的图文 lens 生成流程。
 - [[governance/knowledge-linking-rules]] 回答新增知识如何建立上位、邻接、入口和反向链接。
 - [[governance/response-mode-routing]] 回答 agent 本轮应快速诊断、沉淀、验收、实现还是规则升级。
 - [[governance/state-constraint-reasoning]] 是计划型问题 lens 的底层方法。
@@ -295,6 +296,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 - [[concepts/ai-era-information-presentation]]
 - [[articles/2026-06-05-ai-era-information-presentation-research]]
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]
+- [[skills/problem-focused-visual-presentation/SKILL]]
 - [[governance/knowledge-linking-rules]]
 - [[governance/response-mode-routing]]
 - [[governance/state-constraint-reasoning]]

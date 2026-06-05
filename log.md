@@ -9,6 +9,24 @@
 
 ## 2026-06-05
 
+### 升级问题聚焦式图文呈现为 agent 技能
+
+- **记录人**：sunhao
+- **用户意图**：用户要求升级当前 agent 体系，使其真正具备“问题聚焦式图文呈现”能力，而不是只在知识库里保存专题概念。
+- **主题**：
+  1. 将 [[concepts/problem-focused-information-presentation]] 从知识库专题进一步接入 agent 执行体系。
+  2. 新增可触发技能，使 agent 在用户要看文档、主题、状态、风险、决策、计划、验收或知识材料，并强调直观、图文混排、一图胜千言、HTML 呈现或阅读不方便时，自动进入图文呈现流程。
+  3. 把图文呈现作为独立响应模式接入 [[response-mode-routing]] 和 [[WORKFLOW]]，明确默认读取、默认写入、持久化边界和检查要求。
+  4. 将根 [[AGENTS]] 的会话级规则更新为识别图文呈现模式，避免以后仍把长文字摘要当作最终体验。
+- **关键动作**：
+  1. 新增 [[skills/problem-focused-visual-presentation/SKILL]]，定义关注合同、source pack、背景框、图文结构选择、输出 lens、持久化判断和自检。
+  2. 新增 `skills/problem-focused-visual-presentation/TRANSFER.md`，为后续迁移到其他工程提供资料路径、吸收边界、禁止复制项、落地模块和验证要求。
+  3. 更新 [[skills/README]] 和 [[INDEX]]，把该能力加入技能入口和总入口。
+  4. 更新 [[response-mode-routing]]、[[WORKFLOW]] 和 [[AGENTS]]，把“图文呈现”变成 agent 可识别、可执行的响应模式。
+  5. 更新 [[concepts/problem-focused-information-presentation]]，反向链接到新技能，保持概念层和技能层分工清楚。
+- **结论**：问题聚焦式图文呈现现在已从专题方案升级为 agent 可执行技能。后续用户要求“看一份文档 / 一个主题 / 当前状态 / 风险 / 验收 / 知识”，且目标是直观展示时，agent 应先生成带一眼判断、背景框、图文主体、证据追溯和未覆盖边界的 lens；只有用户要求持久视图或已有呈现层时，才写入 HTML / 图文文件。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[skills/README]]、[[INDEX]]、[[response-mode-routing]]、[[WORKFLOW]]、[[AGENTS]]、[[concepts/problem-focused-information-presentation]]、[[log]]。
+
 ### 设计问题聚焦式信息呈现专题
 
 - **记录人**：sunhao

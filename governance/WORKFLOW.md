@@ -16,6 +16,7 @@
 
 - **快速诊断**：用户只问“为什么 / 在哪 / 先分析 / 差异是什么”时，先读最小事实源，输出 `confirmed / likely / possible / blocked` checkpoint；不默认改文档、关状态或跑完整矩阵。
 - **引导式设计**：用户要求设计新系统、新工具、新应用，或只给出“更智能 / 更前沿 / 更高效”等目标时，按 [[proactive-dialogue-system]] 先自动判定场景包、置信度和关键假设；只问会改变结构、权限、成本、验收或长期组织方式的问题，并把对话所得和 agent 思考结果产物化。
+- **图文呈现**：用户要求看一份文档、一个主题、状态、风险、计划、决策、验收或知识材料，并强调直观、图文混排、一图胜千言、HTML 呈现或阅读不方便时，按 [[skills/problem-focused-visual-presentation/SKILL]] 生成带一眼判断、背景框、图文主体、证据追溯和未覆盖边界的 lens。
 - **知识沉淀**：用户要求“沉淀 / 形成参考 / 记录反思”时，优先写 `articles/`、`concepts/`、入口链接和 [[log]]；同时按 [[knowledge-linking-rules]] 做知识关联自检，补上上位概念、邻接页面和必要反向承接。候选规则不直接伪装成已生效硬规则。
 - **复盘体系**：用户要求复盘项目、阶段、事故、Issue、交付链偏差或 Agent 工作流时，先读 [[projects/retrospectives/README]] 和 [[concepts/project-retrospective]]；按轻量 checkpoint / 标准复盘 / 深度复盘决定是否新建档案，行动项分流到既有 owner 页面，不在复盘目录形成平行看板。
 - **Issue 分析 + 沉淀**：现场问题、联调失败、验收争议或跨工程阻塞需要后续消费时，先给根因 checkpoint，再进入 issue / TASK / report / status / risk / matrix 等主控闭环。
@@ -40,6 +41,7 @@
 - 当前只改测试计划、AP、fixture / oracle、人工确认、报告计划来源或发布 runbook 时，优先跑 `python3 scripts/check_all.py --only testing-system-maturity`。
 - 当前只改执行合同语义、非目标、环境路由、下一步或关闭裁决时，优先跑 `python3 scripts/check_all.py --only execution-contract-semantics`。
 - 当前只新增或大改 `articles/`、`concepts/` 或入口索引时，优先跑 `python3 scripts/check_all.py --only knowledge-linking`。
+- 当前新增或大改技能、响应路由或 agent 触发规则时，优先跑 `python3 scripts/check_all.py --only harness-governance`，再按影响面跑 `knowledge-linking` 或完整门禁。
 - 当前处在收尾、提交前或跨多个治理入口同步后，跑完整 `python3 scripts/check_all.py`。
 - 如果本轮出现用户纠偏、检查失败、模式切换、反复漏同步或规则失守，先判断是否形成 Harness episode；需要沉淀时写入 [[harness-feedback-ledger]]，并按 [[harness-evolution]] 判断是否升级模板、sensor、技能或规则。
 

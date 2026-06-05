@@ -42,6 +42,7 @@ tags: [index, root]
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[knowledge-linking-rules]]：新增知识页、概念页和摘要卡片的网状关联规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
+- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能，把文档、主题、状态、风险、决策、计划、验收或知识材料重组为带背景框和证据边界的图文 lens
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/knowledge-linking/SKILL]]：知识关联技能，把调研、沉淀、总结方案、补链和 `knowledge-linking` sensor 验证做成可复用流程
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
