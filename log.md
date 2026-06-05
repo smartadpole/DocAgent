@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-05
+
+### 调研 AI 时代信息呈现方式
+
+- **记录人**：sunhao
+- **用户意图**：用户要求完整调研 AI 时代信息呈现方式的演进，从文档 chunk 化和向量检索，到 Karpathy 带动的 Markdown + 超链接关系网，再到用 HTML 实时呈现信息结果、弱化 PPT 默认地位。
+- **主题**：
+  1. 将本轮判定为知识沉淀 / 调研沉淀模式，落位到 `articles/` 摘要卡片和 `concepts/` 概念页，而不是项目运行链路。
+  2. 外部核验 RAG / chunking、Karpathy Software 3.0、`llms.txt`、MCP、Claude Artifacts、ChatGPT Canvas、Quarto 和 Observable 等来源。
+  3. 将结论收口为“Markdown 真相源、向量索引、超链接关系网、HTML 交互呈现、PPT / PDF 分发归档”的分层模型。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-05-ai-era-information-presentation-research]]，梳理三阶段演进、对比矩阵、场景选择矩阵、推荐架构和本库启发。
+  2. 新增 [[concepts/ai-era-information-presentation]]，作为后续判断信息呈现形态的概念入口。
+  3. 更新 [[INDEX]]、[[articles/README]] 和 [[concepts/README]]，让新调研能从入口和上位概念被发现。
+- **结论**：AI 时代信息呈现不是单一工具替代，而是源、索引、关系、界面和归档的职责分离；向量库负责召回，Markdown + 链接负责可维护上下文，HTML / Artifact / Notebook 负责实时呈现和决策，PPT / PDF 保留正式分发边界。
+- **影响页面**：[[articles/2026-06-05-ai-era-information-presentation-research]]、[[concepts/ai-era-information-presentation]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[log]]。
+
 ## 2026-06-04
 
 ### Agent 指令共享的 Codex thin adapter 口径校准

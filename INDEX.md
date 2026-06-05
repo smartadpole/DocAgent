@@ -59,6 +59,8 @@ tags: [index, root]
 
 - [[articles/2026-04-09-obsidian-doc-system-design]]：Obsidian 文档系统整体设计研究
 - [[concepts/document-os]]：文档操作系统概念定义
+- [[concepts/ai-era-information-presentation]]：AI 时代信息呈现方式，区分 Markdown 真相源、向量检索索引、超链接关系网、HTML 交互呈现和 PPT / PDF 分发格式
+- [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息呈现方式调研，梳理 chunk / vector RAG、Markdown + 超链接关系网、HTML / Artifact / Notebook 实时呈现之间的演进和分工
 - [[articles/2026-04-09-layered-memory-research]]：分层 memory 研究
 - [[concepts/layered-memory]]：分层 memory 概念定义
 - [[articles/2026-05-28-openclaw-memory-system-research]]：OpenClaw 记忆系统调研，覆盖 workspace memory、active memory、dreaming、QMD 和 `memory-wiki`

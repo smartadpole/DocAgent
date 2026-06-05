@@ -18,6 +18,7 @@
 
 ## 方法入口
 
+- [[concepts/ai-era-information-presentation]]：AI 时代信息呈现方式，区分 Markdown 真相源、向量检索索引、超链接关系网、HTML 交互呈现和 PPT / PDF 分发格式。
 - [[concepts/prd-writing]]：PRD 写作方法
 - [[concepts/project-retrospective]]：项目复盘专题，承接跨项目可复用的复盘框架；具体复盘档案看 [[projects/retrospectives/README]]
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题
