@@ -27,6 +27,7 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 - 不为了好看牺牲证据边界；必须写清来源、更新时间、未读来源和不可上推范围。
 - 不默认创建持久 HTML 文件；只有用户要求持久呈现、专题沉淀或当前仓库已有 `views/` 体系时，才落文件。
 - HTML 是默认容器但不是上限；HTML 不足时可用 Mermaid、SVG、Canvas、ECharts / D3、Excalidraw 导出图、PDF / slide、图片或 HTML + assets 组合包。
+- 趋势不是把所有内容 HTML 化，而是按当前问题生成可交互、可视化、可追溯的页面化 lens；简单问题仍然短答，说明文档仍然优先 Markdown。
 - 如果本轮涉及验收、准出、关闭、状态推进或规则升级，必须回到对应主入口，不能用图文 lens 替代正式裁决。
 
 ## 工作流
@@ -43,6 +44,20 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 | 持久性 | 临时回答 / canonical current / snapshot |
 
 如果用户只是要快速确认一个位置或名字，直接简答，不启动完整 lens。
+
+### 1.1 选择输出形态
+
+先判断本轮应输出什么，不要默认把所有内容做成 HTML：
+
+| 场景 | 优先输出 |
+| --- | --- |
+| 简单问答、一次性判断 | 短 Markdown |
+| 状态、风险、计划、验收 | lens 页面、状态卡、矩阵 |
+| 故障排查、证据链 | 时间线、证据表、fault tree |
+| 决策比较 | decision matrix |
+| 项目 / 知识库长期维护 | canonical current lens；关键节点另存 snapshot |
+| 数据量大、要筛选钻取 | HTML report、Notebook、dashboard、data app |
+| 只是说明文档或规则源 | Markdown 真相源 |
 
 ### 2. 组装 source pack
 

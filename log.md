@@ -9,6 +9,23 @@
 
 ## 2026-06-05
 
+### 校准信息呈现趋势为页面化 lens
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“HTML 本身成为趋势”这个说法不够准确，真正趋势是信息呈现从长 Markdown / 长文档转向可交互、可视化、可追溯的页面化 lens；用户要求判断这段内容是否有价值，并补充到知识库。
+- **主题**：
+  1. 把 HTML、OpenAI Canvas、Notebook、dashboard、Artifact、Mermaid、ECharts / D3、SVG 和 Canvas 图形统一归为呈现层输出家族，而不是新的信息架构本身。
+  2. 明确“真相源结构化，呈现层按问题生成”：Markdown / YAML / issue / log / report / code / data snapshot 保持事实和审计，图文 lens 负责当前阅读和决策。
+  3. 补齐输出形态选择矩阵：简单问答用短 Markdown，状态 / 风险 / 计划 / 验收用 lens 页面和矩阵，故障用时间线和证据链，决策用 decision matrix，数据探索用 HTML report / Notebook / dashboard，说明文档仍用 Markdown。
+  4. 强化 canonical current lens 与 snapshot 的分工，并要求 lens 带 `source`、`generated_at`、`evidence_boundary`、`context_frame` 和 `refresh_trigger`。
+- **关键动作**：
+  1. 更新 [[articles/2026-06-05-ai-era-information-presentation-research]]，把原先偏“HTML 化”的表述校准为页面化 lens，并补入 Streamlit、ECharts 和问题视角的呈现选择矩阵。
+  2. 更新 [[concepts/ai-era-information-presentation]]，把“页面化 lens 不是所有内容 HTML 化”写入基本原则和常见误区。
+  3. 更新 [[concepts/problem-focused-information-presentation]]，补充最终呈现形态的趋势定义和输出形态选择表。
+  4. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，让 agent 在执行图文呈现前先判断短答、Markdown 真相源、页面化 lens、交互报告或归档快照。
+- **结论**：这段内容有高价值，因为它把本专题从“HTML 是更好的阅读格式”继续校准为“问题聚焦式呈现层”。后续本库和 agent 体系应避免把 HTML 当成目标本身；真正目标是每次围绕当前关注对象生成合适的图文 lens，并始终回链真相源和证据。
+- **影响页面**：[[articles/2026-06-05-ai-era-information-presentation-research]]、[[concepts/ai-era-information-presentation]]、[[concepts/problem-focused-information-presentation]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[log]]。
+
 ### 升级问题聚焦式图文呈现为 agent 技能
 
 - **记录人**：sunhao

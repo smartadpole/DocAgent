@@ -43,6 +43,8 @@ tags: [information-architecture, presentation, knowledge-base, lens, context]
 
 问题聚焦式信息呈现的最终阅读形态，复杂场景下应优先是图文混排 lens。HTML 是当前最适合作为默认容器的形态，但不是能力上限。
 
+这里的趋势不是“HTML 本身成为趋势”，而是信息呈现从长 Markdown / 长文档转向可交互、可视化、可追溯的页面化 lens。Markdown / 数据 / 报告 / log 仍是真相源；HTML、Notebook、dashboard、Artifact、Canvas、Mermaid、ECharts / D3、SVG 和图片只是呈现层的不同载体。
+
 这里要区分两件事：
 
 | 层级 | 默认形态 | 职责 |
@@ -234,6 +236,20 @@ HTML / 图文 lens 内部必须带最小 provenance：
 
 这些 lens 不是固定页面模板，而是阅读协议。简单场景可以只用 Markdown 生成简短视图；复杂场景的优先呈现形态应是图文混排 lens，可以由 HTML report、HTML card、Notebook、Artifact、dashboard、图表或图片组合承载。但任何呈现层都必须能回到源和证据。
 
+## 输出形态选择
+
+输出形态由当前关注对象和阅读压力决定，不由文件后缀决定：
+
+| 场景 | 适合形式 | 判断理由 |
+| --- | --- | --- |
+| 简单问答、位置确认、一次性判断 | 短 Markdown | 用户只需要高信号答案，不需要持久视图 |
+| 状态、风险、计划、验收 | lens 页面 / 状态卡 / 矩阵 | 需要同时看当前态、阻塞、下一步和证据边界 |
+| 故障排查、证据链 | timeline + evidence table + fault tree | 需要保留现象、证据、根因候选和验证范围 |
+| 决策比较 | decision matrix | 需要显式呈现候选、取舍维度、已确认和待确认 |
+| 项目 / 知识库长期维护 | canonical current lens + snapshot 归档 | 高频问题要刷新当前视图，关键节点要固化证据 |
+| 数据量大、需要筛选钻取 | HTML report / Notebook / dashboard / data app | 需要交互筛选、图表组合和复现 |
+| 只是说明文档或稳定规则源 | Markdown | 真相源、版本管理、diff 和 agent 可读性优先 |
+
 ## 信息类型视角
 
 面对所有信息类型时，优先判断它在当前问题中承担什么角色：
@@ -267,6 +283,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 ## 设计原则
 
 - 先定关注问题，再选展示结构。
+- 先判这是短答、说明源文档、页面化 lens、交互报告还是归档快照；不要把“HTML 呈现”当成唯一答案。
 - 展示层优先面向图文混排 lens 演进，HTML 是默认容器但不是上限；它不做第二份真相源，只重组、压缩、引用、可视化和钻取。
 - 关系、结构、路径、比较和状态优先图形化；文字主要负责解释、边界和追溯。
 - 无论对象是一份文档还是跨多文档主题，都必须呈现它所处的上位背景、来源背景、历史背景、关系背景和使用边界。
@@ -280,6 +297,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 - 把问题聚焦式呈现误解成统一 dashboard。
 - 把 Life、DocCustomer 或某个工程当成目标对象，而不是用于校准复杂度的参考样本。
 - 因为真相源用 Markdown，就把最终阅读界面也停留在 Markdown。
+- 因为 HTML 适合复杂呈现，就把所有内容都 HTML 化。
 - 把 HTML / Artifact 当作方案本身，忽略表格、脑图、框图、时间线、关系图等真正降低认知成本的表达。
 - 只总结当前文档，不呈现它所处的主题背景、历史背景和关系背景。
 - 把所有信息类型都压成任务列表。

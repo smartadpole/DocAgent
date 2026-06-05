@@ -40,6 +40,8 @@ tags: [ai, information-architecture, markdown, html, rag, presentation, record]
 - [Quarto Revealjs](https://quarto.org/docs/presentations/revealjs/)
 - [Observable Notebooks](https://observablehq.com/)
 - [Observable Framework](https://observablehq.com/framework/)
+- [Streamlit documentation](https://docs.streamlit.io/)
+- [Apache ECharts](https://echarts.apache.org/en/)
 - [MDN: HTML: HyperText Markup Language](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [W3C: Web Standards](https://www.w3.org/standards/)
 - [HtmlRAG: HTML is Better Than Plain Text for Modeling Retrieved Knowledge in RAG Systems](https://arxiv.org/abs/2411.02959)
@@ -48,15 +50,29 @@ tags: [ai, information-architecture, markdown, html, rag, presentation, record]
 
 ## 一句话总结
 
-AI 时代的信息系统要分开看三件事：**信息记录**保存事实和版本，**信息处理**让模型检索、理解和重组，**信息呈现**把结果交给人决策；Markdown 正在同时承担记录和处理主链，HTML 正在从呈现层向部分记录层扩张，但只有语义化、静态化、自包含、版本化、可归档的 HTML 才适合作为长期记录。
+AI 时代的信息系统要分开看三件事：**信息记录**保存事实和版本，**信息处理**让模型检索、理解和重组，**信息呈现**把结果交给人决策。更准确的趋势不是“HTML 本身成为架构”，而是信息呈现从长 Markdown / 长文档转向可交互、可视化、可追溯的页面化 lens；Markdown / YAML / issue / log / report / code / data snapshot 更适合做真相源，HTML / Canvas / Notebook / dashboard / 图表更适合做按问题生成的呈现层。
 
 ## 结论先行
 
 1. **以前的主链是记录格式和处理格式分离**：记录靠 PDF、Word、PPT、网页、Markdown 等文件；AI 处理时再把这些文件抽文本、切 chunk、做 embedding、进向量库。
 2. **后来的主链开始合并为 Markdown**：Markdown 既能做人类可读记录，又天然适合 LLM 读取、diff、检索、链接、拼接和 agent 操作；`llms.txt` 这类约定进一步说明 Markdown 正在成为 agent-readable context 的低噪声入口。
-3. **总结汇报正在从 PPT 转向 HTML**：当汇报需要筛选、模拟、钻取、实时改数、嵌入代码或现场交互时，HTML / Artifact / Notebook 更像决策界面；PPT / PDF 更像最终分发和归档格式。
+3. **信息呈现正在从长文档转向页面化 lens**：当汇报需要筛选、模拟、钻取、实时改数、嵌入代码、图文混排或现场交互时，HTML / Artifact / Notebook / dashboard / Canvas 更像决策界面；PPT / PDF 更像最终分发和归档格式。
 4. **HTML 会成为一部分信息记录，但不会无条件取代 Markdown**：HTML 原本就是文档标记语言，语义标签、链接、表格、结构和可访问性都能承载记录；但依赖 JS、远程接口、运行时状态和临时数据的 HTML 更像应用界面，不是稳定记录。
 5. **最佳架构不是三选一，而是职责分离**：Markdown 做轻量真相源，向量索引做派生处理层，语义 HTML / WARC / MHTML 可做特定记录或归档，动态 HTML / Artifact / Notebook 做实时呈现层，PPT / PDF 保留正式分发边界。
+
+## 关键校正：趋势不是 HTML 本身，而是页面化 lens
+
+HTML 的价值很大，但它不是新的信息架构本身。真正的结构性变化是：**真相源结构化，呈现层按当前问题生成**。
+
+也就是说：
+
+- 源资料仍然应保持 Markdown、YAML、issue、log、report、code、database、raw 和 data snapshot 等可审计形态。
+- agent 先判断用户当前关注的是状态、风险、决策、计划、故障、验收、知识、资源还是时间线，再生成对应 lens。
+- 复杂 lens 可以用 HTML、Notebook、Streamlit data app、Observable、Artifact、OpenAI Canvas、Mermaid、ECharts / D3、SVG、Canvas 图形或 slide 组合承载。
+- 每个 lens 都必须显式带上 `source`、`generated_at`、`evidence_boundary`、`context_frame` 和 `refresh_trigger`，避免成为第二份不可追溯真相源。
+- 同一个稳定关注对象默认维护 canonical current lens；只有验收、决策、发布、事故、阶段复盘和外部分发等需要固化时，才生成 snapshot。
+
+因此，问题不是“以后都用 HTML 还是 Markdown”，而是“这次用户到底需要真相源、处理结果、当前视图，还是归档快照”。
 
 ## 概念校正：记录、处理、呈现不是一回事
 
@@ -204,11 +220,11 @@ Karpathy 在 2025 年 YC 演讲里把 LLM 称为新的 Software 3.0 计算范式
 
 这和本库的 [[concepts/document-os]]、[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]] 是同一条线：知识页不只要有内容，还要有入口、上位关系、邻接关系、反向回链和最小结构检查。
 
-## 阶段三：HTML / Artifact / Notebook，实时呈现信息结果
+## 阶段三：页面化 lens / Artifact / Notebook，实时呈现信息结果
 
-第三个趋势是结果层从静态文档或 PPT，转向 HTML 化的交互界面。
+第三个趋势是结果层从静态文档、长 Markdown 或 PPT，转向页面化的交互 lens。
 
-这里不是说“所有人都不做 PPT”，更准确的判断是：当信息呈现需要实时计算、动态筛选、现场迭代、可视化探索或用户操作时，PPT 已经不是最佳默认形态。
+这里不是说“所有人都不做 PPT”，也不是说“所有内容都要 HTML 化”。更准确的判断是：当信息呈现需要实时计算、动态筛选、现场迭代、可视化探索、图文混排或用户操作时，长文档和静态幻灯片已经不是最佳默认形态。
 
 代表形态包括：
 
@@ -216,14 +232,16 @@ Karpathy 在 2025 年 YC 演讲里把 LLM 称为新的 Software 3.0 计算范式
 - **ChatGPT Canvas / Web preview**：在协同编辑空间里生成和预览 HTML / JS 内容，但需要处理外部网络访问和安全确认。
 - **Observable Notebook**：把 Markdown、JavaScript、HTML、SQL、数据连接和交互控件组合成浏览器里的动态文档。
 - **Quarto reveal.js**：仍可用 Markdown 写源文件，但输出 HTML slide deck，也能导出 PDF / PPTX；适合从同一源文件生成不同交付格式。
+- **Streamlit data app**：让数据、模型、筛选控件和交互结果快速变成可操作的 Web 应用，适合 AI / ML 和数据分析场景。
+- **ECharts / D3 / Canvas 图表层**：把表格、脑图、框图、流程图、关系图、时间线和组合图表放进浏览器交互界面。
 
-HTML 呈现的本质优势是：
+页面化 lens 的本质优势是：
 
 - 可以把数据、图表、筛选器、解释、状态和行动按钮放在同一界面。
 - 可以按听众问题实时切换视角，而不是线性翻页。
 - 可以让读者自己钻取、比较、复现，而不是只看截图。
 - 可以嵌入模型、工具、API 或本地数据，形成“活报告”。
-- 可以把一次汇报沉淀成后续还能继续使用的小工具。
+- 可以把一次汇报沉淀成后续还能继续使用的小工具或 current lens。
 
 它的风险也更大：
 
@@ -232,7 +250,7 @@ HTML 呈现的本质优势是：
 - 分享和权限不如 PPT / PDF 稳定，尤其在组织外流转时。
 - 长期归档需要保存源文件、数据快照、构建方式和依赖版本。
 
-所以 HTML 应该承担“实时交互层”，而 Markdown / 数据快照 / 引用来源仍应承担真相源和审计层。
+所以 HTML / Notebook / dashboard / Artifact 应该优先承担“实时交互和图文呈现层”，而 Markdown / 数据快照 / 引用来源仍应承担真相源和审计层。
 
 ## HTML 会不会成为信息记录格式
 
@@ -307,6 +325,20 @@ HtmlRAG 这类研究也说明：如果把网页 HTML 直接粗暴抽成 plain te
 | 对外正式交付 | PDF / PPTX | HTML demo、Markdown source | 分发稳定性和审批优先 |
 | 教学 / 演示 | HTML slides / interactive artifact | Markdown lesson | 互动和即时反馈比固定页面重要 |
 
+## 问题视角的呈现选择
+
+从用户正在关注的问题看，输出形态应这样选：
+
+| 场景 | 适合形式 | 原因 |
+| --- | --- | --- |
+| 简单问答、一次性判断 | 短 Markdown | 不需要制造持久视图，直接给高信号结论 |
+| 状态、风险、计划、验收 | lens 页面、状态卡、矩阵 | 读者要一眼判断当前态、阻塞、下一步和证据边界 |
+| 故障排查、证据链 | timeline + evidence table + fault tree | 需要把现象、证据、根因候选和验证边界串起来 |
+| 决策比较 | decision matrix | 需要同时看候选、取舍维度、已确认和待确认 |
+| 项目 / 知识库长期维护 | current HTML lens + snapshot 归档 | 当前视图可刷新，关键节点可固化 |
+| 数据量大、要交互筛选 | HTML report、Notebook、Streamlit、dashboard | 读者需要筛选、钻取、复现和探索 |
+| 只是说明文档 | Markdown | 真相源、版本管理和 agent 可读性优先 |
+
 ## 对知识库和团队的落地建议
 
 ### 1. 把 Markdown 当作主真相源
@@ -379,14 +411,14 @@ flowchart TD
   E --> F["RAG 问答 / 语义召回 / HTML-aware retrieval"]
   B --> G["语义静态 HTML / 发布页"]
   C --> G
-  F --> H["动态 HTML / Notebook / Artifact"]
+  F --> H["页面化 lens / 动态 HTML / Notebook / Artifact"]
   G --> I["WARC / MHTML / PDF / 静态归档"]
   H --> I
   H --> J["现场决策 / 交互探索 / 可视化呈现"]
   B --> K["Git 历史 / 审计 / 复用"]
 ```
 
-这套架构的关键是：**记录、处理、呈现、归档分离**。不要让向量库替代源文件，不要让动态 HTML 替代审计，不要让 PPT 反向定义知识结构，也不要把所有 HTML 都简单归入同一类。
+这套架构的关键是：**记录、处理、呈现、归档分离**。不要让向量库替代源文件，不要让动态 HTML 替代审计，不要让 PPT 反向定义知识结构，也不要把页面化 lens 误解成所有内容都要 HTML 化。
 
 ## 对本库的启发
 
@@ -394,15 +426,16 @@ flowchart TD
 
 后续可继续演进的方向：
 
-- 在“源、索引、关系、界面、归档”五层之外，为复杂系统补一层 [[concepts/problem-focused-information-presentation|问题聚焦式信息呈现]]：每次先判断读者当前关注的是状态、计划、决策、故障、验收、知识还是资源，再生成对应 lens。
+- 在“源、索引、关系、界面、归档”五层之外，为复杂系统补一层 [[concepts/problem-focused-information-presentation|问题聚焦式信息呈现]]：每次先判断读者当前关注的是状态、计划、决策、故障、验收、知识还是资源，再生成对应页面化 lens。
 - 给重要专题维护 `llms.txt` 风格的专题入口，让 agent 快速读取高信号材料。
 - 对长篇调研建立派生索引，但保留 Markdown 章节为引用单位。
-- 当调研结果进入评审或教学场景时，生成 HTML report / dashboard，而不是手工做 PPT。
+- 当调研结果进入评审或教学场景时，生成 HTML report / dashboard / Notebook / 图文 lens，而不是手工做 PPT。
 - 对 HTML 产物先判定是记录型还是呈现型：记录型要语义化、版本化和可归档；呈现型要保留源 Markdown、数据快照、构建说明和导出归档。
 
 ## 仍需保留的判断边界
 
 - 不要把“HTML 实时呈现”误解成所有文档都要做网页应用。
+- 不要把“页面化 lens”误解成 HTML 本身成为趋势；趋势是从长文本输出转向可交互、可视化、可追溯的当前问题视图。
 - 不要把“HTML 可以记录信息”误解成所有 HTML 都是可靠记录；动态 HTML 默认只是运行时界面。
 - 不要把“Markdown + 链接”误解成不需要搜索和向量检索。
 - 不要把 `llms.txt` 当作正式 Web 标准或排名保证；它更像 agent 友好的 discovery convention。

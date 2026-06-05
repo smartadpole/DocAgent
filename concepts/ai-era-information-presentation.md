@@ -33,6 +33,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 - Markdown 更适合作为长期轻量真相源；HTML 要区分记录型和呈现型。
 - 向量库是派生索引，不是知识主库。
 - 超链接和入口页是语义结构的一部分，不能完全交给 embedding 代替。
+- 趋势不是 HTML 本身成为信息架构，而是信息呈现从长 Markdown / 长文档转向可交互、可视化、可追溯的页面化 lens；HTML、Canvas、Notebook、dashboard、Artifact 和图表库只是输出家族。
 - 面向复杂系统的呈现不应只做固定总览；应按读者当前关注的问题生成 [[concepts/problem-focused-information-presentation|问题聚焦式信息呈现]] lens，并回链到源、证据和关系层。
 - 语义静态 HTML 可以成为记录格式；动态 HTML / SPA / dashboard 默认只是运行时呈现界面，除非补齐源、数据快照、构建方式和归档。
 - PPT / PDF 适合作为正式分发和归档格式，但不应反向定义调研、分析和 agent 协作的主链。
@@ -61,6 +62,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 - 判断一份研究、报告、方案或评审材料应该用 Markdown、RAG、HTML 还是 PPT。
 - 设计从资料收集到实时呈现的工作流。
 - 判断 HTML 产物是记录型、呈现型还是归档型。
+- 判断当前问题应该用短 Markdown、页面化 lens、HTML report、Notebook / dashboard，还是继续保持说明文档。
 - 把静态文档升级成可交互 dashboard、Notebook、Artifact 或 HTML report，同时保留记录层。
 
 ## 和本库的关系
@@ -77,6 +79,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 
 - 把 RAG 当成知识库本身，忽略源文件和版本。
 - 把 Markdown + 链接当成 UI，忽略交互和数据探索需求。
+- 把页面化 lens 等同于所有内容 HTML 化，忽略“真相源结构化、呈现层按问题生成”的分工。
 - 把 HTML report 当成唯一交付物，缺少源、数据快照和审计链。
 - 把所有 HTML 都当成长期记录，忽略动态运行态、远程资源、权限和归档问题。
 - 把 PPT 完全否定；实际更稳的做法是把 PPT 降级为导出和分发格式。
