@@ -56,6 +56,78 @@ tags: [information-architecture, presentation, knowledge-base, lens, context]
 
 最小可行形态可以先用 Markdown 描述 lens 结构；但一旦信息复杂到影响阅读判断，就应生成 HTML lens。HTML lens 不能脱离源：页面必须暴露来源、更新时间、筛选条件、证据边界和回链，避免变成第二份不可审计的真相源。
 
+## HTML lens 生命周期
+
+当多次对话都问到同一个关注问题时，不能每次都无条件生成一个平行 HTML 文件，也不能简单覆盖到失去历史。应把 HTML lens 分成两类：
+
+| 类型 | 更新方式 | 适用场景 | 保留内容 |
+| --- | --- | --- | --- |
+| 当前视图 / canonical lens | 同一关注对象持续更新同一个 HTML 入口 | 用户反复查看同一个问题、状态、计划、风险或知识主题 | 最新结论、当前证据、当前下一步、源回链、更新时间 |
+| 对话快照 / snapshot lens | 重要节点另存不可变快照 | 验收、决策、发布、事故、阶段复盘、外部分发、证据需要固化 | 当时的筛选条件、数据快照、生成时间、对话 / log / commit 回链 |
+
+默认规则是：同一个稳定关注对象维护一个 canonical lens；只有当本轮视图具备审计、归档、分发或阶段证据价值时，才额外生成 snapshot。普通追问、轻量刷新和同一问题的连续澄清，应更新 canonical lens，而不是制造一堆无法辨认的新文件。
+
+如果一个问题还没有稳定到可命名的关注对象，先用临时视图或对话内 HTML artifact；等它稳定后再创建 canonical lens。临时视图不应悄悄混入长期视图体系。
+
+## HTML lens 存放体系
+
+HTML lens 不应散落在各个源页面旁边。源文件属于记录层，HTML lens 属于呈现层，两者职责不同。推荐未来单独设一个呈现层目录，例如：
+
+```text
+views/
+  README.md
+  lens-registry.md
+  current/
+    status/
+    plans/
+    decisions/
+    risks/
+    acceptance/
+    knowledge/
+    resources/
+    timelines/
+  snapshots/
+    2026/
+      06/
+```
+
+其中：
+
+- `views/README.md`：面向用户的呈现层入口，说明有哪些常用视图。
+- `views/lens-registry.md`：记录每个 HTML lens 的稳定 id、关注对象、主源页面、当前 HTML、快照、更新时间和失效条件。
+- `views/current/`：放当前可反复打开的 canonical lens，按用户关注对象组织。
+- `views/snapshots/`：放需要固化的历史快照，按日期或事件归档。
+
+HTML 文件内部必须带最小 provenance：
+
+| 字段 | 含义 |
+| --- | --- |
+| lens_id | 稳定视图 id |
+| focus_object | 关注对象 |
+| lens_type | status / plan / decision / risk / acceptance / knowledge / resource / timeline |
+| source_pages | 生成该视图的主源页面 |
+| generated_at | 生成或更新时间 |
+| source_revision | 相关 commit、报告版本或数据快照 |
+| evidence_boundary | 证据可上推范围和未验证边界 |
+| snapshot_of | 如果是快照，指向 canonical lens |
+
+## 用户视角体系
+
+HTML lens 体系应从用户视角组织，而不是从底层文件路径组织。用户打开呈现层时，第一层看到的不是 `projects/`、`articles/`、`raw/` 这些维护目录，而是自己想判断的事情：
+
+| 用户入口 | 典型问题 | 对应 lens |
+| --- | --- | --- |
+| 我现在要看状态 | 这件事到哪了 | status lens |
+| 我现在要行动 | 接下来做什么 | plan lens |
+| 我现在要拍板 | 选哪个方案 | decision lens |
+| 我现在担心风险 | 可能出什么事 | risk lens |
+| 我现在要验收 | 能不能算完成 | acceptance lens |
+| 我现在要理解知识 | 这个结论怎么复用 | knowledge lens |
+| 我现在要找东西 | 文件、资产、服务在哪里 | resource lens |
+| 我现在要复盘过程 | 为什么变成这样 | timeline lens |
+
+同一个源页面可以被多个 lens 使用；同一个 lens 也可以引用多个源页面。体系的单一信息源仍是 Markdown / 数据 / 报告，用户视角体系只负责把这些源重组为可阅读、可钻取、可归档的 HTML 视图。
+
 ## 关注对象分类
 
 关注对象是 lens 选择的第一层。用户说“我在看一个事情”时，先判断这个“事情”主要属于哪一类；一个问题可以命中多类，但必须先选主 lens，再把其他类作为辅助层。
