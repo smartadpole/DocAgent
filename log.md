@@ -9,6 +9,21 @@
 
 ## 2026-06-05
 
+### 同步 PDF 导出能力到专题方案页
+
+- **记录人**：sunhao
+- **用户意图**：用户指出 PDF / A4 / A3 / 打印导出不应只进入技能说明，专题知识库里的相关方案也应吸纳进去。
+- **主题**：
+  1. 将 PDF / print view 从技能执行细节同步为问题聚焦式信息呈现专题方案的一部分。
+  2. 把 `export_profile` / `print_profile` 纳入跨工程校准的 lens 运行机制，明确导出版式不是收尾截图，而是设计期约束。
+  3. 更新上位调研和入口摘要，让用户从调研文章、专题方案、INDEX 和 articles 入口都能发现导出打印能力。
+- **关键动作**：
+  1. 更新 [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]，补充用户目的、方案修正、运行流程和方案边界中的 PDF / A4 / A3 / 打印导出要求。
+  2. 更新 [[articles/2026-06-05-ai-era-information-presentation-research]]，在问题视角选择矩阵、本库启发、PPT / PDF 边界和常见误区中补入导出打印策略。
+  3. 更新 [[INDEX]] 和 [[articles/README]]，把专题能力摘要扩展为 current / snapshot / source refresh / background frame / user entry / PDF export。
+- **结论**：导出打印现在属于专题方案，而不只是 agent 技能实现细节。后续设计图文 lens 时，只要存在下载、打印、线下批注或分发需求，就要在方案层同步考虑 A4 / A3、横竖版、分页、页眉页脚、来源页脚、图表裁切和 PDF / snapshot 边界。
+- **影响页面**：[[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]、[[articles/2026-06-05-ai-era-information-presentation-research]]、[[INDEX]]、[[articles/README]]、[[log]]。
+
 ### 升级图文 lens 的 PDF 导出和打印版式能力
 
 - **记录人**：sunhao

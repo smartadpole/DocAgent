@@ -14,7 +14,7 @@
 
 ## 当前技能
 
-- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把一份文档、跨文档主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界和图文主体的 lens。
+- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把一份文档、跨文档主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、图文主体和 PDF / 打印导出配置的 lens。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能。用于把已沉淀的 skill / 能力转换成可交给目标工程 agent 的升级提示词、附件资料清单、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于把调研、沉淀知识、总结方案、入口 / 上位 / 邻接 / 反向链接和 `knowledge-linking` sensor 验证收敛成可复用流程，避免新增知识成为孤岛。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
