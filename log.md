@@ -18,11 +18,12 @@
   2. 外部核验 RAG / chunking、Karpathy Software 3.0、`llms.txt`、MCP、Claude Artifacts、ChatGPT Canvas、Quarto 和 Observable 等来源。
   3. 将结论收口为“Markdown 真相源、向量索引、超链接关系网、HTML 交互呈现、PPT / PDF 分发归档”的分层模型。
   4. 用户进一步指出“信息记录 / 信息处理 / 信息呈现”需要分开，并追问 HTML 是否也会成为记录形式；据此补查 HTML、W3C Web Standards、HtmlRAG、WARC 和 MHTML 等来源，重构为三职能模型。
+  5. 用户要求进一步做全面深入调研，补入历史信息和最新技术，并参考专业知名网站及名人主页；据此扩展 Bush、Engelbart、Nelson、Berners-Lee、Ward Cunningham、Gruber / Swartz、Tufte、Bret Victor、Karpathy、Jeremy Howard、Anthropic、OpenAI、Observable 和 Quarto 等来源。
 - **关键动作**：
-  1. 新增并校准 [[articles/2026-06-05-ai-era-information-presentation-research]]，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现、HTML 记录边界、对比矩阵、场景选择矩阵、推荐架构和本库启发。
-  2. 新增并校准 [[concepts/ai-era-information-presentation]]，作为后续判断信息记录、处理和呈现形态的概念入口。
+  1. 新增并校准 [[articles/2026-06-05-ai-era-information-presentation-research]]，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现、HTML 记录边界、历史谱系、名人和专业网站观点地图、最新技术谱系、对比矩阵、场景选择矩阵、推荐架构和本库启发。
+  2. 新增并校准 [[concepts/ai-era-information-presentation]]，作为后续判断信息记录、组织、处理、呈现和归档形态的概念入口，并补充可读性、可寻址性、可关系化、可计算性、可呈现性、可复现性、可归档性和可治理性八类 guarantee。
   3. 更新 [[INDEX]]、[[articles/README]] 和 [[concepts/README]]，让新调研能从入口和上位概念被发现。
-- **结论**：AI 时代信息结构不是单一工具替代，而是记录、处理、呈现和归档的职责分离；向量库负责处理层召回，Markdown 同时承担轻量记录和模型处理主链，语义静态 HTML 可成为记录格式，动态 HTML / Artifact / Notebook 默认是实时呈现和探索界面，PPT / PDF / WARC / MHTML 保留分发或归档边界。
+- **结论**：AI 时代信息结构不是单一工具替代，而是记录、组织、处理、呈现和归档的职责分离；向量库负责处理层召回，Markdown 同时承担轻量记录和模型处理主链，语义静态 HTML 可成为记录格式，动态 HTML / Artifact / Notebook 默认是实时呈现和探索界面，PPT / PDF / WARC / MHTML 保留分发或归档边界。最终判断不看文件后缀，而看格式是否提供可读、可寻址、可关系化、可计算、可呈现、可复现、可归档和可治理的保证。
 - **影响页面**：[[articles/2026-06-05-ai-era-information-presentation-research]]、[[concepts/ai-era-information-presentation]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[log]]。
 
 ## 2026-06-04

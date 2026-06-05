@@ -15,14 +15,31 @@ tags: [ai, information-architecture, markdown, html, rag, presentation, record]
 - [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
 - [Pinecone: Chunking Strategies for LLM Applications](https://www.pinecone.io/learn/chunking-strategies/)
 - [LangChain: Text splitters](https://docs.langchain.com/oss/python/integrations/splitters/index)
+- [Vannevar Bush: As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/)
+- [DARPA: oN-Line System](https://www.darpa.mil/about/innovation-timeline/on-line-system)
+- [Ted Nelson's Home Page / Xanadu](https://www.aus.xanadu.com/ted/XU/XuPageKeio.html)
+- [CERN: Where the web was born](https://home.web.cern.ch/science/computing/where-web-was-born)
+- [W3C: History](https://www.w3.org/about/history/)
+- [Daring Fireball: Markdown](https://daringfireball.net/projects/markdown/)
+- [CommonMark](https://commonmark.org/)
+- [WikiWikiWeb](https://wiki.c2.com/)
+- [Edward Tufte: The Cognitive Style of PowerPoint](https://www.edwardtufte.com/book/the-cognitive-style-of-powerpoint-pitching-out-corrupts-within-ebook/)
+- [Bret Victor: Magic Ink](https://worrydream.com/MagicInk/)
 - [Andrej Karpathy: Software Is Changing (Again)](https://rosetta.to/u/ycombinator/andrej-karpathy-software-is-changing-again)
 - [The /llms.txt file](https://llmstxt.org/)
 - [Mintlify: llms.txt](https://mintlify.mintlify.app/ai/llmstxt)
 - [Anthropic: Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
+- [Model Context Protocol Blog](https://blog.modelcontextprotocol.io/)
+- [OpenAI: Connectors and MCP servers](https://platform.openai.com/docs/guides/tools-remote-mcp)
+- [OpenAI: Build with the Apps SDK](https://help.openai.com/en/articles/12515353-build-with-the-apps-sdk)
+- [OpenAI: The next evolution of the Agents SDK](https://openai.com/index/the-next-evolution-of-the-agents-sdk/)
 - [Anthropic: What are artifacts and how do I use them?](https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them)
+- [Claude: Turn ideas into interactive AI-powered apps](https://claude.com/blog/build-artifacts)
 - [OpenAI Help: ChatGPT Canvas](https://help.openai.com/en/articles/9930697-what-is-the-canvas-feature-in-chatgpt-and-how-do-i-use-i)
 - [Quarto Presentations](https://quarto.org/docs/presentations/index.html)
+- [Quarto Revealjs](https://quarto.org/docs/presentations/revealjs/)
 - [Observable Notebooks](https://observablehq.com/)
+- [Observable Framework](https://observablehq.com/framework/)
 - [MDN: HTML: HyperText Markup Language](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [W3C: Web Standards](https://www.w3.org/standards/)
 - [HtmlRAG: HTML is Better Than Plain Text for Modeling Retrieved Knowledge in RAG Systems](https://arxiv.org/abs/2411.02959)
@@ -50,6 +67,91 @@ AI 时代的信息系统要分开看三件事：**信息记录**保存事实和�
 | 信息呈现 | 怎样让人快速理解、比较、决策和行动 | PPT、PDF、Word 报告、静态截图 | HTML report、Artifact、Notebook、dashboard、interactive slides | 可交互、可钻取、可复现、可导出、权限清楚 |
 
 关键变化不是“某个格式赢了”，而是过去一个文件常常同时承担记录、处理和呈现；AI 时代更稳定的设计是把三种职能拆开，再让格式按职能组合。
+
+## 历史谱系：从联想路径到 agent-readable context
+
+| 时间 | 人物 / 来源 | 关键贡献 | 对当前分类的启发 |
+| --- | --- | --- | --- |
+| 1945 | Vannevar Bush / Memex | 提出通过 associative trails 组织资料，而不是只按书架或目录查找 | 信息组织层早于 AI 出现；“关系”不是检索的附属品 |
+| 1960s | Ted Nelson / Xanadu | 提出 hypertext、非线性写作、跨文档引用和版本互联愿景 | 超链接不只是导航，也可以承接引用、版本、署名和可追溯性 |
+| 1968 | Douglas Engelbart / NLS | 在“Mother of All Demos”时代展示鼠标、窗口、超文本、协作编辑和 presentation programs | 记录、组织、呈现、协作从早期就是同一套增强人类智力系统的一部分 |
+| 1989-1991 | Tim Berners-Lee / CERN Web | 把个人电脑、网络和 hypertext 合并成全球信息系统，并用 HTML 成为 Web 发布格式 | HTML 的原始身份就是“可链接文档格式”，不是后来才有的视觉页面 |
+| 1995 | Ward Cunningham / WikiWikiWeb | 让网页变成可协作编辑、可持续链接、可演化的知识空间 | wiki 证明信息记录和组织可以在同一界面内协作完成 |
+| 2003-2004 | Edward Tufte / PowerPoint 批评 | 批评 slideware 容易降低分析密度、压扁证据和推理 | PPT 的问题不是“视觉”，而是线性、低密度、模板化的认知风格 |
+| 2004 | John Gruber / Aaron Swartz / Markdown | 用易读纯文本写结构化文档，再转成有效 HTML | Markdown 是“记录格式 + 发布中间层 + 模型友好文本”的早期统一体 |
+| 2006 | Bret Victor / Magic Ink | 强调多数软件是 information software，好的界面应帮助人学习、比较、判断 | HTML dashboard / Artifact 的价值不是“能点”，而是更好地组织决策所需信息 |
+| 2020 | RAG | 把外部知识检索接入生成模型 | chunk + vector 解决处理层召回，但不自动解决记录、组织和呈现 |
+| 2024-2025 | `llms.txt`、Karpathy Software 3.0 | 把网站 / 文档改造成 LLM 可读、agent 可执行的上下文入口 | Markdown + 命令化入口成为人和 agent 共享的信息基座 |
+| 2024-2026 | MCP、Artifacts、Canvas、Observable、Quarto | agent 可以接工具和数据，结果可生成 HTML 应用、dashboard、report 和 slide deck | 信息呈现开始变成可操作界面；信息处理开始接入真实系统 |
+
+这条历史线说明：AI 时代的新东西不是“突然从 PPT 变 HTML”，而是超文本、wiki、纯文本、可视化、RAG、agent 工具协议在同一个方向上重新汇合：让信息同时可保存、可链接、可计算、可呈现、可行动。
+
+## 名人和专业网站观点地图
+
+| 来源 | 可吸收观点 | 对本专题的判断意义 |
+| --- | --- | --- |
+| Vannevar Bush | 人类知识活动依赖 associative indexing 和 trails | “组织”应独立成层，不能被 chunk 检索吞掉 |
+| Ted Nelson | 超文本理想包含持久引用、版本和双向关系 | 当下 Web / Markdown 链接仍是不完整超文本；更深系统要补版本、来源和反链 |
+| Engelbart / DARPA | 计算机是增强集体智力的工作环境 | 文档不是静态材料，而是协作、呈现和行动系统的一部分 |
+| Tim Berners-Lee / CERN / W3C | Web 是全球 linked information system，HTML 是超文本发布格式 | HTML 天然有记录属性，但现代动态 Web 需要额外归档治理 |
+| Ward Cunningham | wiki 让记录、链接和协作演化合一 | Markdown + wikilink 的趋势不是复古，而是回到可编辑知识网络 |
+| John Gruber / CommonMark | Markdown 的核心是易读纯文本到结构化 HTML 的转换 | Markdown 适合作为 agent-readable source，但规范差异和扩展方言要治理 |
+| Edward Tufte | PPT 的 cognitive style 会压低分析质量 | HTML 替代 PPT 的真正理由是提高信息密度、比较能力和证据可见性 |
+| Bret Victor | 信息软件应帮助用户学习、比较、决策；交互不是目的 | HTML report / dashboard 的价值在于减少认知负担，而不是增加按钮 |
+| Andrej Karpathy | LLM 时代软件基础设施应让文档可被 LLM 读懂，让操作可被 agent 执行 | AI 时代文档应包含 Markdown、命令、API、路径和可执行证据 |
+| Jeremy Howard / `llms.txt` | 给 LLM 提供 curated Markdown 入口，避免网页噪声和上下文窗口浪费 | agent-readable publishing 正在成为 Web 之外的第二入口 |
+| Anthropic / OpenAI / MCP | 模型通过协议连接工具、数据源和外部系统 | 信息处理层不再只是检索，还包括行动、权限和安全治理 |
+| Observable / Quarto | 数据、代码、解释和 HTML 呈现可以从同一源工作流生成 | HTML 既可以是呈现，也可以在保留源和快照时成为可复现报告 |
+
+## 最新技术谱系：截至 2026-06-05
+
+| 技术趋势 | 最新形态 | 改变了哪一层 | 关键边界 |
+| --- | --- | --- | --- |
+| RAG 从 naive chunking 走向结构化 context | hybrid search、metadata filtering、parent-child chunk、HTML-aware RAG、long-context reranking | 处理层 | 仍必须回到源文件、版本和证据，不能把召回结果当事实裁决 |
+| Markdown docs / `.md` variants / `llms.txt` | 文档站提供 Markdown 入口、`llms-full.txt`、AI-readable docs | 记录 + 组织 + 处理 | `llms.txt` 是提案 / 约定，不是保证被所有 AI 系统读取的正式标准 |
+| MCP / connectors / remote tools | 模型可以访问 GitHub、文件、数据库、业务系统和自定义工具 | 处理 + 行动 | 权限、注入、审计、数据外泄和工具误用成为 P0 问题 |
+| Agent harness 文件 | `AGENTS.md`、skills、manifests、workspace rules、tool specs | 组织 + 处理 | 这些不是普通说明书，而是 agent 的执行环境和边界 |
+| Artifacts / Canvas / generative UI | 模型直接生成 HTML、React、SVG、dashboard、可交互小应用 | 呈现 + 探索 | 生成物要区分临时演示、可复现报告和可长期运行应用 |
+| Observable / Quarto / notebooks | 代码、数据、文字、图表和 HTML 输出统一 | 记录 + 处理 + 呈现 | 要保留源、数据快照、依赖版本，否则 HTML 只是最后一次渲染 |
+| WARC / MHTML / static package | 保存网页资源、HTML 和上下文快照 | 归档 + 记录 | 适合证据和发布状态，不等于可继续编辑的真相源 |
+| 长上下文模型 | 可直接读更长文档，减少一部分 chunk 压力 | 处理 | 长上下文不能替代结构化入口、引用、版本和权限边界 |
+
+最重要的最新变化是：信息处理层正在从“检索片段”升级为“带权限的上下文组装和工具调用”；信息呈现层正在从“静态汇报”升级为“可操作界面”；信息记录层则必须更强调来源、版本、可归档和可复现，否则很容易被动态界面吞掉。
+
+## 更完整的分类模型
+
+如果只分“记录 / 处理 / 呈现”，方向是对的，但还不够完整。更完整的模型应当分成五层：
+
+| 层 | 职责 | 典型对象 | 核心保证 |
+| --- | --- | --- | --- |
+| 记录层 | 保存事实、来源、版本、责任和裁决 | Markdown、数据库、语义 HTML、原始文件、数据快照 | 可读、可引用、可版本化 |
+| 组织层 | 表达关系、上下文、层级、依赖和语义入口 | wikilink、目录、metadata、trace、concept map、`llms.txt` | 可发现、可解释、可维护 |
+| 处理层 | 检索、抽取、重排、总结、推理、调用工具 | RAG、embedding、search、MCP、agents、HTML-aware retrieval | 可追溯、可控权、可验证 |
+| 呈现层 | 让人理解、比较、探索、决策和行动 | HTML report、dashboard、Artifact、Canvas、Notebook、slides | 信息密度、交互性、低认知负担 |
+| 归档 / 分发层 | 固化发布状态、交付材料和证据包 | PDF、PPTX、WARC、MHTML、static HTML package | 稳定、可审计、可离线复查 |
+
+这五层不是瀑布，而是可以互相映射：
+
+- Markdown 可以同时在记录层、组织层和处理层。
+- 语义静态 HTML 可以同时在记录层、呈现层和归档层。
+- 动态 HTML / dashboard 默认在呈现层，只有补齐源、快照和归档才进入记录层。
+- 向量库主要在处理层，不应上升为记录层。
+- PPT / PDF 主要在归档 / 分发层，不应反向定义知识组织方式。
+
+更深的判断标准不是“这个格式是什么”，而是它提供了哪些 guarantee：
+
+| Guarantee | 问题 | 典型实现 |
+| --- | --- | --- |
+| 可读性 | 人和模型能否低噪声读懂 | Markdown、语义 HTML、清晰标题 |
+| 可寻址性 | 能否稳定引用到段落、版本或对象 | URL、anchor、ID、文件路径、commit |
+| 可关系化 | 能否表达上位、邻接、来源、依赖、冲突 | wikilink、metadata、trace、graph |
+| 可计算性 | 能否被检索、抽取、执行和重组 | chunk、embedding、RAG、MCP、API |
+| 可呈现性 | 能否帮助人比较、探索、决策 | HTML、charts、dashboard、Notebook |
+| 可复现性 | 能否重新生成同一结果 | source、data snapshot、lockfile、build script |
+| 可归档性 | 能否长期保存发布状态和证据 | PDF、WARC、MHTML、static package |
+| 可治理性 | 权限、审计、安全和责任是否清楚 | ACL、logs、signing、review、provenance |
+
+因此，分类的最终形态应该是：**职能层级 + 格式能力 + guarantee**，而不是单纯列出 PDF / MD / HTML / vector DB。
 
 ## 演进脉络
 
