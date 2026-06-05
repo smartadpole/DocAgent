@@ -23,7 +23,7 @@
 
 ## 信息架构 / 知识呈现
 
-- [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息呈现方式调研，梳理 chunk / vector RAG、Markdown + 超链接关系网、HTML / Artifact / Notebook 实时呈现之间的演进和分工。
+- [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息记录、处理与呈现方式调研，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现和 HTML 记录边界。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]：新增知识关联机制调研，校准 Obsidian 图谱、Evergreen notes 和 Zettelkasten 方法论，说明本库采用“agent 语义判断 + sensor 结构检查”的知识网络机制。
 
 ## Agent / Harness 案例
