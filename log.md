@@ -12,16 +12,17 @@
 ### 设计问题聚焦式信息呈现专题
 
 - **记录人**：sunhao
-- **用户意图**：用户指出复杂系统的信息展示不应是一次性 dashboard，而是在每次关注某个问题时都有合适展示；随后进一步校准本轮是知识库专题和方案设计，不是开发，并强调 Life / DocCustomer 只是复杂度参考，目标应覆盖所有信息类型。
+- **用户意图**：用户指出复杂系统的信息展示不应是一次性 dashboard，而是在每次关注某个问题时都有合适展示；随后进一步校准本轮是知识库专题和方案设计，不是开发，并强调 Life / DocCustomer 只是复杂度参考，目标应覆盖所有信息类型。用户继续追问“关注对象 / 展示视角 / 信息分层”是否完整，要求检查风险、验收、知识等对象覆盖是否充分。
 - **主题**：
   1. 将本轮从软件开发或固定 dashboard 方案，校准为知识库专题设计。
   2. 复用 [[articles/2026-06-05-ai-era-information-presentation-research]] 中“源、索引、关系、界面、归档”五层模型，进一步补出面向当前关注问题的阅读 lens 层。
   3. 把 Life / DocCustomer 从目标对象降为参考样本，抽象出状态、计划、决策、故障、验收、知识、资源、owner、时间线等通用信息类型的展示协议。
+  4. 对照用户列出的关注对象、展示视角和三层信息分层，补齐独立的关注对象分类，并把风险从信息类型提升为可选主 lens。
 - **关键动作**：
-  1. 新增 [[concepts/problem-focused-information-presentation]]，定义问题聚焦式信息呈现的目标、基本模型、通用 lens、信息类型视角、设计原则、常见误区和后续演进方向。
+  1. 新增并校准 [[concepts/problem-focused-information-presentation]]，定义问题聚焦式信息呈现的目标、基本模型、关注对象分类、通用 lens、信息类型视角、设计原则、常见误区和后续演进方向。
   2. 更新 [[concepts/ai-era-information-presentation]] 和 [[articles/2026-06-05-ai-era-information-presentation-research]]，说明问题聚焦式 lens 是原有记录 / 组织 / 处理 / 呈现 / 归档模型的方案化延伸。
   3. 更新 [[INDEX]] 和 [[concepts/README]]，让该概念能从设计思路和概念层入口被发现。
-- **结论**：复杂系统的直观展示应以“当前关注问题”而不是“固定总览页”为中心；每次先定关注对象和判断目的，再选择状态卡、证据链、决策矩阵、行动地图、时间线、关系图或专题卡等 lens，并明确一眼判断层、证据解释层和原始追溯层。
+- **结论**：复杂系统的直观展示应以“当前关注问题”而不是“固定总览页”为中心；每次先定关注对象和判断目的，再选择状态卡、证据链、决策矩阵、行动地图、时间线、关系图或专题卡等 lens，并明确一眼判断层、证据解释层和原始追溯层。关注对象主类至少覆盖状态、问题 / 故障 / 异常、决策、计划、风险、验收 / 关闭、知识、资源 / 资产、关系 / owner 和时间线 / 演进。
 - **影响页面**：[[concepts/problem-focused-information-presentation]]、[[concepts/ai-era-information-presentation]]、[[articles/2026-06-05-ai-era-information-presentation-research]]、[[INDEX]]、[[concepts/README]]、[[log]]。
 
 ### 调研 AI 时代信息记录、处理与呈现方式
