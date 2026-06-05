@@ -60,9 +60,9 @@ tags: [index, root]
 - [[articles/2026-04-09-obsidian-doc-system-design]]：Obsidian 文档系统整体设计研究
 - [[concepts/document-os]]：文档操作系统概念定义
 - [[concepts/ai-era-information-presentation]]：AI 时代信息记录、处理与呈现方式，区分 Markdown 真相源、向量检索索引、超链接关系网、语义 / 动态 HTML 和 PPT / PDF / WARC / MHTML 归档格式
-- [[concepts/problem-focused-information-presentation]]：问题聚焦式信息呈现，按当前关注问题为所有信息类型选择合适 lens，而不是固定维护一次性总览。
+- [[concepts/problem-focused-information-presentation]]：问题聚焦式信息呈现，按当前关注问题为所有信息类型选择图文混排 lens，用表格、脑图、框图、关系图、时间线和状态卡降低阅读成本。
 - [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息记录、处理与呈现方式调研，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现和 HTML 记录边界
-- [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]：跨 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 校准问题聚焦式 HTML lens 的 current / snapshot、源刷新和用户入口体系
+- [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]：跨 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 校准问题聚焦式图文 lens 的 current / snapshot、源刷新、背景框和用户入口体系
 - [[articles/2026-04-09-layered-memory-research]]：分层 memory 研究
 - [[concepts/layered-memory]]：分层 memory 概念定义
 - [[articles/2026-05-28-openclaw-memory-system-research]]：OpenClaw 记忆系统调研，覆盖 workspace memory、active memory、dreaming、QMD 和 `memory-wiki`
