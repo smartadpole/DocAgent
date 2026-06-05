@@ -12,7 +12,7 @@
 ### 设计问题聚焦式信息呈现专题
 
 - **记录人**：sunhao
-- **用户意图**：用户指出复杂系统的信息展示不应是一次性 dashboard，而是在每次关注某个问题时都有合适展示；随后进一步校准本轮是知识库专题和方案设计，不是开发，并强调 Life / DocCustomer 只是复杂度参考，目标应覆盖所有信息类型。用户继续追问“关注对象 / 展示视角 / 信息分层”是否完整，要求检查风险、验收、知识等对象覆盖是否充分；随后纠正最终阅读体验不应默认停在 Markdown，复杂信息应优先采用 HTML 呈现。用户进一步追问多次对话问到同一问题时 HTML 文件应更新还是新增、HTML 文件放在哪里、HTML 是否应形成面向用户的体系。
+- **用户意图**：用户指出复杂系统的信息展示不应是一次性 dashboard，而是在每次关注某个问题时都有合适展示；随后进一步校准本轮是知识库专题和方案设计，不是开发，并强调 Life / DocCustomer 只是复杂度参考，目标应覆盖所有信息类型。用户继续追问“关注对象 / 展示视角 / 信息分层”是否完整，要求检查风险、验收、知识等对象覆盖是否充分；随后纠正最终阅读体验不应默认停在 Markdown，复杂信息应优先采用 HTML 呈现。用户进一步追问多次对话问到同一问题时 HTML 文件应更新还是新增、HTML 文件放在哪里、HTML 是否应形成面向用户的体系；最后要求多看 Life、DocCustomeranalysis、prefect、fetch-adapter、DocFilmCommunity 等工程样本，结合工程重新分析用户目的并完善方案。
 - **主题**：
   1. 将本轮从软件开发或固定 dashboard 方案，校准为知识库专题设计。
   2. 复用 [[articles/2026-06-05-ai-era-information-presentation-research]] 中“源、索引、关系、界面、归档”五层模型，进一步补出面向当前关注问题的阅读 lens 层。
@@ -20,12 +20,14 @@
   4. 对照用户列出的关注对象、展示视角和三层信息分层，补齐独立的关注对象分类，并把风险从信息类型提升为可选主 lens。
   5. 区分 Markdown 真相源 / 生成输入和 HTML 最终阅读界面，避免把可维护格式误当作复杂信息的最佳呈现格式。
   6. 设计 HTML lens 的生命周期和存放体系：当前视图与历史快照分工、统一呈现层目录、lens registry、按用户关注对象组织入口。
+  7. 用 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 做只读横向校准，把方案从信息类型分类推进到 current / snapshot、源刷新、证据上推和用户入口体系。
 - **关键动作**：
   1. 新增并校准 [[concepts/problem-focused-information-presentation]]，定义问题聚焦式信息呈现的目标、基本模型、最终呈现形态、HTML lens 生命周期、存放体系、用户视角体系、关注对象分类、通用 lens、信息类型视角、设计原则、常见误区和后续演进方向。
   2. 更新 [[concepts/ai-era-information-presentation]] 和 [[articles/2026-06-05-ai-era-information-presentation-research]]，说明问题聚焦式 lens 是原有记录 / 组织 / 处理 / 呈现 / 归档模型的方案化延伸。
-  3. 更新 [[INDEX]] 和 [[concepts/README]]，让该概念能从设计思路和概念层入口被发现。
-- **结论**：复杂系统的直观展示应以“当前关注问题”而不是“固定总览页”为中心；每次先定关注对象和判断目的，再选择状态卡、证据链、决策矩阵、行动地图、时间线、关系图或专题卡等 lens，并明确一眼判断层、证据解释层和原始追溯层。关注对象主类至少覆盖状态、问题 / 故障 / 异常、决策、计划、风险、验收 / 关闭、知识、资源 / 资产、关系 / owner 和时间线 / 演进。Markdown 负责真相源和生成输入，复杂信息的最终阅读体验应优先走 HTML lens，并保留来源、更新时间、筛选条件、证据边界和回链。同一个稳定关注对象默认维护一个 canonical HTML lens；只有验收、决策、发布、事故、阶段复盘、外部分发或证据固化时，才生成 snapshot。HTML lens 应集中进入呈现层目录并由 registry 管理，用户入口按状态、计划、决策、风险、验收、知识、资源、时间线等关注对象组织。
-- **影响页面**：[[concepts/problem-focused-information-presentation]]、[[concepts/ai-era-information-presentation]]、[[articles/2026-06-05-ai-era-information-presentation-research]]、[[INDEX]]、[[concepts/README]]、[[log]]。
+  3. 新增 [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]，记录跨工程样本、用户目的判断、方案修正和 HTML lens 运行流程。
+  4. 更新 [[INDEX]] 和 [[articles/README]]，并沿用 [[concepts/README]] 中已有的概念入口，让该概念和横向校准文章能从设计思路、摘要卡片层和概念层入口被发现。
+- **结论**：复杂系统的直观展示应以“当前关注问题”而不是“固定总览页”为中心；每次先定关注对象和判断目的，再选择状态卡、证据链、决策矩阵、行动地图、时间线、关系图或专题卡等 lens，并明确一眼判断层、证据解释层和原始追溯层。关注对象主类至少覆盖状态、问题 / 故障 / 异常、决策、计划、风险、验收 / 关闭、知识、资源 / 资产、关系 / owner 和时间线 / 演进。Markdown 负责真相源和生成输入，复杂信息的最终阅读体验应优先走 HTML lens，并保留来源、更新时间、筛选条件、证据边界和回链。同一个稳定关注对象默认维护一个 canonical HTML lens；只有验收、决策、发布、事故、阶段复盘、外部分发或证据固化时，才生成 snapshot。HTML lens 应集中进入呈现层目录并由 registry 管理，用户入口按状态、计划、决策、风险、验收、知识、资源、时间线等关注对象组织。跨工程校准进一步确认：同一问题再次出现时应先解析 lens id、刷新最小 source pack、更新 current HTML，再判断是否需要 snapshot；不同工程可以声明自己的高频 lens pack，但通用层只定义关注对象、证据边界、刷新流程、registry 和 provenance。
+- **影响页面**：[[concepts/problem-focused-information-presentation]]、[[concepts/ai-era-information-presentation]]、[[articles/2026-06-05-ai-era-information-presentation-research]]、[[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[log]]。
 
 ### 调研 AI 时代信息记录、处理与呈现方式
 

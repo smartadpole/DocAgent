@@ -24,6 +24,7 @@
 ## 信息架构 / 知识呈现
 
 - [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息记录、处理与呈现方式调研，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现和 HTML 记录边界。
+- [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]：用 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 只读样本校准问题聚焦式 HTML lens 的 current / snapshot、源刷新和用户入口体系。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]：新增知识关联机制调研，校准 Obsidian 图谱、Evergreen notes 和 Zettelkasten 方法论，说明本库采用“agent 语义判断 + sensor 结构检查”的知识网络机制。
 
 ## Agent / Harness 案例

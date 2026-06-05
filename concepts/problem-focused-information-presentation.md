@@ -110,6 +110,24 @@ HTML 文件内部必须带最小 provenance：
 | source_revision | 相关 commit、报告版本或数据快照 |
 | evidence_boundary | 证据可上推范围和未验证边界 |
 | snapshot_of | 如果是快照，指向 canonical lens |
+| user_entry | 用户从哪个入口进入：看状态、要行动、要验收、找资源等 |
+| canonical_policy | 什么时候覆盖当前视图，什么时候保留原视图 |
+| snapshot_policy | 什么时候必须另存不可变快照 |
+| staleness_policy | 哪些源变化会让当前 HTML 过期 |
+| refresh_trigger | 用户追问、源页面更新、报告新增、服务状态变化等刷新触发条件 |
+
+## 同一问题再次被问起
+
+当用户在多次不同对话中问到同一个稳定关注对象时，处理顺序应是：
+
+1. 先解析关注对象和 lens 类型，找到或创建稳定 `lens_id`。
+2. 查询 `views/lens-registry.md`，确认当前 canonical HTML lens、主源页面、快照和失效条件。
+3. 重新读取最小 source pack，而不是直接复述旧 HTML。
+4. 如果源事实变化，更新 canonical lens；如果源事实未变，只更新访问记录或回答引用。
+5. 如果本轮形成验收、决策、发布、事故、阶段复盘或外部分发证据，再额外生成 snapshot lens。
+6. 最终回复引用更新后的 lens，并说明更新时间、证据边界和未刷新来源。
+
+这个流程解决的是“同一问题到底更新同一个 HTML，还是每次生成新文件”的问题：默认更新同一个 current HTML；只有关键节点才新增 snapshot。
 
 ## 用户视角体系
 
@@ -127,6 +145,20 @@ HTML lens 体系应从用户视角组织，而不是从底层文件路径组织�
 | 我现在要复盘过程 | 为什么变成这样 | timeline lens |
 
 同一个源页面可以被多个 lens 使用；同一个 lens 也可以引用多个源页面。体系的单一信息源仍是 Markdown / 数据 / 报告，用户视角体系只负责把这些源重组为可阅读、可钻取、可归档的 HTML 视图。
+
+## 跨工程校准结论
+
+对 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 的只读抽样显示，问题聚焦式信息呈现不能只停留在“关注对象分类”，还必须解决 current / snapshot、源刷新、证据上推和用户入口体系：
+
+| 样本暴露的压力 | 方案修正 |
+| --- | --- |
+| Life 这类生活系统把行动、约束、资产、知识和风险混在同一输入里 | 同一输入可生成行动 lens、计划 / 约束 lens、风险 lens 和知识 lens，但源仍按 LifeOS 的领域 / 项目 / 日志分层保存 |
+| DocCustomeranalysis 这类主控系统里报告、issue、TASK、服务台账和状态页会互相引用 | 当前裁决必须来自 canonical status / issue / acceptance lens；历史报告只作为 snapshot evidence，不能自动代表当前态 |
+| prefect 这类运行系统把 progress、stage_progress、artifact、log 和测试组合成用户可读状态 | 运行状态 lens 要展示原始 payload、规范化规则、用户可见日志、artifact 和测试证据之间的映射 |
+| fetch-adapter 这类服务边界系统需要解释 run、artifact、handoff 和上游调度合同 | 服务 lens 不只显示健康检查，还要显示 run 锚点、阶段进度、产物位置、取消 / 重跑语义和归属边界 |
+| DocFilmCommunity 这类研发主控系统状态页很长，阻塞和分工密集 | 默认入口应是 blocker-first status lens：一屏看当前能否推进、谁要交什么、为什么不能准出 |
+
+详细样本分析见 [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]。
 
 ## 关注对象分类
 
@@ -188,6 +220,7 @@ HTML lens 体系应从用户视角组织，而不是从底层文件路径组织�
 
 - [[concepts/ai-era-information-presentation]] 回答信息的记录、组织、处理、呈现和归档如何分层。
 - [[articles/2026-06-05-ai-era-information-presentation-research]] 提供格式、技术和历史谱系上的调研依据。
+- [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]] 用 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 校准 current / snapshot、源刷新和用户入口体系。
 - [[governance/knowledge-linking-rules]] 回答新增知识如何建立上位、邻接、入口和反向链接。
 - [[governance/response-mode-routing]] 回答 agent 本轮应快速诊断、沉淀、验收、实现还是规则升级。
 - [[governance/state-constraint-reasoning]] 是计划型问题 lens 的底层方法。
@@ -221,6 +254,7 @@ HTML lens 体系应从用户视角组织，而不是从底层文件路径组织�
 
 - [[concepts/ai-era-information-presentation]]
 - [[articles/2026-06-05-ai-era-information-presentation-research]]
+- [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]
 - [[governance/knowledge-linking-rules]]
 - [[governance/response-mode-routing]]
 - [[governance/state-constraint-reasoning]]
