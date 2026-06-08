@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-08
+
+### 调研图片与图文排版体系
+
+- **记录人**：sunhao
+- **用户意图**：用户要求调研图片排版体系，进一步扩展到图文排版体系，希望把复杂图文呈现从“一图胜千言”的直觉推进成可复用方法。
+- **主题**：
+  1. 将图片排版从“图片摆放风格”校准为图片职能、素材语义、空间骨架、视觉组织、图文绑定、媒介适配和生成治理的组合体系。
+  2. 从现代主义排版、瑞士网格、Gestalt 视觉组织、Material / Carbon 设计系统、CSS Grid、响应式图片、figure / figcaption / alt 和 AI layout generation 中抽象出适合本库的七层模型。
+  3. 把新模型接到 [[concepts/problem-focused-information-presentation]]，明确问题聚焦式信息呈现负责选择 lens，图片与图文排版体系负责 lens 内部的图文组织。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-08-image-text-layout-system-research]]，记录外部资料、历史线索、图片职能分类、图文绑定模式、决策矩阵、AI 趋势和本库落地建议。
+  2. 新增 [[concepts/image-text-layout-system]]，作为后续复用的概念页，沉淀图片职能、图文绑定、七层模型、反模式和相邻概念分工。
+  3. 更新 [[concepts/problem-focused-information-presentation]]、[[INDEX]]、[[articles/README]] 和 [[concepts/README]]，补齐入口和上位回链。
+- **结论**：图文排版不是“图片多一点”或“HTML 好看一点”，而是围绕当前关注问题定义图片的信息职能，并用网格、比例、层级、图注、标注、响应式裁切、打印导出和可访问语义把图片与文字绑定成一条可追溯阅读路径。AI 可以辅助生成候选和检查布局，但不能替代源、证据边界、可编辑层和同源导出治理。
+- **影响页面**：[[articles/2026-06-08-image-text-layout-system-research]]、[[concepts/image-text-layout-system]]、[[concepts/problem-focused-information-presentation]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[log]]。
+
 ## 2026-06-05
 
 ### 校准图文 lens 导出存储边界和跨形态一致性
