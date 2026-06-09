@@ -45,6 +45,7 @@ tags: [index, root]
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能，把文档、主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、同源一致性和 ignored PDF / PNG 导出配置的图文 lens
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/knowledge-linking/SKILL]]：知识关联技能，把调研、沉淀、总结方案、补链和 `knowledge-linking` sensor 验证做成可复用流程
+- [[skills/technical-topic-research/SKILL]]：技术专题调研技能，把技术概念从资料搜集推进成支撑判断、选型、PoC 和复用的研究资产
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
 - [[projects/README]]：活跃软件研发项目的运行入口
@@ -75,6 +76,8 @@ tags: [index, root]
 - [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
 - [[proactive-dialogue-system]]：主动对话和引导式设计系统，承接场景包、置信度、无感交流等级、性能预算和每轮产物化落地判定
 - [[state-constraint-reasoning]]：计划型问题的治理入口，承接状态变量、约束传播、未知变量和可执行性判断
+- [[concepts/technical-research-knowledge-asset]]：技术研究型知识资产，把技术专题调研从百科式资料汇总推进到概念、价值、场景、落地、风险和决策闭环
+- [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，沉淀问题牵引、技术拆解、生态扫描、对比评估、场景映射、PoC 和分级决策主线
 
 ## 产品写作
 
@@ -100,6 +103,7 @@ tags: [index, root]
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
 - [[concepts/agent-skills]]：Agent Skills 概念，把可重复工作封装成 agent 可发现、可加载、可执行和可审计的能力单元。
 - [[articles/2026-06-09-scientific-agent-skills-research]]：Scientific Agent Skills 调研，分析 K-Dense 科研技能库如何把科研流程、数据库、工具链和方法规范打包成约 140+ 个 Agent Skill，并校准安全边界。
+- [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，把技术概念调研定义为支撑判断、选型、落地和复用的研究资产，而不是资料搜全。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]：新增知识关联机制调研，说明为什么语义关联不能只依赖自动图谱展示，并把本库方案收口为规则、技能、模板和 sensor 四层。
 - [[concepts/agent-instruction-sharing]]：Claude Code 和 Codex 共享 agent 项目规则的方法，推荐根 `AGENTS.md` 作为唯一规则正文，`CLAUDE.md` 和可选 `.codex/AGENTS.md` 只做薄导入入口。
 - [[agent-governance-strategy]]：Agent 治理策略整改入口，收口入口瘦身、log eligibility、产物化资格、检查预算和规则升级预算。
@@ -110,6 +114,7 @@ tags: [index, root]
 - [[articles/2026-05-30-acknowledgebase-governance-hub-design]]：AcknowledgeBase 作为跨工程治理中控的具体设计：四类治理动作、调度频率、中控职责边界、wiki template-changelog 最小改动方案。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把任意已沉淀 skill / 能力转换成目标工程可执行升级提示词，并附资料路径、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：新增或大改长期知识页时，按调研、分层、关系画像、入口回链和 sensor 验证完成知识网络落地。
+- [[skills/technical-topic-research/SKILL]]：调研技术专题或概念时，按问题、谱系、机制、生态、对比、场景、PoC、风险和分级结论生成可复用研究包。
 - [[skills/historical-dialogue-retrospective/SKILL]]：从历史对话、当前上下文、log、Harness episode、git 证据和检查输出中复盘 agent 偏差、效率质量与 workflow 改进。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。

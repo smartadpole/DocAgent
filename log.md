@@ -9,6 +9,23 @@
 
 ## 2026-06-09
 
+### 沉淀技术专题调研方法和知识资产结构
+
+- **记录人**：sunhao
+- **用户意图**：用户给出一套关于技术类专题 / 概念如何调研的完整方法，希望把调研目标从“资料搜全”校准为支撑判断、选型、落地和复用的技术认知资产，并沉淀到知识库。
+- **主题**：
+  1. 将技术专题调研定义为从“是什么”推进到“解决什么问题、为什么重要、适合用在哪、怎么落地、风险在哪里、该不该采用”的判断链。
+  2. 把调研主线收敛为问题牵引、技术拆解、生态扫描、对比评估、场景映射、落地方案、风险判断和最终决策。
+  3. 将用户给出的十段式调研结构同时沉淀为文章、概念、技能和模板，便于后续对具体技术专题复用。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-09-technical-topic-research-methodology]]，保存技术专题调研目标、五类问题、八步主线、四层生态扫描、横向对比、场景映射、PoC 和 A/B/C/D 分级结论。
+  2. 新增 [[concepts/technical-research-knowledge-asset]]，作为后续技术调研专题的上位概念，区分普通百科词条和面向行动的研究资产。
+  3. 新增 [[skills/technical-topic-research/SKILL]]，把技术专题调研变成 agent 可执行流程，并明确与 [[skills/knowledge-linking/SKILL]] 的分工。
+  4. 新增 [[templates/technical-topic-research-template]]，把十段式调研结构做成可复制报告骨架。
+  5. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[concepts/agent-skills]] 和 [[concepts/ai-era-information-presentation]]，补齐入口、上位和邻接回链。
+- **结论**：本库后续处理技术类专题调研时，应优先产出面向技术判断和行动的专题研究包，而不是普通百科词条。真正重要的技术专题要从概念解释推进到场景、对比、PoC、风险和投入等级。
+- **影响页面**：[[articles/2026-06-09-technical-topic-research-methodology]]、[[concepts/technical-research-knowledge-asset]]、[[skills/technical-topic-research/SKILL]]、[[templates/technical-topic-research-template]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[concepts/agent-skills]]、[[concepts/ai-era-information-presentation]]、[[log]]。
+
 ### 调研芯智睿声企业和可穿戴智能人工喉方向
 
 - **记录人**：sunhao

@@ -17,6 +17,7 @@
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把一份文档、跨文档主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、图文主体、同源一致性和 ignored PDF / PNG 导出配置的 lens。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能。用于把已沉淀的 skill / 能力转换成可交给目标工程 agent 的升级提示词、附件资料清单、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于把调研、沉淀知识、总结方案、入口 / 上位 / 邻接 / 反向链接和 `knowledge-linking` sensor 验证收敛成可复用流程，避免新增知识成为孤岛。
+- [[skills/technical-topic-research/SKILL]]：技术专题调研技能。用于把技术类专题 / 概念调研组织成问题牵引、谱系边界、机制拆解、生态扫描、对比评估、场景映射、PoC、风险和分级决策的可复用研究包。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能。用于从当前上下文、[[log]]、[[harness-feedback-ledger]]、原始 session / rollout、git diff / commit 和检查输出中复盘 agent 偏差、效率质量和 workflow 改进候选。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。定期或按需读取各工程关键治理文件，对照 [[governance/platform-standards]] 评估成熟度，生成漂移报告和 handoff 包；支持全量审计和单工程审计两种模式。

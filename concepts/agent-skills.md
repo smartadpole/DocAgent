@@ -6,7 +6,7 @@ tags: [ai-agent, skills, harness-engineering, workflow]
 
 # Agent Skills
 
-相关：[[concepts/harness-engineering]]、[[concepts/agent-governance]]、[[concepts/agent-instruction-sharing]]、[[skills/knowledge-linking/SKILL]]、[[articles/2026-06-09-scientific-agent-skills-research]]
+相关：[[concepts/harness-engineering]]、[[concepts/agent-governance]]、[[concepts/agent-instruction-sharing]]、[[concepts/technical-research-knowledge-asset]]、[[skills/knowledge-linking/SKILL]]、[[skills/technical-topic-research/SKILL]]、[[articles/2026-06-09-scientific-agent-skills-research]]
 
 Agent Skills 是把某类可重复工作打包成 agent 可发现、可加载、可执行和可审计的能力单元。它通常以一个目录承接，核心文件是 `SKILL.md`，并可配合 `scripts/`、`references/`、`assets/` 等资源。
 
@@ -85,7 +85,9 @@ Skill 可以调用工具，也可以引用模板和规则，但不能把四者�
 - [[concepts/harness-engineering]]
 - [[concepts/agent-governance]]
 - [[concepts/agent-instruction-sharing]]
+- [[concepts/technical-research-knowledge-asset]]
 - [[skills/knowledge-linking/SKILL]]
+- [[skills/technical-topic-research/SKILL]]
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]
 - [[templates/skill-template]]
 - [[articles/2026-05-25-harness-engineering-research]]
