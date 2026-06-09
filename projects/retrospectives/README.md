@@ -3,7 +3,7 @@ type: retrospective-index
 project: wiki
 status: active
 source_of_truth: true
-updated: 2026-06-03
+updated: 2026-06-09
 tags: [project, retrospective, learning-loop]
 ---
 
@@ -87,7 +87,7 @@ tags: [project, retrospective, learning-loop]
 
 ## 当前索引
 
-暂无独立复盘档案。后续新增复盘文件时按时间降序补到这里。
+- [[projects/retrospectives/2026-06-09-research-skill-harness-omission]]：调研技能加固后漏做 Harness 判断复盘，聚焦当前对话中的 Agent 工作偏差、收尾漏项和候选改进。
 
 ## 共性主题
 

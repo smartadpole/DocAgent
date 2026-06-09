@@ -9,6 +9,19 @@
 
 ## 2026-06-09
 
+### 用复盘技能补做调研技能漏记 Harness 的正式复盘
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“你应该发动复盘技能”，要求这次不要只做口头解释，而要按正式复盘技能重建工作链、偏差判断和候选改进。
+- **主题**：
+  1. 按 [[skills/historical-dialogue-retrospective/SKILL]] 的证据分层和复盘框架，重建“调研技能加固 -> 首次收尾 -> 用户纠偏 -> 补 ledger -> 再次纠偏”的连续工作链。
+  2. 将本次问题校准为收尾阶段漏做 H5 episode 资格判断，而不是调研技能设计方向错误。
+  3. 把结论沉淀为正式复盘档案，保持在事实 / 根因 / 候选改进层，不直接上升成规则改动。
+- **关键动作**：
+  1. 新增 [[projects/retrospectives/2026-06-09-research-skill-harness-omission]]，作为当前对话的 Agent 工作复盘档案。
+  2. 更新 [[projects/retrospectives/README]]，将该复盘档案接入复盘索引。
+- **影响页面**：[[projects/retrospectives/2026-06-09-research-skill-harness-omission]]、[[projects/retrospectives/README]]、[[log]]。
+
 ### 补记调研技能加固后的 Harness 反馈 episode
 
 - **记录人**：sunhao
