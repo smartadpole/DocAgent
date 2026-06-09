@@ -30,7 +30,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - 上下文：AGENTS / CLAUDE、README、架构文档、dev-map、任务看板、接口文档。
 - 指令共享：[[concepts/agent-instruction-sharing]]，让 Claude Code / Codex 等 coding agent 共用一份项目规则，并把工具专用补充留在薄入口。
 - 规则：底线、禁止项、路径边界、提交要求、验证要求。
-- Skill：编译、测试、审查、源码审计、发布等高频动作的 SOP。
+- Skill：[[concepts/agent-skills]] 这样的可加载能力单元，用来承接编译、测试、审查、源码审计、发布、科研分析等高频动作的 SOP、事实源、输出格式和验证守卫。
 - Knowledge Linking：[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]] 和 [[articles/2026-06-04-knowledge-linking-mechanism-research]] 把调研、沉淀、总结方案和知识网络补链变成可验证流程。
 - Workflow：计划、实现、验证、审查、打回、提交、回写的接力规则。
 - Sub Agent：按阶段或专业分工的 agent 角色。
@@ -93,6 +93,8 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 ## 相关页面
 
 - [[articles/2026-05-25-harness-engineering-research]]
+- [[concepts/agent-skills]]
+- [[articles/2026-06-09-scientific-agent-skills-research]]
 - [[concepts/agent-instruction-sharing]]
 - [[concepts/codex-goals]]
 - [[concepts/agent-work-retrospective]]

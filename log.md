@@ -7,6 +7,24 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-09
+
+### 调研 Scientific Agent Skills 和 Agent Skills 概念
+
+- **记录人**：sunhao
+- **用户意图**：用户给出微信文章链接，要求调研该专题；本轮按知识沉淀模式处理，不停留在聊天摘要。
+- **主题**：
+  1. 将微信文章从“高星科研工具介绍”校准为 Agent Skills / 科研工作流技能化专题。
+  2. 用 GitHub 项目、Open Agent Skills 规格和相关安全 / 架构研究核验微信文章中的 star、skill 数量、安装方式、结构和风险边界。
+  3. 把 Scientific Agent Skills 作为 [[concepts/agent-skills]] 的案例，接回 [[concepts/harness-engineering]] 和 [[concepts/agent-governance]]。
+- **关键动作**：
+  1. 保存微信原文到 [[raw/scientific-agent-skills/2026-06-09-wechat-scientific-agent-skills.html]]。
+  2. 新增 [[articles/2026-06-09-scientific-agent-skills-research]]，记录项目核验、核心判断、Agent Skills 结构意义、科研协作启发和安全边界。
+  3. 新增 [[concepts/agent-skills]]，定义 Agent Skills 的职责、结构、和 Harness / MCP / Tool / Template / Rule 的区别，以及本库后续技能设计口径。
+  4. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]]、[[concepts/harness-engineering]] 和 [[concepts/agent-governance]]，补齐入口、上位和邻接回链。
+- **结论**：Scientific Agent Skills 的价值不在于把所有科研知识塞进模型，而在于把科研流程、工具链、数据库、代码示例、写作规范和验证守卫转成 agent 可加载的流程资产。它也提醒本库后续设计 skill 时必须重视触发描述、事实源边界、最小安装、provenance、安全扫描和人工确认点。
+- **影响页面**：[[raw/scientific-agent-skills/2026-06-09-wechat-scientific-agent-skills.html]]、[[articles/2026-06-09-scientific-agent-skills-research]]、[[concepts/agent-skills]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[concepts/harness-engineering]]、[[concepts/agent-governance]]、[[log]]。
+
 ## 2026-06-08
 
 ### 调研图片与图文排版体系

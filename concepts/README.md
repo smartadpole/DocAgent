@@ -26,6 +26,7 @@
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘子专题
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘子专题，承接 agent 的工作方式、效率、质量和 Harness 改进回看
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、路由、技能、模板、sensor、复盘和 H5 自演进
+- [[concepts/agent-skills]]：Agent Skills，把高频流程、事实源、工具边界、输出格式和验证守卫打包成 agent 可发现、可加载、可执行和可审计的能力单元
 - [[concepts/agent-instruction-sharing]]：Claude Code 和 Codex 共享同一份 agent 项目规则的方法，推荐根 `AGENTS.md` 作为唯一规则正文，`CLAUDE.md` 和可选 `.codex/AGENTS.md` 只做薄导入入口
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法

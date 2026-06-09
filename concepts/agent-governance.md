@@ -30,6 +30,7 @@ Agent 治理是把 agent 的规则、上下文、工具、技能、模板、验�
 | 指令遵循 | 已有规则怎样进入触发器、模板字段、sensor、门禁和最终证明 | [[instruction-adherence]] |
 | 执行合同 | 防止参考规则、非目标和证据说明漂移成隐形待办 | [[execution-contract-semantics]] |
 | H5 自演进 | episode 怎样观察、晋升、降级或删除 | [[harness-evolution]]、[[harness-feedback-ledger]] |
+| Agent Skills | 高频流程如何封装成可发现、可加载、可执行和可审计的能力单元 | [[concepts/agent-skills]]、[[articles/2026-06-09-scientific-agent-skills-research]] |
 | 知识关联 | 新增知识怎样完成调研、沉淀、总结方案、入口 / 上位 / 邻接 / 反向链接和 sensor 验证 | [[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]、[[articles/2026-06-04-knowledge-linking-mechanism-research]] |
 | 工作复盘 | 回看目标理解、读取预算、工具使用、验证质量和沟通节奏 | [[concepts/agent-work-retrospective]]、[[skills/historical-dialogue-retrospective/SKILL]] |
 | 指令共享 | Claude Code / Codex 等 coding agent 怎样共享项目规则且避免重复漂移 | [[concepts/agent-instruction-sharing]] |
