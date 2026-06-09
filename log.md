@@ -9,6 +9,21 @@
 
 ## 2026-06-09
 
+### 调研芯智睿声企业和可穿戴智能人工喉方向
+
+- **记录人**：sunhao
+- **用户意图**：用户要求调研“芯智睿声企业”；本轮按知识沉淀模式处理，既给出企业判断，也把公开资料、风险边界和后续尽调清单落入知识库。
+- **主题**：
+  1. 将北京芯智睿声科技有限公司从名称直觉中的“芯片公司”校准为 AI + 柔性传感 + 辅助沟通 / 康复设备方向的早期硬科技企业。
+  2. 用科博会、北京日报 / 北京市科委转发、CR 福祉展、专利、软著、Plug and Play Demo Day 和中国科协活动材料交叉核验企业基本画像、产品路线和公开进展。
+  3. 把医疗器械注册、临床验证、真实商业化、数据隐私和技术指标列为待核验边界，避免把展会和路演露出上推成成熟产品证据。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-09-xinzhi-ruisheng-company-research]]，记录企业画像、可穿戴智能人工喉技术路线、公开进展、机会判断、风险边界和后续尽调清单。
+  2. 新增 [[concepts/beijing-xinzhi-ruisheng]]，作为企业实体入口页，明确其和 [[concepts/ai-era-information-presentation]] 的关系。
+  3. 更新 [[INDEX]]、[[articles/README]] 和 [[concepts/README]]，补齐企业 / 产品观察入口和反向回链。
+- **结论**：芯智睿声值得作为早期辅助科技企业关注；当前公开证据能支持其方向、团队背景、展会露出和部分知识产权线索，但不能替代医疗器械合规、临床效果、量产交付、收入质量和数据治理尽调。
+- **影响页面**：[[articles/2026-06-09-xinzhi-ruisheng-company-research]]、[[concepts/beijing-xinzhi-ruisheng]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[log]]。
+
 ### 调研 Scientific Agent Skills 和 Agent Skills 概念
 
 - **记录人**：sunhao

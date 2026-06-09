@@ -33,3 +33,7 @@
 - [[articles/2026-06-09-scientific-agent-skills-research]]：Scientific Agent Skills 调研，说明科研 Agent Skill 库的价值在于把工具链、数据库、实验流程、方法规范和输出模板变成 agent 可加载的流程资产，并提醒不要无脑全装 community skill。
 - [[articles/2026-06-02-issue-original-evidence-asset-intake]]：Issue 原始图片证据未入库案例，分析模型可见图片与本地证据资产之间的断层，并提出高效的证据资产门方案。
 - [[articles/2026-05-29-finalizer-write-scope-case]]：finalizer 写入范围失守案例，分析 clean proof 与 scope proof 混淆的问题。
+
+## 企业 / 产品调研
+
+- [[articles/2026-06-09-xinzhi-ruisheng-company-research]]：芯智睿声企业调研，把北京芯智睿声科技有限公司校准为 AI + 柔性传感 + 可穿戴智能人工喉的早期辅助科技企业，并标出医疗器械注册、临床验证、数据隐私和商业化阶段的待核验边界。

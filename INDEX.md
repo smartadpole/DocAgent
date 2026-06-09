@@ -81,6 +81,11 @@ tags: [index, root]
 - [[concepts/prd-writing]]：PRD 写作方法
 - [[articles/2026-04-13-prd-writing-guide]]：PRD 写作指南摘要卡片
 
+## 企业与产品观察
+
+- [[concepts/beijing-xinzhi-ruisheng]]：北京芯智睿声科技有限公司，AI + 柔性传感 + 可穿戴智能人工喉方向的早期辅助科技企业实体页。
+- [[articles/2026-06-09-xinzhi-ruisheng-company-research]]：芯智睿声企业调研，梳理基本画像、产品路线、公开进展、机会判断和待核验边界。
+
 ## 研发方法
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径

@@ -38,6 +38,10 @@
 
 - [[concepts/openclaw]]：带 workspace memory、active memory 和 compiled knowledge layer 的 agent runtime
 
+## 企业 / 产品入口
+
+- [[concepts/beijing-xinzhi-ruisheng]]：北京芯智睿声科技有限公司，AI + 柔性传感 + 可穿戴智能人工喉方向的早期辅助科技企业实体页。
+
 ## 维护原则
 
 - 同一个概念只保留一个主页面。
