@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>芯智睿声企业调研 lens</title>
+  <meta name="lens_id" content="lens-xinzhi-ruisheng-company-current">
+  <meta name="focus_object" content="北京芯智睿声科技有限公司企业调研">
+  <meta name="lens_type" content="knowledge">
+  <meta name="generated_at" content="2026-06-09">
+  <meta name="source_revision" content="dab069b">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18202a;
+      --muted: #5e6976;
+      --line: #d9e0e7;
+      --paper: #f7f9fb;
+      --panel: #ffffff;
+      --teal: #0f766e;
+      --teal-soft: #d9f3ef;
+      --blue: #2f5e9e;
+      --blue-soft: #e4edf9;
+      --amber: #b56b12;
+      --amber-soft: #fff0d7;
+      --red: #b33a3a;
+      --red-soft: #fde4e4;
+      --green: #28784c;
+      --green-soft: #e1f4e9;
+      --shadow: 0 10px 30px rgba(24, 32, 42, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      background: #eef4f6;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 64vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+      gap: 36px;
+      align-items: center;
+      padding: 48px 0 42px;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 10px 0 14px;
+      font-size: clamp(34px, 6vw, 66px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 0;
+      color: #354150;
+      font-size: 19px;
+    }
+
+    .hero-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .signal-visual {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+    }
+
+    main {
+      padding: 34px 0 72px;
+    }
+
+    section {
+      margin: 0 0 34px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 6px 16px rgba(24, 32, 42, 0.04);
+    }
+
+    .callout {
+      border-left: 5px solid var(--teal);
+      background: var(--teal-soft);
+    }
+
+    .warn {
+      border-left: 5px solid var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .risk {
+      border-left: 5px solid var(--red);
+      background: var(--red-soft);
+    }
+
+    .good {
+      border-left: 5px solid var(--green);
+      background: var(--green-soft);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #eef2f6;
+      color: #27313d;
+    }
+
+    .label.confirmed {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .label.watch {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .label.gap {
+      background: var(--red-soft);
+      color: var(--red);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .fact {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 116px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(160px, 1fr));
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .event {
+      min-width: 160px;
+      border-top: 5px solid var(--blue);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 14px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .event .date {
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2f6;
+      font-size: 13px;
+      color: #2e3a46;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .flow {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      overflow-x: auto;
+    }
+
+    .flow svg {
+      min-width: 760px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .sources {
+      columns: 2 320px;
+      gap: 24px;
+      padding-left: 20px;
+    }
+
+    .sources li {
+      break-inside: avoid;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: #eef2f6;
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid.three,
+      .grid.two,
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 14mm;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      header,
+      footer,
+      .card,
+      .fact,
+      table,
+      .flow {
+        box-shadow: none;
+      }
+
+      .wrap {
+        width: 100%;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 0 0 16px;
+        grid-template-columns: 1fr;
+      }
+
+      section,
+      .card,
+      .fact,
+      .event,
+      tr {
+        break-inside: avoid;
+      }
+
+      a {
+        color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Problem-Focused Lens · Company Research</div>
+        <h1>芯智睿声：早期辅助科技企业，而非传统芯片公司</h1>
+        <p class="subtitle">这份 HTML lens 把企业调研重组成一眼判断、技术路线、进展时间线、证据强度和尽调风险。它用于阅读和决策预览，真相源仍是 Markdown 调研文章和企业实体页。</p>
+      </div>
+      <div class="hero-panel" aria-label="多模态人工喉示意图">
+        <svg class="signal-visual" viewBox="0 0 640 480" role="img" aria-labelledby="svg-title svg-desc">
+          <title id="svg-title">可穿戴智能人工喉多模态信号流示意图</title>
+          <desc id="svg-desc">喉部柔性传感器、麦克风和面部运动信号进入多模态 AI，再输出自然语音。</desc>
+          <rect x="28" y="28" width="584" height="424" rx="24" fill="#f7fbfc" stroke="#d9e0e7"/>
+          <circle cx="182" cy="206" r="78" fill="#d9f3ef" stroke="#0f766e" stroke-width="3"/>
+          <path d="M172 112 C230 134 244 194 222 250 C208 286 176 312 142 330" fill="none" stroke="#18202a" stroke-width="10" stroke-linecap="round"/>
+          <path d="M205 210 C240 218 264 246 270 284" fill="none" stroke="#18202a" stroke-width="7" stroke-linecap="round"/>
+          <rect x="128" y="220" width="108" height="42" rx="21" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+          <path d="M142 240 C160 226 178 256 196 240 C210 228 222 236 228 244" fill="none" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/>
+          <rect x="82" y="94" width="130" height="38" rx="19" fill="#ffffff" stroke="#2f5e9e"/>
+          <text x="147" y="119" text-anchor="middle" font-size="18" fill="#2f5e9e" font-weight="700">柔性传感</text>
+          <rect x="94" y="344" width="168" height="44" rx="22" fill="#ffffff" stroke="#b56b12"/>
+          <text x="178" y="372" text-anchor="middle" font-size="18" fill="#b56b12" font-weight="700">弱语音 / 肌肉信号</text>
+          <path d="M290 238 H370" stroke="#5e6976" stroke-width="4" marker-end="url(#arrow)"/>
+          <rect x="376" y="144" width="148" height="188" rx="18" fill="#e4edf9" stroke="#2f5e9e" stroke-width="3"/>
+          <text x="450" y="191" text-anchor="middle" font-size="21" fill="#2f5e9e" font-weight="800">多模态 AI</text>
+          <text x="450" y="229" text-anchor="middle" font-size="15" fill="#354150">识别 · 融合</text>
+          <text x="450" y="257" text-anchor="middle" font-size="15" fill="#354150">音色克隆</text>
+          <text x="450" y="285" text-anchor="middle" font-size="15" fill="#354150">语音还原</text>
+          <path d="M524 238 H582" stroke="#5e6976" stroke-width="4" marker-end="url(#arrow)"/>
+          <path d="M588 204 C610 220 610 256 588 272" fill="none" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
+          <path d="M570 220 C584 230 584 246 570 256" fill="none" stroke="#0f766e" stroke-width="6" stroke-linecap="round"/>
+          <text x="572" y="334" text-anchor="middle" font-size="18" fill="#0f766e" font-weight="700">自然语音</text>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#5e6976"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>一眼判断</h2>
+      <div class="grid three">
+        <article class="card callout">
+          <span class="label confirmed">当前结论</span>
+          <h3>方向清楚，但仍是早期阶段</h3>
+          <p>芯智睿声的核心方向是 AI + 柔性 / 石墨烯传感 + 可穿戴智能人工喉。公开资料能支持“技术方向和曝光度成立”，不能直接上推为成熟医疗器械公司。</p>
+        </article>
+        <article class="card warn">
+          <span class="label watch">阶段口径</span>
+          <h3>2026 取证推进，2027 推向市场</h3>
+          <p>最新公开口径优先采用 2026 年送检并进入临床、取证阶段，预计 2027 年推向市场；旧的“2026 年下半年上市”应降为历史口径。</p>
+        </article>
+        <article class="card risk">
+          <span class="label gap">不可上推</span>
+          <h3>未见注册证 / 销售规模证据</h3>
+          <p>截至本 lens 生成日，公开资料中没有看到国家药监注册证、稳定公开销售渠道、价格、交付规模或售后体系证据。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>背景框</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>上位背景</h3>
+          <p>本 lens 属于企业 / 产品观察视图，来源于 AcknowledgeBase 中的企业调研文章和企业实体页。它服务“快速看懂这家公司是什么、进展到哪、风险在哪里”。</p>
+        </article>
+        <article class="card">
+          <h3>使用边界</h3>
+          <p>适合用于早期筛选、行业理解、合作前问题清单和投资 / 采购前预判；不适合作为医疗采购、投资决策、临床有效性或合规结论。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>基础画像</h2>
+      <div class="facts">
+        <div class="fact">
+          <strong>2024.06</strong>
+          <span>公开资料称公司成立时间</span>
+        </div>
+        <div class="fact">
+          <strong>337.5 万</strong>
+          <span>公开科博会页面披露注册资本</span>
+        </div>
+        <div class="fact">
+          <strong>2026</strong>
+          <span>预计送检并进入临床 / 取证阶段</span>
+        </div>
+        <div class="fact">
+          <strong>2027</strong>
+          <span>最新公开口径中的推向市场时间</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>技术路线框图</h2>
+      <div class="flow" aria-label="技术路线">
+        <svg viewBox="0 0 1120 360" role="img" aria-labelledby="flow-title">
+          <title id="flow-title">芯智睿声可穿戴智能人工喉技术路线</title>
+          <defs>
+            <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#5e6976"/>
+            </marker>
+          </defs>
+          <rect x="24" y="42" width="190" height="90" rx="12" fill="#d9f3ef" stroke="#0f766e"/>
+          <text x="119" y="79" text-anchor="middle" font-size="20" font-weight="700" fill="#0f766e">喉部柔性传感</text>
+          <text x="119" y="108" text-anchor="middle" font-size="15" fill="#354150">肌肉运动 / 振动</text>
+          <rect x="24" y="220" width="190" height="90" rx="12" fill="#fff0d7" stroke="#b56b12"/>
+          <text x="119" y="257" text-anchor="middle" font-size="20" font-weight="700" fill="#b56b12">麦克风</text>
+          <text x="119" y="286" text-anchor="middle" font-size="15" fill="#354150">弱语音信号</text>
+          <rect x="288" y="132" width="190" height="90" rx="12" fill="#e4edf9" stroke="#2f5e9e"/>
+          <text x="383" y="169" text-anchor="middle" font-size="20" font-weight="700" fill="#2f5e9e">面部运动信号</text>
+          <text x="383" y="198" text-anchor="middle" font-size="15" fill="#354150">口型 / IMU 点位</text>
+          <rect x="552" y="132" width="190" height="90" rx="12" fill="#eef2f6" stroke="#5e6976"/>
+          <text x="647" y="169" text-anchor="middle" font-size="20" font-weight="700" fill="#2e3a46">多模态融合</text>
+          <text x="647" y="198" text-anchor="middle" font-size="15" fill="#354150">特征向量 / 识别模型</text>
+          <rect x="816" y="42" width="246" height="90" rx="12" fill="#e1f4e9" stroke="#28784c"/>
+          <text x="939" y="79" text-anchor="middle" font-size="20" font-weight="700" fill="#28784c">语音 / 文字信息</text>
+          <text x="939" y="108" text-anchor="middle" font-size="15" fill="#354150">识别用户想表达的内容</text>
+          <rect x="816" y="220" width="246" height="90" rx="12" fill="#fde4e4" stroke="#b33a3a"/>
+          <text x="939" y="257" text-anchor="middle" font-size="20" font-weight="700" fill="#b33a3a">音色克隆 / 语音还原</text>
+          <text x="939" y="286" text-anchor="middle" font-size="15" fill="#354150">输出自然人声</text>
+          <path d="M214 87 C250 90 250 160 288 170" fill="none" stroke="#5e6976" stroke-width="3" marker-end="url(#flow-arrow)"/>
+          <path d="M214 265 C250 256 250 198 288 188" fill="none" stroke="#5e6976" stroke-width="3" marker-end="url(#flow-arrow)"/>
+          <path d="M478 177 H552" stroke="#5e6976" stroke-width="3" marker-end="url(#flow-arrow)"/>
+          <path d="M742 162 C782 130 778 94 816 87" fill="none" stroke="#5e6976" stroke-width="3" marker-end="url(#flow-arrow)"/>
+          <path d="M742 192 C782 224 778 258 816 265" fill="none" stroke="#5e6976" stroke-width="3" marker-end="url(#flow-arrow)"/>
+        </svg>
+      </div>
+    </section>
+
+    <section>
+      <h2>公开进展时间线</h2>
+      <div class="timeline" aria-label="公开进展时间线">
+        <article class="event">
+          <div class="date">2024.06</div>
+          <strong>公司成立</strong>
+          <p>科博会页面披露成立时间、注册资本、地址和团队方向。</p>
+        </article>
+        <article class="event">
+          <div class="date">2025.05</div>
+          <strong>北京科博会</strong>
+          <p>可穿戴智能人工喉作为医药健康创新产品进入公开报道。</p>
+        </article>
+        <article class="event">
+          <div class="date">2025.06</div>
+          <strong>软著登记</strong>
+          <p>声音重建产品语料采集系统 V1.0.0 获软件著作权登记。</p>
+        </article>
+        <article class="event">
+          <div class="date">2026.01</div>
+          <strong>前沿科技大赛</strong>
+          <p>进入中关村国际前沿科技大赛医疗器械领域前十强。</p>
+        </article>
+        <article class="event">
+          <div class="date">2026.04</div>
+          <strong>Tech Show 路演</strong>
+          <p>王宇峰以联合创始人身份带项目登台，形成资本场景曝光。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>证据强度矩阵</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>判断项</th>
+            <th>当前证据</th>
+            <th>强度</th>
+            <th>不能上推到</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>企业方向</td>
+            <td>企业页、展会材料、专利、公开路演均指向可穿戴智能人工喉。</td>
+            <td><span class="label confirmed">较强</span></td>
+            <td>不能证明产品已经规模化销售。</td>
+          </tr>
+          <tr>
+            <td>技术路线</td>
+            <td>专利文本、北京日报报道和企业材料互相支撑多模态信号融合路线。</td>
+            <td><span class="label confirmed">较强</span></td>
+            <td>不能证明真实患者长期准确率和舒适性。</td>
+          </tr>
+          <tr>
+            <td>商业化阶段</td>
+            <td>最新公开口径为 2026 送检 / 临床 / 取证，2027 推向市场。</td>
+            <td><span class="label watch">进行中</span></td>
+            <td>不能写成已上市或已取得注册证。</td>
+          </tr>
+          <tr>
+            <td>合规成熟度</td>
+            <td>公开材料中暂未见药监注册证、临床试验登记或获批销售证据。</td>
+            <td><span class="label gap">缺口</span></td>
+            <td>不能作为医疗采购或临床有效性结论。</td>
+          </tr>
+          <tr>
+            <td>数据壁垒</td>
+            <td>报道提到多家医疗机构 / 公益组织合作和数百小时训练数据。</td>
+            <td><span class="label watch">待核验</span></td>
+            <td>不能证明数据授权、隐私治理和模型效果。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>机会与风险</h2>
+      <div class="grid two">
+        <article class="card good">
+          <h3>为什么值得关注</h3>
+          <ul>
+            <li>把人工喉适用人群从喉切扩展到中风、帕金森、渐冻症和老龄化发声困难。</li>
+            <li>非植入式穿戴和自然音色还原，有机会降低传统电子喉的社交摩擦。</li>
+            <li>语音障碍多模态数据稀缺，若授权和治理成立，可能形成数据与模型壁垒。</li>
+            <li>科技助残、康复辅具、医疗 AI 和消费级个性化发声之间有扩展空间。</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <h3>为什么仍要谨慎</h3>
+          <ul>
+            <li>医疗器械分类、注册证、临床评价路径尚未从公开材料中闭合。</li>
+            <li>展会演示不能替代真实患者长期佩戴、噪声环境和跨病种效果验证。</li>
+            <li>采集语音、音色、喉部 / 面部运动与健康相关数据，隐私治理要求高。</li>
+            <li>2027 推向市场仍是预期，不等于已有收入、渠道、交付和售后体系。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>后续尽调路径</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>优先级</th>
+            <th>要核验什么</th>
+            <th>推荐证据</th>
+            <th>通过后可支持的判断</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>P0</td>
+            <td>医疗器械注册 / 备案 / 临床路径</td>
+            <td>NMPA / 北京药监、注册证、临床评价或伦理审批材料</td>
+            <td>合规阶段判断</td>
+          </tr>
+          <tr>
+            <td>P0</td>
+            <td>真实患者效果</td>
+            <td>样本量、病种分层、准确率、延迟、佩戴时长、不良事件</td>
+            <td>产品有效性初判</td>
+          </tr>
+          <tr>
+            <td>P1</td>
+            <td>数据治理</td>
+            <td>知情同意、脱敏、删除权、模型个性化边界、数据存储位置</td>
+            <td>合作和隐私风险判断</td>
+          </tr>
+          <tr>
+            <td>P1</td>
+            <td>商业化能力</td>
+            <td>价格、渠道、交付、售后、供应链、试点机构和复购数据</td>
+            <td>市场化阶段判断</td>
+          </tr>
+          <tr>
+            <td>P2</td>
+            <td>替代与互补关系</td>
+            <td>和电子喉、AAC、眼控输入、静默语音接口、脑机接口对比</td>
+            <td>场景定位和竞争判断</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>证据与追溯</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>本库来源</h3>
+          <ul>
+            <li><a href="../../../articles/2026-06-09-xinzhi-ruisheng-company-research.md">芯智睿声企业调研</a></li>
+            <li><a href="../../../concepts/beijing-xinzhi-ruisheng.md">北京芯智睿声科技有限公司实体页</a></li>
+            <li><a href="../../../concepts/ai-era-information-presentation.md">AI 时代信息记录、处理与呈现方式</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>导出与打印</h3>
+          <p><strong>export_profile：</strong>canonical HTML current lens；A4 portrait print view；PDF / PNG / SVG 不入库，若需要导出应进入 `views/exports/` 或运行时下载。</p>
+          <p><strong>equivalence_policy：</strong>HTML、PDF、PNG 或 slide 必须来自同一源，不重新维护第二份事实。</p>
+        </article>
+      </div>
+      <ul class="sources">
+        <li><a href="https://www.chitec.cn/article/a8/27/58d7f1db21c0bee16bb53c355c04a827.html">科博会企业页</a></li>
+        <li><a href="https://kw.beijing.gov.cn/xwdt/mtbd/202505/t20250512_4086806.html">北京日报 / 北京市科委转发</a></li>
+        <li><a href="https://www.crexpo.cn/media/news/2485">CR 福祉展</a></li>
+        <li><a href="https://patents.google.com/patent/CN120260617A/zh">Google Patents CN120260617A</a></li>
+        <li><a href="https://kandian.sina.cn/article_1893892941_70e2834d02001x3sg.html?from=society">北京日报客户端 / 新浪看点</a></li>
+        <li><a href="https://m.zgccity.com/view/pc/news/181.html">中关村科学城 AI 迎春夜</a></li>
+        <li><a href="https://news.10jqka.com.cn/20260424/c676255744.shtml">同花顺 Tech Show 报道</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      lens_id: lens-xinzhi-ruisheng-company-current · generated_at: 2026-06-09 · source_revision: dab069b · evidence_boundary: source-backed public research, not medical / investment due diligence.
+    </div>
+  </footer>
+</body>
+</html>

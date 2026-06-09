@@ -9,6 +9,21 @@
 
 ## 2026-06-09
 
+### 生成芯智睿声企业调研 HTML lens
+
+- **记录人**：sunhao
+- **用户意图**：用户要求调动问题聚焦式图文呈现技能，为芯智睿声企业调研生成 HTML 展示，而不是继续阅读长 Markdown。
+- **主题**：
+  1. 将 [[articles/2026-06-09-xinzhi-ruisheng-company-research]] 和 [[concepts/beijing-xinzhi-ruisheng]] 重组成 current HTML lens。
+  2. 按 [[skills/problem-focused-visual-presentation/SKILL]] 补齐一眼判断、背景框、技术路线、进展时间线、证据强度矩阵、机会风险和尽调路径。
+  3. 建立最小 `views/` 呈现层入口和 lens registry，保持 HTML 是呈现层，不替代 Markdown 真相源。
+- **关键动作**：
+  1. 新增 [[views/current/knowledge/xinzhi-ruisheng-company.html]]，作为芯智睿声企业调研的 canonical current HTML lens。
+  2. 新增 [[views/README]]、[[views/current/README]] 和 [[views/lens-registry]]，说明 current lens、导出忽略目录和 staleness policy。
+  3. 更新 [[INDEX]]，让图文呈现层和芯智睿声 HTML lens 可从总入口发现。
+- **验证**：`python3 scripts/check_all.py --only knowledge-linking` 通过；`git diff --check` 通过；本地 Playwright 以 desktop 1440px 和 mobile 390px 打开 HTML，确认标题、9 个卡片、4 个基础画像块和 5 个时间线节点可渲染，并把截图放入 gitignored `views/.exports/`。
+- **影响页面**：[[views/current/knowledge/xinzhi-ruisheng-company.html]]、[[views/README]]、[[views/current/README]]、[[views/lens-registry]]、[[INDEX]]、[[log]]。
+
 ### 沉淀 IT / AI 行业调研方法和赛道判断框架
 
 - **记录人**：sunhao
