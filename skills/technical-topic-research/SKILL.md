@@ -20,6 +20,8 @@ description: 调研技术类专题或概念时，用于把资料、原理、生�
 
 如果用户给的是具体 GitHub / Hugging Face / 论文代码 / 开源产品仓库，并且问题是“能不能用、怎么接、是否值得引入”，优先切到 [[skills/open-source-project-research/SKILL]]。
 
+如果用户问的是 IT 行业、AI 领域、AI 赛道、公司群体、产品机会或落地场景，优先切到 [[skills/industry-ai-research/SKILL]]。
+
 ## 边界
 
 - 不追求资料穷尽；优先构建判断链。
@@ -38,6 +40,8 @@ description: 调研技术类专题或概念时，用于把资料、原理、生�
 6. 外部来源：优先官方文档、论文原文、作者原文、项目仓库、release / issue / license、产品文档，再用二级文章辅助理解。
 
 具体开源工程调研读取 [[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/open-source-project-due-diligence]] 和 [[templates/open-source-project-research-template]]。
+
+IT / AI 行业调研读取 [[articles/2026-06-09-it-ai-industry-research-methodology]]、[[concepts/it-ai-industry-research-asset]] 和 [[templates/industry-ai-research-template]]。
 
 ## 工作流
 

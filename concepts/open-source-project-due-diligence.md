@@ -10,7 +10,7 @@ tags: [open-source, due-diligence, codebase, integration, research]
 
 开源工程可用性评估，是对一个具体开源仓库进行的工程尽调。它关注的不是“这个项目是什么”，而是它能不能被我们使用、封装、改造、参考或放弃。
 
-相关：[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[skills/open-source-project-research/SKILL]]、[[templates/open-source-project-research-template]]、[[concepts/technical-research-knowledge-asset]]、[[projects/codebase/source-code-audit-workflow]]
+相关：[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[skills/open-source-project-research/SKILL]]、[[templates/open-source-project-research-template]]、[[concepts/it-ai-industry-research-asset]]、[[concepts/technical-research-knowledge-asset]]、[[projects/codebase/source-code-audit-workflow]]
 
 ## 定义
 
@@ -28,6 +28,7 @@ tags: [open-source, due-diligence, codebase, integration, research]
 
 | 相邻概念 | 区别 |
 | --- | --- |
+| [[concepts/it-ai-industry-research-asset]] | 面向行业 / AI 赛道和开源生态组合；本页面向具体开源仓库 |
 | [[concepts/technical-research-knowledge-asset]] | 面向技术概念 / 路线；本页面向具体开源仓库 |
 | [[projects/codebase/source-code-audit-workflow]] | 面向已有源码工程深度解读；本页面向外部项目引入前评估 |
 | 普通项目收藏 | 只保存链接和简介；本页要求运行、代码、效果、风险和接入策略 |
@@ -70,8 +71,8 @@ tags: [open-source, due-diligence, codebase, integration, research]
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]
 - [[skills/open-source-project-research/SKILL]]
 - [[templates/open-source-project-research-template]]
+- [[concepts/it-ai-industry-research-asset]]
 - [[concepts/technical-research-knowledge-asset]]
 - [[articles/2026-06-09-technical-topic-research-methodology]]
 - [[projects/codebase/source-code-audit-workflow]]
 - [[skills/technical-topic-research/SKILL]]
-

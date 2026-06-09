@@ -21,10 +21,11 @@ tags: [research, open-source, due-diligence, codebase, integration]
 
 ## 和技术概念调研的区别
 
-[[articles/2026-06-09-technical-topic-research-methodology|技术专题调研]] 关注一个技术路线或概念是否值得理解、验证和采用；开源工程调研关注一个具体仓库是否能被引入工程体系。
+[[articles/2026-06-09-technical-topic-research-methodology|技术专题调研]] 关注一个技术路线或概念是否值得理解、验证和采用；[[articles/2026-06-09-it-ai-industry-research-methodology|IT / AI 行业调研]] 关注一个行业、赛道、公司群体或产品机会处在什么产业阶段；开源工程调研关注一个具体仓库是否能被引入工程体系。
 
 | 调研对象 | 核心问题 | 典型产物 |
 | --- | --- | --- |
+| 行业 / AI 赛道 | 产业处于什么阶段，谁在做，机会和治理风险在哪里 | 行业地图、技术路线图、公司清单、机会判断 |
 | 技术概念 | 它是什么，解决什么问题，路线是否重要 | 技术地图、选型矩阵、PoC 方案 |
 | 开源工程 | 它能不能跑、能不能接、能不能改、能不能维护 | 项目画像、运行记录、代码结构图、效果评估、集成策略 |
 
@@ -230,8 +231,7 @@ AI 研发 / 工程落地场景还要特别看：端侧部署、ONNX / TensorRT /
 ## 知识关联自检
 
 - 上位概念 / owning page：[[concepts/open-source-project-due-diligence]]
-- 邻接页面：[[articles/2026-06-09-technical-topic-research-methodology]]、[[projects/codebase/source-code-audit-workflow]]
+- 邻接页面：[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[projects/codebase/source-code-audit-workflow]]
 - 执行技能：[[skills/open-source-project-research/SKILL]]、[[skills/technical-topic-research/SKILL]]
 - 可复制骨架：[[templates/open-source-project-research-template]]
 - 入口回链：[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]
-

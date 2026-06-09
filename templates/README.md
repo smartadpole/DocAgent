@@ -33,6 +33,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新技术专题调研报告可以参考 [[templates/technical-topic-research-template]]
 - 新开源工程调研报告可以参考 [[templates/open-source-project-research-template]]
+- 新 IT / AI 行业调研报告可以参考 [[templates/industry-ai-research-template]]
 - 新项目复盘档案可以参考 [[templates/project-retrospective-template]]；它覆盖目标 / 结果、证据地图、交付链、Agent 工作、行动分流、治理自演进和未验证边界。
 - 新技能需要跨工程迁移资料清单时，可以参考 [[templates/skill-transfer-manifest-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
@@ -51,3 +52,4 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 它不是当前 wiki 的系统模板层，而是专题成果；如果后续某种样式稳定高频复用，再考虑晋升进 `templates/`。
 - 技术专题调研的高频报告骨架已晋升为 [[templates/technical-topic-research-template]]；具体执行流程由 [[skills/technical-topic-research/SKILL]] 承接。
 - 开源工程调研的高频报告骨架已晋升为 [[templates/open-source-project-research-template]]；具体执行流程由 [[skills/open-source-project-research/SKILL]] 承接。
+- IT / AI 行业调研的高频报告骨架已晋升为 [[templates/industry-ai-research-template]]；具体执行流程由 [[skills/industry-ai-research/SKILL]] 承接。

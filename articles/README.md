@@ -25,6 +25,7 @@
 
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，说明技术类专题 / 概念调研的目标不是搜全资料，而是形成支撑判断、选型、PoC、风险识别和复用的技术研究型知识资产。
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：开源工程调研方法论，说明具体开源仓库调研应按项目画像、健康度、跑通验证、代码结构、效果性能、集成成本、风险和使用策略形成工程尽调资产。
+- [[articles/2026-06-09-it-ai-industry-research-methodology]]：IT / AI 行业调研方法论，说明行业和 AI 领域调研应按宏观趋势、技术路线、产品应用、公司竞争、开源生态和落地治理形成机会与行动判断。
 - [[articles/2026-06-08-image-text-layout-system-research]]：图片与图文排版体系调研，从现代主义排版、瑞士网格、Gestalt、Material / Carbon、CSS Grid、响应式图片、可访问图注和 AI layout generation 中抽象出意图、素材、空间骨架、视觉组织、图文绑定、媒介适配和治理生成七层模型。
 - [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息记录、处理与呈现方式调研，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、页面化 lens、HTML 实时呈现、同源导出和 HTML 记录边界。
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]：用 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 只读样本校准问题聚焦式图文 lens 的 current / snapshot、源刷新、背景框、用户入口、同源导出和重复渲染物边界。

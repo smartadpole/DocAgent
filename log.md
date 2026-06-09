@@ -9,6 +9,24 @@
 
 ## 2026-06-09
 
+### 沉淀 IT / AI 行业调研方法和赛道判断框架
+
+- **记录人**：sunhao
+- **用户意图**：用户追问“作为 IT 行业、AI 领域如何做调研，IT 和 AI 侧重点不一样吧”，希望把行业 / AI 领域调研从普通技术专题和开源工程调研中分离出来。
+- **主题**：
+  1. 将 IT / AI 行业调研定义为产业情报、技术路线判断、产品机会分析和落地可行性评估的组合，而不是热点搜集。
+  2. 明确 IT 行业调研偏企业软件、基础设施、预算迁移、系统替换、采购集成和运维治理；AI 领域调研还必须额外关注模型能力、数据 / 算力、评测、Agent / RAG / LLMOps、开源模型、安全治理和 ROI。
+  3. 建立六层框架：宏观趋势、技术路线、产品应用、公司竞争、开源生态和落地治理。
+  4. 将高权重信号源、AI 领域 12 问、行业地图 / 技术地图 / 公司清单 / 开源清单 / 风险清单 / PoC 路线作为后续调研固定产物。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-09-it-ai-industry-research-methodology]]，沉淀 IT / AI 行业调研目标、侧重点差异、六层结构、信号源权重、AI 领域 12 问和最终产物。
+  2. 新增 [[concepts/it-ai-industry-research-asset]]，作为行业方向、AI 赛道、产品机会、公司群体和落地场景调研的上位概念。
+  3. 新增 [[skills/industry-ai-research/SKILL]]，把 IT / AI 行业调研做成 agent 可执行流程，并明确何时转入技术专题调研或开源工程调研。
+  4. 新增 [[templates/industry-ai-research-template]]，把行业 / AI 赛道调研报告骨架固定为趋势、技术、产业地图、产品、竞争、开源、案例、治理、机会和行动建议。
+  5. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[concepts/technical-research-knowledge-asset]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/open-source-project-due-diligence]]、[[concepts/ai-era-information-presentation]] 和 [[skills/technical-topic-research/SKILL]]，补齐入口、上位、邻接和分流规则。
+- **结论**：后续遇到 IT 行业、AI 领域、AI 赛道、公司群体、产品机会或落地场景调研时，应优先走行业 / AI 六层框架；当问题收窄到具体技术概念时再转技术专题调研，收窄到具体仓库时再转开源工程尽调。
+- **影响页面**：[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[concepts/it-ai-industry-research-asset]]、[[skills/industry-ai-research/SKILL]]、[[templates/industry-ai-research-template]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[concepts/technical-research-knowledge-asset]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/open-source-project-due-diligence]]、[[concepts/ai-era-information-presentation]]、[[skills/technical-topic-research/SKILL]]、[[log]]。
+
 ### 沉淀开源工程调研和可用性尽调方法
 
 - **记录人**：sunhao

@@ -72,6 +72,7 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 - [[knowledge-linking-rules]] 负责让 Markdown 知识源形成关系网。
 - [[skills/knowledge-linking/SKILL]] 负责调研、沉淀、补链和验证。
 - [[concepts/technical-research-knowledge-asset]] 和 [[skills/technical-topic-research/SKILL]] 负责把技术专题调研从资料汇总推进到判断、选型、PoC、风险和复用。
+- [[concepts/it-ai-industry-research-asset]] 和 [[skills/industry-ai-research/SKILL]] 负责把 IT / AI 行业、赛道、产品机会和落地场景调研成产业地图、技术路线、竞争格局、开源生态、治理风险和行动建议。
 - [[articles/2026-06-05-ai-era-information-presentation-research]] 记录本专题调研结论。
 - [[concepts/problem-focused-information-presentation]] 承接本专题在“每次关注某个具体问题时怎样选择展示 lens”的方案化延伸。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]] 是邻接研究，说明为什么语义关联不能只依赖自动图谱或最终回复。
@@ -95,4 +96,6 @@ AI 时代信息记录、处理与呈现方式，是指在 LLM、agent、RAG 和�
 - [[skills/knowledge-linking/SKILL]]
 - [[concepts/technical-research-knowledge-asset]]
 - [[skills/technical-topic-research/SKILL]]
+- [[concepts/it-ai-industry-research-asset]]
+- [[skills/industry-ai-research/SKILL]]
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]
