@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-04
+updated: 2026-06-09
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-09 | 调研技能加固后漏做 Harness episode 判断 | 用户追问“除了更新 log，harness 没有更新吗”，指出上一轮用技术调研知识储备加固技能后，只写了 [[log]] 和技能文件，没有按 [[harness-evolution]] 判断是否形成 H5 episode | Harness 反馈 + 指令遵循补漏 | 可优化成本 | 补写本 ledger episode；确认这是单次收尾资格判断失守，暂不新增硬规则或 sensor，后续若技能 / 规则升级后仍反复漏做 H5 判断，再考虑在收尾模板或 sensor 中加入显式检查 | [[harness-evolution]] / [[instruction-adherence]] / [[skills/technology-research-router/SKILL]] | observed |
 | 2026-06-04 | 项目级 agent 规则重复入口 | 用户指出有些工程会同时维护根 `AGENTS.md` 和 `.codex/AGENTS.md`，导致同一套规则重复和漂移；随后进一步校准：`.codex/AGENTS.md` 可以同时被治理，但只能是 thin Codex adapter，不能承接第二份规则正文 | 规则升级 + 结构收口 + Sensor 更新 | 可优化成本 | 把有效规则并入根 [[AGENTS]]；更新 [[concepts/agent-instruction-sharing]]、[[governance/platform-standards]]、审计 / issue 技能和 `scripts/check_harness_governance.py`，将重复规则正文改成检查失败，将 `@../AGENTS.md` thin adapter 作为允许形态 | [[AGENTS]] / [[concepts/agent-instruction-sharing]] / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 跨工程迁移提示词缺少产物级回归 | 用户追问 meta skill 为什么升级十几次仍做不好，并指出根本在 meta skill 设计以及 skill 每个环节如何思考、不遗漏且翔实，暴露现有 sensor 只查规则词，不查生成产物是否达到任务书基准 | 技能升级 + Sensor 升级 + Harness 反馈 | 可优化成本 | 新增 `skills/cross-project-skill-adoption-prompt/examples/retrospective-transfer-taskbook-golden.md` 作为复盘迁移 golden 样例；更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，加入生成思考循环；扩展 `scripts/check_harness_governance.py` 检查 golden 样例章节、字段级模块和关键禁止项 | golden taskbook example / `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-06-04 | 跨工程迁移 meta-skill 被复盘样例绑定 | 用户纠正“这个 meta skill 不是只针对某一个主题的，而是所有技能主题”，暴露前次把复盘样例里的 baseline 字段上浮成 meta-skill 通用 baseline，可能导致 Issue、验收、代码审计等技能迁移也套复盘模块 | 技能升级 + Harness 反馈 | 可优化成本 | 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，把 Baseline 对比评分改成“任意技能主题通用字段 + 当前源 skill / TRANSFER.md 主题专属模块”；更新 [[templates/skill-transfer-manifest-template]]，新增主题专属任务书基线字段；更新 `scripts/check_harness_governance.py` 检查所有技能主题和主题专属模块关键词 | [[skills/cross-project-skill-adoption-prompt/SKILL]] / [[templates/skill-transfer-manifest-template]] / `python3 scripts/check_all.py --only harness-governance` | promoted |

@@ -9,6 +9,17 @@
 
 ## 2026-06-09
 
+### 补记调研技能加固后的 Harness 反馈 episode
+
+- **记录人**：sunhao
+- **用户意图**：用户追问“除了更新 log，harness 没有更新吗”，指出上一轮调研技能加固后没有同步做 Harness episode 判断。
+- **主题**：
+  1. 将这次遗漏校准为收尾阶段的 H5 episode 资格判断失守，而不是新的调研方法需求。
+  2. 按 [[harness-evolution]] 和 [[instruction-adherence]] 补写 [[harness-feedback-ledger]]，保留用户原始纠偏点和已采取改动。
+  3. 暂不新增硬规则或 sensor；如果后续技能 / 规则升级后仍反复漏做 H5 判断，再考虑晋升为模板字段或 sensor 检查。
+- **关键动作**：更新 [[harness-feedback-ledger]]，新增“调研技能加固后漏做 Harness episode 判断” observed episode。
+- **影响页面**：[[harness-feedback-ledger]]、[[log]]。
+
 ### 强化 HTML lens 的 PDF / PNG 导出和对话预览要求
 
 - **记录人**：sunhao
