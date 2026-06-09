@@ -40,6 +40,22 @@
 - **结论**：后续处理“技术调研”时，不应先问“写哪种报告”，而应先判对象、决策目标和证据要求。完整调研产物至少要能给出证据包、成熟度、价值判断、落地判断、风险判断、行动建议和刷新条件。
 - **影响页面**：[[articles/2026-06-09-technology-research-capability-system]]、[[concepts/technology-research-system]]、[[skills/technology-research-router/SKILL]]、[[templates/technology-research-intake-template]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[concepts/technical-research-knowledge-asset]]、[[concepts/open-source-project-due-diligence]]、[[concepts/it-ai-industry-research-asset]]、[[skills/technical-topic-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[skills/industry-ai-research/SKILL]]、[[log]]。
 
+### 用技术调研知识储备武装本工程调研技能
+
+- **记录人**：sunhao
+- **用户意图**：用户要求把当前已经沉淀的技术调研知识储备真正用于本工程调研技能，使后续 agent 执行调研时不只知道方法论，还能按证据、成熟度、风险、决策和沉淀合同行动。
+- **主题**：
+  1. 将 [[skills/technology-research-router/SKILL]] 从分流说明强化为技术调研总控执行合同，要求先固定对象、决策目标、证据计划、成熟度假设、风险门和沉淀路径。
+  2. 让 [[skills/technical-topic-research/SKILL]]、[[skills/open-source-project-research/SKILL]] 和 [[skills/industry-ai-research/SKILL]] 明确继承 router intake，避免把分支调研退化成普通介绍、README 复述或热点列表。
+  3. 把证据等级、刷新触发、PoC 退出条件、R0-R4 开源尽调深度、供应链治理、AI 评测治理和行动等级写入技能自检。
+- **关键动作**：
+  1. 更新 [[skills/technology-research-router/SKILL]]，补齐调研合同、L1-L6 证据框架、风险阻断项 / 观察项和 article / concept / skill / template / project 沉淀计划。
+  2. 更新 [[skills/technical-topic-research/SKILL]]，要求接收总控输入，补证据等级、PoC 退出条件、成熟度 + A/B/C/D 行动等级和刷新触发。
+  3. 更新 [[skills/open-source-project-research/SKILL]]，加入 R0-R4 调研深度、供应链 / provenance / SBOM / SPDX / CVE / OSV / 社区健康检查和越级结论守卫。
+  4. 更新 [[skills/industry-ai-research/SKILL]]，加入行业研究口径、证据窗口、六层证据权重、AI 评测治理、成本上限和下钻条件。
+- **结论**：本工程后续执行技术调研时，默认先由 router 冻结调研合同，再由分支技能按对象执行；任何强结论都必须有证据等级、成熟度、风险门、行动等级和刷新条件支撑。
+- **影响页面**：[[skills/technology-research-router/SKILL]]、[[skills/technical-topic-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[skills/industry-ai-research/SKILL]]、[[log]]。
+
 ### 生成芯智睿声企业调研 HTML lens
 
 - **记录人**：sunhao

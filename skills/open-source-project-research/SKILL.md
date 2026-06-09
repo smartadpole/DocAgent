@@ -11,6 +11,8 @@ description: 调研 GitHub、Hugging Face 或其他开源工程时，用于完�
 
 它是 [[skills/technical-topic-research/SKILL]] 的专项分支：技术专题调研关注技术路线，开源工程调研关注具体仓库是否值得使用、封装、Fork、参考或放弃。
 
+如果本技能由 [[skills/technology-research-router/SKILL]] 路由进入，必须继承 router 的决策目标、证据要求、成熟度假设、风险门和沉淀路径，并明确本轮是初筛、运行验证、源码结构分析、集成评估还是正式接入前尽调。
+
 ## 触发场景
 
 - 用户给出 GitHub、Hugging Face、GitLab、论文代码、开源产品或框架链接，要求调研。
@@ -39,6 +41,20 @@ description: 调研 GitHub、Hugging Face 或其他开源工程时，用于完�
 
 ## 工作流
 
+### 0. 判调研深度
+
+先声明本轮深度：
+
+| 深度 | 目标 | 不能越界 |
+| --- | --- | --- |
+| R0 收藏 / 线索 | 确认项目存在和方向 | 不给使用建议 |
+| R1 健康度初筛 | 判断是否值得继续投入 | 不说可接入 |
+| R2 运行验证 | README / demo / 自有数据跑通 | 不说可生产 |
+| R3 代码结构 | 读入口、数据流、核心模块、测试 | 不替代生产审计 |
+| R4 集成尽调 | license、供应链、性能、接口、维护策略 | 仍需项目侧验收 |
+
+没有运行验证和代码结构证据时，结论只能是初筛。
+
 ### 1. 快速筛选
 
 先建立项目画像：
@@ -63,6 +79,13 @@ description: 调研 GitHub、Hugging Face 或其他开源工程时，用于完�
 - license 和依赖 license 是否可接受。
 
 Star 高不是通过条件；README 漂亮也不是通过条件。
+
+同时扫描供应链和治理信号：
+
+- license、依赖 license、模型权重 / 数据集授权。
+- release provenance、构建方式、CI、签名、可重复构建线索。
+- 是否可生成或已有 SBOM，是否有明显 CVE / OSV 风险。
+- OpenSSF Scorecard / SLSA / SPDX / CHAOSS 可作为参考框架，不要求每次完整跑，但高风险项目必须说明缺口。
 
 ### 3. 运行验证
 
@@ -121,6 +144,8 @@ Star 高不是通过条件；README 漂亮也不是通过条件。
 
 结论必须写理由、证据、风险和下一步行动。
 
+策略必须带证据等级和置信度：直接使用和 Fork 改造至少需要 R2 + R3 证据；生产接入建议必须进入项目侧源码审计、验收或 PoC，不在本技能里直接闭环。
+
 ## 输出要求
 
 正式报告优先使用 [[templates/open-source-project-research-template]]，至少包含：
@@ -163,5 +188,7 @@ python3 scripts/check_all.py
 - 是否评估效果、性能、资源和失败案例。
 - 是否判断集成成本和二开成本。
 - 是否前置 license、模型权重、数据集和依赖风险。
+- 是否说明调研深度是 R0-R4 哪一层，并避免越级结论。
+- 是否扫描供应链、provenance、SBOM / SPDX、CVE / OSV 和社区健康缺口。
 - 是否给出直接用 / 封装用 / Fork / 参考 / 放弃中的一个策略。
 - 是否补齐 article / concept / entrypoint / backlink。
