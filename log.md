@@ -9,6 +9,20 @@
 
 ## 2026-06-09
 
+### 强化 HTML lens 的 PDF / PNG 导出和对话预览要求
+
+- **记录人**：sunhao
+- **用户意图**：用户指出技能里应要求每次生成 HTML 时，都要附带生成 PDF 和截图 / 图片到合适位置，并且在对话中展示图片。
+- **主题**：
+  1. 将持久 HTML lens 的 PDF / PNG 导出从可选导出配置升级为默认同轮产物。
+  2. 明确 PDF / PNG 仍是从 HTML 派生的 ignored export，不进入 Git 作为第二份真相源。
+  3. 要求最终回复直接展示 PNG 预览，避免用户只拿到文件路径。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，要求生成或更新持久 HTML lens 时同步导出 PDF 和 PNG 截图 / 长图，并在最终回复中展示 PNG。
+  2. 更新 [[skills/README]]，同步技能入口摘要。
+  3. 对当前 [[views/current/knowledge/xinzhi-ruisheng-company.html]] 补生成 PDF 和 PNG 导出到 gitignored `views/.exports/`。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/README]]、[[log]]。
+
 ### 补全技术调研总控体系和证据成熟度框架
 
 - **记录人**：sunhao
