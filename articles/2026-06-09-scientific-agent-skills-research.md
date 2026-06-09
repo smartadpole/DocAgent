@@ -8,8 +8,9 @@ tags: [ai-agent, agent-skills, scientific-workflow, harness-engineering]
 # Scientific Agent Skills 调研
 
 - 来源：
-  - 微信原文：[[raw/scientific-agent-skills/2026-06-09-wechat-scientific-agent-skills.html]]
+  - 微信原文：[斩获27.6k Star！Agent科研技能库开源，140+Skill覆盖论文写作、材料科学各类方向](https://mp.weixin.qq.com/s/-_7sCzUT9s4NdfP30wg8OQ)，本地归档：[[raw/scientific-agent-skills/2026-06-09-wechat-scientific-agent-skills.html]]
   - 项目主页：[K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills)
+  - 核验入口：[GitHub repo API](https://api.github.com/repos/K-Dense-AI/scientific-agent-skills)、[GitHub tree API](https://api.github.com/repos/K-Dense-AI/scientific-agent-skills/git/trees/main?recursive=1)
   - 规格参考：[Open Agent Skills Specification](https://openagentskills.dev/docs/specification)
   - 研究参考：[Agent Skills for Large Language Models](https://arxiv.org/abs/2602.12430)、[Under the Hood of SKILL.md](https://arxiv.org/abs/2605.11418)
 - 类型：专题调研
