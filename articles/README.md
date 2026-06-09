@@ -23,6 +23,7 @@
 
 ## 信息架构 / 知识呈现
 
+- [[articles/2026-06-09-technology-research-capability-system]]：技术调研能力体系补全，说明技术调研需要先做对象路由，再按证据等级、成熟度、经济性、安全合规、AI 评测和更新机制形成可持续研究能力。
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，说明技术类专题 / 概念调研的目标不是搜全资料，而是形成支撑判断、选型、PoC、风险识别和复用的技术研究型知识资产。
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：开源工程调研方法论，说明具体开源仓库调研应按项目画像、健康度、跑通验证、代码结构、效果性能、集成成本、风险和使用策略形成工程尽调资产。
 - [[articles/2026-06-09-it-ai-industry-research-methodology]]：IT / AI 行业调研方法论，说明行业和 AI 领域调研应按宏观趋势、技术路线、产品应用、公司竞争、开源生态和落地治理形成机会与行动判断。

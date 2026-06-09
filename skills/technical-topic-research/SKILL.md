@@ -22,6 +22,8 @@ description: 调研技术类专题或概念时，用于把资料、原理、生�
 
 如果用户问的是 IT 行业、AI 领域、AI 赛道、公司群体、产品机会或落地场景，优先切到 [[skills/industry-ai-research/SKILL]]。
 
+如果用户给出的对象层级不清楚，或同时包含行业趋势、技术概念、开源项目、源码工程和 PoC，先切到 [[skills/technology-research-router/SKILL]]，用 [[templates/technology-research-intake-template]] 冻结对象、决策目标和证据计划。
+
 ## 边界
 
 - 不追求资料穷尽；优先构建判断链。
@@ -32,12 +34,13 @@ description: 调研技术类专题或概念时，用于把资料、原理、生�
 
 ## 读取顺序
 
-1. [[articles/2026-06-09-technical-topic-research-methodology]]：确认本库对技术专题调研的目标、主线和产物标准。
-2. [[concepts/technical-research-knowledge-asset]]：确认调研资产的概念边界。
-3. [[templates/technical-topic-research-template]]：需要写正式调研页时使用。
-4. [[skills/knowledge-linking/SKILL]]：确认新增 article / concept / template / skill 的入口、上位、邻接和反向链接要求。
-5. 目标专题已有页面：先搜 `INDEX.md`、`articles/`、`concepts/`、`skills/`、`governance/`，避免重复新建。
-6. 外部来源：优先官方文档、论文原文、作者原文、项目仓库、release / issue / license、产品文档，再用二级文章辅助理解。
+1. [[concepts/technology-research-system]]：对象不清楚时先确认总控路由和证据等级。
+2. [[articles/2026-06-09-technical-topic-research-methodology]]：确认本库对技术专题调研的目标、主线和产物标准。
+3. [[concepts/technical-research-knowledge-asset]]：确认调研资产的概念边界。
+4. [[templates/technical-topic-research-template]]：需要写正式调研页时使用。
+5. [[skills/knowledge-linking/SKILL]]：确认新增 article / concept / template / skill 的入口、上位、邻接和反向链接要求。
+6. 目标专题已有页面：先搜 `INDEX.md`、`articles/`、`concepts/`、`skills/`、`governance/`，避免重复新建。
+7. 外部来源：优先官方文档、论文原文、作者原文、项目仓库、release / issue / license、产品文档，再用二级文章辅助理解。
 
 具体开源工程调研读取 [[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/open-source-project-due-diligence]] 和 [[templates/open-source-project-research-template]]。
 

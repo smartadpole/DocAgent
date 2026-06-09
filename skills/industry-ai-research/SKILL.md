@@ -17,6 +17,7 @@ description: 调研 IT 行业、AI 领域、AI 赛道、产品机会、公司群
 - 用户要求判断一个 AI 赛道是否值得学习、产品化、创业、试点或持续观察。
 - 用户要求整理某类 AI 公司、AI 产品、AI 开源生态或行业落地机会。
 - 用户明确关心趋势、市场、公司、商业模式、投资、机会、风险或政策。
+- 如果对象同时包含行业趋势、技术路线、开源项目、已有源码工程和 PoC，先切到 [[skills/technology-research-router/SKILL]]，冻结主对象、决策目标和证据计划后再进入本技能。
 
 ## 边界
 
@@ -29,12 +30,13 @@ description: 调研 IT 行业、AI 领域、AI 赛道、产品机会、公司群
 
 ## 读取顺序
 
-1. [[articles/2026-06-09-it-ai-industry-research-methodology]]：确认六层框架和 AI 特有问题。
-2. [[concepts/it-ai-industry-research-asset]]：确认行业研究资产边界。
-3. [[templates/industry-ai-research-template]]：需要正式报告时使用。
-4. 目标领域已有页面：先搜 `INDEX.md`、`articles/`、`concepts/`、`skills/`。
-5. 外部一手来源：权威报告、官方文档、论文原文、GitHub / Hugging Face、产品文档、监管原文。
-6. 二级来源：公司案例、招聘 JD、开发者社区、技术大会、融资信息、用户评论。
+1. [[concepts/technology-research-system]]：对象不清楚时先确认总控路由和证据等级。
+2. [[articles/2026-06-09-it-ai-industry-research-methodology]]：确认六层框架和 AI 特有问题。
+3. [[concepts/it-ai-industry-research-asset]]：确认行业研究资产边界。
+4. [[templates/industry-ai-research-template]]：需要正式报告时使用。
+5. 目标领域已有页面：先搜 `INDEX.md`、`articles/`、`concepts/`、`skills/`。
+6. 外部一手来源：权威报告、官方文档、论文原文、GitHub / Hugging Face、产品文档、监管原文。
+7. 二级来源：公司案例、招聘 JD、开发者社区、技术大会、融资信息、用户评论。
 
 ## 工作流
 
@@ -170,4 +172,3 @@ python3 scripts/check_all.py
 - 是否给出机会、风险、推荐等级和行动建议。
 - 是否能转入技术专题、开源工程或具体 PoC。
 - 是否补齐 article / concept / entrypoint / backlink。
-

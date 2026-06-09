@@ -31,6 +31,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新工程反馈可以参考 [[templates/engineering-feedback-template]]
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
+- 新技术调研对象还不清楚、需要先做对象路由和研究包规划时，可以参考 [[templates/technology-research-intake-template]]
 - 新技术专题调研报告可以参考 [[templates/technical-topic-research-template]]
 - 新开源工程调研报告可以参考 [[templates/open-source-project-research-template]]
 - 新 IT / AI 行业调研报告可以参考 [[templates/industry-ai-research-template]]
@@ -50,6 +51,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 
 - 状态与约束推演的知识库专题样式包见 [[articles/2026-05-28-state-constraint-template-pack]]。
 - 它不是当前 wiki 的系统模板层，而是专题成果；如果后续某种样式稳定高频复用，再考虑晋升进 `templates/`。
+- 技术调研的总控 intake 骨架已晋升为 [[templates/technology-research-intake-template]]；具体路由流程由 [[skills/technology-research-router/SKILL]] 承接。
 - 技术专题调研的高频报告骨架已晋升为 [[templates/technical-topic-research-template]]；具体执行流程由 [[skills/technical-topic-research/SKILL]] 承接。
 - 开源工程调研的高频报告骨架已晋升为 [[templates/open-source-project-research-template]]；具体执行流程由 [[skills/open-source-project-research/SKILL]] 承接。
 - IT / AI 行业调研的高频报告骨架已晋升为 [[templates/industry-ai-research-template]]；具体执行流程由 [[skills/industry-ai-research/SKILL]] 承接。

@@ -17,6 +17,7 @@ description: 调研 GitHub、Hugging Face 或其他开源工程时，用于完�
 - 用户问某个开源项目“能不能用、好不好接、是否值得引入、怎么 PoC、怎么二开”。
 - 用户要求比较多个开源项目并给出选型建议。
 - 某个技术专题调研已经进入具体开源实现评估阶段。
+- 如果对象还不确定是“开源工程本身”“开源生态”“技术路线”还是“已有源码工程审计”，先切到 [[skills/technology-research-router/SKILL]]，再决定是否使用本技能。
 
 ## 边界
 
@@ -28,12 +29,13 @@ description: 调研 GitHub、Hugging Face 或其他开源工程时，用于完�
 
 ## 读取顺序
 
-1. [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：确认开源工程调研目标和判断框架。
-2. [[concepts/open-source-project-due-diligence]]：确认概念边界和使用策略。
-3. [[templates/open-source-project-research-template]]：需要正式报告时使用。
-4. 目标项目官方资料：README、docs、examples、release、license、issues、PR、CI、tests、benchmark。
-5. 本库已有相邻技术专题、概念或项目材料。
-6. 如果需要深入源码，按入口、配置、examples、core pipeline、tests、deployment 的顺序读。
+1. [[concepts/technology-research-system]]：对象不清楚时先确认总控路由和证据等级。
+2. [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：确认开源工程调研目标和判断框架。
+3. [[concepts/open-source-project-due-diligence]]：确认概念边界和使用策略。
+4. [[templates/open-source-project-research-template]]：需要正式报告时使用。
+5. 目标项目官方资料：README、docs、examples、release、license、issues、PR、CI、tests、benchmark。
+6. 本库已有相邻技术专题、概念或项目材料。
+7. 如果需要深入源码，按入口、配置、examples、core pipeline、tests、deployment 的顺序读。
 
 ## 工作流
 
@@ -163,4 +165,3 @@ python3 scripts/check_all.py
 - 是否前置 license、模型权重、数据集和依赖风险。
 - 是否给出直接用 / 封装用 / Fork / 参考 / 放弃中的一个策略。
 - 是否补齐 article / concept / entrypoint / backlink。
-

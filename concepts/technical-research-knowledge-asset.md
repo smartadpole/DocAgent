@@ -12,7 +12,7 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 
 它的核心不是资料完整性，而是行动可用性：读完之后应能判断这个技术解决什么问题、为什么重要、适合什么场景、怎么验证、风险在哪里，以及当前是否值得投入。
 
-相关：[[articles/2026-06-09-technical-topic-research-methodology]]、[[concepts/it-ai-industry-research-asset]]、[[concepts/open-source-project-due-diligence]]、[[skills/technical-topic-research/SKILL]]、[[skills/industry-ai-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[templates/technical-topic-research-template]]、[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]
+相关：[[concepts/technology-research-system]]、[[articles/2026-06-09-technology-research-capability-system]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[concepts/it-ai-industry-research-asset]]、[[concepts/open-source-project-due-diligence]]、[[skills/technology-research-router/SKILL]]、[[skills/technical-topic-research/SKILL]]、[[skills/industry-ai-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[templates/technology-research-intake-template]]、[[templates/technical-topic-research-template]]、[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]
 
 ## 定义
 
@@ -53,6 +53,8 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 
 如果某个专题只是轻量概念储备，可以先写最小版本；如果它会影响技术选型、投入、采购或工程路线，就应补齐对比、PoC 和决策等级。
 
+如果对象层级还不清楚，先进入 [[concepts/technology-research-system]] 和 [[skills/technology-research-router/SKILL]]：判断它究竟是行业 / AI 赛道、技术专题、开源工程、已有源码工程还是 PoC，再选择对应的证据等级和产物。
+
 具体开源仓库不是普通技术概念，应进入 [[concepts/open-source-project-due-diligence]]：先做项目画像、健康度、运行验证、代码结构、效果性能、集成成本和使用策略判断，再决定直接用、封装用、Fork、参考或放弃。
 
 如果对象是 IT 行业、AI 领域、AI 赛道、公司群体、产品机会或落地场景，应进入 [[concepts/it-ai-industry-research-asset]]：先判断产业阶段、技术路线、产品形态、竞争格局、开源生态和治理风险，再下钻到具体技术或开源工程。
@@ -60,6 +62,7 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 ## 在本库中的用法
 
 - 用户要求“调研某个技术专题”时，默认用 [[skills/technical-topic-research/SKILL]] 生成研究包，而不是只给聊天摘要。
+- 用户给的对象混合了行业、技术、开源仓库、源码工程或 PoC 时，先用 [[skills/technology-research-router/SKILL]] 和 [[templates/technology-research-intake-template]] 做 intake 和路由。
 - 用户要求调研 IT 行业、AI 领域、AI 赛道、公司群体或产品机会时，优先用 [[skills/industry-ai-research/SKILL]]。
 - 用户要求调研具体 GitHub / Hugging Face / 论文代码 / 开源产品时，优先用 [[skills/open-source-project-research/SKILL]]，不要只套通用技术专题模板。
 - 如果专题有长期复用价值，至少沉淀到 `articles/` 和 `concepts/`，并按 [[skills/knowledge-linking/SKILL]] 补入口、上位、邻接和反向链接。
@@ -77,7 +80,7 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 
 ## 知识关联自检
 
-- 上位概念 / owning page：[[concepts/ai-era-information-presentation]]、[[concepts/agent-skills]]
+- 上位概念 / owning page：[[concepts/technology-research-system]]、[[concepts/ai-era-information-presentation]]、[[concepts/agent-skills]]
 - 邻接概念 / 案例：[[articles/2026-06-09-technical-topic-research-methodology]]、[[articles/2026-06-04-knowledge-linking-mechanism-research]]
 - 入口回链：[[concepts/README]]、[[INDEX]]
 - 不进入的层级：不直接写入 [[POLICY]] 或 [[WORKFLOW]]；本页是方法概念，执行流程由 [[skills/technical-topic-research/SKILL]] 承接。
@@ -85,12 +88,16 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 ## 相关页面
 
 - [[articles/2026-06-09-technical-topic-research-methodology]]
+- [[articles/2026-06-09-technology-research-capability-system]]
+- [[concepts/technology-research-system]]
 - [[concepts/it-ai-industry-research-asset]]
 - [[concepts/open-source-project-due-diligence]]
+- [[skills/technology-research-router/SKILL]]
 - [[skills/technical-topic-research/SKILL]]
 - [[skills/industry-ai-research/SKILL]]
 - [[skills/open-source-project-research/SKILL]]
 - [[templates/technical-topic-research-template]]
+- [[templates/technology-research-intake-template]]
 - [[skills/knowledge-linking/SKILL]]
 - [[knowledge-linking-rules]]
 - [[concepts/agent-skills]]

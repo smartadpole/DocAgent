@@ -17,6 +17,7 @@
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把一份文档、跨文档主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、图文主体、同源一致性和 ignored PDF / PNG 导出配置的 lens。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能。用于把已沉淀的 skill / 能力转换成可交给目标工程 agent 的升级提示词、附件资料清单、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于把调研、沉淀知识、总结方案、入口 / 上位 / 邻接 / 反向链接和 `knowledge-linking` sensor 验证收敛成可复用流程，避免新增知识成为孤岛。
+- [[skills/technology-research-router/SKILL]]：技术调研路由技能。用于先判断调研对象、决策目标、证据要求、成熟度和风险，再路由到行业 / AI、技术专题、开源工程、源码审计或 PoC 产物。
 - [[skills/technical-topic-research/SKILL]]：技术专题调研技能。用于把技术类专题 / 概念调研组织成问题牵引、谱系边界、机制拆解、生态扫描、对比评估、场景映射、PoC、风险和分级决策的可复用研究包。
 - [[skills/open-source-project-research/SKILL]]：开源工程调研技能。用于把 GitHub / Hugging Face / 论文代码 / 开源产品调研组织成项目画像、健康度、运行验证、代码结构、效果性能、集成成本、风险和使用策略的工程尽调卡。
 - [[skills/industry-ai-research/SKILL]]：IT / AI 行业调研技能。用于把 IT 行业、AI 领域、AI 赛道、产品机会、公司群体和落地场景调研组织成宏观趋势、技术路线、产品应用、竞争格局、开源生态、治理风险和行动建议。

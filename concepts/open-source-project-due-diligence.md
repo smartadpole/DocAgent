@@ -10,7 +10,7 @@ tags: [open-source, due-diligence, codebase, integration, research]
 
 开源工程可用性评估，是对一个具体开源仓库进行的工程尽调。它关注的不是“这个项目是什么”，而是它能不能被我们使用、封装、改造、参考或放弃。
 
-相关：[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[skills/open-source-project-research/SKILL]]、[[templates/open-source-project-research-template]]、[[concepts/it-ai-industry-research-asset]]、[[concepts/technical-research-knowledge-asset]]、[[projects/codebase/source-code-audit-workflow]]
+相关：[[concepts/technology-research-system]]、[[articles/2026-06-09-technology-research-capability-system]]、[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[skills/technology-research-router/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[templates/open-source-project-research-template]]、[[concepts/it-ai-industry-research-asset]]、[[concepts/technical-research-knowledge-asset]]、[[projects/codebase/source-code-audit-workflow]]
 
 ## 定义
 
@@ -30,6 +30,7 @@ tags: [open-source, due-diligence, codebase, integration, research]
 | --- | --- |
 | [[concepts/it-ai-industry-research-asset]] | 面向行业 / AI 赛道和开源生态组合；本页面向具体开源仓库 |
 | [[concepts/technical-research-knowledge-asset]] | 面向技术概念 / 路线；本页面向具体开源仓库 |
+| [[concepts/technology-research-system]] | 面向所有技术调研对象的路由和证据框架；本页是其中的开源工程分支 |
 | [[projects/codebase/source-code-audit-workflow]] | 面向已有源码工程深度解读；本页面向外部项目引入前评估 |
 | 普通项目收藏 | 只保存链接和简介；本页要求运行、代码、效果、风险和接入策略 |
 
@@ -46,6 +47,7 @@ tags: [open-source, due-diligence, codebase, integration, research]
 ## 在本库中的用法
 
 - 用户要求调研某个 GitHub / Hugging Face / 开源项目时，默认先用 [[skills/open-source-project-research/SKILL]] 做项目画像和健康度筛选。
+- 如果用户给的是“某个方向有哪些开源项目”“这个开源项目代表的技术路线是否值得做”这类混合问题，先用 [[skills/technology-research-router/SKILL]] 判定主对象，再决定是否进入行业、技术专题或开源工程分支。
 - 如果只是初筛，可以先生成轻量卡片；如果要决定接入，必须补运行记录、自有数据验证、代码结构和集成成本。
 - 如果项目进入正式 fork、接入设计或生产化评估，再转入 [[projects/codebase/source-code-audit-workflow]]，按 L0-L3 等级做更深源码审计。
 - 具体调研正文放 `articles/`，稳定概念和通用方法留在本页，执行流程留在 skill，报告骨架留在 template。
@@ -61,7 +63,7 @@ tags: [open-source, due-diligence, codebase, integration, research]
 
 ## 知识关联自检
 
-- 上位概念 / owning page：[[concepts/technical-research-knowledge-asset]]
+- 上位概念 / owning page：[[concepts/technology-research-system]]、[[concepts/technical-research-knowledge-asset]]
 - 邻接概念 / 案例：[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[projects/codebase/source-code-audit-workflow]]
 - 入口回链：[[concepts/README]]、[[INDEX]]
 - 不进入的层级：不直接替代源码审计工作流；本页只定义开源工程引入前的可用性评估。
@@ -69,6 +71,9 @@ tags: [open-source, due-diligence, codebase, integration, research]
 ## 相关页面
 
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]
+- [[articles/2026-06-09-technology-research-capability-system]]
+- [[concepts/technology-research-system]]
+- [[skills/technology-research-router/SKILL]]
 - [[skills/open-source-project-research/SKILL]]
 - [[templates/open-source-project-research-template]]
 - [[concepts/it-ai-industry-research-asset]]

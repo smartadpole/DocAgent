@@ -13,6 +13,7 @@ tags: [research, open-source, due-diligence, codebase, integration]
 ## 来源
 
 - 用户在 2026-06-09 对“开源工程应该如何处理和调研”的方法输入。
+- 技术调研总控见 [[articles/2026-06-09-technology-research-capability-system]] 和 [[concepts/technology-research-system]]；当对象混合了开源生态、技术路线和具体仓库时，先用 [[skills/technology-research-router/SKILL]] 路由。
 - 本库既有 [[articles/2026-06-09-technical-topic-research-methodology]]、[[concepts/technical-research-knowledge-asset]]、[[projects/codebase/source-code-audit-workflow]] 和 [[skills/knowledge-linking/SKILL]]。
 
 ## 一句话总结

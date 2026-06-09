@@ -13,6 +13,7 @@ tags: [research, industry, ai, it, strategy, market-intelligence]
 ## 来源
 
 - 用户在 2026-06-09 对“IT 行业 / AI 领域如何做调研，二者侧重点是否不同”的方法输入。
+- 技术调研总控见 [[articles/2026-06-09-technology-research-capability-system]] 和 [[concepts/technology-research-system]]；当对象混合了行业机会、技术专题、开源工程和 PoC 时，先用 [[skills/technology-research-router/SKILL]] 路由。
 - 本轮核对的高权重参考源包括：[Stanford HAI 2026 AI Index](https://hai.stanford.edu/ai-index/2026-ai-index-report%20)、[McKinsey State of AI 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai?os=wtmbrgj5xbah)、[Gartner Top Strategic Technology Trends for 2026](https://www.gartner.com/en/articles/top-technology-trends-2026)、[NIST AI 600-1 Generative AI Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)、[OECD AI Principles](https://www.oecd.org/en/topics/ai-principles.html)、[EU AI Act implementation timeline](https://ai-act-service-desk.ec.europa.eu/en/ai-act/eu-ai-act-implementation-timeline)。
 - 本库既有 [[articles/2026-06-09-technical-topic-research-methodology]]、[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/technical-research-knowledge-asset]] 和 [[skills/knowledge-linking/SKILL]]。
 
@@ -292,4 +293,3 @@ IT / AI 行业调研不应只是一篇文章，而应沉淀为：
 - 执行技能：[[skills/industry-ai-research/SKILL]]、[[skills/technical-topic-research/SKILL]]
 - 可复制骨架：[[templates/industry-ai-research-template]]
 - 入口回链：[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]
-

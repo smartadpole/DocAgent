@@ -12,7 +12,7 @@ IT / AI 行业研究资产，是面向一个行业方向、AI 赛道、产品领
 
 它不只解释“这个方向是什么”，而是判断它在产业中处于什么阶段、技术是否成熟、谁在做、怎么赚钱、我们能不能切入、该投入多少资源。
 
-相关：[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[skills/industry-ai-research/SKILL]]、[[templates/industry-ai-research-template]]、[[concepts/technical-research-knowledge-asset]]、[[concepts/open-source-project-due-diligence]]
+相关：[[concepts/technology-research-system]]、[[articles/2026-06-09-technology-research-capability-system]]、[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[skills/technology-research-router/SKILL]]、[[skills/industry-ai-research/SKILL]]、[[templates/industry-ai-research-template]]、[[concepts/technical-research-knowledge-asset]]、[[concepts/open-source-project-due-diligence]]
 
 ## 定义
 
@@ -33,6 +33,7 @@ IT / AI 行业研究资产，是面向一个行业方向、AI 赛道、产品领
 | --- | --- |
 | [[concepts/technical-research-knowledge-asset]] | 面向技术概念 / 路线；本页面向产业方向、赛道和机会判断 |
 | [[concepts/open-source-project-due-diligence]] | 面向具体开源仓库；本页只在开源生态层做组合判断 |
+| [[concepts/technology-research-system]] | 面向所有技术调研对象的总控路由；本页是行业 / AI 赛道分支 |
 | 普通行业资料整理 | 只汇总信息；本页要求形成阶段判断、机会判断和行动建议 |
 
 ## IT 和 AI 的侧重点
@@ -63,6 +64,7 @@ AI 领域调研在此基础上，还必须增加：
 ## 在本库中的用法
 
 - 用户问“IT 行业 / AI 领域 / 某个 AI 赛道怎么调研”时，优先用 [[skills/industry-ai-research/SKILL]]。
+- 如果对象还不清楚，或者同时包含行业机会、技术路线、开源项目和 PoC，先用 [[skills/technology-research-router/SKILL]] 完成对象路由和证据计划。
 - 如果对象收窄成具体技术路线，再转入 [[skills/technical-topic-research/SKILL]]。
 - 如果对象收窄成具体 GitHub / Hugging Face / 开源产品，再转入 [[skills/open-source-project-research/SKILL]]。
 - 具体调研正文放 `articles/`，稳定概念和方法留在本页，执行流程留在 skill，报告骨架留在 template。
@@ -78,7 +80,7 @@ AI 领域调研在此基础上，还必须增加：
 
 ## 知识关联自检
 
-- 上位概念 / owning page：[[concepts/technical-research-knowledge-asset]]
+- 上位概念 / owning page：[[concepts/technology-research-system]]
 - 邻接概念 / 案例：[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[concepts/open-source-project-due-diligence]]
 - 入口回链：[[concepts/README]]、[[INDEX]]
 - 不进入的层级：不直接替代具体技术专题或开源项目调研；本页是行业/领域层方法概念。
@@ -86,6 +88,9 @@ AI 领域调研在此基础上，还必须增加：
 ## 相关页面
 
 - [[articles/2026-06-09-it-ai-industry-research-methodology]]
+- [[articles/2026-06-09-technology-research-capability-system]]
+- [[concepts/technology-research-system]]
+- [[skills/technology-research-router/SKILL]]
 - [[skills/industry-ai-research/SKILL]]
 - [[templates/industry-ai-research-template]]
 - [[concepts/technical-research-knowledge-asset]]
@@ -93,4 +98,3 @@ AI 领域调研在此基础上，还必须增加：
 - [[articles/2026-06-09-technical-topic-research-methodology]]
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]
 - [[concepts/ai-era-information-presentation]]
-

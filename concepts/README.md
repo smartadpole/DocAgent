@@ -18,6 +18,7 @@
 
 ## 方法入口
 
+- [[concepts/technology-research-system]]：技术调研体系，统一路由行业 / AI 赛道、技术专题、开源工程、源码工程和 PoC 调研，并用证据等级、成熟度、风险、经济性和决策门控制输出。
 - [[concepts/technical-research-knowledge-asset]]：技术研究型知识资产，把技术专题调研从资料汇总推进成能支撑判断、选型、落地、风险识别和复用的研究包。
 - [[concepts/open-source-project-due-diligence]]：开源工程可用性评估，面向具体开源仓库判断能否直接用、封装用、Fork 改造、只参考实现或放弃。
 - [[concepts/it-ai-industry-research-asset]]：IT / AI 行业研究资产，面向行业方向、AI 赛道、产品机会、公司群体和落地场景做产业趋势、技术路线、竞争格局、开源生态和治理风险判断。

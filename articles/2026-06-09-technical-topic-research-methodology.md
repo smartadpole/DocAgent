@@ -13,6 +13,7 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 ## 来源
 
 - 用户在 2026-06-09 对“技术类专题 / 概念应该如何调研和沉淀”的方法输入。
+- 技术调研总控见 [[articles/2026-06-09-technology-research-capability-system]] 和 [[concepts/technology-research-system]]；对象不清楚时先用 [[skills/technology-research-router/SKILL]] 路由。
 - 本库既有 [[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]、[[concepts/agent-skills]] 和 [[concepts/ai-era-information-presentation]]。
 
 ## 一句话总结

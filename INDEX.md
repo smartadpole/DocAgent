@@ -46,6 +46,7 @@ tags: [index, root]
 - [[views/README]]：图文呈现层入口，存放问题聚焦式 HTML lens；当前芯智睿声企业调研视图见 [[views/current/knowledge/xinzhi-ruisheng-company.html]]
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/knowledge-linking/SKILL]]：知识关联技能，把调研、沉淀、总结方案、补链和 `knowledge-linking` sensor 验证做成可复用流程
+- [[skills/technology-research-router/SKILL]]：技术调研路由技能，先判断对象是行业 / AI 赛道、技术专题、开源工程、源码工程还是 PoC，再选择证据、成熟度、风险和产物路径
 - [[skills/technical-topic-research/SKILL]]：技术专题调研技能，把技术概念从资料搜集推进成支撑判断、选型、PoC 和复用的研究资产
 - [[skills/open-source-project-research/SKILL]]：开源工程调研技能，把外部仓库从看起来有用推进到健康度、运行验证、代码结构、集成成本和使用策略判断
 - [[skills/industry-ai-research/SKILL]]：IT / AI 行业调研技能，把行业、赛道、公司群体、产品机会和落地场景组织成趋势、技术、产品、竞争、开源和治理六层判断
@@ -79,6 +80,8 @@ tags: [index, root]
 - [[response-mode-routing]]：已生效的响应效率治理入口，承接快速诊断、知识沉淀、Issue 分析、验收关闭和规则升级的模式路由
 - [[proactive-dialogue-system]]：主动对话和引导式设计系统，承接场景包、置信度、无感交流等级、性能预算和每轮产物化落地判定
 - [[state-constraint-reasoning]]：计划型问题的治理入口，承接状态变量、约束传播、未知变量和可执行性判断
+- [[concepts/technology-research-system]]：技术调研体系，把行业 / AI 赛道、技术专题、开源工程、源码工程和 PoC 调研统一成对象路由、证据等级、成熟度、风险和决策门框架
+- [[articles/2026-06-09-technology-research-capability-system]]：技术调研能力体系补全，补齐对象路由、证据质量、成熟度、经济性、安全合规、AI 评测和更新机制
 - [[concepts/technical-research-knowledge-asset]]：技术研究型知识资产，把技术专题调研从百科式资料汇总推进到概念、价值、场景、落地、风险和决策闭环
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，沉淀问题牵引、技术拆解、生态扫描、对比评估、场景映射、PoC 和分级决策主线
 - [[concepts/open-source-project-due-diligence]]：开源工程可用性评估，把具体开源仓库调研成能判断直接用、封装用、Fork、参考或放弃的工程尽调资产
@@ -110,6 +113,7 @@ tags: [index, root]
 - [[concepts/agent-governance]]：Agent 治理专题，统筹规则、响应路由、技能、模板、sensor、复盘和 H5 自演进之间的知识库关系。
 - [[concepts/agent-skills]]：Agent Skills 概念，把可重复工作封装成 agent 可发现、可加载、可执行和可审计的能力单元。
 - [[articles/2026-06-09-scientific-agent-skills-research]]：Scientific Agent Skills 调研，分析 K-Dense 科研技能库如何把科研流程、数据库、工具链和方法规范打包成约 140+ 个 Agent Skill，并校准安全边界。
+- [[articles/2026-06-09-technology-research-capability-system]]：技术调研能力体系补全，把技术调研从单篇报告升级成对象路由、证据等级、成熟度、经济性、安全合规、AI 评测和更新机制共同组成的能力系统。
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，把技术概念调研定义为支撑判断、选型、落地和复用的研究资产，而不是资料搜全。
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：开源工程调研方法论，把具体开源仓库调研定义为小型技术尽调，最终给出直接使用、封装使用、Fork 改造、只参考或放弃的策略。
 - [[articles/2026-06-09-it-ai-industry-research-methodology]]：IT / AI 行业调研方法论，把行业和 AI 赛道调研定义为产业情报、技术路线、产品机会、竞争格局、开源生态和落地治理的组合判断。
@@ -123,6 +127,7 @@ tags: [index, root]
 - [[articles/2026-05-30-acknowledgebase-governance-hub-design]]：AcknowledgeBase 作为跨工程治理中控的具体设计：四类治理动作、调度频率、中控职责边界、wiki template-changelog 最小改动方案。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把任意已沉淀 skill / 能力转换成目标工程可执行升级提示词，并附资料路径、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：新增或大改长期知识页时，按调研、分层、关系画像、入口回链和 sensor 验证完成知识网络落地。
+- [[skills/technology-research-router/SKILL]]：技术调研路由技能，用于在对象类型、决策目标和证据要求未清楚时先完成 intake、路由和研究包规划。
 - [[skills/technical-topic-research/SKILL]]：调研技术专题或概念时，按问题、谱系、机制、生态、对比、场景、PoC、风险和分级结论生成可复用研究包。
 - [[skills/open-source-project-research/SKILL]]：调研开源工程时，按项目画像、健康度、运行验证、代码结构、效果性能、集成成本、风险和使用策略生成可复用尽调卡。
 - [[skills/industry-ai-research/SKILL]]：调研 IT 行业、AI 领域、AI 赛道或公司群体时，按宏观趋势、技术路线、产品应用、竞争格局、开源生态和落地治理生成决策资产。
@@ -157,6 +162,7 @@ tags: [index, root]
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
+- [[templates/technology-research-intake-template]]：技术调研 intake 模板，用于先冻结对象类型、决策目标、证据计划、成熟度、风险初筛和推荐路由。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
 - [[templates/harness-evolution-review-template]]：周期性复盘 episode、sensor backlog、晋升和降级决策的模板

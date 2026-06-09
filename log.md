@@ -9,6 +9,23 @@
 
 ## 2026-06-09
 
+### 补全技术调研总控体系和证据成熟度框架
+
+- **记录人**：sunhao
+- **用户意图**：用户在已经沉淀技术专题、开源工程和 IT / AI 行业调研方法后，要求补全未覆盖部分，形成完整健全的技术调研知识储备。
+- **主题**：
+  1. 将技术调研从三条分支方法升级为总控体系：先判对象，再选择行业 / AI、技术专题、开源工程、源码审计或 PoC 路径。
+  2. 补齐证据等级、来源可信度、成熟度、采用阶段、经济性、安全合规、软件供应链、AI 评测可靠性、决策门和退出条件。
+  3. 把 TRL、Technology Radar、NIST AI RMF、OpenSSF Scorecard / SLSA、SPDX / SBOM、CHAOSS、HELM 和 MLCommons AI risk / reliability 等外部框架吸收为调研判断轴，而不是替代本库已有分支方法。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-09-technology-research-capability-system]]，作为技术调研能力体系总览，补齐对象路由、证据等级、成熟度、经济性、安全供应链、AI 评测和更新机制。
+  2. 新增 [[concepts/technology-research-system]]，作为行业 / AI 赛道、技术专题、开源工程、源码工程和 PoC 调研的上位概念。
+  3. 新增 [[skills/technology-research-router/SKILL]]，把模糊技术调研请求先收束成对象、决策目标、证据计划、成熟度、风险和推荐分支。
+  4. 新增 [[templates/technology-research-intake-template]]，作为技术调研 intake 和路由骨架。
+  5. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]] 以及既有行业、技术专题、开源工程文章 / 概念 / 技能，补齐总控回链和分支触发条件。
+- **结论**：后续处理“技术调研”时，不应先问“写哪种报告”，而应先判对象、决策目标和证据要求。完整调研产物至少要能给出证据包、成熟度、价值判断、落地判断、风险判断、行动建议和刷新条件。
+- **影响页面**：[[articles/2026-06-09-technology-research-capability-system]]、[[concepts/technology-research-system]]、[[skills/technology-research-router/SKILL]]、[[templates/technology-research-intake-template]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[articles/2026-06-09-it-ai-industry-research-methodology]]、[[concepts/technical-research-knowledge-asset]]、[[concepts/open-source-project-due-diligence]]、[[concepts/it-ai-industry-research-asset]]、[[skills/technical-topic-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[skills/industry-ai-research/SKILL]]、[[log]]。
+
 ### 生成芯智睿声企业调研 HTML lens
 
 - **记录人**：sunhao
