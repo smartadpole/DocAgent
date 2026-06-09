@@ -166,6 +166,8 @@ GraphRAG 的核心差异是通过实体、关系、社区结构和全局摘要�
 
 在本库中，这组资产可由 [[skills/technical-topic-research/SKILL]] 驱动，使用 [[templates/technical-topic-research-template]] 作为页面骨架，并按 [[skills/knowledge-linking/SKILL]] 补入口、上位、邻接和反向链接。
 
+如果调研对象不是抽象技术概念，而是具体开源仓库，应转入 [[articles/2026-06-09-open-source-project-due-diligence-methodology]] 和 [[skills/open-source-project-research/SKILL]]。开源工程调研必须补项目画像、健康度、实际运行、代码结构、效果性能、集成成本、license 和使用策略。
+
 ## 核心策略
 
 - **以问题为中心，不以资料为中心**：围绕真实问题组织内容。
@@ -185,7 +187,6 @@ GraphRAG 的核心差异是通过实体、关系、社区结构和全局摘要�
 
 - 上位概念 / owning page：[[concepts/technical-research-knowledge-asset]]
 - 邻接页面：[[articles/2026-06-04-knowledge-linking-mechanism-research]]、[[concepts/agent-skills]]、[[concepts/ai-era-information-presentation]]
-- 执行技能：[[skills/technical-topic-research/SKILL]]、[[skills/knowledge-linking/SKILL]]
-- 可复制骨架：[[templates/technical-topic-research-template]]
+- 执行技能：[[skills/technical-topic-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[skills/knowledge-linking/SKILL]]
+- 可复制骨架：[[templates/technical-topic-research-template]]、[[templates/open-source-project-research-template]]
 - 入口回链：[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]
-

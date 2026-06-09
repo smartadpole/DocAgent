@@ -9,6 +9,23 @@
 
 ## 2026-06-09
 
+### 沉淀开源工程调研和可用性尽调方法
+
+- **记录人**：sunhao
+- **用户意图**：用户追问“对于开源的工程，怎么去处理和调研”，希望在技术专题调研方法之外，补齐具体开源仓库的工程化调研策略。
+- **主题**：
+  1. 将开源工程调研从“看 README / 看 star”校准为小型技术尽调，核心问题是能不能用、好不好接、能不能改、风险多大、是否值得引入工程体系。
+  2. 把调研流程拆成项目类型判断、项目健康度体检、项目画像、运行验证、代码结构分析、效果 / 性能评估、集成成本判断、使用策略和评分表。
+  3. 明确开源工程调研和技术概念调研、源码工程深度审计的边界：前者面向外部项目引入前评估，后者面向已进入正式接入或生产化审计的源码工程。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-09-open-source-project-due-diligence-methodology]]，沉淀开源工程调研目标、类型分流、健康度体检、三层运行验证、代码阅读顺序、效果性能评估、集成成本和使用策略。
+  2. 新增 [[concepts/open-source-project-due-diligence]]，作为开源工程可用性评估的上位概念，承接直接使用、封装使用、Fork 改造、只参考实现和放弃五类结论。
+  3. 新增 [[skills/open-source-project-research/SKILL]]，把 GitHub / Hugging Face / 论文代码 / 开源产品调研做成 agent 可执行流程。
+  4. 新增 [[templates/open-source-project-research-template]]，把开源工程调研报告骨架固定为项目概况、健康度、运行验证、代码结构、效果性能、集成成本、风险、评分和下一步。
+  5. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[concepts/technical-research-knowledge-asset]]、[[skills/technical-topic-research/SKILL]]、[[articles/2026-06-09-technical-topic-research-methodology]] 和 [[projects/codebase/source-code-audit-workflow]]，补齐入口、上位和邻接回链。
+- **结论**：后续调研具体开源工程时，默认不能只做资料介绍；至少要先给项目画像和健康度初判。若要建议接入，必须有运行验证、代码结构、效果性能、license、集成成本和使用策略证据。
+- **影响页面**：[[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/open-source-project-due-diligence]]、[[skills/open-source-project-research/SKILL]]、[[templates/open-source-project-research-template]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[concepts/technical-research-knowledge-asset]]、[[skills/technical-topic-research/SKILL]]、[[articles/2026-06-09-technical-topic-research-methodology]]、[[projects/codebase/source-code-audit-workflow]]、[[log]]。
+
 ### 沉淀技术专题调研方法和知识资产结构
 
 - **记录人**：sunhao

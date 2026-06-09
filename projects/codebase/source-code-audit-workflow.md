@@ -24,6 +24,8 @@ tags: [project, codebase, workflow]
 - 用户要把已有系统接入当前整体方案，需要判断哪些能直接复用、哪些必须改造。
 - 用户询问某个工程是否已经分析清楚、能否生产化、在整体系统里负责什么。
 
+如果用户面对的是外部开源仓库，还处在“是否值得引入 / 怎么引入 / 直接用还是 Fork”的阶段，优先使用 [[concepts/open-source-project-due-diligence]] 和 [[skills/open-source-project-research/SKILL]]。只有进入正式接入、fork 改造或生产化审计后，才升级到本页的 L0-L3 源码工程深度解读。
+
 ## 覆盖等级
 
 ### L0：工程盘点

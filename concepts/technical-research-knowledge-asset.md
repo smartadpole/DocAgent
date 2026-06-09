@@ -12,7 +12,7 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 
 它的核心不是资料完整性，而是行动可用性：读完之后应能判断这个技术解决什么问题、为什么重要、适合什么场景、怎么验证、风险在哪里，以及当前是否值得投入。
 
-相关：[[articles/2026-06-09-technical-topic-research-methodology]]、[[skills/technical-topic-research/SKILL]]、[[templates/technical-topic-research-template]]、[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]
+相关：[[articles/2026-06-09-technical-topic-research-methodology]]、[[concepts/open-source-project-due-diligence]]、[[skills/technical-topic-research/SKILL]]、[[skills/open-source-project-research/SKILL]]、[[templates/technical-topic-research-template]]、[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]]
 
 ## 定义
 
@@ -53,9 +53,12 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 
 如果某个专题只是轻量概念储备，可以先写最小版本；如果它会影响技术选型、投入、采购或工程路线，就应补齐对比、PoC 和决策等级。
 
+具体开源仓库不是普通技术概念，应进入 [[concepts/open-source-project-due-diligence]]：先做项目画像、健康度、运行验证、代码结构、效果性能、集成成本和使用策略判断，再决定直接用、封装用、Fork、参考或放弃。
+
 ## 在本库中的用法
 
 - 用户要求“调研某个技术专题”时，默认用 [[skills/technical-topic-research/SKILL]] 生成研究包，而不是只给聊天摘要。
+- 用户要求调研具体 GitHub / Hugging Face / 论文代码 / 开源产品时，优先用 [[skills/open-source-project-research/SKILL]]，不要只套通用技术专题模板。
 - 如果专题有长期复用价值，至少沉淀到 `articles/` 和 `concepts/`，并按 [[skills/knowledge-linking/SKILL]] 补入口、上位、邻接和反向链接。
 - 如果专题会反复用于后续调研，使用 [[templates/technical-topic-research-template]]，不要每次临时重造报告结构。
 - 如果调研结论会改变本库规则、响应路由或 agent 执行方式，再单独判断是否进入 `governance/`、`skills/`、`templates/` 或 sensor。
@@ -79,11 +82,12 @@ tags: [research, technical-topic, knowledge-asset, decision-making, poc]
 ## 相关页面
 
 - [[articles/2026-06-09-technical-topic-research-methodology]]
+- [[concepts/open-source-project-due-diligence]]
 - [[skills/technical-topic-research/SKILL]]
+- [[skills/open-source-project-research/SKILL]]
 - [[templates/technical-topic-research-template]]
 - [[skills/knowledge-linking/SKILL]]
 - [[knowledge-linking-rules]]
 - [[concepts/agent-skills]]
 - [[concepts/ai-era-information-presentation]]
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]
-

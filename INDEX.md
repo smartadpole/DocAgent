@@ -46,6 +46,7 @@ tags: [index, root]
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/knowledge-linking/SKILL]]：知识关联技能，把调研、沉淀、总结方案、补链和 `knowledge-linking` sensor 验证做成可复用流程
 - [[skills/technical-topic-research/SKILL]]：技术专题调研技能，把技术概念从资料搜集推进成支撑判断、选型、PoC 和复用的研究资产
+- [[skills/open-source-project-research/SKILL]]：开源工程调研技能，把外部仓库从看起来有用推进到健康度、运行验证、代码结构、集成成本和使用策略判断
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
 - [[projects/README]]：活跃软件研发项目的运行入口
@@ -78,6 +79,8 @@ tags: [index, root]
 - [[state-constraint-reasoning]]：计划型问题的治理入口，承接状态变量、约束传播、未知变量和可执行性判断
 - [[concepts/technical-research-knowledge-asset]]：技术研究型知识资产，把技术专题调研从百科式资料汇总推进到概念、价值、场景、落地、风险和决策闭环
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，沉淀问题牵引、技术拆解、生态扫描、对比评估、场景映射、PoC 和分级决策主线
+- [[concepts/open-source-project-due-diligence]]：开源工程可用性评估，把具体开源仓库调研成能判断直接用、封装用、Fork、参考或放弃的工程尽调资产
+- [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：开源工程调研方法论，沉淀项目画像、健康度体检、运行验证、代码结构、效果性能、集成成本和使用策略
 
 ## 产品写作
 
@@ -104,6 +107,7 @@ tags: [index, root]
 - [[concepts/agent-skills]]：Agent Skills 概念，把可重复工作封装成 agent 可发现、可加载、可执行和可审计的能力单元。
 - [[articles/2026-06-09-scientific-agent-skills-research]]：Scientific Agent Skills 调研，分析 K-Dense 科研技能库如何把科研流程、数据库、工具链和方法规范打包成约 140+ 个 Agent Skill，并校准安全边界。
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，把技术概念调研定义为支撑判断、选型、落地和复用的研究资产，而不是资料搜全。
+- [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：开源工程调研方法论，把具体开源仓库调研定义为小型技术尽调，最终给出直接使用、封装使用、Fork 改造、只参考或放弃的策略。
 - [[articles/2026-06-04-knowledge-linking-mechanism-research]]：新增知识关联机制调研，说明为什么语义关联不能只依赖自动图谱展示，并把本库方案收口为规则、技能、模板和 sensor 四层。
 - [[concepts/agent-instruction-sharing]]：Claude Code 和 Codex 共享 agent 项目规则的方法，推荐根 `AGENTS.md` 作为唯一规则正文，`CLAUDE.md` 和可选 `.codex/AGENTS.md` 只做薄导入入口。
 - [[agent-governance-strategy]]：Agent 治理策略整改入口，收口入口瘦身、log eligibility、产物化资格、检查预算和规则升级预算。
@@ -115,6 +119,7 @@ tags: [index, root]
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把任意已沉淀 skill / 能力转换成目标工程可执行升级提示词，并附资料路径、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：新增或大改长期知识页时，按调研、分层、关系画像、入口回链和 sensor 验证完成知识网络落地。
 - [[skills/technical-topic-research/SKILL]]：调研技术专题或概念时，按问题、谱系、机制、生态、对比、场景、PoC、风险和分级结论生成可复用研究包。
+- [[skills/open-source-project-research/SKILL]]：调研开源工程时，按项目画像、健康度、运行验证、代码结构、效果性能、集成成本、风险和使用策略生成可复用尽调卡。
 - [[skills/historical-dialogue-retrospective/SKILL]]：从历史对话、当前上下文、log、Harness episode、git 证据和检查输出中复盘 agent 偏差、效率质量与 workflow 改进。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。

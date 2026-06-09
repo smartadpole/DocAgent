@@ -18,6 +18,8 @@ description: 调研技术类专题或概念时，用于把资料、原理、生�
 - 用户给出技术资料、文章、论文、GitHub 项目或产品链接，要求沉淀到知识库。
 - 需要把技术热点从聊天摘要升级成 `articles/`、`concepts/`、选型矩阵或 PoC 方案。
 
+如果用户给的是具体 GitHub / Hugging Face / 论文代码 / 开源产品仓库，并且问题是“能不能用、怎么接、是否值得引入”，优先切到 [[skills/open-source-project-research/SKILL]]。
+
 ## 边界
 
 - 不追求资料穷尽；优先构建判断链。
@@ -34,6 +36,8 @@ description: 调研技术类专题或概念时，用于把资料、原理、生�
 4. [[skills/knowledge-linking/SKILL]]：确认新增 article / concept / template / skill 的入口、上位、邻接和反向链接要求。
 5. 目标专题已有页面：先搜 `INDEX.md`、`articles/`、`concepts/`、`skills/`、`governance/`，避免重复新建。
 6. 外部来源：优先官方文档、论文原文、作者原文、项目仓库、release / issue / license、产品文档，再用二级文章辅助理解。
+
+具体开源工程调研读取 [[articles/2026-06-09-open-source-project-due-diligence-methodology]]、[[concepts/open-source-project-due-diligence]] 和 [[templates/open-source-project-research-template]]。
 
 ## 工作流
 
@@ -174,4 +178,3 @@ python3 scripts/check_all.py
 - 是否区分已验证事实、推论和待确认项。
 - 是否补齐 article / concept / entrypoint / backlink。
 - 是否运行知识关联检查。
-
