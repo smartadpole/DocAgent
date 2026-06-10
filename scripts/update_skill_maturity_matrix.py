@@ -55,6 +55,19 @@ ALIASES: Dict[str, List[str]] = {
     "cross-project-skill-adoption-prompt": ["skill-adoption", "skill-transfer"],
 }
 
+SKILL_DISPLAY_NAMES = {
+    "cross-project-governance-audit": "跨工程治理审计",
+    "cross-project-skill-adoption-prompt": "跨工程技能迁移提示词",
+    "historical-dialogue-retrospective": "历史对话复盘",
+    "industry-ai-research": "行业 / AI 调研",
+    "issue-analysis": "Issue / 事故分析",
+    "knowledge-linking": "知识关联",
+    "open-source-project-research": "开源工程调研",
+    "problem-focused-visual-presentation": "问题聚焦式图文呈现",
+    "technical-topic-research": "技术专题调研",
+    "technology-research-router": "技术调研路由",
+}
+
 
 STATUS_OVERRIDES: Dict[Tuple[str, str], Tuple[str, str]] = {
     ("cross-project-governance-audit", "ack"): ("source", "源审计技能，读取注册表与平台标准生成漂移报告。"),
@@ -129,6 +142,10 @@ def read_skill_manifest() -> List[Dict[str, str]]:
         rows.append(
             {
                 "name": name.group(1).strip() if name else skill_path.parent.name,
+                "display_name": SKILL_DISPLAY_NAMES.get(
+                    name.group(1).strip() if name else skill_path.parent.name,
+                    name.group(1).strip() if name else skill_path.parent.name,
+                ),
                 "path": str(skill_path.relative_to(ROOT)),
                 "description": desc.group(1).strip() if desc else "",
                 "has_transfer": "yes" if (skill_path.parent / "TRANSFER.md").exists() else "no",
@@ -245,7 +262,7 @@ def render_html() -> str:
         recommendation = "、".join(absorbers) if absorbers else "补源能力"
         overview_rows.append(
             "<tr>"
-            f"<th><code>{html.escape(skill['name'])}</code><span>{html.escape(recommendation)}</span></th>"
+            f"<th title=\"{html.escape(skill['name'])}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(recommendation)}</span></th>"
             f"{overview_cells}</tr>"
         )
 
@@ -326,7 +343,7 @@ def render_html() -> str:
     .overview-matrix thead th {{ position: sticky; top: 0; z-index: 2; background: #dfe8f1; color: #172033; font-size: 12px; padding: 10px 8px; }}
     .overview-matrix thead th span {{ display: block; min-width: 74px; }}
     .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #eef2f6; padding: 10px 12px; }}
-    .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 12px; white-space: normal; }}
+    .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 13px; line-height: 1.35; white-space: normal; }}
     .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
     .heat-cell {{ min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); }}
     .heat-cell span {{ display: flex; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}

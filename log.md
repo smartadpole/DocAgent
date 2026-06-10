@@ -37,7 +37,8 @@
   1. 新增 `scripts/update_skill_maturity_matrix.py`，按技能源、别名、子工程路径和已知成熟度覆盖生成矩阵。
   2. 新增 [[views/current/governance/skill-maturity-matrix.html]]，展示技能 x 子工程状态、成熟样本、覆盖分、证据边界和工程范围。
   3. 根据用户反馈将默认巨型矩阵拆成前置概览矩阵和后置技能详情：矩阵作为鸟瞰图，只保留状态短标签，并改为整格高饱和度填色；技能卡再解释成熟样本、已接入、局部 / 相邻、缺口和下一步。
-  4. 更新 [[views/README]]、[[views/current/README]]、[[views/lens-registry]] 和 [[INDEX]]，补齐视图入口和刷新边界。
+  4. 固定概览矩阵第一列显示中文技能名；英文 skill id 继续作为扫描、tooltip 和 source 追溯信息。
+  5. 更新 [[views/README]]、[[views/current/README]]、[[views/lens-registry]] 和 [[INDEX]]，补齐视图入口和刷新边界。
 - **结论**：跨工程技能成熟度现在有可反复刷新的紧凑 HTML lens；后续三天一次的刷新任务应运行生成脚本、复核成熟样本变化，并更新同一个 current lens。
 - **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/README]]、[[views/current/README]]、[[views/lens-registry]]、[[INDEX]]、[[log]]。
 
