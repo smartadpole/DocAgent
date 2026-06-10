@@ -7,8 +7,8 @@
   <meta name="lens_id" content="lens-skill-maturity-matrix-current">
   <meta name="focus_object" content="AcknowledgeBase skills across subprojects">
   <meta name="lens_type" content="knowledge">
-  <meta name="generated_at" content="2026-06-10 17:35">
-  <meta name="source_revision" content="c5ecbe1">
+  <meta name="generated_at" content="2026-06-10 17:44">
+  <meta name="source_revision" content="e38b002">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
   <meta name="source_scope" content="local project skill directories and governance/sensor evidence">
   <meta name="evidence_boundary" content="confirmed local file presence; likely maturity from known source chains; no runtime validation">
@@ -28,13 +28,13 @@
       --line: #d8e0e8;
       --panel: #ffffff;
       --paper: #f5f7fa;
-      --blue: #2764a4;
-      --green: #2d7d4c;
-      --amber: #a96713;
-      --red: #ad3939;
-      --violet: #6650a4;
-      --teal: #0f766e;
-      --gray: #536171;
+      --blue: #005fd8;
+      --green: #008f3a;
+      --amber: #d66a00;
+      --red: #d10035;
+      --violet: #5a2bc2;
+      --teal: #008578;
+      --gray: #2f3b4a;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
     * { box-sizing: border-box; }
@@ -65,13 +65,21 @@
     .blocked { background: var(--red); }
     .overview-shell { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
     .overview-matrix { min-width: 1180px; width: 100%; border-collapse: separate; border-spacing: 0; }
-    .overview-matrix th, .overview-matrix td { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px; background: var(--panel); text-align: center; vertical-align: middle; }
-    .overview-matrix thead th { position: sticky; top: 0; z-index: 2; background: #edf3f8; font-size: 12px; }
+    .overview-matrix th, .overview-matrix td { border-right: 2px solid #f8fafc; border-bottom: 2px solid #f8fafc; padding: 0; text-align: center; vertical-align: middle; }
+    .overview-matrix thead th { position: sticky; top: 0; z-index: 2; background: #dfe8f1; color: #172033; font-size: 12px; padding: 10px 8px; }
     .overview-matrix thead th span { display: block; min-width: 74px; }
-    .overview-matrix tbody th { position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #f8fafc; }
+    .overview-matrix tbody th { position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #eef2f6; padding: 10px 12px; }
     .overview-matrix tbody th code { display: block; color: #172033; font-size: 12px; white-space: normal; }
     .overview-matrix tbody th span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }
-    .matrix-dot { display: inline-flex; align-items: center; justify-content: center; width: 50px; min-height: 24px; border-radius: 999px; color: white; font-size: 11px; font-weight: 800; }
+    .heat-cell { min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); }
+    .heat-cell span { display: flex; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }
+    .heat-source { background: #5a2bc2 !important; }
+    .heat-mature { background: #008f3a !important; }
+    .heat-adopted { background: #005fd8 !important; }
+    .heat-partial { background: #d66a00 !important; }
+    .heat-adjacent { background: #008578 !important; }
+    .heat-none { background: #2f3b4a !important; }
+    .heat-blocked { background: #d10035 !important; }
     .overview-note { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
     .skill-card-list { display: grid; gap: 12px; }
     .skill-card { padding: 14px; }
@@ -117,8 +125,8 @@
       <h1>跨工程技能成熟度矩阵</h1>
       <p class="subtitle">按 AcknowledgeBase 当前技能逐行盘点各子工程接入状态，并标出哪些工程里的同类能力更成熟、值得抽象反哺。状态来自本机文件扫描和已知治理注册表；本页只作呈现，不替代各工程自己的 source of truth。</p>
       <div class="meta-row">
-        <span class="pill">生成：2026-06-10 17:35</span>
-        <span class="pill">源版本：c5ecbe1</span>
+        <span class="pill">生成：2026-06-10 17:44</span>
+        <span class="pill">源版本：e38b002</span>
         <span class="pill">技能数：10</span>
         <span class="pill">工程数：12</span>
       </div>
@@ -144,117 +152,117 @@
       <div class="overview-shell">
         <table class="overview-matrix">
           <thead><tr><th>技能 / 吸收建议</th><th><span>AcknowledgeBase</span></th><th><span>Software/wiki</span></th><th><span>DocCustomeranalysis</span></th><th><span>DocFilmCommunity</span></th><th><span>fetch-adapter</span></th><th><span>train_platform</span></th><th><span>prefect</span></th><th><span>customeranalysis</span></th><th><span>LifeOS</span></th><th><span>DocERP</span></th><th><span>H100</span></th><th><span>17lang</span></th></tr></thead>
-          <tbody><tr><th><code>cross-project-governance-audit</code><span>Software/wiki</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 源审计技能，读取注册表与平台标准生成漂移报告。">源</span></td>
-<td><span class="matrix-dot mature" title="Software/wiki: 模板源具备治理台账、复盘 sensor 和模板，可反哺审计维度。">成熟</span></td>
-<td><span class="matrix-dot partial" title="DocCustomeranalysis: 有治理台账、episode 与 sensor，可作为审计对象成熟样本。">局部</span></td>
-<td><span class="matrix-dot partial" title="DocFilmCommunity: 有治理台账和 sensor，适合继续审计补齐。">局部</span></td>
-<td><span class="matrix-dot partial" title="fetch-adapter: 有子工程 harness 规则和检查脚本，但审计能力不在本地。">局部</span></td>
-<td><span class="matrix-dot partial" title="train_platform: 有问题聚焦技能和部分治理痕迹，需审计确认深度。">局部</span></td>
-<td><span class="matrix-dot partial" title="prefect: 有规则和技能目录，episode / sensor 证据较薄。">局部</span></td>
-<td><span class="matrix-dot partial" title="customeranalysis: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot partial" title="LifeOS: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot partial" title="DocERP: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot partial" title="H100: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>cross-project-skill-adoption-prompt</code><span>补源能力</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 当前唯一源技能，承担上游归一和迁移任务书生成。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>historical-dialogue-retrospective</code><span>Software/wiki、DocCustomeranalysis</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 源技能 + TRANSFER，已接入复盘概念和 Harness episode。">源</span></td>
-<td><span class="matrix-dot mature" title="Software/wiki: 模板源有复盘技能、复盘 sensor 和概念/模板链。">成熟</span></td>
-<td><span class="matrix-dot mature" title="DocCustomeranalysis: 本地有历史对话复盘、项目复盘和多份真实复盘档案。">成熟</span></td>
-<td><span class="matrix-dot partial" title="DocFilmCommunity: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot partial" title="fetch-adapter: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot partial" title="train_platform: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot adopted" title="customeranalysis: 已有 .codex 技能，偏子工程文档协作场景。">已接入</span></td>
-<td><span class="matrix-dot adjacent" title="LifeOS: system-harness-review 是生活系统化的相邻成熟能力。">相邻</span></td>
-<td><span class="matrix-dot partial" title="DocERP: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot partial" title="H100: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>industry-ai-research</code><span>补源能力</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: IT / AI 行业调研源技能。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>issue-analysis</code><span>DocCustomeranalysis、DocFilmCommunity</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 主控侧 issue / incident 分析源技能。">源</span></td>
-<td><span class="matrix-dot adopted" title="Software/wiki: 模板源已安装 issue-analysis，可作为结构对照。">已接入</span></td>
-<td><span class="matrix-dot mature" title="DocCustomeranalysis: 主控项目内有 issue skill、事项体系、报告链和实战验收反馈。">成熟</span></td>
-<td><span class="matrix-dot mature" title="DocFilmCommunity: 已吸收主控侧 issue skill，并补充快速诊断/升级边界。">成熟</span></td>
-<td><span class="matrix-dot adjacent" title="fetch-adapter: 有 issue-incident-analysis，偏子工程故障/文档变更场景。">相邻</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot partial" title="prefect: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot partial" title="LifeOS: 发现相邻文件或治理痕迹，但未确认等价 skill。">局部</span></td>
-<td><span class="matrix-dot adopted" title="DocERP: 存在同名主控 issue skill，证据尚未展开。">已接入</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>knowledge-linking</code><span>补源能力</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 当前源技能，并有专项 sensor。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>open-source-project-research</code><span>补源能力</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 开源工程尽调源技能。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>problem-focused-visual-presentation</code><span>DocCustomeranalysis、DocFilmCommunity、LifeOS</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 源技能 + TRANSFER + views/registry + sensor。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot mature" title="DocCustomeranalysis: 有同名 skill、TRANSFER、views 合同和业务图文 lens 落地。">成熟</span></td>
-<td><span class="matrix-dot mature" title="DocFilmCommunity: 同名 skill 已本地化到主控项目 views 体系。">成熟</span></td>
-<td><span class="matrix-dot adopted" title="fetch-adapter: 有 .codex 同名问题聚焦 skill。">已接入</span></td>
-<td><span class="matrix-dot adopted" title="train_platform: 有训练平台本地化问题聚焦 skill。">已接入</span></td>
-<td><span class="matrix-dot adopted" title="prefect: 存在同名本地 skill，需进一步读正文判断成熟度。">已接入</span></td>
-<td><span class="matrix-dot adopted" title="customeranalysis: 有 .codex 同名问题聚焦 skill。">已接入</span></td>
-<td><span class="matrix-dot mature" title="LifeOS: problem-focused-lens 是已反哺上游的重要成熟样本。">成熟</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot adopted" title="H100: 有 H100 本地化问题聚焦 skill。">已接入</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>technical-topic-research</code><span>补源能力</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 技术专题调研源技能。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr><tr><th><code>technology-research-router</code><span>补源能力</span></th><td><span class="matrix-dot source" title="AcknowledgeBase: 技术调研总控源技能。">源</span></td>
-<td><span class="matrix-dot none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td>
-<td><span class="matrix-dot none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。">未见</span></td></tr></tbody>
+          <tbody><tr><th><code>cross-project-governance-audit</code><span>Software/wiki</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 源审计技能，读取注册表与平台标准生成漂移报告。"><span>源</span></td>
+<td class="heat-cell heat-mature" title="Software/wiki: 模板源具备治理台账、复盘 sensor 和模板，可反哺审计维度。"><span>成熟</span></td>
+<td class="heat-cell heat-partial" title="DocCustomeranalysis: 有治理台账、episode 与 sensor，可作为审计对象成熟样本。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="DocFilmCommunity: 有治理台账和 sensor，适合继续审计补齐。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="fetch-adapter: 有子工程 harness 规则和检查脚本，但审计能力不在本地。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="train_platform: 有问题聚焦技能和部分治理痕迹，需审计确认深度。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="prefect: 有规则和技能目录，episode / sensor 证据较薄。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="customeranalysis: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="LifeOS: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="DocERP: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="H100: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>cross-project-skill-adoption-prompt</code><span>补源能力</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 当前唯一源技能，承担上游归一和迁移任务书生成。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>historical-dialogue-retrospective</code><span>Software/wiki、DocCustomeranalysis</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 源技能 + TRANSFER，已接入复盘概念和 Harness episode。"><span>源</span></td>
+<td class="heat-cell heat-mature" title="Software/wiki: 模板源有复盘技能、复盘 sensor 和概念/模板链。"><span>成熟</span></td>
+<td class="heat-cell heat-mature" title="DocCustomeranalysis: 本地有历史对话复盘、项目复盘和多份真实复盘档案。"><span>成熟</span></td>
+<td class="heat-cell heat-partial" title="DocFilmCommunity: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="fetch-adapter: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="train_platform: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-adopted" title="customeranalysis: 已有 .codex 技能，偏子工程文档协作场景。"><span>已接入</span></td>
+<td class="heat-cell heat-adjacent" title="LifeOS: system-harness-review 是生活系统化的相邻成熟能力。"><span>相邻</span></td>
+<td class="heat-cell heat-partial" title="DocERP: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-partial" title="H100: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>industry-ai-research</code><span>补源能力</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: IT / AI 行业调研源技能。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>issue-analysis</code><span>DocCustomeranalysis、DocFilmCommunity</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 主控侧 issue / incident 分析源技能。"><span>源</span></td>
+<td class="heat-cell heat-adopted" title="Software/wiki: 模板源已安装 issue-analysis，可作为结构对照。"><span>已接入</span></td>
+<td class="heat-cell heat-mature" title="DocCustomeranalysis: 主控项目内有 issue skill、事项体系、报告链和实战验收反馈。"><span>成熟</span></td>
+<td class="heat-cell heat-mature" title="DocFilmCommunity: 已吸收主控侧 issue skill，并补充快速诊断/升级边界。"><span>成熟</span></td>
+<td class="heat-cell heat-adjacent" title="fetch-adapter: 有 issue-incident-analysis，偏子工程故障/文档变更场景。"><span>相邻</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-partial" title="prefect: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-partial" title="LifeOS: 发现相邻文件或治理痕迹，但未确认等价 skill。"><span>局部</span></td>
+<td class="heat-cell heat-adopted" title="DocERP: 存在同名主控 issue skill，证据尚未展开。"><span>已接入</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>knowledge-linking</code><span>补源能力</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 当前源技能，并有专项 sensor。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>open-source-project-research</code><span>补源能力</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 开源工程尽调源技能。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>problem-focused-visual-presentation</code><span>DocCustomeranalysis、DocFilmCommunity、LifeOS</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 源技能 + TRANSFER + views/registry + sensor。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-mature" title="DocCustomeranalysis: 有同名 skill、TRANSFER、views 合同和业务图文 lens 落地。"><span>成熟</span></td>
+<td class="heat-cell heat-mature" title="DocFilmCommunity: 同名 skill 已本地化到主控项目 views 体系。"><span>成熟</span></td>
+<td class="heat-cell heat-adopted" title="fetch-adapter: 有 .codex 同名问题聚焦 skill。"><span>已接入</span></td>
+<td class="heat-cell heat-adopted" title="train_platform: 有训练平台本地化问题聚焦 skill。"><span>已接入</span></td>
+<td class="heat-cell heat-adopted" title="prefect: 存在同名本地 skill，需进一步读正文判断成熟度。"><span>已接入</span></td>
+<td class="heat-cell heat-adopted" title="customeranalysis: 有 .codex 同名问题聚焦 skill。"><span>已接入</span></td>
+<td class="heat-cell heat-mature" title="LifeOS: problem-focused-lens 是已反哺上游的重要成熟样本。"><span>成熟</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-adopted" title="H100: 有 H100 本地化问题聚焦 skill。"><span>已接入</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>technical-topic-research</code><span>补源能力</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 技术专题调研源技能。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr><tr><th><code>technology-research-router</code><span>补源能力</span></th><td class="heat-cell heat-source" title="AcknowledgeBase: 技术调研总控源技能。"><span>源</span></td>
+<td class="heat-cell heat-none" title="Software/wiki: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocCustomeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocFilmCommunity: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="fetch-adapter: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="train_platform: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="prefect: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="customeranalysis: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="LifeOS: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="DocERP: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="H100: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td>
+<td class="heat-cell heat-none" title="17lang: 未在常见 skill / governance / sensor 路径发现等价能力。"><span>未见</span></td></tr></tbody>
         </table>
       </div>
       <p class="overview-note">格子只表示状态强弱；具体证据、成熟样本和下一步在下方技能详情中查看。</p>

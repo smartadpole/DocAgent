@@ -239,7 +239,7 @@ def render_html() -> str:
             "</article>"
         )
         overview_cells = "\n".join(
-            f"<td><span class=\"matrix-dot {c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\">{STATUS_LABELS[c['status']]}</span></td>"
+            f"<td class=\"heat-cell heat-{c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\"><span>{STATUS_LABELS[c['status']]}</span></td>"
             for c in row["cells"]
         )
         recommendation = "、".join(absorbers) if absorbers else "补源能力"
@@ -285,13 +285,13 @@ def render_html() -> str:
       --line: #d8e0e8;
       --panel: #ffffff;
       --paper: #f5f7fa;
-      --blue: #2764a4;
-      --green: #2d7d4c;
-      --amber: #a96713;
-      --red: #ad3939;
-      --violet: #6650a4;
-      --teal: #0f766e;
-      --gray: #536171;
+      --blue: #005fd8;
+      --green: #008f3a;
+      --amber: #d66a00;
+      --red: #d10035;
+      --violet: #5a2bc2;
+      --teal: #008578;
+      --gray: #2f3b4a;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }}
     * {{ box-sizing: border-box; }}
@@ -322,13 +322,21 @@ def render_html() -> str:
     .blocked {{ background: var(--red); }}
     .overview-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }}
     .overview-matrix {{ min-width: 1180px; width: 100%; border-collapse: separate; border-spacing: 0; }}
-    .overview-matrix th, .overview-matrix td {{ border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px; background: var(--panel); text-align: center; vertical-align: middle; }}
-    .overview-matrix thead th {{ position: sticky; top: 0; z-index: 2; background: #edf3f8; font-size: 12px; }}
+    .overview-matrix th, .overview-matrix td {{ border-right: 2px solid #f8fafc; border-bottom: 2px solid #f8fafc; padding: 0; text-align: center; vertical-align: middle; }}
+    .overview-matrix thead th {{ position: sticky; top: 0; z-index: 2; background: #dfe8f1; color: #172033; font-size: 12px; padding: 10px 8px; }}
     .overview-matrix thead th span {{ display: block; min-width: 74px; }}
-    .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #f8fafc; }}
+    .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #eef2f6; padding: 10px 12px; }}
     .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 12px; white-space: normal; }}
     .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
-    .matrix-dot {{ display: inline-flex; align-items: center; justify-content: center; width: 50px; min-height: 24px; border-radius: 999px; color: white; font-size: 11px; font-weight: 800; }}
+    .heat-cell {{ min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); }}
+    .heat-cell span {{ display: flex; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}
+    .heat-source {{ background: #5a2bc2 !important; }}
+    .heat-mature {{ background: #008f3a !important; }}
+    .heat-adopted {{ background: #005fd8 !important; }}
+    .heat-partial {{ background: #d66a00 !important; }}
+    .heat-adjacent {{ background: #008578 !important; }}
+    .heat-none {{ background: #2f3b4a !important; }}
+    .heat-blocked {{ background: #d10035 !important; }}
     .overview-note {{ margin: 8px 0 0; color: var(--muted); font-size: 12px; }}
     .skill-card-list {{ display: grid; gap: 12px; }}
     .skill-card {{ padding: 14px; }}
