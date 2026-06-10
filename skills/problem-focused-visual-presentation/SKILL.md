@@ -43,8 +43,8 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 | --- | --- |
 | 关注对象 | 状态 / 计划 / 决策 / 风险 / issue / 验收 / 知识 / 资源 / owner / 时间线 |
 | 对象粒度 | 单文档 / 跨文档主题 / 项目状态 / 运行实例 / 决策 / 计划 / 风险 / 验收 / 知识 |
-| 判断目的 | 看懂 / 比较 / 行动 / 拍板 / 验收 / 追溯 / 复盘 / 学习 |
-| 输出载体 | 聊天图文 / Markdown + Mermaid / HTML / HTML + assets / PDF download / PNG download / slide / 临时 artifact / 持久 view |
+| 判断目的 | 看懂 / 比较 / 行动 / 验收 / 追责 / 回顾 / 学习 / 沉淀 |
+| 输出载体 | 短答 / Markdown 真相源 / 聊天图文 / Markdown + Mermaid / HTML / HTML + assets / HTML report / print view / PDF download / PNG download / slide / 临时 artifact / 持久 view / snapshot |
 | 持久性 | 临时回答 / canonical current / snapshot |
 | 导出需求 | 不导出 / HTML 可打印 / PDF 下载 / PNG 下载 / PDF snapshot / slide |
 | 版式配置 | A4 / A3 / custom，portrait / landscape，边距、页眉页脚、分页策略 |
@@ -64,7 +64,7 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 | 项目 / 知识库长期维护 | canonical current lens；关键节点另存 snapshot |
 | 数据量大、要筛选钻取 | HTML report、Notebook、dashboard、data app |
 | 只是说明文档或规则源 | Markdown 真相源 |
-| 生成或更新持久 HTML lens | HTML print view + ignored PDF + ignored PNG screenshot，并在对话中展示 PNG |
+| 生成或刷新持久 HTML lens / print view | HTML print view + ignored PDF + ignored PNG screenshot，默认自动生成并在对话中展示 PNG |
 | 需要下载、打印或线下流转 | HTML print view + ignored PDF / PNG export |
 
 ### 2. 组装 source pack
@@ -243,6 +243,8 @@ Source pack 守卫：
 - `export_profile`
 - `print_profile`
 - `equivalence_profile`
+- `default_auto_exports`
+- `conversation_png_preview`
 - `canonical_policy`
 - `snapshot_policy`
 - `staleness_policy`
@@ -252,7 +254,7 @@ snapshot 额外包含 `snapshot_of`；current lens 不应把 `snapshot_of` 写�
 
 ### 5.1 导出与打印设计
 
-如果用户要求 HTML、下载、PDF、打印、A4 / A3、横排或竖排，设计阶段就必须写清 `export_profile`。如果本轮生成或更新持久 HTML lens，即使用户没有单独要求 PDF / PNG，也必须同步执行同源 PDF 导出和 PNG 截图 / 长图导出：
+如果用户要求 HTML、下载、PDF、打印、A4 / A3、横排或竖排，设计阶段就必须写清 `export_profile`。如果本轮生成或刷新持久 HTML lens / print view，即使用户没有单独要求 PDF / PNG，也必须默认自动生成同源 PDF 导出和 PNG 截图 / 长图导出：
 
 | 字段 | 说明 |
 | --- | --- |
@@ -264,6 +266,8 @@ snapshot 额外包含 `snapshot_of`；current lens 不应把 `snapshot_of` 写�
 | assets_policy | 只允许提交源级支持资产；PDF / PNG / SVG 预览和下载件放 gitignore 导出目录 |
 | provenance_policy | 来源、生成时间、证据边界放在页脚、封底或附录 |
 | equivalence_policy | HTML / PDF / PNG / slide 的信息、结论、证据边界和版式语义如何保持一致 |
+| default_auto_exports | 本轮是否默认自动生成 PDF / PNG，生成命令或工具是什么 |
+| conversation_png_preview | 最终回复是否展示 PNG 预览，无法展示时的阻塞原因 |
 
 HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以导出 PDF。设计时避免只适合屏幕滚动的结构：
 
@@ -273,6 +277,7 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - 横排适合矩阵、流程图、时间线和架构图；竖排适合报告、清单、证据包和阅读型材料。
 - 打印版要保留来源、更新时间、lens id、证据边界和未覆盖边界，不能只留下漂亮图。
 - PDF / PNG / slide 不应重新排一套内容；必须由同一 HTML / source / manifest 生成，保持信息和版式语义一致。
+- 禁止为对话展示单独手工重画 PNG；除非它来自同一 source manifest / render pipeline（same source manifest / render pipeline），并在 `equivalence_profile` 中说明一致性边界。
 
 导出 PDF / PNG 时优先从 HTML / print CSS 生成；可用浏览器打印、Playwright / Chromium、系统 print-to-PDF / screenshot 或项目既有导出工具。没有实际生成和检查导出件时，不要声称“已导出”，只能说明已具备导出配置或待执行导出。生成持久 HTML lens 后，最终回复必须用 Markdown 图片语法展示 PNG 预览，例如 `![lens preview](/absolute/path/to/preview.png)`；如果环境限制导致图片无法渲染，也要给出 PNG 绝对路径。
 
@@ -280,7 +285,7 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 
 - `views/current/` 默认只提交 canonical HTML / source / manifest，不提交同名 PDF、PNG、SVG。
 - `views/snapshots/` 默认只提交 snapshot HTML / manifest / source_revision；PDF 只是可再生成的 snapshot export，除非用户明确要求归档外部分发件。
-- `views/exports/`、`views/.exports/`、`assets/views/` 或目标工程等价目录必须被 `.gitignore` 忽略，用于放 PDF / PNG / SVG 下载缓存。
+- `views/exports/`、`views/.exports/`、`views/**/.exports/`、`assets/views/` 或目标工程等价目录必须被 `.gitignore` 忽略，用于放 PDF / PNG / SVG 下载缓存。
 - `assets/` 只放源级支持材料、真实证据截图、原始图片或不可再生附件；不要把由 HTML lens 生成的 PNG 预览放进可提交 assets。
 
 ### 6. 持久化判断
@@ -310,10 +315,11 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - 是否写清 source pack、更新时间、未读来源和证据边界。
 - 是否避免把历史快照当 current。
 - 是否避免把图文 lens 当正式验收、关闭、准出或规则裁决。
-- 如果生成或更新持久 lens，是否包含 `lens_id`、`focus_object`、`lens_type`、`source_pages`、`generated_at`、`evidence_boundary`、`context_frame`、`output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。
+- 如果生成或更新持久 lens，是否包含 `lens_id`、`focus_object`、`lens_type`、`judgement_purpose`、`source_pages`、`generated_at`、`evidence_boundary`、`context_frame`、`output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。
 - 如果生成或更新持久 HTML lens，是否在设计阶段声明 page size、orientation、margins、pagination、print CSS、PDF / PNG 生成方式和 snapshot 边界。
 - 如果生成或更新持久 HTML lens，是否实际导出 PDF 和 PNG 截图 / 长图，检查页数、分页、图表裁切、链接 / 来源和打印可读性，并在最终回复中展示 PNG。
 - 是否确认 HTML / PDF / PNG / slide 来自同一源，信息、结论、证据边界和版式语义一致。
+- 是否确认没有为对话预览另画一张与 canonical HTML / source / manifest 不同源的 PNG。
 - 是否确认导出件在 gitignore 忽略目录或运行时下载中，没有把同一 lens 的 PDF / PNG / SVG 作为重复渲染物提交。
 - 如果生成文件，是否遵守当前仓库目录规范并补入口 / 回链 / 检查。
 

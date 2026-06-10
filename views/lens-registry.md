@@ -21,6 +21,8 @@
 | export_profile | PDF / PNG / print view / slide、A4 / A3 / custom、横排 / 竖排、边距、分页策略和导出目录。 |
 | print_profile | `@page`、`@media print`、页眉页脚、重复表头、图表裁切和打印可读性。 |
 | equivalence_profile | HTML / PDF / PNG / slide 是否同源生成，以及信息、结论、证据边界和版式语义如何保持一致。 |
+| default_auto_exports | 持久 HTML lens / print view 是否默认同轮生成 PDF / PNG，以及生成工具或命令。 |
+| conversation_png_preview | 最终回复是否展示 PNG 预览；无法展示时的阻塞说明。 |
 | canonical_policy | 什么时候覆盖 current lens。 |
 | snapshot_policy | 什么时候冻结 snapshot。 |
 | staleness_policy | 哪些源变化会让 current lens 过期。 |

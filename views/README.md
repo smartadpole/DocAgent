@@ -5,11 +5,13 @@
 ## 目录
 
 - `current/`：当前可反复打开的 canonical lens。
+- `snapshots/`：验收、决策、发布、事故、阶段复盘、外部分发或审计证据需要冻结时使用。
 - `lens-registry.md`：lens id、关注对象、来源和失效条件索引。
-- `exports/`、`.exports/`：PDF / PNG / SVG 等派生导出缓存，已由 `.gitignore` 忽略，不作为可提交真相源。
+- `exports/`、`.exports/`、`**/.exports/`：PDF / PNG / SVG 等派生导出缓存，已由 `.gitignore` 忽略，不作为可提交真相源。
 
 ## 维护原则
 
 - HTML lens 必须写清来源、更新时间、证据边界和未覆盖边界。
-- 同一 lens 的 PDF / PNG / SVG 只能作为从 HTML 派生的导出件，不和 HTML 同步提交。
+- 同一 lens 的 PDF / PNG / SVG 只能作为从 canonical HTML / source / manifest 派生的导出件，不和 HTML 同步提交；不得为对话预览另画一张不同源 PNG。
+- 持久 HTML lens / print view 必须写清 `output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports` 和 `conversation_png_preview`。
 - 重要节点如果需要固化，另建 snapshot；普通追问默认更新 current lens。

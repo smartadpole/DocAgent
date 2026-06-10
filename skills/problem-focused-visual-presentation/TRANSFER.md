@@ -25,6 +25,8 @@
 
 - 触发条件：信息乱、阅读不方便、一图胜千言、图文混排、HTML 呈现、看文档或看主题。
 - 工作流：关注合同、主 `focus_object` / `lens_type` 判定、source pack、source pack 守卫、背景框、证据边界、图文结构选择、证据追溯、持久化判断。
+- 判断目的：看懂、比较、行动、验收、追责、回顾、学习、沉淀；不要把所有判断压成“拍板”或“复盘”。
+- 输出形态选择：短答、Markdown 真相源、图文 lens、HTML report、print view、export config、snapshot；先按当前问题选最低噪声形态，不默认 HTML 化。
 - 输出格式：一眼判断、背景框、图文主体、`confirmed / likely / possible / blocked` 证据边界、证据与追溯、未覆盖边界。
 - 视觉类型：表格、脑图、框图、流程图、关系图、时间线、状态卡、证据链图。
 - lens 类型字段：status、plan、decision、risk、issue、acceptance、knowledge、resource、owner、timeline 的必填字段、反模式和验证点。
@@ -32,7 +34,8 @@
 - 照片 / 视觉证据排版：画幅家族、自然比例证据网格、竖图专题、`object-fit: contain`、不裁切证据图、判断卡不写排版说明。
 - 导出能力：HTML print view、PDF / PNG export、A4 / A3 / custom 页面规格、横竖版选择、分页策略、页眉页脚、证据边界、同源一致性和 snapshot 规则。
 - HTML lens 硬完成合同：只要本轮生成或更新持久 HTML lens，就必须同轮实际生成同源 PDF 和至少一张 PNG 截图 / 长图到 gitignore 忽略目录，并在最终回复用 Markdown 图片语法展示 PNG；只给 HTML 链接、HTML 代码块或“具备导出配置”不算完成。
-- 持久化字段：`lens_id`、`focus_object`、`lens_type`、`source_pages`、`source_scope`、`generated_at`、`source_revision`、`evidence_boundary`、`context_frame`、`output_mode`、`visual_structure`、`photo_layout_strategy`、`export_profile`、`print_profile`、`equivalence_profile`、`canonical_policy`、`snapshot_policy`、`staleness_policy`、`refresh_trigger`。
+- 同源一致性：PDF / PNG / SVG / slide 必须来自 canonical HTML 或同一 source manifest / render pipeline；禁止为对话展示单独手工重画 PNG。
+- 持久化字段：`lens_id`、`focus_object`、`lens_type`、`judgement_purpose`、`source_pages`、`source_scope`、`generated_at`、`source_revision`、`evidence_boundary`、`context_frame`、`output_mode`、`visual_structure`、`photo_layout_strategy`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、`canonical_policy`、`snapshot_policy`、`staleness_policy`、`refresh_trigger`。
 - 工程化保护：持久 lens 的 registry / 等价索引、模板字段和 sensor 检查口径。
 - 回写守卫：不把 lens 当第二份真相源，不替代验收 / 关闭 / 准出。
 
@@ -63,6 +66,16 @@
 6. 如果目标工程需要持久 lens，补模板或等价字段清单；其中 HTML lens 必须把 `default_auto_exports`、`conversation_png_preview`、ignored export 目录和“未实际导出或展示的阻塞声明”写成硬完成合同，而不是只作为可选字段。
 7. 补入口链接，让用户能从技能目录或专题目录找到该能力。
 
+## LifeOS 对照覆盖矩阵
+
+| LifeOS 来源模块 | 本库吸收位置 | 覆盖重点 |
+| --- | --- | --- |
+| `rules/problem-focused-lens.md` | `skills/problem-focused-visual-presentation/SKILL.md`、`TRANSFER.md` | 触发、关注对象、判断目的、输出形态、source pack、证据边界、图文结构、导出 / 打印、current / snapshot。 |
+| `.codex/skills/problem-focused-lens/SKILL.md` | `skills/problem-focused-visual-presentation/SKILL.md` | agent 工作流、低噪声输出选择、照片布局、HTML 导出完成合同、禁止项。 |
+| `templates/lens.md` | `templates/problem-focused-lens-template.md` | provenance 字段、`default_auto_exports`、`conversation_png_preview`、refresh / staleness / snapshot 字段。 |
+| `views/lens-registry.md` | `views/lens-registry.md` | current / snapshot registry 字段、source revision、输出 / 导出 / 刷新策略。 |
+| `automation/scripts/check_problem_focused_lens.py` | `scripts/check_problem_focused_visual_presentation.py` | 必要术语、registry 字段、HTML export profile、照片布局 guard、禁止追踪派生 PDF / PNG / SVG。 |
+
 ## 验证要求
 
 - 用一份单文档样本验证：输出必须包含一眼判断、背景框、图文主体和追溯入口。
@@ -71,6 +84,7 @@
 - 如果目标工程有照片或视觉证据，用一个混合横竖图样本验证：必须保留证据细节，声明 `photo_layout_strategy`，避免裁切和固定高度大留白。
 - 用一个 HTML 导出样本验证：输出必须声明 A4 / A3 或 custom、横竖版、边距、分页策略、忽略目录和同源一致性；如果本轮生成或更新持久 HTML lens，必须实际导出 PDF / PNG、检查图表裁切、页数、页脚来源、打印可读性以及 HTML / PDF / PNG 信息一致性，并在最终回复展示 PNG 预览。只返回 HTML 链接或 HTML 代码块判定为不合格。
 - 如果目标工程建立持久 lens 模板或 registry，检查 provenance 字段、current / snapshot 和 staleness / refresh 规则齐全。
+- 如果目标工程已有 HTML current lens，检查其 `@page`、`@media print`、`output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview` 和 same source pack / manifest 语义。
 - 检查 Git diff 没有新增同一 lens 的重复 PDF / PNG / SVG 渲染物。
 - 检查最终结果没有把历史快照当 current，没有把 lens 当验收或关闭结论。
 - 跑目标工程既有检查，并提交同一主题改动。

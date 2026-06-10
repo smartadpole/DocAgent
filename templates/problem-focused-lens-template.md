@@ -89,11 +89,12 @@ tags: [template, lens, presentation, problem-focused]
 - export_profile：
 - print_profile：
 - equivalence_profile：
-- default_auto_exports：
-- conversation_png_preview：
-- ignored export 目录：
+- default_auto_exports：持久 HTML lens / print view 默认同轮生成同源 PDF 和至少一张 PNG 截图 / 长图；写明生成工具或命令。
+- conversation_png_preview：最终回复必须用 Markdown 图片语法展示实际 PNG 预览；只给 HTML 链接或 HTML 代码块不算完成。
+- ignored export 目录：PDF / PNG / SVG 导出件必须进入 `.gitignore` 忽略目录，例如 `views/exports/`、`views/.exports/`、`views/**/.exports/`、`assets/views/` 或本仓等价目录。
 - A4 / A3 适配说明：
 - canonical / export 边界：提交 canonical HTML / source / manifest；PDF / PNG / SVG 放 ignored export 目录，不和真相源重复提交。
+- same source manifest / render pipeline：PDF / PNG / slide 必须来自同一 HTML / source / manifest，不能为对话预览另画一张不同源图片。
 - 未实际导出或展示的阻塞声明：
 
 ## Refresh Notes

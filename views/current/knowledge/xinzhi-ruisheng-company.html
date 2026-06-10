@@ -9,6 +9,17 @@
   <meta name="lens_type" content="knowledge">
   <meta name="generated_at" content="2026-06-09">
   <meta name="source_revision" content="dab069b">
+  <meta name="source_pages" content="articles/2026-06-09-xinzhi-ruisheng-company-research.md; concepts/beijing-xinzhi-ruisheng.md">
+  <meta name="source_scope" content="company research topic">
+  <meta name="evidence_boundary" content="confirmed / likely / possible / blocked public-source lens">
+  <meta name="context_frame" content="company research lens for early screening, not medical or investment due diligence">
+  <meta name="output_mode" content="html_report / print_view">
+  <meta name="visual_structure" content="status_card / block_diagram / timeline / evidence_matrix">
+  <meta name="export_profile" content="A4 portrait PDF and PNG generated from same canonical HTML">
+  <meta name="print_profile" content="@page A4 portrait; @media print; avoid card, row, and diagram clipping">
+  <meta name="equivalence_profile" content="HTML / PDF / PNG use same source pack and same canonical HTML render pipeline">
+  <meta name="default_auto_exports" content="PDF and PNG generated to views/.exports/ when this persistent HTML lens is updated">
+  <meta name="conversation_png_preview" content="final response should display the generated PNG preview">
   <style>
     :root {
       color-scheme: light;
@@ -657,8 +668,12 @@
         </article>
         <article class="card">
           <h3>导出与打印</h3>
-          <p><strong>export_profile：</strong>canonical HTML current lens；A4 portrait print view；PDF / PNG / SVG 不入库，若需要导出应进入 `views/exports/` 或运行时下载。</p>
-          <p><strong>equivalence_policy：</strong>HTML、PDF、PNG 或 slide 必须来自同一源，不重新维护第二份事实。</p>
+          <p><strong>output_mode：</strong>HTML report / print view；本页面是 canonical current lens，不替代 Markdown 真相源。</p>
+          <p><strong>export_profile：</strong>A4 portrait print view；PDF / PNG / SVG 不入库，导出件进入 `views/.exports/`、`views/exports/` 或运行时下载。</p>
+          <p><strong>print_profile：</strong>页面包含 `@page` 和 `@media print`；打印时避免卡片、表格行和技术路线图被截断。</p>
+          <p><strong>equivalence_profile：</strong>HTML、PDF、PNG 或 slide 必须来自 same source pack 和同一 canonical HTML / source / manifest render pipeline，不重新维护第二份事实，也不为对话预览另画 PNG。</p>
+          <p><strong>default_auto_exports：</strong>本持久 HTML lens 更新后，默认同轮生成 PDF 和 PNG 到 ignored export 目录。</p>
+          <p><strong>conversation_png_preview：</strong>最终回复应展示 `views/.exports/xinzhi-ruisheng-company-current.png`；无法展示时必须说明阻塞原因。</p>
         </article>
       </div>
       <ul class="sources">

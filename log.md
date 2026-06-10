@@ -9,6 +9,24 @@
 
 ## 2026-06-10
 
+### 重新完整吸收 LifeOS 问题聚焦 lens 能力
+
+- **记录人**：sunhao
+- **用户意图**：用户要求重新吸收 LifeOS 的问题聚焦技能，确保不是只补一个 HTML 导出字段，而是把 LifeOS 已形成的完整问题聚焦 lens 能力重新对照吸收进 AcknowledgeBase 源技能链。
+- **主题**：
+  1. 以 LifeOS 的 `rules/problem-focused-lens.md`、`.codex/skills/problem-focused-lens/SKILL.md`、`templates/lens.md`、`views/lens-registry.md` 和 `automation/scripts/check_problem_focused_lens.py` 为完整对照源。
+  2. 补齐上轮遗漏的判断目的、输出形态选择、同源 manifest / render pipeline、`default_auto_exports`、`conversation_png_preview`、snapshot 入口、registry 字段和 sensor 深度。
+  3. 保持层级边界：问题聚焦个性规则进入问题聚焦源 skill / `TRANSFER.md` / 模板 / views / sensor，不写入跨工程迁移元提示词。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，补齐 LifeOS 的低噪声输出形态、判断目的、默认自动导出、同源 manifest 禁止另画 PNG、ignored export 目录和自检项。
+  2. 更新 `skills/problem-focused-visual-presentation/TRANSFER.md`，新增 LifeOS 对照覆盖矩阵，明确每个来源模块在本库的吸收位置。
+  3. 更新 [[templates/problem-focused-lens-template]]、[[views/README]]、[[views/lens-registry]] 并新增 [[views/snapshots/README]]，补齐 `default_auto_exports`、`conversation_png_preview`、snapshot 和导出缓存边界。
+  4. 将 `scripts/check_problem_focused_visual_presentation.py` 升级为多段检查：必需入口、技能 / 模板 / registry 字段、HTML export profile、照片布局 guard 和禁止追踪派生 PDF / PNG / SVG。
+  5. 更新现有 [[views/current/knowledge/xinzhi-ruisheng-company.html]] 的 export metadata，并同步生成 ignored PDF / PNG 到 `views/.exports/`。
+- **结论**：AcknowledgeBase 的问题聚焦源能力现在按 LifeOS 文件组重新吸收，迁移提示后续应从该源技能链自然带出完整规则；如果再出现跨技能共性的漏带，才考虑抽象升级元提示词。
+- **验证**：`python3 scripts/check_all.py --only problem-focused-visual-presentation` 通过；`python3 scripts/check_all.py` 通过；`git diff --check` 通过。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[templates/problem-focused-lens-template]]、[[views/README]]、[[views/lens-registry]]、[[views/snapshots/README]]、[[views/current/knowledge/xinzhi-ruisheng-company.html]]、`scripts/check_problem_focused_visual_presentation.py`、`.gitignore`、[[log]]。
+
 ### 校正问题聚焦迁移缺口的规则层级
 
 - **记录人**：sunhao
