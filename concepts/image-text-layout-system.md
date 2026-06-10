@@ -2,7 +2,7 @@
 type: concept
 id: CONCEPT-IMAGE-TEXT-LAYOUT-SYSTEM-001
 status: active
-updated: 2026-06-08
+updated: 2026-06-10
 tags: [information-architecture, presentation, layout, image-text, visual-design]
 ---
 
@@ -65,6 +65,7 @@ tags: [information-architecture, presentation, layout, image-text, visual-design
 - [[concepts/ai-era-information-presentation]] 回答信息记录、组织、处理、呈现和归档如何分层。
 - [[concepts/problem-focused-information-presentation]] 回答围绕当前关注问题应选择什么 lens。
 - [[concepts/image-text-layout-system]] 回答一个 lens 内部的图片、文字、标注、证据和媒介如何排。
+- [[concepts/color-aesthetic-system]] 回答 lens 内部的颜色语义、感知强度、调和关系、视觉气质和可访问性如何成立。
 - [[skills/problem-focused-visual-presentation/SKILL]] 回答 agent 实际生成图文 lens 时怎样识别关注合同、组 source pack、建立背景框和声明导出边界。
 
 ## 常见用法
@@ -87,6 +88,7 @@ tags: [information-architecture, presentation, layout, image-text, visual-design
 ## 相关页面
 
 - [[articles/2026-06-08-image-text-layout-system-research]]
+- [[concepts/color-aesthetic-system]]
 - [[concepts/problem-focused-information-presentation]]
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]
 - [[articles/2026-06-05-ai-era-information-presentation-research]]

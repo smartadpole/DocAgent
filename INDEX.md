@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-05
+updated: 2026-06-10
 tags: [index, root]
 ---
 
@@ -68,6 +68,8 @@ tags: [index, root]
 - [[concepts/ai-era-information-presentation]]：AI 时代信息记录、处理与呈现方式，区分 Markdown 真相源、向量检索索引、超链接关系网、语义 / 动态 HTML 和 PPT / PDF / WARC / MHTML 归档格式
 - [[concepts/problem-focused-information-presentation]]：问题聚焦式信息呈现，按当前关注问题为所有信息类型选择图文混排 lens，用表格、脑图、框图、关系图、时间线、状态卡和同源 PDF / PNG 下载降低阅读与流转成本，同时避免重复渲染物入库。
 - [[concepts/image-text-layout-system]]：图片与图文排版体系，说明图文 lens 内部如何按图片职能、空间骨架、视觉组织、图文绑定、媒介适配和生成治理来排版。
+- [[concepts/color-aesthetic-system]]：配色与审美体系，说明图文 lens、知识页、状态矩阵和报告如何按颜色语义、对比、调和、气质、可访问性和 token 治理建立稳定视觉秩序。
+- [[articles/2026-06-10-color-aesthetic-system-research]]：配色与审美体系调研，汇总 Material、Apple HIG、WCAG、CSS Color、Carbon、Atlassian、NN/g 和 IxDF 的方法线索。
 - [[articles/2026-06-08-image-text-layout-system-research]]：图片与图文排版体系调研，汇总设计史、设计系统、Web 标准、可访问性和 AI layout generation 的方法线索。
 - [[articles/2026-06-05-ai-era-information-presentation-research]]：AI 时代信息记录、处理与呈现方式调研，梳理文件记录、chunk / vector 处理、Markdown 记录 + 处理、HTML 实时呈现和 HTML 记录边界
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]：跨 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 校准问题聚焦式图文 lens 的 current / snapshot、源刷新、背景框、用户入口、同源导出和重复渲染物边界

@@ -2,7 +2,7 @@
 type: concept
 id: CONCEPT-PROBLEM-FOCUSED-INFORMATION-PRESENTATION-001
 status: active
-updated: 2026-06-05
+updated: 2026-06-10
 tags: [information-architecture, presentation, knowledge-base, lens, context]
 ---
 
@@ -41,7 +41,7 @@ tags: [information-architecture, presentation, knowledge-base, lens, context]
 
 ## 最终呈现形态
 
-问题聚焦式信息呈现的最终阅读形态，复杂场景下应优先是图文混排 lens。HTML 是当前最适合作为默认容器的形态，但不是能力上限。lens 内部的图片、文字、标注、证据和媒介适配可进一步按 [[concepts/image-text-layout-system]] 处理。
+问题聚焦式信息呈现的最终阅读形态，复杂场景下应优先是图文混排 lens。HTML 是当前最适合作为默认容器的形态，但不是能力上限。lens 内部的图片、文字、标注、证据和媒介适配可进一步按 [[concepts/image-text-layout-system]] 处理；颜色语义、视觉气质、状态色、数据色和可访问对比可按 [[concepts/color-aesthetic-system]] 处理。
 
 这里的趋势不是“HTML 本身成为趋势”，而是信息呈现从长 Markdown / 长文档转向可交互、可视化、可追溯的页面化 lens。Markdown / 数据 / 报告 / log 仍是真相源；HTML、Notebook、dashboard、Artifact、Canvas、Mermaid、ECharts / D3、SVG 和图片只是呈现层的不同载体。
 
@@ -68,6 +68,8 @@ tags: [information-architecture, presentation, knowledge-base, lens, context]
 “一图胜千言”是这个专题的首要体验目标。复杂文字信息应尽量转成可视结构，让读者先看懂关系，再决定是否读原文。
 
 图文混排不是简单增加图片数量，而是先判图片职能，再决定它和文字的绑定关系：证据图需要来源、环境、caption 和可放大入口；示意图要避免冒充真实证据；对比图要统一比例、视角和裁切；封面 / 主图要处理焦点、标题避让和响应式裁切。更完整的图片与图文排版模型见 [[concepts/image-text-layout-system]]。
+
+配色也不是在图文 lens 末尾换一套视觉皮肤。状态矩阵、风险卡、验收缺口、数据图表和知识报告应先定义颜色角色：背景 / 表面、文本、行动、状态、数据和品牌；再按 [[concepts/color-aesthetic-system]] 检查对比度、状态冗余编码、明暗主题、打印截图和整体气质。
 
 | 信息形态 | 优先图文形式 | 适合解决的问题 |
 | --- | --- | --- |
@@ -286,6 +288,7 @@ HTML / 图文 lens 内部必须带最小 provenance：
 
 - [[concepts/ai-era-information-presentation]] 回答信息的记录、组织、处理、呈现和归档如何分层。
 - [[concepts/image-text-layout-system]] 回答图文 lens 内部的图片职能、空间骨架、视觉组织、图文绑定、媒介适配和 AI 生成治理如何分层。
+- [[concepts/color-aesthetic-system]] 回答图文 lens 内部的颜色语义、对比、状态色、数据色、视觉气质和可访问性如何分层。
 - [[articles/2026-06-05-ai-era-information-presentation-research]] 提供格式、技术和历史谱系上的调研依据。
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]] 用 Life、DocCustomeranalysis、prefect、fetch-adapter 和 DocFilmCommunity 校准 current / snapshot、源刷新和用户入口体系。
 - [[skills/problem-focused-visual-presentation/SKILL]] 把本专题升级为 agent 可执行的图文 lens 生成流程。
@@ -337,7 +340,9 @@ HTML / 图文 lens 内部必须带最小 provenance：
 
 - [[concepts/ai-era-information-presentation]]
 - [[concepts/image-text-layout-system]]
+- [[concepts/color-aesthetic-system]]
 - [[articles/2026-06-08-image-text-layout-system-research]]
+- [[articles/2026-06-10-color-aesthetic-system-research]]
 - [[articles/2026-06-05-ai-era-information-presentation-research]]
 - [[articles/2026-06-05-problem-focused-information-presentation-cross-project-calibration]]
 - [[skills/problem-focused-visual-presentation/SKILL]]

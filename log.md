@@ -9,6 +9,21 @@
 
 ## 2026-06-10
 
+### 调研并沉淀配色与审美体系
+
+- **记录人**：sunhao
+- **用户意图**：用户要求调研配色和审美，并落实到 AcknowledgeBase 知识库中，而不是只给聊天摘要。
+- **主题**：
+  1. 将配色从“挑好看的颜色”校准为信息层级、行动语义、状态语义、品牌气质、数据编码和可访问性共同组成的视觉系统。
+  2. 将审美从主观喜好校准为比例、层级、对比、留白、节奏和场景气质共同形成的可用性放大器。
+  3. 把该主题接入既有 [[concepts/problem-focused-information-presentation]] 和 [[concepts/image-text-layout-system]]，避免成为孤立视觉设计笔记。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-10-color-aesthetic-system-research]]，汇总 Material、Apple HIG、WCAG、CSS Color、Carbon、Atlassian、NN/g 和 IxDF 等来源，形成六层模型、可访问底线和本库落地建议。
+  2. 新增 [[concepts/color-aesthetic-system]]，作为后续知识页、HTML lens、矩阵、状态卡和报告配色审美判断的概念入口。
+  3. 更新 [[INDEX]]、[[articles/README]]、[[concepts/README]]、[[concepts/problem-focused-information-presentation]] 和 [[concepts/image-text-layout-system]]，补齐入口、上位关系和邻接回链。
+- **结论**：后续图文 lens、状态矩阵、知识报告和对外材料的视觉优化，应先定义颜色角色和判断任务，再处理色相、明度、彩度、对比、留白和气质；可访问性和语义稳定性优先于流行配色。
+- **影响页面**：[[articles/2026-06-10-color-aesthetic-system-research]]、[[concepts/color-aesthetic-system]]、[[INDEX]]、[[articles/README]]、[[concepts/README]]、[[concepts/problem-focused-information-presentation]]、[[concepts/image-text-layout-system]]、[[log]]。
+
 ### 将矩阵热力编码原则沉淀进问题聚焦技能
 
 - **记录人**：sunhao

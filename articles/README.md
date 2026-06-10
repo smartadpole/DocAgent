@@ -23,6 +23,7 @@
 
 ## 信息架构 / 知识呈现
 
+- [[articles/2026-06-10-color-aesthetic-system-research]]：配色与审美体系调研，把颜色从“好看”校准为信息层级、行动语义、状态语义、品牌气质、数据编码和可访问性共同组成的视觉系统。
 - [[articles/2026-06-09-technology-research-capability-system]]：技术调研能力体系补全，说明技术调研需要先做对象路由，再按证据等级、成熟度、经济性、安全合规、AI 评测和更新机制形成可持续研究能力。
 - [[articles/2026-06-09-technical-topic-research-methodology]]：技术专题调研方法论，说明技术类专题 / 概念调研的目标不是搜全资料，而是形成支撑判断、选型、PoC、风险识别和复用的技术研究型知识资产。
 - [[articles/2026-06-09-open-source-project-due-diligence-methodology]]：开源工程调研方法论，说明具体开源仓库调研应按项目画像、健康度、跑通验证、代码结构、效果性能、集成成本、风险和使用策略形成工程尽调资产。
