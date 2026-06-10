@@ -298,9 +298,9 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - 本轮形成决策、验收、发布、事故、阶段复盘或外部分发 snapshot。
 - 当前仓库已有 `views/` / `artifacts` / `reports` 等明确呈现层。
 
-没有明确呈现层时，先在最终回复里给图文 lens，并说明建议落位，不静默新建目录。
+尚未迁移该技能、且只是一次性普通问答时，可以先在最终回复里给图文 lens 并说明建议落位；一旦是在迁移 / 维护问题聚焦技能，或本轮生成持久 HTML lens / print view，就必须使用目标工程的持久呈现层。
 
-如果目标工程已有持久呈现层，新增或刷新持久 lens 后必须同步 registry 或等价索引；如果目标工程没有 registry，只在当前回答中说明建议建立的最小字段，不硬套 AcknowledgeBase 的目录名。
+如果是在迁移或维护目标工程的问题聚焦技能，`views/` 持久呈现层不是可选增强：目标工程必须建立或绑定自己的 `views/current/`、`views/snapshots/`、ignored exports 和 `views/lens-registry.md` 或等价 registry。新增或刷新持久 HTML lens / print view 后，canonical HTML / source / manifest 必须落在 `views/current/` 或 `views/snapshots/`，不能落在仓库根目录、临时目录、handoff 目录或只留在聊天里。
 
 ## 自检
 

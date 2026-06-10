@@ -9,6 +9,20 @@
 
 ## 2026-06-10
 
+### 强化问题聚焦技能迁移的 views 落位合同
+
+- **记录人**：sunhao
+- **用户意图**：用户指出问题聚焦技能迁移时没有强制持久 HTML lens 落到 `views/`，导致子工程仍可能把 HTML 放到 handoff、临时目录或只在聊天里展示；这不是可选适配，而是 LifeOS 问题聚焦能力的一条规则。
+- **主题**：
+  1. 将“目标工程有 views 才用”校正为“迁移问题聚焦技能时必须建立或绑定目标工程的 `views/` 持久呈现层”。
+  2. 保持层级边界：该规则进入问题聚焦源 skill / `TRANSFER.md` / sensor，不升级为泛化迁移元提示词。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，明确迁移或维护目标工程问题聚焦技能时，持久 HTML lens / print view 的 canonical HTML / source / manifest 必须落到 `views/current/` 或 `views/snapshots/`，并同步 registry。
+  2. 更新 `skills/problem-focused-visual-presentation/TRANSFER.md`，把 `views/` 落位、ignored exports、registry 纳入目标工程落地模块和验证要求。
+  3. 更新 `scripts/check_problem_focused_visual_presentation.py`，要求专项 sensor 检查迁移清单里包含 `views/` 落位硬合同和目标目录。
+- **结论**：后续问题聚焦技能迁移提示词必须带出 `views/` 持久呈现层；普通短答仍可聊天输出，但持久 HTML / print lens 不得落到 handoff、临时目录或聊天代码块。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、`scripts/check_problem_focused_visual_presentation.py`、[[log]]。
+
 ### 重新完整吸收 LifeOS 问题聚焦 lens 能力
 
 - **记录人**：sunhao

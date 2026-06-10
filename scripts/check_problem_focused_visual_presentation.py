@@ -60,6 +60,7 @@ REQUIRED_TERMS = {
         "LifeOS",
         "已抽象反哺到上游源能力",
         "HTML lens 的 PDF / PNG ignored export 与对话 PNG 预览完成合同",
+        "views/` 落位硬合同",
         "判断目的",
         "输出形态选择",
         "lens 类型字段",
@@ -73,6 +74,9 @@ REQUIRED_TERMS = {
         "LifeOS 对照覆盖矩阵",
         "工程化保护",
         "不复制 LifeOS",
+        "views/current/",
+        "views/snapshots/",
+        "views/lens-registry.md",
     ),
     "templates/problem-focused-lens-template.md": (
         "lens_id",
