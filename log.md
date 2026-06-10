@@ -9,6 +9,20 @@
 
 ## 2026-06-10
 
+### 校正问题聚焦迁移缺口的规则层级
+
+- **记录人**：sunhao
+- **用户意图**：用户指出上一轮把问题聚焦 HTML lens 的个性化完成合同直接写入跨工程迁移元提示词，属于把单个技能吸收不完整的问题扩大成通用规则，切入点不对。
+- **主题**：
+  1. 将问题从“元提示词不会保留硬合同”重新校准为“问题聚焦技能吸收链没有把相关规则完整写进 `TRANSFER.md` 和专项 sensor”。
+  2. 明确正常顺序应是先把技能相关规则严格吸收到源 skill / `TRANSFER.md` / 模板 / sensor，生成迁移提示词时自然带出；只有多技能共性的缺陷反复出现，才抽象升级元提示词。
+- **关键动作**：
+  1. 从 [[skills/cross-project-skill-adoption-prompt/SKILL]] 撤回问题聚焦 HTML lens 的具体硬合同描述，避免元提示词承担单技能规则。
+  2. 更新 [[skills/problem-focused-visual-presentation/TRANSFER.md]] 的上游归一状态，补明 HTML lens 的 PDF / PNG ignored export 与对话 PNG 预览完成合同已经属于问题聚焦源能力。
+  3. 更新 `scripts/check_problem_focused_visual_presentation.py`，要求专项 sensor 同时检查 `SKILL.md` 和 `TRANSFER.md` 中的 HTML lens 完成合同，防止再次只吸收字段而漏掉执行条件。
+- **结论**：本次缺口回收到问题聚焦技能自己的资料链和 sensor；跨工程迁移元提示词继续只承担通用迁移骨架、上游归一判断和源能力覆盖矩阵，不写入 HTML lens 个性规则。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[skills/problem-focused-visual-presentation/TRANSFER.md]]、`scripts/check_problem_focused_visual_presentation.py`、[[log]]。
+
 ### 修正问题聚焦技能迁移里的 HTML lens 完成合同
 
 - **记录人**：sunhao

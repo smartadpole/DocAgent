@@ -17,7 +17,7 @@
 ## 上游归一状态
 
 - **来源工程 / 来源技能**：LifeOS 的 `/Users/hai/Documents/Life/rules/problem-focused-lens.md`、`/Users/hai/Documents/Life/.codex/skills/problem-focused-lens/SKILL.md`、`/Users/hai/Documents/Life/templates/lens.md` 和 `automation/scripts/check_problem_focused_lens.py`。
-- **已抽象反哺到上游源能力**：已吸收关注对象和 lens 类型、证据边界、source pack 守卫、首屏用户价值优先、照片证据排版、持久 lens provenance、current / snapshot、registry 和 sensor 检查口径。
+- **已抽象反哺到上游源能力**：已吸收关注对象和 lens 类型、证据边界、source pack 守卫、首屏用户价值优先、照片证据排版、持久 lens provenance、current / snapshot、HTML lens 的 PDF / PNG ignored export 与对话 PNG 预览完成合同、registry 和 sensor 检查口径。
 - **未吸收内容**：LifeOS 的项目事实、搬家场景、生活领域页、现场照片路径、日志、current lens 实例和本地项目状态。
 - **迁移时使用口径**：目标工程只读取 AcknowledgeBase 源资料；LifeOS 仅作为已反哺的历史来源，不作为目标工程直接复制源。
 
