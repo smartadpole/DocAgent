@@ -6,10 +6,11 @@ from __future__ import annotations
 import html
 import re
 import subprocess
+from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Union
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +95,13 @@ STATUS_SCORES = {
     "blocked": -1,
 }
 
+SKILL_FILE_PATTERNS = [
+    "skills/**/SKILL.md",
+    ".codex/skills/**/SKILL.md",
+    ".claude/skills/**/SKILL.md",
+    ".agents/skills/**/SKILL.md",
+]
+
 
 def run(cmd: List[str], cwd: Path = ROOT) -> str:
     try:
@@ -102,35 +110,92 @@ def run(cmd: List[str], cwd: Path = ROOT) -> str:
         return ""
 
 
-def read_skill_manifest() -> List[Dict[str, str]]:
+def normalize(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+
+
+def canonical_skill_name(value: str) -> str:
+    normalized = normalize(value)
+    for canonical, aliases in ALIASES.items():
+        if normalized == normalize(canonical) or normalized in {normalize(alias) for alias in aliases}:
+            return canonical
+    return normalized
+
+
+def humanize_skill_name(value: str) -> str:
+    return value.replace("-", " ")
+
+
+def read_skill_occurrences() -> List[Dict[str, str]]:
+    occurrences = []
+    for project in PROJECTS:
+        if not project.path.exists():
+            continue
+        for pattern in SKILL_FILE_PATTERNS:
+            for skill_path in sorted(project.path.glob(pattern)):
+                if not skill_path.is_file():
+                    continue
+                text = skill_path.read_text(encoding="utf-8", errors="ignore")
+                name_match = re.search(r"^name:\s*(.+)$", text, re.MULTILINE)
+                desc_match = re.search(r"^description:\s*(.+)$", text, re.MULTILINE)
+                raw_name = name_match.group(1).strip() if name_match else skill_path.parent.name
+                canonical = canonical_skill_name(raw_name)
+                rel_path = str(skill_path.relative_to(project.path))
+                occurrences.append(
+                    {
+                        "name": canonical,
+                        "raw_name": raw_name,
+                        "display_name": SKILL_DISPLAY_NAMES.get(canonical, humanize_skill_name(canonical)),
+                        "path": rel_path,
+                        "full_path": str(skill_path),
+                        "project_key": project.key,
+                        "project_label": project.label,
+                        "description": desc_match.group(1).strip() if desc_match else "",
+                        "has_transfer": "yes" if (skill_path.parent / "TRANSFER.md").exists() else "no",
+                    }
+                )
+    return occurrences
+
+
+def read_skill_manifest() -> List[Dict[str, Union[str, List[str]]]]:
+    grouped: Dict[str, List[Dict[str, str]]] = defaultdict(list)
+    for occurrence in read_skill_occurrences():
+        grouped[occurrence["name"]].append(occurrence)
+
     rows = []
-    for skill_path in sorted((ROOT / "skills").glob("*/SKILL.md")):
-        text = skill_path.read_text(encoding="utf-8")
-        name = re.search(r"^name:\s*(.+)$", text, re.MULTILINE)
-        desc = re.search(r"^description:\s*(.+)$", text, re.MULTILINE)
+    for name, occurrences in grouped.items():
+        source_occurrences = [item for item in occurrences if item["project_key"] == "ack"]
+        description_source = source_occurrences[0] if source_occurrences else max(
+            occurrences,
+            key=lambda item: len(item["description"]),
+        )
+        aliases = sorted({item["raw_name"] for item in occurrences if canonical_skill_name(item["raw_name"]) == name})
+        source_projects = sorted({item["project_label"] for item in occurrences})
+        source_paths = [
+            f"{item['project_label']}:{item['path']}"
+            for item in sorted(occurrences, key=lambda item: (item["project_label"], item["path"]))
+        ]
         rows.append(
             {
-                "name": name.group(1).strip() if name else skill_path.parent.name,
-                "display_name": SKILL_DISPLAY_NAMES.get(
-                    name.group(1).strip() if name else skill_path.parent.name,
-                    name.group(1).strip() if name else skill_path.parent.name,
-                ),
-                "path": str(skill_path.relative_to(ROOT)),
-                "description": desc.group(1).strip() if desc else "",
-                "has_transfer": "yes" if (skill_path.parent / "TRANSFER.md").exists() else "no",
+                "name": name,
+                "display_name": SKILL_DISPLAY_NAMES.get(name, humanize_skill_name(name)),
+                "path": source_paths[0] if source_paths else "",
+                "source_paths": source_paths,
+                "source_projects": source_projects,
+                "aliases": aliases,
+                "description": description_source["description"],
+                "has_transfer": "yes" if any(item["has_transfer"] == "yes" for item in occurrences) else "no",
+                "has_source": "yes" if source_occurrences else "no",
             }
         )
-    return rows
+
+    return sorted(rows, key=lambda item: (item["has_source"] != "yes", item["display_name"]))
 
 
 def iter_candidate_files(project: Project) -> Iterable[Path]:
     if not project.path.exists():
         return []
-    patterns = [
-        "skills/**/SKILL.md",
-        ".codex/skills/**/SKILL.md",
-        ".claude/skills/**/SKILL.md",
-        ".agents/skills/**/SKILL.md",
+    patterns = SKILL_FILE_PATTERNS + [
         "governance/*.md",
         "rules/*.md",
         ".codex/context/*.md",
@@ -152,21 +217,15 @@ def iter_candidate_files(project: Project) -> Iterable[Path]:
     return sorted(set(p for p in files if p.is_file()))
 
 
-def normalize(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
-
-
-def skill_terms(skill_name: str) -> List[str]:
-    return [normalize(t) for t in [skill_name] + ALIASES.get(skill_name, [])]
-
-
-def is_relevant_text(path: Path, terms: List[str]) -> bool:
-    try:
-        text = path.read_text(encoding="utf-8", errors="ignore")[:200_000]
-    except Exception:
-        return False
-    normalized = normalize(text)
-    return any(term and term in normalized for term in terms)
+def skill_terms(skill: Union[str, Dict[str, Union[str, List[str]]]]) -> List[str]:
+    if isinstance(skill, dict):
+        name = str(skill["name"])
+        terms = [name] + ALIASES.get(name, []) + [str(alias) for alias in skill.get("aliases", [])]
+    else:
+        name = skill
+        terms = [name] + ALIASES.get(name, [])
+    normalized_terms = [normalize(term) for term in terms]
+    return sorted({term for term in normalized_terms if term})
 
 
 def skill_entry_terms(path: Path, project: Project) -> List[str]:
@@ -176,8 +235,9 @@ def skill_entry_terms(path: Path, project: Project) -> List[str]:
     return [normalize(rel.parts[-2]), normalize(str(rel))]
 
 
-def evidence_for(project: Project, skill_name: str) -> List[Path]:
-    terms = skill_terms(skill_name)
+def evidence_for(project: Project, skill: Union[str, Dict[str, Union[str, List[str]]]]) -> List[Path]:
+    skill_name = str(skill["name"]) if isinstance(skill, dict) else skill
+    terms = skill_terms(skill)
     hits = []
     for path in iter_candidate_files(project):
         rel = normalize(str(path.relative_to(project.path)))
@@ -192,12 +252,10 @@ def evidence_for(project: Project, skill_name: str) -> List[Path]:
         elif skill_name in {"technology-research-router", "technical-topic-research", "open-source-project-research", "industry-ai-research"}:
             if any(token in rel for token in ["technology", "technical", "research", "source-project", "industry-ai"]):
                 hits.append(path)
-        elif is_relevant_text(path, terms):
-            hits.append(path)
     return sorted(set(hits))
 
 
-def score_evidence(project: Project, skill: Dict[str, str], hits: List[Path]) -> Evidence:
+def score_evidence(project: Project, skill: Dict[str, Union[str, List[str]]], hits: List[Path]) -> Evidence:
     if not project.path.exists():
         return Evidence(score=-1, note="本机路径当前不可读。", hits=[], signals=[])
     if not hits:
@@ -305,7 +363,7 @@ def render_html() -> str:
     for skill in skills:
         scored_cells = []
         for project in PROJECTS:
-            hits = evidence_for(project, skill["name"])
+            hits = evidence_for(project, skill)
             evidence = score_evidence(project, skill, hits)
             scored_cells.append({"project": project, "evidence": evidence})
 
@@ -346,6 +404,8 @@ def render_html() -> str:
     overview_rows = []
     for row in matrix:
         skill = row["skill"]
+        source_projects = "、".join(str(project) for project in skill["source_projects"])
+        source_paths = "；".join(str(path) for path in skill["source_paths"][:4])
         leaders = row["leading_projects"]
         mature_projects = [p for p in row["mature_projects"] if p not in leaders]
         adopted = [c["project"].label for c in row["cells"] if c["status"] == "adopted"]
@@ -369,7 +429,7 @@ def render_html() -> str:
             f"<div><strong>局部 / 缺口</strong><span>{html.escape('、'.join(partial[:4]) if partial else '暂无局部')}；{missing_count} 个未见</span></div>"
             "</div>"
             f"<p class=\"next-step\">{html.escape(next_step)}</p>"
-            f"<p class=\"source-line\">source skill: {html.escape(skill['path'])} · TRANSFER: {html.escape(skill['has_transfer'])} · max score: {row['max_score']}</p>"
+            f"<p class=\"source-line\">found in: {html.escape(source_projects)} · TRANSFER: {html.escape(str(skill['has_transfer']))} · max score: {row['max_score']} · paths: {html.escape(source_paths)}</p>"
             "</article>"
         )
         overview_cells = "\n".join(
@@ -396,14 +456,14 @@ def render_html() -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>跨工程技能成熟度矩阵</title>
   <meta name="lens_id" content="lens-skill-maturity-matrix-current">
-  <meta name="focus_object" content="AcknowledgeBase skills across subprojects">
+  <meta name="focus_object" content="discovered skills across AcknowledgeBase and registered projects">
   <meta name="lens_type" content="knowledge">
   <meta name="generated_at" content="{html.escape(generated)}">
   <meta name="source_revision" content="{html.escape(source_revision)}">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
-  <meta name="source_scope" content="local project skill, transfer, governance, sensor, template, view, and selected log evidence">
-  <meta name="evidence_boundary" content="confirmed local file presence and content-volume signals; relative maturity is recomputed for every project on every refresh; no runtime validation">
-  <meta name="context_frame" content="cross-project skill maturity ranking lens; source project participates in the same ranking as downstream projects">
+  <meta name="source_scope" content="all discovered project skill files plus local transfer, governance, sensor, template, view, and selected log evidence">
+  <meta name="evidence_boundary" content="confirmed local skill-file discovery plus content-volume signals; skill rows and relative maturity are recomputed for every project on every refresh; no runtime validation">
+  <meta name="context_frame" content="cross-project skill catalog and maturity ranking lens; source project participates in the same ranking as downstream projects">
   <meta name="output_mode" content="html_report / print_view">
   <meta name="visual_structure" content="overview matrix / compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
@@ -513,18 +573,18 @@ def render_html() -> str:
     <div class="wrap hero">
       <div class="eyebrow">Skill maturity lens · 每三天刷新</div>
       <h1>跨工程技能成熟度矩阵</h1>
-      <p class="subtitle">按 AcknowledgeBase 当前技能逐行盘点所有注册工程和观察工程的相对成熟度。源工程也参与同一套证据评分；每次刷新都会重新扫描 skill、TRANSFER、sensor、views、template、governance 和内容体量信号，不沿用静态成熟标签。</p>
+      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，再按归并后的技能目录盘点注册工程和观察工程的相对成熟度。源工程也参与同一套证据评分；矩阵行、技能详情、来源工程、TRANSFER、sensor、views、template、governance 和内容体量信号都会同步更新。</p>
       <div class="meta-row">
         <span class="pill">生成：{html.escape(generated)}</span>
         <span class="pill">源版本：{html.escape(source_revision)}</span>
-        <span class="pill">技能数：{len(skills)}</span>
+        <span class="pill">发现技能项：{len(skills)}</span>
         <span class="pill">工程数：{len(PROJECTS)}</span>
       </div>
     </div>
   </header>
   <main class="wrap">
     <section class="cards">
-      <div class="card"><strong>{len(skills)}</strong><span>当前知识库技能</span></div>
+      <div class="card"><strong>{len(skills)}</strong><span>本轮发现技能项</span></div>
       <div class="card"><strong>{sum(1 for s in skills if s['has_transfer'] == 'yes')}</strong><span>已有 TRANSFER.md</span></div>
       <div class="card"><strong>{sum(1 for row in matrix if row['leading_projects'] == ['AcknowledgeBase'])}</strong><span>源工程当前领先</span></div>
       <div class="card"><strong>3d</strong><span>建议刷新周期</span></div>
@@ -538,7 +598,7 @@ def render_html() -> str:
     </section>
 
     <section>
-      <h2>技能 x 子工程矩阵</h2>
+      <h2>技能 x 工程矩阵</h2>
       <div class="overview-shell">
         <table class="overview-matrix">
           <thead><tr><th>技能 / 当前领先</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
@@ -562,9 +622,9 @@ def render_html() -> str:
 
     <section class="card boundary">
       <h2>证据边界</h2>
-      <p>confirmed：本机文件存在、技能入口可读、注册表已记录。relative ranking：每次刷新重新扫描所有工程，按同名 / 别名 skill、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度。blocked：路径不可读。</p>
+      <p>confirmed：本机文件存在、技能入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件并归并为矩阵行。relative ranking：按同名 / 别名 skill、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度。blocked：路径不可读。</p>
       <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；吸收动作仍必须先按上游归一规则抽象系统层信息，剥离项目事实、业务链路、运行 ID、本地路径和一次性 handoff。</p>
-      <p class="source-list">主要来源：skills/README.md、skills/*/SKILL.md、projects/governance/registry.md、各工程 skill / TRANSFER / governance / sensor / views / template 路径。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
+      <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
     </section>
   </main>
 </body>
