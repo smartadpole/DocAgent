@@ -7,14 +7,14 @@
   <meta name="lens_id" content="lens-skill-maturity-matrix-current">
   <meta name="focus_object" content="AcknowledgeBase skills across subprojects">
   <meta name="lens_type" content="knowledge">
-  <meta name="generated_at" content="2026-06-10 17:01">
-  <meta name="source_revision" content="b6523a5">
+  <meta name="generated_at" content="2026-06-10 17:27">
+  <meta name="source_revision" content="4bf05b7">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
   <meta name="source_scope" content="local project skill directories and governance/sensor evidence">
   <meta name="evidence_boundary" content="confirmed local file presence; likely maturity from known source chains; no runtime validation">
   <meta name="context_frame" content="skill adoption and upstream absorption lens; presentation only, not target project status source">
   <meta name="output_mode" content="html_report / print_view">
-  <meta name="visual_structure" content="matrix / recommendation table / project cards">
+  <meta name="visual_structure" content="compact skill cards / recommendation table / collapsible matrix / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
   <meta name="print_profile" content="@page A4 landscape; repeat header; preserve sticky columns as regular table">
   <meta name="equivalence_profile" content="HTML / PDF / PNG use same source pack and same canonical HTML / source / manifest render pipeline">
@@ -63,8 +63,23 @@
     .adjacent { background: var(--teal); }
     .none { background: var(--gray); }
     .blocked { background: var(--red); }
-    .table-shell { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); max-height: 78vh; }
-    table { border-collapse: separate; border-spacing: 0; min-width: 2240px; width: 100%; }
+    .skill-card-list { display: grid; gap: 12px; }
+    .skill-card { padding: 14px; }
+    .skill-card-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; margin-bottom: 12px; }
+    .skill-card code { color: #172033; font-size: 14px; font-weight: 800; white-space: normal; }
+    .skill-card p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .score { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; min-height: 34px; border-radius: 8px; background: #e7eef6; color: #27415f; font-weight: 900; }
+    .compact-grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr 0.8fr; gap: 10px; }
+    .compact-grid div { min-height: 74px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #fbfcfe; }
+    .compact-grid strong { display: block; margin-bottom: 5px; font-size: 12px; color: #2d3a4a; }
+    .compact-grid span { color: #253244; font-size: 13px; }
+    .next-step { border-left: 4px solid var(--teal); padding-left: 10px; color: #253244 !important; }
+    .source-line { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+    summary { cursor: pointer; font-weight: 800; color: #243143; }
+    .table-shell { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); max-height: 78vh; margin-top: 12px; }
+    table { border-collapse: separate; border-spacing: 0; width: 100%; }
+    .matrix-table { min-width: 2240px; }
     th, td { vertical-align: top; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px; background: var(--panel); }
     thead th { position: sticky; top: 0; z-index: 3; background: #edf3f8; text-align: left; font-size: 13px; }
     thead th small { display: block; color: var(--muted); font-weight: 500; margin-top: 3px; }
@@ -86,7 +101,7 @@
     .boundary { border-left: 5px solid var(--amber); }
     .source-list { color: var(--muted); font-size: 13px; }
     @media (max-width: 900px) {
-      .cards, .project-grid { grid-template-columns: 1fr; }
+      .cards, .project-grid, .compact-grid { grid-template-columns: 1fr; }
       .wrap { width: min(100vw - 20px, 1440px); }
       h1 { font-size: 34px; }
     }
@@ -96,7 +111,7 @@
       .wrap { width: 100%; }
       .hero { min-height: 0; padding: 0 0 12px; }
       .table-shell { overflow: visible; max-height: none; }
-      table { min-width: 0; font-size: 9px; }
+      table, .matrix-table { min-width: 0; font-size: 9px; }
       th, td { padding: 5px; }
       .skill-col, .recommend, thead th { position: static; }
       .cards, .project-grid { grid-template-columns: repeat(4, 1fr); }
@@ -110,8 +125,8 @@
       <h1>跨工程技能成熟度矩阵</h1>
       <p class="subtitle">按 AcknowledgeBase 当前技能逐行盘点各子工程接入状态，并标出哪些工程里的同类能力更成熟、值得抽象反哺。状态来自本机文件扫描和已知治理注册表；本页只作呈现，不替代各工程自己的 source of truth。</p>
       <div class="meta-row">
-        <span class="pill">生成：2026-06-10 17:01</span>
-        <span class="pill">源版本：b6523a5</span>
+        <span class="pill">生成：2026-06-10 17:27</span>
+        <span class="pill">源版本：4bf05b7</span>
         <span class="pill">技能数：10</span>
         <span class="pill">工程数：12</span>
       </div>
@@ -134,6 +149,13 @@
 
     <section>
       <h2>一眼吸收建议</h2>
+      <div class="skill-card-list">
+        <article class="skill-card"><div class="skill-card-head"><div><code>cross-project-governance-audit</code><p>跨工程治理审计技能。定期或按需读取各工程关键治理文件，对照平台级标准评估成熟度，生成漂移报告和 handoff 包。支持全量审计（所有已注册工程）和单工程审计（&quot;治理 X 工程&quot;）两种模式。</p></div><span class="score">27</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>Software/wiki</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>DocCustomeranalysis、DocFilmCommunity、fetch-adapter、train_platform、prefect</span></div><div><strong>缺口</strong><span>1 个工程未见等价能力</span></div></div><p class="next-step">抽象成熟样本，补回源 skill / TRANSFER / sensor。</p><p class="source-line">source: skills/cross-project-governance-audit/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>cross-project-skill-adoption-prompt</code><p>跨工程技能升级提示词生成技能。用于用户想把 AcknowledgeBase 或当前工程中已沉淀的某个 skill / 能力迁移、升级、接入到其他工程时，生成可交给目标工程 agent 的完整提示词、附件资料清单、吸收边界、落地步骤和验证要求；不直接改目标工程，除非用户另行授权。</p></div><span class="score">5</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>暂无</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>11 个工程未见等价能力</span></div></div><p class="next-step">先补 TRANSFER 或收集下游实战样本。</p><p class="source-line">source: skills/cross-project-skill-adoption-prompt/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>historical-dialogue-retrospective</code><p>历史对话与 Agent 工作流复盘技能。用于用户要求复盘历史对话、当前对话、Harness episode、log 记录、agent 工作方式、效率、质量、偏差、协作链路或工作流改进时；帮助 Codex 区分 harness 记录、log、当前上下文、原始 session / rollout、git diff / commit、检查输出和受影响页面，产出 agent 偏差判断、workflow 改进候选和沉淀路由。</p></div><span class="score">27</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>Software/wiki、DocCustomeranalysis</span></div><div><strong>已接入</strong><span>customeranalysis</span></div><div><strong>局部 / 相邻</strong><span>DocFilmCommunity、fetch-adapter、train_platform、LifeOS、DocERP</span></div><div><strong>缺口</strong><span>2 个工程未见等价能力</span></div></div><p class="next-step">抽象成熟样本，补回源 skill / TRANSFER / sensor。</p><p class="source-line">source: skills/historical-dialogue-retrospective/SKILL.md · TRANSFER: yes</p></article><article class="skill-card"><div class="skill-card-head"><div><code>industry-ai-research</code><p>调研 IT 行业、AI 领域、AI 赛道、产品机会、公司群体或落地场景时，用于形成产业趋势、技术路线、产品应用、竞争格局、开源生态、治理风险和行动建议。</p></div><span class="score">5</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>暂无</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>11 个工程未见等价能力</span></div></div><p class="next-step">先补 TRANSFER 或收集下游实战样本。</p><p class="source-line">source: skills/industry-ai-research/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>issue-analysis</code><p>主控侧 issue / incident 分析技能。用于处理模糊问题、故障、联调失败、验收争议、跨工程阻塞、状态/日志/API/DB/artifact/报告不一致、责任边界不清或需要分工协调的问题；帮助 Codex 对齐事实源、下游处理权威证据、定位最小根因链、裁定主责与协同方、拆解跨工程任务、设计联测/验收方案，并决定主控文档如何吸收子工程反馈。</p></div><span class="score">24</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>DocCustomeranalysis、DocFilmCommunity</span></div><div><strong>已接入</strong><span>Software/wiki、DocERP</span></div><div><strong>局部 / 相邻</strong><span>fetch-adapter、prefect、LifeOS</span></div><div><strong>缺口</strong><span>4 个工程未见等价能力</span></div></div><p class="next-step">抽象成熟样本，补回源 skill / TRANSFER / sensor。</p><p class="source-line">source: skills/issue-analysis/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>knowledge-linking</code><p>新增、调研或大改长期知识页时，用于完成调研、分层落位、上位/邻接/入口/反向链接、自检和验证，避免新知识成为孤岛。</p></div><span class="score">5</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>暂无</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>11 个工程未见等价能力</span></div></div><p class="next-step">先补 TRANSFER 或收集下游实战样本。</p><p class="source-line">source: skills/knowledge-linking/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>open-source-project-research</code><p>调研 GitHub、Hugging Face 或其他开源工程时，用于完成项目画像、健康度体检、运行验证、代码结构分析、效果/性能评估、集成成本和使用策略判断。</p></div><span class="score">5</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>暂无</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>11 个工程未见等价能力</span></div></div><p class="next-step">先补 TRANSFER 或收集下游实战样本。</p><p class="source-line">source: skills/open-source-project-research/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>problem-focused-visual-presentation</code><p>问题聚焦式图文呈现技能。用于用户要看一份文档、一个主题、一个状态、风险、决策、计划、验收结论或复杂信息集合，并希望直观、图文混排、一图胜千言、HTML / 图表 / 脑图 / 框图 / 时间线 / PDF 导出 / 打印呈现时，生成可读、可追溯、带背景框和导出配置的 lens。</p></div><span class="score">32</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>DocCustomeranalysis、DocFilmCommunity、LifeOS</span></div><div><strong>已接入</strong><span>fetch-adapter、train_platform、prefect、customeranalysis、H100</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>3 个工程未见等价能力</span></div></div><p class="next-step">抽象成熟样本，补回源 skill / TRANSFER / sensor。</p><p class="source-line">source: skills/problem-focused-visual-presentation/SKILL.md · TRANSFER: yes</p></article><article class="skill-card"><div class="skill-card-head"><div><code>technical-topic-research</code><p>调研技术类专题或概念时，用于把资料、原理、生态、对比、场景、PoC、风险和决策建议沉淀成可复用知识资产。</p></div><span class="score">5</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>暂无</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>11 个工程未见等价能力</span></div></div><p class="next-step">先补 TRANSFER 或收集下游实战样本。</p><p class="source-line">source: skills/technical-topic-research/SKILL.md · TRANSFER: no</p></article><article class="skill-card"><div class="skill-card-head"><div><code>technology-research-router</code><p>面对技术调研、AI/IT 行业调研、开源工程调研、产品/公司/PoC 研究时，用于先判对象、证据等级、成熟度、风险、输出形态和知识沉淀路径，再路由到正确调研技能。</p></div><span class="score">5</span></div><div class="compact-grid"><div><strong>成熟样本</strong><span>暂无</span></div><div><strong>已接入</strong><span>暂无</span></div><div><strong>局部 / 相邻</strong><span>暂无</span></div><div><strong>缺口</strong><span>11 个工程未见等价能力</span></div></div><p class="next-step">先补 TRANSFER 或收集下游实战样本。</p><p class="source-line">source: skills/technology-research-router/SKILL.md · TRANSFER: no</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>精简索引</h2>
       <div class="table-shell">
         <table class="summary-table">
           <thead><tr><th>技能</th><th>TRANSFER</th><th>更成熟 / 值得吸收的工程</th><th>覆盖分</th></tr></thead>
@@ -144,8 +166,10 @@
 
     <section>
       <h2>技能 x 子工程矩阵</h2>
-      <div class="table-shell">
-        <table>
+      <details>
+        <summary>展开完整 10 x 12 矩阵</summary>
+        <div class="table-shell">
+        <table class="matrix-table">
           <thead>
             <tr><th class="skill-col">技能</th><th class="recommend">值得吸收</th><th><span>AcknowledgeBase</span><small>治理中控 / 源能力</small></th>
 <th><span>Software/wiki</span><small>模板源</small></th>
@@ -274,7 +298,8 @@
 <td><div class="cell-stack"><span class="status none">未见</span><span class="note">未在常见 skill / governance / sensor 路径发现等价能力。</span></div></td></tr>
           </tbody>
         </table>
-      </div>
+        </div>
+      </details>
     </section>
 
     <section>

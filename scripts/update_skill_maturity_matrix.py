@@ -235,6 +235,34 @@ def render_html() -> str:
             f"<td>{row['score']}</td></tr>"
         )
 
+    compact_cards = []
+    for row in matrix:
+        skill = row["skill"]
+        absorbers = [p for p in row["mature_projects"] if p != "AcknowledgeBase"]
+        adopted = [c["project"].label for c in row["cells"] if c["status"] == "adopted"]
+        partial = [c["project"].label for c in row["cells"] if c["status"] in {"partial", "adjacent"}]
+        missing_count = sum(1 for c in row["cells"] if c["status"] == "none")
+        next_step = (
+            "抽象成熟样本，补回源 skill / TRANSFER / sensor。"
+            if absorbers
+            else "先补 TRANSFER 或收集下游实战样本。"
+        )
+        compact_cards.append(
+            "<article class=\"skill-card\">"
+            f"<div class=\"skill-card-head\"><div><code>{html.escape(skill['name'])}</code>"
+            f"<p>{html.escape(skill['description'])}</p></div>"
+            f"<span class=\"score\">{row['score']}</span></div>"
+            "<div class=\"compact-grid\">"
+            f"<div><strong>成熟样本</strong><span>{html.escape('、'.join(absorbers) if absorbers else '暂无')}</span></div>"
+            f"<div><strong>已接入</strong><span>{html.escape('、'.join(adopted[:5]) if adopted else '暂无')}</span></div>"
+            f"<div><strong>局部 / 相邻</strong><span>{html.escape('、'.join(partial[:5]) if partial else '暂无')}</span></div>"
+            f"<div><strong>缺口</strong><span>{missing_count} 个工程未见等价能力</span></div>"
+            "</div>"
+            f"<p class=\"next-step\">{html.escape(next_step)}</p>"
+            f"<p class=\"source-line\">source: {html.escape(skill['path'])} · TRANSFER: {html.escape(skill['has_transfer'])}</p>"
+            "</article>"
+        )
+
     project_headers = "\n".join(
         f"<th><span>{html.escape(p.label)}</span><small>{html.escape(p.role)}</small></th>" for p in PROJECTS
     )
@@ -278,7 +306,7 @@ def render_html() -> str:
   <meta name="evidence_boundary" content="confirmed local file presence; likely maturity from known source chains; no runtime validation">
   <meta name="context_frame" content="skill adoption and upstream absorption lens; presentation only, not target project status source">
   <meta name="output_mode" content="html_report / print_view">
-  <meta name="visual_structure" content="matrix / recommendation table / project cards">
+  <meta name="visual_structure" content="compact skill cards / recommendation table / collapsible matrix / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
   <meta name="print_profile" content="@page A4 landscape; repeat header; preserve sticky columns as regular table">
   <meta name="equivalence_profile" content="HTML / PDF / PNG use same source pack and same canonical HTML / source / manifest render pipeline">
@@ -327,8 +355,23 @@ def render_html() -> str:
     .adjacent {{ background: var(--teal); }}
     .none {{ background: var(--gray); }}
     .blocked {{ background: var(--red); }}
-    .table-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); max-height: 78vh; }}
-    table {{ border-collapse: separate; border-spacing: 0; min-width: 2240px; width: 100%; }}
+    .skill-card-list {{ display: grid; gap: 12px; }}
+    .skill-card {{ padding: 14px; }}
+    .skill-card-head {{ display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; margin-bottom: 12px; }}
+    .skill-card code {{ color: #172033; font-size: 14px; font-weight: 800; white-space: normal; }}
+    .skill-card p {{ margin: 5px 0 0; color: var(--muted); font-size: 12px; }}
+    .score {{ display: inline-flex; align-items: center; justify-content: center; min-width: 42px; min-height: 34px; border-radius: 8px; background: #e7eef6; color: #27415f; font-weight: 900; }}
+    .compact-grid {{ display: grid; grid-template-columns: 1.1fr 1fr 1fr 0.8fr; gap: 10px; }}
+    .compact-grid div {{ min-height: 74px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #fbfcfe; }}
+    .compact-grid strong {{ display: block; margin-bottom: 5px; font-size: 12px; color: #2d3a4a; }}
+    .compact-grid span {{ color: #253244; font-size: 13px; }}
+    .next-step {{ border-left: 4px solid var(--teal); padding-left: 10px; color: #253244 !important; }}
+    .source-line {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }}
+    details {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }}
+    summary {{ cursor: pointer; font-weight: 800; color: #243143; }}
+    .table-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); max-height: 78vh; margin-top: 12px; }}
+    table {{ border-collapse: separate; border-spacing: 0; width: 100%; }}
+    .matrix-table {{ min-width: 2240px; }}
     th, td {{ vertical-align: top; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px; background: var(--panel); }}
     thead th {{ position: sticky; top: 0; z-index: 3; background: #edf3f8; text-align: left; font-size: 13px; }}
     thead th small {{ display: block; color: var(--muted); font-weight: 500; margin-top: 3px; }}
@@ -350,7 +393,7 @@ def render_html() -> str:
     .boundary {{ border-left: 5px solid var(--amber); }}
     .source-list {{ color: var(--muted); font-size: 13px; }}
     @media (max-width: 900px) {{
-      .cards, .project-grid {{ grid-template-columns: 1fr; }}
+      .cards, .project-grid, .compact-grid {{ grid-template-columns: 1fr; }}
       .wrap {{ width: min(100vw - 20px, 1440px); }}
       h1 {{ font-size: 34px; }}
     }}
@@ -360,7 +403,7 @@ def render_html() -> str:
       .wrap {{ width: 100%; }}
       .hero {{ min-height: 0; padding: 0 0 12px; }}
       .table-shell {{ overflow: visible; max-height: none; }}
-      table {{ min-width: 0; font-size: 9px; }}
+      table, .matrix-table {{ min-width: 0; font-size: 9px; }}
       th, td {{ padding: 5px; }}
       .skill-col, .recommend, thead th {{ position: static; }}
       .cards, .project-grid {{ grid-template-columns: repeat(4, 1fr); }}
@@ -398,6 +441,13 @@ def render_html() -> str:
 
     <section>
       <h2>一眼吸收建议</h2>
+      <div class="skill-card-list">
+        {''.join(compact_cards)}
+      </div>
+    </section>
+
+    <section>
+      <h2>精简索引</h2>
       <div class="table-shell">
         <table class="summary-table">
           <thead><tr><th>技能</th><th>TRANSFER</th><th>更成熟 / 值得吸收的工程</th><th>覆盖分</th></tr></thead>
@@ -408,8 +458,10 @@ def render_html() -> str:
 
     <section>
       <h2>技能 x 子工程矩阵</h2>
-      <div class="table-shell">
-        <table>
+      <details>
+        <summary>展开完整 10 x 12 矩阵</summary>
+        <div class="table-shell">
+        <table class="matrix-table">
           <thead>
             <tr><th class="skill-col">技能</th><th class="recommend">值得吸收</th>{project_headers}</tr>
           </thead>
@@ -417,7 +469,8 @@ def render_html() -> str:
             {''.join(table_rows)}
           </tbody>
         </table>
-      </div>
+        </div>
+      </details>
     </section>
 
     <section>
