@@ -9,6 +9,20 @@
 
 ## 2026-06-10
 
+### 修正问题聚焦技能迁移里的 HTML lens 完成合同
+
+- **记录人**：sunhao
+- **用户意图**：用户指出迁移到子工程的问题聚焦技能没有继承 LifeOS 的完整行为：生成 HTML 时应同步生成 ignored PDF / PNG，并在对话中展示 PNG，而 DocCustomeranalysis 只返回了 HTML 链接和代码块。
+- **主题**：
+  1. 将问题聚焦 HTML lens 的 PDF / PNG 导出和对话 PNG 预览从“模板字段 / 验证建议”升级为迁移提示词必须保留的硬完成合同。
+  2. 防止后续跨工程迁移时把源技能里的实际产物要求压缩成可选字段，导致目标工程只实现 HTML 外壳。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/TRANSFER.md]]，明确“生成或更新持久 HTML lens”必须同轮实际生成同源 PDF 和 PNG 到 gitignore 忽略目录，并在最终回复展示 PNG；只给 HTML 链接、HTML 代码块或导出配置不算完成。
+  2. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，要求任何源能力里的硬完成合同都必须作为目标 agent 的完成门槛和最终回复要求保留，不能降级成字段清单或建议验证。
+  3. 更新 `scripts/check_problem_focused_visual_presentation.py`，把 HTML lens 硬完成合同、HTML 链接 / 代码块不合格和最终回复 PNG 预览纳入专项检查。
+- **结论**：后续生成问题聚焦能力迁移提示词时，HTML lens 的 PDF / PNG 导出和对话 PNG 预览会作为任务完成条件随迁移包下发。
+- **影响页面**：[[skills/problem-focused-visual-presentation/TRANSFER.md]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、`scripts/check_problem_focused_visual_presentation.py`、[[log]]。
+
 ### 吸收 LifeOS 问题聚焦 lens 的通用增量
 
 - **记录人**：sunhao

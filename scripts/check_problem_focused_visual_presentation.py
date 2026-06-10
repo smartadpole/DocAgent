@@ -46,6 +46,9 @@ REQUIRED_TERMS = {
         "持久化字段",
         "工程化保护",
         "不复制 LifeOS",
+        "HTML lens 硬完成合同",
+        "只给 HTML 链接、HTML 代码块",
+        "最终回复展示 PNG 预览",
     ),
     "templates/problem-focused-lens-template.md": (
         "lens_id",

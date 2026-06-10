@@ -31,6 +31,7 @@
 - 用户价值优先：首屏先呈现当前判断、关键风险、下一步、可执行 / 条件性 / 禁止上推和最重要证据；维护字段下沉。
 - 照片 / 视觉证据排版：画幅家族、自然比例证据网格、竖图专题、`object-fit: contain`、不裁切证据图、判断卡不写排版说明。
 - 导出能力：HTML print view、PDF / PNG export、A4 / A3 / custom 页面规格、横竖版选择、分页策略、页眉页脚、证据边界、同源一致性和 snapshot 规则。
+- HTML lens 硬完成合同：只要本轮生成或更新持久 HTML lens，就必须同轮实际生成同源 PDF 和至少一张 PNG 截图 / 长图到 gitignore 忽略目录，并在最终回复用 Markdown 图片语法展示 PNG；只给 HTML 链接、HTML 代码块或“具备导出配置”不算完成。
 - 持久化字段：`lens_id`、`focus_object`、`lens_type`、`source_pages`、`source_scope`、`generated_at`、`source_revision`、`evidence_boundary`、`context_frame`、`output_mode`、`visual_structure`、`photo_layout_strategy`、`export_profile`、`print_profile`、`equivalence_profile`、`canonical_policy`、`snapshot_policy`、`staleness_policy`、`refresh_trigger`。
 - 工程化保护：持久 lens 的 registry / 等价索引、模板字段和 sensor 检查口径。
 - 回写守卫：不把 lens 当第二份真相源，不替代验收 / 关闭 / 准出。
@@ -59,7 +60,7 @@
 3. 在目标工程 agent 入口规则中加入轻量触发：用户要直观看文档 / 主题 / 状态时，调用该 skill。
 4. 在响应模式或 workflow 中加入“图文呈现”模式，说明默认读取、默认写入和持久化边界。
 5. 如果目标工程有专题目录或视图目录，建立 current / snapshot / exports 或等价呈现层；`exports` 必须被 gitignore 忽略，没有则先只输出聊天图文 lens。
-6. 如果目标工程需要持久 lens，补模板或等价字段清单；如果高频使用，再补 sensor。
+6. 如果目标工程需要持久 lens，补模板或等价字段清单；其中 HTML lens 必须把 `default_auto_exports`、`conversation_png_preview`、ignored export 目录和“未实际导出或展示的阻塞声明”写成硬完成合同，而不是只作为可选字段。
 7. 补入口链接，让用户能从技能目录或专题目录找到该能力。
 
 ## 验证要求
@@ -68,7 +69,7 @@
 - 用一个跨多文档主题验证：输出必须呈现材料分层、关系 / 冲突 / 时间线或证据链。
 - 用一个状态 / issue / 验收样本验证：输出必须标清主 `lens_type`、证据边界、不能上推范围和最新 source pack。
 - 如果目标工程有照片或视觉证据，用一个混合横竖图样本验证：必须保留证据细节，声明 `photo_layout_strategy`，避免裁切和固定高度大留白。
-- 用一个 HTML 导出样本验证：输出必须声明 A4 / A3 或 custom、横竖版、边距、分页策略、忽略目录和同源一致性，并在实际导出 PDF / PNG 时检查图表裁切、页数、页脚来源、打印可读性以及 HTML / PDF / PNG 信息一致性。
+- 用一个 HTML 导出样本验证：输出必须声明 A4 / A3 或 custom、横竖版、边距、分页策略、忽略目录和同源一致性；如果本轮生成或更新持久 HTML lens，必须实际导出 PDF / PNG、检查图表裁切、页数、页脚来源、打印可读性以及 HTML / PDF / PNG 信息一致性，并在最终回复展示 PNG 预览。只返回 HTML 链接或 HTML 代码块判定为不合格。
 - 如果目标工程建立持久 lens 模板或 registry，检查 provenance 字段、current / snapshot 和 staleness / refresh 规则齐全。
 - 检查 Git diff 没有新增同一 lens 的重复 PDF / PNG / SVG 渲染物。
 - 检查最终结果没有把历史快照当 current，没有把 lens 当验收或关闭结论。
