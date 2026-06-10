@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-10
+
+### 固化跨工程技能迁移的上游归一策略
+
+- **记录人**：sunhao
+- **用户意图**：用户确认“先把 LifeOS 中更成熟的问题聚焦技能抽象吸收回来，再转移 / 传授给其他工程”的策略应适用于所有技能转移，并要求沉淀为后续可直接复用的默认流程。
+- **主题**：
+  1. 将跨工程技能迁移从“工程 A 直接复制到工程 B”校准为“先上游归一，再目标迁移”。
+  2. 明确下游工程中的成熟技能只能抽象系统层增量，不能把项目事实、业务链路、运行 ID、本地路径或一次性状态带入上游或目标工程。
+  3. 让后续所有技能迁移都先判断 AcknowledgeBase 源技能 / `TRANSFER.md` / 模板 / sensor 是否已经吸收该通用增量。
+- **关键动作**：
+  1. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，新增源能力归一判断、下游强化版 delta 判断、上游归一状态覆盖矩阵和禁止直接下游到下游复制的自检项。
+  2. 更新 [[templates/skill-transfer-manifest-template]]，新增“上游归一状态”字段，要求技能迁移清单记录来源工程、已反哺文件、未吸收项目事实和待确认参考增量。
+  3. 更新 [[BRAIN]]，把“跨工程技能迁移先上游归一”写入共享背景，作为后续默认前提。
+- **结论**：后续任何技能迁移都默认先确认源能力是否已归一；若某个目标能力最成熟版本在下游工程，先抽象反哺回 AcknowledgeBase，再从上游源能力生成目标工程迁移任务书。
+- **影响页面**：[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[templates/skill-transfer-manifest-template]]、[[BRAIN]]、[[log]]。
+
 ## 2026-06-09
 
 ### 用复盘技能补做调研技能漏记 Harness 的正式复盘
