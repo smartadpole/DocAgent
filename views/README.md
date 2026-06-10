@@ -12,7 +12,7 @@
 ## 当前视图
 
 - [[views/current/knowledge/xinzhi-ruisheng-company.html]]：芯智睿声企业调研 lens。
-- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能成熟度矩阵，按本库技能盘点各子工程接入状态和可反哺样本。
+- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能成熟度矩阵，按本库技能对所有工程（包含源工程）做动态证据评分、相对排名和反哺候选判断。
 
 ## 维护原则
 

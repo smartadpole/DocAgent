@@ -9,6 +9,21 @@
 
 ## 2026-06-10
 
+### 将技能成熟度矩阵改为全工程动态排名
+
+- **记录人**：sunhao
+- **用户意图**：用户指出技能成熟度矩阵不能继续用静态覆盖表标记少数子工程成熟；源工程也必须参与排名，每次更新都要重新分析所有工程的信息量变化。
+- **主题**：
+  1. 将“源 / 下游成熟样本”的登记口径改成“所有工程同场比较”的相对成熟度口径。
+  2. 每次刷新必须重新扫描 skill、TRANSFER、sensor、views、template、governance 和正文体量信号，不沿用旧的 `STATUS_OVERRIDES`。
+  3. 矩阵里的“领先 / 成熟 / 接入 / 局部”只表示本轮证据信号强弱，不直接裁定目标工程运行状态。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，删除静态 `STATUS_OVERRIDES`，改为对每个技能下的所有工程动态评分并按最高分标记 `领先`。
+  2. 更新 [[views/current/governance/skill-maturity-matrix.html]]，把首屏、图例、矩阵说明和证据边界改成全工程动态排名；问题聚焦技能现在显示 AcknowledgeBase 和 DocCustomeranalysis 并列领先。
+  3. 更新 [[views/README]] 和 [[views/lens-registry]]，把视图描述从“子工程接入状态”改为“包含源工程的动态成熟度排名”。
+- **结论**：后续三天刷新任务不能只重写时间戳或沿用静态成熟标签；必须让源工程和所有目标工程在同一证据模型下重新排名，才能发现源能力升级后是否已经领先或仍需吸收下游增量。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/README]]、[[views/lens-registry]]、[[log]]。
+
 ### 调研并沉淀配色与审美体系
 
 - **记录人**：sunhao

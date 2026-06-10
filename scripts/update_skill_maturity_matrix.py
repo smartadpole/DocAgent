@@ -4,13 +4,12 @@
 from __future__ import annotations
 
 import html
-import os
 import re
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +23,14 @@ class Project:
     role: str
     path: Path
     registry_level: str
+
+
+@dataclass(frozen=True)
+class Evidence:
+    score: int
+    note: str
+    hits: List[Path]
+    signals: List[str]
 
 
 PROJECTS = [
@@ -69,58 +76,20 @@ SKILL_DISPLAY_NAMES = {
 }
 
 
-STATUS_OVERRIDES: Dict[Tuple[str, str], Tuple[str, str]] = {
-    ("cross-project-governance-audit", "ack"): ("source", "源审计技能，读取注册表与平台标准生成漂移报告。"),
-    ("cross-project-governance-audit", "doccust"): ("partial", "有治理台账、episode 与 sensor，可作为审计对象成熟样本。"),
-    ("cross-project-governance-audit", "docfilm"): ("partial", "有治理台账和 sensor，适合继续审计补齐。"),
-    ("cross-project-governance-audit", "fetch"): ("partial", "有子工程 harness 规则和检查脚本，但审计能力不在本地。"),
-    ("cross-project-governance-audit", "train"): ("partial", "有问题聚焦技能和部分治理痕迹，需审计确认深度。"),
-    ("cross-project-governance-audit", "prefect"): ("partial", "有规则和技能目录，episode / sensor 证据较薄。"),
-    ("cross-project-governance-audit", "wiki"): ("mature", "模板源具备治理台账、复盘 sensor 和模板，可反哺审计维度。"),
-    ("cross-project-skill-adoption-prompt", "ack"): ("source", "当前唯一源技能，承担上游归一和迁移任务书生成。"),
-    ("historical-dialogue-retrospective", "ack"): ("source", "源技能 + TRANSFER，已接入复盘概念和 Harness episode。"),
-    ("historical-dialogue-retrospective", "doccust"): ("mature", "本地有历史对话复盘、项目复盘和多份真实复盘档案。"),
-    ("historical-dialogue-retrospective", "wiki"): ("mature", "模板源有复盘技能、复盘 sensor 和概念/模板链。"),
-    ("historical-dialogue-retrospective", "customer"): ("adopted", "已有 .codex 技能，偏子工程文档协作场景。"),
-    ("historical-dialogue-retrospective", "life"): ("adjacent", "system-harness-review 是生活系统化的相邻成熟能力。"),
-    ("issue-analysis", "ack"): ("source", "主控侧 issue / incident 分析源技能。"),
-    ("issue-analysis", "doccust"): ("mature", "主控项目内有 issue skill、事项体系、报告链和实战验收反馈。"),
-    ("issue-analysis", "docfilm"): ("mature", "已吸收主控侧 issue skill，并补充快速诊断/升级边界。"),
-    ("issue-analysis", "wiki"): ("adopted", "模板源已安装 issue-analysis，可作为结构对照。"),
-    ("issue-analysis", "docerp"): ("adopted", "存在同名主控 issue skill，证据尚未展开。"),
-    ("issue-analysis", "fetch"): ("adjacent", "有 issue-incident-analysis，偏子工程故障/文档变更场景。"),
-    ("knowledge-linking", "ack"): ("source", "当前源技能，并有专项 sensor。"),
-    ("problem-focused-visual-presentation", "ack"): ("source", "源技能 + TRANSFER + views/registry + sensor。"),
-    ("problem-focused-visual-presentation", "doccust"): ("mature", "有同名 skill、TRANSFER、views 合同和业务图文 lens 落地。"),
-    ("problem-focused-visual-presentation", "docfilm"): ("mature", "同名 skill 已本地化到主控项目 views 体系。"),
-    ("problem-focused-visual-presentation", "life"): ("mature", "problem-focused-lens 是已反哺上游的重要成熟样本。"),
-    ("problem-focused-visual-presentation", "train"): ("adopted", "有训练平台本地化问题聚焦 skill。"),
-    ("problem-focused-visual-presentation", "h100"): ("adopted", "有 H100 本地化问题聚焦 skill。"),
-    ("problem-focused-visual-presentation", "customer"): ("adopted", "有 .codex 同名问题聚焦 skill。"),
-    ("problem-focused-visual-presentation", "fetch"): ("adopted", "有 .codex 同名问题聚焦 skill。"),
-    ("technology-research-router", "ack"): ("source", "技术调研总控源技能。"),
-    ("technical-topic-research", "ack"): ("source", "技术专题调研源技能。"),
-    ("open-source-project-research", "ack"): ("source", "开源工程尽调源技能。"),
-    ("industry-ai-research", "ack"): ("source", "IT / AI 行业调研源技能。"),
-}
-
-
 STATUS_LABELS = {
-    "source": "源",
+    "leader": "领先",
     "mature": "成熟",
-    "adopted": "已接入",
+    "adopted": "接入",
     "partial": "局部",
-    "adjacent": "相邻",
     "none": "未见",
     "blocked": "阻塞",
 }
 
 STATUS_SCORES = {
-    "source": 5,
+    "leader": 5,
     "mature": 4,
     "adopted": 3,
     "partial": 2,
-    "adjacent": 1,
     "none": 0,
     "blocked": -1,
 }
@@ -166,7 +135,13 @@ def iter_candidate_files(project: Project) -> Iterable[Path]:
         "rules/*.md",
         ".codex/context/*.md",
         "logs/system/*.md",
+        "views/README.md",
+        "views/lens-registry.md",
+        "views/current/**/*.html",
         "templates/*harness*.md",
+        "templates/*lens*.md",
+        "templates/*research*.md",
+        "templates/*issue*.md",
         "scripts/check_*.py",
         "tools/check_*.py",
         "automation/scripts/check_*.py",
@@ -177,13 +152,36 @@ def iter_candidate_files(project: Project) -> Iterable[Path]:
     return sorted(set(p for p in files if p.is_file()))
 
 
+def normalize(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+
+
+def skill_terms(skill_name: str) -> List[str]:
+    return [normalize(t) for t in [skill_name] + ALIASES.get(skill_name, [])]
+
+
+def is_relevant_text(path: Path, terms: List[str]) -> bool:
+    try:
+        text = path.read_text(encoding="utf-8", errors="ignore")[:200_000]
+    except Exception:
+        return False
+    normalized = normalize(text)
+    return any(term and term in normalized for term in terms)
+
+
+def skill_entry_terms(path: Path, project: Project) -> List[str]:
+    rel = path.relative_to(project.path)
+    if path.name != "SKILL.md" or len(rel.parts) < 2:
+        return []
+    return [normalize(rel.parts[-2]), normalize(str(rel))]
+
+
 def evidence_for(project: Project, skill_name: str) -> List[Path]:
-    terms = [skill_name] + ALIASES.get(skill_name, [])
-    normalized_terms = [t.lower().replace("_", "-") for t in terms]
+    terms = skill_terms(skill_name)
     hits = []
     for path in iter_candidate_files(project):
-        rel = str(path.relative_to(project.path)).lower().replace("_", "-")
-        if any(term in rel for term in normalized_terms):
+        rel = normalize(str(path.relative_to(project.path)))
+        if any(term in rel for term in terms):
             hits.append(path)
             continue
         if skill_name in {"cross-project-governance-audit", "historical-dialogue-retrospective"}:
@@ -191,21 +189,111 @@ def evidence_for(project: Project, skill_name: str) -> List[Path]:
                 hits.append(path)
         elif skill_name == "issue-analysis" and any(token in rel for token in ["issue", "incident"]):
             hits.append(path)
-    return hits[:5]
+        elif skill_name in {"technology-research-router", "technical-topic-research", "open-source-project-research", "industry-ai-research"}:
+            if any(token in rel for token in ["technology", "technical", "research", "source-project", "industry-ai"]):
+                hits.append(path)
+        elif is_relevant_text(path, terms):
+            hits.append(path)
+    return sorted(set(hits))
 
 
-def infer_status(project: Project, skill: Dict[str, str], hits: List[Path]) -> Tuple[str, str]:
-    key = (skill["name"], project.key)
-    if key in STATUS_OVERRIDES:
-        return STATUS_OVERRIDES[key]
+def score_evidence(project: Project, skill: Dict[str, str], hits: List[Path]) -> Evidence:
     if not project.path.exists():
-        return "blocked", "本机路径当前不可读。"
+        return Evidence(score=-1, note="本机路径当前不可读。", hits=[], signals=[])
     if not hits:
-        return "none", "未在常见 skill / governance / sensor 路径发现等价能力。"
-    rels = [str(p.relative_to(project.path)) for p in hits]
-    if any(f"{skill['name']}/SKILL.md" in rel for rel in rels):
-        return "adopted", "存在同名本地 skill，需进一步读正文判断成熟度。"
-    return "partial", "发现相邻文件或治理痕迹，但未确认等价 skill。"
+        return Evidence(score=0, note="未在常见 skill / governance / sensor 路径发现等价能力。", hits=[], signals=[])
+
+    terms = skill_terms(skill["name"])
+    rels = [p.relative_to(project.path) for p in hits]
+    rel_texts = [normalize(str(rel)) for rel in rels]
+    score = 0
+    signals: List[str] = []
+
+    skill_entries = [
+        p for p in hits
+        if p.name == "SKILL.md"
+        and any(term in entry_term for entry_term in skill_entry_terms(p, project) for term in terms)
+    ]
+    if skill_entries:
+        score += 8
+        signals.append("skill")
+
+    transfer_files = []
+    for skill_path in skill_entries:
+        transfer = skill_path.parent / "TRANSFER.md"
+        if transfer.exists():
+            transfer_files.append(transfer)
+    if transfer_files:
+        score += 3
+        signals.append("TRANSFER")
+
+    sensor_hits = [
+        rel for rel, rel_text in zip(rels, rel_texts)
+        if (
+            ("scripts" in rel.parts or "tools" in rel.parts or "automation" in rel.parts)
+            and rel.name.startswith("check_")
+            and any(term in rel_text for term in terms)
+        )
+    ]
+    if sensor_hits:
+        score += 3
+        signals.append("sensor")
+
+    view_hits = [rel for rel, rel_text in zip(rels, rel_texts) if rel.parts and rel.parts[0] == "views" and any(term in rel_text for term in terms)]
+    if view_hits:
+        score += 3
+        signals.append("views")
+
+    governance_hits = [
+        rel for rel in rels
+        if (rel.parts and rel.parts[0] in {"governance", "rules"}) or rel.parts[:2] == (".codex", "context")
+    ]
+    if governance_hits:
+        score += 2
+        signals.append("governance")
+
+    template_hits = [rel for rel in rels if rel.parts and rel.parts[0] == "templates"]
+    if template_hits:
+        score += 1
+        signals.append("template")
+
+    content_chars = 0
+    for path in hits[:8]:
+        try:
+            content_chars += min(path.stat().st_size, 80_000)
+        except OSError:
+            pass
+    if content_chars >= 50_000:
+        score += 3
+        signals.append("large-body")
+    elif content_chars >= 18_000:
+        score += 2
+        signals.append("body")
+    elif content_chars >= 6_000:
+        score += 1
+        signals.append("small-body")
+
+    if not signals:
+        score = max(score, 1)
+        signals.append("trace")
+
+    signal_text = "、".join(signals)
+    note = f"动态重扫得分 {score}；证据信号：{signal_text}。"
+    return Evidence(score=score, note=note, hits=hits[:5], signals=signals)
+
+
+def status_for(score: int, max_score: int) -> str:
+    if score < 0:
+        return "blocked"
+    if score == 0:
+        return "none"
+    if max_score >= 8 and score == max_score:
+        return "leader"
+    if max_score >= 8 and score >= max(8, int(max_score * 0.75)):
+        return "mature"
+    if score >= 8:
+        return "adopted"
+    return "partial"
 
 
 def render_html() -> str:
@@ -215,51 +303,80 @@ def render_html() -> str:
 
     matrix = []
     for skill in skills:
-        cells = []
-        mature_projects = []
-        coverage_score = 0
+        scored_cells = []
         for project in PROJECTS:
             hits = evidence_for(project, skill["name"])
-            status, note = infer_status(project, skill, hits)
+            evidence = score_evidence(project, skill, hits)
+            scored_cells.append({"project": project, "evidence": evidence})
+
+        max_score = max((cell["evidence"].score for cell in scored_cells), default=0)
+        cells = []
+        leading_projects = []
+        mature_projects = []
+        coverage_score = 0
+        for cell in scored_cells:
+            evidence = cell["evidence"]
+            status = status_for(evidence.score, max_score)
             coverage_score += max(STATUS_SCORES[status], 0)
-            if status in {"mature", "source"}:
-                mature_projects.append(project.label)
-            cells.append({"project": project, "status": status, "note": note, "hits": hits})
-        matrix.append({"skill": skill, "cells": cells, "mature_projects": mature_projects, "score": coverage_score})
+            if status == "leader":
+                leading_projects.append(cell["project"].label)
+            if status in {"leader", "mature"}:
+                mature_projects.append(cell["project"].label)
+            cells.append(
+                {
+                    "project": cell["project"],
+                    "status": status,
+                    "note": evidence.note,
+                    "hits": evidence.hits,
+                    "score": evidence.score,
+                }
+            )
+        matrix.append(
+            {
+                "skill": skill,
+                "cells": cells,
+                "leading_projects": leading_projects,
+                "mature_projects": mature_projects,
+                "score": coverage_score,
+                "max_score": max_score,
+            }
+        )
 
     compact_cards = []
     overview_rows = []
     for row in matrix:
         skill = row["skill"]
-        absorbers = [p for p in row["mature_projects"] if p != "AcknowledgeBase"]
+        leaders = row["leading_projects"]
+        mature_projects = [p for p in row["mature_projects"] if p not in leaders]
         adopted = [c["project"].label for c in row["cells"] if c["status"] == "adopted"]
-        partial = [c["project"].label for c in row["cells"] if c["status"] in {"partial", "adjacent"}]
+        partial = [c["project"].label for c in row["cells"] if c["status"] == "partial"]
         missing_count = sum(1 for c in row["cells"] if c["status"] == "none")
-        next_step = (
-            "抽象成熟样本，补回源 skill / TRANSFER / sensor。"
-            if absorbers
-            else "先补 TRANSFER 或收集下游实战样本。"
-        )
+        if leaders == ["AcknowledgeBase"]:
+            next_step = "源头当前领先；下一步是把源技能增量按目标工程结构迁移出去。"
+        elif leaders:
+            next_step = "复核领先工程的可复用增量，抽象后反哺源 skill / TRANSFER / sensor。"
+        else:
+            next_step = "先补可检测的 skill / TRANSFER / sensor / views 证据。"
         compact_cards.append(
             "<article class=\"skill-card\">"
             f"<div class=\"skill-card-head\"><div><code>{html.escape(skill['name'])}</code>"
             f"<p>{html.escape(skill['description'])}</p></div>"
-            f"<span class=\"score\">{row['score']}</span></div>"
+            f"<span class=\"score\">{row['max_score']}</span></div>"
             "<div class=\"compact-grid\">"
-            f"<div><strong>成熟样本</strong><span>{html.escape('、'.join(absorbers) if absorbers else '暂无')}</span></div>"
+            f"<div><strong>领先</strong><span>{html.escape('、'.join(leaders) if leaders else '暂无')}</span></div>"
+            f"<div><strong>成熟</strong><span>{html.escape('、'.join(mature_projects) if mature_projects else '暂无')}</span></div>"
             f"<div><strong>已接入</strong><span>{html.escape('、'.join(adopted[:5]) if adopted else '暂无')}</span></div>"
-            f"<div><strong>局部 / 相邻</strong><span>{html.escape('、'.join(partial[:5]) if partial else '暂无')}</span></div>"
-            f"<div><strong>缺口</strong><span>{missing_count} 个工程未见等价能力</span></div>"
+            f"<div><strong>局部 / 缺口</strong><span>{html.escape('、'.join(partial[:4]) if partial else '暂无局部')}；{missing_count} 个未见</span></div>"
             "</div>"
             f"<p class=\"next-step\">{html.escape(next_step)}</p>"
-            f"<p class=\"source-line\">source: {html.escape(skill['path'])} · TRANSFER: {html.escape(skill['has_transfer'])}</p>"
+            f"<p class=\"source-line\">source skill: {html.escape(skill['path'])} · TRANSFER: {html.escape(skill['has_transfer'])} · max score: {row['max_score']}</p>"
             "</article>"
         )
         overview_cells = "\n".join(
-            f"<td class=\"heat-cell heat-{c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\"><span>{STATUS_LABELS[c['status']]}</span></td>"
+            f"<td class=\"heat-cell heat-{c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
             for c in row["cells"]
         )
-        recommendation = "、".join(absorbers) if absorbers else "补源能力"
+        recommendation = "领先：" + "、".join(leaders) if leaders else "补可检测证据"
         overview_rows.append(
             "<tr>"
             f"<th title=\"{html.escape(skill['name'])}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(recommendation)}</span></th>"
@@ -284,9 +401,9 @@ def render_html() -> str:
   <meta name="generated_at" content="{html.escape(generated)}">
   <meta name="source_revision" content="{html.escape(source_revision)}">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
-  <meta name="source_scope" content="local project skill directories and governance/sensor evidence">
-  <meta name="evidence_boundary" content="confirmed local file presence; likely maturity from known source chains; no runtime validation">
-  <meta name="context_frame" content="skill adoption and upstream absorption lens; presentation only, not target project status source">
+  <meta name="source_scope" content="local project skill, transfer, governance, sensor, template, view, and selected log evidence">
+  <meta name="evidence_boundary" content="confirmed local file presence and content-volume signals; relative maturity is recomputed for every project on every refresh; no runtime validation">
+  <meta name="context_frame" content="cross-project skill maturity ranking lens; source project participates in the same ranking as downstream projects">
   <meta name="output_mode" content="html_report / print_view">
   <meta name="visual_structure" content="overview matrix / compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
@@ -330,11 +447,10 @@ def render_html() -> str:
     .card strong {{ display: block; font-size: 28px; line-height: 1; margin-bottom: 8px; }}
     .legend {{ display: flex; flex-wrap: wrap; gap: 8px; }}
     .status {{ display: inline-flex; align-items: center; justify-content: center; min-width: 46px; min-height: 24px; padding: 2px 8px; border-radius: 999px; color: white; font-size: 12px; font-weight: 800; }}
-    .source {{ background: var(--violet); }}
+    .leader {{ background: var(--violet); }}
     .mature {{ background: var(--green); }}
     .adopted {{ background: var(--blue); }}
     .partial {{ background: var(--amber); }}
-    .adjacent {{ background: var(--teal); }}
     .none {{ background: var(--gray); }}
     .blocked {{ background: var(--red); }}
     .overview-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }}
@@ -346,12 +462,12 @@ def render_html() -> str:
     .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 13px; line-height: 1.35; white-space: normal; }}
     .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
     .heat-cell {{ min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); }}
-    .heat-cell span {{ display: flex; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}
-    .heat-source {{ background: #5a2bc2 !important; }}
+    .heat-cell span {{ display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}
+    .heat-cell small {{ margin-top: 1px; font-size: 10px; font-weight: 800; opacity: 0.88; }}
+    .heat-leader {{ background: #5a2bc2 !important; }}
     .heat-mature {{ background: #008f3a !important; }}
     .heat-adopted {{ background: #005fd8 !important; }}
     .heat-partial {{ background: #d66a00 !important; }}
-    .heat-adjacent {{ background: #008578 !important; }}
     .heat-none {{ background: #2f3b4a !important; }}
     .heat-blocked {{ background: #d10035 !important; }}
     .overview-note {{ margin: 8px 0 0; color: var(--muted); font-size: 12px; }}
@@ -397,7 +513,7 @@ def render_html() -> str:
     <div class="wrap hero">
       <div class="eyebrow">Skill maturity lens · 每三天刷新</div>
       <h1>跨工程技能成熟度矩阵</h1>
-      <p class="subtitle">按 AcknowledgeBase 当前技能逐行盘点各子工程接入状态，并标出哪些工程里的同类能力更成熟、值得抽象反哺。状态来自本机文件扫描和已知治理注册表；本页只作呈现，不替代各工程自己的 source of truth。</p>
+      <p class="subtitle">按 AcknowledgeBase 当前技能逐行盘点所有注册工程和观察工程的相对成熟度。源工程也参与同一套证据评分；每次刷新都会重新扫描 skill、TRANSFER、sensor、views、template、governance 和内容体量信号，不沿用静态成熟标签。</p>
       <div class="meta-row">
         <span class="pill">生成：{html.escape(generated)}</span>
         <span class="pill">源版本：{html.escape(source_revision)}</span>
@@ -410,7 +526,7 @@ def render_html() -> str:
     <section class="cards">
       <div class="card"><strong>{len(skills)}</strong><span>当前知识库技能</span></div>
       <div class="card"><strong>{sum(1 for s in skills if s['has_transfer'] == 'yes')}</strong><span>已有 TRANSFER.md</span></div>
-      <div class="card"><strong>{sum(1 for row in matrix if any(c['status'] == 'mature' for c in row['cells']))}</strong><span>存在下游成熟样本</span></div>
+      <div class="card"><strong>{sum(1 for row in matrix if row['leading_projects'] == ['AcknowledgeBase'])}</strong><span>源工程当前领先</span></div>
       <div class="card"><strong>3d</strong><span>建议刷新周期</span></div>
     </section>
 
@@ -425,11 +541,11 @@ def render_html() -> str:
       <h2>技能 x 子工程矩阵</h2>
       <div class="overview-shell">
         <table class="overview-matrix">
-          <thead><tr><th>技能 / 吸收建议</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
+          <thead><tr><th>技能 / 当前领先</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
           <tbody>{''.join(overview_rows)}</tbody>
         </table>
       </div>
-      <p class="overview-note">格子只表示状态强弱；具体证据、成熟样本和下一步在下方技能详情中查看。</p>
+      <p class="overview-note">格子显示本轮动态得分后的相对等级；数字是该工程在该技能下的证据信号分，不代表目标工程运行验收。</p>
     </section>
 
     <section>
@@ -446,9 +562,9 @@ def render_html() -> str:
 
     <section class="card boundary">
       <h2>证据边界</h2>
-      <p>confirmed：本机文件存在、技能入口可读、注册表已记录。likely：根据同名 skill、TRANSFER、sensor、治理台账和近期 log 判断成熟度。possible：只发现相邻文件或局部规则，未读完整正文。blocked：路径不可读或本轮未覆盖。</p>
-      <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“值得吸收”都必须先按上游归一规则抽象系统层信息，剥离项目事实、业务链路、运行 ID、本地路径和一次性 handoff。</p>
-      <p class="source-list">主要来源：skills/README.md、skills/*/SKILL.md、projects/governance/registry.md、各工程 skill / governance / sensor 路径。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
+      <p>confirmed：本机文件存在、技能入口可读、注册表已记录。relative ranking：每次刷新重新扫描所有工程，按同名 / 别名 skill、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度。blocked：路径不可读。</p>
+      <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；吸收动作仍必须先按上游归一规则抽象系统层信息，剥离项目事实、业务链路、运行 ID、本地路径和一次性 handoff。</p>
+      <p class="source-list">主要来源：skills/README.md、skills/*/SKILL.md、projects/governance/registry.md、各工程 skill / TRANSFER / governance / sensor / views / template 路径。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
     </section>
   </main>
 </body>
