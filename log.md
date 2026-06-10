@@ -9,6 +9,21 @@
 
 ## 2026-06-10
 
+### 建立跨工程技能成熟度矩阵和三天刷新入口
+
+- **记录人**：sunhao
+- **用户意图**：用户要求用 HTML 表格展示当前知识库技能在每个子工程中的接入状态，并标出哪些工程里的同类技能更成熟、值得吸收；同时希望每三天汇总一次并更新到 HTML 中。
+- **主题**：
+  1. 将技能盘点做成 `views/current/` 下的 canonical HTML lens，而不是一次性聊天表格。
+  2. 按 AcknowledgeBase 当前 `skills/` 逐行，对本机已登记或发现的子工程 skill / governance / sensor 路径做状态归一。
+  3. 保持跨工程吸收边界：成熟下游只能作为系统层增量反哺候选，不原样复制项目事实、业务链路或一次性 handoff。
+- **关键动作**：
+  1. 新增 `scripts/update_skill_maturity_matrix.py`，按技能源、别名、子工程路径和已知成熟度覆盖生成矩阵。
+  2. 新增 [[views/current/governance/skill-maturity-matrix.html]]，展示技能 x 子工程状态、成熟样本、覆盖分、证据边界和工程范围。
+  3. 更新 [[views/README]]、[[views/current/README]]、[[views/lens-registry]] 和 [[INDEX]]，补齐视图入口和刷新边界。
+- **结论**：跨工程技能成熟度现在有可反复刷新的 HTML lens；后续三天一次的刷新任务应运行生成脚本、复核成熟样本变化，并更新同一个 current lens。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/README]]、[[views/current/README]]、[[views/lens-registry]]、[[INDEX]]、[[log]]。
+
 ### 强化问题聚焦技能迁移的 views 落位合同
 
 - **记录人**：sunhao

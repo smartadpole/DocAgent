@@ -9,6 +9,11 @@
 - `lens-registry.md`：lens id、关注对象、来源和失效条件索引。
 - `exports/`、`.exports/`、`**/.exports/`：PDF / PNG / SVG 等派生导出缓存，已由 `.gitignore` 忽略，不作为可提交真相源。
 
+## 当前视图
+
+- [[views/current/knowledge/xinzhi-ruisheng-company.html]]：芯智睿声企业调研 lens。
+- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能成熟度矩阵，按本库技能盘点各子工程接入状态和可反哺样本。
+
 ## 维护原则
 
 - HTML lens 必须写清来源、更新时间、证据边界和未覆盖边界。
