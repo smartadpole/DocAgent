@@ -9,6 +9,22 @@
 
 ## 2026-06-10
 
+### 将矩阵热力编码原则沉淀进问题聚焦技能
+
+- **记录人**：sunhao
+- **用户意图**：用户指出技能成熟度矩阵的视觉优化不应只停留在具体配色，而要把“整格填色、状态碰撞、文字与背景强对比、矩阵前置为概览”的思路沉淀进问题聚焦式图文呈现技能。
+- **主题**：
+  1. 将单次矩阵视觉反馈抽象为矩阵 / 热力图视觉编码原则，而不是绑定某一组颜色。
+  2. 让后续状态矩阵、成熟度矩阵、缺口矩阵和验证矩阵默认使用更清晰的概览表达。
+  3. 通过迁移清单、模板和 sensor 保证该原则能随问题聚焦技能迁移到其他工程。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，新增“矩阵和热力编码”小节，要求概览矩阵前置、状态单元格整格填色、状态差异和文字 / 背景对比足够强，长说明下沉。
+  2. 更新 `skills/problem-focused-visual-presentation/TRANSFER.md`，把矩阵 / 热力图视觉编码纳入可迁移能力、目标工程落地模块和验证要求。
+  3. 更新 [[templates/problem-focused-lens-template]]，补充矩阵 / 热力图自检字段。
+  4. 更新 `scripts/check_problem_focused_visual_presentation.py`，将相关术语纳入专项 sensor。
+- **结论**：后续问题聚焦 lens 遇到行列交叉状态时，应优先把矩阵作为鸟瞰概览，并用整格填色和强对比表达状态差异；具体配色可按目标工程设计系统调整。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[templates/problem-focused-lens-template]]、`scripts/check_problem_focused_visual_presentation.py`、[[log]]。
+
 ### 建立跨工程技能成熟度矩阵和三天刷新入口
 
 - **记录人**：sunhao
