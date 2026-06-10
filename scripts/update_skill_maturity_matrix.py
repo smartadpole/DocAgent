@@ -191,19 +191,6 @@ def infer_status(project: Project, skill: Dict[str, str], hits: List[Path]) -> T
     return "partial", "发现相邻文件或治理痕迹，但未确认等价 skill。"
 
 
-def render_cell(status: str, note: str, hits: List[Path], project: Project) -> str:
-    label = STATUS_LABELS[status]
-    cls = f"status {status}"
-    evidence = ""
-    if hits:
-        rel = html.escape(str(hits[0].relative_to(project.path)))
-        evidence = f"<span class=\"evidence\">{rel}</span>"
-    return (
-        f"<div class=\"cell-stack\"><span class=\"{cls}\">{label}</span>"
-        f"<span class=\"note\">{html.escape(note)}</span>{evidence}</div>"
-    )
-
-
 def render_html() -> str:
     skills = read_skill_manifest()
     generated = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -223,19 +210,8 @@ def render_html() -> str:
             cells.append({"project": project, "status": status, "note": note, "hits": hits})
         matrix.append({"skill": skill, "cells": cells, "mature_projects": mature_projects, "score": coverage_score})
 
-    summary_rows = []
-    for row in matrix:
-        absorbers = [p for p in row["mature_projects"] if p != "AcknowledgeBase"]
-        if not absorbers:
-            absorbers = ["暂无下游成熟样本"]
-        summary_rows.append(
-            f"<tr><td><code>{html.escape(row['skill']['name'])}</code></td>"
-            f"<td>{html.escape(row['skill']['has_transfer'])}</td>"
-            f"<td>{html.escape('、'.join(absorbers))}</td>"
-            f"<td>{row['score']}</td></tr>"
-        )
-
     compact_cards = []
+    overview_rows = []
     for row in matrix:
         skill = row["skill"]
         absorbers = [p for p in row["mature_projects"] if p != "AcknowledgeBase"]
@@ -262,26 +238,15 @@ def render_html() -> str:
             f"<p class=\"source-line\">source: {html.escape(skill['path'])} · TRANSFER: {html.escape(skill['has_transfer'])}</p>"
             "</article>"
         )
-
-    project_headers = "\n".join(
-        f"<th><span>{html.escape(p.label)}</span><small>{html.escape(p.role)}</small></th>" for p in PROJECTS
-    )
-    table_rows = []
-    for row in matrix:
-        skill = row["skill"]
-        cells = "\n".join(
-            f"<td>{render_cell(c['status'], c['note'], c['hits'], c['project'])}</td>"
+        overview_cells = "\n".join(
+            f"<td><span class=\"matrix-dot {c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\">{STATUS_LABELS[c['status']]}</span></td>"
             for c in row["cells"]
         )
-        absorbers = [p for p in row["mature_projects"] if p != "AcknowledgeBase"]
-        recommendation = "、".join(absorbers) if absorbers else "先补上游 TRANSFER / sensor，再观察下游。"
-        table_rows.append(
+        recommendation = "、".join(absorbers) if absorbers else "补源能力"
+        overview_rows.append(
             "<tr>"
-            f"<th class=\"skill-col\"><code>{html.escape(skill['name'])}</code>"
-            f"<span>{html.escape(skill['description'])}</span>"
-            f"<em>source: {html.escape(skill['path'])}</em></th>"
-            f"<td class=\"recommend\">{html.escape(recommendation)}</td>"
-            f"{cells}</tr>"
+            f"<th><code>{html.escape(skill['name'])}</code><span>{html.escape(recommendation)}</span></th>"
+            f"{overview_cells}</tr>"
         )
 
     project_cards = "\n".join(
@@ -306,7 +271,7 @@ def render_html() -> str:
   <meta name="evidence_boundary" content="confirmed local file presence; likely maturity from known source chains; no runtime validation">
   <meta name="context_frame" content="skill adoption and upstream absorption lens; presentation only, not target project status source">
   <meta name="output_mode" content="html_report / print_view">
-  <meta name="visual_structure" content="compact skill cards / recommendation table / collapsible matrix / project cards">
+  <meta name="visual_structure" content="overview matrix / compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
   <meta name="print_profile" content="@page A4 landscape; repeat header; preserve sticky columns as regular table">
   <meta name="equivalence_profile" content="HTML / PDF / PNG use same source pack and same canonical HTML / source / manifest render pipeline">
@@ -355,6 +320,16 @@ def render_html() -> str:
     .adjacent {{ background: var(--teal); }}
     .none {{ background: var(--gray); }}
     .blocked {{ background: var(--red); }}
+    .overview-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }}
+    .overview-matrix {{ min-width: 1180px; width: 100%; border-collapse: separate; border-spacing: 0; }}
+    .overview-matrix th, .overview-matrix td {{ border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px; background: var(--panel); text-align: center; vertical-align: middle; }}
+    .overview-matrix thead th {{ position: sticky; top: 0; z-index: 2; background: #edf3f8; font-size: 12px; }}
+    .overview-matrix thead th span {{ display: block; min-width: 74px; }}
+    .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #f8fafc; }}
+    .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 12px; white-space: normal; }}
+    .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
+    .matrix-dot {{ display: inline-flex; align-items: center; justify-content: center; width: 50px; min-height: 24px; border-radius: 999px; color: white; font-size: 11px; font-weight: 800; }}
+    .overview-note {{ margin: 8px 0 0; color: var(--muted); font-size: 12px; }}
     .skill-card-list {{ display: grid; gap: 12px; }}
     .skill-card {{ padding: 14px; }}
     .skill-card-head {{ display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; margin-bottom: 12px; }}
@@ -367,25 +342,8 @@ def render_html() -> str:
     .compact-grid span {{ color: #253244; font-size: 13px; }}
     .next-step {{ border-left: 4px solid var(--teal); padding-left: 10px; color: #253244 !important; }}
     .source-line {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }}
-    details {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }}
-    summary {{ cursor: pointer; font-weight: 800; color: #243143; }}
-    .table-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); max-height: 78vh; margin-top: 12px; }}
     table {{ border-collapse: separate; border-spacing: 0; width: 100%; }}
-    .matrix-table {{ min-width: 2240px; }}
     th, td {{ vertical-align: top; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px; background: var(--panel); }}
-    thead th {{ position: sticky; top: 0; z-index: 3; background: #edf3f8; text-align: left; font-size: 13px; }}
-    thead th small {{ display: block; color: var(--muted); font-weight: 500; margin-top: 3px; }}
-    .skill-col {{ position: sticky; left: 0; z-index: 2; width: 310px; min-width: 310px; background: #f8fafc; }}
-    thead .skill-col {{ z-index: 4; }}
-    .recommend {{ position: sticky; left: 310px; z-index: 2; width: 210px; min-width: 210px; background: #fbfcfe; font-weight: 650; color: #2f3b4a; }}
-    thead .recommend {{ z-index: 4; background: #edf3f8; }}
-    .skill-col code {{ display: block; font-size: 13px; color: #172033; white-space: normal; }}
-    .skill-col span, .skill-col em {{ display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 12px; }}
-    .cell-stack {{ display: grid; gap: 6px; min-width: 150px; max-width: 210px; }}
-    .note {{ color: #384657; font-size: 12px; }}
-    .evidence {{ color: var(--muted); font-size: 11px; word-break: break-word; }}
-    .summary-table {{ min-width: 760px; }}
-    .summary-table td, .summary-table th {{ position: static; }}
     .project-grid {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }}
     article strong {{ display: block; font-size: 16px; }}
     article span {{ display: block; margin-top: 4px; color: var(--blue); font-weight: 700; font-size: 12px; }}
@@ -402,10 +360,9 @@ def render_html() -> str:
       body {{ background: white; }}
       .wrap {{ width: 100%; }}
       .hero {{ min-height: 0; padding: 0 0 12px; }}
-      .table-shell {{ overflow: visible; max-height: none; }}
-      table, .matrix-table {{ min-width: 0; font-size: 9px; }}
+      table, .overview-matrix {{ min-width: 0; font-size: 9px; }}
       th, td {{ padding: 5px; }}
-      .skill-col, .recommend, thead th {{ position: static; }}
+      thead th, .overview-matrix tbody th {{ position: static; }}
       .cards, .project-grid {{ grid-template-columns: repeat(4, 1fr); }}
     }}
   </style>
@@ -440,37 +397,21 @@ def render_html() -> str:
     </section>
 
     <section>
-      <h2>一眼吸收建议</h2>
+      <h2>技能 x 子工程矩阵</h2>
+      <div class="overview-shell">
+        <table class="overview-matrix">
+          <thead><tr><th>技能 / 吸收建议</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
+          <tbody>{''.join(overview_rows)}</tbody>
+        </table>
+      </div>
+      <p class="overview-note">格子只表示状态强弱；具体证据、成熟样本和下一步在下方技能详情中查看。</p>
+    </section>
+
+    <section>
+      <h2>技能详情</h2>
       <div class="skill-card-list">
         {''.join(compact_cards)}
       </div>
-    </section>
-
-    <section>
-      <h2>精简索引</h2>
-      <div class="table-shell">
-        <table class="summary-table">
-          <thead><tr><th>技能</th><th>TRANSFER</th><th>更成熟 / 值得吸收的工程</th><th>覆盖分</th></tr></thead>
-          <tbody>{''.join(summary_rows)}</tbody>
-        </table>
-      </div>
-    </section>
-
-    <section>
-      <h2>技能 x 子工程矩阵</h2>
-      <details>
-        <summary>展开完整 10 x 12 矩阵</summary>
-        <div class="table-shell">
-        <table class="matrix-table">
-          <thead>
-            <tr><th class="skill-col">技能</th><th class="recommend">值得吸收</th>{project_headers}</tr>
-          </thead>
-          <tbody>
-            {''.join(table_rows)}
-          </tbody>
-        </table>
-        </div>
-      </details>
     </section>
 
     <section>
