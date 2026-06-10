@@ -41,6 +41,7 @@ description: 问题聚焦式图文呈现技能。用于用户要看一份文档�
 
 | 维度 | 选项 |
 | --- | --- |
+| 关注对象 | 状态 / 计划 / 决策 / 风险 / issue / 验收 / 知识 / 资源 / owner / 时间线 |
 | 对象粒度 | 单文档 / 跨文档主题 / 项目状态 / 运行实例 / 决策 / 计划 / 风险 / 验收 / 知识 |
 | 判断目的 | 看懂 / 比较 / 行动 / 拍板 / 验收 / 追溯 / 复盘 / 学习 |
 | 输出载体 | 聊天图文 / Markdown + Mermaid / HTML / HTML + assets / PDF download / PNG download / slide / 临时 artifact / 持久 view |
@@ -82,6 +83,19 @@ source pack 要标明：
 - 最新性或更新时间。
 - 哪些结论来自证据，哪些只是推断。
 
+Source pack 守卫：
+
+- 状态 lens 至少读取状态源或当前项目 / 主题入口，不能只读历史报告。
+- 计划 lens 必须读取目标、约束、依赖、时间窗或资源条件，不能只列 TODO。
+- 决策 lens 必须读取候选、取舍维度、裁决入口和待确认项，不能把讨论过程写成最终决策。
+- issue / 故障 lens 必须保留原始现象和影响范围，不能用根因候选改写事实。
+- 验收 lens 必须读取关闭标准、最新证据、回归范围和人工确认边界，不能把局部通过写成完整通过。
+- 知识 lens 必须读取上位主题、来源证据和适用边界，不能只做摘要。
+- 资源 lens 必须验证位置、版本、用途、权限或归档入口，不能只在聊天里描述路径。
+- owner lens 必须区分已确认、待确认和责任边界，不能让 agent 伪造人工确认。
+- 时间线 lens 必须回到事件源和转折证据，不能把流水账当当前判断。
+- 涉及现实世界会变化的事实，例如营业时间、价格、天气、政策、路线限制和排期，需要联网或现实核验；不能把旧 lens 当现状。
+
 ### 3. 建立背景框
 
 每个 lens 都必须有背景框：
@@ -91,6 +105,19 @@ source pack 要标明：
 - **历史背景**：它是新结论、旧结论修正、阶段快照，还是历史证据。
 - **关系背景**：它和哪些文档、owner、任务、风险、决策或资产相连。
 - **使用边界**：当前结论适合用于什么判断，不适合上推到哪里。
+
+### 3.1 标注证据边界
+
+每个 lens 都必须把核心判断标成四级证据边界：
+
+| 边界 | 含义 |
+| --- | --- |
+| `confirmed` | 已由源页面、记录、截图、票据、决策、人工确认、脚本检查或可靠数据支撑。 |
+| `likely` | 证据较强，但缺少关键确认、最新核验或完整闭环。 |
+| `possible` | 合理候选、解释或推断，不能写成当前结论。 |
+| `blocked` | 缺少权限、现实核验、人工确认、数据快照或源页面，不能生成完整判断。 |
+
+目标工程可以增加自己的证据边界，例如 `local`、`service-side`、`end-to-end`、`manual-confirmation` 或 `real-world-unverified`，但必须解释为什么可信、不能证明什么，以及不能上推到哪里。
 
 ### 4. 选择图文结构
 
@@ -108,6 +135,47 @@ source pack 要标明：
 | 验收或关闭 | 证据层级表、缺口矩阵、不可上推边界 |
 
 如果输出只剩长段文字，说明 lens 还没完成；继续把关系、结构、路径、比较和状态图形化。
+
+### 4.1 按 lens 类型补必填字段
+
+持久 lens 或复杂对话内 lens 必须按主 lens 类型补最小字段：
+
+| lens_type | 必填字段 | 反模式 |
+| --- | --- | --- |
+| status | 当前态、阶段、阻塞、下一步、状态来源、更新时间、证据边界 | 用历史报告冒充当前态，隐藏未确认项 |
+| plan | 目标、约束、依赖、可执行动作、blocked 条件、时间窗、资源 | 只列 TODO，把愿望写成安排 |
+| decision | 候选方案、取舍维度、已确认、待确认、当前倾向、裁决入口 | 把讨论过程写成最终决策 |
+| risk | 触发条件、影响对象、概率 / 影响、缓解动作、剩余风险、监控点 | 把未发生风险预建成 issue，省略剩余风险 |
+| issue | 原始现象、影响范围、证据链、根因候选、验证边界、下一步 | 把候选根因写成 confirmed |
+| acceptance | 验收对象、关闭标准、证据层级、缺口、人工确认边界、回归范围 | 把局部通过写成完整通过 |
+| knowledge | 结论、来源、上位概念、邻接关系、适用边界、禁用场景 | 只写摘要，不建立来源和适用边界 |
+| resource | 位置、版本、权限、用途、owner、归档入口、追溯入口 | 只在聊天里描述位置 |
+| owner | owner、协同方、确认状态、责任边界、依赖对象、升级条件 | 让 agent 伪造人工确认 |
+| timeline | 关键节点、转折点、状态变化、证据回链、未闭合影响 | 把流水账当当前判断 |
+
+一个输入可以命中多个 lens，但必须先选主 lens，再把其他对象作为辅助层。不要用一个固定总览页回答所有问题。
+
+### 4.2 用户价值优先
+
+问题聚焦式呈现面向用户，而不是面向系统维护者。首屏必须先回答“我现在该看什么 / 能做什么 / 不能上推什么”。
+
+- 首屏优先：当前判断、关键风险、下一步、可执行 / 条件性 / 禁止上推、资源位置和最重要证据。
+- 维护信息下沉：`lens_id`、`source_revision`、`output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`canonical_policy`、`snapshot_policy`、`staleness_policy`、`refresh_trigger` 等字段必须保留，但默认放在底部、折叠区、脚注或 registry。
+- 不把 metadata 表当作内容主体；metadata 只证明 lens 如何生成和维护，不回答用户当前要判断什么。
+- 如果用户反馈“看不出价值”，先检查是否把维护字段放到了主体区域，或是否缺少一眼判断。
+
+### 4.3 照片和视觉证据排版
+
+照片密集型 lens 必须先服务用户扫读和判断，不按上传顺序机械平铺。
+
+- 先按用户扫读路径、内容类型、信息价值、行动用途和画幅家族重排照片；上传顺序只作为证据编号。
+- 证据照片、判断卡、行动卡、风险边界和维护信息要分层，不混成同一类卡片。
+- 混合横图、竖图和近似方图时，显式选择排版体系：横图标准证据网格、竖图专题行 / 专题列、主图 + 辅图、图文配对、证据表 + 图集、masonry 或 dense mosaic。
+- 同画幅横图优先使用自然比例证据网格；不要把 16:9 横图放进固定高度格子造成内部大留白。
+- 证据照片默认不裁剪，HTML / print view 默认使用 `object-fit: contain`；只有非证据性封面、装饰图或用户明确要求时才可裁剪。
+- 竖图可以跨 2 到 3 行；相邻区域用横图、同组照片或高价值判断卡补位。
+- 判断卡只承接用户要看的结论、风险、边界或下一步，不写排版设计说明。
+- 打印 / PDF 视图要保留同一排版语义，不能在导出时退化成混乱列表。
 
 ### 5. 输出 lens
 
@@ -128,6 +196,12 @@ source pack 要标明：
 
 **图文主体**
 - 表格 / 脑图 / 框图 / 流程图 / 时间线 / 关系图 / 状态卡：
+
+**证据边界**
+- confirmed：
+- likely：
+- possible：
+- blocked：
 
 **证据与追溯**
 - 已读来源：
@@ -150,6 +224,31 @@ source pack 要标明：
 ```
 
 聊天内可优先用 Markdown 表格和 Mermaid。持久呈现时优先生成 HTML；需要复杂图形时配套 assets。
+
+持久 lens 至少包含这些 provenance 字段：
+
+- `lens_id`
+- `focus_object`
+- `lens_type`
+- `judgement_purpose`
+- `source_pages`
+- `source_scope`
+- `generated_at`
+- `source_revision`
+- `evidence_boundary`
+- `context_frame`
+- `output_mode`
+- `visual_structure`
+- `photo_layout_strategy`，仅照片密集型必填
+- `export_profile`
+- `print_profile`
+- `equivalence_profile`
+- `canonical_policy`
+- `snapshot_policy`
+- `staleness_policy`
+- `refresh_trigger`
+
+snapshot 额外包含 `snapshot_of`；current lens 不应把 `snapshot_of` 写成当前事实来源。
 
 ### 5.1 导出与打印设计
 
@@ -196,14 +295,22 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 
 没有明确呈现层时，先在最终回复里给图文 lens，并说明建议落位，不静默新建目录。
 
+如果目标工程已有持久呈现层，新增或刷新持久 lens 后必须同步 registry 或等价索引；如果目标工程没有 registry，只在当前回答中说明建议建立的最小字段，不硬套 AcknowledgeBase 的目录名。
+
 ## 自检
 
 - 是否先回答“用户现在要看什么”，而不是机械摘要全文。
+- 是否选定主 `focus_object` 和 `lens_type`，没有用固定总览页回答所有问题。
 - 是否覆盖单文档或跨文档主题的背景框。
+- 是否按 `confirmed / likely / possible / blocked` 或目标工程等价边界标注核心判断。
 - 是否有至少一种视觉结构承载核心关系、路径、状态或比较。
+- 是否把首屏留给用户价值，而不是让 metadata 抢占主体。
+- 如果有照片或视觉证据，是否声明 `photo_layout_strategy`，保留证据细节且避免无意义固定高度网格。
+- 如果是复杂或持久 lens，是否按 lens 类型补齐必填字段和反模式检查。
 - 是否写清 source pack、更新时间、未读来源和证据边界。
 - 是否避免把历史快照当 current。
 - 是否避免把图文 lens 当正式验收、关闭、准出或规则裁决。
+- 如果生成或更新持久 lens，是否包含 `lens_id`、`focus_object`、`lens_type`、`source_pages`、`generated_at`、`evidence_boundary`、`context_frame`、`output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。
 - 如果生成或更新持久 HTML lens，是否在设计阶段声明 page size、orientation、margins、pagination、print CSS、PDF / PNG 生成方式和 snapshot 边界。
 - 如果生成或更新持久 HTML lens，是否实际导出 PDF 和 PNG 截图 / 长图，检查页数、分页、图表裁切、链接 / 来源和打印可读性，并在最终回复中展示 PNG。
 - 是否确认 HTML / PDF / PNG / slide 来自同一源，信息、结论、证据边界和版式语义一致。

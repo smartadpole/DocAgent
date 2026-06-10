@@ -35,6 +35,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新技术专题调研报告可以参考 [[templates/technical-topic-research-template]]
 - 新开源工程调研报告可以参考 [[templates/open-source-project-research-template]]
 - 新 IT / AI 行业调研报告可以参考 [[templates/industry-ai-research-template]]
+- 新问题聚焦式图文 lens 可以参考 [[templates/problem-focused-lens-template]]；它覆盖 `focus_object` / `lens_type`、证据边界、首屏用户价值、照片证据排版、current / snapshot 和同源导出字段。
 - 新项目复盘档案可以参考 [[templates/project-retrospective-template]]；它覆盖目标 / 结果、证据地图、交付链、Agent 工作、行动分流、治理自演进和未验证边界。
 - 新技能需要跨工程迁移资料清单时，可以参考 [[templates/skill-transfer-manifest-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]

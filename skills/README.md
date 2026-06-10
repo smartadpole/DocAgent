@@ -14,7 +14,7 @@
 
 ## 当前技能
 
-- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把一份文档、跨文档主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、图文主体、同源一致性和 ignored PDF / PNG 导出件的 lens；生成持久 HTML 时必须同步生成 PDF 和 PNG 预览，并在对话中展示 PNG。
+- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把一份文档、跨文档主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、图文主体、首屏用户价值、照片证据排版、同源一致性和 ignored PDF / PNG 导出件的 lens；生成持久 HTML 时必须同步生成 PDF 和 PNG 预览，并在对话中展示 PNG。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能。用于把已沉淀的 skill / 能力转换成可交给目标工程 agent 的升级提示词、附件资料清单、吸收边界、落地步骤和验证要求。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于把调研、沉淀知识、总结方案、入口 / 上位 / 邻接 / 反向链接和 `knowledge-linking` sensor 验证收敛成可复用流程，避免新增知识成为孤岛。
 - [[skills/technology-research-router/SKILL]]：技术调研路由技能。用于先判断调研对象、决策目标、证据要求、成熟度和风险，再路由到行业 / AI、技术专题、开源工程、源码审计或 PoC 产物。

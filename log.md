@@ -9,6 +9,23 @@
 
 ## 2026-06-10
 
+### 吸收 LifeOS 问题聚焦 lens 的通用增量
+
+- **记录人**：sunhao
+- **用户意图**：用户要求先把 LifeOS 中更成熟的问题聚焦技能吸收到 AcknowledgeBase 上游源能力里，作为后续迁移到其他工程前的归一化步骤。
+- **主题**：
+  1. 按“先上游归一，再目标迁移”的策略，对比 LifeOS `problem-focused-lens` 和 AcknowledgeBase `problem-focused-visual-presentation`。
+  2. 只吸收 LifeOS 已验证的系统层增量：证据边界、source pack 守卫、lens 类型字段、首屏用户价值优先、照片证据排版、持久 lens provenance、registry 和 sensor 检查。
+  3. 排除 LifeOS 项目事实、搬家场景、生活领域页、现场照片路径、日志、current lens 实例和本地项目状态。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，补齐 `focus_object` / `lens_type`、`confirmed / likely / possible / blocked`、source pack 守卫、lens 类型必填字段、用户价值优先、照片 / 视觉证据排版和持久 lens provenance。
+  2. 更新 `skills/problem-focused-visual-presentation/TRANSFER.md`，记录 LifeOS 来源、已反哺增量、禁止复制项和目标工程迁移验证要求。
+  3. 新增 [[templates/problem-focused-lens-template]]，作为跨工程可复用的持久 lens 字段骨架。
+  4. 更新 [[views/lens-registry]]、[[concepts/problem-focused-information-presentation]]、[[skills/README]]、[[templates/README]] 和 [[INDEX]]，同步入口和方法论。
+  5. 新增 `scripts/check_problem_focused_visual_presentation.py`，并接入 `scripts/check_all.py`。
+- **结论**：AcknowledgeBase 现在承接了 LifeOS 问题聚焦 lens 的通用工程化增量；后续迁移到其他工程时以本库源技能、迁移清单、模板和 sensor 为准，不直接复制 LifeOS。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[templates/problem-focused-lens-template]]、[[views/lens-registry]]、[[concepts/problem-focused-information-presentation]]、[[skills/README]]、[[templates/README]]、[[INDEX]]、`scripts/check_problem_focused_visual_presentation.py`、`scripts/check_all.py`、[[log]]。
+
 ### 固化跨工程技能迁移的上游归一策略
 
 - **记录人**：sunhao
