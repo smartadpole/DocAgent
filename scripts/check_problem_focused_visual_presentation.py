@@ -195,6 +195,10 @@ ENTRY_FILES = {
     "views/snapshots/README.md",
 }
 
+DERIVED_MARKDOWN_VIEW_TYPES = {
+    "skill-maturity-diagnostics",
+}
+
 HTML_EXPORT_REQUIRED_TERMS = (
     "@page",
     "@media print",
@@ -255,6 +259,8 @@ def check_persistent_markdown_lenses(errors: list[str]) -> None:
         if rel_path in ENTRY_FILES:
             continue
         text = path.read_text(encoding="utf-8")
+        if markdown_view_type(text) in DERIVED_MARKDOWN_VIEW_TYPES:
+            continue
         for field in LENS_REQUIRED_FIELDS:
             if field not in text:
                 errors.append(f"{rel_path} missing lens provenance field: {field}")
@@ -262,6 +268,18 @@ def check_persistent_markdown_lenses(errors: list[str]) -> None:
             errors.append(f"{rel_path} current lens should not declare snapshot_of")
         if "/snapshots/" in f"/{rel_path}/" and "snapshot_of" not in text:
             errors.append(f"{rel_path} snapshot lens must declare snapshot_of")
+
+
+def markdown_view_type(text: str) -> str:
+    if not text.startswith("---\n"):
+        return ""
+    end = text.find("\n---", 4)
+    if end == -1:
+        return ""
+    for line in text[4:end].splitlines():
+        if line.startswith("type:"):
+            return line.split(":", 1)[1].strip()
+    return ""
 
 
 def check_html_export_profiles(errors: list[str]) -> None:

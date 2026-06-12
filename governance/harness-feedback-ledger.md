@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-09
+updated: 2026-06-12
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-12 | 图文 lens sensor 误杀派生诊断页 | 用户指出 `check_all` 像是爆炸且当前 harness 太冗余；实际失败来自图文呈现 sensor 把 `source_of_truth: false` 的技能矩阵诊断 Markdown 当成正式 persistent lens 检查 | 快速诊断 + Sensor 降噪 | 可避免成本 | 收窄 `scripts/check_problem_focused_visual_presentation.py`：正式 lens 继续检查 provenance 字段，`type: skill-maturity-diagnostics` 这类由专属同步 sensor 接管的派生 Markdown 视图附件不再重复套 lens 字段 | `python3 scripts/check_all.py --only problem-focused-visual-presentation` / `python3 scripts/check_all.py --only skill-maturity-matrix` / `python3 scripts/check_all.py` | promoted |
 | 2026-06-12 | 持久 HTML lens 更新后漏展示 PNG 预览 | 用户追问“不是要求每一次只要生成或者更新 html，都同步在对话中展示对应的图片的吗”，指出已存在的 PDF / PNG ignored export 与对话 PNG 预览完成合同没有稳定进入最终回复 | 指令遵循补漏 + 图文呈现技能加固 | 用户可见证据缺口 | 补生成 `views/.exports/skill-maturity-matrix-current.png` 和 `.pdf`；更新 [[skills/problem-focused-visual-presentation/SKILL]]，明确 Browser 截图失败不等于导出失败，必须改走同源 HTML 导出 pipeline fallback；扩展 `scripts/check_problem_focused_visual_presentation.py` 检查 fallback 关键词 | [[instruction-adherence]] / [[skills/problem-focused-visual-presentation/SKILL]] / `python3 scripts/check_all.py --only problem-focused-visual-presentation` | promoted |
 | 2026-06-09 | 调研技能加固后漏做 Harness episode 判断 | 用户追问“除了更新 log，harness 没有更新吗”，指出上一轮用技术调研知识储备加固技能后，只写了 [[log]] 和技能文件，没有按 [[harness-evolution]] 判断是否形成 H5 episode | Harness 反馈 + 指令遵循补漏 | 可优化成本 | 补写本 ledger episode；确认这是单次收尾资格判断失守，暂不新增硬规则或 sensor，后续若技能 / 规则升级后仍反复漏做 H5 判断，再考虑在收尾模板或 sensor 中加入显式检查 | [[harness-evolution]] / [[instruction-adherence]] / [[skills/technology-research-router/SKILL]] | observed |
 | 2026-06-04 | 项目级 agent 规则重复入口 | 用户指出有些工程会同时维护根 `AGENTS.md` 和 `.codex/AGENTS.md`，导致同一套规则重复和漂移；随后进一步校准：`.codex/AGENTS.md` 可以同时被治理，但只能是 thin Codex adapter，不能承接第二份规则正文 | 规则升级 + 结构收口 + Sensor 更新 | 可优化成本 | 把有效规则并入根 [[AGENTS]]；更新 [[concepts/agent-instruction-sharing]]、[[governance/platform-standards]]、审计 / issue 技能和 `scripts/check_harness_governance.py`，将重复规则正文改成检查失败，将 `@../AGENTS.md` thin adapter 作为允许形态 | [[AGENTS]] / [[concepts/agent-instruction-sharing]] / `python3 scripts/check_all.py --only harness-governance` | promoted |

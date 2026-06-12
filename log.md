@@ -9,6 +9,20 @@
 
 ## 2026-06-12
 
+### 收窄图文 lens sensor 对派生诊断页的重复检查
+
+- **记录人**：sunhao
+- **用户意图**：用户怀疑 `check_all` 已经爆炸，并指出当前 harness 过于冗余，希望直接处理误杀点，而不是继续堆规则。
+- **主题**：
+  1. 区分正式 persistent lens 和由同一生成脚本派生的诊断 Markdown 附件。
+  2. 保留图文 lens provenance 检查，同时避免把已由专项 sensor 接管的派生产物重复套同一组字段。
+- **关键动作**：
+  1. 更新 `scripts/check_problem_focused_visual_presentation.py`，让 `type: skill-maturity-diagnostics` 这类派生 Markdown 视图附件跳过正式 lens 字段检查。
+  2. 保持 `scripts/check_skill_maturity_matrix_outputs.py` 继续负责技能矩阵 HTML、Markdown 诊断和 JSON 数据的互链、时间戳、源版本和覆盖数量同步。
+  3. 更新 [[harness-feedback-ledger]]，把这次处理记录为 sensor 降噪 episode，而不是新增硬规则。
+- **结论**：`check_all` 本次不是全线爆炸，而是旧 sensor 扫描边界过宽；现在正式 lens 和矩阵派生诊断各由对应 sensor 检查，避免重复治理。
+- **影响页面**：`scripts/check_problem_focused_visual_presentation.py`、[[harness-feedback-ledger]]、[[log]]。
+
 ### 将技能矩阵升级为总览、诊断和数据三层产物
 
 - **记录人**：sunhao
