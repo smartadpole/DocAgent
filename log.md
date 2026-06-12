@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 刷新技能矩阵并更新 Software/wiki 领先信号
+
+- **记录人**：sunhao
+- **用户意图**：用户要求在矩阵单元格可点击详情机制完成后再次刷新技能成熟度内容。
+- **主题**：
+  1. 重新扫描 12 个工程的 skill / governance / sensor / view / template 证据，并同步生成 HTML 总览、HTML 详情、Markdown 诊断和 JSON 数据。
+  2. 在“领先必须覆盖同技能全体独特证据信号”的新规则下，重新计算各工程状态。
+  3. 识别 Software/wiki 在多项通用能力上补齐更多信号后成为覆盖全集的领先工程。
+- **关键动作**：
+  1. 运行 `scripts/update_skill_maturity_matrix.py`，刷新 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`。
+  2. 重新导出 ignored PDF / PNG：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+  3. 通过 `scripts/check_skill_maturity_matrix_outputs.py` 和 `scripts/check_all.py` 验证四份产物同步。
+- **结论**：本轮刷新后，Software/wiki 在调研 / 研究、Issue 分析、知识关联、问题聚焦式图文呈现、文档与 Agent 规则维护等通用能力上成为领先或保持领先；这不是单纯时间戳刷新。
+- **影响页面**：[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 新增 Codex Goal 工程事项链路展示页
 
 - **记录人**：sunhao
