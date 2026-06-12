@@ -2,7 +2,7 @@
 name: problem-focused-visual-presentation
 description: 问题聚焦式图文呈现技能；用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens。
 maturity: leading
-evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER, views, large-body]
+evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER, views]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only problem-focused-visual-presentation,skill-maturity
 ---

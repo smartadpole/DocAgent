@@ -2,7 +2,7 @@
 name: cross-project-skill-adoption-prompt
 description: 跨工程技能迁移任务书生成技能；用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 maturity: mature
-evidence_signals: [skill, README entry, governance, template, TRANSFER, body]
+evidence_signals: [skill, README entry, governance, template, TRANSFER]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only skill-maturity
 ---

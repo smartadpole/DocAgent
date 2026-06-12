@@ -9,6 +9,23 @@
 
 ## 2026-06-12
 
+### 纠偏成熟度诊断吸收边界并收敛过长模板
+
+- **记录人**：Codex
+- **用户意图**：用户追问上一轮是否把附件建议全部吸收、是否符合当前 wiki / 模板源工程的身份，并要求继续处理。
+- **纠偏判断**：
+  1. AcknowledgeBase 成熟度矩阵和诊断只能作为缺口雷达，不是本库的执行命令。
+  2. `governance`、`sensor`、`template`、`TRANSFER`、`views` 等结构性信号适合作为真实工程证据；`body / large-body` 只能作为弱信号，不能为了追分数扩写正文。
+  3. 本库 agent 的身份是抽象、筛选、归一和建立可验证契约，不是复制外部工程建议或追矩阵颜色。
+- **关键动作**：
+  1. 压缩 [[templates/problem-focused-lens-review-contract]]，保留 source pack、evidence boundary、registry、导出和不上推审核，删除为 `large-body` 扩出来的细碎清单。
+  2. 压缩 [[templates/technology-research-adoption-contract-template]]，保留行动等级、采用前置、刷新触发、转接落位和失败判定，删除追体量式复核清单。
+  3. 从 [[skills/documentation-maintenance/SKILL]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/technology-research/SKILL]] 和 [[skills/cross-project-skill-adoption-prompt/SKILL]] 的 `evidence_signals` 中移除 `large-body / body`，并将 [[skills/technology-research/SKILL]] 从 `leading` 收回到 `mature`，等待真实 research sensor 或稳定示例再升级。
+  4. 在 [[skills/README]] 的技能成熟度模型中补充：`body / large-body` 是弱信号，不能作为写作目标；外部附件、矩阵和诊断建议必须先经过本库身份筛选，不得照单全收。
+- **检查结果**：完整 `python3 scripts/check_all.py` 已通过。
+- **二阶反思**：上一轮真正暴露的是 agent 容易把“外部诊断缺口”误读成“本库必须追齐的分数”。后续应先判断建议是否符合本库身份、是否降低维护成本、是否形成真实可验证契约；否则宁可保持较低矩阵信号，也不制造噪声。
+- **影响页面**：[[skills/README]]、[[templates/problem-focused-lens-review-contract]]、[[templates/technology-research-adoption-contract-template]]、[[skills/documentation-maintenance/SKILL]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/technology-research/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[log]]。
+
 ### 对照最新成熟度诊断补齐本工程技能证据信号
 
 - **记录人**：Codex

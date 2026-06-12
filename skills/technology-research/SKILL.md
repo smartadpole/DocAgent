@@ -1,8 +1,8 @@
 ---
 name: technology-research
 description: 技术、开源工程、行业 / AI 赛道或 PoC 调研总控技能；用于先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
-maturity: leading
-evidence_signals: [skill, README entry, governance, template, TRANSFER, large-body]
+maturity: mature
+evidence_signals: [skill, README entry, governance, template, TRANSFER]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only skill-maturity
 ---
@@ -32,7 +32,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 成熟度与证据信号
 
-- `maturity`：`leading`。本技能已有技能正文、README 入口、迁移边界、研究治理页和 research 模板。
+- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界、研究治理页和 research 模板；是否升级为 `leading` 取决于后续是否沉淀真实 research sensor 和稳定示例，而不是追正文体量。
 - `template`：调研启动合同见 [[templates/technology-research-contract-template]]，正式报告骨架见 [[templates/technology-research-report-template]]。
 - `governance`：调研事实查证、知识沉淀、规则升级和项目落位分别回到 [[governance/research-capability-rules]]、[[response-mode-routing]]、[[POLICY]]、[[template-feedback-rules]] 和目标项目主入口。
 - `TRANSFER`：跨工程吸收边界见 [[skills/technology-research/TRANSFER]]；迁移时吸收证据等级、对象路由、成熟度 / 风险门和分支流程，不复制具体调研文章或项目结论。

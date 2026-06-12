@@ -2,7 +2,7 @@
 name: documentation-maintenance
 description: 文档维护技能；用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
 maturity: leading
-evidence_signals: [skill, README entry, governance, sensor, TRANSFER, large-body]
+evidence_signals: [skill, README entry, governance, sensor, TRANSFER]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-maturity
 ---
