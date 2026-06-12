@@ -1,6 +1,10 @@
 ---
 name: <skill-name>
 description: <一句话说明触发场景、适用任务、输出结果和关键边界>
+maturity: draft
+evidence_signals: []
+transfer_ready: false
+sensor: none
 ---
 
 # <Skill Name>
@@ -20,6 +24,14 @@ description: <一句话说明触发场景、适用任务、输出结果和关键
 - 技能只写可复用流程、判断框架、输出格式和回写守卫。
 - 如果涉及项目事实，只写读取和回写入口，不复制正式项目页面正文。
 - 如果需要改变规则、状态、设计或验收口径，回到对应主入口处理。
+
+## 成熟度与证据信号
+
+- `maturity`：`draft` / `adopted` / `mature` / `leading` / `deprecated`
+- `evidence_signals`：`skill` / `README entry` / `template` / `governance` / `sensor` / `TRANSFER` / `view-or-report`
+- `transfer_ready`：是否已经写清跨工程吸收边界、目标自检方式和不复制的项目事实。
+- `sensor`：可用的检查命令；没有可检查面时写 `none` 并说明原因。
+- `evidence boundary`：成熟度只说明本技能的文档和治理信号，不代表运行验收、项目状态或任务关闭。
 
 ## 工作流
 

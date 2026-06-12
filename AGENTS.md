@@ -130,7 +130,7 @@
 - 批量处理同类材料时，先判断这次是不是“批处理模式”，不要把单篇深度判断的读取负担机械复制到每一份材料上。
 - 如果用户明确下达“收尾 / 执行收尾 / finalize”这类执行命令，本轮进入收尾模式；如果用户是在讨论收尾规则、排查收尾问题或询问怎么收尾，不进入收尾模式。
 - 收尾模式禁止继续扩需求、追加新功能或顺手做下一轮结构调整；只允许完成与本轮已发生改动直接相关的同步、核对、补记和提交。
-- 工作阶段按本轮范围优先跑专项 sensor，例如 `python3 scripts/check_all.py --only harness-governance`、`python3 scripts/check_all.py --only work-item-matrix`、`python3 scripts/check_all.py --only testing-system-maturity` 或 `python3 scripts/check_all.py --only execution-contract-semantics`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
+- 工作阶段按本轮范围优先跑专项 sensor，例如 `python3 scripts/check_all.py --only harness-governance`、`python3 scripts/check_all.py --only skill-maturity`、`python3 scripts/check_all.py --only work-item-matrix`、`python3 scripts/check_all.py --only testing-system-maturity` 或 `python3 scripts/check_all.py --only execution-contract-semantics`；收尾或提交前跑完整 `python3 scripts/check_all.py`。
 - 性能优化不能靠跳过关键语义边界实现。每轮先守性能预算：读取预算、问题预算、检查预算和产物大小预算。能用 1 到 3 个事实源判断时不扩读，能用专项 sensor 证明时不先跑全量，早期探索先写轻量 discovery，不为未定方向铺完整项目结构。
 - 只要这次对话产生了实际内容变更或结构变更，保底在对话结束前做一次 commit。
 - 只要这次对话产生了实际内容变更或结构变更，就必须同步更新 `log.md`；即使只是同一大主题下的后续修正，也不能跳过。

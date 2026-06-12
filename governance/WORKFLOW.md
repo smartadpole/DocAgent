@@ -33,6 +33,7 @@
 工作阶段检查也按模式分层：
 
 - 当前只改 Harness wiring、模板入口或响应路由时，优先跑 `python3 scripts/check_all.py --only harness-governance`。
+- 当前只改项目内技能、技能模板、技能入口或技能成熟度证据信号时，优先跑 `python3 scripts/check_all.py --only skill-maturity`。
 - 当前只改 Gate / FP / EP / TASK / Issue / risk / test / 验收 / 服务台账 wiring 时，优先跑 `python3 scripts/check_all.py --only work-item-matrix`。
 - 当前只改测试计划、AP、fixture / oracle、人工确认、报告计划来源或发布 runbook 时，优先跑 `python3 scripts/check_all.py --only testing-system-maturity`。
 - 当前只改执行合同语义、非目标、环境路由、下一步或关闭裁决时，优先跑 `python3 scripts/check_all.py --only execution-contract-semantics`。
@@ -82,7 +83,7 @@
 1. 先守读取预算：入口规则、owning page 和 1 到 3 个最相关事实源通常足够启动第一轮。
 2. 先守问题预算：默认只问 P0 分叉；可假设的问题写入 [[templates/guided-discovery-session-template]]，不打断用户。
 3. 先守产物大小预算：方向未定时只写轻量 discovery 或 owning page 摘要，不创建完整项目骨架。
-4. 先守检查预算：只改主动对话、模板或 Harness wiring 时优先跑 `python3 scripts/check_all.py --only harness-governance`，跨入口同步或提交前再跑完整门禁。
+4. 先守检查预算：只改主动对话、模板或 Harness wiring 时优先跑 `python3 scripts/check_all.py --only harness-governance`；只改技能层时优先跑 `python3 scripts/check_all.py --only skill-maturity`；跨入口同步或提交前再跑完整门禁。
 
 不需要提交的典型情况：
 

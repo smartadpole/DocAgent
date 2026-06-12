@@ -61,7 +61,7 @@ tags: [entry, root]
 - 想知道“其他项目进化出的系统层信息怎么反哺模板” -> 读 [[template-feedback-rules]]
 - 想把长时任务写成可审计完成契约 -> 读 [[concepts/codex-goals]] 和 [[templates/goal-contract-template]]
 - 想找“可复制模板” -> 读 [[templates/README]]
-- 想使用或维护“项目内 agent 技能” -> 读 [[skills/README]]
+- 想使用或维护“项目内 agent 技能”或判断技能成熟度 -> 读 [[skills/README]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“源码工程深度解读怎么分级推进” -> 读 [[projects/codebase/source-code-audit-workflow]]
 - 想看“真实服务实例现在在哪里运行、怎么健康检查” -> 读 [[projects/service-registry]]
@@ -180,7 +180,7 @@ tags: [entry, root]
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
 8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和服务台账关系理清。
 9. 如果这轮暴露了阶段、事故、Issue、交付链或 Agent 协作里的长期学习价值，把复盘档案写进 [[projects/retrospectives/README]]；方法看 [[concepts/project-retrospective]]，模板看 [[templates/project-retrospective-template]]。
-10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页。
+10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页；技能成熟度按 `skill / README entry / template / governance / sensor / TRANSFER / evidence boundary` 证据信号判断。
 11. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 12. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
 13. 如果这次反哺暴露的是 Harness 自身缺口，先写 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否升级模板、sensor 或规则。

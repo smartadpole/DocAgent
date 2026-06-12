@@ -7,6 +7,27 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-12
+
+### 吸收技能成熟度矩阵的多证据信号设计
+
+- **记录人**：Codex
+- **用户意图**：按照 `AcknowledgeBase/views/current/governance/skill-maturity-matrix.html` 的设计，把其中优秀的技能成熟度治理方法吸收到当前 wiki 模板库。
+- **候选分类**：
+  1. **系统规则**：技能成熟度不能只看是否存在 `SKILL.md`，要同时看入口、模板、治理接线、sensor、TRANSFER / 迁移边界和证据边界。
+  2. **系统模板**：新技能模板应显式记录成熟度、证据信号、迁移准备度、sensor 和不上推边界。
+  3. **自动化契约**：技能层需要专项 `skill-maturity` sensor，避免成熟度规则只停留在说明文字。
+  4. **不反哺项目材料**：源 HTML 中的工程清单、具体排行、分数、领先状态、刷新时间和本地路径只作为来源证据，不写入当前模板库事实。
+- **关键动作**：
+  1. 在 [[skills/README]] 新增“技能成熟度模型”，用 `skill / README entry / template / governance / sensor / TRANSFER / evidence boundary` 作为通用证据信号。
+  2. 更新 [[templates/skill-template]]，补 `maturity`、`evidence_signals`、`transfer_ready`、`sensor` 和“成熟度与证据信号”章节。
+  3. 更新 [[template-feedback-rules]]，明确跨工程采纳技能设计时不得复制排行、分数或领先状态，只吸收评价维度、证据边界、模板字段、迁移守卫和检查方式。
+  4. 新增 `scripts/check_skill_maturity.py` 并接入 `scripts/check_all.py --only skill-maturity`，检查技能入口、模板字段、技能 frontmatter 和工作阶段接线。
+  5. 同步 [[WORKFLOW]]、[[AGENTS]]、`.codex/AGENTS.md`、[[README]]、[[INDEX]] 和 [[projects/status]]，让技能层改动有明确专项检查。
+- **检查结果**：`python3 scripts/check_all.py --only skill-maturity`、`python3 scripts/check_all.py --only harness-governance,project-docs` 均通过；收尾前再跑完整 `python3 scripts/check_all.py`。
+- **二阶反思**：这次吸收说明“能力成熟度”本身也要可检查。以后看到跨工程矩阵、排行或 lens 时，先抽象评价维度和证据边界，再决定是否补模板和 sensor；不要把源项目的排名结果当成模板库事实。
+- **影响页面**：[[skills/README]]、[[templates/skill-template]]、[[template-feedback-rules]]、[[WORKFLOW]]、[[AGENTS]]、[[README]]、[[INDEX]]、[[projects/status]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_all.py`、`scripts/check_skill_maturity.py`。
+
 ## 2026-06-03
 
 ### 收窄复盘模板和历史对话 skill 边界
