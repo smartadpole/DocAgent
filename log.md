@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 补齐持久 HTML lens 的 PNG 预览执行闭环
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“生成或更新 HTML 后必须同步展示对应图片”的规则已经存在，但最近几次最终回复仍没有展示 PNG，要求判断这是规则错误还是执行问题。
+- **主题**：
+  1. 确认规则本身存在且语义正确：持久 HTML lens 更新后必须同轮生成 ignored PDF / PNG，并在对话中展示 PNG。
+  2. 将本次问题归因为执行覆盖缺口：之前把 Browser 截图接口失败误当成 PNG 预览阻塞，没有继续走同源 HTML 导出 pipeline。
+  3. 将失败从自然语言提醒升级到技能自检和 sensor 关键词覆盖，减少后续重复失守。
+- **关键动作**：
+  1. 从 [[views/current/governance/skill-maturity-matrix.html]] 同源导出 `views/.exports/skill-maturity-matrix-current.png` 和 `.pdf`，不纳入 Git。
+  2. 更新 [[skills/problem-focused-visual-presentation/SKILL]]，明确 Browser 截图失败不等于导出失败，必须改走 Playwright / Chromium / 系统 Chrome / 项目导出工具等同源 HTML 导出 fallback。
+  3. 更新 `scripts/check_problem_focused_visual_presentation.py` 和 [[harness-feedback-ledger]]，把这次失守记录为已晋升的图文呈现执行覆盖 episode。
+- **结论**：后续如果生成或刷新持久 HTML lens，最终回复必须包含 PNG Markdown 图片；只有同源导出 pipeline 本身失败时，才允许说明阻塞并给出失败原因。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`scripts/check_problem_focused_visual_presentation.py`、[[harness-feedback-ledger]]、[[log]]；ignored export：`views/.exports/skill-maturity-matrix-current.png`、`views/.exports/skill-maturity-matrix-current.pdf`。
+
 ### 将强项目属性技能从通用技能矩阵拆出
 
 - **记录人**：sunhao

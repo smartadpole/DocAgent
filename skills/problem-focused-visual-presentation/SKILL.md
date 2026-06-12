@@ -293,7 +293,7 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - PDF / PNG / slide 不应重新排一套内容；必须由同一 HTML / source / manifest 生成，保持信息和版式语义一致。
 - 禁止为对话展示单独手工重画 PNG；除非它来自同一 source manifest / render pipeline（same source manifest / render pipeline），并在 `equivalence_profile` 中说明一致性边界。
 
-导出 PDF / PNG 时优先从 HTML / print CSS 生成；可用浏览器打印、Playwright / Chromium、系统 print-to-PDF / screenshot 或项目既有导出工具。没有实际生成和检查导出件时，不要声称“已导出”，只能说明已具备导出配置或待执行导出。生成持久 HTML lens 后，最终回复必须用 Markdown 图片语法展示 PNG 预览，例如 `![lens preview](/absolute/path/to/preview.png)`；如果环境限制导致图片无法渲染，也要给出 PNG 绝对路径。
+导出 PDF / PNG 时优先从 HTML / print CSS 生成；可用浏览器打印、Playwright / Chromium、系统 print-to-PDF / screenshot 或项目既有导出工具。Browser / 前端 QA 的截图只证明渲染检查，不等同于 ignored PNG export；如果 Browser 截图接口失败，不能把它当成导出完成合同失败的终点，必须继续走同源 HTML 导出 pipeline fallback（Playwright / Chromium / 系统 Chrome / 项目导出工具）。没有实际生成和检查导出件时，不要声称“已导出”，只能说明已具备导出配置或待执行导出。生成持久 HTML lens 后，最终回复必须用 Markdown 图片语法展示 PNG 预览，例如 `![lens preview](/absolute/path/to/preview.png)`；如果环境限制导致图片无法渲染，也要给出 PNG 绝对路径。
 
 存储规则：
 
@@ -332,6 +332,7 @@ HTML 视图要优先支持 `@media print` 和 `@page`，让同一份页面可以
 - 如果生成或更新持久 lens，是否包含 `lens_id`、`focus_object`、`lens_type`、`judgement_purpose`、`source_pages`、`generated_at`、`evidence_boundary`、`context_frame`、`output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。
 - 如果生成或更新持久 HTML lens，是否在设计阶段声明 page size、orientation、margins、pagination、print CSS、PDF / PNG 生成方式和 snapshot 边界。
 - 如果生成或更新持久 HTML lens，是否实际导出 PDF 和 PNG 截图 / 长图，检查页数、分页、图表裁切、链接 / 来源和打印可读性，并在最终回复中展示 PNG。
+- 如果 Browser 截图接口失败，是否改走同源 HTML 导出 pipeline fallback，而不是把截图失败写成 PNG 预览阻塞。
 - 是否确认 HTML / PDF / PNG / slide 来自同一源，信息、结论、证据边界和版式语义一致。
 - 是否确认没有为对话预览另画一张与 canonical HTML / source / manifest 不同源的 PNG。
 - 是否确认导出件在 gitignore 忽略目录或运行时下载中，没有把同一 lens 的 PDF / PNG / SVG 作为重复渲染物提交。

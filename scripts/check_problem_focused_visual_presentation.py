@@ -52,6 +52,8 @@ REQUIRED_TERMS = {
         "最终回复必须用 Markdown 图片语法展示 PNG 预览",
         "禁止为对话展示单独手工重画 PNG",
         "same source manifest / render pipeline",
+        "Browser 截图接口失败",
+        "同源 HTML 导出 pipeline fallback",
         "canonical HTML / source / manifest",
         "canonical_policy",
         "snapshot_policy",
