@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Goal 与工程事项闭环</title>
+  <meta name="lens_id" content="lens-codex-goal-work-items-current">
+  <meta name="focus_object" content="Codex Goal 在 EP / TASK / ISSUE 链路中的使用教程">
+  <meta name="lens_type" content="knowledge">
+  <meta name="judgement_purpose" content="用工程事项链路展示 Codex Goal 如何服务可验证交付闭环">
+  <meta name="generated_at" content="2026-06-12">
+  <meta name="source_pages" content="articles/2026-06-12-codex-goal-mode-public-guide.md; projects/development/plan/work-item-system-model.md; projects/development/plan/task-design-model.md; projects/development/issues/README.md; official OpenAI Codex Goal docs">
+  <meta name="source_scope" content="Codex Goal 公开教程、工程事项模型和 issue 分工模型的主题级综合">
+  <meta name="evidence_boundary" content="confirmed: local work item model and public guide; likely: external-facing editorial framing">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18201d;
+      --muted: #5a6760;
+      --paper: #f5f2ec;
+      --panel: #fffdf8;
+      --line: #d9d0c1;
+      --blue: #245b8f;
+      --green: #287553;
+      --amber: #a96618;
+      --red: #a83d32;
+      --soft-blue: #e8f0f8;
+      --soft-green: #e8f3eb;
+      --soft-amber: #f4ecde;
+      --soft-red: #f6e8e6;
+      --shadow: 0 18px 45px rgba(24, 32, 29, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 34px 0 44px;
+    }
+
+    .sheet {
+      min-height: calc(100vh - 68px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 4vw, 48px);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 4px;
+      background: var(--green);
+      border-radius: 999px;
+    }
+
+    h1 {
+      max-width: 960px;
+      margin: 16px 0 10px;
+      font-size: clamp(34px, 4.7vw, 60px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 840px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 23px);
+    }
+
+    .verdict {
+      margin: 30px 0 24px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      border: 2px solid var(--ink);
+      background: #f1eadf;
+    }
+
+    .verdict-main,
+    .verdict-side {
+      padding: clamp(20px, 3vw, 30px);
+    }
+
+    .verdict-side {
+      border-left: 1px solid var(--ink);
+      background: #ffffff;
+    }
+
+    .verdict-label {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .verdict strong {
+      display: block;
+      font-size: clamp(26px, 3.4vw, 42px);
+      line-height: 1.08;
+    }
+
+    .verdict p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .chain {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .node {
+      min-height: 160px;
+      border: 1px solid var(--line);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .node::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 14px;
+      top: 8px;
+      color: rgba(24, 32, 29, 0.08);
+      font-size: 48px;
+      font-weight: 900;
+    }
+
+    .node h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .node p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .node.ep {
+      border-top: 6px solid var(--blue);
+      background: var(--soft-blue);
+    }
+
+    .node.task {
+      border-top: 6px solid var(--green);
+      background: var(--soft-green);
+    }
+
+    .node.issue {
+      border-top: 6px solid var(--red);
+      background: var(--soft-red);
+    }
+
+    .node.report {
+      border-top: 6px solid var(--amber);
+      background: var(--soft-amber);
+    }
+
+    .point {
+      margin: 26px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 20px;
+    }
+
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .panel p {
+      margin: 0;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .formula {
+      margin: 26px 0 24px;
+      border: 1px solid var(--line);
+      background: #18201d;
+      color: #fffdf8;
+      padding: 20px;
+    }
+
+    .formula h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #d6f0df;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .matrix th,
+    .matrix td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .matrix th {
+      background: #f0eadf;
+      color: var(--ink);
+    }
+
+    .matrix td {
+      color: var(--muted);
+    }
+
+    .sources {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sources strong {
+      color: var(--ink);
+    }
+
+    .source-list {
+      margin: 6px 0 0;
+      padding-left: 18px;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        width: min(100vw - 18px, 1180px);
+        padding: 10px 0 22px;
+      }
+
+      .sheet {
+        min-height: auto;
+        padding: 22px;
+      }
+
+      .verdict,
+      .chain,
+      .point,
+      .sources {
+        grid-template-columns: 1fr;
+      }
+
+      .verdict-side {
+        border-left: none;
+        border-top: 1px solid var(--ink);
+      }
+
+      .matrix {
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 10mm;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      main {
+        width: auto;
+        padding: 0;
+      }
+
+      .sheet {
+        min-height: auto;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      .verdict,
+      .node,
+      .panel,
+      .formula {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="sheet" aria-labelledby="title">
+      <div class="eyebrow">Codex Goal 使用教程 · 工程事项版</div>
+      <h1 id="title">Goal 如何串起工程事项闭环</h1>
+      <p class="lead">当一个工程目标会拆成执行包、任务和已发生问题时，Goal 的价值是维持同一条完成标准：修复不是终点，证据吸收和上推边界才是闭环。</p>
+
+      <section class="verdict" aria-label="适用性判断">
+        <div class="verdict-main">
+          <p class="verdict-label">适合展示，但受众更专业</p>
+          <strong>EP → TASK → ISSUE 是 Goal 的工程闭环案例</strong>
+        </div>
+        <div class="verdict-side">
+          <p>这条链路适合面向 Tech Lead、研发经理和项目负责人。它说明 Codex Goal 不只是“继续修 bug”，而是持续推动一个交付目标从执行包到任务、从问题到报告，再回到父项裁决。</p>
+        </div>
+      </section>
+
+      <section class="chain" aria-label="EP TASK ISSUE REPORT 链路">
+        <article class="node ep" data-step="1">
+          <h2>EP</h2>
+          <p>定义一组工作要形成的模块级闭环：输出物、协同方、包内 TASK、关闭证据和不能上推的边界。</p>
+        </article>
+        <article class="node task" data-step="2">
+          <h2>TASK</h2>
+          <p>把一个功能切片写成状态化交付合同：Done Contract、验证要求、上下游和父 EP 影响。</p>
+        </article>
+        <article class="node issue" data-step="3">
+          <h2>ISSUE</h2>
+          <p>当验收失败或 bug 已发生时，保留原始现象、根因边界、关闭标准、回归守卫和最新有效报告。</p>
+        </article>
+        <article class="node report" data-step="4">
+          <h2>REPORT</h2>
+          <p>记录每轮验证的对象、环境、样本、证据和结论；报告改变裁决时，再回写 ISSUE、TASK 和 EP。</p>
+        </article>
+      </section>
+
+      <section class="point" aria-label="Goal 在链路中的作用">
+        <article class="panel">
+          <h2>普通请求容易停在局部</h2>
+          <ul>
+            <li>“修一下这个 issue”可能只修代码，不回写 TASK。</li>
+            <li>“TASK done”可能只看本地测试，不判断父 EP。</li>
+            <li>“报告通过”可能被误上推成 Gate 或 FP 已闭合。</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h2>Goal 应维持完成链路</h2>
+          <ul>
+            <li>先固定 EP 的最终状态和关闭证据。</li>
+            <li>让 TASK 每轮按 Done Contract 验证。</li>
+            <li>ISSUE 只在已发生问题上收口，报告只证明本轮证据。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="formula" aria-label="可复制 Goal 公式">
+        <h2>可复制 Goal 公式</h2>
+        <code>/goal 推进 &lt;EP 名称&gt; 下的 &lt;TASK 名称&gt;，直到 Done Contract 满足，并且相关 ISSUE 的原始现象、修复证据、回归守卫和最新有效报告都已回写。每轮验证 &lt;local / service-side / end-to-end / artifact&gt;，只把证据上推到它能证明的层级；如果证据不足、父 EP 是否关闭需要人工裁决，或验证改变了关闭标准，暂停并报告缺口。</code>
+      </section>
+
+      <section class="panel" aria-label="不要上推错层级">
+        <h2>关键边界：闭环不等于自动上推</h2>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>当前证据</th>
+              <th>最多证明</th>
+              <th>不能直接证明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TASK 本地测试通过</td>
+              <td>该 TASK 的局部实现接近 done</td>
+              <td>父 EP、FP 或 Gate 已准出</td>
+            </tr>
+            <tr>
+              <td>ISSUE 修复并有回归证据</td>
+              <td>该问题可按最新报告关闭或进入复核</td>
+              <td>同类风险已全部消失</td>
+            </tr>
+            <tr>
+              <td>报告给出本轮通过结论</td>
+              <td>本轮验收对象、环境和样本成立</td>
+              <td>上线、全量执行或未来扩展目标自动完成</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer class="sources">
+        <div>
+          <strong>使用边界</strong>
+          <p>本页适合展示 Goal 在复杂工程交付中的协作价值；它不替代具体项目的 EP、TASK、ISSUE、测试报告或人工关闭裁决。</p>
+        </div>
+        <div>
+          <strong>来源</strong>
+          <ul class="source-list">
+            <li><a href="../../../articles/2026-06-12-codex-goal-mode-public-guide.md">Codex Goal 公开教程</a></li>
+            <li><a href="../../../projects/development/plan/work-item-system-model.md">事项系统模型</a></li>
+            <li><a href="../../../projects/development/plan/task-design-model.md">TASK 设计模型</a></li>
+            <li><a href="../../../projects/development/issues/README.md">ISSUE 问题索引</a></li>
+            <li><a href="https://developers.openai.com/codex/use-cases/follow-goals">OpenAI Codex: Follow a goal</a></li>
+          </ul>
+        </div>
+      </footer>
+
+      <!--
+      lens_id: lens-codex-goal-work-items-current.
+      focus_object: Codex Goal in EP / TASK / ISSUE delivery chain.
+      lens_type: knowledge.
+      source_scope: topic synthesis across public guide, work item model, task design model, issue model, and official Codex Goal docs.
+      source_revision: workspace pages as of 2026-06-12; official docs checked in prior guide cycle.
+      context_frame: upper context is Codex Goal public education; source context is local work item governance; relationship context is EP -> TASK -> ISSUE -> REPORT; usage boundary is engineering-governance audience only.
+      output_mode: canonical current HTML lens / print view.
+      visual_structure: chain diagram, paired contrast cards, formula block, evidence-boundary matrix.
+      export_profile: A4 landscape PDF and full-page PNG generated into ignored views/.exports/.
+      print_profile: @page A4 landscape, @media print, printBackground enabled, avoid breaking key cards and matrix.
+      equivalence_profile: HTML / PDF / PNG are generated from the same source pack and the same canonical HTML / source / manifest pipeline.
+      default_auto_exports: Playwright generates PDF and PNG whenever this persistent lens is refreshed.
+      conversation_png_preview: final response should display views/.exports/codex-goal-public-guide-work-items.png.
+      canonical_policy: update this current lens when the public Goal guide or work-item chain explanation changes.
+      snapshot_policy: freeze a snapshot only for external publication or governance review.
+      staleness_policy: stale if Codex Goal product behavior, public guide framing, EP / TASK / ISSUE model, or issue/report boundary changes.
+      refresh_trigger: user asks for the engineering-management version, source pages update, or publication audience changes.
+      -->
+    </section>
+  </main>
+</body>
+</html>

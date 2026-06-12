@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 新增 Codex Goal 工程事项链路展示页
+
+- **记录人**：sunhao
+- **用户意图**：用户询问 EP → TASK → ISSUE 链路是否适合作为 Codex Goal 对外展示案例；如果适合，希望生成第二个 HTML 版本，并与现有通用开发场景版共存。
+- **主题**：
+  1. 判断 EP → TASK → ISSUE 适合作为工程治理受众的第二版展示，不替代已有通用版。
+  2. 将链路扩展为 EP → TASK → ISSUE → REPORT，突出 Goal 如何维持完成标准、证据吸收和上推边界。
+  3. 保持展示脱离具体项目身份，只呈现可复用的工程交付链路和证据边界。
+- **关键动作**：
+  1. 新增 [[views/current/knowledge/codex-goal-public-guide-work-items.html]]，作为 Codex Goal 使用教程工程事项版。
+  2. 同步 [[views/README]] 和 [[views/lens-registry]]，让该 current lens 与 [[views/current/knowledge/codex-goal-public-guide.html]] 并存。
+  3. 重新生成 ignored PDF / PNG：`views/.exports/codex-goal-public-guide-work-items.pdf`、`views/.exports/codex-goal-public-guide-work-items.png`、`views/.exports/codex-goal-public-guide-work-items-mobile.png`。
+- **结论**：当前有两版可外发展示：通用版用“报告页导出闭环”帮助第一次理解 Goal，工程事项版用 EP / TASK / ISSUE 链路说明 Goal 在复杂交付治理中的价值。
+- **影响页面**：[[views/current/knowledge/codex-goal-public-guide-work-items.html]]、[[views/README]]、[[views/lens-registry]]、[[log]]；ignored export：`views/.exports/codex-goal-public-guide-work-items.pdf`、`views/.exports/codex-goal-public-guide-work-items.png`、`views/.exports/codex-goal-public-guide-work-items-mobile.png`。
+
 ### 为技能矩阵单元格增加可点击诊断详情
 
 - **记录人**：sunhao
