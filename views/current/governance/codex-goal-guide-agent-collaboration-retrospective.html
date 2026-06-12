@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Goal 公开教程长对话协作复盘</title>
+  <meta name="lens_id" content="lens-codex-goal-guide-agent-collaboration-retrospective-current">
+  <meta name="focus_object" content="Codex Goal 公开教程长对话协作复盘">
+  <meta name="lens_type" content="timeline">
+  <meta name="judgement_purpose" content="用问题聚焦式图文 lens 呈现公开教程为何依赖多轮用户纠偏才收敛，以及后续 agent 协作改进点">
+  <meta name="source_pages" content="projects/retrospectives/2026-06-12-codex-goal-guide-agent-collaboration.md; projects/retrospectives/README.md; log.md; views/README.md; views/lens-registry.md">
+  <meta name="source_scope" content="single retrospective document plus retrospective index, log context, and views registry">
+  <meta name="generated_at" content="2026-06-12 17:38">
+  <meta name="source_revision" content="0a08d8e">
+  <meta name="evidence_boundary" content="confirmed: retrospective source, log entries, existing lens paths, and recorded commits; likely: user collaboration style interpretation; blocked: full raw session replay not read">
+  <meta name="context_frame" content="上位背景: AcknowledgeBase agent work retrospective; 来源背景: named retrospective and adjacent entries; 历史背景: 2026-06-12 public guide collaboration; 关系背景: Goal guide article, two HTML lenses, harness ledger, project memory; 使用边界: presentation lens only, not a new rule or closure decision">
+  <meta name="output_mode" content="html_report / print_view">
+  <meta name="visual_structure" content="verdict strip / convergence timeline / deviation heat matrix / action routing map / evidence boundary table">
+  <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML to views/.exports/">
+  <meta name="print_profile" content="@page A4 landscape; @media print preserves colored matrices, avoids splitting key panels, and keeps provenance visible">
+  <meta name="equivalence_profile" content="HTML / PDF / PNG use the same source pack and canonical HTML / source / manifest render pipeline; differences limited to pagination and viewport crop">
+  <meta name="default_auto_exports" content="PDF and PNG generated to views/.exports/ when this persistent HTML lens is updated">
+  <meta name="conversation_png_preview" content="final response should display views/.exports/codex-goal-guide-agent-collaboration-retrospective.png">
+  <meta name="canonical_policy" content="Update this current lens when the source retrospective, related log, harness episode, or collaboration-precheck routing changes">
+  <meta name="snapshot_policy" content="Create a snapshot only if this retrospective becomes audit evidence, external handout, or a frozen governance review artifact">
+  <meta name="staleness_policy" content="Stale when the retrospective source changes, action items are routed into skills or sensors, or public tutorial precheck rules are formally upgraded">
+  <meta name="refresh_trigger" content="User asks to revisit the retrospective, source page updates, or future public tutorial lens repeats the same convergence problem">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5d6875;
+      --paper: #f4f6f4;
+      --panel: #ffffff;
+      --line: #d9dfd8;
+      --blue: #075a9c;
+      --green: #1d7b55;
+      --amber: #b46013;
+      --red: #b33b34;
+      --violet: #5943a5;
+      --teal: #087a7b;
+      --soft-green: #e7f3ed;
+      --soft-amber: #f7ecda;
+      --soft-red: #f7e7e4;
+      --soft-violet: #efecfa;
+      --shadow: 0 10px 30px rgba(23, 33, 43, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.56; }
+    a { color: var(--blue); text-underline-offset: 3px; }
+    .wrap { width: min(1260px, calc(100vw - 34px)); margin: 0 auto; }
+    header { background: #fbfcfa; border-bottom: 1px solid var(--line); }
+    .hero { min-height: 40vh; display: grid; align-content: end; gap: 18px; padding: 42px 0 28px; }
+    .eyebrow { color: var(--teal); font-size: 13px; font-weight: 900; letter-spacing: 0.02em; }
+    h1 { max-width: 1180px; margin: 0; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.06; letter-spacing: 0; }
+    .subtitle { max-width: 980px; margin: 0; color: #344251; font-size: clamp(17px, 2vw, 21px); }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { display: inline-flex; align-items: center; min-height: 28px; padding: 3px 9px; border-radius: 999px; background: #e7edf0; color: #334151; font-size: 12px; font-weight: 800; }
+    main { padding: 28px 0 58px; }
+    section { margin: 0 0 24px; }
+    h2 { margin: 0 0 12px; font-size: 23px; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 16px; letter-spacing: 0; }
+    p { margin: 0; }
+    .verdict { display: grid; grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr); border: 2px solid var(--ink); background: var(--panel); box-shadow: var(--shadow); }
+    .verdict-main { padding: clamp(20px, 3vw, 30px); background: var(--soft-violet); }
+    .verdict-main strong { display: block; font-size: clamp(28px, 4vw, 46px); line-height: 1.08; }
+    .verdict-main span { display: block; margin-bottom: 8px; color: var(--violet); font-size: 13px; font-weight: 900; }
+    .verdict-side { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-left: 1px solid var(--ink); }
+    .measure { padding: 20px; border-left: 1px solid var(--line); }
+    .measure:first-child { border-left: 0; }
+    .measure strong { display: block; color: var(--ink); font-size: 28px; line-height: 1; }
+    .measure span { color: var(--muted); font-size: 13px; font-weight: 750; }
+    .panel-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .panel { min-height: 130px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; box-shadow: var(--shadow); }
+    .panel p, .panel li { color: var(--muted); font-size: 14px; }
+    .panel ul { margin: 0; padding-left: 18px; }
+    .tag { display: inline-flex; min-height: 24px; align-items: center; padding: 2px 8px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 900; }
+    .tag.confirmed { background: var(--green); }
+    .tag.likely { background: var(--blue); }
+    .tag.possible { background: var(--amber); }
+    .tag.blocked { background: var(--red); }
+    .timeline { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+    .step { position: relative; min-height: 178px; border: 1px solid var(--line); border-top: 6px solid var(--blue); border-radius: 8px; padding: 14px; background: var(--panel); box-shadow: var(--shadow); }
+    .step::after { content: attr(data-index); position: absolute; right: 10px; top: 2px; color: rgba(23, 33, 43, 0.1); font-size: 42px; font-weight: 950; }
+    .step p { color: var(--muted); font-size: 13px; }
+    .step.warn { border-top-color: var(--amber); background: var(--soft-amber); }
+    .step.fail { border-top-color: var(--red); background: var(--soft-red); }
+    .step.good { border-top-color: var(--green); background: var(--soft-green); }
+    .matrix-shell { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 920px; }
+    th, td { padding: 11px; border-right: 1px solid #eef1ef; border-bottom: 1px solid #eef1ef; text-align: left; vertical-align: top; }
+    th { background: #e7edf0; color: #25313e; font-size: 12px; }
+    td { color: #334151; font-size: 13px; }
+    .heat { color: #fff; font-weight: 900; text-align: center; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.22); }
+    .heat-high { background: var(--red); }
+    .heat-mid { background: var(--amber); }
+    .heat-keep { background: var(--green); }
+    .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
+    .route { min-height: 150px; border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: var(--panel); box-shadow: var(--shadow); }
+    .route strong { display: block; margin-bottom: 6px; color: var(--ink); }
+    .route span { color: var(--muted); font-size: 13px; }
+    .route.current { border-top: 6px solid var(--green); background: var(--soft-green); }
+    .route.future { border-top: 6px solid var(--amber); background: var(--soft-amber); }
+    .route.no { border-top: 6px solid var(--red); background: var(--soft-red); }
+    .boundary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .source-list { color: var(--muted); font-size: 13px; }
+    .source-list code { color: var(--ink); font-size: 12px; overflow-wrap: anywhere; }
+    .foot { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 16px; color: var(--muted); font-size: 12px; }
+    .foot strong { color: var(--ink); }
+    @media (max-width: 980px) {
+      .verdict, .flow, .panel-grid, .boundary-grid { grid-template-columns: 1fr; }
+      .verdict-side { grid-template-columns: 1fr; border-left: 0; border-top: 1px solid var(--ink); }
+      .measure { border-left: 0; border-top: 1px solid var(--line); }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 36px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100vw - 20px, 1260px); }
+      .timeline { grid-template-columns: 1fr; }
+      .hero { min-height: 0; padding-top: 28px; }
+    }
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      body { background: #fff; }
+      .wrap { width: 100%; }
+      header { border-bottom: 1px solid #cfd6cf; }
+      .hero { min-height: 0; padding: 0 0 14px; }
+      main { padding: 14px 0 0; }
+      section { break-inside: avoid; page-break-inside: avoid; }
+      .panel, .step, .route, .foot, .verdict { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+      table { min-width: 0; font-size: 10px; }
+      th, td { padding: 7px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- output_mode / export_profile / print_profile / equivalence_profile / default_auto_exports / conversation_png_preview: HTML, PDF, and PNG use the same source pack and canonical HTML / source / manifest render pipeline. -->
+  <header>
+    <div class="wrap hero">
+      <div class="eyebrow">Agent work retrospective lens · current view</div>
+      <h1>Codex Goal 公开教程长对话协作复盘</h1>
+      <p class="subtitle">这页不重新讲 Goal 怎么用，而是回答一个更窄的问题：为什么一个公开教程产物需要多轮用户纠偏才收敛，以及下次 agent 应该提前看见哪些断点。</p>
+      <div class="meta-row">
+        <span class="pill">生成：2026-06-12 17:38</span>
+        <span class="pill">源版本：0a08d8e</span>
+        <span class="pill">主源：复盘档案</span>
+        <span class="pill">证据边界：confirmed / likely / blocked</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="verdict" aria-labelledby="verdict-title">
+      <div class="verdict-main">
+        <span id="verdict-title">一眼判断</span>
+        <strong>问题不在工具执行，而在公开产物的前置合同。</strong>
+        <p>HTML 导出、检查、提交都能稳定闭环；真正拉长对话的是首轮没有同时冻结受众、案例入口、公开措辞、版本策略和重定向触发。</p>
+      </div>
+      <div class="verdict-side">
+        <div class="measure"><strong>2</strong><span>最终形成的互补 HTML 版本</span></div>
+        <div class="measure"><strong>6</strong><span>复盘记录的关键收敛节点</span></div>
+        <div class="measure"><strong>3</strong><span>后续候选改进方向</span></div>
+      </div>
+    </section>
+    <section>
+      <h2>背景框</h2>
+      <div class="panel-grid">
+        <article class="panel"><h3>上位背景</h3><p>AcknowledgeBase 的 Agent 工作复盘，聚焦公开教程、图文 lens 和长对话协作成本。</p></article>
+        <article class="panel"><h3>来源背景</h3><p>已读复盘档案、复盘入口、log、views 入口和 lens registry；未读完整原始 session。</p></article>
+        <article class="panel"><h3>关系背景</h3><p>关联公开 Markdown 教程、通用版 HTML、工程事项版 HTML、harness ledger 和项目记忆。</p></article>
+        <article class="panel"><h3>使用边界</h3><p>这是呈现层 lens，不替代复盘真相源，也不把单次问题直接升级成硬规则或 sensor。</p></article>
+      </div>
+    </section>
+    <section>
+      <h2>收敛时间线</h2>
+      <div class="timeline">
+        <article class="step warn" data-index="01"><h3>公开教程</h3><p>先完成结构化教程，但更像方法论说明，案例叙事不足。</p></article>
+        <article class="step fail" data-index="02"><h3>初版 HTML</h3><p>页面可以呈现核心点，但首屏口吻偏纠偏提醒，不够专业。</p></article>
+        <article class="step warn" data-index="03"><h3>文案修订</h3><p>用户指出目标偏移和多余信息后，才收窄为正向定义。</p></article>
+        <article class="step good" data-index="04"><h3>案例入口</h3><p>报告页导出闭环被放到首屏，读者终于有真实开发代入点。</p></article>
+        <article class="step fail" data-index="05"><h3>公开措辞</h3><p>“脱敏开发案例”等处理痕迹曾进入展示文案，后续被移除。</p></article>
+        <article class="step good" data-index="06"><h3>第二版本</h3><p>EP -> TASK -> ISSUE -> REPORT 成为工程治理受众的独立版本。</p></article>
+      </div>
+    </section>
+    <section>
+      <h2>偏差热力矩阵</h2>
+      <div class="matrix-shell">
+        <table>
+          <thead><tr><th>偏差</th><th>类型</th><th>证据</th><th>影响强度</th><th>原因判断</th><th>下次预防点</th></tr></thead>
+          <tbody>
+            <tr><td>没有先做受众、案例、公开措辞和版本策略预检</td><td>Agent 工作 / 协作治理</td><td><span class="tag confirmed">confirmed</span></td><td class="heat heat-high">高</td><td>图文技能强调结构和导出，缺少公开教程分支字段。</td><td>公开教程首轮先定读者路径和第一案例。</td></tr>
+            <tr><td>初版过度强调反模式纠偏</td><td>目标偏差</td><td><span class="tag confirmed">confirmed</span></td><td class="heat heat-mid">中</td><td>把历史误用防线当成首屏主叙事。</td><td>外发页先正向定义，再放误用边界。</td></tr>
+            <tr><td>实际案例没有自动前置</td><td>设计 / 表达偏差</td><td><span class="tag confirmed">confirmed</span></td><td class="heat heat-high">高</td><td>沿用模板化示例，未把案例入口视为公开教程必备。</td><td>先让读者看见场景，再抽象方法。</td></tr>
+            <tr><td>内部处理词进入可展示文案</td><td>产物质量</td><td><span class="tag confirmed">confirmed</span></td><td class="heat heat-high">高</td><td>工作过程语汇没有经过 public-copy 过滤。</td><td>增加公开措辞清单或后续 lint 候选。</td></tr>
+            <tr><td>没有主动提出多版本受众分层</td><td>执行策略</td><td><span class="tag likely">likely</span></td><td class="heat heat-mid">中</td><td>先追求单页核心点，未识别工程治理受众需要独立版本。</td><td>判断是否需要通用版 / 专业受众版共存。</td></tr>
+            <tr><td>连续纠偏后没有早暂停重定向</td><td>Workflow</td><td><span class="tag likely">likely</span></td><td class="heat heat-mid">中</td><td>缺少同一产物连续多次纠偏后的完成合同重述触发。</td><td>三次同类纠偏后先复述目标、受众、版本和完成口径。</td></tr>
+            <tr><td>HTML、PDF、PNG、检查和提交闭环</td><td>保留做法</td><td><span class="tag confirmed">confirmed</span></td><td class="heat heat-keep">保留</td><td>工具链稳定，问题主要不是执行层。</td><td>继续同源导出和最终 PNG 预览。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section>
+      <h2>行动分流地图</h2>
+      <div class="flow">
+        <article class="route current"><strong>复盘档案</strong><span>已形成标准复盘正文，继续作为事实、偏差、原因和行动候选的真相源。</span></article>
+        <article class="route current"><strong>项目记忆</strong><span>轻量记录用户协作风格：案例入口、边界敏感、版本共存和可展示质量。</span></article>
+        <article class="route current"><strong>Harness ledger</strong><span>作为 observed episode 保留，等待后续重复信号决定是否晋升。</span></article>
+        <article class="route future"><strong>技能 / 模板候选</strong><span>可外发教程预检清单、public-copy lint、连续纠偏后重定向触发。</span></article>
+        <article class="route no"><strong>本轮不升级</strong><span>不改硬规则，不新增 EP / TASK，不让呈现页替代复盘或治理裁决。</span></article>
+      </div>
+    </section>
+    <section>
+      <h2>证据边界</h2>
+      <div class="boundary-grid">
+        <article class="panel"><h3><span class="tag confirmed">confirmed</span></h3><ul><li>复盘源页已经记录目标、结果、偏差、行动和边界。</li><li>log 已记录公开教程、HTML 修订、案例化和第二版过程。</li><li>views 层已有两版 Goal 教程 HTML。</li></ul></article>
+        <article class="panel"><h3><span class="tag likely">likely</span></h3><ul><li>用户协作风格观察适用于本库 agent 协作，但不是全局人格标签。</li><li>多版本策略缺失是收敛慢的重要原因之一。</li></ul></article>
+        <article class="panel"><h3><span class="tag possible">possible</span></h3><ul><li>public-copy lint 可以脚本化，但需要先评估误报和白名单。</li><li>公开教程分支可并入图文技能，也可能发展成更窄技能。</li></ul></article>
+        <article class="panel"><h3><span class="tag blocked">blocked</span></h3><ul><li>未读取完整原始 rollout，不能逐条还原所有 tool call。</li><li>未抽样所有历史公开产物，不能证明这是全局重复问题。</li></ul></article>
+      </div>
+    </section>
+    <section class="foot">
+      <strong>证据与追溯：</strong>
+      <span class="source-list">已读来源：<code>projects/retrospectives/2026-06-12-codex-goal-guide-agent-collaboration.md</code>、<code>projects/retrospectives/README.md</code>、<code>log.md</code>、<code>views/README.md</code>、<code>views/lens-registry.md</code>。本页为 current lens；Markdown 复盘仍是真相源。导出件来自同一 canonical HTML / source / manifest，存放在 ignored exports。</span>
+    </section>
+  </main>
+</body>
+</html>

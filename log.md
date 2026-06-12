@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 用图文 HTML 呈现 Codex Goal 公开教程长对话复盘
+
+- **记录人**：sunhao
+- **用户意图**：用户要求发动问题聚焦技能，用 HTML 呈现 Codex Goal 公开教程长对话协作复盘，而不是只阅读 Markdown 复盘正文。
+- **主题**：
+  1. 将复盘档案重组为问题聚焦式 current lens，首屏回答“为什么长对话发生”。
+  2. 用收敛时间线、偏差热力矩阵、行动分流地图和证据边界呈现 agent 协作缺口。
+  3. 保持 Markdown 复盘为真相源，HTML / PDF / PNG 只作为同源呈现和导出产物。
+- **关键动作**：
+  1. 新增 [[views/current/governance/codex-goal-guide-agent-collaboration-retrospective.html]]，作为复盘的治理类 current lens。
+  2. 同步 [[views/README]] 和 [[views/lens-registry]]，登记来源、刷新边界和使用边界。
+  3. 按问题聚焦式图文呈现规则准备同源 ignored PDF / PNG 导出。
+- **结论**：这份 HTML lens 把复盘从长文档阅读转换成一眼判断和结构化证据阅读；它不替代复盘档案，也不把本轮观察直接升级成硬规则。
+- **影响页面**：[[views/current/governance/codex-goal-guide-agent-collaboration-retrospective.html]]、[[views/README]]、[[views/lens-registry]]、[[log]]；ignored export：`views/.exports/codex-goal-guide-agent-collaboration-retrospective.pdf`、`views/.exports/codex-goal-guide-agent-collaboration-retrospective.png`。
+
 ### 将技能矩阵首屏从重复矩阵改为优先摘要
 
 - **记录人**：sunhao

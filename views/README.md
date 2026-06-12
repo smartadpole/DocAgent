@@ -14,6 +14,7 @@
 - [[views/current/knowledge/xinzhi-ruisheng-company.html]]：芯智睿声企业调研 lens。
 - [[views/current/knowledge/codex-goal-public-guide.html]]：可对外发布的 Codex Goal 使用教程一页式 lens，突出 “Goal = 目标 + 证据 + 停止条件”。
 - [[views/current/knowledge/codex-goal-public-guide-work-items.html]]：Codex Goal 使用教程工程事项版，展示 EP / TASK / ISSUE / REPORT 如何通过 Goal 维持完成标准、证据吸收和上推边界。
+- [[views/current/governance/codex-goal-guide-agent-collaboration-retrospective.html]]：Codex Goal 公开教程长对话协作复盘 lens，把复盘档案重组为一眼判断、收敛时间线、偏差热力矩阵、行动分流和证据边界。
 - [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能与治理能力成熟度矩阵，动态发现所有工程的技能项，按调研、复盘、文档维护、项目上下文等主题归并成大项，并按通用 / 可迁移能力与项目 / 领域绑定能力分表呈现，同时标注源头工程、底层子项、发现工程和相对成熟度；同轮生成 [[views/current/governance/skill-maturity-diagnostics]]、[[views/current/governance/skill-maturity-diagnostics.html]] 和 `views/current/governance/skill-maturity-matrix.data.json`，分别承接逐工程行动诊断的 Markdown 版、矩阵单元格点击详情页和结构化数据。
 
 ## 维护原则
