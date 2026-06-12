@@ -1,10 +1,10 @@
 ---
 name: knowledge-linking
 description: 新增、调研或大改长期知识页时，用于判断分层落位、入口、上位 / 邻接关系、反向回链和验证方式，避免知识成为孤岛。
-maturity: mature
-evidence_signals: [skill, README entry, governance, TRANSFER]
+maturity: leading
+evidence_signals: [skill, README entry, governance, sensor, TRANSFER]
 transfer_ready: true
-sensor: python3 scripts/check_all.py --only skill-maturity
+sensor: python3 scripts/check_all.py --only knowledge-linking,skill-maturity
 ---
 
 # Knowledge Linking
@@ -13,7 +13,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 本技能把“新增知识”收敛成能被后续检索、学习、复用和维护的知识网络节点。
 
-它吸收 AcknowledgeBase 的知识关联方法，但适配本库现状：当前没有独立 `knowledge-linking` sensor，因此先用技能流程和收尾检查守住入口、上位关系、邻接关系和 `log.md` 记录；后续若重复出现孤岛页，再升级专项 sensor。
+它吸收 AcknowledgeBase 的知识关联方法，并用 `knowledge-linking` 专项 sensor 守住技能入口、治理接线和最小关系画像。当前 sensor 先检查能力 wiring，不替代 agent 对语义关系的判断。
 
 ## 适用场景
 
@@ -31,10 +31,11 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 成熟度与证据信号
 
-- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；暂未接入独立链接 sensor。
+- `maturity`：`leading`。本技能已有技能正文、README 入口、迁移边界、治理接线和专项 sensor。
 - `template`：知识页本身按目标层已有页面结构写；本技能不维护第二份 article / concept 模板。
 - `governance`：分层落位和跨项目反哺回到 [[POLICY]] 与 [[template-feedback-rules]]；过程记录回到 [[log]]。
 - `TRANSFER`：迁移边界见 [[skills/knowledge-linking/TRANSFER]]；迁移时吸收落位判断、关系画像和验证要求，不复制具体知识图谱。
+- `sensor`：`python3 scripts/check_all.py --only knowledge-linking` 检查技能、入口、治理路由和总门禁接线；语义链接是否恰当仍由 agent 回看判断。
 - `evidence boundary`：本技能只能证明知识落位和关系维护质量，不能证明外部事实已经永久有效。
 
 ## 工作流
@@ -86,7 +87,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 - 更新对应 README / INDEX / registry 或上位入口。
 - 回看新增页是否有来源、适用边界和非 `[[log]]` 入链。
-- 规则、技能、模板或入口变化后运行 `python3 scripts/check_all.py --only skill-maturity` 或相关专项检查；收尾前按本库规则运行完整检查。
+- 规则、技能、模板或入口变化后运行 `python3 scripts/check_all.py --only knowledge-linking,skill-maturity` 或相关专项检查；收尾前按本库规则运行完整检查。
 
 ## 输出格式
 

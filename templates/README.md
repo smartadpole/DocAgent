@@ -31,6 +31,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
+- 新问题聚焦式图文 lens 可以参考 [[templates/problem-focused-lens-template]]；持久 lens 还要同步 [[views/lens-registry]]
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]
 - 新长时任务需要防跑偏、防证据漂移、防无限探索时，可以参考 [[templates/goal-contract-template]]

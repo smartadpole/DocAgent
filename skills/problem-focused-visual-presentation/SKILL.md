@@ -1,10 +1,10 @@
 ---
 name: problem-focused-visual-presentation
 description: 问题聚焦式图文呈现技能；用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens。
-maturity: mature
-evidence_signals: [skill, README entry, governance, TRANSFER]
+maturity: leading
+evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER, views]
 transfer_ready: true
-sensor: python3 scripts/check_all.py --only skill-maturity
+sensor: python3 scripts/check_all.py --only problem-focused-visual-presentation,skill-maturity
 ---
 
 # Problem-Focused Visual Presentation
@@ -13,7 +13,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 本技能把复杂文字、文档、专题或项目状态重组为面向当前关注问题的图文 lens。
 
-它吸收 AcknowledgeBase 和下游工程中成熟的问题聚焦呈现方法，但本库当前没有 `views/` 持久呈现层，因此默认先产出聊天内 Markdown / 表格 / Mermaid / 结构化图文方案；只有用户明确要求 HTML、持久页面、打印或导出时，才先建立或绑定本库的呈现层。
+它吸收 AcknowledgeBase 和下游工程中成熟的问题聚焦呈现方法，并在本库建立最小 `views/` 持久呈现层。默认仍先产出聊天内 Markdown / 表格 / Mermaid / 结构化图文方案；只有用户明确要求 HTML、持久页面、打印、导出，或本轮已经形成可长期复用的 current / snapshot lens 时，才写入 [[views/README]]。
 
 ## 适用场景
 
@@ -32,10 +32,12 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 成熟度与证据信号
 
-- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；暂未建立 `views/` registry、导出 pipeline 或专项 sensor。
-- `template`：当前用输出格式作为最小骨架；若本库开始长期生成持久 lens，再补 `views/` 结构和模板。
+- `maturity`：`leading`。本技能已具备技能正文、README 入口、迁移边界、治理接线、模板、`views/` 持久呈现层和专项 sensor。
+- `template`：持久 lens 模板见 [[templates/problem-focused-lens-template]]，只承接字段骨架，不替代 source pack 或事实源。
+- `views`：持久 lens 入口见 [[views/README]]，current / snapshot 登记见 [[views/lens-registry]]；持久 lens 必须声明 `export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports` 和 `conversation_png_preview`，导出缓存必须落在 `.gitignore` 忽略目录。
 - `governance`：持久化、证据边界、项目状态和验收不上推回到 [[response-mode-routing]]、[[POLICY]] 和目标单一信息源。
 - `TRANSFER`：迁移边界见 [[skills/problem-focused-visual-presentation/TRANSFER]]；迁移时吸收 lens 合同、source pack、背景框、证据边界和导出守卫，不复制具体视图。
+- `sensor`：`python3 scripts/check_all.py --only problem-focused-visual-presentation` 检查技能、模板、`views/` registry、导出缓存忽略规则和总门禁接线。
 - `evidence boundary`：本技能证明的是呈现质量和追溯边界，不证明原事实完整或验收完成。
 
 ## 工作流
@@ -104,7 +106,7 @@ source pack 必须标明已读、未读但相关、更新时间、证据和推�
 - 本轮形成决策、验收、发布、事故、阶段复盘或外部分发 snapshot。
 - 当前仓库已有 `views/`、`reports/` 或等价呈现层。
 
-如果本库需要建立持久呈现层，先按目录归类判断和用户授权，不把 HTML 随手放到根目录或临时目录。
+本库的持久呈现层固定为 [[views/README]]。新增 current lens 放 `views/current/` 并同步 [[views/lens-registry]]；阶段性 snapshot 放 `views/snapshots/` 并同步 registry。导出 PDF / PNG / SVG 缓存放 `views/.exports/`、`views/exports/`、`views/**/.exports/` 或等价忽略目录，不提交为第二份事实源。
 
 ## 输出格式
 
@@ -149,3 +151,4 @@ source pack 必须标明已读、未读但相关、更新时间、证据和推�
 - 不把历史快照当 current。
 - 不在未生成和检查导出件时声称“已导出”。
 - 不提交同一 lens 的 HTML、PDF、PNG、SVG 等重复渲染物作为多个事实源。
+- 不绕开 [[templates/problem-focused-lens-template]] 和 [[views/lens-registry]] 生成孤立持久 HTML。

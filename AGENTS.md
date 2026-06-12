@@ -7,6 +7,7 @@
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
+- 呈现层：[[views/README]] 和 `views/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
@@ -18,6 +19,7 @@
 
 - `governance/`：治理层目录。放流程、规则、共享背景和写法指南；具体由 [[governance/README]] 收口。
 - `skills/`：项目内 agent 技能层。放面向当前项目的可复用分析流程、判断框架和执行套路；技能可以带项目语境，但不替代项目状态、需求、设计、EP / TASK 状态、轻量 TODO 或测试报告的单一信息源。
+- `views/`：问题聚焦式图文呈现层。放 current / snapshot lens、registry 和可追溯呈现入口；只承接 source pack 的视觉重组、证据边界、导出配置和刷新条件，不替代项目页、知识页、报告、决策、验收或 log 的事实源职责。
 - `raw/`：原始资料层。优先保持原样，少改动。
 - `inbox/`：临时收口区。来源还没完全处理完时先放这里。
 - `assets/`：支持性附件层。图片、截图、导图、导出物和 canvas 放这里。
@@ -262,6 +264,7 @@
 - 如果目标在 `projects/retrospectives/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/retrospectives/README.md`、[[concepts/project-retrospective]]，再按对象补读 trace、决策、开发、Issue、事故、会议、log、Agent 复盘或软件研发复盘相关页面。
 - 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`acceptance/`、`reports/`、`risks/` 或功能点实体页。
 - 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
+- 如果目标在 `views/`，先读 [[README]]、[[INDEX]]、[[views/README]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和目标事实源；current / snapshot 必须同步 [[views/lens-registry]]，导出 PDF / PNG / SVG 缓存必须落在 `.gitignore` 忽略目录。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
 - 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
@@ -314,6 +317,7 @@
 - 对 `projects/` 这类运行层，已经形成多文件职责的模块可以保留子目录；如果子目录当前只有一个 `README.md`，默认优先收平成单文件。`incidents/`、`meetings/`、`retrospectives/` 这类天然按条目累积的模块默认保留目录。
 - 新建文件先确认它属于 `raw/`、`inbox/`、`articles/`、`concepts/` 还是 `indexes/`。
 - 如果是当前项目内可复用的 agent 分析流程或执行技能，优先放 `skills/`，并补 [[skills/README]] 入口；不要塞进 `templates/` 或项目状态页。
+- 如果是问题聚焦式图文 lens、current / snapshot 视图或持久 HTML / print view，优先放 `views/`，并同步 [[views/lens-registry]]；不要放到仓库根目录、handoff、临时目录或把导出件提交成事实源。
 - 如果是支持性附件，优先放 `assets/`；如果是退役页面，优先放 `archive/`。
 - 如果是活跃研发项目的文档，优先放 `projects/`。
 - 对单一小项目，优先一页到底，拆分目录和子文件必须有明确理由。

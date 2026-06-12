@@ -12,11 +12,12 @@ tags: [entry, root]
 
 这个文档库的目标很简单：把散乱资料变成能查、能连、能持续更新的知识网络，同时给未来的半自动 / 自动化项目推进留好路由。
 
-如果只记一件事，就记住这套七层模型：
+如果只记一件事，就记住这套八层模型：
 
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
+- 呈现层：[[views/README]] 和 `views/`
 - 运行层：[[projects/README]] 和 `projects/`
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
@@ -27,6 +28,7 @@ tags: [entry, root]
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
 - `governance/` 收治理页：[[governance/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[log-writing-rules]]、[[trace-writing-rules]]、[[template-feedback-rules]]
 - `skills/` 收项目内可复用的 agent 技能，例如 [[skills/issue-analysis/SKILL]]
+- `views/` 收问题聚焦式图文 lens 的 current / snapshot / registry；导出缓存不作为事实源提交
 - `projects/` 收运行中的项目内容
 - `projects/retrospectives/` 收阶段、专题、交付链、Issue / 事故后和 Agent 协作复盘档案
 - 其他目录分别承接沉淀、历史和证据
@@ -62,6 +64,7 @@ tags: [entry, root]
 - 想把长时任务写成可审计完成契约 -> 读 [[concepts/codex-goals]] 和 [[templates/goal-contract-template]]
 - 想找“可复制模板” -> 读 [[templates/README]]
 - 想使用或维护“项目内 agent 技能”或判断技能成熟度 -> 读 [[skills/README]]
+- 想生成或维护“问题聚焦式图文 lens / HTML / print view” -> 读 [[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和 [[views/README]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]
 - 想看“源码工程深度解读怎么分级推进” -> 读 [[projects/codebase/source-code-audit-workflow]]
 - 想看“真实服务实例现在在哪里运行、怎么健康检查” -> 读 [[projects/service-registry]]
@@ -134,6 +137,7 @@ tags: [entry, root]
 - 知识库模式：收集资料，整理成 `articles/`、`concepts/`、`indexes/`
 - 研发模式：在 `projects/` 里维护项目主页、设计、决策、发布和复盘
 - 技能层：在 `skills/` 里维护项目内 agent 技能，服务问题分析、定位、分工、验证和回写等高频动作
+- 呈现层：在 `views/` 里维护问题聚焦式图文 lens，只呈现 source pack 和证据边界，不替代事实源
 - 路由层：[[BRAIN]] 放共享背景，[[POLICY]] 放规则，[[projects/memory/README]] 放项目级稳定记忆
 - 演进链：[[projects/trace]] 放当前项目里需求、约束、决策变化和最终落地范围之间的串联
 - 两者衔接：项目里的稳定结论，最后回写到知识库层
@@ -181,6 +185,7 @@ tags: [entry, root]
 8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和服务台账关系理清。
 9. 如果这轮暴露了阶段、事故、Issue、交付链或 Agent 协作里的长期学习价值，把复盘档案写进 [[projects/retrospectives/README]]；方法看 [[concepts/project-retrospective]]，模板看 [[templates/project-retrospective-template]]。
 10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页；技能成熟度按 `skill / README entry / template / governance / sensor / TRANSFER / evidence boundary` 证据信号判断。
+11. 如果这轮需要持久图文呈现，把 canonical lens 写进 [[views/README]] 管辖的 current / snapshot 结构，并同步 [[views/lens-registry]]；PDF / PNG / SVG 导出件只进忽略目录。
 11. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 12. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。
 13. 如果这次反哺暴露的是 Harness 自身缺口，先写 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否升级模板、sensor 或规则。

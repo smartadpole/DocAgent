@@ -17,6 +17,8 @@
 
 - 工作阶段优先跑专项 sensor：`python3 scripts/check_all.py --only harness-governance`。
 - 技能页、技能入口或技能模板改动跑：`python3 scripts/check_all.py --only skill-maturity`。
+- 知识关联 skill 或落位规则改动跑：`python3 scripts/check_all.py --only knowledge-linking`。
+- 问题聚焦式图文呈现、`views/`、lens 模板或导出守卫改动跑：`python3 scripts/check_all.py --only problem-focused-visual-presentation`。
 - H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
 - 入口、wikilink 或治理元数据改动跑：`python3 scripts/check_all.py --only project-docs`。
 - 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。

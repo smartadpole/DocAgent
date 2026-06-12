@@ -1,2 +1,5 @@
 .obsidian/workspace.json
 .obsidian/graph.json
+views/.exports/
+views/exports/
+views/**/.exports/

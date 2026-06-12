@@ -11,13 +11,13 @@
 - 背景框：上位、来源、历史、关系、使用边界。
 - 证据边界：confirmed、likely、possible、blocked。
 - 图文结构选择：状态卡、矩阵、时间线、关系图、证据链、行动地图。
-- 持久化守卫：canonical HTML / source、snapshot、ignored exports、导出一致性。
+- 持久化守卫：canonical HTML / source、snapshot、ignored exports、导出一致性、同源一致性、[[views/lens-registry]] 或等价 registry。
 
 ## 只能抽象吸收
 
 - 源工程的 `views/` 结构、导出目录、registry、lens 字段和 CSS 只能作为参考。
 - 目标工程已有报告、dashboard、artifact 或 docs site 时，应映射到既有呈现层。
-- 没有持久视图需求时，只迁移聊天内 lens 方法，不强行建 `views/`。
+- 没有持久视图需求时，只迁移聊天内 lens 方法，不强行建 `views/`；一旦目标工程要生成持久 lens，必须建立或绑定等价 current / snapshot / registry / ignored exports。
 
 ## 禁止复制
 
@@ -40,4 +40,5 @@
 - 用一个真实主题生成聊天内 lens 或持久 lens 干跑。
 - 检查 source pack、背景框、证据边界和不可上推范围是否完整。
 - 若生成持久 HTML，验证导出件和 canonical 源的一致性，并确保导出件不会作为重复事实源提交。
+- 若建立持久呈现层，验证 `views/current/`、`views/snapshots/`、`views/lens-registry` 或等价入口已经接线。
 - 最终回复写清呈现落位、来源、导出状态、检查结果和未覆盖边界。

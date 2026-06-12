@@ -32,7 +32,8 @@ tags: [agent, workflow, efficiency, harness]
 | --- | --- | --- | --- | --- | --- |
 | 快速诊断 | “为什么”“在哪”“先分析”“差异是什么” | `confirmed / likely / possible / blocked` 分级结论和证据边界 | 入口规则 + 1 到 3 个最相关事实源 | 否 | 说明是否需要升级到沉淀、验收或规则升级 |
 | 引导式设计 | “设计一个系统”“帮我想完整”“更智能 / 更前沿 / 更高效”“还不知道怎么开始” | 自动判定场景包、置信度和关键假设，只问会改变结构的问题 | [[proactive-dialogue-system]] + owning page + 必要事实源 | 是；对话所得和 agent 思考结果必须产物化 | 写清场景包、假设、待确认项、性能预算和落地位置 |
-| 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 总入口 + 单一信息源 + 来源 | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
+| 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘”“知识关联” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 总入口 + 单一信息源 + 来源；新增长期知识时调用 [[skills/knowledge-linking/SKILL]] | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
+| 图文呈现 | “图文”“一图胜千言”“HTML 呈现”“看得更直观”“做成 lens” | 先识别关注合同和 source pack，再选择短答、Markdown、Mermaid、HTML、print view、current 或 snapshot | [[skills/problem-focused-visual-presentation/SKILL]] + 目标真相源 + 必要来源 | 条件写入；只有持久 lens 才写 `views/` | 写清证据边界、导出状态、registry 和不能上推范围 |
 | Issue 分析 + 沉淀 | 现场问题、联调失败、验收争议、跨工程阻塞 | 先给根因 checkpoint，再进入主控沉淀 | 项目主入口 + 当前工作项 / 报告 / 风险 + 直接证据 | 是 | 同步单一信息源、风险 / 报告 / 状态，跑必要检查 |
 | 验收关闭 | “验收”“复验”“关闭”“准出”“done” | 先声明验收对象和证据层级 | TASK / EP / FP / Gate / Issue + 最新证据 + 必要运行事实；TODO 仅作轻量兼容视图 | 是 | 写清 local / service-side / end-to-end 和人工确认边界 |
 | 规则升级 | “以后都这样”“升级规则”“写进 AGENTS / WORKFLOW / POLICY” | 先判断改旧规则、补澄清还是新增模式 | [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、相关技能 / 模板 | 是 | 同步入口、log、必要模板和二阶反思 |

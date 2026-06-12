@@ -13,6 +13,12 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ("project-docs", "project docs", (sys.executable, "scripts/check_project_docs.py")),
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),
     ("skill-maturity", "skill maturity", (sys.executable, "scripts/check_skill_maturity.py")),
+    (
+        "problem-focused-visual-presentation",
+        "problem-focused visual presentation",
+        (sys.executable, "scripts/check_problem_focused_visual_presentation.py"),
+    ),
+    ("knowledge-linking", "knowledge linking", (sys.executable, "scripts/check_knowledge_linking.py")),
     ("harness-feedback-ledger", "harness feedback ledger", (sys.executable, "scripts/check_harness_feedback_ledger.py")),
     ("instruction-adherence", "instruction adherence", (sys.executable, "scripts/check_instruction_adherence.py")),
     ("retrospective-system", "retrospective system", (sys.executable, "scripts/check_retrospective_system.py")),

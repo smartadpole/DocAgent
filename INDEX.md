@@ -47,6 +47,7 @@ tags: [index, root]
 - [[skills/documentation-maintenance/SKILL]]：代码、结构或规则变化后的文档维护技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
+- [[views/README]]：图文呈现层入口，承接 current / snapshot lens 和 registry
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
 - [[projects/trace]]：需求演进链入口
@@ -112,6 +113,7 @@ tags: [index, root]
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
 - [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘的通用核心模板，可按对象启用软件研发或 Agent 回看模块
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
+- [[templates/problem-focused-lens-template]]：问题聚焦式图文 lens 模板，用于 current / snapshot / print view 的 source pack、证据边界和导出字段
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板
@@ -142,6 +144,7 @@ tags: [index, root]
 - 入口层：[[README]]、[[INDEX]]
 - 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
+- 呈现层：[[views/README]] 和 `views/`
 - 运行层：`projects/`，其中复盘档案入口是 [[projects/retrospectives/README]]
 - 沉淀层：`articles/`、`concepts/`、`indexes/`
 - 历史层：[[log]]、`archive/`
@@ -152,6 +155,7 @@ tags: [index, root]
 - 根目录保留高频入口：[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]
 - `governance/` 收治理页和规则页
 - `skills/` 收项目内可复用 agent 技能
+- `views/` 收问题聚焦式图文 lens、current / snapshot 和 registry；导出缓存不作为事实源
 - `projects/` 收运行层
 - `articles/`、`concepts/`、`indexes/` 收知识沉淀
 - `archive/` 收退役历史，`raw/`、`inbox/`、`assets/` 收证据

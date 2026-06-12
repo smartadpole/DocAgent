@@ -9,6 +9,26 @@
 
 ## 2026-06-12
 
+### 补齐问题聚焦和知识关联的成熟度证据信号
+
+- **记录人**：Codex
+- **用户意图**：指出更新后的技能成熟度矩阵里当前 wiki 成熟度仍不够，要求继续对标 `AcknowledgeBase/views/current/governance/skill-maturity-matrix.html`，把短板补到工程化成熟水平。
+- **矩阵复核**：
+  1. [[skills/problem-focused-visual-presentation/SKILL]] 在更新后的矩阵中仍为 `接入`，主要缺 `views`、`template`、`sensor` 和持久呈现层工程契约。
+  2. [[skills/knowledge-linking/SKILL]] 已有技能和迁移边界，但缺独立 sensor 和响应路由里的知识关联接线。
+  3. Goal Contract、Issue 分析、复盘、调研、跨工程技能迁移和跨工程治理审计当前信号已较完整，本轮不再重复铺新结构。
+- **关键动作**：
+  1. 新增 [[views/README]]、`views/current/README.md`、`views/snapshots/README.md` 和 [[views/lens-registry]]，把 current / snapshot lens、registry、source pack、证据边界、导出缓存和 gitignore 边界落成独立呈现层。
+  2. 新增 [[templates/problem-focused-lens-template]]，补齐 `lens_id`、`focus_object`、`lens_type`、`judgement_purpose`、`source_pages`、`evidence_boundary`、`visual_structure`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview` 和刷新条件等字段。
+  3. 新增 `scripts/check_problem_focused_visual_presentation.py` 并接入 `scripts/check_all.py --only problem-focused-visual-presentation`，检查问题聚焦技能、TRANSFER、template、views registry、导出缓存忽略规则和总门禁接线。
+  4. 新增 `scripts/check_knowledge_linking.py` 并接入 `scripts/check_all.py --only knowledge-linking`，检查知识关联技能、TRANSFER、入口和 [[response-mode-routing]] 的接线。
+  5. 将 [[skills/problem-focused-visual-presentation/SKILL]] 的成熟度信号升级为 `skill / README entry / template / governance / sensor / TRANSFER / views`，并把持久 lens 固定到 [[views/README]] 和 [[views/lens-registry]]。
+  6. 将 [[skills/knowledge-linking/SKILL]] 升级为带专项 sensor 的 leading 能力，同时在 [[response-mode-routing]] 中给知识沉淀模式补 `knowledge-linking` 接线。
+  7. 更新 [[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、`.codex/AGENTS.md`、[[skills/README]]、[[templates/README]] 和 `.gitignore`，让新增 `views/` 层、lens 模板和两个专项 sensor 不成为孤立结构。
+- **检查结果**：`python3 scripts/check_all.py --only problem-focused-visual-presentation,knowledge-linking` 和完整 `python3 scripts/check_all.py` 均已通过。
+- **二阶反思**：技能成熟度不能只补 `SKILL.md + TRANSFER.md`。会产出持久图文视图的技能必须同时有 `views` 层、模板、registry、导出缓存边界和专项 sensor；知识落位类技能也必须有自动检查来证明入口和路由没有漂移。
+- **影响页面**：[[views/README]]、[[views/lens-registry]]、[[templates/problem-focused-lens-template]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/problem-focused-visual-presentation/TRANSFER]]、[[skills/knowledge-linking/SKILL]]、[[skills/README]]、[[templates/README]]、[[response-mode-routing]]、[[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[log]]、`.codex/AGENTS.md`、`.gitignore`、`scripts/check_all.py`、`scripts/check_problem_focused_visual_presentation.py`、`scripts/check_knowledge_linking.py`。
+
 ### 再次吸收通用可迁移技能并补齐本库技能层
 
 - **记录人**：Codex
