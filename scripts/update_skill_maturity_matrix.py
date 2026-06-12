@@ -76,6 +76,65 @@ SKILL_DISPLAY_NAMES = {
     "problem-focused-visual-presentation": "问题聚焦式图文呈现",
     "technical-topic-research": "技术专题调研",
     "technology-research-router": "技术调研路由",
+    "agents-md-sync": "Agent 规则同步",
+    "backlog-management": "Backlog 批处理",
+    "customer-group-db-readback": "客群 DB 读回",
+    "customer-pipeline-docs": "客群管线文档入口",
+    "customeranalysis-docs": "customeranalysis 文档入口",
+    "document-changes": "文档变更检查",
+    "film-community-docs": "Film Community 文档入口",
+    "inbox-triage": "Inbox 整理",
+    "life-decision-review": "生活决策复盘",
+    "life-matter-routing": "生活事项路由",
+    "weekly-review": "周报",
+    "work-item-auto-decomposition": "事项自动拆解",
+    "write-docs": "文档写作",
+}
+
+GROUP_DEFINITIONS: Dict[str, Dict[str, Union[str, int]]] = {
+    "research-capability": {
+        "display_name": "调研 / 研究能力",
+        "description": "面向技术专题、开源工程、行业 / AI 赛道和产品 / 公司 / PoC 的研究能力总项。总表按一项呈现，细分路由、技术专题、开源工程、行业 AI 等子项在详情中展开。",
+        "sort_order": 10,
+    },
+    "retrospective-capability": {
+        "display_name": "复盘 / 回顾改进",
+        "description": "面向历史对话、当前工作流、Harness episode、项目复盘和系统改进的复盘能力总项。总表按一项呈现，细分历史对话复盘、系统 harness review 等子项在详情中展开。",
+        "sort_order": 20,
+    },
+    "project-context-entry": {
+        "display_name": "项目上下文入口",
+        "description": "面向具体工程的上下文加载、主控文档读取、handoff / TODO / FP 对齐和实现仓库接入能力。它通常是下游工程本地能力，不一定应反哺成通用源技能。",
+        "sort_order": 120,
+    },
+    "documentation-maintenance": {
+        "display_name": "文档与 Agent 规则维护",
+        "description": "面向代码变更后的文档更新、AGENTS.md / agent 规则同步、写作文档和 PR 前文档新鲜度检查的维护能力。",
+        "sort_order": 130,
+    },
+    "lifeos-management": {
+        "display_name": "生活系统管理",
+        "description": "LifeOS 侧面向生活事项路由、inbox 整理、周报和生活决策复盘的领域技能总项。它作为下游主题能力展示，不默认上推为软件工程通用技能。",
+        "sort_order": 140,
+    },
+}
+
+GROUP_BY_SKILL = {
+    "technology-research-router": "research-capability",
+    "technical-topic-research": "research-capability",
+    "open-source-project-research": "research-capability",
+    "industry-ai-research": "research-capability",
+    "historical-dialogue-retrospective": "retrospective-capability",
+    "customer-pipeline-docs": "project-context-entry",
+    "customeranalysis-docs": "project-context-entry",
+    "film-community-docs": "project-context-entry",
+    "document-changes": "documentation-maintenance",
+    "write-docs": "documentation-maintenance",
+    "agents-md-sync": "documentation-maintenance",
+    "life-matter-routing": "lifeos-management",
+    "inbox-triage": "lifeos-management",
+    "weekly-review": "lifeos-management",
+    "life-decision-review": "lifeos-management",
 }
 
 SUPPLEMENTAL_CAPABILITIES: List[Dict[str, Union[str, List[str]]]] = [
@@ -90,6 +149,7 @@ SUPPLEMENTAL_CAPABILITIES: List[Dict[str, Union[str, List[str]]]] = [
             "Software/wiki:concepts/codex-goals.md",
         ],
         "source_projects": ["AcknowledgeBase", "Software/wiki"],
+        "origin_projects": ["AcknowledgeBase", "Software/wiki"],
         "aliases": ["Codex Goals", "Goal Contract"],
         "description": "长时任务的线程级完成契约。用于终点明确但路径需要多轮探索的修复、迁移、调研、验收或主控 / 子工程回传，固定期望最终状态、验证面 / 证据边界、允许范围和阻塞停止条件；它不是普通 skill，也不替代验收关闭。",
         "has_transfer": "no",
@@ -148,6 +208,20 @@ def humanize_skill_name(value: str) -> str:
     return value.replace("-", " ")
 
 
+def display_name_for_skill(value: str) -> str:
+    return SKILL_DISPLAY_NAMES.get(value, humanize_skill_name(value))
+
+
+def group_name_for_skill(value: str) -> str:
+    return GROUP_BY_SKILL.get(value, value)
+
+
+def origin_projects_for(source_occurrences: List[Dict[str, str]], occurrences: List[Dict[str, str]]) -> List[str]:
+    if source_occurrences:
+        return sorted({item["project_label"] for item in source_occurrences})
+    return sorted({item["project_label"] for item in occurrences})
+
+
 def read_skill_occurrences() -> List[Dict[str, str]]:
     occurrences = []
     for project in PROJECTS:
@@ -184,7 +258,7 @@ def read_skill_manifest() -> List[Dict[str, Union[str, List[str]]]]:
     for occurrence in read_skill_occurrences():
         grouped[occurrence["name"]].append(occurrence)
 
-    rows = []
+    raw_rows: List[Dict[str, Union[str, List[str]]]] = []
     for name, occurrences in grouped.items():
         source_occurrences = [item for item in occurrences if item["project_key"] == "ack"]
         description_source = source_occurrences[0] if source_occurrences else max(
@@ -197,26 +271,85 @@ def read_skill_manifest() -> List[Dict[str, Union[str, List[str]]]]:
             f"{item['project_label']}:{item['path']}"
             for item in sorted(occurrences, key=lambda item: (item["project_label"], item["path"]))
         ]
-        rows.append(
+        raw_rows.append(
             {
                 "name": name,
-                "display_name": SKILL_DISPLAY_NAMES.get(name, humanize_skill_name(name)),
+                "display_name": display_name_for_skill(name),
                 "path": source_paths[0] if source_paths else "",
                 "source_paths": source_paths,
                 "source_projects": source_projects,
+                "origin_projects": origin_projects_for(source_occurrences, occurrences),
                 "aliases": aliases,
                 "description": description_source["description"],
                 "has_transfer": "yes" if any(item["has_transfer"] == "yes" for item in occurrences) else "no",
                 "has_source": "yes" if source_occurrences else "no",
+                "member_names": [name],
+                "member_display_names": [display_name_for_skill(name)],
+                "member_count": "1",
+                "sort_order": "100",
             }
         )
 
-    existing_names = {str(row["name"]) for row in rows}
+    existing_names = {str(row["name"]) for row in raw_rows}
     for capability in SUPPLEMENTAL_CAPABILITIES:
         if str(capability["name"]) not in existing_names:
-            rows.append(capability)
+            raw_rows.append(
+                {
+                    **capability,
+                    "member_names": [str(capability["name"])],
+                    "member_display_names": [str(capability["display_name"])],
+                    "member_count": "1",
+                    "sort_order": "90",
+                }
+            )
 
-    return sorted(rows, key=lambda item: (item["has_source"] != "yes", item["display_name"]))
+    capability_groups: Dict[str, Dict[str, Union[str, List[str]]]] = {}
+    for row in raw_rows:
+        name = str(row["name"])
+        group_name = group_name_for_skill(name)
+        group_def = GROUP_DEFINITIONS.get(group_name)
+        if group_name not in capability_groups:
+            capability_groups[group_name] = {
+                "name": group_name,
+                "display_name": str(group_def["display_name"]) if group_def else str(row["display_name"]),
+                "description": str(group_def["description"]) if group_def else str(row["description"]),
+                "path": str(row.get("path", "")),
+                "source_paths": [],
+                "source_projects": [],
+                "origin_projects": [],
+                "aliases": [],
+                "has_transfer": "no",
+                "has_source": "no",
+                "member_names": [],
+                "member_display_names": [],
+                "member_count": "0",
+                "sort_order": str(group_def["sort_order"]) if group_def else str(row.get("sort_order", "100")),
+            }
+        group = capability_groups[group_name]
+        group["source_paths"] = sorted({*group["source_paths"], *row.get("source_paths", [])})  # type: ignore[arg-type]
+        group["source_projects"] = sorted({*group["source_projects"], *row.get("source_projects", [])})  # type: ignore[arg-type]
+        group["origin_projects"] = sorted({*group["origin_projects"], *row.get("origin_projects", row.get("source_projects", []))})  # type: ignore[arg-type]
+        group["aliases"] = sorted(
+            {
+                *group["aliases"],  # type: ignore[arg-type]
+                name,
+                str(row["display_name"]),
+                *ALIASES.get(name, []),
+                *[str(alias) for alias in row.get("aliases", [])],
+            }
+        )
+        group["member_names"] = sorted({*group["member_names"], *row.get("member_names", [name])})  # type: ignore[arg-type]
+        group["member_display_names"] = sorted({*group["member_display_names"], *row.get("member_display_names", [str(row["display_name"])])})  # type: ignore[arg-type]
+        group["member_count"] = str(len(group["member_names"]))  # type: ignore[arg-type]
+        if row.get("has_transfer") == "yes":
+            group["has_transfer"] = "yes"
+        if row.get("has_source") == "yes":
+            group["has_source"] = "yes"
+
+    return sorted(
+        capability_groups.values(),
+        key=lambda item: (int(str(item.get("sort_order", "100"))), str(item["display_name"])),
+    )
 
 
 def iter_candidate_files(project: Project) -> Iterable[Path]:
@@ -317,7 +450,7 @@ def score_evidence(project: Project, skill: Dict[str, Union[str, List[str]]], hi
         return Evidence(score=0, note="未在常见 skill / governance / sensor 路径发现等价能力。", hits=[], signals=[])
 
     skill_name = str(skill["name"])
-    terms = skill_terms(skill_name)
+    terms = skill_terms(skill)
     rels = [p.relative_to(project.path) for p in hits]
     rel_texts = [normalize(str(rel)) for rel in rels]
     score = 0
@@ -424,6 +557,7 @@ def status_for(score: int, max_score: int) -> str:
 
 def render_html() -> str:
     skills = read_skill_manifest()
+    total_member_count = sum(int(str(skill.get("member_count", "1"))) for skill in skills)
     generated = datetime.now().strftime("%Y-%m-%d %H:%M")
     source_revision = run(["git", "rev-parse", "--short", "HEAD"]) or "working-tree"
 
@@ -472,24 +606,31 @@ def render_html() -> str:
     overview_rows = []
     for row in matrix:
         skill = row["skill"]
-        source_projects = "、".join(str(project) for project in skill["source_projects"])
-        source_paths = "；".join(str(path) for path in skill["source_paths"][:4])
+        origin_projects = [str(project) for project in skill.get("origin_projects", skill["source_projects"])]
+        found_projects = [str(project) for project in skill["source_projects"]]
+        source_projects = "、".join(found_projects)
+        source_roots = "、".join(origin_projects)
+        source_paths = "；".join(str(path) for path in skill["source_paths"][:6])
+        member_display_names = [str(item) for item in skill.get("member_display_names", [skill["display_name"]])]
+        member_text = "、".join(member_display_names)
+        member_count = str(skill.get("member_count", len(member_display_names)))
         leaders = row["leading_projects"]
         mature_projects = [p for p in row["mature_projects"] if p not in leaders]
         adopted = [c["project"].label for c in row["cells"] if c["status"] == "adopted"]
         partial = [c["project"].label for c in row["cells"] if c["status"] == "partial"]
         missing_count = sum(1 for c in row["cells"] if c["status"] == "none")
-        if leaders == ["AcknowledgeBase"]:
-            next_step = "源头当前领先；下一步是把源技能增量按目标工程结构迁移出去。"
+        if leaders and set(leaders).issubset(set(origin_projects)):
+            next_step = "源头当前领先；下一步是按目标工程结构迁移或补齐缺口。"
         elif leaders:
-            next_step = "复核领先工程的可复用增量，抽象后反哺源 skill / TRANSFER / sensor。"
+            next_step = "复核领先工程的可复用增量，抽象后反哺源能力 / TRANSFER / sensor。"
         else:
-            next_step = "先补可检测的 skill / TRANSFER / sensor / views 证据。"
+            next_step = "先补可检测的 skill / governance / TRANSFER / sensor / views 证据。"
         compact_cards.append(
             "<article class=\"skill-card\">"
             f"<div class=\"skill-card-head\"><div><code>{html.escape(skill['name'])}</code>"
             f"<p>{html.escape(skill['description'])}</p></div>"
             f"<span class=\"score\">{row['max_score']}</span></div>"
+            f"<p class=\"source-meta\"><strong>源头</strong>{html.escape(source_roots if source_roots else '暂无')}<span>发现于：{html.escape(source_projects if source_projects else '暂无')}</span><span>子项：{html.escape(member_text)}（{html.escape(member_count)}）</span></p>"
             "<div class=\"compact-grid\">"
             f"<div><strong>领先</strong><span>{html.escape('、'.join(leaders) if leaders else '暂无')}</span></div>"
             f"<div><strong>成熟</strong><span>{html.escape('、'.join(mature_projects) if mature_projects else '暂无')}</span></div>"
@@ -497,17 +638,19 @@ def render_html() -> str:
             f"<div><strong>局部 / 缺口</strong><span>{html.escape('、'.join(partial[:4]) if partial else '暂无局部')}；{missing_count} 个未见</span></div>"
             "</div>"
             f"<p class=\"next-step\">{html.escape(next_step)}</p>"
-            f"<p class=\"source-line\">found in: {html.escape(source_projects)} · TRANSFER: {html.escape(str(skill['has_transfer']))} · max score: {row['max_score']} · paths: {html.escape(source_paths)}</p>"
+            f"<p class=\"source-line\">source roots: {html.escape(source_roots)} · found in: {html.escape(source_projects)} · TRANSFER: {html.escape(str(skill['has_transfer']))} · max score: {row['max_score']} · paths: {html.escape(source_paths)}</p>"
             "</article>"
         )
         overview_cells = "\n".join(
             f"<td class=\"heat-cell heat-{c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
             for c in row["cells"]
         )
-        recommendation = "领先：" + "、".join(leaders) if leaders else "补可检测证据"
+        leader_text = "领先：" + "、".join(leaders) if leaders else "补可检测证据"
+        source_text = "源头：" + (source_roots if source_roots else "暂无")
+        subitem_text = f"子项：{member_count}"
         overview_rows.append(
             "<tr>"
-            f"<th title=\"{html.escape(skill['name'])}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(recommendation)}</span></th>"
+            f"<th title=\"{html.escape(skill['name'])}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(source_text)}</span><span>{html.escape(leader_text)}</span><span>{html.escape(subitem_text)}</span></th>"
             f"{overview_cells}</tr>"
         )
 
@@ -524,14 +667,14 @@ def render_html() -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>跨工程技能与治理能力成熟度矩阵</title>
   <meta name="lens_id" content="lens-skill-maturity-matrix-current">
-  <meta name="focus_object" content="discovered skills and selected governance capabilities across AcknowledgeBase and registered projects">
+  <meta name="focus_object" content="grouped skill themes and selected governance capabilities across AcknowledgeBase and registered projects">
   <meta name="lens_type" content="knowledge">
   <meta name="generated_at" content="{html.escape(generated)}">
   <meta name="source_revision" content="{html.escape(source_revision)}">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
-  <meta name="source_scope" content="all discovered project skill files plus supplemental governance capability rows and local transfer, governance, sensor, template, view, and selected log evidence">
-  <meta name="evidence_boundary" content="confirmed local skill-file discovery plus supplemental governance capability discovery and content-volume signals; rows and relative maturity are recomputed for every project on every refresh; no runtime validation">
-  <meta name="context_frame" content="cross-project skill and governance capability catalog and maturity ranking lens; source project participates in the same ranking as downstream projects">
+  <meta name="source_scope" content="all discovered project skill files grouped into skill themes plus supplemental governance capability rows and local transfer, governance, sensor, template, view, and selected log evidence">
+  <meta name="evidence_boundary" content="confirmed local skill-file discovery plus supplemental governance capability discovery and content-volume signals; detailed skills are grouped into larger themes for the overview table; no runtime validation">
+  <meta name="context_frame" content="cross-project grouped skill-theme and governance capability catalog with source roots, subitems, and maturity ranking; source project participates in the same ranking as downstream projects">
   <meta name="output_mode" content="html_report / print_view">
   <meta name="visual_structure" content="overview matrix / compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
@@ -604,6 +747,9 @@ def render_html() -> str:
     .skill-card-head {{ display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; margin-bottom: 12px; }}
     .skill-card code {{ color: #172033; font-size: 14px; font-weight: 800; white-space: normal; }}
     .skill-card p {{ margin: 5px 0 0; color: var(--muted); font-size: 12px; }}
+    .source-meta {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -4px 0 12px !important; color: #263244 !important; }}
+    .source-meta strong {{ display: inline-flex; min-height: 24px; align-items: center; padding: 2px 8px; border-radius: 999px; background: #e7eef6; color: #27415f; font-size: 12px; }}
+    .source-meta span {{ display: inline-flex; min-height: 24px; align-items: center; color: var(--muted); font-size: 12px; }}
     .score {{ display: inline-flex; align-items: center; justify-content: center; min-width: 42px; min-height: 34px; border-radius: 8px; background: #e7eef6; color: #27415f; font-weight: 900; }}
     .compact-grid {{ display: grid; grid-template-columns: 1.1fr 1fr 1fr 0.8fr; gap: 10px; }}
     .compact-grid div {{ min-height: 74px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #fbfcfe; }}
@@ -641,20 +787,21 @@ def render_html() -> str:
     <div class="wrap hero">
       <div class="eyebrow">Skill and governance capability maturity lens · 每三天刷新</div>
       <h1>跨工程技能与治理能力成熟度矩阵</h1>
-      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并追加少量不是 SKILL.md、但会影响跨工程协作的治理能力行，例如 Goal Contract。源工程也参与同一套证据评分；矩阵行、技能详情、来源工程、TRANSFER、sensor、views、template、governance 和内容体量信号都会同步更新。</p>
+      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并把复盘、调研、文档维护、项目上下文入口等同主题能力归并成大项；细分子项在详情卡展开。矩阵显式标注源头工程、发现工程、领先工程、TRANSFER、sensor、views、template、governance 和内容体量信号。</p>
       <div class="meta-row">
         <span class="pill">生成：{html.escape(generated)}</span>
         <span class="pill">源版本：{html.escape(source_revision)}</span>
-        <span class="pill">发现技能 / 能力项：{len(skills)}</span>
+        <span class="pill">汇总大项：{len(skills)}</span>
+        <span class="pill">底层细项：{total_member_count}</span>
         <span class="pill">工程数：{len(PROJECTS)}</span>
       </div>
     </div>
   </header>
   <main class="wrap">
     <section class="cards">
-      <div class="card"><strong>{len(skills)}</strong><span>本轮发现技能 / 能力项</span></div>
-      <div class="card"><strong>{sum(1 for s in skills if s['has_transfer'] == 'yes')}</strong><span>已有 TRANSFER.md</span></div>
-      <div class="card"><strong>{sum(1 for row in matrix if row['leading_projects'] == ['AcknowledgeBase'])}</strong><span>源工程当前领先</span></div>
+      <div class="card"><strong>{len(skills)}</strong><span>本轮汇总技能 / 能力大项</span></div>
+      <div class="card"><strong>{total_member_count}</strong><span>底层技能 / 能力细项</span></div>
+      <div class="card"><strong>{sum(1 for s in skills if s['has_transfer'] == 'yes')}</strong><span>大项含 TRANSFER.md</span></div>
       <div class="card"><strong>3d</strong><span>建议刷新周期</span></div>
     </section>
 
@@ -673,7 +820,7 @@ def render_html() -> str:
           <tbody>{''.join(overview_rows)}</tbody>
         </table>
       </div>
-      <p class="overview-note">格子显示本轮动态得分后的相对等级；数字是该工程在该技能或治理能力下的证据信号分，不代表目标工程运行验收。</p>
+      <p class="overview-note">格子显示本轮动态得分后的相对等级；第一列显示源头工程、领先工程和子项数量。数字是该工程在该技能主题或治理能力下的证据信号分，不代表目标工程运行验收。</p>
     </section>
 
     <section>
@@ -690,7 +837,7 @@ def render_html() -> str:
 
     <section class="card boundary">
       <h2>证据边界</h2>
-      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，并追加少量补充治理能力行后归并为矩阵行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度。blocked：路径不可读。</p>
+      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成总表大项，再追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度。blocked：路径不可读。</p>
       <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；吸收动作仍必须先按上游归一规则抽象系统层信息，剥离项目事实、业务链路、运行 ID、本地路径和一次性 handoff。</p>
       <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
     </section>

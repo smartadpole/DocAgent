@@ -32,7 +32,7 @@
 
 | lens_id | focus_object | lens_type | current_view | source_pages | updated | staleness_policy |
 | --- | --- | --- | --- | --- | --- | --- |
-| `lens-skill-maturity-matrix-current` | 所有工程动态发现技能项和补充治理能力项的成熟度排名、领先工程和反哺候选 | knowledge | [[views/current/governance/skill-maturity-matrix.html]] | [[skills/README]], [[projects/governance/registry]], `scripts/update_skill_maturity_matrix.py` | 2026-06-12 | 任一工程 skill / TRANSFER / governance / sensor / views / template 路径、补充治理能力清单、跨工程治理注册表或三天刷新任务发生变化时刷新。 |
+| `lens-skill-maturity-matrix-current` | 所有工程动态发现技能项和补充治理能力项按主题归并后的源头、子项、成熟度排名和反哺候选 | knowledge | [[views/current/governance/skill-maturity-matrix.html]] | [[skills/README]], [[projects/governance/registry]], `scripts/update_skill_maturity_matrix.py` | 2026-06-12 | 任一工程 skill / TRANSFER / governance / sensor / views / template 路径、补充治理能力清单、主题归并规则、跨工程治理注册表或三天刷新任务发生变化时刷新。 |
 | `lens-xinzhi-ruisheng-company-current` | 北京芯智睿声科技有限公司企业调研 | knowledge | [[views/current/knowledge/xinzhi-ruisheng-company.html]] | [[articles/2026-06-09-xinzhi-ruisheng-company-research]], [[concepts/beijing-xinzhi-ruisheng]] | 2026-06-09 | 企业公开进展、医疗器械注册、临床 / 取证阶段、商业化上市节奏或核心来源变化时刷新。 |
 
 ## Snapshot Lenses
