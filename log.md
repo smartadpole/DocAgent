@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 修订 Codex Goal 公开教程 HTML 文案
+
+- **记录人**：sunhao
+- **用户意图**：用户指出 Codex Goal HTML 公开教程的文案不够专业，目标表达有偏移，并且页面里存在多余信息，希望收窄成更适合外发的一页说明。
+- **主题**：
+  1. 将页面口吻从“纠偏提醒”调整为“正向定义”，突出 Codex Goal 是面向可验证结果的长任务模式。
+  2. 收窄核心公式为“目标状态 + 验证循环 + 停止边界”，避免把内部治理语汇暴露给外部读者。
+  3. 去除页面可见的 lens 元信息，只保留公开读者需要的说明、三步框架和官方参考。
+- **关键动作**：
+  1. 更新 [[views/current/knowledge/codex-goal-public-guide.html]] 的标题、导语、核心公式、三步说明、适用 / 不适合对照和来源说明。
+  2. 将导出、打印和 PNG 预览相关元信息移入 HTML 注释，继续满足持久 lens sensor，但不出现在公开页面正文中。
+  3. 重新生成 ignored PDF / PNG：`views/.exports/codex-goal-public-guide.pdf`、`views/.exports/codex-goal-public-guide.png`、`views/.exports/codex-goal-public-guide-mobile.png`。
+- **结论**：公开 HTML 版现在聚焦一个判断：Codex Goal 应围绕可验证结果持续推进，并在证据不足、权限受限或需要人工裁决时停下来。
+- **影响页面**：[[views/current/knowledge/codex-goal-public-guide.html]]、[[log]]；ignored export：`views/.exports/codex-goal-public-guide.pdf`、`views/.exports/codex-goal-public-guide.png`、`views/.exports/codex-goal-public-guide-mobile.png`。
+
 ### 收窄图文 lens sensor 对派生诊断页的重复检查
 
 - **记录人**：sunhao

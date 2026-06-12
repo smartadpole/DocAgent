@@ -242,18 +242,6 @@
       padding-left: 18px;
     }
 
-    .lens-meta {
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px dashed var(--line);
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .lens-meta p {
-      margin: 4px 0;
-    }
-
     a {
       color: var(--blue);
       text-decoration-thickness: 1px;
@@ -318,60 +306,60 @@
   <main>
     <section class="sheet" aria-labelledby="title">
       <div class="eyebrow">Codex Goal 使用教程</div>
-      <h1 id="title">别把 Goal 当自动跑按钮。</h1>
-      <p class="lead">对外发布时只要突出这一点：Goal 的核心是让 Codex 围绕一个可验证停止条件持续推进。</p>
+      <h1 id="title">Codex Goal：对准可验证结果</h1>
+      <p class="lead">适用于迁移、重构、性能优化等需要多轮推进的工作。启动前明确目标状态、验证循环和停止边界。</p>
 
       <section class="point" aria-label="一眼判断">
         <div>
-          <strong>Goal = 目标 + 证据 + 停止条件</strong>
-          <span>目标告诉 Codex 要去哪里；证据告诉它是否到达；停止条件告诉它什么时候必须停下来汇报。</span>
+          <strong>Goal = 目标状态 + 验证循环 + 停止边界</strong>
+          <span>目标定义结果，验证循环衡量进展；停止条件让 Codex 在证据不足、权限受限或需要人工裁决时暂停。</span>
         </div>
-        <div class="badge">可验证<br>停止</div>
+        <div class="badge">验证<br>驱动</div>
       </section>
 
       <section class="flow" aria-label="三步使用框架">
         <article class="step goal" data-num="1">
-          <h2>写清一个目标</h2>
-          <p>任务要比一次 prompt 大，但比开放 backlog 小。用一句话说清最终要达成的状态。</p>
+          <h2>定义目标状态</h2>
+          <p>目标要比一次 prompt 更持久，但比开放 backlog 更聚焦。先写清最终应达到的可观察状态。</p>
         </article>
         <article class="step evidence" data-num="2">
-          <h2>绑定验证证据</h2>
-          <p>指定测试、benchmark、构建、截图、报告或 artifact。没有证据，Goal 就没有完成标准。</p>
+          <h2>建立验证循环</h2>
+          <p>指定测试、benchmark、构建、截图、报告或 artifact。没有验证循环，Goal 就缺少完成标准。</p>
         </article>
         <article class="step stop" data-num="3">
-          <h2>设定停止条件</h2>
-          <p>权限不足、证据不足、预算耗尽或需要人类裁决时，Codex 应暂停并说明缺口。</p>
+          <h2>设定停止边界</h2>
+          <p>当权限不足、验证失败、预算耗尽或需要人工判断时，Codex 应暂停并说明当前缺口。</p>
         </article>
       </section>
 
       <section class="formula" aria-label="可复制公式">
         <h2>可复制公式</h2>
-        <code>/goal 完成 &lt;明确目标&gt;，直到 &lt;可验证完成状态&gt;。使用 &lt;测试 / benchmark / artifact&gt; 检查进展，保持 &lt;约束&gt;，只在 &lt;允许范围&gt; 内修改。若出现 &lt;停止条件&gt;，暂停并报告已有证据、缺口和需要的输入。</code>
+        <code>/goal 达成 &lt;目标状态&gt;，并用 &lt;测试 / benchmark / artifact&gt; 持续验证。保持 &lt;约束&gt;，只在 &lt;允许范围&gt; 内修改；若出现 &lt;停止条件&gt;，暂停并报告已有证据、剩余缺口和所需输入。</code>
       </section>
 
       <section class="two-col" aria-label="适用与误用">
         <article class="note">
           <h2>适合</h2>
           <ul>
-            <li>迁移、重构、性能优化、flaky test 调查。</li>
-            <li>有清楚目标、验证循环和可持续推进空间。</li>
+            <li>迁移、重构、性能优化、flaky test 定位。</li>
+            <li>结果清楚，并且能通过测试、指标或产物验证。</li>
             <li>需要 Codex 跨多轮保持同一个完成标准。</li>
           </ul>
         </article>
         <article class="note">
-          <h2>避免</h2>
+          <h2>不适合</h2>
           <ul>
-            <li>“继续完善”这类没有终点线的 goal。</li>
-            <li>把日志、启动成功或局部通过误当完成。</li>
-            <li>没有停止条件，导致任务无限扩散。</li>
+            <li>目标只有“继续完善”“优化一下”等模糊表达。</li>
+            <li>把日志、启动成功或局部通过当作完成证据。</li>
+            <li>缺少暂停、升级或人工裁决条件。</li>
           </ul>
         </article>
       </section>
 
       <footer class="sources">
         <div>
-          <strong>来源与证据边界</strong>
-          <p>confirmed：OpenAI Codex 官方文档说明 `/goal` 用于长任务、可验证停止条件和持久目标；本页是对公开教程的简化图文 lens。</p>
+          <strong>说明</strong>
+          <p>基于 OpenAI Codex 官方文档整理；本页用于快速讲解，不替代官方文档和具体项目的验收标准。</p>
         </div>
         <div>
           <strong>官方参考</strong>
@@ -383,14 +371,15 @@
         </div>
       </footer>
 
-      <aside class="lens-meta" aria-label="lens metadata">
-        <p><strong>output_mode:</strong> canonical current HTML lens / print view.</p>
-        <p><strong>export_profile:</strong> A4 landscape PDF and full-page PNG generated into ignored <code>views/.exports/</code>.</p>
-        <p><strong>print_profile:</strong> `@page` A4 landscape, `@media print`, printBackground enabled, avoid breaking key cards.</p>
-        <p><strong>equivalence_profile:</strong> HTML / PDF / PNG are generated from the same source pack and the same canonical HTML / source / manifest.</p>
-        <p><strong>default_auto_exports:</strong> Playwright generates PDF and PNG whenever this persistent lens is refreshed.</p>
-        <p><strong>conversation_png_preview:</strong> final response should display <code>views/.exports/codex-goal-public-guide.png</code>.</p>
-      </aside>
+      <!--
+      lens metadata:
+      output_mode: canonical current HTML lens / print view.
+      export_profile: A4 landscape PDF and full-page PNG generated into ignored views/.exports/.
+      print_profile: @page A4 landscape, @media print, printBackground enabled, avoid breaking key cards.
+      equivalence_profile: HTML / PDF / PNG are generated from the same source pack and the same canonical HTML / source / manifest.
+      default_auto_exports: Playwright generates PDF and PNG whenever this persistent lens is refreshed.
+      conversation_png_preview: final response should display views/.exports/codex-goal-public-guide.png.
+      -->
     </section>
   </main>
 </body>
