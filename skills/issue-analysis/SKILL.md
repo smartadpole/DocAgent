@@ -1,6 +1,10 @@
 ---
 name: issue-analysis
 description: 主控侧 issue / incident 分析技能。用于处理模糊问题、故障、联调失败、验收争议、跨工程阻塞、状态/日志/API/DB/artifact/报告不一致、责任边界不清或需要分工协调的问题；帮助 Codex 对齐事实源、下游处理权威证据、定位最小根因链、裁定主责与协同方、拆解跨工程任务、设计联测/验收方案，并决定主控文档如何吸收子工程反馈。
+maturity: leading
+evidence_signals: [skill, README entry, governance, sensor, TRANSFER]
+transfer_ready: true
+sensor: python3 scripts/check_all.py --only skill-maturity
 ---
 
 # Issue Analysis
@@ -12,6 +16,14 @@ description: 主控侧 issue / incident 分析技能。用于处理模糊问题�
 本技能服务主控文档项目，而不是某一个子工程。主控侧负责定义需求 / Gate / TODO / FP / 验收口径，读取多个子工程证据，裁定整体状态，组织分工和联测，并把子工程 handoff 吸收到项目事实源。
 
 不要照搬子工程 skill 的业务事实、目录规则、提交规则或本地 handoff 规则。可以吸收它们的抽象方法，例如事实源分层、计数 / 状态单位归一、边界归属、错误传播、证据闭环和 agent 过程自检。
+
+## 成熟度与证据信号
+
+- `maturity`：`leading`。本技能已具备技能正文、README 入口、治理路由、专项 sensor 和迁移清单；后续成熟度回归由 `python3 scripts/check_all.py --only skill-maturity` 检查。
+- `template`：不单独维护第二份 issue-analysis 模板；本技能的输出格式已经是可复制骨架。若后续出现反复产出正式 Issue 案件页，优先回到 [[templates/development-issue-template]]，不在技能页复制项目案件模板。
+- `governance`：响应模式、验收关闭、子工程写入边界和报告不上推口径分别回到 [[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 和事项 / 报告模型。
+- `TRANSFER`：跨工程吸收边界见 [[skills/issue-analysis/TRANSFER]]；迁移时只吸收事实源分层、最小根因链、责任边界、联测方案和回写守卫，不复制本库项目事实。
+- `evidence boundary`：本技能输出的是问题分析、分工和验证方案；不能替代正式 Issue 案件、测试报告、TASK / EP / FP / Gate 关闭或人工确认。
 
 ## 主控视角
 

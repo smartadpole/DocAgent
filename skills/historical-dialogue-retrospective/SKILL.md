@@ -1,6 +1,10 @@
 ---
 name: historical-dialogue-retrospective
 description: 历史对话与 Agent 工作流复盘技能。用于用户要求复盘历史对话、当前对话、Harness episode、log 记录、agent 工作方式、效率、质量、偏差、协作链路或工作流改进时；帮助 Codex 区分当前上下文、log、harness ledger、原始 session / rollout、git diff / commit、检查输出、memory 和受影响页面，产出 agent 偏差判断、workflow 改进候选和沉淀路由。
+maturity: leading
+evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER]
+transfer_ready: true
+sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 ---
 
 # Historical Dialogue Retrospective
@@ -16,6 +20,14 @@ description: 历史对话与 Agent 工作流复盘技能。用于用户要求复
 - 发现 agent 工作是否偏离用户目标、当前阶段、证据边界或目录归类。
 - 发现 workflow、模板、sensor、技能、规则或记忆路由的可改进点。
 - 把历史对话中的可复用经验沉淀到 [[concepts/agent-work-retrospective]]、[[projects/retrospectives/README]]、[[harness-feedback-ledger]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]]、`templates/` 或技能层。
+
+## 成熟度与证据信号
+
+- `maturity`：`leading`。本技能已具备技能正文、README 入口、复盘模板、治理路由、专项 sensor 和迁移清单；后续成熟度回归由 `python3 scripts/check_all.py --only retrospective-system,skill-maturity` 检查。
+- `template`：标准复盘骨架在 [[templates/project-retrospective-template]]，技能页只承接历史对话 / Agent 工作流的执行方法，不复制模板正文。
+- `governance`：复盘行动分流、Harness episode、规则晋升、模板和 sensor 更新分别回到 [[projects/retrospectives/README]]、[[harness-feedback-ledger]]、[[harness-evolution]]、[[WORKFLOW]]、[[POLICY]] 和 [[AGENTS]]。
+- `TRANSFER`：跨工程吸收边界见 [[skills/historical-dialogue-retrospective/TRANSFER]]；迁移时必须先让目标工程自检已有复盘 / postmortem / incident / lessons 结构，避免新建平行体系。
+- `evidence boundary`：本技能评价的是 agent 如何完成工作和如何沉淀经验；不能替代项目结果复盘、Issue / 事故事实档案、验收报告或状态关闭。
 
 ## 触发场景
 

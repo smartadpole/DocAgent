@@ -9,6 +9,20 @@
 
 ## 2026-06-12
 
+### 将现有技能全部对标成熟度最佳设计
+
+- **记录人**：Codex
+- **用户意图**：在已经建立技能成熟度模型后，继续要求“各种技能都对标最新最优秀的设计”，让当前已有技能本身也达到最佳设计，而不是只有模板和说明对齐。
+- **关键动作**：
+  1. 为 [[skills/issue-analysis/SKILL]] 增加 `maturity`、`evidence_signals`、`transfer_ready`、`sensor` frontmatter，并补“成熟度与证据信号”章节，明确它的模板等价说明、治理接线、迁移边界和不上推边界。
+  2. 为 [[skills/historical-dialogue-retrospective/SKILL]] 增加同样的成熟度字段和证据信号章节，明确复盘模板、retrospective-system sensor、行动分流和复盘不上推边界。
+  3. 新增 [[skills/issue-analysis/TRANSFER]] 和 [[skills/historical-dialogue-retrospective/TRANSFER]]，把每个技能可吸收内容、只能抽象吸收内容、禁止复制内容、目标工程结构自检和验证要求写成同目录迁移清单。
+  4. 升级 [[templates/skill-template]]，要求 `transfer_ready: true` 的技能必须有同目录 `TRANSFER.md`。
+  5. 升级 `scripts/check_skill_maturity.py`，强制每个 `skills/*/SKILL.md` 都具备成熟度 frontmatter、成熟度章节；如果 `transfer_ready: true`，必须存在并检查 `TRANSFER.md` 的核心章节。
+- **检查结果**：`python3 scripts/check_all.py --only skill-maturity` 已通过；收尾前再跑完整 `python3 scripts/check_all.py`。
+- **二阶反思**：技能对标最佳设计不能停在“以后新技能按模板写”；已有高频技能也必须被同一套 maturity / transfer / sensor 约束拉齐。后续新增技能若暂不适合迁移，必须显式写 `transfer_ready: false` 和原因，不能含糊跳过。
+- **影响页面**：[[skills/issue-analysis/SKILL]]、[[skills/issue-analysis/TRANSFER]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/TRANSFER]]、[[skills/README]]、[[templates/skill-template]]、[[log]]、`scripts/check_skill_maturity.py`。
+
 ### 吸收技能成熟度矩阵的多证据信号设计
 
 - **记录人**：Codex

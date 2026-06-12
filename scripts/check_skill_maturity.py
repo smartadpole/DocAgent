@@ -26,13 +26,31 @@ TEMPLATE_TERMS = (
     "sensor:",
     "## 成熟度与证据信号",
     "evidence boundary",
+    "TRANSFER.md",
 )
 CHECK_ALL_TERMS = ("skill-maturity", "check_skill_maturity.py")
 WORKFLOW_TERMS = ("skill-maturity", "技能成熟度")
 AGENT_TERMS = ("skill-maturity", "专项 sensor")
 STATUS_TERMS = ("skill-maturity", "技能成熟度")
-SKILL_REQUIRED_TERMS = ("## 定位", "## 输出格式", "## 禁止项")
+SKILL_FRONTMATTER_FIELDS = (
+    "name:",
+    "description:",
+    "maturity:",
+    "evidence_signals:",
+    "transfer_ready:",
+    "sensor:",
+)
+SKILL_REQUIRED_TERMS = ("## 定位", "## 成熟度与证据信号", "## 输出格式", "## 禁止项")
 SKILL_WORKFLOW_TERMS = ("## 工作流", "## 响应模式", "## 工作链还原")
+SKILL_MATURITY_TERMS = ("maturity", "evidence_signals", "transfer_ready", "sensor", "evidence boundary")
+TRANSFER_REQUIRED_TERMS = (
+    "## 能力目标",
+    "## 可以吸收",
+    "## 只能抽象吸收",
+    "## 禁止复制",
+    "## 目标工程结构自检",
+    "## 验证要求",
+)
 FRONTMATTER_RE = re.compile(r"\A---\n(?P<body>.*?)\n---\n", re.DOTALL)
 
 
@@ -50,15 +68,23 @@ def require_terms(rel: str, text: str, terms: tuple[str, ...], errors: list[str]
             errors.append(f"{rel}: missing skill maturity term {term!r}")
 
 
-def check_skill_frontmatter(rel: str, text: str, errors: list[str]) -> None:
+def parse_frontmatter(rel: str, text: str, errors: list[str]) -> str:
     match = FRONTMATTER_RE.match(text)
     if not match:
         errors.append(f"{rel}: missing YAML frontmatter")
-        return
+        return ""
     frontmatter = match.group("body")
-    for key in ("name:", "description:"):
+    for key in SKILL_FRONTMATTER_FIELDS:
         if key not in frontmatter:
             errors.append(f"{rel}: missing frontmatter field {key}")
+    return frontmatter
+
+
+def frontmatter_bool(frontmatter: str, key: str) -> bool:
+    for line in frontmatter.splitlines():
+        if line.strip().startswith(f"{key}:"):
+            return line.split(":", 1)[1].strip().lower() == "true"
+    return False
 
 
 def check_skill_files(repo: Path, readme: str, errors: list[str]) -> None:
@@ -70,13 +96,21 @@ def check_skill_files(repo: Path, readme: str, errors: list[str]) -> None:
     for path in skill_files:
         rel = path.relative_to(repo).as_posix()
         text = path.read_text(encoding="utf-8")
-        check_skill_frontmatter(rel, text, errors)
+        frontmatter = parse_frontmatter(rel, text, errors)
         require_terms(rel, text, SKILL_REQUIRED_TERMS, errors)
+        require_terms(rel, text, SKILL_MATURITY_TERMS, errors)
         if not any(term in text for term in SKILL_WORKFLOW_TERMS):
             errors.append(f"{rel}: missing workflow or response-mode section")
         wikilink = f"[[{path.relative_to(repo).with_suffix('').as_posix()}]]"
         if wikilink not in readme:
             errors.append(f"skills/README.md: missing skill entry {wikilink}")
+        transfer = path.with_name("TRANSFER.md")
+        if frontmatter_bool(frontmatter, "transfer_ready"):
+            if not transfer.exists():
+                errors.append(f"{transfer.relative_to(repo).as_posix()}: transfer_ready skill is missing TRANSFER.md")
+            else:
+                transfer_text = transfer.read_text(encoding="utf-8")
+                require_terms(transfer.relative_to(repo).as_posix(), transfer_text, TRANSFER_REQUIRED_TERMS, errors)
 
 
 def check_skill_maturity(repo: Path) -> list[str]:
