@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 复盘 Codex Goal 公开教程长对话协作问题
+
+- **记录人**：sunhao
+- **用户意图**：用户指出当前对话非常长，说明围绕 Codex Goal 教程的 agent 建设不够完善，才需要用户持续广泛对话纠偏；要求发动复盘技能，记录并全面思考潜在问题，包括用户个人思维风格，以供未来升级反思。
+- **主题**：
+  1. 将本轮公开教程、HTML 图文页、案例化修订和工程事项版新增过程作为 Agent 工作复盘对象。
+  2. 识别可外发教程预检缺口：受众、案例入口、公开措辞、内部处理词、版本共存和完成合同没有在首轮稳定收敛。
+  3. 把用户协作风格作为项目级背景轻量记录：偏好案例进入、边界敏感、会通过连续追问把成果压到可展示和可验证。
+- **关键动作**：
+  1. 新增 [[projects/retrospectives/2026-06-12-codex-goal-guide-agent-collaboration]]，形成标准 Agent 工作复盘档案。
+  2. 更新 [[projects/retrospectives/README]]、[[projects/memory/shared]] 和 [[harness-feedback-ledger]]，分别承接索引、协作背景和 observed episode。
+  3. 本轮暂不直接新增硬规则或 sensor，只把公开教程预检清单、public-copy lint、连续多轮纠偏后暂停重定向列为后续候选。
+- **结论**：这次长对话的主要问题不是工具执行能力，而是前置产物合同不足；后续类似“对外教程 / HTML lens”应更早明确读者、案例、公开措辞、版本策略和停止重定向条件。
+- **影响页面**：[[projects/retrospectives/2026-06-12-codex-goal-guide-agent-collaboration]]、[[projects/retrospectives/README]]、[[projects/memory/shared]]、[[harness-feedback-ledger]]、[[log]]。
+
 ### 刷新技能矩阵并更新 Software/wiki 领先信号
 
 - **记录人**：sunhao

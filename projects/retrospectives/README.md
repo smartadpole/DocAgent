@@ -87,6 +87,7 @@ tags: [project, retrospective, learning-loop]
 
 ## 当前索引
 
+- [[projects/retrospectives/2026-06-12-codex-goal-guide-agent-collaboration]]：Codex Goal 公开教程长对话协作复盘，聚焦可外发教程为何依赖多轮用户纠偏才收敛，以及公开产物预检、案例入口、版本分层和用户协作风格的改进候选。
 - [[projects/retrospectives/2026-06-09-research-skill-harness-omission]]：调研技能加固后漏做 Harness 判断复盘，聚焦当前对话中的 Agent 工作偏差、收尾漏项和候选改进。
 
 ## 共性主题
