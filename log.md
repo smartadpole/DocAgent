@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 将技能矩阵首屏从重复矩阵改为优先摘要
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“通用 / 可迁移：优先关注矩阵”和后方完整矩阵内容重复；既然完整能力矩阵可以展开，首屏不应再重复一份热力表。
+- **主题**：
+  1. 将默认展开的优先关注区从矩阵截取改为摘要卡，只说明哪些能力先看、为什么先看、下一步看哪里。
+  2. 保留完整能力 x 工程热力矩阵，但只在折叠区出现一次，避免同一批单元格重复呈现。
+  3. 收短 HTML hero 高度，减少 PNG / 页面首屏空白，让主次结构更快进入正文。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，新增优先摘要卡渲染，移除默认展开区的热力矩阵重复。
+  2. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`。
+  3. 用 `scripts/export_skill_maturity_matrix.py` 重新导出 ignored PDF / PNG。
+- **结论**：后续读者默认先看优先摘要，只有需要全量横向审计时再展开完整矩阵；完整矩阵不再与首屏内容重复。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 修复技能矩阵 PDF 导出丢色
 
 - **记录人**：sunhao

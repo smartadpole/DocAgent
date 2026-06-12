@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-12 17:37",
-  "source_revision": "0a08d8e",
+  "generated_at": "2026-06-12 17:42",
+  "source_revision": "f7ee68a",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
