@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 刷新跨工程技能矩阵并吸收 Software/wiki 证据变化
+
+- **记录人**：sunhao
+- **用户意图**：用户触发技能成熟度矩阵刷新自动化，并强调每次刷新都要重新分析所有工程、源头工程和技能项变化，而不是只改状态格。
+- **主题**：
+  1. 用当前动态发现规则重扫 AcknowledgeBase、Software/wiki、DocCustomeranalysis、DocFilmCommunity、fetch-adapter、train_platform、prefect、customeranalysis、LifeOS、DocERP、H100 和 17lang 的 skill / governance / sensor / view / template 证据。
+  2. 重新确认源头工程也参与同场排名，领先 / 成熟 / 接入只表示本轮证据信号强弱，不表示运行验收结论。
+  3. 识别 Software/wiki 新增 skill / TRANSFER 证据后，对调研、知识关联、技能迁移、治理审计、问题聚焦呈现和文档维护等大项重新排序。
+- **关键动作**：
+  1. 运行 `scripts/update_skill_maturity_matrix.py`，重新生成 [[views/current/governance/skill-maturity-matrix.html]]。
+  2. 矩阵底层细项从 24 更新为 25，含 `TRANSFER.md` 的大项从 3 更新为 8。
+  3. 从同一 canonical HTML 重新导出 ignored PDF / PNG：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+- **结论**：本轮不需要改脚本规则；矩阵已经按全工程动态发现和源头参与排名刷新，长期解释上的主要变化是 Software/wiki 的可迁移技能源证据增强。
+- **影响页面**：[[views/current/governance/skill-maturity-matrix.html]]、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 输出可对外发布的 Codex Goal 使用教程
 
 - **记录人**：sunhao
