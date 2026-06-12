@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 压缩技能矩阵热力表版式密度
+
+- **记录人**：sunhao
+- **用户意图**：用户指出完整技能矩阵虽然已经恢复，但矩阵排版不够紧凑、单元格和列宽过于浪费。
+- **主题**：
+  1. 保留完整能力 x 工程矩阵作为默认主视图。
+  2. 将热力格从大色块压缩为紧凑单元格，状态和分数同排展示。
+  3. 收紧表头、首列、边框、行高和源头标记，降低 PNG / PDF 的纵向占用。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py` 的矩阵 CSS，缩小 `min-width`、首列宽度、单元格高度和字体。
+  2. 保持 168 个矩阵单元格诊断链接、9 个优先行标记和完整矩阵默认可见。
+  3. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]、诊断页、JSON 和 ignored PDF / PNG。
+- **结论**：后续技能矩阵页应优先保持完整矩阵可见，同时用紧凑热力表承载主视图，避免把空间浪费在重复行高和大色块上。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 恢复技能矩阵为默认主视图
 
 - **记录人**：sunhao

@@ -936,20 +936,21 @@ def render_html(context: Dict[str, Any]) -> str:
     .none {{ background: var(--gray); }}
     .blocked {{ background: var(--red); }}
     .overview-shell {{ overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }}
-    .overview-matrix {{ min-width: 1180px; width: 100%; border-collapse: separate; border-spacing: 0; }}
-    .overview-matrix th, .overview-matrix td {{ border-right: 2px solid #f8fafc; border-bottom: 2px solid #f8fafc; padding: 0; text-align: center; vertical-align: middle; }}
-    .overview-matrix thead th {{ position: sticky; top: 0; z-index: 2; background: #dfe8f1; color: #172033; font-size: 12px; padding: 10px 8px; }}
-    .overview-matrix thead th span {{ display: block; min-width: 74px; }}
-    .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #eef2f6; padding: 10px 12px; }}
-    .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 13px; line-height: 1.35; white-space: normal; }}
-    .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
-    .heat-cell {{ position: relative; min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); overflow: hidden; }}
-    .cell-link {{ position: relative; z-index: 1; display: block; width: 100%; height: 44px; color: inherit; text-decoration: none; }}
+    .overview-matrix {{ min-width: 1040px; width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }}
+    .overview-matrix th, .overview-matrix td {{ border-right: 1px solid #f8fafc; border-bottom: 1px solid #f8fafc; padding: 0; text-align: center; vertical-align: middle; }}
+    .overview-matrix thead th {{ position: sticky; top: 0; z-index: 2; background: #dfe8f1; color: #172033; font-size: 11px; line-height: 1.15; padding: 6px 5px; }}
+    .overview-matrix thead th:first-child {{ width: 220px; }}
+    .overview-matrix thead th span {{ display: block; min-width: 56px; }}
+    .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 220px; min-width: 220px; text-align: left; background: #eef2f6; padding: 6px 8px; }}
+    .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 12px; line-height: 1.2; white-space: normal; }}
+    .overview-matrix tbody th span {{ display: inline-block; margin-top: 2px; color: var(--muted); font-size: 10px; font-weight: 700; }}
+    .heat-cell {{ position: relative; height: 32px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); overflow: hidden; }}
+    .cell-link {{ position: relative; z-index: 1; display: block; width: 100%; height: 32px; color: inherit; text-decoration: none; }}
     .cell-link:focus-visible {{ outline: 3px solid rgba(255, 255, 255, 0.9); outline-offset: -5px; }}
-    .heat-cell span {{ display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}
-    .heat-cell small {{ margin-top: 1px; font-size: 10px; font-weight: 800; opacity: 0.88; }}
-    .heat-source::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 4px, rgba(23,32,51,0.72) 4px 8px); opacity: 0.95; pointer-events: none; }}
-    .heat-source::after {{ content: ""; position: absolute; inset: 4px; border: 2px solid rgba(23,32,51,0.9); border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.44); pointer-events: none; }}
+    .heat-cell span {{ display: flex; flex-direction: row; gap: 4px; align-items: center; justify-content: center; width: 100%; height: 32px; font-size: 12px; font-weight: 900; letter-spacing: 0; }}
+    .heat-cell small {{ margin: 0; font-size: 10px; font-weight: 900; opacity: 0.9; }}
+    .heat-source::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 3px, rgba(23,32,51,0.72) 3px 6px); opacity: 0.95; pointer-events: none; }}
+    .heat-source::after {{ content: ""; position: absolute; inset: 3px; border: 2px solid rgba(23,32,51,0.9); border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.44); pointer-events: none; }}
     .source-sample {{ position: relative; display: inline-flex; align-items: center; justify-content: center; width: 70px; height: 28px; border-radius: 6px; background: #005fd8; color: white; font-size: 11px; font-weight: 900; overflow: hidden; text-shadow: 0 1px 1px rgba(0,0,0,0.24); }}
     .source-sample::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 4px, rgba(23,32,51,0.72) 4px 8px); }}
     .source-sample::after {{ content: ""; position: absolute; inset: 4px; border: 2px solid rgba(23,32,51,0.9); border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.44); }}
@@ -960,8 +961,8 @@ def render_html(context: Dict[str, Any]) -> str:
     .priority-intro {{ margin-bottom: 14px; border: 1px solid #b9d6d1; border-left: 5px solid var(--teal); border-radius: 10px; background: #eef8f6; padding: 16px; }}
     .priority-intro h2 {{ margin-bottom: 6px; }}
     .priority-intro p {{ margin: 0; color: #263244; }}
-    .priority-row th {{ box-shadow: inset 5px 0 0 var(--teal); }}
-    .priority-badge {{ display: inline-flex; align-items: center; min-height: 18px; margin-top: 5px; padding: 1px 6px; border-radius: 999px; background: #e1f5f1; color: #006a61; font-size: 10px; font-style: normal; font-weight: 900; }}
+    .priority-row th {{ box-shadow: inset 4px 0 0 var(--teal); }}
+    .priority-badge {{ display: inline-flex; align-items: center; min-height: 16px; margin: 2px 0 0 0; padding: 0 5px; border-radius: 999px; background: #e1f5f1; color: #006a61; font-size: 9px; font-style: normal; font-weight: 900; }}
     .secondary-section {{ margin: 0 0 30px; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: 0 6px 18px rgba(28, 36, 48, 0.05); }}
     .secondary-section > summary {{ cursor: pointer; list-style: none; padding: 16px 18px; color: #172033; font-weight: 900; }}
     .secondary-section > summary::-webkit-details-marker {{ display: none; }}
