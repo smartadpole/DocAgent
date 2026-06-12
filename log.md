@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 为技能矩阵单元格增加可点击诊断详情
+
+- **记录人**：sunhao
+- **用户意图**：用户希望“能力 x 工程矩阵”的每个单元格可点击，进入对应工程和技能的详情，而不是只能在总览里看状态和分数。
+- **主题**：
+  1. 将矩阵总览和诊断详情拆成两个可浏览 HTML：总览保留热力矩阵，详情页承接逐工程、逐技能行动建议。
+  2. 为每个 `工程 x 技能` 生成稳定锚点，让矩阵单元格直接跳到对应诊断卡片。
+  3. 继续保留 Markdown 诊断和 JSON 数据，作为可读章节版和结构化数据源。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，新增 [[views/current/governance/skill-maturity-diagnostics.html]]，并让 [[views/current/governance/skill-maturity-matrix.html]] 的 168 个矩阵单元格链接到对应详情锚点。
+  2. 更新 `scripts/check_skill_maturity_matrix_outputs.py`，检查详情 HTML 存在、元数据同步、JSON outputs 登记、矩阵链接数量和详情页 anchor 覆盖。
+  3. 更新 [[views/README]] 和 [[views/lens-registry]]，登记 Markdown 诊断、HTML 详情和 JSON 数据三种 companion 输出。
+- **结论**：后续读者可以先在矩阵看全局分布，再点击任一格进入对应工程 / 技能的状态、分差、对标工程、已有信号、待补信号、建议修改方向和证据路径。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、`scripts/check_skill_maturity_matrix_outputs.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics]]、[[views/current/governance/skill-maturity-diagnostics.html]]、`views/current/governance/skill-maturity-matrix.data.json`、[[views/README]]、[[views/lens-registry]]、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 收紧技能矩阵的领先判定规则
 
 - **记录人**：sunhao

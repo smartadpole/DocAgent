@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-06-12 16:18",
-  "source_revision": "b76a094",
+  "generated_at": "2026-06-12 16:24",
+  "source_revision": "aa12a0d",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
     "diagnostics_md": "views/current/governance/skill-maturity-diagnostics.md",
+    "diagnostics_html": "views/current/governance/skill-maturity-diagnostics.html",
     "data_json": "views/current/governance/skill-maturity-matrix.data.json"
   },
   "projects": [
@@ -510,6 +511,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-research-capability",
       "status": "mature",
       "status_label": "成熟",
       "score": 14,
@@ -576,6 +578,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-research-capability",
       "status": "mature",
       "status_label": "成熟",
       "score": 14,
@@ -640,6 +643,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-research-capability",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -699,6 +703,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-research-capability",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -759,6 +764,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-research-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -813,6 +819,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-research-capability",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -872,6 +879,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-research-capability",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -933,6 +941,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-research-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -987,6 +996,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-research-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1041,6 +1051,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-research-capability",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -1100,6 +1111,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-research-capability",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -1160,6 +1172,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-research-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1214,6 +1227,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-retrospective-capability",
       "status": "mature",
       "status_label": "成熟",
       "score": 12,
@@ -1270,6 +1284,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-retrospective-capability",
       "status": "leader",
       "status_label": "领先",
       "score": 16,
@@ -1327,6 +1342,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-retrospective-capability",
       "status": "adopted",
       "status_label": "接入",
       "score": 10,
@@ -1383,6 +1399,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1432,6 +1449,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1481,6 +1499,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1530,6 +1549,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1579,6 +1599,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-retrospective-capability",
       "status": "adopted",
       "status_label": "接入",
       "score": 9,
@@ -1634,6 +1655,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-retrospective-capability",
       "status": "adopted",
       "status_label": "接入",
       "score": 8,
@@ -1688,6 +1710,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1737,6 +1760,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1786,6 +1810,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -1833,6 +1858,7 @@
         "Software/wiki"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-goal-contract",
       "status": "leader",
       "status_label": "领先",
       "score": 10,
@@ -1896,6 +1922,7 @@
         "Software/wiki"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-goal-contract",
       "status": "leader",
       "status_label": "领先",
       "score": 10,
@@ -1959,6 +1986,7 @@
         "Software/wiki"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-goal-contract",
       "status": "leader",
       "status_label": "领先",
       "score": 10,
@@ -2022,6 +2050,7 @@
         "Software/wiki"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-goal-contract",
       "status": "leader",
       "status_label": "领先",
       "score": 10,
@@ -2085,6 +2114,7 @@
         "Software/wiki"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-goal-contract",
       "status": "mature",
       "status_label": "成熟",
       "score": 9,
@@ -2148,6 +2178,7 @@
         "Software/wiki"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-goal-contract",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2199,6 +2230,7 @@
         "Software/wiki"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-goal-contract",
       "status": "partial",
       "status_label": "局部",
       "score": 7,
@@ -2261,6 +2293,7 @@
         "Software/wiki"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-goal-contract",
       "status": "partial",
       "status_label": "局部",
       "score": 5,
@@ -2323,6 +2356,7 @@
         "Software/wiki"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-goal-contract",
       "status": "leader",
       "status_label": "领先",
       "score": 10,
@@ -2386,6 +2420,7 @@
         "Software/wiki"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-goal-contract",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2437,6 +2472,7 @@
         "Software/wiki"
       ],
       "project": "H100",
+      "anchor": "diag-h100-goal-contract",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2488,6 +2524,7 @@
         "Software/wiki"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-goal-contract",
       "status": "partial",
       "status_label": "局部",
       "score": 4,
@@ -2548,6 +2585,7 @@
         "prefect"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2590,6 +2628,7 @@
         "prefect"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2632,6 +2671,7 @@
         "prefect"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2674,6 +2714,7 @@
         "prefect"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2716,6 +2757,7 @@
         "prefect"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-backlog-management",
       "status": "leader",
       "status_label": "领先",
       "score": 9,
@@ -2764,6 +2806,7 @@
         "prefect"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2806,6 +2849,7 @@
         "prefect"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-backlog-management",
       "status": "leader",
       "status_label": "领先",
       "score": 9,
@@ -2855,6 +2899,7 @@
         "prefect"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2897,6 +2942,7 @@
         "prefect"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2939,6 +2985,7 @@
         "prefect"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -2981,6 +3028,7 @@
         "prefect"
       ],
       "project": "H100",
+      "anchor": "diag-h100-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3023,6 +3071,7 @@
         "prefect"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-backlog-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3069,6 +3118,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 10,
@@ -3130,6 +3180,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 13,
@@ -3192,6 +3243,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 10,
@@ -3251,6 +3303,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 10,
@@ -3312,6 +3365,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 10,
@@ -3372,6 +3426,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-issue-analysis",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3425,6 +3480,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 10,
@@ -3486,6 +3542,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-issue-analysis",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3539,6 +3596,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-issue-analysis",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -3597,6 +3655,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-issue-analysis",
       "status": "mature",
       "status_label": "成熟",
       "score": 9,
@@ -3656,6 +3715,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-issue-analysis",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3709,6 +3769,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-issue-analysis",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3756,6 +3817,7 @@
         "DocCustomeranalysis"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3795,6 +3857,7 @@
         "DocCustomeranalysis"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3834,6 +3897,7 @@
         "DocCustomeranalysis"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-work-item-auto-decomposition",
       "status": "leader",
       "status_label": "领先",
       "score": 9,
@@ -3878,6 +3942,7 @@
         "DocCustomeranalysis"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3917,6 +3982,7 @@
         "DocCustomeranalysis"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3956,6 +4022,7 @@
         "DocCustomeranalysis"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -3995,6 +4062,7 @@
         "DocCustomeranalysis"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4034,6 +4102,7 @@
         "DocCustomeranalysis"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4073,6 +4142,7 @@
         "DocCustomeranalysis"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4112,6 +4182,7 @@
         "DocCustomeranalysis"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4151,6 +4222,7 @@
         "DocCustomeranalysis"
       ],
       "project": "H100",
+      "anchor": "diag-h100-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4190,6 +4262,7 @@
         "DocCustomeranalysis"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4231,6 +4304,7 @@
         "prefect"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 4,
@@ -4288,6 +4362,7 @@
         "prefect"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 7,
@@ -4347,6 +4422,7 @@
         "prefect"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-customer-group-db-readback",
       "status": "leader",
       "status_label": "领先",
       "score": 16,
@@ -4407,6 +4483,7 @@
         "prefect"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 7,
@@ -4466,6 +4543,7 @@
         "prefect"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -4520,6 +4598,7 @@
         "prefect"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -4575,6 +4654,7 @@
         "prefect"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-customer-group-db-readback",
       "status": "adopted",
       "status_label": "接入",
       "score": 8,
@@ -4630,6 +4710,7 @@
         "prefect"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -4685,6 +4766,7 @@
         "prefect"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 5,
@@ -4741,6 +4823,7 @@
         "prefect"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -4797,6 +4880,7 @@
         "prefect"
       ],
       "project": "H100",
+      "anchor": "diag-h100-customer-group-db-readback",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -4851,6 +4935,7 @@
         "prefect"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-customer-group-db-readback",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -4899,6 +4984,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-knowledge-linking",
       "status": "mature",
       "status_label": "成熟",
       "score": 14,
@@ -4955,6 +5041,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-knowledge-linking",
       "status": "mature",
       "status_label": "成熟",
       "score": 15,
@@ -5010,6 +5097,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5056,6 +5144,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5102,6 +5191,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5148,6 +5238,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5194,6 +5285,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5240,6 +5332,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5286,6 +5379,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5332,6 +5426,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5378,6 +5473,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5424,6 +5520,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-knowledge-linking",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5470,6 +5567,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-cross-project-skill-adoption-prompt",
       "status": "mature",
       "status_label": "成熟",
       "score": 10,
@@ -5519,6 +5617,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-cross-project-skill-adoption-prompt",
       "status": "mature",
       "status_label": "成熟",
       "score": 11,
@@ -5567,6 +5666,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5609,6 +5709,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5651,6 +5752,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5693,6 +5795,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5735,6 +5838,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5777,6 +5881,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5819,6 +5924,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5861,6 +5967,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5903,6 +6010,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5945,6 +6053,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-cross-project-skill-adoption-prompt",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5987,6 +6096,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-cross-project-governance-audit",
       "status": "mature",
       "status_label": "成熟",
       "score": 17,
@@ -6052,6 +6162,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-cross-project-governance-audit",
       "status": "leader",
       "status_label": "领先",
       "score": 20,
@@ -6117,6 +6228,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-cross-project-governance-audit",
       "status": "adopted",
       "status_label": "接入",
       "score": 9,
@@ -6181,6 +6293,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-cross-project-governance-audit",
       "status": "adopted",
       "status_label": "接入",
       "score": 9,
@@ -6245,6 +6358,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 7,
@@ -6306,6 +6420,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 6,
@@ -6367,6 +6482,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -6428,6 +6544,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 7,
@@ -6490,6 +6607,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 6,
@@ -6553,6 +6671,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 5,
@@ -6615,6 +6734,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-cross-project-governance-audit",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -6674,6 +6794,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-cross-project-governance-audit",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -6734,6 +6855,7 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-problem-focused-visual-presentation",
       "status": "mature",
       "status_label": "成熟",
       "score": 20,
@@ -6809,6 +6931,7 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-problem-focused-visual-presentation",
       "status": "mature",
       "status_label": "成熟",
       "score": 19,
@@ -6884,6 +7007,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-problem-focused-visual-presentation",
       "status": "mature",
       "status_label": "成熟",
       "score": 21,
@@ -6960,6 +7084,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-problem-focused-visual-presentation",
       "status": "mature",
       "status_label": "成熟",
       "score": 17,
@@ -7034,6 +7159,7 @@
         "AcknowledgeBase"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-problem-focused-visual-presentation",
       "status": "mature",
       "status_label": "成熟",
       "score": 16,
@@ -7106,6 +7232,7 @@
         "AcknowledgeBase"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-problem-focused-visual-presentation",
       "status": "adopted",
       "status_label": "接入",
       "score": 13,
@@ -7176,6 +7303,7 @@
         "AcknowledgeBase"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-problem-focused-visual-presentation",
       "status": "adopted",
       "status_label": "接入",
       "score": 13,
@@ -7248,6 +7376,7 @@
         "AcknowledgeBase"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-problem-focused-visual-presentation",
       "status": "adopted",
       "status_label": "接入",
       "score": 12,
@@ -7318,6 +7447,7 @@
         "AcknowledgeBase"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-problem-focused-visual-presentation",
       "status": "mature",
       "status_label": "成熟",
       "score": 20,
@@ -7394,6 +7524,7 @@
         "AcknowledgeBase"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-problem-focused-visual-presentation",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7456,6 +7587,7 @@
         "AcknowledgeBase"
       ],
       "project": "H100",
+      "anchor": "diag-h100-problem-focused-visual-presentation",
       "status": "adopted",
       "status_label": "接入",
       "score": 9,
@@ -7524,6 +7656,7 @@
         "AcknowledgeBase"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-problem-focused-visual-presentation",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7585,6 +7718,7 @@
         "prefect"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7637,6 +7771,7 @@
         "prefect"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7689,6 +7824,7 @@
         "prefect"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7741,6 +7877,7 @@
         "prefect"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7793,6 +7930,7 @@
         "prefect"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-project-context-entry",
       "status": "mature",
       "status_label": "成熟",
       "score": 9,
@@ -7851,6 +7989,7 @@
         "prefect"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -7903,6 +8042,7 @@
         "prefect"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-project-context-entry",
       "status": "mature",
       "status_label": "成熟",
       "score": 9,
@@ -7961,6 +8101,7 @@
         "prefect"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-project-context-entry",
       "status": "leader",
       "status_label": "领先",
       "score": 12,
@@ -8020,6 +8161,7 @@
         "prefect"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -8072,6 +8214,7 @@
         "prefect"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -8124,6 +8267,7 @@
         "prefect"
       ],
       "project": "H100",
+      "anchor": "diag-h100-project-context-entry",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -8176,6 +8320,7 @@
         "prefect"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-project-context-entry",
       "status": "leader",
       "status_label": "领先",
       "score": 12,
@@ -8234,6 +8379,7 @@
         "prefect"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 5,
@@ -8297,6 +8443,7 @@
         "prefect"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-documentation-maintenance",
       "status": "mature",
       "status_label": "成熟",
       "score": 14,
@@ -8361,6 +8508,7 @@
         "prefect"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 3,
@@ -8422,6 +8570,7 @@
         "prefect"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -8483,6 +8632,7 @@
         "prefect"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-documentation-maintenance",
       "status": "mature",
       "status_label": "成熟",
       "score": 16,
@@ -8551,6 +8701,7 @@
         "prefect"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 1,
@@ -8612,6 +8763,7 @@
         "prefect"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-documentation-maintenance",
       "status": "adopted",
       "status_label": "接入",
       "score": 11,
@@ -8678,6 +8830,7 @@
         "prefect"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 7,
@@ -8743,6 +8896,7 @@
         "prefect"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 1,
@@ -8804,6 +8958,7 @@
         "prefect"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 2,
@@ -8865,6 +9020,7 @@
         "prefect"
       ],
       "project": "H100",
+      "anchor": "diag-h100-documentation-maintenance",
       "status": "partial",
       "status_label": "局部",
       "score": 1,
@@ -8926,6 +9082,7 @@
         "prefect"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-documentation-maintenance",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -8978,6 +9135,7 @@
         "LifeOS"
       ],
       "project": "AcknowledgeBase",
+      "anchor": "diag-acknowledgebase-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9022,6 +9180,7 @@
         "LifeOS"
       ],
       "project": "Software/wiki",
+      "anchor": "diag-software-wiki-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9066,6 +9225,7 @@
         "LifeOS"
       ],
       "project": "DocCustomeranalysis",
+      "anchor": "diag-doccustomeranalysis-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9110,6 +9270,7 @@
         "LifeOS"
       ],
       "project": "DocFilmCommunity",
+      "anchor": "diag-docfilmcommunity-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9154,6 +9315,7 @@
         "LifeOS"
       ],
       "project": "fetch-adapter",
+      "anchor": "diag-fetch-adapter-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9198,6 +9360,7 @@
         "LifeOS"
       ],
       "project": "train_platform",
+      "anchor": "diag-train-platform-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9242,6 +9405,7 @@
         "LifeOS"
       ],
       "project": "prefect",
+      "anchor": "diag-prefect-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9286,6 +9450,7 @@
         "LifeOS"
       ],
       "project": "customeranalysis",
+      "anchor": "diag-customeranalysis-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9330,6 +9495,7 @@
         "LifeOS"
       ],
       "project": "LifeOS",
+      "anchor": "diag-lifeos-lifeos-management",
       "status": "leader",
       "status_label": "领先",
       "score": 11,
@@ -9384,6 +9550,7 @@
         "LifeOS"
       ],
       "project": "DocERP",
+      "anchor": "diag-docerp-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9428,6 +9595,7 @@
         "LifeOS"
       ],
       "project": "H100",
+      "anchor": "diag-h100-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -9472,6 +9640,7 @@
         "LifeOS"
       ],
       "project": "17lang",
+      "anchor": "diag-17lang-lifeos-management",
       "status": "none",
       "status_label": "未见",
       "score": 0,

@@ -6,8 +6,8 @@ lens_type: knowledge
 source_pages: skills/README.md; projects/governance/registry.md; scripts/update_skill_maturity_matrix.py
 source_scope: same scan context as skill-maturity-matrix.html and skill-maturity-matrix.data.json
 source_of_truth: false
-generated_at: 2026-06-12 16:18
-source_revision: b76a094
+generated_at: 2026-06-12 16:24
+source_revision: aa12a0d
 evidence_boundary: local skill/governance/sensor/view/template discovery and content-volume signals only; no runtime validation
 context_frame: action-oriented companion to the HTML matrix; groups diagnostics by project so each project can see missing signals and recommended modification directions
 output_mode: generated_markdown_diagnostics
@@ -35,6 +35,7 @@ tags: [views, governance, skill-maturity, diagnostics]
 ## 输出互链
 
 - HTML 总览：[[views/current/governance/skill-maturity-matrix.html]]
+- HTML 详情：[[views/current/governance/skill-maturity-diagnostics.html]]
 - JSON 数据：`views/current/governance/skill-maturity-matrix.data.json`
 
 ## AcknowledgeBase

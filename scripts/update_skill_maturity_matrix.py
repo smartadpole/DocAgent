@@ -17,6 +17,7 @@ from typing import Any, Dict, Iterable, List, Union
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-matrix.html"
 DIAGNOSTICS_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-diagnostics.md"
+DIAGNOSTICS_HTML_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-diagnostics.html"
 DATA_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-matrix.data.json"
 
 
@@ -767,7 +768,7 @@ def render_html(context: Dict[str, Any]) -> str:
             "</article>"
         )
         overview_cells = "\n".join(
-            f"<td class=\"heat-cell heat-{c['status']}{' heat-source' if c['project'].label in origin_projects else ''}\" title=\"{html.escape(c['project'].label + ': ' + c['note'] + ('；' + c['leader_rule_note'] if c.get('leader_rule_note') else '') + ('；源头工程。' if c['project'].label in origin_projects else ''))}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
+            f"<td class=\"heat-cell heat-{c['status']}{' heat-source' if c['project'].label in origin_projects else ''}\" title=\"{html.escape(c['project'].label + ': ' + c['note'] + ('；' + c['leader_rule_note'] if c.get('leader_rule_note') else '') + ('；源头工程。' if c['project'].label in origin_projects else ''))}\"><a class=\"cell-link\" href=\"./skill-maturity-diagnostics.html#{html.escape(diagnostic_anchor(c['project'].label, str(skill['name'])))}\" aria-label=\"查看 {html.escape(c['project'].label)} / {html.escape(str(skill['display_name']))} 的诊断详情\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></a></td>"
             for c in row["cells"]
         )
         subitem_text = f"子项：{member_count}"
@@ -893,6 +894,8 @@ def render_html(context: Dict[str, Any]) -> str:
     .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 13px; line-height: 1.35; white-space: normal; }}
     .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
     .heat-cell {{ position: relative; min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); overflow: hidden; }}
+    .cell-link {{ position: relative; z-index: 1; display: block; width: 100%; height: 44px; color: inherit; text-decoration: none; }}
+    .cell-link:focus-visible {{ outline: 3px solid rgba(255, 255, 255, 0.9); outline-offset: -5px; }}
     .heat-cell span {{ display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}
     .heat-cell small {{ margin-top: 1px; font-size: 10px; font-weight: 800; opacity: 0.88; }}
     .heat-source::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 4px, rgba(23,32,51,0.72) 4px 8px); opacity: 0.95; pointer-events: none; }}
@@ -1037,6 +1040,10 @@ def relative_output(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 
 
+def diagnostic_anchor(project_label: str, skill_name: str) -> str:
+    return f"diag-{normalize(project_label)}-{normalize(skill_name)}"
+
+
 def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]:
     skill = row["skill"]
     project = cell["project"]
@@ -1079,6 +1086,7 @@ def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]
         "source_projects": [str(item) for item in skill.get("source_projects", [])],
         "origin_projects": [str(item) for item in skill.get("origin_projects", skill.get("source_projects", []))],
         "project": project.label,
+        "anchor": diagnostic_anchor(project.label, str(skill["name"])),
         "status": status,
         "status_label": STATUS_LABELS[status],
         "score": cell["score"],
@@ -1114,6 +1122,7 @@ def render_json(context: Dict[str, Any]) -> str:
         "outputs": {
             "html": relative_output(OUTPUT),
             "diagnostics_md": relative_output(DIAGNOSTICS_OUTPUT),
+            "diagnostics_html": relative_output(DIAGNOSTICS_HTML_OUTPUT),
             "data_json": relative_output(DATA_OUTPUT),
         },
         "projects": [
@@ -1145,6 +1154,153 @@ def render_json(context: Dict[str, Any]) -> str:
         "diagnostics": diagnostics,
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def render_diagnostics_html(context: Dict[str, Any]) -> str:
+    diagnostics = diagnostics_for_context(context)
+    by_project: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+    for item in diagnostics:
+        by_project[item["project"]].append(item)
+
+    status_sort = {"none": 0, "partial": 1, "adopted": 2, "mature": 3, "leader": 4, "blocked": 5}
+    nav_links = "".join(
+        f"<a href=\"#{html.escape(normalize(project.label))}\">{html.escape(project.label)}</a>"
+        for project in PROJECTS
+        if by_project.get(project.label)
+    )
+    project_sections: List[str] = []
+    for project in PROJECTS:
+        items = by_project.get(project.label, [])
+        if not items:
+            continue
+        counts = {status: sum(1 for item in items if item["status"] == status) for status in STATUS_LABELS}
+        cards: List[str] = []
+        sorted_items = sorted(
+            items,
+            key=lambda item: (
+                status_sort.get(item["status"], 9),
+                -item["score_gap"],
+                item["display_name"],
+            ),
+        )
+        for item in sorted_items:
+            leaders = "、".join(item["leaders"]) if item["leaders"] else "暂无"
+            signals = "、".join(item["signals"]) if item["signals"] else "无"
+            missing = "、".join(item["missing_leader_signals"]) if item["missing_leader_signals"] else "无"
+            evidence_paths = "".join(
+                f"<li><code>{html.escape(path)}</code></li>"
+                for path in item["evidence_paths"][:6]
+            ) or "<li>暂无可显示证据路径</li>"
+            rule_note = (
+                f"<p class=\"rule-note\">{html.escape(item['leader_rule_note'])}</p>"
+                if item.get("leader_rule_note")
+                else ""
+            )
+            cards.append(
+                f"<article id=\"{html.escape(item['anchor'])}\" class=\"diag-card status-{html.escape(item['status'])}\">"
+                "<div class=\"diag-head\">"
+                f"<div><h3>{html.escape(item['display_name'])}</h3><code>{html.escape(item['skill'])}</code></div>"
+                f"<a class=\"back-link\" href=\"./skill-maturity-matrix.html\">返回矩阵</a>"
+                "</div>"
+                "<div class=\"diag-grid\">"
+                f"<div><strong>当前</strong><span>{html.escape(item['status_label'])} {item['score']}/{item['max_score']}</span></div>"
+                f"<div><strong>分差</strong><span>{item['score_gap']}</span></div>"
+                f"<div><strong>范围</strong><span>{html.escape(item['scope_label'])}</span></div>"
+                f"<div><strong>对标 / 领先工程</strong><span>{html.escape(leaders)}</span></div>"
+                "</div>"
+                f"{rule_note}"
+                "<div class=\"signal-grid\">"
+                f"<p><strong>已有信号</strong><span>{html.escape(signals)}</span></p>"
+                f"<p><strong>待补领先信号</strong><span>{html.escape(missing)}</span></p>"
+                f"<p><strong>建议修改方向</strong><span>{html.escape(item['recommended_direction'])}</span></p>"
+                "</div>"
+                f"<details><summary>证据路径</summary><ul>{evidence_paths}</ul></details>"
+                "</article>"
+            )
+        project_sections.append(
+            f"<section id=\"{html.escape(normalize(project.label))}\" class=\"project-section\">"
+            f"<h2>{html.escape(project.label)}</h2>"
+            f"<p class=\"project-meta\"><code>{html.escape(str(project.path))}</code></p>"
+            f"<p class=\"counts\">领先 {counts['leader']} · 成熟 {counts['mature']} · 接入 {counts['adopted']} · 局部 {counts['partial']} · 未见 {counts['none']} · 阻塞 {counts['blocked']}</p>"
+            f"{''.join(cards)}"
+            "</section>"
+        )
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>跨工程技能成熟度行动诊断</title>
+  <meta name="lens_id" content="lens-skill-maturity-diagnostics-current">
+  <meta name="focus_object" content="per-project action diagnostics for cross-project skill maturity gaps">
+  <meta name="lens_type" content="knowledge">
+  <meta name="generated_at" content="{html.escape(context['generated'])}">
+  <meta name="source_revision" content="{html.escape(context['source_revision'])}">
+  <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; scripts/update_skill_maturity_matrix.py">
+  <meta name="source_scope" content="same scan context as skill-maturity-matrix.html, skill-maturity-diagnostics.md, and skill-maturity-matrix.data.json">
+  <meta name="evidence_boundary" content="local skill/governance/sensor/view/template discovery and content-volume signals only; no runtime validation">
+  <meta name="context_frame" content="click-through detail page for each project x skill matrix cell">
+  <meta name="output_mode" content="html_detail_report">
+  <meta name="visual_structure" content="project sections / diagnostic cards / evidence paths">
+  <meta name="export_profile" content="companion detail HTML; matrix canonical HTML owns PDF and PNG exports">
+  <meta name="print_profile" content="@page A4 portrait; @media print compacts diagnostic cards">
+  <meta name="equivalence_profile" content="same source pack as skill-maturity-matrix.html; generated from the same canonical HTML / source / manifest pipeline context">
+  <meta name="default_auto_exports" content="no separate export; PDF and PNG are generated from the matrix canonical HTML">
+  <meta name="conversation_png_preview" content="final response should preview the matrix PNG, not this companion detail page">
+  <style>
+    :root {{ color-scheme: light; --ink:#1c2430; --muted:#647181; --line:#d8e0e8; --paper:#f5f7fa; --panel:#fff; --blue:#005fd8; --green:#008f3a; --amber:#d66a00; --violet:#5a2bc2; --gray:#2f3b4a; }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.55; }}
+    a {{ color:var(--blue); text-underline-offset:3px; }}
+    .wrap {{ width:min(1120px, calc(100vw - 32px)); margin:0 auto; }}
+    header {{ padding:34px 0 22px; background:linear-gradient(180deg,#eef5f7,#f8fafc); border-bottom:1px solid var(--line); }}
+    h1 {{ margin:0 0 10px; font-size:clamp(30px,4vw,48px); line-height:1.08; }}
+    .subtitle,.project-meta,.counts {{ color:var(--muted); }}
+    .top-links,.project-nav {{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }}
+    .top-links a,.project-nav a,.back-link {{ display:inline-flex; align-items:center; min-height:30px; padding:4px 10px; border-radius:999px; background:#e6edf3; font-size:12px; font-weight:800; text-decoration:none; }}
+    main {{ padding:26px 0 60px; }}
+    .project-section {{ scroll-margin-top:18px; margin-bottom:34px; }}
+    h2 {{ margin:0 0 6px; font-size:26px; }}
+    .diag-card {{ scroll-margin-top:18px; margin:12px 0; padding:16px; border:1px solid var(--line); border-left:7px solid var(--gray); border-radius:10px; background:var(--panel); box-shadow:0 6px 18px rgba(28,36,48,.05); }}
+    .status-leader {{ border-left-color:var(--violet); }}
+    .status-mature {{ border-left-color:var(--green); }}
+    .status-adopted {{ border-left-color:var(--blue); }}
+    .status-partial {{ border-left-color:var(--amber); }}
+    .diag-head {{ display:flex; justify-content:space-between; gap:12px; align-items:start; }}
+    h3 {{ margin:0 0 4px; font-size:20px; }}
+    code {{ font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; }}
+    .diag-grid {{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:14px 0; }}
+    .diag-grid div,.signal-grid p {{ margin:0; padding:10px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }}
+    strong {{ display:block; margin-bottom:4px; font-size:12px; color:#2d3a4a; }}
+    .signal-grid {{ display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:10px; }}
+    .rule-note {{ margin:10px 0; padding:10px 12px; border-left:4px solid var(--amber); background:#fff8ed; color:#4a2b00; }}
+    details {{ margin-top:10px; }}
+    summary {{ cursor:pointer; font-weight:800; }}
+    li {{ margin:4px 0; color:var(--muted); word-break:break-word; }}
+    @media (max-width:900px) {{ .diag-grid,.signal-grid {{ grid-template-columns:1fr; }} .diag-head {{ display:block; }} }}
+    @media print {{ @page {{ size:A4 portrait; margin:12mm; }} body {{ background:white; }} .wrap {{ width:100%; }} .diag-card {{ break-inside:avoid; box-shadow:none; }} .top-links,.project-nav,.back-link {{ display:none; }} }}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>跨工程技能成熟度行动诊断</h1>
+      <p class="subtitle">点击矩阵任一单元格会跳到这里的对应工程 / 技能诊断。详情和矩阵、Markdown、JSON 来自同一轮扫描。</p>
+      <div class="top-links">
+        <a href="./skill-maturity-matrix.html">返回矩阵总览</a>
+        <a href="./skill-maturity-diagnostics.md">Markdown 版</a>
+        <a href="./skill-maturity-matrix.data.json">JSON 数据</a>
+      </div>
+      <nav class="project-nav">{nav_links}</nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {''.join(project_sections)}
+  </main>
+</body>
+</html>
+"""
 
 
 def render_markdown(context: Dict[str, Any]) -> str:
@@ -1191,6 +1347,7 @@ def render_markdown(context: Dict[str, Any]) -> str:
         "## 输出互链",
         "",
         f"- HTML 总览：[[{relative_output(OUTPUT)}]]",
+        f"- HTML 详情：[[{relative_output(DIAGNOSTICS_HTML_OUTPUT)}]]",
         f"- JSON 数据：`{relative_output(DATA_OUTPUT)}`",
         "",
     ]
@@ -1252,6 +1409,7 @@ def main() -> None:
     for path, content in [
         (OUTPUT, render_html(context)),
         (DIAGNOSTICS_OUTPUT, render_markdown(context)),
+        (DIAGNOSTICS_HTML_OUTPUT, render_diagnostics_html(context)),
         (DATA_OUTPUT, render_json(context)),
     ]:
         path.parent.mkdir(parents=True, exist_ok=True)
