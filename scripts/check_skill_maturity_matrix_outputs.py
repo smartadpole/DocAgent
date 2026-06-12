@@ -83,10 +83,6 @@ def main() -> int:
     expected_diagnostics = len(projects) * len(skills)
     if len(diagnostics) != expected_diagnostics:
         return fail(f"diagnostic coverage mismatch: {len(diagnostics)} != {expected_diagnostics}")
-    matrix_cell_links = html_text.count('href="./skill-maturity-diagnostics.html#diag-')
-    if matrix_cell_links != expected_diagnostics:
-        return fail(f"matrix cell link coverage mismatch: {matrix_cell_links} != {expected_diagnostics}")
-
     required_fields = {
         "skill",
         "project",
@@ -108,6 +104,8 @@ def main() -> int:
         anchor = item.get("anchor")
         if not anchor:
             return fail(f"diagnostic item {index} missing anchor")
+        if f'href="./skill-maturity-diagnostics.html#{anchor}"' not in html_text:
+            return fail(f"matrix output does not link diagnostic anchor: {anchor}")
         if f'id="{anchor}"' not in detail_html_text:
             return fail(f"rendered diagnostics missing anchor: {anchor}")
 

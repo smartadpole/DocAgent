@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 将技能矩阵总览改为主次分层
+
+- **记录人**：sunhao
+- **用户意图**：用户指出能力 x 工程矩阵默认展示过长，既然已经有诊断子页面，总览不应继续把所有技能项和详情全部铺开。
+- **主题**：
+  1. 将矩阵首页改为“优先关注矩阵 + 折叠完整矩阵 + 折叠能力摘要”的主次结构。
+  2. 保留每个单元格跳转到逐工程 / 逐技能诊断详情的能力，避免为了压缩首页牺牲可追溯性。
+  3. 调整同步检查口径，从“链接数量必须等于诊断数量”改为“每个诊断锚点至少有入口”，允许主矩阵和完整矩阵共享同一诊断子页面。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，新增优先关注能力筛选规则，并把完整矩阵、能力摘要卡收进二级折叠区。
+  2. 更新 `scripts/check_skill_maturity_matrix_outputs.py`，校验所有诊断锚点可从矩阵页抵达。
+  3. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`，并重新导出 ignored PDF / PNG。
+- **结论**：后续读者先看少量优先能力项判断趋势和异常，完整全量表只在需要审计时展开；细节修改方向继续由诊断子页面承接。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、`scripts/check_skill_maturity_matrix_outputs.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 复盘 Codex Goal 公开教程长对话协作问题
 
 - **记录人**：sunhao

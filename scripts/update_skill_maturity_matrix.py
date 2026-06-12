@@ -152,6 +152,17 @@ PROJECT_BOUND_SKILLS = {
     "work-item-auto-decomposition": "绑定主控 Gate / FP / EP / TASK 事项模型，迁移前必须先抽象事项系统。",
 }
 
+PRIORITY_MATRIX_SKILLS = {
+    "cross-project-governance-audit",
+    "documentation-maintenance",
+    "goal-contract",
+    "issue-analysis",
+    "knowledge-linking",
+    "problem-focused-visual-presentation",
+    "research-capability",
+    "retrospective-capability",
+}
+
 SCOPE_LABELS = {
     "general": "通用 / 可迁移",
     "project-bound": "项目 / 领域绑定",
@@ -724,6 +735,23 @@ def render_html(context: Dict[str, Any]) -> str:
 
     compact_cards_by_scope: Dict[str, List[str]] = defaultdict(list)
     overview_rows_by_scope: Dict[str, List[str]] = defaultdict(list)
+    priority_rows_by_scope: Dict[str, List[str]] = defaultdict(list)
+
+    def is_priority_row(row: Dict[str, Any]) -> bool:
+        skill = row["skill"]
+        scope = str(skill.get("capability_scope", "general"))
+        skill_name = str(skill["name"])
+        origin_projects = {str(project) for project in skill.get("origin_projects", skill["source_projects"])}
+        leaders = set(row["leading_projects"])
+        missing_count = sum(1 for cell in row["cells"] if cell["status"] == "none")
+        has_project_leader = bool(leaders and not leaders.issubset(origin_projects))
+
+        if row.get("leader_gap") or has_project_leader:
+            return True
+        if scope == "general" and skill_name in PRIORITY_MATRIX_SKILLS:
+            return True
+        return scope == "general" and row["max_score"] >= 8 and missing_count >= max(4, len(PROJECTS) // 3)
+
     for row in matrix:
         skill = row["skill"]
         scope = str(skill.get("capability_scope", "general"))
@@ -772,11 +800,14 @@ def render_html(context: Dict[str, Any]) -> str:
             for c in row["cells"]
         )
         subitem_text = f"子项：{member_count}"
-        overview_rows_by_scope[scope].append(
+        row_html = (
             "<tr>"
             f"<th title=\"{html.escape(skill['name'] + ' · 源头：' + (source_roots if source_roots else '暂无') + ' · 领先：' + ('、'.join(leaders) if leaders else '暂无'))}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(subitem_text)}</span></th>"
             f"{overview_cells}</tr>"
         )
+        overview_rows_by_scope[scope].append(row_html)
+        if is_priority_row(row):
+            priority_rows_by_scope[scope].append(row_html)
 
     project_cards = "\n".join(
         f"<article><strong>{html.escape(p.label)}</strong><span>{html.escape(p.registry_level)}</span>"
@@ -784,13 +815,13 @@ def render_html(context: Dict[str, Any]) -> str:
         for p in PROJECTS
     )
 
-    def render_matrix_section(scope: str) -> str:
-        rows = "".join(overview_rows_by_scope.get(scope, []))
+    def render_matrix_section(scope: str, rows_by_scope: Dict[str, List[str]], title_suffix: str = "技能 / 能力 x 工程矩阵") -> str:
+        rows = "".join(rows_by_scope.get(scope, []))
         if not rows:
             return ""
         return (
             "<section>"
-            f"<h2>{html.escape(SCOPE_LABELS[scope])}技能 / 能力 x 工程矩阵</h2>"
+            f"<h2>{html.escape(SCOPE_LABELS[scope])}：{html.escape(title_suffix)}</h2>"
             f"<p class=\"section-note\">{html.escape(SCOPE_DESCRIPTIONS[scope])}</p>"
             "<div class=\"overview-shell\">"
             "<table class=\"overview-matrix\">"
@@ -814,8 +845,34 @@ def render_html(context: Dict[str, Any]) -> str:
             "</section>"
         )
 
-    matrix_sections = "\n".join(render_matrix_section(scope) for scope in sorted(SCOPE_LABELS, key=SCOPE_SORT_ORDER.get))
-    detail_sections = "\n".join(render_detail_section(scope) for scope in sorted(SCOPE_LABELS, key=SCOPE_SORT_ORDER.get))
+    scope_order = sorted(SCOPE_LABELS, key=SCOPE_SORT_ORDER.get)
+    priority_matrix_sections = "\n".join(
+        render_matrix_section(scope, priority_rows_by_scope, "优先关注矩阵")
+        for scope in scope_order
+    )
+    full_matrix_sections = "\n".join(
+        render_matrix_section(scope, overview_rows_by_scope)
+        for scope in scope_order
+    )
+    detail_sections = "\n".join(render_detail_section(scope) for scope in scope_order)
+    priority_count = sum(len(rows) for rows in priority_rows_by_scope.values())
+    matrix_sections = (
+        "<section class=\"priority-intro\">"
+        "<h2>首屏主次策略</h2>"
+        f"<p>默认只展开 {priority_count} 个优先关注能力项：包含源头 / 下游领先变化、互补优秀但无人领先、通用核心技能，以及覆盖面高但缺口大的能力。完整矩阵和能力摘要仍由同一轮数据生成，放在下方折叠区；每个单元格都可以跳到诊断子页面。</p>"
+        "</section>"
+        f"{priority_matrix_sections}"
+        "<details class=\"secondary-section\">"
+        f"<summary>展开完整能力矩阵（{len(matrix)} 个大项，{len(PROJECTS)} 个工程）</summary>"
+        f"{full_matrix_sections}"
+        "</details>"
+    )
+    detail_sections = (
+        "<details class=\"secondary-section\">"
+        f"<summary>展开能力大项摘要卡（{len(skills)} 个大项，含源头、成熟工程和建议动作）</summary>"
+        f"{detail_sections}"
+        "</details>"
+    )
 
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -833,7 +890,7 @@ def render_html(context: Dict[str, Any]) -> str:
   <meta name="evidence_boundary" content="confirmed local skill-file discovery plus supplemental governance capability discovery and content-volume signals; detailed skills are grouped into larger themes and split by transferability scope; no runtime validation">
   <meta name="context_frame" content="cross-project grouped skill-theme and governance capability catalog with source roots, subitems, maturity ranking, and project-bound capability separation; source project participates in the same ranking as downstream projects">
   <meta name="output_mode" content="html_report / print_view">
-  <meta name="visual_structure" content="overview matrix / compact skill cards / project cards">
+  <meta name="visual_structure" content="priority overview matrix / collapsed full matrix / collapsed compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
   <meta name="print_profile" content="@page A4 landscape; repeat header; preserve sticky columns as regular table">
   <meta name="equivalence_profile" content="HTML / PDF / PNG use same source pack and same canonical HTML / source / manifest render pipeline">
@@ -907,6 +964,16 @@ def render_html(context: Dict[str, Any]) -> str:
     .scope-row {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; }}
     .scope-pill {{ display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: #e7eef6; color: #27415f; font-weight: 900; }}
     .scope-pill.bound {{ background: #fff1df; color: #7a3a00; border: 1px solid #e6a35a; }}
+    .priority-intro {{ margin-bottom: 14px; border: 1px solid #b9d6d1; border-left: 5px solid var(--teal); border-radius: 10px; background: #eef8f6; padding: 16px; }}
+    .priority-intro h2 {{ margin-bottom: 6px; }}
+    .priority-intro p {{ margin: 0; color: #263244; }}
+    .secondary-section {{ margin: 0 0 30px; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: 0 6px 18px rgba(28, 36, 48, 0.05); }}
+    .secondary-section > summary {{ cursor: pointer; list-style: none; padding: 16px 18px; color: #172033; font-weight: 900; }}
+    .secondary-section > summary::-webkit-details-marker {{ display: none; }}
+    .secondary-section > summary::after {{ content: "展开"; float: right; color: var(--blue); font-size: 12px; }}
+    .secondary-section[open] > summary {{ border-bottom: 1px solid var(--line); background: #f8fafc; }}
+    .secondary-section[open] > summary::after {{ content: "收起"; }}
+    .secondary-section > section {{ margin: 18px; }}
     .heat-leader {{ background: #5a2bc2 !important; }}
     .heat-mature {{ background: #008f3a !important; }}
     .heat-adopted {{ background: #005fd8 !important; }}
@@ -1005,7 +1072,7 @@ def render_html(context: Dict[str, Any]) -> str:
 
     <section class="card">
       <h2>行动诊断与结构化数据</h2>
-      <p>HTML 只保留鸟瞰矩阵。逐工程、逐技能的分差、缺失信号和建议修改方向写入 <a href="./skill-maturity-diagnostics.md">skill-maturity-diagnostics.md</a>；同一轮扫描的结构化数据写入 <a href="./skill-maturity-matrix.data.json">skill-maturity-matrix.data.json</a>。三份产物由同一个生成脚本同步重写，避免总览、诊断和数据漂移。领先不是简单最高分：必须覆盖同一技能下全体工程已经出现的独特证据信号。</p>
+      <p>HTML 首屏只展开优先关注矩阵，完整能力矩阵和能力摘要卡收进折叠区。逐工程、逐技能的分差、缺失信号和建议修改方向写入 <a href="./skill-maturity-diagnostics.md">skill-maturity-diagnostics.md</a> 和 <a href="./skill-maturity-diagnostics.html">skill-maturity-diagnostics.html</a>；同一轮扫描的结构化数据写入 <a href="./skill-maturity-matrix.data.json">skill-maturity-matrix.data.json</a>。四份产物由同一个生成脚本同步重写，避免总览、诊断和数据漂移。领先不是简单最高分：必须覆盖同一技能下全体工程已经出现的独特证据信号。</p>
     </section>
 
     {matrix_sections}

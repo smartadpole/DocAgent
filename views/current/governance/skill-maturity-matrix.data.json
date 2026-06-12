@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-12 17:20",
-  "source_revision": "99ab307",
+  "generated_at": "2026-06-12 17:29",
+  "source_revision": "161ff7a",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
@@ -512,15 +512,15 @@
       ],
       "project": "AcknowledgeBase",
       "anchor": "diag-acknowledgebase-research-capability",
-      "status": "adopted",
-      "status_label": "接入",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 14,
-      "max_score": 20,
-      "score_gap": 6,
+      "max_score": 19,
+      "score_gap": 5,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -580,16 +580,16 @@
       ],
       "project": "Software/wiki",
       "anchor": "diag-software-wiki-research-capability",
-      "status": "leader",
-      "status_label": "领先",
-      "score": 20,
-      "max_score": 20,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 19,
+      "max_score": 19,
       "score_gap": 0,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
-      "leader_rule_note": "",
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -602,8 +602,8 @@
       ],
       "signals": [
         "TRANSFER",
+        "body",
         "governance",
-        "large-body",
         "sensor",
         "skill",
         "template"
@@ -612,14 +612,15 @@
         "TRANSFER",
         "body",
         "governance",
-        "large-body",
         "sensor",
         "skill",
         "small-body",
         "template"
       ],
-      "missing_leader_signals": [],
-      "evidence_note": "动态重扫得分 20；证据信号：skill、TRANSFER、sensor、governance、template、large-body。",
+      "missing_leader_signals": [
+        "large-body"
+      ],
+      "evidence_note": "动态重扫得分 19；证据信号：skill、TRANSFER、sensor、governance、template、body。",
       "evidence_paths": [
         "Software/wiki:governance/BRAIN.md",
         "Software/wiki:governance/documentation-maintenance-rules.md",
@@ -627,7 +628,7 @@
         "Software/wiki:scripts/check_documentation_maintenance.py",
         "Software/wiki:skills/documentation-maintenance/SKILL.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 large-body；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "research-capability",
@@ -652,12 +653,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 2,
-      "max_score": 20,
-      "score_gap": 18,
+      "max_score": 19,
+      "score_gap": 17,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -713,12 +714,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 3,
-      "max_score": 20,
-      "score_gap": 17,
+      "max_score": 19,
+      "score_gap": 16,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -775,12 +776,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 20,
-      "score_gap": 20,
+      "max_score": 19,
+      "score_gap": 19,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -831,12 +832,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 2,
-      "max_score": 20,
-      "score_gap": 18,
+      "max_score": 19,
+      "score_gap": 17,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -892,12 +893,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 2,
-      "max_score": 20,
-      "score_gap": 18,
+      "max_score": 19,
+      "score_gap": 17,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -955,12 +956,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 20,
-      "score_gap": 20,
+      "max_score": 19,
+      "score_gap": 19,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1011,12 +1012,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 20,
-      "score_gap": 20,
+      "max_score": 19,
+      "score_gap": 19,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1067,12 +1068,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 2,
-      "max_score": 20,
-      "score_gap": 18,
+      "max_score": 19,
+      "score_gap": 17,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1128,12 +1129,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 3,
-      "max_score": 20,
-      "score_gap": 17,
+      "max_score": 19,
+      "score_gap": 16,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1190,12 +1191,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 20,
-      "score_gap": 20,
+      "max_score": 19,
+      "score_gap": 19,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -6905,12 +6906,12 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 20,
-      "max_score": 23,
-      "score_gap": 3,
+      "max_score": 22,
+      "score_gap": 2,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -6978,16 +6979,16 @@
       ],
       "project": "Software/wiki",
       "anchor": "diag-software-wiki-problem-focused-visual-presentation",
-      "status": "leader",
-      "status_label": "领先",
-      "score": 23,
-      "max_score": 23,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 22,
+      "max_score": 22,
       "score_gap": 0,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
-      "leader_rule_note": "",
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -7001,8 +7002,8 @@
       ],
       "signals": [
         "TRANSFER",
+        "body",
         "governance",
-        "large-body",
         "sensor",
         "skill",
         "template",
@@ -7012,15 +7013,16 @@
         "TRANSFER",
         "body",
         "governance",
-        "large-body",
         "sensor",
         "skill",
         "small-body",
         "template",
         "views"
       ],
-      "missing_leader_signals": [],
-      "evidence_note": "动态重扫得分 23；证据信号：skill、TRANSFER、sensor、views、governance、template、large-body。",
+      "missing_leader_signals": [
+        "large-body"
+      ],
+      "evidence_note": "动态重扫得分 22；证据信号：skill、TRANSFER、sensor、views、governance、template、body。",
       "evidence_paths": [
         "Software/wiki:governance/problem-focused-visual-presentation-rules.md",
         "Software/wiki:scripts/check_problem_focused_visual_presentation.py",
@@ -7028,7 +7030,7 @@
         "Software/wiki:templates/problem-focused-lens-review-contract.md",
         "Software/wiki:templates/problem-focused-lens-source-pack-contract.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 large-body；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -7058,12 +7060,12 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 21,
-      "max_score": 23,
-      "score_gap": 2,
+      "max_score": 22,
+      "score_gap": 1,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7135,12 +7137,12 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 17,
-      "max_score": 23,
-      "score_gap": 6,
+      "max_score": 22,
+      "score_gap": 5,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7207,15 +7209,15 @@
       ],
       "project": "fetch-adapter",
       "anchor": "diag-fetch-adapter-problem-focused-visual-presentation",
-      "status": "adopted",
-      "status_label": "接入",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 16,
-      "max_score": 23,
-      "score_gap": 7,
+      "max_score": 22,
+      "score_gap": 6,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7283,12 +7285,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 13,
-      "max_score": 23,
-      "score_gap": 10,
+      "max_score": 22,
+      "score_gap": 9,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7354,12 +7356,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 13,
-      "max_score": 23,
-      "score_gap": 10,
+      "max_score": 22,
+      "score_gap": 9,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7427,12 +7429,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 12,
-      "max_score": 23,
-      "score_gap": 11,
+      "max_score": 22,
+      "score_gap": 10,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7498,12 +7500,12 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 20,
-      "max_score": 23,
-      "score_gap": 3,
+      "max_score": 22,
+      "score_gap": 2,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7575,12 +7577,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 23,
-      "score_gap": 23,
+      "max_score": 22,
+      "score_gap": 22,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7638,12 +7640,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 9,
-      "max_score": 23,
-      "score_gap": 14,
+      "max_score": 22,
+      "score_gap": 13,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -7707,12 +7709,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 23,
-      "score_gap": 23,
+      "max_score": 22,
+      "score_gap": 22,
       "leaders": [
         "Software/wiki"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
