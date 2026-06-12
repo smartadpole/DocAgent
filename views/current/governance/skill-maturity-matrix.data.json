@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-12 16:04",
-  "source_revision": "6a799ac",
+  "generated_at": "2026-06-12 16:18",
+  "source_revision": "b76a094",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
@@ -510,8 +510,8 @@
         "AcknowledgeBase"
       ],
       "project": "AcknowledgeBase",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 14,
       "max_score": 14,
       "score_gap": 0,
@@ -519,13 +519,34 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body",
         "skill",
         "template"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
+      "missing_leader_signals": [
+        "TRANSFER"
+      ],
       "evidence_note": "动态重扫得分 14；证据信号：skill、governance、template、large-body。",
       "evidence_paths": [
         "AcknowledgeBase:governance/BRAIN.md",
@@ -534,7 +555,7 @@
         "AcknowledgeBase:skills/open-source-project-research/SKILL.md",
         "AcknowledgeBase:skills/technical-topic-research/SKILL.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 TRANSFER；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "research-capability",
@@ -555,8 +576,8 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 14,
       "max_score": 14,
       "score_gap": 0,
@@ -564,20 +585,41 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "TRANSFER",
         "governance",
         "skill",
         "small-body"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "TRANSFER",
+        "governance",
+        "skill",
+        "small-body"
+      ],
+      "missing_leader_signals": [
+        "body",
+        "large-body",
+        "template"
+      ],
       "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、governance、small-body。",
       "evidence_paths": [
         "Software/wiki:governance/BRAIN.md",
         "Software/wiki:skills/documentation-maintenance/SKILL.md",
         "Software/wiki:skills/technology-research/SKILL.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 body, large-body, template；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "research-capability",
@@ -607,11 +649,26 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance"
+      ],
+      "fingerprint": [
         "governance"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "skill",
         "small-body",
@@ -621,7 +678,7 @@
       "evidence_paths": [
         "DocCustomeranalysis:governance/BRAIN.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -651,12 +708,28 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance",
+        "small-body"
+      ],
+      "fingerprint": [
         "governance",
         "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "skill",
         "template"
@@ -665,7 +738,7 @@
       "evidence_paths": [
         "DocFilmCommunity:governance/BRAIN.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -695,9 +768,22 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "skill",
@@ -736,11 +822,26 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance"
+      ],
+      "fingerprint": [
         "governance"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "skill",
         "small-body",
@@ -750,7 +851,7 @@
       "evidence_paths": [
         "train_platform:.codex/context/main-control-coordination.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -780,15 +881,29 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body"
+      ],
+      "fingerprint": [
+        "body",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
         "governance",
         "large-body",
         "skill",
-        "small-body",
         "template"
       ],
       "evidence_note": "动态重扫得分 2；证据信号：body。",
@@ -827,9 +942,22 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "skill",
@@ -868,9 +996,22 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "skill",
@@ -909,11 +1050,26 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance"
+      ],
+      "fingerprint": [
         "governance"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "skill",
         "small-body",
@@ -923,7 +1079,7 @@
       "evidence_paths": [
         "DocERP:governance/BRAIN.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -953,12 +1109,28 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance",
+        "small-body"
+      ],
+      "fingerprint": [
         "governance",
         "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "skill",
         "template"
@@ -967,7 +1139,7 @@
       "evidence_paths": [
         "H100:.codex/context/main-control-harness.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -997,9 +1169,22 @@
         "AcknowledgeBase",
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "skill",
@@ -1037,7 +1222,21 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "TRANSFER",
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "TRANSFER",
         "skill",
         "small-body"
@@ -1079,11 +1278,27 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "TRANSFER",
         "body",
         "sensor",
         "skill"
+      ],
+      "fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [],
       "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、sensor、body。",
@@ -1120,9 +1335,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "skill"
+      ],
+      "fingerprint": [
+        "body",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
@@ -1162,12 +1391,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1200,12 +1440,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1238,12 +1489,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1276,12 +1538,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1314,7 +1587,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
@@ -1356,19 +1642,32 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill"
+      ],
+      "fingerprint": [
         "skill"
       ],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
-        "sensor"
+        "sensor",
+        "small-body"
       ],
       "evidence_note": "动态重扫得分 8；证据信号：skill。",
       "evidence_paths": [
         "LifeOS:.codex/skills/system-harness-review/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "retrospective-capability",
@@ -1397,12 +1696,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1435,12 +1745,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1473,12 +1794,23 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
         "body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -1513,10 +1845,27 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "governance",
         "large-body",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [],
@@ -1559,10 +1908,27 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "governance",
         "large-body",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [],
@@ -1605,10 +1971,27 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "governance",
         "large-body",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [],
@@ -1651,10 +2034,27 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "governance",
         "large-body",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [],
@@ -1697,10 +2097,26 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "governance",
         "large-body"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "small-body"
       ],
       "missing_leader_signals": [
         "template"
@@ -1744,8 +2160,19 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
+        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -1784,9 +2211,24 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "large-body"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "large-body",
+        "small-body"
       ],
       "missing_leader_signals": [
         "governance",
@@ -1831,9 +2273,24 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "small-body"
       ],
       "missing_leader_signals": [
         "goal-contract",
@@ -1878,10 +2335,27 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "goal-contract",
         "governance",
         "large-body",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [],
@@ -1924,8 +2398,19 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
+        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -1964,8 +2449,19 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
+        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -2004,9 +2500,23 @@
         "DocFilmCommunity",
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "template"
+      ],
       "signals": [
         "body",
         "governance"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "small-body"
       ],
       "missing_leader_signals": [
         "goal-contract",
@@ -2047,7 +2557,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2082,7 +2599,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2117,7 +2641,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2152,7 +2683,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2187,7 +2725,17 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
@@ -2225,7 +2773,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2260,7 +2815,17 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
@@ -2299,7 +2864,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2334,7 +2906,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2369,7 +2948,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2404,7 +2990,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2439,7 +3032,14 @@
         "fetch-adapter",
         "prefect"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -2477,20 +3077,37 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "skill",
         "small-body",
         "template"
       ],
+      "fingerprint": [
+        "skill",
+        "small-body",
+        "template"
+      ],
       "missing_leader_signals": [
-        "TRANSFER"
+        "TRANSFER",
+        "body",
+        "governance"
       ],
       "evidence_note": "动态重扫得分 10；证据信号：skill、template、small-body。",
       "evidence_paths": [
         "AcknowledgeBase:skills/issue-analysis/SKILL.md",
         "AcknowledgeBase:templates/development-issue-template.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2513,13 +3130,23 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 13,
       "max_score": 13,
       "score_gap": 0,
       "leaders": [
         "Software/wiki"
+      ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
       ],
       "signals": [
         "TRANSFER",
@@ -2527,13 +3154,22 @@
         "small-body",
         "template"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "TRANSFER",
+        "skill",
+        "small-body",
+        "template"
+      ],
+      "missing_leader_signals": [
+        "body",
+        "governance"
+      ],
       "evidence_note": "动态重扫得分 13；证据信号：skill、TRANSFER、template、small-body。",
       "evidence_paths": [
         "Software/wiki:skills/issue-analysis/SKILL.md",
         "Software/wiki:templates/development-issue-template.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 body, governance；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "issue-analysis",
@@ -2564,20 +3200,35 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body",
         "skill"
       ],
+      "fingerprint": [
+        "body",
+        "skill",
+        "small-body"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
-        "small-body",
+        "governance",
         "template"
       ],
       "evidence_note": "动态重扫得分 10；证据信号：skill、body。",
       "evidence_paths": [
         "DocCustomeranalysis:skills/issue-analysis/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2608,20 +3259,37 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "skill",
         "small-body",
         "template"
       ],
+      "fingerprint": [
+        "skill",
+        "small-body",
+        "template"
+      ],
       "missing_leader_signals": [
-        "TRANSFER"
+        "TRANSFER",
+        "body",
+        "governance"
       ],
       "evidence_note": "动态重扫得分 10；证据信号：skill、template、small-body。",
       "evidence_paths": [
         "DocFilmCommunity:skills/issue-analysis/SKILL.md",
         "DocFilmCommunity:templates/development-issue-template.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2652,13 +3320,28 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body",
         "skill"
       ],
+      "fingerprint": [
+        "body",
+        "skill",
+        "small-body"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
-        "small-body",
+        "governance",
         "template"
       ],
       "evidence_note": "动态重扫得分 10；证据信号：skill、body。",
@@ -2666,7 +3349,7 @@
         "fetch-adapter:.agents/skills/issue-incident-analysis/SKILL.md",
         "fetch-adapter:.claude/skills/issue-incident-analysis/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2697,9 +3380,22 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "skill",
         "small-body",
         "template"
@@ -2737,13 +3433,28 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body",
         "skill"
       ],
+      "fingerprint": [
+        "body",
+        "skill",
+        "small-body"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
-        "small-body",
+        "governance",
         "template"
       ],
       "evidence_note": "动态重扫得分 10；证据信号：skill、body。",
@@ -2752,7 +3463,7 @@
         "prefect:.codex/agents/records/issue-incident-analysis/README.md",
         "prefect:.codex/agents/skills/issue-incident-analysis/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2783,9 +3494,22 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "skill",
         "small-body",
         "template"
@@ -2823,11 +3547,25 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance"
+      ],
+      "fingerprint": [
         "governance"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill",
         "small-body",
         "template"
@@ -2836,7 +3574,7 @@
       "evidence_paths": [
         "LifeOS:rules/incident-lifecycle.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, skill, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, skill, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2867,19 +3605,35 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "template"
       ],
       "evidence_note": "动态重扫得分 9；证据信号：skill、small-body。",
       "evidence_paths": [
         "DocERP:skills/issue-analysis/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "issue-analysis",
@@ -2910,9 +3664,22 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "skill",
         "small-body",
         "template"
@@ -2950,9 +3717,22 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "skill",
         "small-body",
         "template"
@@ -2984,7 +3764,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3016,7 +3803,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3048,7 +3842,17 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
@@ -3082,7 +3886,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3114,7 +3925,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3146,7 +3964,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3178,7 +4003,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3210,7 +4042,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3242,7 +4081,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3274,7 +4120,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3306,7 +4159,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3338,7 +4198,14 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "skill",
         "small-body"
@@ -3372,9 +4239,24 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "governance"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "small-body"
       ],
       "missing_leader_signals": [
         "large-body",
@@ -3414,10 +4296,26 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "governance",
         "sensor"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "sensor",
+        "small-body"
       ],
       "missing_leader_signals": [
         "large-body",
@@ -3457,11 +4355,29 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance",
         "large-body",
         "sensor",
         "skill"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [],
       "evidence_note": "动态重扫得分 16；证据信号：skill、sensor、governance、large-body。",
@@ -3499,10 +4415,26 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "governance",
         "sensor"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "sensor",
+        "small-body"
       ],
       "missing_leader_signals": [
         "large-body",
@@ -3542,13 +4474,28 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance"
       ],
+      "fingerprint": [
+        "governance"
+      ],
       "missing_leader_signals": [
+        "body",
         "large-body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "动态重扫得分 2；证据信号：governance。",
       "evidence_paths": [
@@ -3581,11 +4528,26 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance",
         "small-body"
       ],
+      "fingerprint": [
+        "governance",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "body",
         "large-body",
         "sensor",
         "skill"
@@ -3621,13 +4583,28 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "skill"
       ],
+      "fingerprint": [
+        "skill"
+      ],
       "missing_leader_signals": [
+        "body",
         "governance",
         "large-body",
-        "sensor"
+        "sensor",
+        "small-body"
       ],
       "evidence_note": "动态重扫得分 8；证据信号：skill。",
       "evidence_paths": [
@@ -3661,11 +4638,26 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance",
         "small-body"
       ],
+      "fingerprint": [
+        "governance",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "body",
         "large-body",
         "sensor",
         "skill"
@@ -3701,9 +4693,24 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "sensor"
+      ],
+      "fingerprint": [
+        "body",
+        "sensor",
+        "small-body"
       ],
       "missing_leader_signals": [
         "governance",
@@ -3742,11 +4749,26 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance",
         "small-body"
       ],
+      "fingerprint": [
+        "governance",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "body",
         "large-body",
         "sensor",
         "skill"
@@ -3783,13 +4805,28 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance"
       ],
+      "fingerprint": [
+        "governance"
+      ],
       "missing_leader_signals": [
+        "body",
         "large-body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "动态重扫得分 2；证据信号：governance。",
       "evidence_paths": [
@@ -3822,12 +4859,25 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
-      "signals": [],
-      "missing_leader_signals": [
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
         "governance",
         "large-body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
+      ],
+      "signals": [],
+      "fingerprint": [],
+      "missing_leader_signals": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -3857,7 +4907,22 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "governance",
         "sensor",
         "skill",
@@ -3890,13 +4955,22 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 15,
       "max_score": 15,
       "score_gap": 0,
       "leaders": [
         "Software/wiki"
+      ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "signals": [
         "TRANSFER",
@@ -3904,13 +4978,21 @@
         "skill",
         "small-body"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "TRANSFER",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
+      "missing_leader_signals": [
+        "governance"
+      ],
       "evidence_note": "动态重扫得分 15；证据信号：skill、TRANSFER、sensor、small-body。",
       "evidence_paths": [
         "Software/wiki:scripts/check_knowledge_linking.py",
         "Software/wiki:skills/knowledge-linking/SKILL.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 governance；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "knowledge-linking",
@@ -3936,9 +5018,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -3971,9 +5064,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4006,9 +5110,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4041,9 +5156,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4076,9 +5202,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4111,9 +5248,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4146,9 +5294,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4181,9 +5340,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4216,9 +5386,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4251,9 +5432,20 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "sensor",
         "skill",
         "small-body"
@@ -4286,9 +5478,21 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [
         "body",
         "skill"
+      ],
+      "fingerprint": [
+        "body",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER"
@@ -4315,24 +5519,37 @@
         "AcknowledgeBase"
       ],
       "project": "Software/wiki",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 11,
       "max_score": 11,
       "score_gap": 0,
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [
         "TRANSFER",
         "skill"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "TRANSFER",
+        "skill"
+      ],
+      "missing_leader_signals": [
+        "body"
+      ],
       "evidence_note": "动态重扫得分 11；证据信号：skill、TRANSFER。",
       "evidence_paths": [
         "Software/wiki:skills/cross-project-skill-adoption-prompt/SKILL.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 body；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "cross-project-skill-adoption-prompt",
@@ -4358,9 +5575,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4391,9 +5617,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4424,9 +5659,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4457,9 +5701,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4490,9 +5743,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4523,9 +5785,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4556,9 +5827,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4589,9 +5869,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4622,9 +5911,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4655,9 +5953,18 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "skill"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "skill"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -4688,11 +5995,32 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body",
         "sensor",
         "skill",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [
@@ -4732,12 +6060,34 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "TRANSFER",
         "governance",
         "large-body",
         "sensor",
         "skill",
+        "template"
+      ],
+      "fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [],
@@ -4775,10 +6125,30 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body",
         "sensor",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [
@@ -4819,10 +6189,30 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body",
         "sensor",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [
@@ -4863,10 +6253,28 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body",
         "governance",
         "sensor"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "sensor",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
@@ -4906,13 +6314,31 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance",
+        "sensor",
+        "small-body"
+      ],
+      "fingerprint": [
         "governance",
         "sensor",
         "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "skill",
         "template"
@@ -4923,7 +6349,7 @@
         "train_platform:.codex/context/harness-feedback-ledger.md",
         "train_platform:scripts/check_harness_governance.py"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "cross-project-governance-audit",
@@ -4949,8 +6375,24 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body"
+      ],
+      "fingerprint": [
+        "body",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
@@ -4994,10 +6436,28 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "body",
         "governance",
         "sensor"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "sensor",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
@@ -5038,9 +6498,28 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body",
+        "template"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "small-body",
         "template"
       ],
       "missing_leader_signals": [
@@ -5082,9 +6561,27 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
         "governance",
         "large-body"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
@@ -5126,12 +6623,29 @@
       "leaders": [
         "Software/wiki"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template"
+      ],
       "signals": [
+        "governance",
+        "small-body"
+      ],
+      "fingerprint": [
         "governance",
         "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
         "large-body",
         "sensor",
         "skill",
@@ -5142,7 +6656,7 @@
         "H100:.codex/context/harness-feedback-ledger.md",
         "H100:.codex/context/main-control-harness.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "cross-project-governance-audit",
@@ -5168,13 +6682,28 @@
       "leaders": [
         "Software/wiki"
       ],
-      "signals": [],
-      "missing_leader_signals": [
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
         "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "sensor",
         "skill",
+        "small-body",
+        "template"
+      ],
+      "signals": [],
+      "fingerprint": [],
+      "missing_leader_signals": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
         "template"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
@@ -5213,6 +6742,19 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "TRANSFER",
         "body",
@@ -5221,7 +6763,17 @@
         "template",
         "views"
       ],
+      "fingerprint": [
+        "TRANSFER",
+        "body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "missing_leader_signals": [
+        "governance",
         "large-body"
       ],
       "evidence_note": "动态重扫得分 20；证据信号：skill、TRANSFER、sensor、views、template、body。",
@@ -5231,7 +6783,7 @@
         "AcknowledgeBase:templates/problem-focused-lens-template.md",
         "AcknowledgeBase:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5265,6 +6817,19 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "TRANSFER",
         "sensor",
@@ -5273,7 +6838,17 @@
         "template",
         "views"
       ],
+      "fingerprint": [
+        "TRANSFER",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "missing_leader_signals": [
+        "body",
+        "governance",
         "large-body"
       ],
       "evidence_note": "动态重扫得分 19；证据信号：skill、TRANSFER、sensor、views、template、small-body。",
@@ -5283,7 +6858,7 @@
         "Software/wiki:templates/problem-focused-lens-template.md",
         "Software/wiki:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5309,13 +6884,26 @@
         "AcknowledgeBase"
       ],
       "project": "DocCustomeranalysis",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 21,
       "max_score": 21,
       "score_gap": 0,
       "leaders": [
         "DocCustomeranalysis"
+      ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
@@ -5325,7 +6913,19 @@
         "template",
         "views"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "TRANSFER",
+        "body",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
+      "missing_leader_signals": [
+        "governance"
+      ],
       "evidence_note": "动态重扫得分 21；证据信号：skill、TRANSFER、sensor、views、template、large-body。",
       "evidence_paths": [
         "DocCustomeranalysis:scripts/check_problem_focused_visual_presentation.py",
@@ -5334,7 +6934,7 @@
         "DocCustomeranalysis:views/current/task-080-status-acceptance-lens.html",
         "DocCustomeranalysis:views/lens-registry.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 governance；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5368,6 +6968,19 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "body",
         "sensor",
@@ -5375,8 +6988,17 @@
         "template",
         "views"
       ],
+      "fingerprint": [
+        "body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "large-body"
       ],
       "evidence_note": "动态重扫得分 17；证据信号：skill、sensor、views、template、body。",
@@ -5386,7 +7008,7 @@
         "DocFilmCommunity:templates/problem-focused-lens-template.md",
         "DocFilmCommunity:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5420,14 +7042,35 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "body",
         "sensor",
         "skill",
         "views"
       ],
+      "fingerprint": [
+        "body",
+        "sensor",
+        "skill",
+        "small-body",
+        "views"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "large-body",
         "template"
       ],
@@ -5437,7 +7080,7 @@
         "fetch-adapter:tools/check_problem_focused_visual_presentation.py",
         "fetch-adapter:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5471,13 +7114,33 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "body",
         "sensor",
         "skill"
       ],
+      "fingerprint": [
+        "body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "large-body",
         "template",
         "views"
@@ -5487,7 +7150,7 @@
         "train_platform:.codex/skills/problem-focused-visual-presentation/SKILL.md",
         "train_platform:scripts/check_problem_focused_visual_presentation.py"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, template, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5521,13 +7184,33 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "body",
         "skill",
         "views"
       ],
+      "fingerprint": [
+        "body",
+        "skill",
+        "small-body",
+        "views"
+      ],
       "missing_leader_signals": [
         "TRANSFER",
+        "governance",
         "large-body",
         "sensor",
         "template"
@@ -5539,7 +7222,7 @@
         "prefect:.codex/agents/templates/problem-focused-lens-template.md",
         "prefect:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, sensor, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5573,13 +7256,33 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
+        "skill",
+        "small-body",
+        "views"
+      ],
+      "fingerprint": [
         "skill",
         "small-body",
         "views"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "large-body",
         "sensor",
         "template"
@@ -5589,7 +7292,7 @@
         "customeranalysis:.codex/skills/problem-focused-visual-presentation/SKILL.md",
         "customeranalysis:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, sensor, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5623,11 +7326,34 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
         "governance",
         "large-body",
         "sensor",
         "skill",
+        "template",
+        "views"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
         "template",
         "views"
       ],
@@ -5676,12 +7402,29 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
-      "signals": [],
-      "missing_leader_signals": [
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
         "TRANSFER",
+        "body",
+        "governance",
         "large-body",
         "sensor",
         "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
+      "signals": [],
+      "fingerprint": [],
+      "missing_leader_signals": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
         "template",
         "views"
       ],
@@ -5721,12 +7464,31 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
       "missing_leader_signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "large-body",
         "sensor",
         "template",
@@ -5736,7 +7498,7 @@
       "evidence_paths": [
         "H100:.codex/skills/problem-focused-visual-presentation/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, sensor, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -5770,12 +7532,29 @@
       "leaders": [
         "DocCustomeranalysis"
       ],
-      "signals": [],
-      "missing_leader_signals": [
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
         "TRANSFER",
+        "body",
+        "governance",
         "large-body",
         "sensor",
         "skill",
+        "small-body",
+        "template",
+        "views"
+      ],
+      "signals": [],
+      "fingerprint": [],
+      "missing_leader_signals": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body",
         "template",
         "views"
       ],
@@ -5815,11 +7594,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -5857,11 +7646,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -5899,11 +7698,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -5941,11 +7750,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -5983,7 +7802,19 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
@@ -6029,11 +7860,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -6071,7 +7912,19 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "skill",
         "small-body"
       ],
@@ -6117,10 +7970,24 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "governance",
         "skill"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [],
       "evidence_note": "动态重扫得分 12；证据信号：skill、governance、body。",
@@ -6162,11 +8029,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -6204,11 +8081,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -6246,11 +8133,21 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "body",
         "governance",
-        "skill"
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -6288,10 +8185,24 @@
         "customeranalysis",
         "17lang"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "governance",
         "skill"
+      ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [],
       "evidence_note": "动态重扫得分 12；证据信号：skill、governance、body。",
@@ -6331,11 +8242,29 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "governance",
         "large-body"
       ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
         "sensor",
         "skill"
       ],
@@ -6344,7 +8273,7 @@
         "AcknowledgeBase:AGENTS.md",
         "AcknowledgeBase:governance/agent-governance-strategy.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6376,10 +8305,28 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "TRANSFER",
         "large-body",
         "skill"
+      ],
+      "fingerprint": [
+        "TRANSFER",
+        "body",
+        "large-body",
+        "skill",
+        "small-body"
       ],
       "missing_leader_signals": [
         "governance",
@@ -6422,10 +8369,27 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "large-body"
       ],
+      "fingerprint": [
+        "body",
+        "large-body",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill"
@@ -6434,7 +8398,7 @@
       "evidence_paths": [
         "DocCustomeranalysis:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6466,10 +8430,26 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body"
       ],
+      "fingerprint": [
+        "body",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "large-body",
         "sensor",
@@ -6479,7 +8459,7 @@
       "evidence_paths": [
         "DocFilmCommunity:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, large-body, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6503,13 +8483,24 @@
         "prefect"
       ],
       "project": "fetch-adapter",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 16,
       "max_score": 16,
       "score_gap": 0,
       "leaders": [
         "fetch-adapter"
+      ],
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "signals": [
         "governance",
@@ -6517,7 +8508,17 @@
         "sensor",
         "skill"
       ],
-      "missing_leader_signals": [],
+      "fingerprint": [
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
+      "missing_leader_signals": [
+        "TRANSFER"
+      ],
       "evidence_note": "动态重扫得分 16；证据信号：skill、sensor、governance、large-body。",
       "evidence_paths": [
         "fetch-adapter:.agents/skills/agents-md-sync/SKILL.md",
@@ -6526,7 +8527,7 @@
         "fetch-adapter:.agents/skills/issue-incident-analysis/SKILL.md",
         "fetch-adapter:.agents/skills/write-docs/SKILL.md"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 TRANSFER；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6558,10 +8559,26 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "small-body"
       ],
+      "fingerprint": [
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "sensor",
@@ -6571,7 +8588,7 @@
       "evidence_paths": [
         "train_platform:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, large-body, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6603,11 +8620,29 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "large-body",
         "skill"
       ],
+      "fingerprint": [
+        "body",
+        "large-body",
+        "skill",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor"
       ],
@@ -6619,7 +8654,7 @@
         "prefect:.agents/skills/agents-md-sync/SKILL.md",
         "prefect:.agents/skills/backlog-management/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6651,12 +8686,30 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body",
         "governance",
         "sensor"
       ],
+      "fingerprint": [
+        "body",
+        "governance",
+        "sensor",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
         "large-body",
         "skill"
       ],
@@ -6666,7 +8719,7 @@
         "customeranalysis:AGENTS.md",
         "customeranalysis:scripts/check_agent_harness.py"
       ],
-      "recommended_direction": "追齐领先信号：优先补 large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6698,10 +8751,26 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "small-body"
       ],
+      "fingerprint": [
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "sensor",
@@ -6711,7 +8780,7 @@
       "evidence_paths": [
         "LifeOS:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, large-body, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6743,10 +8812,26 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "body"
       ],
+      "fingerprint": [
+        "body",
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "large-body",
         "sensor",
@@ -6756,7 +8841,7 @@
       "evidence_paths": [
         "DocERP:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, large-body, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6788,10 +8873,26 @@
       "leaders": [
         "fetch-adapter"
       ],
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
+      ],
       "signals": [
         "small-body"
       ],
+      "fingerprint": [
+        "small-body"
+      ],
       "missing_leader_signals": [
+        "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "sensor",
@@ -6801,7 +8902,7 @@
       "evidence_paths": [
         "H100:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, large-body, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -6833,12 +8934,27 @@
       "leaders": [
         "fetch-adapter"
       ],
-      "signals": [],
-      "missing_leader_signals": [
+      "leader_gap": true,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "TRANSFER",
+        "body",
         "governance",
         "large-body",
         "sensor",
-        "skill"
+        "skill",
+        "small-body"
+      ],
+      "signals": [],
+      "fingerprint": [],
+      "missing_leader_signals": [
+        "TRANSFER",
+        "body",
+        "governance",
+        "large-body",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -6870,7 +8986,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -6906,7 +9030,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -6942,7 +9074,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -6978,7 +9118,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7014,7 +9162,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7050,7 +9206,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7086,7 +9250,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7122,7 +9294,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7158,7 +9338,19 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
         "governance",
         "skill",
         "small-body"
@@ -7200,7 +9392,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7236,7 +9436,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",
@@ -7272,7 +9480,15 @@
       "leaders": [
         "LifeOS"
       ],
+      "leader_gap": false,
+      "leader_rule_note": "",
+      "required_leader_fingerprint": [
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "signals": [],
+      "fingerprint": [],
       "missing_leader_signals": [
         "governance",
         "skill",

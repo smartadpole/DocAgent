@@ -86,7 +86,9 @@ def main() -> int:
         "score_gap",
         "leaders",
         "signals",
+        "fingerprint",
         "missing_leader_signals",
+        "required_leader_fingerprint",
         "recommended_direction",
     }
     for index, item in enumerate(diagnostics):

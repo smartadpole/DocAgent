@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 收紧技能矩阵的领先判定规则
+
+- **记录人**：sunhao
+- **用户意图**：用户指出多个工程同一技能都很强时，不能因为分数相近就都标为领先；真正领先应当包含其他工程的独特信息，否则只能说明各有特色、需要互补吸收。
+- **主题**：
+  1. 将技能成熟度矩阵的领先规则从“最高分 / 并列高分”收紧为“覆盖同技能全体工程独特证据信号并集”。
+  2. 用可检测的证据信号指纹近似成熟信息，包括 `SKILL.md`、`TRANSFER.md`、sensor、views、governance、template、Goal Contract 标记和正文体量。
+  3. 对 `small-body / body / large-body` 这类层级信号做蕴含处理，避免把更高正文体量误判为缺少低阶信号。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，只有最高分工程的证据信号指纹覆盖同技能全体信号并集时才标为 `领先`；否则最高分工程降为 `成熟`，并在诊断中提示互补对齐方向。
+  2. 更新 [[concepts/agent-skills]]，沉淀“领先不是并列优秀，而是覆盖差异后的完整样本”规则。
+  3. 同步刷新 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`。
+- **结论**：后续看矩阵时，如果多个工程各有独特成熟信号但没有任何一个覆盖全集，则不显示领先工程；诊断页会把这些工程作为对标对象，并指出要补哪些独特信号。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[concepts/agent-skills]]、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 为 Codex Goal 公开教程补实际开发场景入口
 
 - **记录人**：sunhao

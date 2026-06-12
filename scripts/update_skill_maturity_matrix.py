@@ -612,6 +612,16 @@ def status_for(score: int, max_score: int) -> str:
     return "partial"
 
 
+def evidence_fingerprint(signals: List[str]) -> tuple[str, ...]:
+    """Comparable evidence shape for one project under one skill theme."""
+    expanded = set(signals)
+    if "large-body" in expanded:
+        expanded.update({"body", "small-body"})
+    elif "body" in expanded:
+        expanded.add("small-body")
+    return tuple(sorted(expanded))
+
+
 def build_context() -> Dict[str, Any]:
     skills = read_skill_manifest()
     total_member_count = sum(int(str(skill.get("member_count", "1"))) for skill in skills)
@@ -631,6 +641,24 @@ def build_context() -> Dict[str, Any]:
             scored_cells.append({"project": project, "evidence": evidence})
 
         max_score = max((cell["evidence"].score for cell in scored_cells), default=0)
+        positive_fingerprint = sorted(
+            {
+                signal
+                for cell in scored_cells
+                if cell["evidence"].score > 0
+                for signal in cell["evidence"].signals
+            }
+        )
+        top_cells = [
+            cell for cell in scored_cells
+            if cell["evidence"].score == max_score and cell["evidence"].score > 0
+        ]
+        leader_candidate_projects = {
+            cell["project"].label
+            for cell in top_cells
+            if set(evidence_fingerprint(cell["evidence"].signals)).issuperset(positive_fingerprint)
+        }
+        leader_gap = max_score > 0 and not leader_candidate_projects
         cells = []
         leading_projects = []
         mature_projects = []
@@ -638,6 +666,12 @@ def build_context() -> Dict[str, Any]:
         for cell in scored_cells:
             evidence = cell["evidence"]
             status = status_for(evidence.score, max_score)
+            leader_rule_note = ""
+            if cell["project"].label in leader_candidate_projects:
+                status = "leader"
+            elif status == "leader":
+                status = "mature"
+                leader_rule_note = "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。"
             coverage_score += max(STATUS_SCORES[status], 0)
             if status == "leader":
                 leading_projects.append(cell["project"].label)
@@ -650,6 +684,8 @@ def build_context() -> Dict[str, Any]:
                     "note": evidence.note,
                     "hits": evidence.hits,
                     "signals": evidence.signals,
+                    "fingerprint": list(evidence_fingerprint(evidence.signals)),
+                    "leader_rule_note": leader_rule_note,
                     "score": evidence.score,
                 }
             )
@@ -661,6 +697,9 @@ def build_context() -> Dict[str, Any]:
                 "mature_projects": mature_projects,
                 "score": coverage_score,
                 "max_score": max_score,
+                "top_projects": [cell["project"].label for cell in top_cells],
+                "leader_gap": leader_gap,
+                "required_leader_fingerprint": positive_fingerprint,
             }
         )
 
@@ -702,7 +741,9 @@ def render_html(context: Dict[str, Any]) -> str:
         adopted = [c["project"].label for c in row["cells"] if c["status"] == "adopted"]
         partial = [c["project"].label for c in row["cells"] if c["status"] == "partial"]
         missing_count = sum(1 for c in row["cells"] if c["status"] == "none")
-        if leaders and set(leaders).issubset(set(origin_projects)):
+        if row.get("leader_gap"):
+            next_step = "当前没有工程覆盖同技能下全体独特证据信号；先做互补差异对齐，覆盖并集后才标记领先。"
+        elif leaders and set(leaders).issubset(set(origin_projects)):
             next_step = "源头当前领先；下一步是按目标工程结构迁移或补齐缺口。"
         elif leaders:
             next_step = "复核领先工程的可复用增量，抽象后反哺源能力 / TRANSFER / sensor。"
@@ -726,7 +767,7 @@ def render_html(context: Dict[str, Any]) -> str:
             "</article>"
         )
         overview_cells = "\n".join(
-            f"<td class=\"heat-cell heat-{c['status']}{' heat-source' if c['project'].label in origin_projects else ''}\" title=\"{html.escape(c['project'].label + ': ' + c['note'] + ('；源头工程。' if c['project'].label in origin_projects else ''))}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
+            f"<td class=\"heat-cell heat-{c['status']}{' heat-source' if c['project'].label in origin_projects else ''}\" title=\"{html.escape(c['project'].label + ': ' + c['note'] + ('；' + c['leader_rule_note'] if c.get('leader_rule_note') else '') + ('；源头工程。' if c['project'].label in origin_projects else ''))}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
             for c in row["cells"]
         )
         subitem_text = f"子项：{member_count}"
@@ -961,7 +1002,7 @@ def render_html(context: Dict[str, Any]) -> str:
 
     <section class="card">
       <h2>行动诊断与结构化数据</h2>
-      <p>HTML 只保留鸟瞰矩阵。逐工程、逐技能的分差、缺失信号和建议修改方向写入 <a href="./skill-maturity-diagnostics.md">skill-maturity-diagnostics.md</a>；同一轮扫描的结构化数据写入 <a href="./skill-maturity-matrix.data.json">skill-maturity-matrix.data.json</a>。三份产物由同一个生成脚本同步重写，避免总览、诊断和数据漂移。</p>
+      <p>HTML 只保留鸟瞰矩阵。逐工程、逐技能的分差、缺失信号和建议修改方向写入 <a href="./skill-maturity-diagnostics.md">skill-maturity-diagnostics.md</a>；同一轮扫描的结构化数据写入 <a href="./skill-maturity-matrix.data.json">skill-maturity-matrix.data.json</a>。三份产物由同一个生成脚本同步重写，避免总览、诊断和数据漂移。领先不是简单最高分：必须覆盖同一技能下全体工程已经出现的独特证据信号。</p>
     </section>
 
     {matrix_sections}
@@ -975,7 +1016,7 @@ def render_html(context: Dict[str, Any]) -> str:
 
     <section class="card boundary">
       <h2>证据边界</h2>
-      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成大项，再按通用 / 可迁移与项目 / 领域绑定分表呈现，并追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
+      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成大项，再按通用 / 可迁移与项目 / 领域绑定分表呈现，并追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；只有覆盖同一技能下全体工程独特证据信号并集的最高分工程才能标为领先；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
       <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；通用能力可迁移的是触发、事实源、流程、输出、验证和守卫，项目 / 领域绑定能力只能抽象方法，不能复制业务表、服务名、运行 ID、本地路径、项目状态或一次性 handoff。</p>
       <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。同步产物：views/current/governance/skill-maturity-diagnostics.md、views/current/governance/skill-maturity-matrix.data.json。</p>
     </section>
@@ -1000,9 +1041,16 @@ def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]
     skill = row["skill"]
     project = cell["project"]
     leaders = [leader for leader in row["cells"] if leader["status"] == "leader"]
-    leader_signals = sorted({signal for leader in leaders for signal in leader.get("signals", [])})
+    leader_gap = bool(row.get("leader_gap"))
+    top_cells = [
+        item for item in row["cells"]
+        if item["score"] == row["max_score"] and item["score"] > 0
+    ]
+    comparison_cells = leaders if leaders else top_cells
+    leader_signals = [str(signal) for signal in row.get("required_leader_fingerprint", [])]
     current_signals = sorted(cell.get("signals", []))
-    missing_signals = [signal for signal in leader_signals if signal not in current_signals]
+    current_fingerprint = list(evidence_fingerprint(current_signals))
+    missing_signals = [signal for signal in leader_signals if signal not in current_fingerprint]
     score_gap = max(row["max_score"] - cell["score"], 0)
     status = cell["status"]
     scope = str(skill.get("capability_scope", "general"))
@@ -1010,6 +1058,8 @@ def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]
     if status == "leader":
         missing_signals = []
         direction = "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+    elif leader_gap and cell["score"] == row["max_score"] and cell["score"] > 0:
+        direction = f"互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 {', '.join(missing_signals[:4]) if missing_signals else '无'}；覆盖证据信号并集后，才可重新评为领先。"
     elif status == "none":
         direction = "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
     elif scope == "project-bound":
@@ -1019,7 +1069,7 @@ def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]
     else:
         direction = "补证据质量：扩大正文可读性、补迁移说明、验证样例或检查脚本，让能力从可见提升到可复用。"
 
-    leader_labels = [leader["project"].label for leader in leaders]
+    leader_labels = [leader["project"].label for leader in comparison_cells]
     return {
         "skill": str(skill["name"]),
         "display_name": str(skill["display_name"]),
@@ -1035,7 +1085,11 @@ def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]
         "max_score": row["max_score"],
         "score_gap": score_gap,
         "leaders": leader_labels,
+        "leader_gap": leader_gap,
+        "leader_rule_note": str(cell.get("leader_rule_note", "")),
+        "required_leader_fingerprint": leader_signals,
         "signals": current_signals,
+        "fingerprint": current_fingerprint,
         "missing_leader_signals": missing_signals,
         "evidence_note": cell["note"],
         "evidence_paths": [project_ref(path, project) for path in cell.get("hits", [])],
@@ -1130,6 +1184,7 @@ def render_markdown(context: Dict[str, Any]) -> str:
         "## 使用边界",
         "",
         "- `领先 / 成熟 / 接入 / 局部 / 未见` 只表示本地文件证据信号强弱，不代表运行时验收。",
+        "- `领先` 要求该工程覆盖同一技能下全体工程已经出现的独特证据信号；如果多个工程各有特色但没有任何一个覆盖并集，只能标为成熟或接入，并在诊断里提示互补对齐方向。",
         "- `建议修改方向` 只指出下一步补证据或补能力的方向；项目 / 领域绑定技能只能抽象方法，不复制业务表、路径、运行 ID、状态或一次性 handoff。",
         "- HTML 负责鸟瞰，JSON 负责结构化数据，本页负责每个工程可读的行动诊断。",
         "",
@@ -1153,7 +1208,7 @@ def render_markdown(context: Dict[str, Any]) -> str:
                 f"- **工程路径**：`{project.path}`",
                 f"- **成熟概览**：领先 {counts['leader']}；成熟 {counts['mature']}；接入 {counts['adopted']}；局部 {counts['partial']}；未见 {counts['none']}；阻塞 {counts['blocked']}。",
                 "",
-                "| 技能 / 能力 | 范围 | 当前 | 分差 | 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |",
+                "| 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |",
                 "| --- | --- | --- | ---: | --- | --- | --- | --- |",
             ]
         )
