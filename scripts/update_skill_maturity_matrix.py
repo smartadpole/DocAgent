@@ -106,16 +106,21 @@ GROUP_DEFINITIONS: Dict[str, Dict[str, Union[str, int]]] = {
         "display_name": "项目上下文入口",
         "description": "面向具体工程的上下文加载、主控文档读取、handoff / TODO / FP 对齐和实现仓库接入能力。它通常是下游工程本地能力，不一定应反哺成通用源技能。",
         "sort_order": 120,
+        "capability_scope": "project-bound",
+        "scope_note": "绑定具体工程上下文入口和交接结构，不能按通用技能直接迁移。",
     },
     "documentation-maintenance": {
         "display_name": "文档与 Agent 规则维护",
         "description": "面向代码变更后的文档更新、AGENTS.md / agent 规则同步、写作文档和 PR 前文档新鲜度检查的维护能力。",
         "sort_order": 130,
+        "capability_scope": "general",
     },
     "lifeos-management": {
         "display_name": "生活系统管理",
         "description": "LifeOS 侧面向生活事项路由、inbox 整理、周报和生活决策复盘的领域技能总项。它作为下游主题能力展示，不默认上推为软件工程通用技能。",
         "sort_order": 140,
+        "capability_scope": "project-bound",
+        "scope_note": "绑定 LifeOS 生活域，不默认上推为软件工程通用技能。",
     },
 }
 
@@ -135,6 +140,27 @@ GROUP_BY_SKILL = {
     "inbox-triage": "lifeos-management",
     "weekly-review": "lifeos-management",
     "life-decision-review": "lifeos-management",
+}
+
+PROJECT_BOUND_SKILLS = {
+    "backlog-management": "绑定特定 issue backlog、仓库队列和维护策略，迁移时只能抽取批处理方法。",
+    "customer-group-db-readback": "绑定客群业务表、数据库写入合同和验收口径，迁移时只能抽取读回验证方法。",
+    "work-item-auto-decomposition": "绑定主控 Gate / FP / EP / TASK 事项模型，迁移前必须先抽象事项系统。",
+}
+
+SCOPE_LABELS = {
+    "general": "通用 / 可迁移",
+    "project-bound": "项目 / 领域绑定",
+}
+
+SCOPE_DESCRIPTIONS = {
+    "general": "方法、治理契约或呈现流程可以跨工程复用；迁移重点是触发条件、事实源分层、流程、输出格式、验证和禁止项。",
+    "project-bound": "能力绑定具体项目、业务对象、数据合同、运行环境或领域语义；矩阵只展示成熟度，跨工程反哺时只能抽象方法，不复制项目事实。",
+}
+
+SCOPE_SORT_ORDER = {
+    "general": 0,
+    "project-bound": 1,
 }
 
 SUPPLEMENTAL_CAPABILITIES: List[Dict[str, Union[str, List[str]]]] = [
@@ -216,6 +242,24 @@ def group_name_for_skill(value: str) -> str:
     return GROUP_BY_SKILL.get(value, value)
 
 
+def capability_scope_for_skill(value: str) -> str:
+    group_name = group_name_for_skill(value)
+    group_def = GROUP_DEFINITIONS.get(group_name)
+    if group_def and group_def.get("capability_scope"):
+        return str(group_def["capability_scope"])
+    if value in PROJECT_BOUND_SKILLS:
+        return "project-bound"
+    return "general"
+
+
+def scope_note_for_skill(value: str) -> str:
+    group_name = group_name_for_skill(value)
+    group_def = GROUP_DEFINITIONS.get(group_name)
+    if group_def and group_def.get("scope_note"):
+        return str(group_def["scope_note"])
+    return PROJECT_BOUND_SKILLS.get(value, SCOPE_DESCRIPTIONS[capability_scope_for_skill(value)])
+
+
 def origin_projects_for(source_occurrences: List[Dict[str, str]], occurrences: List[Dict[str, str]]) -> List[str]:
     if source_occurrences:
         return sorted({item["project_label"] for item in source_occurrences})
@@ -287,6 +331,8 @@ def read_skill_manifest() -> List[Dict[str, Union[str, List[str]]]]:
                 "member_display_names": [display_name_for_skill(name)],
                 "member_count": "1",
                 "sort_order": "100",
+                "capability_scope": capability_scope_for_skill(name),
+                "scope_note": scope_note_for_skill(name),
             }
         )
 
@@ -300,6 +346,8 @@ def read_skill_manifest() -> List[Dict[str, Union[str, List[str]]]]:
                     "member_display_names": [str(capability["display_name"])],
                     "member_count": "1",
                     "sort_order": "90",
+                    "capability_scope": "general",
+                    "scope_note": "治理契约类能力，不绑定单一项目业务事实；迁移时应保持完成契约和验收边界分离。",
                 }
             )
 
@@ -324,8 +372,14 @@ def read_skill_manifest() -> List[Dict[str, Union[str, List[str]]]]:
                 "member_display_names": [],
                 "member_count": "0",
                 "sort_order": str(group_def["sort_order"]) if group_def else str(row.get("sort_order", "100")),
+                "capability_scope": str(group_def.get("capability_scope", row.get("capability_scope", "general"))) if group_def else str(row.get("capability_scope", "general")),
+                "scope_note": str(group_def.get("scope_note", row.get("scope_note", ""))) if group_def else str(row.get("scope_note", "")),
             }
         group = capability_groups[group_name]
+        if row.get("capability_scope") == "project-bound":
+            group["capability_scope"] = "project-bound"
+        if row.get("scope_note"):
+            group["scope_note"] = str(row["scope_note"])
         group["source_paths"] = sorted({*group["source_paths"], *row.get("source_paths", [])})  # type: ignore[arg-type]
         group["source_projects"] = sorted({*group["source_projects"], *row.get("source_projects", [])})  # type: ignore[arg-type]
         group["origin_projects"] = sorted({*group["origin_projects"], *row.get("origin_projects", row.get("source_projects", []))})  # type: ignore[arg-type]
@@ -558,6 +612,10 @@ def status_for(score: int, max_score: int) -> str:
 def render_html() -> str:
     skills = read_skill_manifest()
     total_member_count = sum(int(str(skill.get("member_count", "1"))) for skill in skills)
+    scope_counts = {
+        scope: sum(1 for skill in skills if str(skill.get("capability_scope", "general")) == scope)
+        for scope in SCOPE_LABELS
+    }
     generated = datetime.now().strftime("%Y-%m-%d %H:%M")
     source_revision = run(["git", "rev-parse", "--short", "HEAD"]) or "working-tree"
 
@@ -602,10 +660,13 @@ def render_html() -> str:
             }
         )
 
-    compact_cards = []
-    overview_rows = []
+    compact_cards_by_scope: Dict[str, List[str]] = defaultdict(list)
+    overview_rows_by_scope: Dict[str, List[str]] = defaultdict(list)
     for row in matrix:
         skill = row["skill"]
+        scope = str(skill.get("capability_scope", "general"))
+        scope_label = SCOPE_LABELS.get(scope, scope)
+        scope_note = str(skill.get("scope_note", SCOPE_DESCRIPTIONS.get(scope, "")))
         origin_projects = [str(project) for project in skill.get("origin_projects", skill["source_projects"])]
         found_projects = [str(project) for project in skill["source_projects"]]
         source_projects = "、".join(found_projects)
@@ -625,11 +686,12 @@ def render_html() -> str:
             next_step = "复核领先工程的可复用增量，抽象后反哺源能力 / TRANSFER / sensor。"
         else:
             next_step = "先补可检测的 skill / governance / TRANSFER / sensor / views 证据。"
-        compact_cards.append(
+        compact_cards_by_scope[scope].append(
             "<article class=\"skill-card\">"
             f"<div class=\"skill-card-head\"><div><code>{html.escape(skill['name'])}</code>"
             f"<p>{html.escape(skill['description'])}</p></div>"
             f"<span class=\"score\">{row['max_score']}</span></div>"
+            f"<p class=\"scope-meta scope-{html.escape(scope)}\"><strong>{html.escape(scope_label)}</strong><span>{html.escape(scope_note)}</span></p>"
             f"<p class=\"source-meta\"><strong>源头</strong>{html.escape(source_roots if source_roots else '暂无')}<span>发现于：{html.escape(source_projects if source_projects else '暂无')}</span><span>子项：{html.escape(member_text)}（{html.escape(member_count)}）</span></p>"
             "<div class=\"compact-grid\">"
             f"<div><strong>领先</strong><span>{html.escape('、'.join(leaders) if leaders else '暂无')}</span></div>"
@@ -646,7 +708,7 @@ def render_html() -> str:
             for c in row["cells"]
         )
         subitem_text = f"子项：{member_count}"
-        overview_rows.append(
+        overview_rows_by_scope[scope].append(
             "<tr>"
             f"<th title=\"{html.escape(skill['name'] + ' · 源头：' + (source_roots if source_roots else '暂无') + ' · 领先：' + ('、'.join(leaders) if leaders else '暂无'))}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(subitem_text)}</span></th>"
             f"{overview_cells}</tr>"
@@ -658,6 +720,39 @@ def render_html() -> str:
         for p in PROJECTS
     )
 
+    def render_matrix_section(scope: str) -> str:
+        rows = "".join(overview_rows_by_scope.get(scope, []))
+        if not rows:
+            return ""
+        return (
+            "<section>"
+            f"<h2>{html.escape(SCOPE_LABELS[scope])}技能 / 能力 x 工程矩阵</h2>"
+            f"<p class=\"section-note\">{html.escape(SCOPE_DESCRIPTIONS[scope])}</p>"
+            "<div class=\"overview-shell\">"
+            "<table class=\"overview-matrix\">"
+            f"<thead><tr><th>技能 / 能力</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>"
+            f"<tbody>{rows}</tbody>"
+            "</table>"
+            "</div>"
+            "<p class=\"overview-note\">格子底色显示成熟度，深色内边框和底部斜纹显示源头工程；第一列只保留能力名和子项数量。数字是该工程在该技能主题或治理能力下的证据信号分，不代表目标工程运行验收。</p>"
+            "</section>"
+        )
+
+    def render_detail_section(scope: str) -> str:
+        cards = "".join(compact_cards_by_scope.get(scope, []))
+        if not cards:
+            return ""
+        return (
+            "<section>"
+            f"<h2>{html.escape(SCOPE_LABELS[scope])}技能 / 能力详情</h2>"
+            f"<p class=\"section-note\">{html.escape(SCOPE_DESCRIPTIONS[scope])}</p>"
+            f"<div class=\"skill-card-list\">{cards}</div>"
+            "</section>"
+        )
+
+    matrix_sections = "\n".join(render_matrix_section(scope) for scope in sorted(SCOPE_LABELS, key=SCOPE_SORT_ORDER.get))
+    detail_sections = "\n".join(render_detail_section(scope) for scope in sorted(SCOPE_LABELS, key=SCOPE_SORT_ORDER.get))
+
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -665,14 +760,14 @@ def render_html() -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>跨工程技能与治理能力成熟度矩阵</title>
   <meta name="lens_id" content="lens-skill-maturity-matrix-current">
-  <meta name="focus_object" content="grouped skill themes and selected governance capabilities across AcknowledgeBase and registered projects">
+  <meta name="focus_object" content="grouped general skills, governance capabilities, and project-bound domain skills across AcknowledgeBase and registered projects">
   <meta name="lens_type" content="knowledge">
   <meta name="generated_at" content="{html.escape(generated)}">
   <meta name="source_revision" content="{html.escape(source_revision)}">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
-  <meta name="source_scope" content="all discovered project skill files grouped into skill themes plus supplemental governance capability rows and local transfer, governance, sensor, template, view, and selected log evidence">
-  <meta name="evidence_boundary" content="confirmed local skill-file discovery plus supplemental governance capability discovery and content-volume signals; detailed skills are grouped into larger themes for the overview table; no runtime validation">
-  <meta name="context_frame" content="cross-project grouped skill-theme and governance capability catalog with source roots, subitems, and maturity ranking; source project participates in the same ranking as downstream projects">
+  <meta name="source_scope" content="all discovered project skill files grouped into skill themes, split into general transferable capabilities and project/domain-bound capabilities, plus supplemental governance capability rows and local transfer, governance, sensor, template, view, and selected log evidence">
+  <meta name="evidence_boundary" content="confirmed local skill-file discovery plus supplemental governance capability discovery and content-volume signals; detailed skills are grouped into larger themes and split by transferability scope; no runtime validation">
+  <meta name="context_frame" content="cross-project grouped skill-theme and governance capability catalog with source roots, subitems, maturity ranking, and project-bound capability separation; source project participates in the same ranking as downstream projects">
   <meta name="output_mode" content="html_report / print_view">
   <meta name="visual_structure" content="overview matrix / compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
@@ -711,10 +806,11 @@ def render_html() -> str:
     main {{ padding: 30px 0 64px; }}
     section {{ margin: 0 0 30px; }}
     h2 {{ margin: 0 0 14px; font-size: 23px; letter-spacing: 0; }}
+    .section-note {{ margin: -6px 0 12px; color: var(--muted); font-size: 13px; }}
     .cards {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }}
     .card, article {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; box-shadow: 0 6px 18px rgba(28, 36, 48, 0.05); }}
     .card strong {{ display: block; font-size: 28px; line-height: 1; margin-bottom: 8px; }}
-    .legend-groups {{ display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr); gap: 12px; }}
+    .legend-groups {{ display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr) minmax(320px, 1fr); gap: 12px; }}
     .legend-box {{ border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 12px; }}
     .legend-title {{ display: block; margin: 0 0 8px; color: #273549; font-size: 12px; font-weight: 900; }}
     .legend {{ display: flex; flex-wrap: wrap; gap: 8px; }}
@@ -742,6 +838,9 @@ def render_html() -> str:
     .source-sample::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 4px, rgba(23,32,51,0.72) 4px 8px); }}
     .source-sample::after {{ content: ""; position: absolute; inset: 4px; border: 2px solid rgba(23,32,51,0.9); border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.44); }}
     .marker-row {{ display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 12px; }}
+    .scope-row {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; }}
+    .scope-pill {{ display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: #e7eef6; color: #27415f; font-weight: 900; }}
+    .scope-pill.bound {{ background: #fff1df; color: #7a3a00; border: 1px solid #e6a35a; }}
     .heat-leader {{ background: #5a2bc2 !important; }}
     .heat-mature {{ background: #008f3a !important; }}
     .heat-adopted {{ background: #005fd8 !important; }}
@@ -754,6 +853,10 @@ def render_html() -> str:
     .skill-card-head {{ display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; margin-bottom: 12px; }}
     .skill-card code {{ color: #172033; font-size: 14px; font-weight: 800; white-space: normal; }}
     .skill-card p {{ margin: 5px 0 0; color: var(--muted); font-size: 12px; }}
+    .scope-meta {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -4px 0 8px !important; color: var(--muted) !important; }}
+    .scope-meta strong {{ display: inline-flex; min-height: 24px; align-items: center; padding: 2px 8px; border-radius: 999px; background: #e7eef6; color: #27415f; font-size: 12px; }}
+    .scope-project-bound strong {{ background: #fff1df; color: #7a3a00; border: 1px solid #e6a35a; }}
+    .scope-meta span {{ display: inline-flex; min-height: 24px; align-items: center; color: var(--muted); font-size: 12px; }}
     .source-meta {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: -4px 0 12px !important; color: #263244 !important; }}
     .source-meta strong {{ display: inline-flex; min-height: 24px; align-items: center; padding: 2px 8px; border-radius: 999px; background: #e7eef6; color: #27415f; font-size: 12px; }}
     .source-meta span {{ display: inline-flex; min-height: 24px; align-items: center; color: var(--muted); font-size: 12px; }}
@@ -794,11 +897,13 @@ def render_html() -> str:
     <div class="wrap hero">
       <div class="eyebrow">Skill and governance capability maturity lens · 每三天刷新</div>
       <h1>跨工程技能与治理能力成熟度矩阵</h1>
-      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并把复盘、调研、文档维护、项目上下文入口等同主题能力归并成大项；细分子项在详情卡展开。矩阵用颜色表达成熟度，用边框和底部纹理标记源头工程，减少第一列文字负担。</p>
+      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并把复盘、调研、文档维护、项目上下文入口等同主题能力归并成大项；细分子项在详情卡展开。通用 / 可迁移能力和项目 / 领域绑定能力分表呈现，避免把客群 DB 读回这类数据合同型技能误读成通用技能。</p>
       <div class="meta-row">
         <span class="pill">生成：{html.escape(generated)}</span>
         <span class="pill">源版本：{html.escape(source_revision)}</span>
         <span class="pill">汇总大项：{len(skills)}</span>
+        <span class="pill">通用：{scope_counts['general']}</span>
+        <span class="pill">项目 / 领域绑定：{scope_counts['project-bound']}</span>
         <span class="pill">底层细项：{total_member_count}</span>
         <span class="pill">工程数：{len(PROJECTS)}</span>
       </div>
@@ -807,9 +912,9 @@ def render_html() -> str:
   <main class="wrap">
     <section class="cards">
       <div class="card"><strong>{len(skills)}</strong><span>本轮汇总技能 / 能力大项</span></div>
-      <div class="card"><strong>{total_member_count}</strong><span>底层技能 / 能力细项</span></div>
+      <div class="card"><strong>{scope_counts['general']}</strong><span>通用 / 可迁移大项</span></div>
+      <div class="card"><strong>{scope_counts['project-bound']}</strong><span>项目 / 领域绑定大项</span></div>
       <div class="card"><strong>{sum(1 for s in skills if s['has_transfer'] == 'yes')}</strong><span>大项含 TRANSFER.md</span></div>
-      <div class="card"><strong>3d</strong><span>建议刷新周期</span></div>
     </section>
 
     <section>
@@ -825,26 +930,16 @@ def render_html() -> str:
           <strong class="legend-title">源头标记</strong>
           <div class="marker-row"><span class="source-sample">源头</span><span>深色内边框 + 底部斜纹表示该工程是此能力源头；成熟度仍由底色决定。</span></div>
         </div>
+        <div class="legend-box">
+          <strong class="legend-title">分类口径</strong>
+          <div class="scope-row"><span class="scope-pill">通用 / 可迁移</span><span>迁移方法与守卫。</span><span class="scope-pill bound">项目 / 领域绑定</span><span>只抽象方法，不复制项目事实。</span></div>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>技能 / 能力 x 工程矩阵</h2>
-      <div class="overview-shell">
-        <table class="overview-matrix">
-          <thead><tr><th>技能 / 能力</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
-          <tbody>{''.join(overview_rows)}</tbody>
-        </table>
-      </div>
-      <p class="overview-note">格子底色显示成熟度，深色内边框和底部斜纹显示源头工程；第一列只保留能力名和子项数量。数字是该工程在该技能主题或治理能力下的证据信号分，不代表目标工程运行验收。</p>
-    </section>
+    {matrix_sections}
 
-    <section>
-      <h2>技能 / 能力详情</h2>
-      <div class="skill-card-list">
-        {''.join(compact_cards)}
-      </div>
-    </section>
+    {detail_sections}
 
     <section>
       <h2>工程范围</h2>
@@ -853,8 +948,8 @@ def render_html() -> str:
 
     <section class="card boundary">
       <h2>证据边界</h2>
-      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成总表大项，再追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
-      <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；吸收动作仍必须先按上游归一规则抽象系统层信息，剥离项目事实、业务链路、运行 ID、本地路径和一次性 handoff。</p>
+      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成大项，再按通用 / 可迁移与项目 / 领域绑定分表呈现，并追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
+      <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；通用能力可迁移的是触发、事实源、流程、输出、验证和守卫，项目 / 领域绑定能力只能抽象方法，不能复制业务表、服务名、运行 ID、本地路径、项目状态或一次性 handoff。</p>
       <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
     </section>
   </main>

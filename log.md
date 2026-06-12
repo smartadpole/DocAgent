@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 将强项目属性技能从通用技能矩阵拆出
+
+- **记录人**：sunhao
+- **用户意图**：用户认可“客群 DB 读回”这类能力和调研、复盘、Goal Contract 等通用技能不同，要求把这种分类依据沉淀下来，并让强项目属性 / 业务属性技能单独成表，不再和通用技能混在一起。
+- **主题**：
+  1. 将技能归类从“是否存在 skill / 哪个工程领先”升级为“通用可迁移、治理契约、项目 / 领域绑定”三类判断。
+  2. 明确项目 / 领域绑定技能只能抽象方法，不能复制业务表、服务名、运行 ID、本地路径、项目状态或一次性 handoff。
+  3. 将技能成熟度 lens 从单张混合矩阵改为通用能力矩阵和项目 / 领域绑定能力矩阵两张表。
+- **关键动作**：
+  1. 更新 [[concepts/agent-skills]]，新增“技能归类和迁移策略”，把客群 DB 读回定义为绑定业务对象、数据库写入合同、字段含义、验收窗口和项目运行边界的项目 / 领域绑定技能。
+  2. 更新 `scripts/update_skill_maturity_matrix.py`，为技能大项增加 `capability_scope` 和 `scope_note`，并把客群 DB 读回、项目上下文入口、LifeOS 管理、特定 backlog 批处理和事项自动拆解拆到项目 / 领域绑定表。
+  3. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]，同步 [[skills/README]]、[[views/README]]、[[views/lens-registry]] 和 [[INDEX]] 的入口描述。
+- **结论**：后续看跨工程技能成熟度时，通用能力看“怎么迁移”，项目 / 领域绑定能力看“能抽象出什么方法”；两者可以同页比较成熟度，但不应在同一张总表里混读。
+- **影响页面**：[[concepts/agent-skills]]、`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[skills/README]]、[[views/README]]、[[views/lens-registry]]、[[INDEX]]、[[log]]。
+
 ### 将技能矩阵源头信息改为视觉标记
 
 - **记录人**：sunhao

@@ -43,7 +43,7 @@ tags: [index, root]
 - [[knowledge-linking-rules]]：新增知识页、概念页和摘要卡片的网状关联规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能，把文档、主题、状态、风险、决策、计划、验收或知识材料重组为带背景框、证据边界、首屏用户价值、照片证据排版、同源一致性和 ignored PDF / PNG 导出配置的图文 lens
-- [[views/README]]：图文呈现层入口，存放问题聚焦式 HTML lens；当前芯智睿声企业调研视图见 [[views/current/knowledge/xinzhi-ruisheng-company.html]]，跨工程技能与治理能力成熟度视图见 [[views/current/governance/skill-maturity-matrix.html]]
+- [[views/README]]：图文呈现层入口，存放问题聚焦式 HTML lens；当前芯智睿声企业调研视图见 [[views/current/knowledge/xinzhi-ruisheng-company.html]]，跨工程技能与治理能力成熟度分表视图见 [[views/current/governance/skill-maturity-matrix.html]]
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能升级提示词生成技能
 - [[skills/knowledge-linking/SKILL]]：知识关联技能，把调研、沉淀、总结方案、补链和 `knowledge-linking` sensor 验证做成可复用流程
 - [[skills/technology-research-router/SKILL]]：技术调研路由技能，先判断对象是行业 / AI 赛道、技术专题、开源工程、源码工程还是 PoC，再选择证据、成熟度、风险和产物路径

@@ -12,7 +12,7 @@
 ## 当前视图
 
 - [[views/current/knowledge/xinzhi-ruisheng-company.html]]：芯智睿声企业调研 lens。
-- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能与治理能力成熟度矩阵，动态发现所有工程的技能项，按调研、复盘、文档维护、项目上下文等主题归并成大项，并显式标注源头工程、底层子项、发现工程和相对成熟度。
+- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能与治理能力成熟度矩阵，动态发现所有工程的技能项，按调研、复盘、文档维护、项目上下文等主题归并成大项，并按通用 / 可迁移能力与项目 / 领域绑定能力分表呈现，同时标注源头工程、底层子项、发现工程和相对成熟度。
 
 ## 维护原则
 
