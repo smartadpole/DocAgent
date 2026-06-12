@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 刷新技能成熟度矩阵并吸收子工程新入口发现
+
+- **记录人**：sunhao
+- **用户意图**：按自动化周期刷新 AcknowledgeBase 跨工程技能成熟度矩阵，核对脚本扫描源是否漂移，并同步重生成 canonical HTML 与 ignored PDF / PNG 导出。
+- **主题**：
+  1. 复核 `skills/README.md`、当前 `skills/*/SKILL.md`、[[projects/governance/registry]] 和矩阵脚本扫描的子工程 skill / governance / sensor 路径。
+  2. 判断本轮是否需要改 `scripts/update_skill_maturity_matrix.py`；若项目清单、别名和状态规则未变，则只刷新生成产物。
+  3. 将本轮新发现的子工程技能入口反映到矩阵与诊断页，包括新增 `transferable-skill-governance` 行，以及多个工程对调研、复盘、知识关联、Goal Contract、文档维护等能力的最新接入状态。
+- **关键动作**：
+  1. 运行 `python3 scripts/update_skill_maturity_matrix.py`，重写 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`。
+  2. 运行 `python3 scripts/export_skill_maturity_matrix.py`，从同一 canonical HTML 重新导出 `views/.exports/skill-maturity-matrix.pdf` 和 `views/.exports/skill-maturity-matrix.png`。
+  3. 运行 `python3 scripts/check_all.py`，确认技能矩阵同步、图文呈现和全库质量门全部通过。
+- **结论**：这轮变化不是脚本规则改动，而是扫描结果的长期解释面更新。矩阵现在承认更多子工程已经具备可检测的技能入口与治理证据，因此总能力项从 14 升到 15，通用 / 可迁移项从 9 升到 10，并重排了多个工程的相对成熟度。
+- **影响页面**：[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 抽象技能矩阵连续纠偏为图文 lens 规则
 
 - **记录人**：sunhao
