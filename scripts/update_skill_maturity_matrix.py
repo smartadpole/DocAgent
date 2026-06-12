@@ -751,6 +751,19 @@ def render_html(context: Dict[str, Any]) -> str:
             return True
         return scope == "general" and row["max_score"] >= 8 and missing_count >= max(4, len(PROJECTS) // 3)
 
+    scope_row_counts = {
+        scope: sum(1 for row in matrix if str(row["skill"].get("capability_scope", "general")) == scope)
+        for scope in SCOPE_LABELS
+    }
+    scope_priority_counts = {
+        scope: sum(
+            1
+            for row in matrix
+            if str(row["skill"].get("capability_scope", "general")) == scope and is_priority_row(row)
+        )
+        for scope in SCOPE_LABELS
+    }
+
     for row in matrix:
         skill = row["skill"]
         scope = str(skill.get("capability_scope", "general"))
@@ -800,8 +813,9 @@ def render_html(context: Dict[str, Any]) -> str:
         )
         subitem_text = f"子项：{member_count}"
         priority = is_priority_row(row)
-        priority_badge = "<em class=\"priority-badge\">优先</em>" if priority else ""
-        row_class = " class=\"priority-row\"" if priority else ""
+        show_priority_marker = priority and scope_priority_counts.get(scope, 0) < scope_row_counts.get(scope, 0)
+        priority_badge = "<em class=\"priority-badge\">优先</em>" if show_priority_marker else ""
+        row_class = " class=\"priority-row\"" if show_priority_marker else ""
         row_html = (
             f"<tr{row_class}>"
             f"<th title=\"{html.escape(skill['name'] + ' · 源头：' + (source_roots if source_roots else '暂无') + ' · 领先：' + ('、'.join(leaders) if leaders else '暂无'))}\"><code>{html.escape(skill['display_name'])}</code>{priority_badge}<span>{html.escape(subitem_text)}</span></th>"
@@ -852,10 +866,20 @@ def render_html(context: Dict[str, Any]) -> str:
     )
     detail_sections = "\n".join(render_detail_section(scope) for scope in scope_order)
     priority_count = sum(1 for row in matrix if is_priority_row(row))
+    marker_count = sum(
+        count
+        for scope, count in scope_priority_counts.items()
+        if count < scope_row_counts.get(scope, 0)
+    )
+    priority_note = (
+        f"完整能力 x 工程矩阵默认可见，共 {priority_count} 个优先关注项；当前通用 / 可迁移分组整体都应先看，所以不逐行重复写“优先”。下方只折叠能力摘要卡，不再重复第二张矩阵；每个单元格都可以跳到诊断子页面。"
+        if marker_count == 0
+        else f"完整能力 x 工程矩阵默认可见，矩阵内只在需要区分时标记 {marker_count} 个优先行。下方只折叠能力摘要卡，不再重复第二张矩阵；每个单元格都可以跳到诊断子页面。"
+    )
     matrix_sections = (
         "<section class=\"priority-intro\">"
         "<h2>首屏主次策略</h2>"
-        f"<p>完整能力 x 工程矩阵默认可见，矩阵内用“优先”标记 {priority_count} 个应先看的能力项。下方只折叠能力摘要卡，不再重复第二张矩阵；每个单元格都可以跳到诊断子页面。</p>"
+        f"<p>{priority_note}</p>"
         "</section>"
         f"{full_matrix_sections}"
     )

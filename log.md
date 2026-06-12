@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 移除全优先分组的逐行优先标签
+
+- **记录人**：sunhao
+- **用户意图**：用户指出当前通用 / 可迁移矩阵行全部都是优先项，逐行显示“优先”已经没有区分价值，只会浪费首列空间。
+- **主题**：
+  1. 保留完整能力 x 工程矩阵默认可见。
+  2. 当同一分组内所有行都属于优先项时，不再逐行显示“优先”标签或优先边。
+  3. 只在分组内部分行需要区分时才显示行内优先标记。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，按 scope 统计优先覆盖率，决定是否显示行内标记。
+  2. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]、诊断页、JSON 和 ignored PDF / PNG。
+  3. 通过 `scripts/check_all.py` 验证同步产物和质量门禁。
+- **结论**：优先信息只在能产生区分时进入矩阵行；当整个通用分组都应优先看时，只在说明区表达，避免每行重复。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 压缩技能矩阵热力表版式密度
 
 - **记录人**：sunhao
