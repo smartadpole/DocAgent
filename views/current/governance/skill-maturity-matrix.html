@@ -7,8 +7,8 @@
   <meta name="lens_id" content="lens-skill-maturity-matrix-current">
   <meta name="focus_object" content="grouped general skills, governance capabilities, and project-bound domain skills across AcknowledgeBase and registered projects">
   <meta name="lens_type" content="knowledge">
-  <meta name="generated_at" content="2026-06-12 15:53">
-  <meta name="source_revision" content="bff4036">
+  <meta name="generated_at" content="2026-06-12 16:04">
+  <meta name="source_revision" content="6a799ac">
   <meta name="source_pages" content="skills/README.md; projects/governance/registry.md; views/lens-registry.md">
   <meta name="source_scope" content="all discovered project skill files grouped into skill themes, split into general transferable capabilities and project/domain-bound capabilities, plus supplemental governance capability rows and local transfer, governance, sensor, template, view, and selected log evidence">
   <meta name="evidence_boundary" content="confirmed local skill-file discovery plus supplemental governance capability discovery and content-volume signals; detailed skills are grouped into larger themes and split by transferability scope; no runtime validation">
@@ -144,8 +144,8 @@
       <h1>跨工程技能与治理能力成熟度矩阵</h1>
       <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并把复盘、调研、文档维护、项目上下文入口等同主题能力归并成大项；细分子项在详情卡展开。通用 / 可迁移能力和项目 / 领域绑定能力分表呈现，避免把客群 DB 读回这类数据合同型技能误读成通用技能。</p>
       <div class="meta-row">
-        <span class="pill">生成：2026-06-12 15:53</span>
-        <span class="pill">源版本：bff4036</span>
+        <span class="pill">生成：2026-06-12 16:04</span>
+        <span class="pill">源版本：6a799ac</span>
         <span class="pill">汇总大项：14</span>
         <span class="pill">通用：9</span>
         <span class="pill">项目 / 领域绑定：5</span>
@@ -180,6 +180,11 @@
           <div class="scope-row"><span class="scope-pill">通用 / 可迁移</span><span>迁移方法与守卫。</span><span class="scope-pill bound">项目 / 领域绑定</span><span>只抽象方法，不复制项目事实。</span></div>
         </div>
       </div>
+    </section>
+
+    <section class="card">
+      <h2>行动诊断与结构化数据</h2>
+      <p>HTML 只保留鸟瞰矩阵。逐工程、逐技能的分差、缺失信号和建议修改方向写入 <a href="./skill-maturity-diagnostics.md">skill-maturity-diagnostics.md</a>；同一轮扫描的结构化数据写入 <a href="./skill-maturity-matrix.data.json">skill-maturity-matrix.data.json</a>。三份产物由同一个生成脚本同步重写，避免总览、诊断和数据漂移。</p>
     </section>
 
     <section><h2>通用 / 可迁移技能 / 能力 x 工程矩阵</h2><p class="section-note">方法、治理契约或呈现流程可以跨工程复用；迁移重点是触发条件、事实源分层、流程、输出格式、验证和禁止项。</p><div class="overview-shell"><table class="overview-matrix"><thead><tr><th>技能 / 能力</th><th><span>AcknowledgeBase</span></th><th><span>Software/wiki</span></th><th><span>DocCustomeranalysis</span></th><th><span>DocFilmCommunity</span></th><th><span>fetch-adapter</span></th><th><span>train_platform</span></th><th><span>prefect</span></th><th><span>customeranalysis</span></th><th><span>LifeOS</span></th><th><span>DocERP</span></th><th><span>H100</span></th><th><span>17lang</span></th></tr></thead><tbody><tr><th title="research-capability · 源头：AcknowledgeBase · 领先：AcknowledgeBase、Software/wiki"><code>调研 / 研究能力</code><span>子项：4</span></th><td class="heat-cell heat-leader heat-source" title="AcknowledgeBase: 动态重扫得分 14；证据信号：skill、governance、template、large-body。；源头工程。"><span>领先<small>14</small></span></td>
@@ -362,7 +367,7 @@
       <h2>证据边界</h2>
       <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成大项，再按通用 / 可迁移与项目 / 领域绑定分表呈现，并追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
       <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；通用能力可迁移的是触发、事实源、流程、输出、验证和守卫，项目 / 领域绑定能力只能抽象方法，不能复制业务表、服务名、运行 ID、本地路径、项目状态或一次性 handoff。</p>
-      <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
+      <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。同步产物：views/current/governance/skill-maturity-diagnostics.md、views/current/governance/skill-maturity-matrix.data.json。</p>
     </section>
   </main>
 </body>

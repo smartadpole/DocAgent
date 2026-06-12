@@ -9,6 +9,22 @@
 
 ## 2026-06-12
 
+### 将技能矩阵升级为总览、诊断和数据三层产物
+
+- **记录人**：sunhao
+- **用户意图**：用户希望每个工程在看到某个技能不够顶尖时，能知道往哪个方向修改，同时避免把所有细节塞进 HTML 导致页面过大，并要求所有相关信息变化时能同步更新、链接齐全。
+- **主题**：
+  1. 将跨工程技能成熟度矩阵从单一 HTML 总览升级为 HTML 总览、Markdown 行动诊断和 JSON 结构化数据三层产物。
+  2. 保持单一生成上下文：三份产物都来自 `scripts/update_skill_maturity_matrix.py` 的同一轮扫描和评分结果，不手写维护第二套诊断结论。
+  3. 为同步关系增加专项 sensor，防止后续只刷新 HTML 而漏掉诊断或数据文件。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，新增 `build_context()`，并同步生成 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`。
+  2. Markdown 诊断按工程分组，列出每个技能的当前等级、分差、领先工程、已有信号、待补领先信号和建议修改方向。
+  3. 新增 `scripts/check_skill_maturity_matrix_outputs.py` 并接入 `scripts/check_all.py`，检查 HTML / Markdown / JSON 存在、互链、生成时间、源版本和诊断覆盖数量同步。
+  4. 更新 [[views/README]] 和 [[views/lens-registry]]，登记该 lens 的诊断文件、数据文件、刷新边界和同步产物规则。
+- **结论**：后续技能矩阵刷新必须三层同步：HTML 负责鸟瞰，Markdown 负责每个工程的行动建议，JSON 负责结构化数据和 diff 基础；全量检查会阻止三者漂移。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、`scripts/check_skill_maturity_matrix_outputs.py`、`scripts/check_all.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[views/README]]、[[views/lens-registry]]、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 再次刷新技能矩阵并更新 Software/wiki 能力排名
 
 - **记录人**：sunhao

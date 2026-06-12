@@ -13,11 +13,12 @@
 
 - [[views/current/knowledge/xinzhi-ruisheng-company.html]]：芯智睿声企业调研 lens。
 - [[views/current/knowledge/codex-goal-public-guide.html]]：可对外发布的 Codex Goal 使用教程一页式 lens，突出 “Goal = 目标 + 证据 + 停止条件”。
-- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能与治理能力成熟度矩阵，动态发现所有工程的技能项，按调研、复盘、文档维护、项目上下文等主题归并成大项，并按通用 / 可迁移能力与项目 / 领域绑定能力分表呈现，同时标注源头工程、底层子项、发现工程和相对成熟度。
+- [[views/current/governance/skill-maturity-matrix.html]]：跨工程技能与治理能力成熟度矩阵，动态发现所有工程的技能项，按调研、复盘、文档维护、项目上下文等主题归并成大项，并按通用 / 可迁移能力与项目 / 领域绑定能力分表呈现，同时标注源头工程、底层子项、发现工程和相对成熟度；同轮生成 [[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`，分别承接逐工程行动诊断和结构化数据。
 
 ## 维护原则
 
 - HTML lens 必须写清来源、更新时间、证据边界和未覆盖边界。
 - 同一 lens 的 PDF / PNG / SVG 只能作为从 canonical HTML / source / manifest 派生的导出件，不和 HTML 同步提交；不得为对话预览另画一张不同源 PNG。
 - 持久 HTML lens / print view 必须写清 `output_mode`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports` 和 `conversation_png_preview`。
+- 如果同一 current lens 需要行动诊断或结构化数据，优先由同一生成脚本同步产出 Markdown / JSON，并在 HTML、Markdown 和 registry 中互链；不得手工维护第二套诊断结论。
 - 重要节点如果需要固化，另建 snapshot；普通追问默认更新 current lens。

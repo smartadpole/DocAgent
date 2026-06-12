@@ -28,6 +28,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "execution contract semantics",
         (sys.executable, "scripts/check_execution_contract_semantics.py"),
     ),
+    (
+        "skill-maturity-matrix",
+        "skill maturity matrix synchronized outputs",
+        (sys.executable, "scripts/check_skill_maturity_matrix_outputs.py"),
+    ),
     ("git-diff-whitespace", "git diff whitespace", ("git", "diff", "--check")),
     ("git-staged-diff-whitespace", "git staged diff whitespace", ("git", "diff", "--cached", "--check")),
 )

@@ -4,17 +4,20 @@
 from __future__ import annotations
 
 import html
+import json
 import re
 import subprocess
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, List, Union
+from typing import Any, Dict, Iterable, List, Union
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-matrix.html"
+DIAGNOSTICS_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-diagnostics.md"
+DATA_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-matrix.data.json"
 
 
 @dataclass(frozen=True)
@@ -609,7 +612,7 @@ def status_for(score: int, max_score: int) -> str:
     return "partial"
 
 
-def render_html() -> str:
+def build_context() -> Dict[str, Any]:
     skills = read_skill_manifest()
     total_member_count = sum(int(str(skill.get("member_count", "1"))) for skill in skills)
     scope_counts = {
@@ -646,6 +649,7 @@ def render_html() -> str:
                     "status": status,
                     "note": evidence.note,
                     "hits": evidence.hits,
+                    "signals": evidence.signals,
                     "score": evidence.score,
                 }
             )
@@ -659,6 +663,24 @@ def render_html() -> str:
                 "max_score": max_score,
             }
         )
+
+    return {
+        "skills": skills,
+        "total_member_count": total_member_count,
+        "scope_counts": scope_counts,
+        "generated": generated,
+        "source_revision": source_revision,
+        "matrix": matrix,
+    }
+
+
+def render_html(context: Dict[str, Any]) -> str:
+    skills = context["skills"]
+    total_member_count = context["total_member_count"]
+    scope_counts = context["scope_counts"]
+    generated = context["generated"]
+    source_revision = context["source_revision"]
+    matrix = context["matrix"]
 
     compact_cards_by_scope: Dict[str, List[str]] = defaultdict(list)
     overview_rows_by_scope: Dict[str, List[str]] = defaultdict(list)
@@ -937,6 +959,11 @@ def render_html() -> str:
       </div>
     </section>
 
+    <section class="card">
+      <h2>行动诊断与结构化数据</h2>
+      <p>HTML 只保留鸟瞰矩阵。逐工程、逐技能的分差、缺失信号和建议修改方向写入 <a href="./skill-maturity-diagnostics.md">skill-maturity-diagnostics.md</a>；同一轮扫描的结构化数据写入 <a href="./skill-maturity-matrix.data.json">skill-maturity-matrix.data.json</a>。三份产物由同一个生成脚本同步重写，避免总览、诊断和数据漂移。</p>
+    </section>
+
     {matrix_sections}
 
     {detail_sections}
@@ -950,7 +977,7 @@ def render_html() -> str:
       <h2>证据边界</h2>
       <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成大项，再按通用 / 可迁移与项目 / 领域绑定分表呈现，并追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
       <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；通用能力可迁移的是触发、事实源、流程、输出、验证和守卫，项目 / 领域绑定能力只能抽象方法，不能复制业务表、服务名、运行 ID、本地路径、项目状态或一次性 handoff。</p>
-      <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
+      <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。同步产物：views/current/governance/skill-maturity-diagnostics.md、views/current/governance/skill-maturity-matrix.data.json。</p>
     </section>
   </main>
 </body>
@@ -958,10 +985,223 @@ def render_html() -> str:
 """
 
 
+def project_ref(path: Path, project: Project) -> str:
+    try:
+        return f"{project.label}:{path.relative_to(project.path).as_posix()}"
+    except ValueError:
+        return str(path)
+
+
+def relative_output(path: Path) -> str:
+    return path.relative_to(ROOT).as_posix()
+
+
+def cell_diagnostic(row: Dict[str, Any], cell: Dict[str, Any]) -> Dict[str, Any]:
+    skill = row["skill"]
+    project = cell["project"]
+    leaders = [leader for leader in row["cells"] if leader["status"] == "leader"]
+    leader_signals = sorted({signal for leader in leaders for signal in leader.get("signals", [])})
+    current_signals = sorted(cell.get("signals", []))
+    missing_signals = [signal for signal in leader_signals if signal not in current_signals]
+    score_gap = max(row["max_score"] - cell["score"], 0)
+    status = cell["status"]
+    scope = str(skill.get("capability_scope", "general"))
+
+    if status == "leader":
+        missing_signals = []
+        direction = "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+    elif status == "none":
+        direction = "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
+    elif scope == "project-bound":
+        direction = "只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。"
+    elif missing_signals:
+        direction = f"追齐领先信号：优先补 {', '.join(missing_signals[:4])}；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+    else:
+        direction = "补证据质量：扩大正文可读性、补迁移说明、验证样例或检查脚本，让能力从可见提升到可复用。"
+
+    leader_labels = [leader["project"].label for leader in leaders]
+    return {
+        "skill": str(skill["name"]),
+        "display_name": str(skill["display_name"]),
+        "scope": scope,
+        "scope_label": SCOPE_LABELS.get(scope, scope),
+        "member_names": [str(item) for item in skill.get("member_display_names", [skill["display_name"]])],
+        "source_projects": [str(item) for item in skill.get("source_projects", [])],
+        "origin_projects": [str(item) for item in skill.get("origin_projects", skill.get("source_projects", []))],
+        "project": project.label,
+        "status": status,
+        "status_label": STATUS_LABELS[status],
+        "score": cell["score"],
+        "max_score": row["max_score"],
+        "score_gap": score_gap,
+        "leaders": leader_labels,
+        "signals": current_signals,
+        "missing_leader_signals": missing_signals,
+        "evidence_note": cell["note"],
+        "evidence_paths": [project_ref(path, project) for path in cell.get("hits", [])],
+        "recommended_direction": direction,
+    }
+
+
+def diagnostics_for_context(context: Dict[str, Any]) -> List[Dict[str, Any]]:
+    diagnostics: List[Dict[str, Any]] = []
+    for row in context["matrix"]:
+        for cell in row["cells"]:
+            diagnostics.append(cell_diagnostic(row, cell))
+    return diagnostics
+
+
+def render_json(context: Dict[str, Any]) -> str:
+    diagnostics = diagnostics_for_context(context)
+    payload = {
+        "generated_at": context["generated"],
+        "source_revision": context["source_revision"],
+        "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
+        "outputs": {
+            "html": relative_output(OUTPUT),
+            "diagnostics_md": relative_output(DIAGNOSTICS_OUTPUT),
+            "data_json": relative_output(DATA_OUTPUT),
+        },
+        "projects": [
+            {
+                "key": project.key,
+                "label": project.label,
+                "role": project.role,
+                "path": str(project.path),
+                "registry_level": project.registry_level,
+                "exists": project.path.exists(),
+            }
+            for project in PROJECTS
+        ],
+        "skills": [
+            {
+                "name": str(skill["name"]),
+                "display_name": str(skill["display_name"]),
+                "scope": str(skill.get("capability_scope", "general")),
+                "scope_note": str(skill.get("scope_note", "")),
+                "member_names": [str(item) for item in skill.get("member_display_names", [skill["display_name"]])],
+                "source_projects": [str(item) for item in skill.get("source_projects", [])],
+                "origin_projects": [str(item) for item in skill.get("origin_projects", skill.get("source_projects", []))],
+                "source_paths": [str(item) for item in skill.get("source_paths", [])],
+                "has_transfer": str(skill.get("has_transfer", "no")),
+                "has_source": str(skill.get("has_source", "no")),
+            }
+            for skill in context["skills"]
+        ],
+        "diagnostics": diagnostics,
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def render_markdown(context: Dict[str, Any]) -> str:
+    diagnostics = diagnostics_for_context(context)
+    by_project: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+    for item in diagnostics:
+        by_project[item["project"]].append(item)
+
+    lines = [
+        "---",
+        "type: skill-maturity-diagnostics",
+        "lens_id: lens-skill-maturity-diagnostics-current",
+        "focus_object: per-project action diagnostics for cross-project skill maturity gaps",
+        "lens_type: knowledge",
+        "source_pages: skills/README.md; projects/governance/registry.md; scripts/update_skill_maturity_matrix.py",
+        "source_scope: same scan context as skill-maturity-matrix.html and skill-maturity-matrix.data.json",
+        "source_of_truth: false",
+        f"generated_at: {context['generated']}",
+        f"source_revision: {context['source_revision']}",
+        "evidence_boundary: local skill/governance/sensor/view/template discovery and content-volume signals only; no runtime validation",
+        "context_frame: action-oriented companion to the HTML matrix; groups diagnostics by project so each project can see missing signals and recommended modification directions",
+        "output_mode: generated_markdown_diagnostics",
+        "export_profile: none; HTML matrix owns PDF/PNG exports",
+        "print_profile: not optimized for print; use HTML matrix for print-oriented output",
+        "equivalence_profile: generated from the same build_context as HTML and JSON outputs",
+        "canonical_policy: overwritten by scripts/update_skill_maturity_matrix.py on every matrix refresh",
+        "snapshot_policy: freeze separately only when a dated audit snapshot is needed",
+        "staleness_policy: stale when any scanned skill/governance/sensor/view/template path, ranking rule, action diagnostic rule, project registry, or data schema changes",
+        "refresh_trigger: rerun scripts/update_skill_maturity_matrix.py",
+        "tags: [views, governance, skill-maturity, diagnostics]",
+        "---",
+        "",
+        "# 跨工程技能成熟度行动诊断",
+        "",
+        "本页由 `scripts/update_skill_maturity_matrix.py` 生成，和 [[views/current/governance/skill-maturity-matrix.html]]、`views/current/governance/skill-maturity-matrix.data.json` 使用同一轮扫描上下文。它不是手写真相源；每次刷新矩阵时应同步重写。",
+        "",
+        "## 使用边界",
+        "",
+        "- `领先 / 成熟 / 接入 / 局部 / 未见` 只表示本地文件证据信号强弱，不代表运行时验收。",
+        "- `建议修改方向` 只指出下一步补证据或补能力的方向；项目 / 领域绑定技能只能抽象方法，不复制业务表、路径、运行 ID、状态或一次性 handoff。",
+        "- HTML 负责鸟瞰，JSON 负责结构化数据，本页负责每个工程可读的行动诊断。",
+        "",
+        "## 输出互链",
+        "",
+        f"- HTML 总览：[[{relative_output(OUTPUT)}]]",
+        f"- JSON 数据：`{relative_output(DATA_OUTPUT)}`",
+        "",
+    ]
+
+    status_sort = {"none": 0, "partial": 1, "adopted": 2, "mature": 3, "leader": 4, "blocked": 5}
+    for project in PROJECTS:
+        items = by_project.get(project.label, [])
+        if not items:
+            continue
+        counts = {status: sum(1 for item in items if item["status"] == status) for status in STATUS_LABELS}
+        lines.extend(
+            [
+                f"## {project.label}",
+                "",
+                f"- **工程路径**：`{project.path}`",
+                f"- **成熟概览**：领先 {counts['leader']}；成熟 {counts['mature']}；接入 {counts['adopted']}；局部 {counts['partial']}；未见 {counts['none']}；阻塞 {counts['blocked']}。",
+                "",
+                "| 技能 / 能力 | 范围 | 当前 | 分差 | 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |",
+                "| --- | --- | --- | ---: | --- | --- | --- | --- |",
+            ]
+        )
+        sorted_items = sorted(
+            items,
+            key=lambda item: (
+                status_sort.get(item["status"], 9),
+                -item["score_gap"],
+                item["display_name"],
+            ),
+        )
+        for item in sorted_items:
+            leaders = "、".join(item["leaders"]) if item["leaders"] else "暂无"
+            signals = "、".join(item["signals"]) if item["signals"] else "无"
+            missing = "、".join(item["missing_leader_signals"]) if item["missing_leader_signals"] else "无"
+            lines.append(
+                "| "
+                f"{item['display_name']} (`{item['skill']}`) | "
+                f"{item['scope_label']} | "
+                f"{item['status_label']} {item['score']}/{item['max_score']} | "
+                f"{item['score_gap']} | "
+                f"{leaders} | "
+                f"{signals} | "
+                f"{missing} | "
+                f"{item['recommended_direction']} |"
+            )
+        lines.append("")
+        lines.append("### 证据路径")
+        lines.append("")
+        for item in sorted_items:
+            if not item["evidence_paths"]:
+                continue
+            lines.append(f"- **{item['display_name']}**：`" + "`、`".join(item["evidence_paths"][:5]) + "`")
+        lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def main() -> None:
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(render_html(), encoding="utf-8")
-    print(f"updated {OUTPUT}")
+    context = build_context()
+    for path, content in [
+        (OUTPUT, render_html(context)),
+        (DIAGNOSTICS_OUTPUT, render_markdown(context)),
+        (DATA_OUTPUT, render_json(context)),
+    ]:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+        print(f"updated {path}")
 
 
 if __name__ == "__main__":
