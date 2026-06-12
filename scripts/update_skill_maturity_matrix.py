@@ -892,7 +892,7 @@ def render_html(context: Dict[str, Any]) -> str:
   <meta name="output_mode" content="html_report / print_view">
   <meta name="visual_structure" content="priority overview matrix / collapsed full matrix / collapsed compact skill cards / project cards">
   <meta name="export_profile" content="A4 landscape PDF and PNG generated from same canonical HTML">
-  <meta name="print_profile" content="@page A4 landscape; repeat header; preserve sticky columns as regular table">
+  <meta name="print_profile" content="@page A4 landscape; printBackground enabled through scripts/export_skill_maturity_matrix.py; repeat header; preserve sticky columns as regular table">
   <meta name="equivalence_profile" content="HTML / PDF / PNG use same source pack and same canonical HTML / source / manifest render pipeline">
   <meta name="default_auto_exports" content="PDF and PNG generated to views/.exports/ when this persistent HTML lens is updated">
   <meta name="conversation_png_preview" content="final response should display the generated PNG preview">
@@ -914,6 +914,7 @@ def render_html(context: Dict[str, Any]) -> str:
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }}
     * {{ box-sizing: border-box; }}
+    html {{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
     body {{ margin: 0; background: var(--paper); color: var(--ink); line-height: 1.55; }}
     a {{ color: var(--blue); text-underline-offset: 3px; }}
     .wrap {{ width: min(1440px, calc(100vw - 36px)); margin: 0 auto; }}

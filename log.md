@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 修复技能矩阵 PDF 导出丢色
+
+- **记录人**：sunhao
+- **用户意图**：用户指出技能成熟度矩阵的 PDF 渲染完全不对，需要修复导出结果，而不是只刷新 HTML。
+- **主题**：
+  1. 确认问题来自 `playwright pdf` CLI 默认不打印背景色，导致成熟度图例和热力矩阵在 PDF 中丢失颜色语义。
+  2. 将 PDF / PNG 导出固化为专用脚本，使用 Playwright API 显式启用 `printBackground` 和 CSS 页尺寸。
+  3. 在 HTML 打印样式中补 `print-color-adjust: exact`，让打印渲染尽量保持 canonical HTML 的视觉语义。
+- **关键动作**：
+  1. 新增 `scripts/export_skill_maturity_matrix.py`，统一从 [[views/current/governance/skill-maturity-matrix.html]] 导出 ignored PDF / PNG。
+  2. 更新 `scripts/update_skill_maturity_matrix.py` 的 print profile 与打印颜色控制。
+  3. 用新脚本重新生成 `views/.exports/skill-maturity-matrix.pdf` 和 `views/.exports/skill-maturity-matrix.png`，并用 Quick Look 缩略图验证 PDF 首屏颜色恢复。
+- **结论**：后续刷新技能矩阵时应使用 `python3 scripts/export_skill_maturity_matrix.py`，不要再用缺少背景打印选项的 `playwright pdf` CLI。
+- **影响页面**：`scripts/export_skill_maturity_matrix.py`、`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 将技能矩阵总览改为主次分层
 
 - **记录人**：sunhao
