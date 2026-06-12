@@ -30,6 +30,20 @@ Codex Goals 不是：
 
 在当前 wiki 里，Goal Contract 的切入位置固定在响应模式判断之后、正式长时执行之前。它先服务三条防线：期望最终状态防跑偏，验证面 / 证据边界防漂移，预算 / 阻塞停止条件防无限探索。
 
+## Goal Contract 的分层归属
+
+Goal Contract 不是单一层级的文件，而是一种跨层治理能力；但它的主入口和可复制正文以 [[templates/goal-contract-template]] 为准。
+
+| 层级 | 归属 | 职责 |
+| --- | --- | --- |
+| 概念层 | 本页和 [[articles/2026-06-12-codex-goal-mode-usage-guide]] | 解释它是什么、解决什么问题、常见误区是什么 |
+| 模板层 | [[templates/goal-contract-template]] | 承接可复制字段：记录位置、最终状态、完成判定、验收维度、证据边界、约束和停止条件 |
+| 工作流层 | [[response-mode-routing]]、[[WORKFLOW]] | 规定什么时候启用：响应模式判断之后、正式长时执行之前 |
+| 规则层 | [[POLICY]] | 规定不能替代什么：项目状态、验收报告、规则层、memory、`log.md`、检查、提交和 finalizer |
+| Skill 层 | 不是普通 `SKILL.md` skill | 具体 skill 可以引用 Goal Contract，但 Goal Contract 本身不是一个执行技能 |
+
+因此最准确的说法是：Goal Contract 是**模板为主体、规则和工作流共同约束的治理契约**，不是普通 skill。
+
 ## 一个强 Goal 应该包含什么
 
 - 结果：完成时什么必须成立

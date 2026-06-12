@@ -21,6 +21,17 @@ tags: [codex, goal, ai-agent, workflow, tutorial]
 
 Codex Goal 模式最稳的用法不是让 Codex “一直自动跑”，而是在启动长时任务前先冻结一份线程级完成契约：目标是什么、由什么证据证明、哪些边界不能越、什么时候必须停。
 
+## 这到底是模板、skill、规则还是工作流
+
+Goal Contract 的主体是 [[templates/goal-contract-template]] 里的模板，但它不是孤立模板，也不是普通 skill。
+
+- **作为模板**：它提供长时任务启动前必须填写的字段骨架。
+- **作为工作流约束**：[[response-mode-routing]] 和 [[WORKFLOW]] 规定它只在长时任务正式执行前启用，不是每轮默认仪式。
+- **作为规则边界**：[[POLICY]] 规定它不能替代验收、状态关闭、memory、`log.md`、检查、提交或 finalizer。
+- **作为 skill 关系**：具体 skill 可以引用它来处理长跑任务，但 Goal Contract 本身不是 `skills/` 下的执行技能。
+
+所以在知识库里，它应被维护为“模板化的治理契约”：模板是主正文，规则和工作流提供启用条件与禁止上推边界，skill 只在需要时调用它。
+
 ## 先判断要不要用 Goal
 
 适合使用 Goal 的信号：
