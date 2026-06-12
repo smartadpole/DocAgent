@@ -17,7 +17,7 @@
 ## 上游归一状态
 
 - **来源工程 / 来源技能**：LifeOS 的 `/Users/hai/Documents/Life/rules/problem-focused-lens.md`、`/Users/hai/Documents/Life/.codex/skills/problem-focused-lens/SKILL.md`、`/Users/hai/Documents/Life/templates/lens.md` 和 `automation/scripts/check_problem_focused_lens.py`。
-- **已抽象反哺到上游源能力**：已吸收关注对象和 lens 类型、证据边界、source pack 守卫、首屏用户价值优先、照片证据排版、持久 lens provenance、`views/` 落位硬合同、current / snapshot、HTML lens 的 PDF / PNG ignored export 与对话 PNG 预览完成合同、registry 和 sensor 检查口径。
+- **已抽象反哺到上游源能力**：已吸收关注对象和 lens 类型、证据边界、source pack 守卫、首屏用户价值优先、照片证据排版、矩阵主对象不可被摘要 / 折叠替代、同矩阵不重复渲染、标签必须有区分力、矩阵密度质量、持久 lens provenance、`views/` 落位硬合同、current / snapshot、HTML lens 的 PDF / PNG ignored export 与对话 PNG 预览完成合同、registry 和 sensor 检查口径。
 - **未吸收内容**：LifeOS 的项目事实、搬家场景、生活领域页、现场照片路径、日志、current lens 实例和本地项目状态。
 - **迁移时使用口径**：目标工程只读取 AcknowledgeBase 源资料；LifeOS 仅作为已反哺的历史来源，不作为目标工程直接复制源。
 
@@ -29,7 +29,7 @@
 - 输出形态选择：短答、Markdown 真相源、图文 lens、HTML report、print view、export config、snapshot；先按当前问题选最低噪声形态，不默认 HTML 化。
 - 输出格式：一眼判断、背景框、图文主体、`confirmed / likely / possible / blocked` 证据边界、证据与追溯、未覆盖边界。
 - 视觉类型：表格、脑图、框图、流程图、关系图、时间线、状态卡、证据链图。
-- 矩阵 / 热力图视觉编码：行列交叉状态矩阵优先作为概览前置；状态单元格优先整格填色，不用白底胶囊承担主视觉；状态之间要有明显色相 / 明度 / 饱和度差异，文字与背景保持强对比；具体证据和长说明下沉到详情卡、脚注或追溯区。
+- 矩阵 / 热力图视觉编码：行列交叉状态矩阵优先作为概览前置；状态单元格优先整格填色，不用白底胶囊承担主视觉；状态之间要有明显色相 / 明度 / 饱和度差异，文字与背景保持强对比；具体证据和长说明下沉到详情卡、脚注或追溯区；当矩阵是主对象时，不用摘要卡、优先子集或折叠区替代它，不重复渲染同一矩阵，只有能产生区分的标签才进入行 / 单元格。
 - lens 类型字段：status、plan、decision、risk、issue、acceptance、knowledge、resource、owner、timeline 的必填字段、反模式和验证点。
 - 用户价值优先：首屏先呈现当前判断、关键风险、下一步、可执行 / 条件性 / 禁止上推和最重要证据；维护字段下沉。
 - 照片 / 视觉证据排版：画幅家族、自然比例证据网格、竖图专题、`object-fit: contain`、不裁切证据图、判断卡不写排版说明。
@@ -62,7 +62,7 @@
 
 1. 在目标工程技能层新增等价 skill，写明触发条件、工作流、输出格式和禁止项。
 2. 补 `focus_object` / `lens_type` 判定、证据边界、source pack 守卫、lens 类型字段、首屏用户价值优先和照片证据排版守卫。
-3. 补矩阵 / 热力图视觉编码守卫：当 lens 使用状态矩阵、成熟度矩阵、缺口矩阵或验证矩阵时，默认前置概览矩阵，单元格整格填色，状态差异和文字 / 背景对比足够强，长说明下沉到详情。
+3. 补矩阵 / 热力图视觉编码守卫：当 lens 使用状态矩阵、成熟度矩阵、缺口矩阵或验证矩阵时，默认前置概览矩阵，单元格整格填色，状态差异和文字 / 背景对比足够强，长说明下沉到详情；如果矩阵是主对象，不能被摘要、折叠或重复矩阵稀释，标签必须有区分力，行高和列宽要服务扫读密度。
 4. 在目标工程 agent 入口规则中加入轻量触发：用户要直观看文档 / 主题 / 状态时，调用该 skill。
 5. 在响应模式或 workflow 中加入“图文呈现”模式，说明默认读取、默认写入和持久化边界。
 6. 建立或确认目标工程的 `views/` 持久呈现层：至少包含 `views/README.md`、`views/current/`、`views/snapshots/`、`views/lens-registry.md` 或等价 registry；PDF / PNG / SVG 导出缓存必须进入 gitignore 忽略的 `views/.exports/`、`views/exports/`、`views/**/.exports/` 或等价目录。
@@ -84,7 +84,7 @@
 - 用一份单文档样本验证：输出必须包含一眼判断、背景框、图文主体和追溯入口。
 - 用一个跨多文档主题验证：输出必须呈现材料分层、关系 / 冲突 / 时间线或证据链。
 - 用一个状态 / issue / 验收样本验证：输出必须标清主 `lens_type`、证据边界、不能上推范围和最新 source pack。
-- 用一个矩阵样本验证：如果核心判断来自行列交叉状态，矩阵必须作为概览前置；状态格子应整格填色并形成足够强的状态差异和文字 / 背景对比，长说明不得塞进矩阵格子。
+- 用一个矩阵样本验证：如果核心判断来自行列交叉状态，矩阵必须作为概览前置；状态格子应整格填色并形成足够强的状态差异和文字 / 背景对比，长说明不得塞进矩阵格子；检查主矩阵没有被摘要 / 折叠替代，没有重复渲染同一矩阵，没有对全量同类行重复无区分标签，并且版式密度足够支撑扫读。
 - 如果目标工程有照片或视觉证据，用一个混合横竖图样本验证：必须保留证据细节，声明 `photo_layout_strategy`，避免裁切和固定高度大留白。
 - 用一个 HTML 导出样本验证：输出必须声明 A4 / A3 或 custom、横竖版、边距、分页策略、忽略目录和同源一致性；如果本轮生成或更新持久 HTML lens，必须实际导出 PDF / PNG、检查图表裁切、页数、页脚来源、打印可读性以及 HTML / PDF / PNG 信息一致性，并在最终回复展示 PNG 预览。只返回 HTML 链接或 HTML 代码块判定为不合格。
 - 如果目标工程建立持久 lens 模板或 registry，检查 provenance 字段、current / snapshot 和 staleness / refresh 规则齐全。

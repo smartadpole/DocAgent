@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 抽象技能矩阵连续纠偏为图文 lens 规则
+
+- **记录人**：sunhao
+- **用户意图**：用户追问刚刚围绕技能矩阵的连续纠偏是否已经抽象并沉淀，能否泛化到其他问题处理，而不是只停留在这张表的样式修复。
+- **主题**：
+  1. 确认前几轮已经有事件级 `[[log]]` 和脚本级修复，但可迁移抽象仍不够完整。
+  2. 将“主对象不能被摘要 / 折叠替代”“同一矩阵不重复渲染”“标签必须有区分力”“矩阵密度是质量指标”“详情页承接细节”沉淀到问题聚焦图文呈现技能。
+  3. 将同一规则同步写入 `TRANSFER.md`，让后续跨工程迁移也带走这套矩阵 lens 质量门。
+- **关键动作**：
+  1. 更新 [[skills/problem-focused-visual-presentation/SKILL]] 的矩阵和热力编码规则，补齐主对象、重复、标签、密度和折叠边界。
+  2. 更新 `skills/problem-focused-visual-presentation/TRANSFER.md` 的上游归一状态、可吸收能力、目标工程落地模块和矩阵样本验证要求。
+  3. 更新 [[harness-feedback-ledger]]，把这轮连续纠偏记录为已晋升到技能 / 迁移清单的 Harness episode。
+- **结论**：这次纠偏已从“技能矩阵页面怎么排”上升为“任何矩阵型图文 lens 怎么保证主对象、主次关系、区分度和阅读密度”的可复用规则；暂不升到 [[POLICY]]，因为它是图文呈现技能质量门，不是全局治理硬约束。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、`skills/problem-focused-visual-presentation/TRANSFER.md`、[[harness-feedback-ledger]]、[[log]]。
+
 ### 移除全优先分组的逐行优先标签
 
 - **记录人**：sunhao
