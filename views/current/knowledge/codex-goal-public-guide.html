@@ -7,10 +7,10 @@
   <meta name="lens_id" content="lens-codex-goal-public-guide-current">
   <meta name="focus_object" content="可对外发布的 Codex Goal 使用教程">
   <meta name="lens_type" content="knowledge">
-  <meta name="judgement_purpose" content="用一页 HTML 简要突出 Codex Goal 的正确使用核心">
+  <meta name="judgement_purpose" content="用实际开发场景引出 Codex Goal 的正确使用核心">
   <meta name="generated_at" content="2026-06-12">
   <meta name="source_pages" content="articles/2026-06-12-codex-goal-mode-public-guide.md; official OpenAI Codex Goal docs">
-  <meta name="evidence_boundary" content="confirmed: official docs and local public guide; likely: concise editorial emphasis">
+  <meta name="evidence_boundary" content="confirmed: official docs, local public guide, and practical engineering case pattern; likely: concise editorial emphasis">
   <style>
     :root {
       color-scheme: light;
@@ -84,8 +84,59 @@
       font-size: clamp(18px, 2vw, 23px);
     }
 
+    .case {
+      margin: 30px 0 26px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 0;
+    }
+
+    .case-main,
+    .case-detail {
+      padding: clamp(18px, 2.5vw, 26px);
+    }
+
+    .case-detail {
+      border-left: 1px solid var(--line);
+      background: #fbf8f2;
+    }
+
+    .case-kicker {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .case h2 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2.6vw, 31px);
+      line-height: 1.12;
+    }
+
+    .case p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .case p + p {
+      margin-top: 12px;
+    }
+
+    .case strong {
+      color: var(--ink);
+    }
+
+    .case code {
+      display: inline-block;
+      margin-top: 4px;
+    }
+
     .point {
-      margin: 34px 0 30px;
+      margin: 26px 0 30px;
       padding: clamp(20px, 3vw, 32px);
       border: 2px solid var(--ink);
       background: #f2eadf;
@@ -258,11 +309,17 @@
         min-height: auto;
       }
 
+      .case,
       .point,
       .flow,
       .two-col,
       .sources {
         grid-template-columns: 1fr;
+      }
+
+      .case-detail {
+        border-left: none;
+        border-top: 1px solid var(--line);
       }
 
       .badge {
@@ -293,6 +350,7 @@
         padding: 0;
       }
 
+      .case,
       .step,
       .note,
       .formula,
@@ -307,7 +365,19 @@
     <section class="sheet" aria-labelledby="title">
       <div class="eyebrow">Codex Goal 使用教程</div>
       <h1 id="title">Codex Goal：对准可验证结果</h1>
-      <p class="lead">适用于迁移、重构、性能优化等需要多轮推进的工作。启动前明确目标状态、验证循环和停止边界。</p>
+      <p class="lead">从一个实际开发场景入手：当任务需要跨多步保持同一个完成标准时，Goal 比普通 prompt 更可靠。</p>
+
+      <section class="case" aria-label="实际开发场景">
+        <div class="case-main">
+          <p class="case-kicker">实际开发场景</p>
+          <h2>报告页导出闭环</h2>
+          <p>一个工程要交付可外发 HTML 报告，并同步生成 PDF / PNG。普通请求容易只完成页面主体，却漏掉同源导出、移动端宽度、公开口径和验证证据。</p>
+        </div>
+        <div class="case-detail">
+          <p><strong>普通请求</strong><br><code>帮我把报告做成 HTML，并导出 PNG / PDF。</code></p>
+          <p><strong>Goal 写法</strong><br>HTML 只展示最终读者需要的信息；PDF / PNG 从同一个 HTML 源生成；桌面端和移动端无横向溢出。每轮用 Playwright 导出和宽度检查验证，素材缺失或发布口径不清时暂停。</p>
+        </div>
+      </section>
 
       <section class="point" aria-label="一眼判断">
         <div>

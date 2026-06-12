@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 为 Codex Goal 公开教程补实际开发场景入口
+
+- **记录人**：sunhao
+- **用户意图**：用户指出公开教程只有方法和模板，缺少实际开发案例作为入口；随后进一步指出处理痕迹不适合对外展示，要求改成可直接外发的专业表达。
+- **主题**：
+  1. 将“报告页外发导出闭环”写成实际开发场景入口，避免在展示文案中暴露内部处理语汇。
+  2. 用案例先解释普通 prompt 容易漏掉同源导出、移动端宽度、公开口径和验证证据，再引出 Goal 的三要素。
+  3. 保持 HTML 仍只突出一个核心判断：Goal 应围绕可验证结果持续推进。
+- **关键动作**：
+  1. 更新 [[articles/2026-06-12-codex-goal-mode-public-guide]]，在教程前段新增实际开发场景，并顺延章节编号。
+  2. 更新 [[views/current/knowledge/codex-goal-public-guide.html]]，将首屏改为案例入口、普通请求 / Goal 写法对照和核心公式。
+  3. 重新生成 ignored PDF / PNG：`views/.exports/codex-goal-public-guide.pdf`、`views/.exports/codex-goal-public-guide.png`、`views/.exports/codex-goal-public-guide-mobile.png`。
+- **结论**：公开教程现在先用一个可理解的开发闭环说明 Goal 的价值，再归纳为“目标状态 + 验证循环 + 停止边界”，比纯方法说明更适合外发。
+- **影响页面**：[[articles/2026-06-12-codex-goal-mode-public-guide]]、[[views/current/knowledge/codex-goal-public-guide.html]]、[[log]]；ignored export：`views/.exports/codex-goal-public-guide.pdf`、`views/.exports/codex-goal-public-guide.png`、`views/.exports/codex-goal-public-guide-mobile.png`。
+
 ### 修订 Codex Goal 公开教程 HTML 文案
 
 - **记录人**：sunhao
