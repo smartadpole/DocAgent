@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Goal 使用教程</title>
+  <meta name="lens_id" content="lens-codex-goal-public-guide-current">
+  <meta name="focus_object" content="可对外发布的 Codex Goal 使用教程">
+  <meta name="lens_type" content="knowledge">
+  <meta name="judgement_purpose" content="用一页 HTML 简要突出 Codex Goal 的正确使用核心">
+  <meta name="generated_at" content="2026-06-12">
+  <meta name="source_pages" content="articles/2026-06-12-codex-goal-mode-public-guide.md; official OpenAI Codex Goal docs">
+  <meta name="evidence_boundary" content="confirmed: official docs and local public guide; likely: concise editorial emphasis">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17201b;
+      --muted: #5b675f;
+      --paper: #f7f4ef;
+      --panel: #fffdf8;
+      --line: #d9d1c2;
+      --blue: #245b8f;
+      --green: #2f7d54;
+      --amber: #a8641b;
+      --shadow: 0 18px 45px rgba(23, 32, 27, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 44px;
+    }
+
+    .sheet {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      min-height: calc(100vh - 72px);
+      padding: clamp(24px, 4vw, 48px);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 4px;
+      background: var(--green);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      max-width: 900px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 23px);
+    }
+
+    .point {
+      margin: 34px 0 30px;
+      padding: clamp(20px, 3vw, 32px);
+      border: 2px solid var(--ink);
+      background: #f2eadf;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .point strong {
+      display: block;
+      font-size: clamp(24px, 3.8vw, 44px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .point span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .badge {
+      width: 112px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 900;
+      color: var(--panel);
+      background: var(--blue);
+      line-height: 1.05;
+      padding: 12px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 26px 0;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 18px;
+      min-height: 176px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step::before {
+      content: attr(data-num);
+      position: absolute;
+      right: 14px;
+      top: 8px;
+      font-size: 48px;
+      font-weight: 900;
+      color: rgba(23, 32, 27, 0.08);
+    }
+
+    .step h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .step.goal {
+      border-top: 6px solid var(--blue);
+    }
+
+    .step.evidence {
+      border-top: 6px solid var(--green);
+    }
+
+    .step.stop {
+      border-top: 6px solid var(--amber);
+    }
+
+    .formula {
+      margin: 28px 0;
+      border: 1px solid var(--line);
+      background: #17201b;
+      color: #fffdf8;
+      padding: 20px;
+    }
+
+    .formula h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #d7f0de;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .note {
+      border: 1px solid var(--line);
+      padding: 18px;
+      background: #ffffff;
+    }
+
+    .note h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .note ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .note li + li {
+      margin-top: 6px;
+    }
+
+    .sources {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sources strong {
+      color: var(--ink);
+    }
+
+    .source-list {
+      margin: 6px 0 0;
+      padding-left: 18px;
+    }
+
+    .lens-meta {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .lens-meta p {
+      margin: 4px 0;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100vw - 18px, 1120px);
+        padding: 10px 0 22px;
+      }
+
+      .sheet {
+        padding: 22px;
+        min-height: auto;
+      }
+
+      .point,
+      .flow,
+      .two-col,
+      .sources {
+        grid-template-columns: 1fr;
+      }
+
+      .badge {
+        width: 92px;
+        justify-self: start;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 10mm;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      main {
+        width: auto;
+        padding: 0;
+      }
+
+      .sheet {
+        border: none;
+        box-shadow: none;
+        min-height: auto;
+        padding: 0;
+      }
+
+      .step,
+      .note,
+      .formula,
+      .point {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="sheet" aria-labelledby="title">
+      <div class="eyebrow">Codex Goal 使用教程</div>
+      <h1 id="title">别把 Goal 当自动跑按钮。</h1>
+      <p class="lead">对外发布时只要突出这一点：Goal 的核心是让 Codex 围绕一个可验证停止条件持续推进。</p>
+
+      <section class="point" aria-label="一眼判断">
+        <div>
+          <strong>Goal = 目标 + 证据 + 停止条件</strong>
+          <span>目标告诉 Codex 要去哪里；证据告诉它是否到达；停止条件告诉它什么时候必须停下来汇报。</span>
+        </div>
+        <div class="badge">可验证<br>停止</div>
+      </section>
+
+      <section class="flow" aria-label="三步使用框架">
+        <article class="step goal" data-num="1">
+          <h2>写清一个目标</h2>
+          <p>任务要比一次 prompt 大，但比开放 backlog 小。用一句话说清最终要达成的状态。</p>
+        </article>
+        <article class="step evidence" data-num="2">
+          <h2>绑定验证证据</h2>
+          <p>指定测试、benchmark、构建、截图、报告或 artifact。没有证据，Goal 就没有完成标准。</p>
+        </article>
+        <article class="step stop" data-num="3">
+          <h2>设定停止条件</h2>
+          <p>权限不足、证据不足、预算耗尽或需要人类裁决时，Codex 应暂停并说明缺口。</p>
+        </article>
+      </section>
+
+      <section class="formula" aria-label="可复制公式">
+        <h2>可复制公式</h2>
+        <code>/goal 完成 &lt;明确目标&gt;，直到 &lt;可验证完成状态&gt;。使用 &lt;测试 / benchmark / artifact&gt; 检查进展，保持 &lt;约束&gt;，只在 &lt;允许范围&gt; 内修改。若出现 &lt;停止条件&gt;，暂停并报告已有证据、缺口和需要的输入。</code>
+      </section>
+
+      <section class="two-col" aria-label="适用与误用">
+        <article class="note">
+          <h2>适合</h2>
+          <ul>
+            <li>迁移、重构、性能优化、flaky test 调查。</li>
+            <li>有清楚目标、验证循环和可持续推进空间。</li>
+            <li>需要 Codex 跨多轮保持同一个完成标准。</li>
+          </ul>
+        </article>
+        <article class="note">
+          <h2>避免</h2>
+          <ul>
+            <li>“继续完善”这类没有终点线的 goal。</li>
+            <li>把日志、启动成功或局部通过误当完成。</li>
+            <li>没有停止条件，导致任务无限扩散。</li>
+          </ul>
+        </article>
+      </section>
+
+      <footer class="sources">
+        <div>
+          <strong>来源与证据边界</strong>
+          <p>confirmed：OpenAI Codex 官方文档说明 `/goal` 用于长任务、可验证停止条件和持久目标；本页是对公开教程的简化图文 lens。</p>
+        </div>
+        <div>
+          <strong>官方参考</strong>
+          <ul class="source-list">
+            <li><a href="https://developers.openai.com/codex/use-cases/follow-goals">Follow a goal</a></li>
+            <li><a href="https://developers.openai.com/codex/prompting">Codex prompting</a></li>
+            <li><a href="https://developers.openai.com/codex/cli/slash-commands">CLI slash commands</a></li>
+          </ul>
+        </div>
+      </footer>
+
+      <aside class="lens-meta" aria-label="lens metadata">
+        <p><strong>output_mode:</strong> canonical current HTML lens / print view.</p>
+        <p><strong>export_profile:</strong> A4 landscape PDF and full-page PNG generated into ignored <code>views/.exports/</code>.</p>
+        <p><strong>print_profile:</strong> `@page` A4 landscape, `@media print`, printBackground enabled, avoid breaking key cards.</p>
+        <p><strong>equivalence_profile:</strong> HTML / PDF / PNG are generated from the same source pack and the same canonical HTML / source / manifest.</p>
+        <p><strong>default_auto_exports:</strong> Playwright generates PDF and PNG whenever this persistent lens is refreshed.</p>
+        <p><strong>conversation_png_preview:</strong> final response should display <code>views/.exports/codex-goal-public-guide.png</code>.</p>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

@@ -9,6 +9,20 @@
 
 ## 2026-06-12
 
+### 用图文 HTML 呈现 Codex Goal 公开教程
+
+- **记录人**：sunhao
+- **用户意图**：用户要求发动问题聚焦式呈现技能，用 HTML 简要呈现可对外发布的 Codex Goal 使用教程，并突出一个核心点。
+- **主题**：
+  1. 将公开版长文教程重组为一页式 HTML lens，而不是重复输出全文。
+  2. 首屏只突出一个判断：Goal 不是自动跑按钮，而是 `目标 + 证据 + 停止条件`。
+  3. 按持久 HTML lens 规则补同源 PDF / PNG 导出，并把导出件放在 ignored exports 中。
+- **关键动作**：
+  1. 新增 [[views/current/knowledge/codex-goal-public-guide.html]]，采用三步图、可复制公式、适用 / 误用对照和官方来源脚注。
+  2. 同步 [[views/README]] 和 [[views/lens-registry]]，登记 current lens 的来源、失效条件和证据边界。
+- **结论**：这份 HTML lens 适合外发时快速说明 Codex Goal 的核心使用方法；完整文字版仍以 [[articles/2026-06-12-codex-goal-mode-public-guide]] 为真相源。
+- **影响页面**：[[views/current/knowledge/codex-goal-public-guide.html]]、[[views/README]]、[[views/lens-registry]]、[[log]]。
+
 ### 刷新跨工程技能矩阵并吸收 Software/wiki 证据变化
 
 - **记录人**：sunhao
