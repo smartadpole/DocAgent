@@ -138,6 +138,7 @@ tags: [index, root]
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。
 - [[articles/2026-05-25-codex-goals-research]]：Codex Goals 专题调研，整理 Goal 的完成契约、生命周期、强弱写法和研究型任务用法。
 - [[articles/2026-06-12-codex-goal-mode-usage-guide]]：Codex Goal 模式使用教程，从历史案例中提炼 Goal Contract 的启动、迭代、证据审计和收尾闭环。
+- [[articles/2026-06-12-codex-goal-mode-public-guide]]：可对外发布的 Codex Goal 模式使用教程，去除内部项目语境，保留官方来源、命令、写法模板、示例和误用边界。
 - [[concepts/harness-engineering]]：AI Agent 的工程化运行环境方法，关注上下文、工具、规则、工作流、验证和演化闭环。
 - [[articles/2026-05-25-harness-engineering-research]]：Harness Engineering 深度调研，汇总本地材料、OpenAI、Martin Fowler、LangChain、Vercel 和近期论文案例。
 - [[harness-evolution]]：把用户纠偏、检查失败、模式切换和重复失守转成可复盘 episode。

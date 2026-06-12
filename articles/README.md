@@ -35,6 +35,7 @@
 
 ## Agent / Harness 案例
 
+- [[articles/2026-06-12-codex-goal-mode-public-guide]]：可对外发布的 Codex Goal 模式使用教程，独立说明适用场景、命令、Goal Contract 写法、示例、运行管理和误用边界。
 - [[articles/2026-06-12-codex-goal-mode-usage-guide]]：Codex Goal 模式使用教程，从历史 Goal Contract、主控 / 子工程协作和自动续跑漏 `log.md` 案例中提炼何时用、怎么写、怎么迭代和怎么收尾。
 - [[articles/2026-06-09-scientific-agent-skills-research]]：Scientific Agent Skills 调研，说明科研 Agent Skill 库的价值在于把工具链、数据库、实验流程、方法规范和输出模板变成 agent 可加载的流程资产，并提醒不要无脑全装 community skill。
 - [[articles/2026-06-02-issue-original-evidence-asset-intake]]：Issue 原始图片证据未入库案例，分析模型可见图片与本地证据资产之间的断层，并提出高效的证据资产门方案。

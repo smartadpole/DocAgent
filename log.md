@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 输出可对外发布的 Codex Goal 使用教程
+
+- **记录人**：sunhao
+- **用户意图**：用户要求输出一份独立、可对外发布的 Codex Goal 使用教程，而不是继续保留知识库内部版说明。
+- **主题**：
+  1. 将本库内部 Goal Contract 经验转换成公开可读教程，去掉 TASK、子工程、finalizer、内部路径等不适合外发的项目语境。
+  2. 用 OpenAI 官方 Codex 文档校准 Goal mode 的产品事实，包括 `/goal` 生命周期、适用场景、启用方式和 goal 文本作为完成标准。
+  3. 保留“Goal Contract”作为写好 `/goal` 的实用框架，但明确它是方法论，不是官方命令。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-12-codex-goal-mode-public-guide]]，形成可直接对外发布的独立 Markdown 教程。
+  2. 教程正文使用普通 Markdown 和官方 URL，不依赖本库 `[[wikilink]]` 才能理解。
+  3. 同步 [[articles/README]] 和 [[INDEX]]，让公开版教程从知识入口可发现。
+- **结论**：公开版教程的核心口径是“Codex Goal 是产品能力，Goal Contract 是写好 goal 的框架”；它保留目标、证据、边界、停止条件四件事，避免把内部 Harness 规则误包装成官方能力。
+- **影响页面**：[[articles/2026-06-12-codex-goal-mode-public-guide]]、[[articles/README]]、[[INDEX]]、[[log]]。
+
 ### 沉淀 Codex Goal 模式使用教程
 
 - **记录人**：sunhao
