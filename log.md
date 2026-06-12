@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-12
+
+### 将 Goal Contract 纳入跨工程能力矩阵
+
+- **记录人**：sunhao
+- **用户意图**：用户指出“技能 x 子工程矩阵”里没有 goal 信息，要求解释并补齐这个明显影响跨工程协作判断的缺口。
+- **主题**：
+  1. 将矩阵口径从纯 `SKILL.md` 发现校准为“技能项 + 少量补充治理能力项”，避免 Goal Contract 这类线程级完成契约因为不是 skill 而消失。
+  2. 保持概念边界：Goal Contract 不是普通 skill，不替代验收关闭；矩阵只显示其跨工程证据信号和成熟度。
+  3. 让 AcknowledgeBase / Software/wiki / DocCustomeranalysis 等已有 Goal Contract 证据的工程进入同一相对评分视图。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，新增 `goal-contract` 补充治理能力行、别名、证据扫描路径和基于 `goal-contract` / `codex-goals` / `harness-goal-governance` 路径的评分信号。
+  2. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]，页面标题和说明改为“跨工程技能与治理能力成熟度矩阵”，并显示 `goal-contract` 行。
+  3. 同步 [[views/README]]、[[views/lens-registry]] 和 [[INDEX]]，把入口描述从纯技能成熟度改成技能与治理能力成熟度。
+- **结论**：后续刷新矩阵时，不能只依赖 `SKILL.md` 行发现；对 Goal Contract 这类已被治理层确认、但天然不是 skill 的完成契约，需要通过补充治理能力清单进入矩阵，同时继续标注证据边界，避免把它误读成可执行技能或验收结论。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/README]]、[[views/lens-registry]]、[[INDEX]]、[[log]]。
+
 ## 2026-06-10
 
 ### 将技能成熟度矩阵改为全工程动态排名
