@@ -9,6 +9,19 @@
 
 ## 2026-06-12
 
+### 再次刷新技能矩阵并更新 Software/wiki 能力排名
+
+- **记录人**：sunhao
+- **用户意图**：用户要求再次刷新跨工程技能成熟度矩阵内容，确认页面不是沿用旧状态。
+- **主题**：
+  1. 重新扫描 12 个工程的 skill / governance / sensor / view / template 证据，保持源头工程和下游工程同场排名。
+  2. 识别 Software/wiki 在知识关联和问题聚焦式图文呈现上的证据信号增强。
+- **关键动作**：
+  1. 运行 `scripts/update_skill_maturity_matrix.py`，刷新 [[views/current/governance/skill-maturity-matrix.html]]。
+  2. 重新导出 ignored PDF / PNG：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+- **结论**：本轮不需要改脚本；矩阵内容已按当前全工程证据重排，Software/wiki 在知识关联上成为领先工程，在问题聚焦式图文呈现上升为成熟。
+- **影响页面**：[[views/current/governance/skill-maturity-matrix.html]]、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 用图文 HTML 呈现 Codex Goal 公开教程
 
 - **记录人**：sunhao
