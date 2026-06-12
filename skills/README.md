@@ -28,8 +28,16 @@
 
 所有长期技能默认对标当前最佳设计：技能正文、README 入口、成熟度 frontmatter、证据信号章节、必要模板 / 等价说明、治理接线、sensor 和同目录 `TRANSFER.md`。如果某个技能暂不适合迁移，必须在成熟度章节说明原因，并把 `transfer_ready` 保持为 `false`。
 
+跨工程技能成熟度矩阵只作为“发现缺口和评价维度”的来源，不作为本库事实源。吸收通用技能时只拿触发条件、事实源分层、流程、输出格式、验证、回写守卫、迁移边界和成熟度证据信号；不复制外部工程排行、分数、源头标记、项目状态、本地路径、业务表、服务名、运行 ID、source revision 或一次性 handoff。项目 / 领域绑定能力只能抽象方法，不能直接变成本库通用技能。
+
 ## 当前技能
 
+- [[skills/technology-research/SKILL]]：技术、开源工程、行业 / AI 赛道或 PoC 调研总控技能。用于先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
+- [[skills/knowledge-linking/SKILL]]：知识关联技能。用于新增、调研或大改长期知识页时判断分层落位、入口、上位 / 邻接关系、反向回链和验证方式，避免知识成为孤岛。
+- [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
+- [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
+- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens。
+- [[skills/documentation-maintenance/SKILL]]：文档维护技能。用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能。用于复盘当前上下文、log、Harness ledger、原始 session / rollout、git diff / commit、检查输出、memory 和最终回复里的 agent 协作质量、偏差和改进路由。
 
@@ -38,3 +46,4 @@
 - 新技能先写最小可用版本，不铺无关资源目录。
 - 技能正文只写可复用流程，不复制项目主页、设计页或 TODO 的长正文。
 - 如果技能引入新的项目事实判断口径，同轮检查是否需要回写 [[BRAIN]]、[[POLICY]]、[[WORKFLOW]] 或项目主页面。
+- 从外部矩阵、lens 或下游工程再次吸收技能时，先判断它是通用可迁移能力、治理能力还是项目 / 领域绑定能力；只有前两类可落为本库技能，项目 / 领域绑定能力只抽象方法并记录不复制原因。

@@ -39,6 +39,12 @@ tags: [index, root]
 - [[harness-feedback-ledger]]：Harness episode、sensor backlog、规则晋升和降级队列
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口和技能成熟度模型
+- [[skills/technology-research/SKILL]]：技术、开源工程、行业 / AI 赛道和 PoC 调研总控技能
+- [[skills/knowledge-linking/SKILL]]：知识关联、落位、入口和回链技能
+- [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能
+- [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能
+- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能
+- [[skills/documentation-maintenance/SKILL]]：代码、结构或规则变化后的文档维护技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
 - [[projects/README]]：活跃软件研发项目的运行入口
@@ -69,6 +75,10 @@ tags: [index, root]
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
 - [[response-mode-routing]]：agent 工作先快后重的统一路由，避免简单诊断默认进入完整治理闭环。
+- [[skills/technology-research/SKILL]]：技术调研总控，先固定调研合同、证据等级、成熟度、风险门和沉淀落位。
+- [[skills/cross-project-skill-adoption-prompt/SKILL]]：把已沉淀技能生成目标工程可执行迁移任务书。
+- [[skills/problem-focused-visual-presentation/SKILL]]：把复杂主题、状态、风险或证据链转成问题聚焦图文 lens。
+- [[skills/documentation-maintenance/SKILL]]：代码、结构、规则或公开行为变化后检查并同步文档。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。
 - [[articles/2026-05-25-codex-goals-research]]：Codex Goals 专题调研，整理 Goal 的完成契约、生命周期、强弱写法和研究型任务用法。

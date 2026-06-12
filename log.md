@@ -9,6 +9,27 @@
 
 ## 2026-06-12
 
+### 再次吸收通用可迁移技能并补齐本库技能层
+
+- **记录人**：Codex
+- **用户意图**：基于 `AcknowledgeBase/views/current/governance/skill-maturity-matrix.html`，再次吸收通用可迁移技能，确保当前 wiki 的技能层准确、优质、先进，而不是只停留在成熟度评价口径。
+- **候选分类**：
+  1. **通用可迁移技能**：调研 / 研究能力、知识关联、跨工程技能迁移提示词、跨工程治理审计、问题聚焦式图文呈现、文档维护，适合抽象为本库技能。
+  2. **本库已有领先或成熟能力**：Issue / 事故分析、历史对话复盘、Goal Contract，其中 Goal Contract 保持在治理 / 模板体系中，不强行新增同名技能。
+  3. **项目 / 领域绑定能力**：backlog 管理、事项自动拆解、客群 DB 读回、项目上下文入口、LifeOS 管理等，只抽象方法，不复制业务事实、服务名、表名、路径、运行 ID 或状态。
+  4. **不反哺项目材料**：源 HTML 的工程排行、分数、source revision、刷新时间、具体路径和“领先 / 成熟”结果只作为发现线索，不写成本库事实。
+- **关键动作**：
+  1. 新增 [[skills/technology-research/SKILL]] 和 [[skills/technology-research/TRANSFER]]，把技术调研总控、技术专题、开源工程、行业 / AI 和 PoC 调研收成一个适合当前 wiki 的合并版技能。
+  2. 新增 [[skills/knowledge-linking/SKILL]] 和 [[skills/knowledge-linking/TRANSFER]]，把知识落位、入口、上位 / 邻接关系、反向回链和验证边界写成可复用流程。
+  3. 新增 [[skills/cross-project-skill-adoption-prompt/SKILL]] 和 [[skills/cross-project-skill-adoption-prompt/TRANSFER]]，固定“先上游归一，再目标迁移”的任务书生成方法。
+  4. 新增 [[skills/cross-project-governance-audit/SKILL]] 和 [[skills/cross-project-governance-audit/TRANSFER]]，把跨工程治理审计收成本库可执行能力，但不默认维护外部工程注册表或改外部工程。
+  5. 新增 [[skills/problem-focused-visual-presentation/SKILL]] 和 [[skills/problem-focused-visual-presentation/TRANSFER]]，吸收 lens 合同、source pack、背景框、证据边界、矩阵呈现和持久化守卫，同时声明本库尚未建立 `views/` 持久呈现层。
+  6. 新增 [[skills/documentation-maintenance/SKILL]] 和 [[skills/documentation-maintenance/TRANSFER]]，吸收 diff 驱动文档维护、AGENTS 同步、公开面识别、保守修正和 generated 文件守卫。
+  7. 更新 [[skills/README]] 和 [[INDEX]]，补齐新增技能入口，并明确成熟度矩阵只吸收评价维度和通用方法，不吸收排行、分数、项目状态或领域事实。
+- **检查结果**：`python3 scripts/check_all.py --only skill-maturity` 和完整 `python3 scripts/check_all.py` 均已通过。
+- **二阶反思**：这次暴露的缺口不是单个技能缺页，而是“成熟度评价已经先进、技能本体尚未跟上”。以后看到跨工程技能矩阵时，先把通用技能、本库已有能力和项目绑定能力分开；通用能力要落到 `SKILL.md + TRANSFER.md + README entry + sensor` 的成熟度合同，项目绑定能力只吸收方法并明确不复制原因。
+- **影响页面**：[[skills/technology-research/SKILL]]、[[skills/technology-research/TRANSFER]]、[[skills/knowledge-linking/SKILL]]、[[skills/knowledge-linking/TRANSFER]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[skills/cross-project-skill-adoption-prompt/TRANSFER]]、[[skills/cross-project-governance-audit/SKILL]]、[[skills/cross-project-governance-audit/TRANSFER]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/problem-focused-visual-presentation/TRANSFER]]、[[skills/documentation-maintenance/SKILL]]、[[skills/documentation-maintenance/TRANSFER]]、[[skills/README]]、[[INDEX]]、[[log]]。
+
 ### 将现有技能全部对标成熟度最佳设计
 
 - **记录人**：Codex
