@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 恢复技能矩阵为默认主视图
+
+- **记录人**：sunhao
+- **用户意图**：用户指出完整能力矩阵不应消失，矩阵本身才是页面最重要的内容；主次关系不能通过隐藏矩阵实现。
+- **主题**：
+  1. 将完整能力 x 工程矩阵恢复为默认可见主视图。
+  2. 取消“优先摘要卡替代矩阵”的呈现方式，改为在矩阵行内标记优先能力。
+  3. 保留能力大项摘要卡折叠，避免同一矩阵重复出现。
+- **关键动作**：
+  1. 更新 `scripts/update_skill_maturity_matrix.py`，让完整矩阵直接渲染在首屏后正文，并移除折叠完整矩阵入口。
+  2. 为优先关注能力行增加 `优先` 行内标记，保留主次提示但不替代矩阵。
+  3. 重新生成 [[views/current/governance/skill-maturity-matrix.html]]、诊断页、JSON 和 ignored PDF / PNG。
+- **结论**：后续技能矩阵页以完整矩阵为主，主次分层只能作为矩阵内辅助标记或下方详情折叠，不能把完整矩阵藏到二级入口。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 用图文 HTML 呈现 Codex Goal 公开教程长对话复盘
 
 - **记录人**：sunhao
