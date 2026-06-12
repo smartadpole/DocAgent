@@ -163,7 +163,7 @@ tags: [index, root]
 - [[templates/development-task-template]]：TASK 任务模板
 - [[templates/development-issue-template]]：Issue 案件模板
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
-- [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
+- [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义记录位置、期望最终状态、完成判定、验收维度、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/technology-research-intake-template]]：技术调研 intake 模板，用于先冻结对象类型、决策目标、证据计划、成熟度、风险初筛和推荐路由。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板

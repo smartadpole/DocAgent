@@ -41,7 +41,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]
-- 新长时任务需要防跑偏、防证据漂移、防无限探索时，可以参考 [[templates/goal-contract-template]]
+- 新长时任务需要防跑偏、防证据漂移、防无限探索，并需要记录 owning page、验收维度和停止条件时，可以参考 [[templates/goal-contract-template]]
 - 新引导式设计、主动对话或轻量 discovery 可以参考 [[templates/guided-discovery-session-template]]
 - 新系统、主控仓库或子工程接入 Agent Harness 可以参考 [[templates/harness-adoption-template]]
 - 新单次 Harness episode 可以参考 [[templates/harness-episode-package-template]]

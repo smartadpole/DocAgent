@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-GOAL-CONTRACT-001
 status: active
-updated: 2026-05-25
+updated: 2026-06-12
 tags: [template, harness, goal, contract]
 ---
 
@@ -20,6 +20,9 @@ Goal 只解决三件事：
 
 - **任务 / 事项 ID**：
 - **当前响应模式**：
+- **当前执行位置 / 写入仓库**：
+- **主控 / 子工程身份**：
+- **契约记录位置 / owning page**：优先落到 TASK、Issue、AP、测试报告、handoff、episode package 或其他可回看的执行入口；不要只留在聊天里。
 - **为什么需要完成契约**：
 - **为什么不是普通一次性任务**：
 - **不使用 Goal Contract 的理由**：
@@ -29,6 +32,7 @@ Goal 只解决三件事：
 - **原始目标 / 用户最新目标**：
 - **期望最终状态**：用可观察结果写清完成后应该变成什么样。
 - **完成判定**：哪些结果出现才算完成；哪些结果只能算 partial / review / blocked。
+- **本轮验收维度 / 上线执行目标分离**：写清本轮要关闭的验证维度；`full`、`all`、全量跑批、上线执行目标或未来扩展目标默认不能反写成本轮阻塞。
 - **验证面**：测试 / benchmark / 报告 / artifact / DB readback / 日志 / UI / 人工确认 / 其他
 - **必须保持的约束**：
 - **允许使用的文件 / 工具 / 数据 / 环境**：

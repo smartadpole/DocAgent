@@ -65,9 +65,10 @@ Codex Goals 不是：
 最小流程是：
 
 1. 先按 [[response-mode-routing]] 判断这是不是长时任务。
-2. 写清期望最终状态、完成判定、验证面 / 证据边界、约束、允许边界和停止条件。
-3. 每轮自动续跑或用户要求继续时，先回到完成契约检查是否继续、收尾或阻塞。
-4. 收尾时只按证据写 done / partial / review / blocked，不把 health、日志、handoff、自述或 accepted / running 中间态上推成闭环。
+2. 指定契约记录位置 / owning page，让 Goal 实例能从 TASK、Issue、AP、测试报告、handoff 或 episode package 回看。
+3. 写清期望最终状态、完成判定、验收目标维度、验证面 / 证据边界、约束、允许边界和停止条件。
+4. 每轮自动续跑或用户要求继续时，先回到完成契约检查是否继续、收尾或阻塞。
+5. 收尾时只按证据写 done / partial / review / blocked，不把 health、日志、handoff、自述或 accepted / running 中间态上推成闭环；也不把全量 / 上线目标误写成本轮关闭条件。
 
 ## 常见误区
 
@@ -77,6 +78,8 @@ Codex Goals 不是：
 - 用 Goal 掩盖证据缺口或范围不清
 - 把线程级契约误用成团队级真相源
 - 把 Goal 自动续跑当成跳过 `log.md`、检查、finalizer 或提交闭环的例外
+- 让 Goal 实例只漂在聊天里，没有 owning page
+- 把本轮验收维度和上线 / 全量执行目标混成一个关闭条件
 
 ## 和当前 wiki 的关系
 

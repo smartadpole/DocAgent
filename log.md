@@ -19,10 +19,11 @@
   3. 把历史经验提炼为启动前契约、每轮迭代、证据审计、收尾门禁和常见反模式。
 - **关键动作**：
   1. 新增 [[articles/2026-06-12-codex-goal-mode-usage-guide]]，整理 Goal 模式适用条件、完成契约骨架、三类高频写法、历史经验和收尾检查表。
-  2. 更新 [[concepts/codex-goals]]，补“使用方法”和自动续跑不能跳过 `log.md` / 检查 / finalizer / 提交闭环的误区。
-  3. 同步 [[articles/README]] 和 [[INDEX]]，让教程能从摘要卡片层和总索引被发现。
-- **结论**：后续使用 Codex Goal 时，先按响应模式判断是否真是长时任务，再用 Goal Contract 冻结期望最终状态、验证面 / 证据边界、约束和停止条件；自动续跑产生内容变更时仍需走统一记录、检查和提交闭环。
-- **影响页面**：[[articles/2026-06-12-codex-goal-mode-usage-guide]]、[[concepts/codex-goals]]、[[articles/README]]、[[INDEX]]、[[log]]。
+  2. 从 DocCustomeranalysis 的 Goal 模式历史复核报告中吸收系统层增量：Goal 实例必须有 `owning page`，本轮验收维度必须和上线 / 全量执行目标分离。
+  3. 更新 [[concepts/codex-goals]] 和 [[templates/goal-contract-template]]，补契约记录位置、主控 / 子工程身份、验收目标维度等字段和误区。
+  4. 同步 [[articles/README]]、[[templates/README]] 和 [[INDEX]]，让教程和模板入口能被发现。
+- **结论**：后续使用 Codex Goal 时，先按响应模式判断是否真是长时任务，再用 Goal Contract 冻结记录位置、期望最终状态、验证面 / 证据边界、验收维度、约束和停止条件；自动续跑产生内容变更时仍需走统一记录、检查和提交闭环。
+- **影响页面**：[[articles/2026-06-12-codex-goal-mode-usage-guide]]、[[concepts/codex-goals]]、[[templates/goal-contract-template]]、[[articles/README]]、[[templates/README]]、[[INDEX]]、[[log]]。
 
 ### 补齐持久 HTML lens 的 PNG 预览执行闭环
 
