@@ -10,6 +10,7 @@ from pathlib import Path
 REQUIRED_FILES = (
     "skills/problem-focused-visual-presentation/SKILL.md",
     "skills/problem-focused-visual-presentation/TRANSFER.md",
+    "governance/problem-focused-visual-presentation-rules.md",
     "templates/problem-focused-lens-template.md",
     "views/README.md",
     "views/current/README.md",
@@ -113,6 +114,7 @@ def main() -> int:
 
     skill = read(repo, "skills/problem-focused-visual-presentation/SKILL.md", errors)
     transfer = read(repo, "skills/problem-focused-visual-presentation/TRANSFER.md", errors)
+    governance = read(repo, "governance/problem-focused-visual-presentation-rules.md", errors)
     template = read(repo, "templates/problem-focused-lens-template.md", errors)
     views_readme = read(repo, "views/README.md", errors)
     registry = read(repo, "views/lens-registry.md", errors)
@@ -123,6 +125,13 @@ def main() -> int:
         require_terms("skills/problem-focused-visual-presentation/SKILL.md", skill, SKILL_TERMS, errors)
     if transfer:
         require_terms("skills/problem-focused-visual-presentation/TRANSFER.md", transfer, TRANSFER_TERMS, errors)
+    if governance:
+        require_terms(
+            "governance/problem-focused-visual-presentation-rules.md",
+            governance,
+            ("problem-focused-visual-presentation", "source pack", "evidence_boundary", "views/lens-registry", "导出", "不上推"),
+            errors,
+        )
     if template:
         require_terms("templates/problem-focused-lens-template.md", template, TEMPLATE_TERMS, errors)
     for rel, text in (("views/README.md", views_readme), ("views/lens-registry.md", registry)):

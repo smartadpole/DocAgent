@@ -2,7 +2,7 @@
 name: problem-focused-visual-presentation
 description: 问题聚焦式图文呈现技能；用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens。
 maturity: leading
-evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER, views]
+evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER, views, large-body]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only problem-focused-visual-presentation,skill-maturity
 ---
@@ -35,7 +35,7 @@ sensor: python3 scripts/check_all.py --only problem-focused-visual-presentation,
 - `maturity`：`leading`。本技能已具备技能正文、README 入口、迁移边界、治理接线、模板、`views/` 持久呈现层和专项 sensor。
 - `template`：持久 lens 模板见 [[templates/problem-focused-lens-template]]，只承接字段骨架，不替代 source pack 或事实源。
 - `views`：持久 lens 入口见 [[views/README]]，current / snapshot 登记见 [[views/lens-registry]]；持久 lens 必须声明 `export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports` 和 `conversation_png_preview`，导出缓存必须落在 `.gitignore` 忽略目录。
-- `governance`：持久化、证据边界、项目状态和验收不上推回到 [[response-mode-routing]]、[[POLICY]] 和目标单一信息源。
+- `governance`：持久化、证据边界、项目状态和验收不上推回到 [[governance/problem-focused-visual-presentation-rules]]、[[response-mode-routing]]、[[POLICY]] 和目标单一信息源。
 - `TRANSFER`：迁移边界见 [[skills/problem-focused-visual-presentation/TRANSFER]]；迁移时吸收 lens 合同、source pack、背景框、证据边界和导出守卫，不复制具体视图。
 - `sensor`：`python3 scripts/check_all.py --only problem-focused-visual-presentation` 检查技能、模板、`views/` registry、导出缓存忽略规则和总门禁接线。
 - `evidence boundary`：本技能证明的是呈现质量和追溯边界，不证明原事实完整或验收完成。

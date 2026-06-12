@@ -9,6 +9,28 @@
 
 ## 2026-06-12
 
+### 对照最新成熟度诊断补齐本工程技能证据信号
+
+- **记录人**：Codex
+- **用户意图**：用户指出当前 wiki 的技能成熟度仍不够，要求依据 AcknowledgeBase 最新 `skill-maturity-diagnostics.md` 和矩阵数据继续补齐本工程相关技能，而不是只停留在已有 `SKILL.md`。
+- **诊断结论**：
+  1. 本轮只吸收通用 / 可迁移能力缺口；`lifeos-management`、`backlog-management`、`work-item-auto-decomposition`、`customer-group-db-readback` 等项目 / 领域绑定项不原样搬入本库。
+  2. [[skills/documentation-maintenance/SKILL]] 缺专项 sensor 和显式治理页。
+  3. [[skills/knowledge-linking/SKILL]] 与 [[skills/issue-analysis/SKILL]] 已有技能能力，但矩阵缺可命中的 `governance/*` 证据。
+  4. [[skills/problem-focused-visual-presentation/SKILL]] 和 [[skills/technology-research/SKILL]] 需要补治理合同、模板合同和 `large-body` 级别正文证据。
+  5. [[skills/cross-project-skill-adoption-prompt/SKILL]] 需要补可复用任务书 / 证据 / review 合同，达到 `body` 级别。
+- **关键动作**：
+  1. 新增 [[documentation-maintenance-rules]]、[[knowledge-linking-rules]]、[[issue-analysis-rules]]、[[problem-focused-visual-presentation-rules]] 和 [[research-capability-rules]]，把文档维护、知识关联、问题分析、图文 lens、研究采用的裁定规则落到治理层。
+  2. 新增 `scripts/check_documentation_maintenance.py` 并接入 `scripts/check_all.py --only documentation-maintenance`，让文档维护具备可检测 sensor。
+  3. 将 [[skills/documentation-maintenance/SKILL]] 升级为 `leading`，并补齐治理页、sensor 和 large-body 证据信号说明。
+  4. 为 research-capability 新增 [[templates/technology-research-contract-template]]、[[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]]，补齐研究合同、证据矩阵、采用口径、降级规则和 large-body 证据。
+  5. 为 problem-focused lens 新增 [[templates/problem-focused-lens-source-pack-contract]] 和 [[templates/problem-focused-lens-review-contract]]，补齐 source pack、review、导出、registry、不上推和 large-body 证据。
+  6. 为跨工程技能迁移新增 [[templates/skill-transfer-contract-template]]、[[templates/skill-transfer-evidence-contract]] 和 [[templates/skill-transfer-review-contract]]，让任务书从泛提示词升级为证据合同和 review 合同。
+  7. 更新 [[governance/README]]、[[templates/README]]、[[INDEX]]、相关 skill frontmatter 和专项检查脚本，保证新增治理 / 模板 / sensor 不成为孤岛。
+- **检查结果**：已通过 `python3 scripts/check_all.py --only documentation-maintenance,knowledge-linking,problem-focused-visual-presentation,skill-maturity`；同时用 AcknowledgeBase 成熟度脚本本地模拟确认 `documentation-maintenance`、`problem-focused-visual-presentation`、`research-capability` 具备 `large-body`，`cross-project-skill-adoption-prompt` 具备 `body`，`issue-analysis` 具备 `governance + body`。
+- **二阶反思**：这次暴露的问题不是“缺技能页”，而是技能没有形成矩阵可识别的工程证据：治理页、sensor、模板合同、source pack、review 合同和正文厚度必须配套。后续对照成熟度矩阵时，应先读诊断的 missing signals，再补能被脚本命中的真实路径，而不是只在技能页里声明成熟。
+- **影响页面**：[[documentation-maintenance-rules]]、[[knowledge-linking-rules]]、[[issue-analysis-rules]]、[[problem-focused-visual-presentation-rules]]、[[research-capability-rules]]、[[templates/technology-research-contract-template]]、[[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]]、[[templates/technology-research-adoption-contract-template]]、[[templates/problem-focused-lens-source-pack-contract]]、[[templates/problem-focused-lens-review-contract]]、[[templates/skill-transfer-contract-template]]、[[templates/skill-transfer-evidence-contract]]、[[templates/skill-transfer-review-contract]]、[[skills/documentation-maintenance/SKILL]]、[[skills/technology-research/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/knowledge-linking/SKILL]]、[[skills/issue-analysis/SKILL]]、[[governance/README]]、[[templates/README]]、[[INDEX]]、[[log]]、`scripts/check_all.py`、`scripts/check_documentation_maintenance.py`、`scripts/check_knowledge_linking.py`、`scripts/check_problem_focused_visual_presentation.py`。
+
 ### 补齐问题聚焦和知识关联的成熟度证据信号
 
 - **记录人**：Codex

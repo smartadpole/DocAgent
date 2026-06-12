@@ -21,7 +21,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 - `maturity`：`leading`。本技能已具备技能正文、README 入口、治理路由、专项 sensor 和迁移清单；后续成熟度回归由 `python3 scripts/check_all.py --only skill-maturity` 检查。
 - `template`：不单独维护第二份 issue-analysis 模板；本技能的输出格式已经是可复制骨架。若后续出现反复产出正式 Issue 案件页，优先回到 [[templates/development-issue-template]]，不在技能页复制项目案件模板。
-- `governance`：响应模式、验收关闭、子工程写入边界和报告不上推口径分别回到 [[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 和事项 / 报告模型。
+- `governance`：响应模式、验收关闭、子工程写入边界和报告不上推口径分别回到 [[governance/issue-analysis-rules]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 和事项 / 报告模型。
 - `TRANSFER`：跨工程吸收边界见 [[skills/issue-analysis/TRANSFER]]；迁移时只吸收事实源分层、最小根因链、责任边界、联测方案和回写守卫，不复制本库项目事实。
 - `evidence boundary`：本技能输出的是问题分析、分工和验证方案；不能替代正式 Issue 案件、测试报告、TASK / EP / FP / Gate 关闭或人工确认。
 

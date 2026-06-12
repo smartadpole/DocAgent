@@ -10,6 +10,7 @@ from pathlib import Path
 REQUIRED_FILES = (
     "skills/knowledge-linking/SKILL.md",
     "skills/knowledge-linking/TRANSFER.md",
+    "governance/knowledge-linking-rules.md",
     "skills/README.md",
     "INDEX.md",
     "governance/response-mode-routing.md",
@@ -66,6 +67,7 @@ def main() -> int:
 
     skill = read(repo, "skills/knowledge-linking/SKILL.md", errors)
     transfer = read(repo, "skills/knowledge-linking/TRANSFER.md", errors)
+    governance = read(repo, "governance/knowledge-linking-rules.md", errors)
     routing = read(repo, "governance/response-mode-routing.md", errors)
     readme = read(repo, "skills/README.md", errors)
     index = read(repo, "INDEX.md", errors)
@@ -75,6 +77,8 @@ def main() -> int:
         require_terms("skills/knowledge-linking/SKILL.md", skill, SKILL_TERMS, errors)
     if transfer:
         require_terms("skills/knowledge-linking/TRANSFER.md", transfer, TRANSFER_TERMS, errors)
+    if governance:
+        require_terms("governance/knowledge-linking-rules.md", governance, ("knowledge-linking", "有效链接", "单一信息源", "关系画像", "禁止项"), errors)
     if routing:
         require_terms("governance/response-mode-routing.md", routing, ROUTING_TERMS, errors)
     for rel, text in (("skills/README.md", readme), ("INDEX.md", index)):

@@ -27,6 +27,11 @@ tags: [entry, governance]
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
 - [[template-feedback-rules]]：下游项目系统层信息反哺规则
+- [[documentation-maintenance-rules]]：documentation-maintenance 的触发、证据顺序、保守同步和 sensor 接线
+- [[knowledge-linking-rules]]：knowledge-linking 的有效链接、单一信息源和关系画像规则
+- [[issue-analysis-rules]]：issue-analysis 的快速根因链、完整案件和验收 / 规则升级分流
+- [[problem-focused-visual-presentation-rules]]：problem-focused lens 的 source pack、导出、views 和不上推规则
+- [[research-capability-rules]]：research-capability 的证据等级、行动等级、查证和沉淀落位规则
 - 复盘方法看 [[concepts/project-retrospective]]，具体复盘档案看 [[projects/retrospectives/README]]；复盘暴露的重复失守或机制缺口再回到 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
@@ -86,5 +91,10 @@ tags: [entry, governance]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，优先写 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 如果问题是“哪些背景以后默认成立”，优先写 [[BRAIN]]
 - 如果问题是“下游项目的进化能不能带回模板”，优先写 [[template-feedback-rules]]
+- 如果问题是“文档是否随代码、规则或结构变化同步”，优先写 [[documentation-maintenance-rules]]
+- 如果问题是“新增知识怎样落位、入口和回链”，优先写 [[knowledge-linking-rules]]
+- 如果问题是“问题要快诊断、完整 Issue、验收还是规则升级”，优先写 [[issue-analysis-rules]]
+- 如果问题是“复杂信息是否要做成图文 lens 或持久 views”，优先写 [[problem-focused-visual-presentation-rules]]
+- 如果问题是“调研能否形成可行动判断”，优先写 [[research-capability-rules]]
 
 优先级上，先看 [[POLICY]] 的裁定，再由 [[AGENTS]] 把它落实成执行纪律。

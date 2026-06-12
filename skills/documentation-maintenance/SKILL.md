@@ -1,10 +1,10 @@
 ---
 name: documentation-maintenance
 description: 文档维护技能；用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
-maturity: mature
-evidence_signals: [skill, README entry, governance, TRANSFER]
+maturity: leading
+evidence_signals: [skill, README entry, governance, sensor, TRANSFER, large-body]
 transfer_ready: true
-sensor: python3 scripts/check_all.py --only skill-maturity
+sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-maturity
 ---
 
 # Documentation Maintenance
@@ -31,10 +31,11 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 成熟度与证据信号
 
-- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；暂未建立独立 doc-maintenance sensor。
+- `maturity`：`leading`。本技能已有技能正文、README 入口、迁移边界、独立治理页和专项 doc-maintenance sensor。
 - `template`：输出报告格式即最小骨架；若后续频繁生成文档维护报告，再抽模板。
-- `governance`：文档同步、log、提交和规则升级回到 [[response-mode-routing]]、[[POLICY]]、[[AGENTS]] 和 [[template-feedback-rules]]。
+- `governance`：文档同步、log、提交和规则升级回到 [[governance/documentation-maintenance-rules]]、[[response-mode-routing]]、[[POLICY]]、[[AGENTS]] 和 [[template-feedback-rules]]。
 - `TRANSFER`：迁移边界见 [[skills/documentation-maintenance/TRANSFER]]。
+- `sensor`：`python3 scripts/check_all.py --only documentation-maintenance` 检查技能、TRANSFER、治理页、入口和总门禁接线。
 - `evidence boundary`：本技能证明文档和当前 diff / 事实源的一致性检查，不代表代码行为已经验收。
 
 ## 工作流

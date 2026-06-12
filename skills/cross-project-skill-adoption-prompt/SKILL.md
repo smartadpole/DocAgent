@@ -2,7 +2,7 @@
 name: cross-project-skill-adoption-prompt
 description: 跨工程技能迁移任务书生成技能；用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 maturity: mature
-evidence_signals: [skill, README entry, governance, TRANSFER]
+evidence_signals: [skill, README entry, governance, template, TRANSFER, body]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only skill-maturity
 ---
@@ -32,7 +32,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 ## 成熟度与证据信号
 
 - `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；暂未维护 golden examples。
-- `template`：最终产物就是可复制任务书；如果后续频繁生成迁移包，再抽成模板。
+- `template`：可复制任务书骨架见 [[templates/skill-transfer-contract-template]]；最终产物仍必须按目标工程结构自检后裁剪。
 - `governance`：跨项目反哺和项目事实剥离回到 [[template-feedback-rules]]；写入目标工程前必须确认授权。
 - `TRANSFER`：迁移边界见 [[skills/cross-project-skill-adoption-prompt/TRANSFER]]。
 - `evidence boundary`：本技能生成的是迁移任务书，不代表目标工程已经完成迁移或通过验收。
@@ -104,6 +104,20 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 没有对应目录时如何保守落位是否写清。
 - 验证、提交、未验证边界和最终回复是否写清。
 - 是否误带具体目标工程事实、源工程排行或未确认提交锚点。
+
+### 7. 任务书质量门
+
+生成迁移任务书前，逐项检查：
+
+- `直接命令` 是否让目标 agent 知道第一步读目标工程入口规则，而不是直接写文件。
+- `参考资料` 是否区分源 skill、TRANSFER、template、governance、sensor 和目标工程入口。
+- `吸收边界` 是否明确可以吸收、只能抽象吸收和禁止复制。
+- `结构自检` 是否让目标工程自行判断已有 skill / template / governance / sensor / views，而不是预设目录。
+- `模块要求` 是否到字段级，能让目标 agent 直接执行。
+- `验证要求` 是否包含专项 sensor、总检查、手工回看和未验证边界。
+- `最终回复` 是否要求交代已更新文件、检查结果、未吸收内容和 commit。
+
+如果缺任一项，先补任务书，不急着迁移目标工程。
 
 ## 输出格式
 

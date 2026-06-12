@@ -114,6 +114,10 @@ tags: [index, root]
 - [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘的通用核心模板，可按对象启用软件研发或 Agent 回看模块
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/problem-focused-lens-template]]：问题聚焦式图文 lens 模板，用于 current / snapshot / print view 的 source pack、证据边界和导出字段
+- [[templates/problem-focused-lens-source-pack-contract]] / [[templates/problem-focused-lens-review-contract]]：问题聚焦 lens 的 source pack 和审核合同
+- [[templates/technology-research-contract-template]] / [[templates/technology-research-report-template]]：调研合同和正式研究报告骨架
+- [[templates/technology-research-evidence-matrix-template]] / [[templates/technology-research-adoption-contract-template]]：研究证据矩阵和采用合同
+- [[templates/skill-transfer-contract-template]] / [[templates/skill-transfer-evidence-contract]] / [[templates/skill-transfer-review-contract]]：跨工程技能迁移任务书、证据和审核合同
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板
 - [[templates/harness-episode-package-template]]：单次 Harness episode 的 checkpoint、执行轨迹、证据边界和反馈模板

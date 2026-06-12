@@ -19,6 +19,7 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         (sys.executable, "scripts/check_problem_focused_visual_presentation.py"),
     ),
     ("knowledge-linking", "knowledge linking", (sys.executable, "scripts/check_knowledge_linking.py")),
+    ("documentation-maintenance", "documentation maintenance", (sys.executable, "scripts/check_documentation_maintenance.py")),
     ("harness-feedback-ledger", "harness feedback ledger", (sys.executable, "scripts/check_harness_feedback_ledger.py")),
     ("instruction-adherence", "instruction adherence", (sys.executable, "scripts/check_instruction_adherence.py")),
     ("retrospective-system", "retrospective system", (sys.executable, "scripts/check_retrospective_system.py")),

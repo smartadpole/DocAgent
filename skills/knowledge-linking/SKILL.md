@@ -33,7 +33,7 @@ sensor: python3 scripts/check_all.py --only knowledge-linking,skill-maturity
 
 - `maturity`：`leading`。本技能已有技能正文、README 入口、迁移边界、治理接线和专项 sensor。
 - `template`：知识页本身按目标层已有页面结构写；本技能不维护第二份 article / concept 模板。
-- `governance`：分层落位和跨项目反哺回到 [[POLICY]] 与 [[template-feedback-rules]]；过程记录回到 [[log]]。
+- `governance`：分层落位和跨项目反哺回到 [[governance/knowledge-linking-rules]]、[[POLICY]] 与 [[template-feedback-rules]]；过程记录回到 [[log]]。
 - `TRANSFER`：迁移边界见 [[skills/knowledge-linking/TRANSFER]]；迁移时吸收落位判断、关系画像和验证要求，不复制具体知识图谱。
 - `sensor`：`python3 scripts/check_all.py --only knowledge-linking` 检查技能、入口、治理路由和总门禁接线；语义链接是否恰当仍由 agent 回看判断。
 - `evidence boundary`：本技能只能证明知识落位和关系维护质量，不能证明外部事实已经永久有效。
