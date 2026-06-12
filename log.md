@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 沉淀 Codex Goal 模式使用教程
+
+- **记录人**：sunhao
+- **用户意图**：用户要求从历史信息中分析 Codex goal 模式应该如何使用，并把结果沉淀到知识库，而不是只给一次性解释。
+- **主题**：
+  1. 将既有 Codex Goals 调研、Goal Contract 模板、主控 / 子工程协作和 Goal 自动续跑漏 `log.md` 案例合并成一份操作教程。
+  2. 保持概念边界：Goal 是线程级完成契约，不是全局 memory、项目状态、验收报告或每轮默认仪式。
+  3. 把历史经验提炼为启动前契约、每轮迭代、证据审计、收尾门禁和常见反模式。
+- **关键动作**：
+  1. 新增 [[articles/2026-06-12-codex-goal-mode-usage-guide]]，整理 Goal 模式适用条件、完成契约骨架、三类高频写法、历史经验和收尾检查表。
+  2. 更新 [[concepts/codex-goals]]，补“使用方法”和自动续跑不能跳过 `log.md` / 检查 / finalizer / 提交闭环的误区。
+  3. 同步 [[articles/README]] 和 [[INDEX]]，让教程能从摘要卡片层和总索引被发现。
+- **结论**：后续使用 Codex Goal 时，先按响应模式判断是否真是长时任务，再用 Goal Contract 冻结期望最终状态、验证面 / 证据边界、约束和停止条件；自动续跑产生内容变更时仍需走统一记录、检查和提交闭环。
+- **影响页面**：[[articles/2026-06-12-codex-goal-mode-usage-guide]]、[[concepts/codex-goals]]、[[articles/README]]、[[INDEX]]、[[log]]。
+
 ### 补齐持久 HTML lens 的 PNG 预览执行闭环
 
 - **记录人**：sunhao

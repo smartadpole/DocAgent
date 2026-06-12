@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-05-25
+updated: 2026-06-12
 tags: [codex, ai-agent, workflow]
 ---
 
@@ -58,6 +58,17 @@ Codex Goals 不是：
 - 需要复现的复杂 bug 排查
 - 需要最终报告和证据分层的研究任务
 
+## 使用方法
+
+如果要实际启动 Goal，先把它写成 [[templates/goal-contract-template]]，再压缩成当前 Codex 界面可接受的目标表达。更详细的操作流程见 [[articles/2026-06-12-codex-goal-mode-usage-guide]]。
+
+最小流程是：
+
+1. 先按 [[response-mode-routing]] 判断这是不是长时任务。
+2. 写清期望最终状态、完成判定、验证面 / 证据边界、约束、允许边界和停止条件。
+3. 每轮自动续跑或用户要求继续时，先回到完成契约检查是否继续、收尾或阻塞。
+4. 收尾时只按证据写 done / partial / review / blocked，不把 health、日志、handoff、自述或 accepted / running 中间态上推成闭环。
+
 ## 常见误区
 
 - 把 Goal 当成更长的 prompt
@@ -65,6 +76,7 @@ Codex Goals 不是：
 - 把预算耗尽误当成完成
 - 用 Goal 掩盖证据缺口或范围不清
 - 把线程级契约误用成团队级真相源
+- 把 Goal 自动续跑当成跳过 `log.md`、检查、finalizer 或提交闭环的例外
 
 ## 和当前 wiki 的关系
 
@@ -79,5 +91,6 @@ Codex Goals 不是：
 ## 相关页面
 
 - [[articles/2026-05-25-codex-goals-research]]
+- [[articles/2026-06-12-codex-goal-mode-usage-guide]]
 - [[concepts/harness-engineering]]
 - [[response-mode-routing]]
