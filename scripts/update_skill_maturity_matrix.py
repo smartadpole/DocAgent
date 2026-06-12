@@ -642,15 +642,13 @@ def render_html() -> str:
             "</article>"
         )
         overview_cells = "\n".join(
-            f"<td class=\"heat-cell heat-{c['status']}\" title=\"{html.escape(c['project'].label + ': ' + c['note'])}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
+            f"<td class=\"heat-cell heat-{c['status']}{' heat-source' if c['project'].label in origin_projects else ''}\" title=\"{html.escape(c['project'].label + ': ' + c['note'] + ('；源头工程。' if c['project'].label in origin_projects else ''))}\"><span>{STATUS_LABELS[c['status']]}<small>{c['score']}</small></span></td>"
             for c in row["cells"]
         )
-        leader_text = "领先：" + "、".join(leaders) if leaders else "补可检测证据"
-        source_text = "源头：" + (source_roots if source_roots else "暂无")
         subitem_text = f"子项：{member_count}"
         overview_rows.append(
             "<tr>"
-            f"<th title=\"{html.escape(skill['name'])}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(source_text)}</span><span>{html.escape(leader_text)}</span><span>{html.escape(subitem_text)}</span></th>"
+            f"<th title=\"{html.escape(skill['name'] + ' · 源头：' + (source_roots if source_roots else '暂无') + ' · 领先：' + ('、'.join(leaders) if leaders else '暂无'))}\"><code>{html.escape(skill['display_name'])}</code><span>{html.escape(subitem_text)}</span></th>"
             f"{overview_cells}</tr>"
         )
 
@@ -716,6 +714,9 @@ def render_html() -> str:
     .cards {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }}
     .card, article {{ background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; box-shadow: 0 6px 18px rgba(28, 36, 48, 0.05); }}
     .card strong {{ display: block; font-size: 28px; line-height: 1; margin-bottom: 8px; }}
+    .legend-groups {{ display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr); gap: 12px; }}
+    .legend-box {{ border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 12px; }}
+    .legend-title {{ display: block; margin: 0 0 8px; color: #273549; font-size: 12px; font-weight: 900; }}
     .legend {{ display: flex; flex-wrap: wrap; gap: 8px; }}
     .status {{ display: inline-flex; align-items: center; justify-content: center; min-width: 46px; min-height: 24px; padding: 2px 8px; border-radius: 999px; color: white; font-size: 12px; font-weight: 800; }}
     .leader {{ background: var(--violet); }}
@@ -732,9 +733,15 @@ def render_html() -> str:
     .overview-matrix tbody th {{ position: sticky; left: 0; z-index: 1; width: 260px; min-width: 260px; text-align: left; background: #eef2f6; padding: 10px 12px; }}
     .overview-matrix tbody th code {{ display: block; color: #172033; font-size: 13px; line-height: 1.35; white-space: normal; }}
     .overview-matrix tbody th span {{ display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 600; }}
-    .heat-cell {{ min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); }}
+    .heat-cell {{ position: relative; min-width: 76px; height: 44px; color: white; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.24); overflow: hidden; }}
     .heat-cell span {{ display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 44px; font-size: 13px; font-weight: 900; letter-spacing: 0; }}
     .heat-cell small {{ margin-top: 1px; font-size: 10px; font-weight: 800; opacity: 0.88; }}
+    .heat-source::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 4px, rgba(23,32,51,0.72) 4px 8px); opacity: 0.95; pointer-events: none; }}
+    .heat-source::after {{ content: ""; position: absolute; inset: 4px; border: 2px solid rgba(23,32,51,0.9); border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.44); pointer-events: none; }}
+    .source-sample {{ position: relative; display: inline-flex; align-items: center; justify-content: center; width: 70px; height: 28px; border-radius: 6px; background: #005fd8; color: white; font-size: 11px; font-weight: 900; overflow: hidden; text-shadow: 0 1px 1px rgba(0,0,0,0.24); }}
+    .source-sample::before {{ content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.82) 0 4px, rgba(23,32,51,0.72) 4px 8px); }}
+    .source-sample::after {{ content: ""; position: absolute; inset: 4px; border: 2px solid rgba(23,32,51,0.9); border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.44); }}
+    .marker-row {{ display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 12px; }}
     .heat-leader {{ background: #5a2bc2 !important; }}
     .heat-mature {{ background: #008f3a !important; }}
     .heat-adopted {{ background: #005fd8 !important; }}
@@ -766,7 +773,7 @@ def render_html() -> str:
     .boundary {{ border-left: 5px solid var(--amber); }}
     .source-list {{ color: var(--muted); font-size: 13px; }}
     @media (max-width: 900px) {{
-      .cards, .project-grid, .compact-grid {{ grid-template-columns: 1fr; }}
+      .cards, .project-grid, .compact-grid, .legend-groups {{ grid-template-columns: 1fr; }}
       .wrap {{ width: min(100vw - 20px, 1440px); }}
       h1 {{ font-size: 34px; }}
     }}
@@ -787,7 +794,7 @@ def render_html() -> str:
     <div class="wrap hero">
       <div class="eyebrow">Skill and governance capability maturity lens · 每三天刷新</div>
       <h1>跨工程技能与治理能力成熟度矩阵</h1>
-      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并把复盘、调研、文档维护、项目上下文入口等同主题能力归并成大项；细分子项在详情卡展开。矩阵显式标注源头工程、发现工程、领先工程、TRANSFER、sensor、views、template、governance 和内容体量信号。</p>
+      <p class="subtitle">每次刷新都会重新发现所有工程里的 skill 项，并把复盘、调研、文档维护、项目上下文入口等同主题能力归并成大项；细分子项在详情卡展开。矩阵用颜色表达成熟度，用边框和底部纹理标记源头工程，减少第一列文字负担。</p>
       <div class="meta-row">
         <span class="pill">生成：{html.escape(generated)}</span>
         <span class="pill">源版本：{html.escape(source_revision)}</span>
@@ -806,9 +813,18 @@ def render_html() -> str:
     </section>
 
     <section>
-      <h2>状态图例</h2>
-      <div class="legend">
-        {''.join(f'<span class="status {k}">{v}</span>' for k, v in STATUS_LABELS.items())}
+      <h2>图例</h2>
+      <div class="legend-groups">
+        <div class="legend-box">
+          <strong class="legend-title">成熟度颜色</strong>
+          <div class="legend">
+            {''.join(f'<span class="status {k}">{v}</span>' for k, v in STATUS_LABELS.items())}
+          </div>
+        </div>
+        <div class="legend-box">
+          <strong class="legend-title">源头标记</strong>
+          <div class="marker-row"><span class="source-sample">源头</span><span>深色内边框 + 底部斜纹表示该工程是此能力源头；成熟度仍由底色决定。</span></div>
+        </div>
       </div>
     </section>
 
@@ -816,11 +832,11 @@ def render_html() -> str:
       <h2>技能 / 能力 x 工程矩阵</h2>
       <div class="overview-shell">
         <table class="overview-matrix">
-          <thead><tr><th>技能 / 能力 / 当前领先</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
+          <thead><tr><th>技能 / 能力</th>{''.join(f'<th><span>{html.escape(p.label)}</span></th>' for p in PROJECTS)}</tr></thead>
           <tbody>{''.join(overview_rows)}</tbody>
         </table>
       </div>
-      <p class="overview-note">格子显示本轮动态得分后的相对等级；第一列显示源头工程、领先工程和子项数量。数字是该工程在该技能主题或治理能力下的证据信号分，不代表目标工程运行验收。</p>
+      <p class="overview-note">格子底色显示成熟度，深色内边框和底部斜纹显示源头工程；第一列只保留能力名和子项数量。数字是该工程在该技能主题或治理能力下的证据信号分，不代表目标工程运行验收。</p>
     </section>
 
     <section>
@@ -837,7 +853,7 @@ def render_html() -> str:
 
     <section class="card boundary">
       <h2>证据边界</h2>
-      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成总表大项，再追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度。blocked：路径不可读。</p>
+      <p>confirmed：本机文件存在、技能或能力入口可读、注册表已记录。dynamic catalog：每次刷新重新发现所有工程的 skill 文件，先按同主题归并成总表大项，再追加少量补充治理能力行。relative ranking：按同名 / 别名 skill 或治理能力、TRANSFER、sensor、views、template、governance 和正文体量信号计算相对成熟度；源头工程用边框和底部纹理标记。blocked：路径不可读。</p>
       <p>本页不直接修改子工程，不裁定子工程状态，也不表示可从下游原样复制。任何“领先”或“成熟”都只是本轮信号强弱；吸收动作仍必须先按上游归一规则抽象系统层信息，剥离项目事实、业务链路、运行 ID、本地路径和一次性 handoff。</p>
       <p class="source-list">主要来源：skills/README.md、projects/governance/registry.md、所有工程 skill / TRANSFER / governance / sensor / views / template 路径，以及补充治理能力清单。生成脚本：scripts/update_skill_maturity_matrix.py。</p>
     </section>
