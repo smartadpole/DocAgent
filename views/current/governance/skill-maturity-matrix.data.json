@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-15 10:40",
-  "source_revision": "be2418f",
+  "generated_at": "2026-06-15 11:09",
+  "source_revision": "cc9f400",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
@@ -217,12 +217,18 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "source_paths": [
+        "DocCustomeranalysis:skills/goal-contract/SKILL.md",
+        "customeranalysis:.codex/skills/goal-contract/SKILL.md",
         "train_platform:.codex/skills/goal-contract/SKILL.md"
       ],
       "has_transfer": "yes",
@@ -274,15 +280,21 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "source_paths": [
+        "DocCustomeranalysis:skills/transferable-skill-governance/SKILL.md",
+        "customeranalysis:.codex/skills/transferable-skill-governance/SKILL.md",
         "fetch-adapter:.codex/skills/transferable-skill-governance/SKILL.md"
       ],
-      "has_transfer": "no",
+      "has_transfer": "yes",
       "has_source": "no"
     },
     {
@@ -405,6 +417,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -416,6 +429,7 @@
         "DocCustomeranalysis:skills/cross-project-governance-audit/SKILL.md",
         "DocFilmCommunity:skills/cross-project-governance-audit/SKILL.md",
         "Software/wiki:skills/cross-project-governance-audit/SKILL.md",
+        "customeranalysis:.codex/skills/cross-project-governance-audit/SKILL.md",
         "prefect:.agents/skills/cross-project-governance-audit/SKILL.md",
         "train_platform:.codex/skills/cross-project-governance-audit/SKILL.md"
       ],
@@ -1473,7 +1487,8 @@
       "score_gap": 0,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
@@ -1538,7 +1553,8 @@
       "score_gap": 0,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
@@ -1598,15 +1614,16 @@
       "anchor": "diag-doccustomeranalysis-retrospective-capability",
       "status": "mature",
       "status_label": "成熟",
-      "score": 13,
+      "score": 16,
       "max_score": 16,
-      "score_gap": 3,
+      "score_gap": 0,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
-      "leader_rule_note": "",
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -1618,24 +1635,26 @@
       "signals": [
         "TRANSFER",
         "body",
+        "sensor",
         "skill"
       ],
       "fingerprint": [
         "TRANSFER",
         "body",
+        "sensor",
         "skill",
         "small-body"
       ],
       "missing_leader_signals": [
-        "sensor",
         "views"
       ],
-      "evidence_note": "动态重扫得分 13；证据信号：skill、TRANSFER、body。",
+      "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、sensor、body。",
       "evidence_paths": [
+        "DocCustomeranalysis:scripts/check_retrospective_system.py",
         "DocCustomeranalysis:skills/historical-dialogue-retrospective/SKILL.md",
         "DocCustomeranalysis:skills/retrospective/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "retrospective-capability",
@@ -1667,7 +1686,8 @@
       "score_gap": 5,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -1729,7 +1749,8 @@
       "score_gap": 16,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -1785,7 +1806,8 @@
       "score_gap": 5,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -1847,7 +1869,8 @@
       "score_gap": 4,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -1913,7 +1936,8 @@
       "score_gap": 4,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -1976,7 +2000,8 @@
       "score_gap": 8,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -2037,7 +2062,8 @@
       "score_gap": 16,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -2093,7 +2119,8 @@
       "score_gap": 16,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -2149,7 +2176,8 @@
       "score_gap": 16,
       "leaders": [
         "AcknowledgeBase",
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -2713,9 +2741,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "AcknowledgeBase",
@@ -2723,12 +2755,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 10,
-      "max_score": 15,
-      "score_gap": 5,
+      "max_score": 21,
+      "score_gap": 11,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -2776,9 +2808,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "Software/wiki",
@@ -2786,12 +2822,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 10,
-      "max_score": 15,
-      "score_gap": 5,
+      "max_score": 21,
+      "score_gap": 11,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -2839,22 +2875,26 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "DocCustomeranalysis",
       "anchor": "diag-doccustomeranalysis-goal-contract",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 10,
-      "max_score": 15,
-      "score_gap": 5,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 21,
+      "max_score": 21,
+      "score_gap": 0,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -2866,24 +2906,25 @@
         "template"
       ],
       "signals": [
+        "TRANSFER",
         "goal-contract",
         "governance",
         "large-body",
+        "skill",
         "template"
       ],
       "fingerprint": [
+        "TRANSFER",
         "body",
         "goal-contract",
         "governance",
         "large-body",
+        "skill",
         "small-body",
         "template"
       ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "skill"
-      ],
-      "evidence_note": "动态重扫得分 10；证据信号：governance、template、goal-contract、large-body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 21；证据信号：skill、TRANSFER、governance、template、goal-contract、large-body。",
       "evidence_paths": [
         "DocCustomeranalysis:AGENTS.md",
         "DocCustomeranalysis:INDEX.md",
@@ -2891,7 +2932,7 @@
         "DocCustomeranalysis:articles/2026-06-12-codex-goal-mode-usage-review.md",
         "DocCustomeranalysis:concepts/codex-goals.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "goal-contract",
@@ -2902,9 +2943,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "DocFilmCommunity",
@@ -2912,12 +2957,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 10,
-      "max_score": 15,
-      "score_gap": 5,
+      "max_score": 21,
+      "score_gap": 11,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -2965,9 +3010,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "fetch-adapter",
@@ -2975,12 +3024,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 9,
-      "max_score": 15,
-      "score_gap": 6,
+      "max_score": 21,
+      "score_gap": 12,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3027,9 +3076,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "train_platform",
@@ -3037,13 +3090,13 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 15,
-      "max_score": 15,
-      "score_gap": 0,
+      "max_score": 21,
+      "score_gap": 6,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -3073,7 +3126,7 @@
       "evidence_paths": [
         "train_platform:.codex/skills/goal-contract/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 body, governance, large-body, template；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 body, governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "goal-contract",
@@ -3084,9 +3137,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "prefect",
@@ -3094,12 +3151,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 7,
-      "max_score": 15,
-      "score_gap": 8,
+      "max_score": 21,
+      "score_gap": 14,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3145,22 +3202,26 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "customeranalysis",
       "anchor": "diag-customeranalysis-goal-contract",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 5,
-      "max_score": 15,
-      "score_gap": 10,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 20,
+      "max_score": 21,
+      "score_gap": 1,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3172,30 +3233,33 @@
         "template"
       ],
       "signals": [
-        "governance",
-        "large-body"
-      ],
-      "fingerprint": [
-        "body",
+        "TRANSFER",
+        "goal-contract",
         "governance",
         "large-body",
+        "skill"
+      ],
+      "fingerprint": [
+        "TRANSFER",
+        "body",
+        "goal-contract",
+        "governance",
+        "large-body",
+        "skill",
         "small-body"
       ],
       "missing_leader_signals": [
-        "TRANSFER",
-        "goal-contract",
-        "skill",
         "template"
       ],
-      "evidence_note": "动态重扫得分 5；证据信号：governance、large-body。",
+      "evidence_note": "动态重扫得分 20；证据信号：skill、TRANSFER、governance、goal-contract、large-body。",
       "evidence_paths": [
+        "customeranalysis:.codex/context/agent-coordination.md",
         "customeranalysis:.codex/context/customeranalysis-engineering-context.md",
-        "customeranalysis:.codex/context/harness-feedback-ledger.md",
-        "customeranalysis:.codex/context/rule-conflict-resolution.md",
-        "customeranalysis:.codex/skills/customeranalysis-docs/SKILL.md",
-        "customeranalysis:.codex/skills/issue-analysis/SKILL.md"
+        "customeranalysis:.codex/context/general-skill-governance.md",
+        "customeranalysis:.codex/context/harness-evolution.md",
+        "customeranalysis:.codex/context/harness-feedback-ledger.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, goal-contract, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "goal-contract",
@@ -3206,9 +3270,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "LifeOS",
@@ -3216,12 +3284,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 10,
-      "max_score": 15,
-      "score_gap": 5,
+      "max_score": 21,
+      "score_gap": 11,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3269,9 +3337,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "DocERP",
@@ -3279,12 +3351,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 15,
-      "score_gap": 15,
+      "max_score": 21,
+      "score_gap": 21,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3319,9 +3391,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "H100",
@@ -3329,12 +3405,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 15,
-      "score_gap": 15,
+      "max_score": 21,
+      "score_gap": 21,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3369,9 +3445,13 @@
         "Goal Contract / 长时任务完成契约"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "train_platform"
       ],
       "project": "17lang",
@@ -3379,12 +3459,12 @@
       "status": "partial",
       "status_label": "局部",
       "score": 4,
-      "max_score": 15,
-      "score_gap": 11,
+      "max_score": 21,
+      "score_gap": 17,
       "leaders": [
-        "train_platform"
+        "DocCustomeranalysis"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -3449,7 +3529,8 @@
       "max_score": 16,
       "score_gap": 6,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3513,7 +3594,8 @@
       "max_score": 16,
       "score_gap": 0,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3573,13 +3655,14 @@
       ],
       "project": "DocCustomeranalysis",
       "anchor": "diag-doccustomeranalysis-issue-analysis",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 13,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 16,
       "max_score": 16,
-      "score_gap": 3,
+      "score_gap": 0,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3594,23 +3677,26 @@
       "signals": [
         "TRANSFER",
         "body",
-        "skill"
+        "governance",
+        "skill",
+        "template"
       ],
       "fingerprint": [
         "TRANSFER",
         "body",
-        "skill",
-        "small-body"
-      ],
-      "missing_leader_signals": [
         "governance",
+        "skill",
+        "small-body",
         "template"
       ],
-      "evidence_note": "动态重扫得分 13；证据信号：skill、TRANSFER、body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、governance、template、body。",
       "evidence_paths": [
-        "DocCustomeranalysis:skills/issue-analysis/SKILL.md"
+        "DocCustomeranalysis:governance/issue-analysis-rules.md",
+        "DocCustomeranalysis:skills/issue-analysis/SKILL.md",
+        "DocCustomeranalysis:templates/development-issue-template.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "issue-analysis",
@@ -3642,7 +3728,8 @@
       "max_score": 16,
       "score_gap": 3,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3707,7 +3794,8 @@
       "max_score": 16,
       "score_gap": 6,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3770,7 +3858,8 @@
       "max_score": 16,
       "score_gap": 5,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3832,7 +3921,8 @@
       "max_score": 16,
       "score_gap": 3,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3899,7 +3989,8 @@
       "max_score": 16,
       "score_gap": 5,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3961,7 +4052,8 @@
       "max_score": 16,
       "score_gap": 14,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4022,7 +4114,8 @@
       "max_score": 16,
       "score_gap": 7,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4084,7 +4177,8 @@
       "max_score": 16,
       "score_gap": 16,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4140,7 +4234,8 @@
       "max_score": 16,
       "score_gap": 16,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocCustomeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4175,9 +4270,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "AcknowledgeBase",
@@ -4188,11 +4287,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4201,6 +4302,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4219,9 +4321,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "Software/wiki",
@@ -4232,11 +4338,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4245,6 +4353,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4263,40 +4372,56 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "DocCustomeranalysis",
       "anchor": "diag-doccustomeranalysis-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 14,
       "max_score": 14,
-      "score_gap": 14,
+      "score_gap": 0,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
-      "leader_rule_note": "",
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
         "small-body"
       ],
-      "signals": [],
-      "fingerprint": [],
+      "signals": [
+        "TRANSFER",
+        "governance",
+        "skill",
+        "small-body"
+      ],
+      "fingerprint": [
+        "TRANSFER",
+        "governance",
+        "skill",
+        "small-body"
+      ],
       "missing_leader_signals": [
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
+        "sensor"
       ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
+      "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、governance、small-body。",
+      "evidence_paths": [
+        "DocCustomeranalysis:governance/transferable-skill-governance-rules.md",
+        "DocCustomeranalysis:skills/transferable-skill-governance/SKILL.md"
+      ],
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4307,9 +4432,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "DocFilmCommunity",
@@ -4320,11 +4449,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4333,6 +4464,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4351,24 +4483,30 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "fetch-adapter",
       "anchor": "diag-fetch-adapter-transferable-skill-governance",
-      "status": "leader",
-      "status_label": "领先",
+      "status": "mature",
+      "status_label": "成熟",
       "score": 14,
       "max_score": 14,
       "score_gap": 0,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
-      "leader_rule_note": "",
+      "leader_gap": true,
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4386,14 +4524,16 @@
         "skill",
         "small-body"
       ],
-      "missing_leader_signals": [],
+      "missing_leader_signals": [
+        "TRANSFER"
+      ],
       "evidence_note": "动态重扫得分 14；证据信号：skill、sensor、governance、small-body。",
       "evidence_paths": [
         "fetch-adapter:.codex/context/transferable-skill-governance.md",
         "fetch-adapter:.codex/skills/transferable-skill-governance/SKILL.md",
         "fetch-adapter:tools/check_transferable_skill_governance.py"
       ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 TRANSFER；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4404,9 +4544,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "train_platform",
@@ -4417,11 +4561,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4430,6 +4576,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4448,9 +4595,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "prefect",
@@ -4461,11 +4612,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4474,6 +4627,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4492,40 +4646,53 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "customeranalysis",
       "anchor": "diag-customeranalysis-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 11,
       "max_score": 14,
-      "score_gap": 14,
+      "score_gap": 3,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
         "small-body"
       ],
-      "signals": [],
-      "fingerprint": [],
+      "signals": [
+        "TRANSFER",
+        "skill"
+      ],
+      "fingerprint": [
+        "TRANSFER",
+        "skill"
+      ],
       "missing_leader_signals": [
         "governance",
         "sensor",
-        "skill",
         "small-body"
       ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
+      "evidence_note": "动态重扫得分 11；证据信号：skill、TRANSFER。",
+      "evidence_paths": [
+        "customeranalysis:.codex/skills/transferable-skill-governance/SKILL.md"
+      ],
+      "recommended_direction": "追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4536,9 +4703,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "LifeOS",
@@ -4549,11 +4720,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4562,6 +4735,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4580,9 +4754,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "DocERP",
@@ -4593,11 +4771,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4606,6 +4786,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4624,9 +4805,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "H100",
@@ -4637,11 +4822,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4650,6 +4837,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4668,9 +4856,13 @@
         "transferable skill governance"
       ],
       "source_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
+        "DocCustomeranalysis",
+        "customeranalysis",
         "fetch-adapter"
       ],
       "project": "17lang",
@@ -4681,11 +4873,13 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
+        "DocCustomeranalysis",
         "fetch-adapter"
       ],
-      "leader_gap": false,
+      "leader_gap": true,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -4694,6 +4888,7 @@
       "signals": [],
       "fingerprint": [],
       "missing_leader_signals": [
+        "TRANSFER",
         "governance",
         "sensor",
         "skill",
@@ -7251,6 +7446,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7323,6 +7519,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7395,6 +7592,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7467,6 +7665,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7539,6 +7738,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7609,6 +7809,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7681,6 +7882,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7751,6 +7953,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7759,11 +7962,11 @@
       ],
       "project": "customeranalysis",
       "anchor": "diag-customeranalysis-cross-project-governance-audit",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 7,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 19,
       "max_score": 20,
-      "score_gap": 13,
+      "score_gap": 1,
       "leaders": [
         "Software/wiki",
         "DocCustomeranalysis",
@@ -7782,30 +7985,33 @@
         "template"
       ],
       "signals": [
-        "body",
+        "TRANSFER",
         "governance",
-        "sensor"
+        "large-body",
+        "sensor",
+        "skill"
       ],
       "fingerprint": [
+        "TRANSFER",
         "body",
         "governance",
+        "large-body",
         "sensor",
+        "skill",
         "small-body"
       ],
       "missing_leader_signals": [
-        "TRANSFER",
-        "large-body",
-        "skill",
         "template"
       ],
-      "evidence_note": "动态重扫得分 7；证据信号：sensor、governance、body。",
+      "evidence_note": "动态重扫得分 19；证据信号：skill、TRANSFER、sensor、governance、large-body。",
       "evidence_paths": [
+        "customeranalysis:.codex/context/general-skill-governance.md",
         "customeranalysis:.codex/context/harness-evolution.md",
         "customeranalysis:.codex/context/harness-feedback-ledger.md",
-        "customeranalysis:.codex/skills/historical-dialogue-retrospective/SKILL.md",
-        "customeranalysis:scripts/check_agent_harness.py"
+        "customeranalysis:.codex/skills/cross-project-governance-audit/SKILL.md",
+        "customeranalysis:.codex/skills/historical-dialogue-retrospective/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, large-body, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "cross-project-governance-audit",
@@ -7820,6 +8026,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7890,6 +8097,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -7959,6 +8167,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -8025,6 +8234,7 @@
         "DocCustomeranalysis",
         "DocFilmCommunity",
         "Software/wiki",
+        "customeranalysis",
         "prefect",
         "train_platform"
       ],
@@ -9643,7 +9853,8 @@
       "score_gap": 11,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -9720,7 +9931,8 @@
       "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
@@ -9800,7 +10012,8 @@
       "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
@@ -9880,7 +10093,8 @@
       "score_gap": 5,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -9956,7 +10170,8 @@
       "score_gap": 3,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -10036,7 +10251,8 @@
       "score_gap": 7,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -10112,7 +10328,8 @@
       "score_gap": 5,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -10186,15 +10403,16 @@
       "anchor": "diag-customeranalysis-documentation-maintenance",
       "status": "mature",
       "status_label": "成熟",
-      "score": 18,
+      "score": 19,
       "max_score": 19,
-      "score_gap": 1,
+      "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
-      "leader_rule_note": "",
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -10207,8 +10425,8 @@
       ],
       "signals": [
         "TRANSFER",
-        "body",
         "governance",
+        "large-body",
         "sensor",
         "skill"
       ],
@@ -10216,22 +10434,22 @@
         "TRANSFER",
         "body",
         "governance",
+        "large-body",
         "sensor",
         "skill",
         "small-body"
       ],
       "missing_leader_signals": [
-        "large-body",
         "views"
       ],
-      "evidence_note": "动态重扫得分 18；证据信号：skill、TRANSFER、sensor、governance、body。",
+      "evidence_note": "动态重扫得分 19；证据信号：skill、TRANSFER、sensor、governance、large-body。",
       "evidence_paths": [
         "customeranalysis:.codex/context/agent-coordination.md",
         "customeranalysis:.codex/skills/documentation-maintenance/SKILL.md",
         "customeranalysis:AGENTS.md",
         "customeranalysis:scripts/check_agent_harness.py"
       ],
-      "recommended_direction": "追齐领先信号：优先补 large-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "documentation-maintenance",
@@ -10271,7 +10489,8 @@
       "score_gap": 18,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -10344,7 +10563,8 @@
       "score_gap": 17,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -10417,7 +10637,8 @@
       "score_gap": 18,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",
@@ -10490,7 +10711,8 @@
       "score_gap": 19,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "customeranalysis"
       ],
       "leader_gap": true,
       "leader_rule_note": "",

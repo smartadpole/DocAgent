@@ -9,6 +9,21 @@
 
 ## 2026-06-12
 
+### 技能成熟度矩阵吸收新的通用能力源头与领先判断
+
+- **记录人**：sunhao
+- **用户意图**：按自动化周期刷新跨工程技能成熟度矩阵，并确认这轮是否只是时间戳前移，还是已经出现需要长期保留的解释变化。
+- **主题**：
+  1. 复核 `skills/README.md`、本库 `skills/*/SKILL.md`、[[projects/governance/registry]] 和矩阵脚本扫描的子工程 skill / governance / sensor 路径。
+  2. 保持 `scripts/update_skill_maturity_matrix.py` 规则不变，仅在项目清单、别名或状态规则漂移时才改脚本。
+  3. 接受本轮新发现的子工程通用能力证据，并把它们反映到源头工程、`TRANSFER` 覆盖和领先判定上。
+- **关键动作**：
+  1. 运行 `python3 scripts/update_skill_maturity_matrix.py`，重写 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`。
+  2. 运行 `python3 scripts/export_skill_maturity_matrix.py`，从 canonical HTML 同源导出 `views/.exports/skill-maturity-matrix.pdf` 和 `views/.exports/skill-maturity-matrix.png`。
+  3. 运行 `python3 scripts/check_all.py`，确认矩阵同步和全库质量门全部通过。
+- **结论**：这轮不是纯刷新。矩阵现在承认 `DocCustomeranalysis`、`customeranalysis` 等子工程在 `goal-contract`、`issue-analysis`、`retrospective-capability`、`transferable-skill-governance` 等通用能力上提供了新的可检测证据，因此相关源头工程、`大项含 TRANSFER.md` 统计和领先 / 成熟判断发生了长期解释变化。
+- **影响页面**：[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ### 刷新技能成熟度矩阵并吸收子工程新入口发现
 
 - **记录人**：sunhao
