@@ -6,8 +6,8 @@ lens_type: knowledge
 source_pages: skills/README.md; projects/governance/registry.md; scripts/update_skill_maturity_matrix.py
 source_scope: same scan context as skill-maturity-matrix.html and skill-maturity-matrix.data.json
 source_of_truth: false
-generated_at: 2026-06-15 11:09
-source_revision: cc9f400
+generated_at: 2026-06-15 13:11
+source_revision: 29eeb08
 evidence_boundary: local skill/governance/sensor/view/template discovery and content-volume signals only; no runtime validation
 context_frame: action-oriented companion to the HTML matrix; groups diagnostics by project so each project can see missing signals and recommended modification directions
 output_mode: generated_markdown_diagnostics
@@ -45,13 +45,13 @@ tags: [views, governance, skill-maturity, diagnostics]
 
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 未见 0/9 | 9 | DocCustomeranalysis | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 局部 4/16 | 12 | DocCustomeranalysis | body、governance | large-body、sensor、skill | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis、DocFilmCommunity | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 文档与 Agent 规则维护 (`documentation-maintenance`) | 通用 / 可迁移 | 接入 8/19 | 11 | Software/wiki、DocCustomeranalysis、customeranalysis | governance、large-body、views | TRANSFER、sensor、skill | 追齐领先信号：优先补 TRANSFER, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 接入 10/16 | 6 | Software/wiki、DocCustomeranalysis | skill、small-body、template | TRANSFER、body、governance | 追齐领先信号：优先补 TRANSFER, body, governance；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 调研 / 研究能力 (`research-capability`) | 通用 / 可迁移 | 成熟 14/19 | 5 | Software/wiki、DocCustomeranalysis | governance、large-body、skill、template | TRANSFER、sensor | 追齐领先信号：优先补 TRANSFER, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
@@ -81,13 +81,13 @@ tags: [views, governance, skill-maturity, diagnostics]
 
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 未见 0/9 | 9 | DocCustomeranalysis | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 局部 7/16 | 9 | DocCustomeranalysis | body、governance、sensor | large-body、skill | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis、DocFilmCommunity | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 问题聚焦式图文呈现 (`problem-focused-visual-presentation`) | 通用 / 可迁移 | 成熟 22/23 | 1 | DocCustomeranalysis | TRANSFER、body、governance、sensor、skill、template、views | large-body | 追齐领先信号：优先补 large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 成熟 16/16 | 0 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | TRANSFER、body、sensor、skill | views | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。 |
 | 文档与 Agent 规则维护 (`documentation-maintenance`) | 通用 / 可迁移 | 成熟 19/19 | 0 | Software/wiki、DocCustomeranalysis、customeranalysis | TRANSFER、governance、large-body、sensor、skill | views | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。 |
@@ -121,11 +121,11 @@ tags: [views, governance, skill-maturity, diagnostics]
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 成熟 12/14 | 2 | Software/wiki | TRANSFER、skill、template | body、small-body | 追齐领先信号：优先补 body, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 14/14 | 0 | DocCustomeranalysis、fetch-adapter | TRANSFER、governance、skill、small-body | sensor | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 14/14 | 0 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | TRANSFER、governance、skill、small-body | sensor | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 成熟 16/16 | 0 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | TRANSFER、body、sensor、skill | views | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。 |
 | 文档与 Agent 规则维护 (`documentation-maintenance`) | 通用 / 可迁移 | 成熟 19/19 | 0 | Software/wiki、DocCustomeranalysis、customeranalysis | TRANSFER、governance、large-body、sensor、skill | views | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。 |
 | 调研 / 研究能力 (`research-capability`) | 通用 / 可迁移 | 成熟 19/19 | 0 | Software/wiki、DocCustomeranalysis | TRANSFER、body、governance、sensor、skill、template | large-body | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 large-body；覆盖证据信号并集后，才可重新评为领先。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 领先 21/21 | 0 | DocCustomeranalysis | TRANSFER、goal-contract、governance、large-body、skill、template | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 领先 21/21 | 0 | DocCustomeranalysis、DocFilmCommunity | TRANSFER、goal-contract、governance、large-body、skill、template | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 领先 16/16 | 0 | Software/wiki、DocCustomeranalysis | TRANSFER、body、governance、skill、template | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 领先 9/9 | 0 | DocCustomeranalysis | skill、small-body | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 领先 16/16 | 0 | DocCustomeranalysis | governance、large-body、sensor、skill | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
@@ -151,17 +151,15 @@ tags: [views, governance, skill-maturity, diagnostics]
 ## DocFilmCommunity
 
 - **工程路径**：`/Users/hai/Documents/Code/DocFilmCommunity`
-- **成熟概览**：领先 1；成熟 5；接入 3；局部 1；未见 5；阻塞 0。
+- **成熟概览**：领先 2；成熟 6；接入 2；局部 1；未见 4；阻塞 0。
 
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 未见 0/9 | 9 | DocCustomeranalysis | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 局部 7/16 | 9 | DocCustomeranalysis | body、governance、sensor | large-body、skill | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 知识关联 (`knowledge-linking`) | 通用 / 可迁移 | 接入 11/17 | 6 | Software/wiki、DocCustomeranalysis | TRANSFER、skill | governance、sensor、small-body | 追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 接入 11/16 | 5 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | TRANSFER、skill | body、sensor、small-body、views | 追齐领先信号：优先补 body, sensor, small-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 文档与 Agent 规则维护 (`documentation-maintenance`) | 通用 / 可迁移 | 成熟 14/19 | 5 | Software/wiki、DocCustomeranalysis、customeranalysis | TRANSFER、large-body、skill | governance、sensor、views | 追齐领先信号：优先补 governance, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
@@ -169,12 +167,13 @@ tags: [views, governance, skill-maturity, diagnostics]
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 成熟 13/16 | 3 | Software/wiki、DocCustomeranalysis | TRANSFER、skill、small-body、template | body、governance | 追齐领先信号：优先补 body, governance；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 成熟 11/14 | 3 | Software/wiki | TRANSFER、skill | body、small-body、template | 追齐领先信号：优先补 body, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 问题聚焦式图文呈现 (`problem-focused-visual-presentation`) | 通用 / 可迁移 | 成熟 20/23 | 3 | DocCustomeranalysis | TRANSFER、body、sensor、skill、template、views | governance、large-body | 追齐领先信号：优先补 governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 14/14 | 0 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | TRANSFER、governance、skill、small-body | sensor | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 领先 21/21 | 0 | DocCustomeranalysis、DocFilmCommunity | TRANSFER、goal-contract、governance、large-body、skill、template | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 | 跨工程治理审计 (`cross-project-governance-audit`) | 通用 / 可迁移 | 领先 20/20 | 0 | Software/wiki、DocCustomeranalysis、DocFilmCommunity | TRANSFER、governance、large-body、sensor、skill、template | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 
 ### 证据路径
 
 - **客群 DB 读回**：`DocFilmCommunity:governance/harness-feedback-ledger.md`、`DocFilmCommunity:governance/template-feedback-rules.md`、`DocFilmCommunity:projects/development/execution/engineering-feedback-loop.md`、`DocFilmCommunity:scripts/check_harness_feedback_ledger.py`
-- **Goal Contract / 长时任务完成契约**：`DocFilmCommunity:AGENTS.md`、`DocFilmCommunity:INDEX.md`、`DocFilmCommunity:README.md`、`DocFilmCommunity:concepts/codex-goals.md`、`DocFilmCommunity:governance/BRAIN.md`
 - **知识关联**：`DocFilmCommunity:skills/knowledge-linking/SKILL.md`
 - **复盘 / 回顾改进**：`DocFilmCommunity:skills/historical-dialogue-retrospective/SKILL.md`
 - **文档与 Agent 规则维护**：`DocFilmCommunity:AGENTS.md`、`DocFilmCommunity:skills/documentation-maintenance/SKILL.md`
@@ -182,6 +181,8 @@ tags: [views, governance, skill-maturity, diagnostics]
 - **Issue / 事故分析**：`DocFilmCommunity:skills/issue-analysis/SKILL.md`、`DocFilmCommunity:templates/development-issue-template.md`
 - **跨工程技能迁移提示词**：`DocFilmCommunity:skills/cross-project-skill-adoption-prompt/SKILL.md`
 - **问题聚焦式图文呈现**：`DocFilmCommunity:scripts/check_problem_focused_visual_presentation.py`、`DocFilmCommunity:skills/problem-focused-visual-presentation/SKILL.md`、`DocFilmCommunity:templates/problem-focused-lens-template.md`、`DocFilmCommunity:views/lens-registry.md`
+- **transferable skill governance**：`DocFilmCommunity:governance/transferable-skill-governance-rules.md`、`DocFilmCommunity:skills/transferable-skill-governance/SKILL.md`
+- **Goal Contract / 长时任务完成契约**：`DocFilmCommunity:AGENTS.md`、`DocFilmCommunity:INDEX.md`、`DocFilmCommunity:README.md`、`DocFilmCommunity:concepts/codex-goals.md`、`DocFilmCommunity:governance/BRAIN.md`
 - **跨工程治理审计**：`DocFilmCommunity:governance/BRAIN.md`、`DocFilmCommunity:governance/POLICY.md`、`DocFilmCommunity:governance/README.md`、`DocFilmCommunity:governance/WORKFLOW.md`、`DocFilmCommunity:governance/execution-contract-semantics.md`
 
 ## fetch-adapter
@@ -199,12 +200,12 @@ tags: [views, governance, skill-maturity, diagnostics]
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 未见 0/9 | 9 | DocCustomeranalysis | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 局部 2/16 | 14 | DocCustomeranalysis | governance | body、large-body、sensor、skill、small-body | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
 | 跨工程治理审计 (`cross-project-governance-audit`) | 通用 / 可迁移 | 局部 7/20 | 13 | Software/wiki、DocCustomeranalysis、DocFilmCommunity | body、governance、sensor | TRANSFER、large-body、skill、template | 追齐领先信号：优先补 TRANSFER, large-body, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 9/21 | 12 | DocCustomeranalysis | goal-contract、governance、large-body | TRANSFER、skill、template | 追齐领先信号：优先补 TRANSFER, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 9/21 | 12 | DocCustomeranalysis、DocFilmCommunity | goal-contract、governance、large-body | TRANSFER、skill、template | 追齐领先信号：优先补 TRANSFER, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 接入 10/16 | 6 | Software/wiki、DocCustomeranalysis | body、skill | TRANSFER、governance、template | 追齐领先信号：优先补 TRANSFER, governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 问题聚焦式图文呈现 (`problem-focused-visual-presentation`) | 通用 / 可迁移 | 成熟 19/23 | 4 | DocCustomeranalysis | TRANSFER、body、sensor、skill、views | governance、large-body、template | 追齐领先信号：优先补 governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 文档与 Agent 规则维护 (`documentation-maintenance`) | 通用 / 可迁移 | 成熟 16/19 | 3 | Software/wiki、DocCustomeranalysis、customeranalysis | governance、large-body、sensor、skill | TRANSFER、views | 追齐领先信号：优先补 TRANSFER, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 成熟 9/12 | 3 | customeranalysis、17lang | skill、small-body | body、governance | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 14/14 | 0 | DocCustomeranalysis、fetch-adapter | governance、sensor、skill、small-body | TRANSFER | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 TRANSFER；覆盖证据信号并集后，才可重新评为领先。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 14/14 | 0 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | governance、sensor、skill、small-body | TRANSFER | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 TRANSFER；覆盖证据信号并集后，才可重新评为领先。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 领先 9/9 | 0 | fetch-adapter、prefect | skill、small-body | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 
 ### 证据路径
@@ -226,7 +227,7 @@ tags: [views, governance, skill-maturity, diagnostics]
 
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
@@ -237,7 +238,7 @@ tags: [views, governance, skill-maturity, diagnostics]
 | 知识关联 (`knowledge-linking`) | 通用 / 可迁移 | 接入 11/17 | 6 | Software/wiki、DocCustomeranalysis | TRANSFER、skill | governance、sensor、small-body | 追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 接入 11/16 | 5 | Software/wiki、DocCustomeranalysis | TRANSFER、skill | body、governance、small-body、template | 追齐领先信号：优先补 body, governance, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 接入 11/16 | 5 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | TRANSFER、skill | body、sensor、small-body、views | 追齐领先信号：优先补 body, sensor, small-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 成熟 15/21 | 6 | DocCustomeranalysis | TRANSFER、goal-contract、skill | body、governance、large-body、template | 追齐领先信号：优先补 body, governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 成熟 15/21 | 6 | DocCustomeranalysis、DocFilmCommunity | TRANSFER、goal-contract、skill | body、governance、large-body、template | 追齐领先信号：优先补 body, governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 调研 / 研究能力 (`research-capability`) | 通用 / 可迁移 | 成熟 14/19 | 5 | Software/wiki、DocCustomeranalysis | TRANSFER、governance、skill、small-body | body、large-body、sensor、template | 追齐领先信号：优先补 body, large-body, sensor, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 成熟 11/14 | 3 | Software/wiki | TRANSFER、skill | body、small-body、template | 追齐领先信号：优先补 body, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 跨工程治理审计 (`cross-project-governance-audit`) | 通用 / 可迁移 | 成熟 18/20 | 2 | Software/wiki、DocCustomeranalysis、DocFilmCommunity | TRANSFER、body、governance、sensor、skill | large-body、template | 追齐领先信号：优先补 large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
@@ -262,10 +263,10 @@ tags: [views, governance, skill-maturity, diagnostics]
 
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 未见 0/9 | 9 | DocCustomeranalysis | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 局部 7/21 | 14 | DocCustomeranalysis | goal-contract、large-body | TRANSFER、governance、skill、template | 追齐领先信号：优先补 TRANSFER, governance, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 局部 7/21 | 14 | DocCustomeranalysis、DocFilmCommunity | goal-contract、large-body | TRANSFER、governance、skill、template | 追齐领先信号：优先补 TRANSFER, governance, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 接入 8/16 | 8 | DocCustomeranalysis | skill | body、governance、large-body、sensor、small-body | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
 | 跨工程治理审计 (`cross-project-governance-audit`) | 通用 / 可迁移 | 接入 13/20 | 7 | Software/wiki、DocCustomeranalysis、DocFilmCommunity | TRANSFER、body、skill | governance、large-body、sensor、template | 追齐领先信号：优先补 governance, large-body, sensor, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 问题聚焦式图文呈现 (`problem-focused-visual-presentation`) | 通用 / 可迁移 | 接入 16/23 | 7 | DocCustomeranalysis | TRANSFER、body、skill、views | governance、large-body、sensor、template | 追齐领先信号：优先补 governance, large-body, sensor, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
@@ -309,9 +310,9 @@ tags: [views, governance, skill-maturity, diagnostics]
 | 知识关联 (`knowledge-linking`) | 通用 / 可迁移 | 接入 11/17 | 6 | Software/wiki、DocCustomeranalysis | TRANSFER、skill | governance、sensor、small-body | 追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 接入 11/16 | 5 | Software/wiki、DocCustomeranalysis | TRANSFER、skill | body、governance、small-body、template | 追齐领先信号：优先补 body, governance, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 成熟 12/16 | 4 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | TRANSFER、skill、small-body | body、sensor、views | 追齐领先信号：优先补 body, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 11/14 | 3 | DocCustomeranalysis、fetch-adapter | TRANSFER、skill | governance、sensor、small-body | 追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 成熟 11/14 | 3 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | TRANSFER、skill | governance、sensor、small-body | 追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 成熟 11/14 | 3 | Software/wiki | TRANSFER、skill | body、small-body、template | 追齐领先信号：优先补 body, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 成熟 20/21 | 1 | DocCustomeranalysis | TRANSFER、goal-contract、governance、large-body、skill | template | 追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 成熟 20/21 | 1 | DocCustomeranalysis、DocFilmCommunity | TRANSFER、goal-contract、governance、large-body、skill | template | 追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 跨工程治理审计 (`cross-project-governance-audit`) | 通用 / 可迁移 | 成熟 19/20 | 1 | Software/wiki、DocCustomeranalysis、DocFilmCommunity | TRANSFER、governance、large-body、sensor、skill | template | 追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 文档与 Agent 规则维护 (`documentation-maintenance`) | 通用 / 可迁移 | 成熟 19/19 | 0 | Software/wiki、DocCustomeranalysis、customeranalysis | TRANSFER、governance、large-body、sensor、skill | views | 互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 领先 12/12 | 0 | customeranalysis、17lang | body、governance、skill | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
@@ -340,7 +341,7 @@ tags: [views, governance, skill-maturity, diagnostics]
 | --- | --- | --- | ---: | --- | --- | --- | --- |
 | 调研 / 研究能力 (`research-capability`) | 通用 / 可迁移 | 未见 0/19 | 19 | Software/wiki、DocCustomeranalysis | 无 | TRANSFER、body、governance、large-body、sensor、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 知识关联 (`knowledge-linking`) | 通用 / 可迁移 | 未见 0/17 | 17 | Software/wiki、DocCustomeranalysis | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 未见 0/14 | 14 | Software/wiki | 无 | TRANSFER、body、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
@@ -349,7 +350,7 @@ tags: [views, governance, skill-maturity, diagnostics]
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 局部 2/16 | 14 | Software/wiki、DocCustomeranalysis | governance | TRANSFER、body、skill、small-body、template | 追齐领先信号：优先补 TRANSFER, body, skill, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 跨工程治理审计 (`cross-project-governance-audit`) | 通用 / 可迁移 | 局部 6/20 | 14 | Software/wiki、DocCustomeranalysis、DocFilmCommunity | governance、large-body、template | TRANSFER、sensor、skill | 追齐领先信号：优先补 TRANSFER, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 局部 5/16 | 11 | DocCustomeranalysis | body、sensor | governance、large-body、skill | 只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 接入 10/21 | 11 | DocCustomeranalysis、DocFilmCommunity | goal-contract、governance、large-body、template | TRANSFER、skill | 追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 接入 8/16 | 8 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | skill | TRANSFER、body、sensor、small-body、views | 追齐领先信号：优先补 TRANSFER, body, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 问题聚焦式图文呈现 (`problem-focused-visual-presentation`) | 通用 / 可迁移 | 成熟 20/23 | 3 | DocCustomeranalysis | governance、large-body、sensor、skill、template、views | TRANSFER | 追齐领先信号：优先补 TRANSFER；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 领先 11/11 | 0 | LifeOS | governance、skill、small-body | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
@@ -373,10 +374,10 @@ tags: [views, governance, skill-maturity, diagnostics]
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
 | 问题聚焦式图文呈现 (`problem-focused-visual-presentation`) | 通用 / 可迁移 | 未见 0/23 | 23 | DocCustomeranalysis | 无 | TRANSFER、body、governance、large-body、sensor、skill、small-body、template、views | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 未见 0/21 | 21 | DocCustomeranalysis | 无 | TRANSFER、body、goal-contract、governance、large-body、skill、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 未见 0/21 | 21 | DocCustomeranalysis、DocFilmCommunity | 无 | TRANSFER、body、goal-contract、governance、large-body、skill、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 知识关联 (`knowledge-linking`) | 通用 / 可迁移 | 未见 0/17 | 17 | Software/wiki、DocCustomeranalysis | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 未见 0/16 | 16 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | 无 | TRANSFER、body、sensor、skill、small-body、views | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 未见 0/14 | 14 | Software/wiki | 无 | TRANSFER、body、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
@@ -403,11 +404,11 @@ tags: [views, governance, skill-maturity, diagnostics]
 
 | 技能 / 能力 | 范围 | 当前 | 分差 | 对标 / 领先工程 | 已有信号 | 待补领先信号 | 建议修改方向 |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 未见 0/21 | 21 | DocCustomeranalysis | 无 | TRANSFER、body、goal-contract、governance、large-body、skill、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 未见 0/21 | 21 | DocCustomeranalysis、DocFilmCommunity | 无 | TRANSFER、body、goal-contract、governance、large-body、skill、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 知识关联 (`knowledge-linking`) | 通用 / 可迁移 | 未见 0/17 | 17 | Software/wiki、DocCustomeranalysis | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 未见 0/16 | 16 | Software/wiki、DocCustomeranalysis | 无 | TRANSFER、body、governance、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 未见 0/16 | 16 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | 无 | TRANSFER、body、sensor、skill、small-body、views | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 未见 0/14 | 14 | Software/wiki | 无 | TRANSFER、body、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 未见 0/12 | 12 | customeranalysis、17lang | 无 | body、governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
@@ -442,12 +443,12 @@ tags: [views, governance, skill-maturity, diagnostics]
 | Issue / 事故分析 (`issue-analysis`) | 通用 / 可迁移 | 未见 0/16 | 16 | Software/wiki、DocCustomeranalysis | 无 | TRANSFER、body、governance、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 复盘 / 回顾改进 (`retrospective-capability`) | 通用 / 可迁移 | 未见 0/16 | 16 | AcknowledgeBase、Software/wiki、DocCustomeranalysis | 无 | TRANSFER、body、sensor、skill、small-body、views | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 客群 DB 读回 (`customer-group-db-readback`) | 项目 / 领域绑定 | 未见 0/16 | 16 | DocCustomeranalysis | 无 | body、governance、large-body、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
+| transferable skill governance (`transferable-skill-governance`) | 通用 / 可迁移 | 未见 0/14 | 14 | DocCustomeranalysis、DocFilmCommunity、fetch-adapter | 无 | TRANSFER、governance、sensor、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 跨工程技能迁移提示词 (`cross-project-skill-adoption-prompt`) | 通用 / 可迁移 | 未见 0/14 | 14 | Software/wiki | 无 | TRANSFER、body、skill、small-body、template | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 生活系统管理 (`lifeos-management`) | 项目 / 领域绑定 | 未见 0/11 | 11 | LifeOS | 无 | governance、skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | Backlog 批处理 (`backlog-management`) | 项目 / 领域绑定 | 未见 0/9 | 9 | fetch-adapter、prefect | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
 | 事项自动拆解 (`work-item-auto-decomposition`) | 项目 / 领域绑定 | 未见 0/9 | 9 | DocCustomeranalysis | 无 | skill、small-body | 先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。 |
-| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 局部 4/21 | 17 | DocCustomeranalysis | body、governance | TRANSFER、goal-contract、large-body、skill、template | 追齐领先信号：优先补 TRANSFER, goal-contract, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
+| Goal Contract / 长时任务完成契约 (`goal-contract`) | 通用 / 可迁移 | 局部 4/21 | 17 | DocCustomeranalysis、DocFilmCommunity | body、governance | TRANSFER、goal-contract、large-body、skill、template | 追齐领先信号：优先补 TRANSFER, goal-contract, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。 |
 | 项目上下文入口 (`project-context-entry`) | 项目 / 领域绑定 | 领先 12/12 | 0 | customeranalysis、17lang | body、governance、skill | 无 | 保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。 |
 
 ### 证据路径

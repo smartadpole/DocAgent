@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-15 11:09",
-  "source_revision": "cc9f400",
+  "generated_at": "2026-06-15 13:11",
+  "source_revision": "29eeb08",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
@@ -218,16 +218,19 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "source_paths": [
         "DocCustomeranalysis:skills/goal-contract/SKILL.md",
+        "DocFilmCommunity:skills/goal-contract/SKILL.md",
         "customeranalysis:.codex/skills/goal-contract/SKILL.md",
         "train_platform:.codex/skills/goal-contract/SKILL.md"
       ],
@@ -281,16 +284,19 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "source_paths": [
         "DocCustomeranalysis:skills/transferable-skill-governance/SKILL.md",
+        "DocFilmCommunity:skills/transferable-skill-governance/SKILL.md",
         "customeranalysis:.codex/skills/transferable-skill-governance/SKILL.md",
         "fetch-adapter:.codex/skills/transferable-skill-governance/SKILL.md"
       ],
@@ -2742,11 +2748,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -2758,7 +2766,8 @@
       "max_score": 21,
       "score_gap": 11,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -2809,11 +2818,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -2825,7 +2836,8 @@
       "max_score": 21,
       "score_gap": 11,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -2876,11 +2888,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -2892,7 +2906,8 @@
       "max_score": 21,
       "score_gap": 0,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -2944,23 +2959,26 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-goal-contract",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 10,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 21,
       "max_score": 21,
-      "score_gap": 11,
+      "score_gap": 0,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -2974,24 +2992,25 @@
         "template"
       ],
       "signals": [
+        "TRANSFER",
         "goal-contract",
         "governance",
         "large-body",
+        "skill",
         "template"
       ],
       "fingerprint": [
+        "TRANSFER",
         "body",
         "goal-contract",
         "governance",
         "large-body",
+        "skill",
         "small-body",
         "template"
       ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "skill"
-      ],
-      "evidence_note": "动态重扫得分 10；证据信号：governance、template、goal-contract、large-body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 21；证据信号：skill、TRANSFER、governance、template、goal-contract、large-body。",
       "evidence_paths": [
         "DocFilmCommunity:AGENTS.md",
         "DocFilmCommunity:INDEX.md",
@@ -2999,7 +3018,7 @@
         "DocFilmCommunity:concepts/codex-goals.md",
         "DocFilmCommunity:governance/BRAIN.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "goal-contract",
@@ -3011,11 +3030,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3027,7 +3048,8 @@
       "max_score": 21,
       "score_gap": 12,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3077,11 +3099,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3093,7 +3117,8 @@
       "max_score": 21,
       "score_gap": 6,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3138,11 +3163,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3154,7 +3181,8 @@
       "max_score": 21,
       "score_gap": 14,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3203,11 +3231,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3219,7 +3249,8 @@
       "max_score": 21,
       "score_gap": 1,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3271,11 +3302,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3287,7 +3320,8 @@
       "max_score": 21,
       "score_gap": 11,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3338,11 +3372,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3354,7 +3390,8 @@
       "max_score": 21,
       "score_gap": 21,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3392,11 +3429,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3408,7 +3447,8 @@
       "max_score": 21,
       "score_gap": 21,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3446,11 +3486,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -3462,7 +3504,8 @@
       "max_score": 21,
       "score_gap": 17,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4271,11 +4314,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4288,6 +4333,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4322,11 +4368,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4339,6 +4387,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4373,11 +4422,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4390,6 +4441,7 @@
       "score_gap": 0,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4433,27 +4485,30 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
+      "status": "mature",
+      "status_label": "成熟",
+      "score": 14,
       "max_score": 14,
-      "score_gap": 14,
+      "score_gap": 0,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
-      "leader_rule_note": "",
+      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
       "required_leader_fingerprint": [
         "TRANSFER",
         "governance",
@@ -4461,18 +4516,27 @@
         "skill",
         "small-body"
       ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
+      "signals": [
         "TRANSFER",
         "governance",
-        "sensor",
         "skill",
         "small-body"
       ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
+      "fingerprint": [
+        "TRANSFER",
+        "governance",
+        "skill",
+        "small-body"
+      ],
+      "missing_leader_signals": [
+        "sensor"
+      ],
+      "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、governance、small-body。",
+      "evidence_paths": [
+        "DocFilmCommunity:governance/transferable-skill-governance-rules.md",
+        "DocFilmCommunity:skills/transferable-skill-governance/SKILL.md"
+      ],
+      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4484,11 +4548,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4501,6 +4567,7 @@
       "score_gap": 0,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4545,11 +4612,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4562,6 +4631,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4596,11 +4666,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4613,6 +4685,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4647,11 +4720,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4664,6 +4739,7 @@
       "score_gap": 3,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4704,11 +4780,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4721,6 +4799,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4755,11 +4834,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4772,6 +4853,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4806,11 +4888,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4823,6 +4907,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
@@ -4857,11 +4942,13 @@
       ],
       "source_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
       "origin_projects": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "customeranalysis",
         "fetch-adapter"
       ],
@@ -4874,6 +4961,7 @@
       "score_gap": 14,
       "leaders": [
         "DocCustomeranalysis",
+        "DocFilmCommunity",
         "fetch-adapter"
       ],
       "leader_gap": true,
