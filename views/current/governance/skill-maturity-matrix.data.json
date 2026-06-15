@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-15 13:11",
-  "source_revision": "29eeb08",
+  "generated_at": "2026-06-15 14:33",
+  "source_revision": "501fe60",
   "source_scope": "local skill/governance/sensor/view/template discovery; no runtime validation",
   "outputs": {
     "html": "views/current/governance/skill-maturity-matrix.html",
@@ -12,7 +12,7 @@
     {
       "key": "ack",
       "label": "AcknowledgeBase",
-      "role": "治理中控 / 源能力",
+      "role": "治理中控 / 知识库",
       "path": "/Users/hai/Documents/Docs/AcknowledgeBase",
       "registry_level": "L3+ reference",
       "exists": true
@@ -44,7 +44,7 @@
     {
       "key": "fetch",
       "label": "fetch-adapter",
-      "role": "子工程",
+      "role": "子工程（Customer pipeline）",
       "path": "/Users/hai/Documents/Code/Customer/fetch-adapter",
       "registry_level": "L2 unenrolled",
       "exists": true
@@ -52,7 +52,7 @@
     {
       "key": "train",
       "label": "train_platform",
-      "role": "子工程",
+      "role": "子工程（训练平台）",
       "path": "/Users/hai/Documents/Code/train_platform",
       "registry_level": "L1-L2 unenrolled",
       "exists": true
@@ -60,7 +60,7 @@
     {
       "key": "prefect",
       "label": "prefect",
-      "role": "子工程",
+      "role": "子工程（调度平台）",
       "path": "/Users/hai/Documents/Code/prefect",
       "registry_level": "L1 unenrolled",
       "exists": true
@@ -68,41 +68,9 @@
     {
       "key": "customer",
       "label": "customeranalysis",
-      "role": "子工程",
+      "role": "子工程（识别服务）",
       "path": "/Users/hai/Documents/Code/customeranalysis",
-      "registry_level": "special unenrolled",
-      "exists": true
-    },
-    {
-      "key": "life",
-      "label": "LifeOS",
-      "role": "生活系统 / 下游强化源",
-      "path": "/Users/hai/Documents/Life",
-      "registry_level": "out-of-registry reference",
-      "exists": true
-    },
-    {
-      "key": "docerp",
-      "label": "DocERP",
-      "role": "主控候选",
-      "path": "/Users/hai/Documents/Code/DocERP",
-      "registry_level": "observed",
-      "exists": true
-    },
-    {
-      "key": "h100",
-      "label": "H100",
-      "role": "软件专题工程",
-      "path": "/Users/hai/Documents/Software/H100",
-      "registry_level": "observed",
-      "exists": true
-    },
-    {
-      "key": "17lang",
-      "label": "17lang",
-      "role": "实现工程",
-      "path": "/Users/hai/Documents/Code/17lang",
-      "registry_level": "observed",
+      "registry_level": "特殊 unenrolled",
       "exists": true
     }
   ],
@@ -130,6 +98,7 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -139,6 +108,7 @@
         "AcknowledgeBase:skills/technical-topic-research/SKILL.md",
         "AcknowledgeBase:skills/technology-research-router/SKILL.md",
         "DocCustomeranalysis:skills/technology-research/SKILL.md",
+        "DocFilmCommunity:skills/research-capability/SKILL.md",
         "DocFilmCommunity:skills/technology-research/SKILL.md",
         "Software/wiki:skills/technology-research/SKILL.md",
         "customeranalysis:.codex/skills/research-capability/SKILL.md",
@@ -154,27 +124,28 @@
       "scope": "general",
       "scope_note": "方法、治理契约或呈现流程可以跨工程复用；迁移重点是触发条件、事实源分层、流程、输出格式、验证和禁止项。",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "source_paths": [
         "AcknowledgeBase:skills/historical-dialogue-retrospective/SKILL.md",
         "DocCustomeranalysis:skills/historical-dialogue-retrospective/SKILL.md",
         "DocCustomeranalysis:skills/retrospective/SKILL.md",
         "DocFilmCommunity:skills/historical-dialogue-retrospective/SKILL.md",
-        "LifeOS:.codex/skills/system-harness-review/SKILL.md",
+        "DocFilmCommunity:skills/retrospective-capability/SKILL.md",
         "Software/wiki:skills/historical-dialogue-retrospective/SKILL.md",
         "customeranalysis:.codex/skills/historical-dialogue-retrospective/SKILL.md",
         "prefect:.agents/skills/historical-dialogue-retrospective/SKILL.md",
@@ -248,7 +219,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -262,7 +232,6 @@
       "source_paths": [
         "AcknowledgeBase:skills/issue-analysis/SKILL.md",
         "DocCustomeranalysis:skills/issue-analysis/SKILL.md",
-        "DocERP:skills/issue-analysis/SKILL.md",
         "DocFilmCommunity:skills/issue-analysis/SKILL.md",
         "Software/wiki:skills/issue-analysis/SKILL.md",
         "customeranalysis:.codex/skills/issue-analysis/SKILL.md",
@@ -454,8 +423,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -469,8 +436,6 @@
         "AcknowledgeBase:skills/problem-focused-visual-presentation/SKILL.md",
         "DocCustomeranalysis:skills/problem-focused-visual-presentation/SKILL.md",
         "DocFilmCommunity:skills/problem-focused-visual-presentation/SKILL.md",
-        "H100:.codex/skills/problem-focused-visual-presentation/SKILL.md",
-        "LifeOS:.codex/skills/problem-focused-lens/SKILL.md",
         "Software/wiki:skills/problem-focused-visual-presentation/SKILL.md",
         "customeranalysis:.codex/skills/problem-focused-visual-presentation/SKILL.md",
         "fetch-adapter:.codex/skills/problem-focused-visual-presentation/SKILL.md",
@@ -486,24 +451,20 @@
       "scope": "project-bound",
       "scope_note": "绑定具体工程上下文入口和交接结构，不能按通用技能直接迁移。",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "source_paths": [
-        "17lang:.codex/skills/film-community-docs/SKILL.md",
         "customeranalysis:.codex/skills/customeranalysis-docs/SKILL.md",
         "fetch-adapter:.codex/skills/customer-pipeline-docs/SKILL.md",
         "prefect:.codex/skills/customer-pipeline-docs/SKILL.md"
@@ -562,32 +523,6 @@
       ],
       "has_transfer": "yes",
       "has_source": "no"
-    },
-    {
-      "name": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_note": "绑定 LifeOS 生活域，不默认上推为软件工程通用技能。",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "source_paths": [
-        "LifeOS:.codex/skills/inbox-triage/SKILL.md",
-        "LifeOS:.codex/skills/life-decision-review/SKILL.md",
-        "LifeOS:.codex/skills/life-matter-routing/SKILL.md",
-        "LifeOS:.codex/skills/weekly-review/SKILL.md"
-      ],
-      "has_transfer": "no",
-      "has_source": "no"
     }
   ],
   "diagnostics": [
@@ -614,21 +549,21 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "project": "AcknowledgeBase",
       "anchor": "diag-acknowledgebase-research-capability",
-      "status": "mature",
-      "status_label": "成熟",
+      "status": "adopted",
+      "status_label": "接入",
       "score": 14,
-      "max_score": 19,
-      "score_gap": 5,
+      "max_score": 23,
+      "score_gap": 9,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -638,7 +573,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "governance",
@@ -656,7 +592,8 @@
       ],
       "missing_leader_signals": [
         "TRANSFER",
-        "sensor"
+        "sensor",
+        "views"
       ],
       "evidence_note": "动态重扫得分 14；证据信号：skill、governance、template、large-body。",
       "evidence_paths": [
@@ -666,7 +603,7 @@
         "AcknowledgeBase:skills/open-source-project-research/SKILL.md",
         "AcknowledgeBase:skills/technical-topic-research/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -691,6 +628,7 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -699,14 +637,13 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 19,
-      "max_score": 19,
-      "score_gap": 0,
+      "max_score": 23,
+      "score_gap": 4,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -715,7 +652,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
@@ -735,7 +673,8 @@
         "template"
       ],
       "missing_leader_signals": [
-        "large-body"
+        "large-body",
+        "views"
       ],
       "evidence_note": "动态重扫得分 19；证据信号：skill、TRANSFER、sensor、governance、template、body。",
       "evidence_paths": [
@@ -745,7 +684,7 @@
         "Software/wiki:scripts/check_documentation_maintenance.py",
         "Software/wiki:skills/documentation-maintenance/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 large-body；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 large-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -770,6 +709,7 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -778,14 +718,13 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 19,
-      "max_score": 19,
-      "score_gap": 0,
+      "max_score": 23,
+      "score_gap": 4,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
@@ -794,7 +733,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
@@ -814,7 +754,8 @@
         "template"
       ],
       "missing_leader_signals": [
-        "large-body"
+        "large-body",
+        "views"
       ],
       "evidence_note": "动态重扫得分 19；证据信号：skill、TRANSFER、sensor、governance、template、body。",
       "evidence_paths": [
@@ -824,7 +765,7 @@
         "DocCustomeranalysis:scripts/check_documentation_maintenance.py",
         "DocCustomeranalysis:skills/documentation-maintenance/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 large-body；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 large-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "research-capability",
@@ -849,21 +790,21 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-research-capability",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 15,
-      "max_score": 19,
-      "score_gap": 4,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 23,
+      "max_score": 23,
+      "score_gap": 0,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -873,35 +814,39 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
         "governance",
+        "large-body",
+        "sensor",
         "skill",
-        "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "fingerprint": [
         "TRANSFER",
+        "body",
         "governance",
+        "large-body",
+        "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
-      "missing_leader_signals": [
-        "body",
-        "large-body",
-        "sensor"
-      ],
-      "evidence_note": "动态重扫得分 15；证据信号：skill、TRANSFER、governance、template、small-body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 23；证据信号：skill、TRANSFER、sensor、views、governance、template、large-body。",
       "evidence_paths": [
         "DocFilmCommunity:governance/BRAIN.md",
-        "DocFilmCommunity:skills/documentation-maintenance/SKILL.md",
-        "DocFilmCommunity:skills/technology-research/SKILL.md",
-        "DocFilmCommunity:templates/technology-research-contract-template.md"
+        "DocFilmCommunity:governance/documentation-maintenance-rules.md",
+        "DocFilmCommunity:governance/research-capability-rules.md",
+        "DocFilmCommunity:scripts/check_documentation_maintenance.py",
+        "DocFilmCommunity:scripts/check_research_capability.py"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "research-capability",
@@ -926,6 +871,7 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -934,13 +880,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 19,
-      "score_gap": 19,
+      "max_score": 23,
+      "score_gap": 23,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -950,7 +895,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [],
       "fingerprint": [],
@@ -962,7 +908,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
       "evidence_paths": [],
@@ -991,21 +938,21 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
       "project": "train_platform",
       "anchor": "diag-train-platform-research-capability",
-      "status": "mature",
-      "status_label": "成熟",
+      "status": "adopted",
+      "status_label": "接入",
       "score": 14,
-      "max_score": 19,
-      "score_gap": 5,
+      "max_score": 23,
+      "score_gap": 9,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1015,7 +962,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
@@ -1033,7 +981,8 @@
         "body",
         "large-body",
         "sensor",
-        "template"
+        "template",
+        "views"
       ],
       "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、governance、small-body。",
       "evidence_paths": [
@@ -1066,6 +1015,7 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -1074,13 +1024,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 13,
-      "max_score": 19,
-      "score_gap": 6,
+      "max_score": 23,
+      "score_gap": 10,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1090,7 +1039,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
@@ -1107,7 +1057,8 @@
         "governance",
         "large-body",
         "sensor",
-        "template"
+        "template",
+        "views"
       ],
       "evidence_note": "动态重扫得分 13；证据信号：skill、TRANSFER、body。",
       "evidence_paths": [
@@ -1142,6 +1093,7 @@
       ],
       "origin_projects": [
         "AcknowledgeBase",
+        "DocFilmCommunity",
         "customeranalysis",
         "train_platform"
       ],
@@ -1150,13 +1102,12 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 12,
-      "max_score": 19,
-      "score_gap": 7,
+      "max_score": 23,
+      "score_gap": 11,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -1166,7 +1117,8 @@
         "sensor",
         "skill",
         "small-body",
-        "template"
+        "template",
+        "views"
       ],
       "signals": [
         "TRANSFER",
@@ -1183,7 +1135,8 @@
         "governance",
         "large-body",
         "sensor",
-        "template"
+        "template",
+        "views"
       ],
       "evidence_note": "动态重扫得分 12；证据信号：skill、TRANSFER、small-body。",
       "evidence_paths": [
@@ -1193,314 +1146,43 @@
       "recommended_direction": "追齐领先信号：优先补 body, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
-      "skill": "research-capability",
-      "display_name": "调研 / 研究能力",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "research capability",
-        "开源工程调研",
-        "技术专题调研",
-        "技术调研路由",
-        "行业 / AI 调研"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-research-capability",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 19,
-      "score_gap": 19,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "research-capability",
-      "display_name": "调研 / 研究能力",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "research capability",
-        "开源工程调研",
-        "技术专题调研",
-        "技术调研路由",
-        "行业 / AI 调研"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-research-capability",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 2,
-      "max_score": 19,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "governance"
-      ],
-      "fingerprint": [
-        "governance"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 2；证据信号：governance。",
-      "evidence_paths": [
-        "DocERP:governance/BRAIN.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "research-capability",
-      "display_name": "调研 / 研究能力",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "research capability",
-        "开源工程调研",
-        "技术专题调研",
-        "技术调研路由",
-        "行业 / AI 调研"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-research-capability",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 3,
-      "max_score": 19,
-      "score_gap": 16,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "governance",
-        "small-body"
-      ],
-      "fingerprint": [
-        "governance",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "large-body",
-        "sensor",
-        "skill",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 3；证据信号：governance、small-body。",
-      "evidence_paths": [
-        "H100:.codex/context/main-control-harness.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "research-capability",
-      "display_name": "调研 / 研究能力",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "research capability",
-        "开源工程调研",
-        "技术专题调研",
-        "技术调研路由",
-        "行业 / AI 调研"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-research-capability",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 19,
-      "score_gap": 19,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "retrospective-capability",
       "display_name": "复盘 / 回顾改进",
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "AcknowledgeBase",
       "anchor": "diag-acknowledgebase-retrospective-capability",
       "status": "mature",
       "status_label": "成熟",
       "score": 16,
-      "max_score": 16,
-      "score_gap": 0,
+      "max_score": 21,
+      "score_gap": 5,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1520,6 +1202,7 @@
         "views"
       ],
       "missing_leader_signals": [
+        "governance",
         "sensor"
       ],
       "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、views、body。",
@@ -1527,7 +1210,7 @@
         "AcknowledgeBase:skills/historical-dialogue-retrospective/SKILL.md",
         "AcknowledgeBase:views/current/governance/codex-goal-guide-agent-collaboration-retrospective.html"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 governance, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "retrospective-capability",
@@ -1535,38 +1218,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "Software/wiki",
       "anchor": "diag-software-wiki-retrospective-capability",
       "status": "mature",
       "status_label": "成熟",
       "score": 16,
-      "max_score": 16,
-      "score_gap": 0,
+      "max_score": 21,
+      "score_gap": 5,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1586,6 +1269,7 @@
         "small-body"
       ],
       "missing_leader_signals": [
+        "governance",
         "views"
       ],
       "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、sensor、body。",
@@ -1593,7 +1277,7 @@
         "Software/wiki:scripts/check_retrospective_system.py",
         "Software/wiki:skills/historical-dialogue-retrospective/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 governance, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "retrospective-capability",
@@ -1601,38 +1285,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "DocCustomeranalysis",
       "anchor": "diag-doccustomeranalysis-retrospective-capability",
       "status": "mature",
       "status_label": "成熟",
       "score": 16,
-      "max_score": 16,
-      "score_gap": 0,
+      "max_score": 21,
+      "score_gap": 5,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1652,6 +1336,7 @@
         "small-body"
       ],
       "missing_leader_signals": [
+        "governance",
         "views"
       ],
       "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、sensor、body。",
@@ -1660,7 +1345,7 @@
         "DocCustomeranalysis:skills/historical-dialogue-retrospective/SKILL.md",
         "DocCustomeranalysis:skills/retrospective/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 governance, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "retrospective-capability",
@@ -1668,38 +1353,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-retrospective-capability",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 11,
-      "max_score": 16,
-      "score_gap": 5,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 21,
+      "max_score": 21,
+      "score_gap": 0,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1707,23 +1392,31 @@
       ],
       "signals": [
         "TRANSFER",
-        "skill"
+        "body",
+        "governance",
+        "sensor",
+        "skill",
+        "views"
       ],
       "fingerprint": [
         "TRANSFER",
-        "skill"
-      ],
-      "missing_leader_signals": [
         "body",
+        "governance",
         "sensor",
+        "skill",
         "small-body",
         "views"
       ],
-      "evidence_note": "动态重扫得分 11；证据信号：skill、TRANSFER。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 21；证据信号：skill、TRANSFER、sensor、views、governance、body。",
       "evidence_paths": [
-        "DocFilmCommunity:skills/historical-dialogue-retrospective/SKILL.md"
+        "DocFilmCommunity:governance/retrospective-capability-rules.md",
+        "DocFilmCommunity:scripts/check_retrospective_capability.py",
+        "DocFilmCommunity:skills/historical-dialogue-retrospective/SKILL.md",
+        "DocFilmCommunity:skills/retrospective-capability/SKILL.md",
+        "DocFilmCommunity:views/current/governance/retrospective-capability.html"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, sensor, small-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "retrospective-capability",
@@ -1731,38 +1424,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "fetch-adapter",
       "anchor": "diag-fetch-adapter-retrospective-capability",
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
+      "max_score": 21,
+      "score_gap": 21,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1773,6 +1466,7 @@
       "missing_leader_signals": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1788,38 +1482,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "train_platform",
       "anchor": "diag-train-platform-retrospective-capability",
       "status": "adopted",
       "status_label": "接入",
       "score": 11,
-      "max_score": 16,
-      "score_gap": 5,
+      "max_score": 21,
+      "score_gap": 10,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1835,6 +1529,7 @@
       ],
       "missing_leader_signals": [
         "body",
+        "governance",
         "sensor",
         "small-body",
         "views"
@@ -1843,7 +1538,7 @@
       "evidence_paths": [
         "train_platform:.codex/skills/historical-dialogue-retrospective/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, sensor, small-body, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 body, governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "retrospective-capability",
@@ -1851,38 +1546,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "prefect",
       "anchor": "diag-prefect-retrospective-capability",
-      "status": "mature",
-      "status_label": "成熟",
+      "status": "adopted",
+      "status_label": "接入",
       "score": 12,
-      "max_score": 16,
-      "score_gap": 4,
+      "max_score": 21,
+      "score_gap": 9,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1900,6 +1595,7 @@
       ],
       "missing_leader_signals": [
         "body",
+        "governance",
         "sensor",
         "views"
       ],
@@ -1910,7 +1606,7 @@
         "prefect:.codex/agents/skills/historical-dialogue-retrospective/TRANSFER.md",
         "prefect:.codex/agents/templates/retrospective-report-template.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 body, governance, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "retrospective-capability",
@@ -1918,38 +1614,38 @@
       "scope": "general",
       "scope_label": "通用 / 可迁移",
       "member_names": [
+        "retrospective capability",
         "历史对话复盘"
       ],
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "prefect",
         "train_platform"
       ],
       "origin_projects": [
-        "AcknowledgeBase"
+        "AcknowledgeBase",
+        "DocFilmCommunity"
       ],
       "project": "customeranalysis",
       "anchor": "diag-customeranalysis-retrospective-capability",
-      "status": "mature",
-      "status_label": "成熟",
+      "status": "adopted",
+      "status_label": "接入",
       "score": 12,
-      "max_score": 16,
-      "score_gap": 4,
+      "max_score": 21,
+      "score_gap": 9,
       "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
         "sensor",
         "skill",
         "small-body",
@@ -1967,6 +1663,7 @@
       ],
       "missing_leader_signals": [
         "body",
+        "governance",
         "sensor",
         "views"
       ],
@@ -1974,240 +1671,7 @@
       "evidence_paths": [
         "customeranalysis:.codex/skills/historical-dialogue-retrospective/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "retrospective-capability",
-      "display_name": "复盘 / 回顾改进",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "历史对话复盘"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-retrospective-capability",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 8,
-      "max_score": 16,
-      "score_gap": 8,
-      "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [
-        "skill"
-      ],
-      "fingerprint": [
-        "skill"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "small-body",
-        "views"
-      ],
-      "evidence_note": "动态重扫得分 8；证据信号：skill。",
-      "evidence_paths": [
-        "LifeOS:.codex/skills/system-harness-review/SKILL.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "retrospective-capability",
-      "display_name": "复盘 / 回顾改进",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "历史对话复盘"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-retrospective-capability",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
-      "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "retrospective-capability",
-      "display_name": "复盘 / 回顾改进",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "历史对话复盘"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-retrospective-capability",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
-      "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "retrospective-capability",
-      "display_name": "复盘 / 回顾改进",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "历史对话复盘"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-retrospective-capability",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
-      "leaders": [
-        "AcknowledgeBase",
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
+      "recommended_direction": "追齐领先信号：优先补 body, governance, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "backlog-management",
@@ -2567,178 +2031,6 @@
       "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
     },
     {
-      "skill": "backlog-management",
-      "display_name": "Backlog 批处理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Backlog 批处理"
-      ],
-      "source_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-backlog-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "backlog-management",
-      "display_name": "Backlog 批处理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Backlog 批处理"
-      ],
-      "source_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-backlog-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "backlog-management",
-      "display_name": "Backlog 批处理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Backlog 批处理"
-      ],
-      "source_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-backlog-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "backlog-management",
-      "display_name": "Backlog 批处理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Backlog 批处理"
-      ],
-      "source_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-backlog-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "fetch-adapter",
-        "prefect"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "goal-contract",
       "display_name": "Goal Contract / 长时任务完成契约",
       "scope": "general",
@@ -2773,7 +2065,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -2843,7 +2134,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -2913,7 +2203,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -2984,7 +2273,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -3055,7 +2343,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -3124,7 +2411,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -3142,7 +2428,6 @@
         "skill"
       ],
       "missing_leader_signals": [
-        "body",
         "governance",
         "large-body",
         "template"
@@ -3151,7 +2436,7 @@
       "evidence_paths": [
         "train_platform:.codex/skills/goal-contract/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 governance, large-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "goal-contract",
@@ -3188,7 +2473,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -3256,7 +2540,6 @@
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "goal-contract",
         "governance",
         "large-body",
@@ -3293,256 +2576,6 @@
       "recommended_direction": "追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
-      "skill": "goal-contract",
-      "display_name": "Goal Contract / 长时任务完成契约",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Goal Contract / 长时任务完成契约"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-goal-contract",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 10,
-      "max_score": 21,
-      "score_gap": 11,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "signals": [
-        "goal-contract",
-        "governance",
-        "large-body",
-        "template"
-      ],
-      "fingerprint": [
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "small-body",
-        "template"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "skill"
-      ],
-      "evidence_note": "动态重扫得分 10；证据信号：governance、template、goal-contract、large-body。",
-      "evidence_paths": [
-        "LifeOS:.codex/context/governance-reference.md",
-        "LifeOS:.codex/context/lifeos-map.md",
-        "LifeOS:.codex/context/workflow-reference.md",
-        "LifeOS:.codex/skills/system-harness-review/SKILL.md",
-        "LifeOS:AGENTS.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "goal-contract",
-      "display_name": "Goal Contract / 长时任务完成契约",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Goal Contract / 长时任务完成契约"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-goal-contract",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 21,
-      "score_gap": 21,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "goal-contract",
-      "display_name": "Goal Contract / 长时任务完成契约",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Goal Contract / 长时任务完成契约"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-goal-contract",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 21,
-      "score_gap": 21,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "goal-contract",
-      "display_name": "Goal Contract / 长时任务完成契约",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Goal Contract / 长时任务完成契约"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "train_platform"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-goal-contract",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 4,
-      "max_score": 21,
-      "score_gap": 17,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "goal-contract",
-        "governance",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "signals": [
-        "body",
-        "governance"
-      ],
-      "fingerprint": [
-        "body",
-        "governance",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "goal-contract",
-        "large-body",
-        "skill",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 4；证据信号：governance、body。",
-      "evidence_paths": [
-        "17lang:.codex/context/film-community-17lang-context.md",
-        "17lang:.codex/skills/film-community-docs/SKILL.md",
-        "17lang:docs/handoffs/README.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, goal-contract, large-body, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
       "skill": "issue-analysis",
       "display_name": "Issue / 事故分析",
       "scope": "general",
@@ -3553,7 +2586,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3573,7 +2605,8 @@
       "score_gap": 6,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3618,7 +2651,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3638,7 +2670,8 @@
       "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3685,7 +2718,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3705,7 +2737,8 @@
       "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3752,7 +2785,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3765,14 +2797,15 @@
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-issue-analysis",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 13,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 16,
       "max_score": 16,
-      "score_gap": 3,
+      "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3786,26 +2819,27 @@
       ],
       "signals": [
         "TRANSFER",
+        "body",
+        "governance",
         "skill",
-        "small-body",
         "template"
       ],
       "fingerprint": [
         "TRANSFER",
+        "body",
+        "governance",
         "skill",
         "small-body",
         "template"
       ],
-      "missing_leader_signals": [
-        "body",
-        "governance"
-      ],
-      "evidence_note": "动态重扫得分 13；证据信号：skill、TRANSFER、template、small-body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 16；证据信号：skill、TRANSFER、governance、template、body。",
       "evidence_paths": [
+        "DocFilmCommunity:governance/issue-analysis-rules.md",
         "DocFilmCommunity:skills/issue-analysis/SKILL.md",
         "DocFilmCommunity:templates/development-issue-template.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, governance；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "issue-analysis",
@@ -3818,7 +2852,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3838,7 +2871,8 @@
       "score_gap": 6,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3882,7 +2916,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3902,7 +2935,8 @@
       "score_gap": 5,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -3945,7 +2979,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -3965,7 +2998,8 @@
       "score_gap": 3,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4013,7 +3047,6 @@
       "source_projects": [
         "AcknowledgeBase",
         "DocCustomeranalysis",
-        "DocERP",
         "DocFilmCommunity",
         "Software/wiki",
         "customeranalysis",
@@ -4033,7 +3066,8 @@
       "score_gap": 5,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -4066,245 +3100,6 @@
       "recommended_direction": "追齐领先信号：优先补 body, governance, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
-      "skill": "issue-analysis",
-      "display_name": "Issue / 事故分析",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Issue / 事故分析"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocERP",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-issue-analysis",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 2,
-      "max_score": 16,
-      "score_gap": 14,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "governance"
-      ],
-      "fingerprint": [
-        "governance"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 2；证据信号：governance。",
-      "evidence_paths": [
-        "LifeOS:rules/incident-lifecycle.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, skill, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "issue-analysis",
-      "display_name": "Issue / 事故分析",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Issue / 事故分析"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocERP",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-issue-analysis",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 9,
-      "max_score": 16,
-      "score_gap": 7,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "skill",
-        "small-body"
-      ],
-      "fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 9；证据信号：skill、small-body。",
-      "evidence_paths": [
-        "DocERP:skills/issue-analysis/SKILL.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "issue-analysis",
-      "display_name": "Issue / 事故分析",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Issue / 事故分析"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocERP",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-issue-analysis",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "issue-analysis",
-      "display_name": "Issue / 事故分析",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Issue / 事故分析"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocERP",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-issue-analysis",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "transferable-skill-governance",
       "display_name": "transferable skill governance",
       "scope": "general",
@@ -4329,14 +3124,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
+      "max_score": 17,
+      "score_gap": 17,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -4383,14 +3176,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
+      "max_score": 17,
+      "score_gap": 17,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -4437,15 +3228,13 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 14,
-      "max_score": 14,
-      "score_gap": 0,
+      "max_score": 17,
+      "score_gap": 3,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "governance",
@@ -4473,7 +3262,7 @@
         "DocCustomeranalysis:governance/transferable-skill-governance-rules.md",
         "DocCustomeranalysis:skills/transferable-skill-governance/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4497,18 +3286,16 @@
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-transferable-skill-governance",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 14,
-      "max_score": 14,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 17,
+      "max_score": 17,
       "score_gap": 0,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "governance",
@@ -4519,24 +3306,25 @@
       "signals": [
         "TRANSFER",
         "governance",
+        "sensor",
         "skill",
         "small-body"
       ],
       "fingerprint": [
         "TRANSFER",
         "governance",
+        "sensor",
         "skill",
         "small-body"
       ],
-      "missing_leader_signals": [
-        "sensor"
-      ],
-      "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、governance、small-body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 17；证据信号：skill、TRANSFER、sensor、governance、small-body。",
       "evidence_paths": [
         "DocFilmCommunity:governance/transferable-skill-governance-rules.md",
+        "DocFilmCommunity:scripts/check_transferable_skill_governance.py",
         "DocFilmCommunity:skills/transferable-skill-governance/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 sensor；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4563,15 +3351,13 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 14,
-      "max_score": 14,
-      "score_gap": 0,
+      "max_score": 17,
+      "score_gap": 3,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
         "governance",
@@ -4600,7 +3386,7 @@
         "fetch-adapter:.codex/skills/transferable-skill-governance/SKILL.md",
         "fetch-adapter:tools/check_transferable_skill_governance.py"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 TRANSFER；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 TRANSFER；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "transferable-skill-governance",
@@ -4627,14 +3413,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
+      "max_score": 17,
+      "score_gap": 17,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -4681,14 +3465,12 @@
       "status": "none",
       "status_label": "未见",
       "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
+      "max_score": 17,
+      "score_gap": 17,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -4732,17 +3514,15 @@
       ],
       "project": "customeranalysis",
       "anchor": "diag-customeranalysis-transferable-skill-governance",
-      "status": "mature",
-      "status_label": "成熟",
+      "status": "adopted",
+      "status_label": "接入",
       "score": 11,
-      "max_score": 14,
-      "score_gap": 3,
+      "max_score": 17,
+      "score_gap": 6,
       "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
@@ -4769,222 +3549,6 @@
         "customeranalysis:.codex/skills/transferable-skill-governance/SKILL.md"
       ],
       "recommended_direction": "追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "transferable-skill-governance",
-      "display_name": "transferable skill governance",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "transferable skill governance"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "transferable-skill-governance",
-      "display_name": "transferable skill governance",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "transferable skill governance"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "transferable-skill-governance",
-      "display_name": "transferable skill governance",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "transferable skill governance"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "transferable-skill-governance",
-      "display_name": "transferable skill governance",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "transferable skill governance"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "customeranalysis",
-        "fetch-adapter"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-transferable-skill-governance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "fetch-adapter"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
     },
     {
       "skill": "work-item-auto-decomposition",
@@ -5287,166 +3851,6 @@
       ],
       "project": "customeranalysis",
       "anchor": "diag-customeranalysis-work-item-auto-decomposition",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "work-item-auto-decomposition",
-      "display_name": "事项自动拆解",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "事项自动拆解"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-work-item-auto-decomposition",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "work-item-auto-decomposition",
-      "display_name": "事项自动拆解",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "事项自动拆解"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-work-item-auto-decomposition",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "work-item-auto-decomposition",
-      "display_name": "事项自动拆解",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "事项自动拆解"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-work-item-auto-decomposition",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 9,
-      "score_gap": 9,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "work-item-auto-decomposition",
-      "display_name": "事项自动拆解",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "事项自动拆解"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-work-item-auto-decomposition",
       "status": "none",
       "status_label": "未见",
       "score": 0,
@@ -5934,225 +4338,6 @@
       "recommended_direction": "只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。"
     },
     {
-      "skill": "customer-group-db-readback",
-      "display_name": "客群 DB 读回",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "客群 DB 读回"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-customer-group-db-readback",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 5,
-      "max_score": 16,
-      "score_gap": 11,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [
-        "body",
-        "sensor"
-      ],
-      "fingerprint": [
-        "body",
-        "sensor",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "governance",
-        "large-body",
-        "skill"
-      ],
-      "evidence_note": "动态重扫得分 5；证据信号：sensor、body。",
-      "evidence_paths": [
-        "LifeOS:automation/scripts/check_harness_feedback_ledger.py",
-        "LifeOS:logs/system/harness-feedback-ledger.md"
-      ],
-      "recommended_direction": "只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。"
-    },
-    {
-      "skill": "customer-group-db-readback",
-      "display_name": "客群 DB 读回",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "客群 DB 读回"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-customer-group-db-readback",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 3,
-      "max_score": 16,
-      "score_gap": 13,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [
-        "governance",
-        "small-body"
-      ],
-      "fingerprint": [
-        "governance",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "body",
-        "large-body",
-        "sensor",
-        "skill"
-      ],
-      "evidence_note": "动态重扫得分 3；证据信号：governance、small-body。",
-      "evidence_paths": [
-        "DocERP:governance/template-feedback-rules.md",
-        "DocERP:projects/development/execution/engineering-feedback-loop.md"
-      ],
-      "recommended_direction": "只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。"
-    },
-    {
-      "skill": "customer-group-db-readback",
-      "display_name": "客群 DB 读回",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "客群 DB 读回"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-customer-group-db-readback",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 2,
-      "max_score": 16,
-      "score_gap": 14,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [
-        "governance"
-      ],
-      "fingerprint": [
-        "governance"
-      ],
-      "missing_leader_signals": [
-        "body",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "动态重扫得分 2；证据信号：governance。",
-      "evidence_paths": [
-        "H100:.codex/context/harness-feedback-ledger.md"
-      ],
-      "recommended_direction": "只抽象方法：补本工程自己的事实源、验收口径和检查脚本；不要复制源工程的业务表、路径、运行 ID 或 handoff。"
-    },
-    {
-      "skill": "customer-group-db-readback",
-      "display_name": "客群 DB 读回",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "客群 DB 读回"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "prefect"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-customer-group-db-readback",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 16,
-      "score_gap": 16,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "knowledge-linking",
       "display_name": "知识关联",
       "scope": "general",
@@ -6181,7 +4366,8 @@
       "score_gap": 3,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6244,7 +4430,8 @@
       "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6307,7 +4494,8 @@
       "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6363,14 +4551,15 @@
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-knowledge-linking",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 11,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 17,
       "max_score": 17,
-      "score_gap": 6,
+      "score_gap": 0,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6383,22 +4572,26 @@
       ],
       "signals": [
         "TRANSFER",
-        "skill"
+        "governance",
+        "sensor",
+        "skill",
+        "small-body"
       ],
       "fingerprint": [
         "TRANSFER",
-        "skill"
-      ],
-      "missing_leader_signals": [
         "governance",
         "sensor",
+        "skill",
         "small-body"
       ],
-      "evidence_note": "动态重扫得分 11；证据信号：skill、TRANSFER。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 17；证据信号：skill、TRANSFER、sensor、governance、small-body。",
       "evidence_paths": [
+        "DocFilmCommunity:governance/knowledge-linking-rules.md",
+        "DocFilmCommunity:scripts/check_knowledge_linking.py",
         "DocFilmCommunity:skills/knowledge-linking/SKILL.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "knowledge-linking",
@@ -6429,7 +4622,8 @@
       "score_gap": 17,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6482,7 +4676,8 @@
       "score_gap": 6,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6541,7 +4736,8 @@
       "score_gap": 5,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6603,7 +4799,8 @@
       "score_gap": 6,
       "leaders": [
         "Software/wiki",
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6634,218 +4831,6 @@
       "recommended_direction": "追齐领先信号：优先补 governance, sensor, small-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
-      "skill": "knowledge-linking",
-      "display_name": "知识关联",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "知识关联"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-knowledge-linking",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 17,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "knowledge-linking",
-      "display_name": "知识关联",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "知识关联"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-knowledge-linking",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 17,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "knowledge-linking",
-      "display_name": "知识关联",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "知识关联"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-knowledge-linking",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 17,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "knowledge-linking",
-      "display_name": "知识关联",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "知识关联"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-knowledge-linking",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 17,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "sensor",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "cross-project-skill-adoption-prompt",
       "display_name": "跨工程技能迁移提示词",
       "scope": "general",
@@ -6873,7 +4858,8 @@
       "max_score": 14,
       "score_gap": 4,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6931,7 +4917,8 @@
       "max_score": 14,
       "score_gap": 0,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -6993,7 +4980,8 @@
       "max_score": 14,
       "score_gap": 2,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -7047,13 +5035,14 @@
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-cross-project-skill-adoption-prompt",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 11,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 14,
       "max_score": 14,
-      "score_gap": 3,
+      "score_gap": 0,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -7066,22 +5055,24 @@
       ],
       "signals": [
         "TRANSFER",
-        "skill"
+        "body",
+        "skill",
+        "template"
       ],
       "fingerprint": [
         "TRANSFER",
-        "skill"
-      ],
-      "missing_leader_signals": [
         "body",
+        "skill",
         "small-body",
         "template"
       ],
-      "evidence_note": "动态重扫得分 11；证据信号：skill、TRANSFER。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、template、body。",
       "evidence_paths": [
-        "DocFilmCommunity:skills/cross-project-skill-adoption-prompt/SKILL.md"
+        "DocFilmCommunity:skills/cross-project-skill-adoption-prompt/SKILL.md",
+        "DocFilmCommunity:templates/skill-transfer-contract-template.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "cross-project-skill-adoption-prompt",
@@ -7111,7 +5102,8 @@
       "max_score": 14,
       "score_gap": 14,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -7163,7 +5155,8 @@
       "max_score": 14,
       "score_gap": 3,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -7221,7 +5214,8 @@
       "max_score": 14,
       "score_gap": 2,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -7283,7 +5277,8 @@
       "max_score": 14,
       "score_gap": 3,
       "leaders": [
-        "Software/wiki"
+        "Software/wiki",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -7312,214 +5307,6 @@
         "customeranalysis:.codex/skills/cross-project-skill-adoption-prompt/SKILL.md"
       ],
       "recommended_direction": "追齐领先信号：优先补 body, small-body, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "cross-project-skill-adoption-prompt",
-      "display_name": "跨工程技能迁移提示词",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程技能迁移提示词"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-cross-project-skill-adoption-prompt",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "Software/wiki"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "cross-project-skill-adoption-prompt",
-      "display_name": "跨工程技能迁移提示词",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程技能迁移提示词"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-cross-project-skill-adoption-prompt",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "Software/wiki"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "cross-project-skill-adoption-prompt",
-      "display_name": "跨工程技能迁移提示词",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程技能迁移提示词"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-cross-project-skill-adoption-prompt",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "Software/wiki"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "cross-project-skill-adoption-prompt",
-      "display_name": "跨工程技能迁移提示词",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程技能迁移提示词"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-cross-project-skill-adoption-prompt",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 14,
-      "score_gap": 14,
-      "leaders": [
-        "Software/wiki"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
     },
     {
       "skill": "cross-project-governance-audit",
@@ -7562,7 +5349,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -7635,7 +5421,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -7708,7 +5493,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -7781,7 +5565,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -7809,7 +5592,7 @@
         "DocFilmCommunity:governance/POLICY.md",
         "DocFilmCommunity:governance/README.md",
         "DocFilmCommunity:governance/WORKFLOW.md",
-        "DocFilmCommunity:governance/execution-contract-semantics.md"
+        "DocFilmCommunity:governance/documentation-maintenance-rules.md"
       ],
       "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
@@ -7854,7 +5637,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -7925,7 +5707,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -7998,7 +5779,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -8069,7 +5849,6 @@
         "large-body",
         "sensor",
         "skill",
-        "small-body",
         "template"
       ],
       "signals": [
@@ -8102,274 +5881,6 @@
       "recommended_direction": "追齐领先信号：优先补 template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
-      "skill": "cross-project-governance-audit",
-      "display_name": "跨工程治理审计",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程治理审计"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-cross-project-governance-audit",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 6,
-      "max_score": 20,
-      "score_gap": 14,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "governance",
-        "large-body",
-        "template"
-      ],
-      "fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "small-body",
-        "template"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "sensor",
-        "skill"
-      ],
-      "evidence_note": "动态重扫得分 6；证据信号：governance、template、large-body。",
-      "evidence_paths": [
-        "LifeOS:.codex/context/governance-reference.md",
-        "LifeOS:.codex/skills/system-harness-review/SKILL.md",
-        "LifeOS:automation/scripts/check_harness_feedback_ledger.py",
-        "LifeOS:automation/scripts/check_life_governance_depth.py",
-        "LifeOS:logs/system/harness-feedback-ledger.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, sensor, skill；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "cross-project-governance-audit",
-      "display_name": "跨工程治理审计",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程治理审计"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-cross-project-governance-audit",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 5,
-      "max_score": 20,
-      "score_gap": 15,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "governance",
-        "large-body"
-      ],
-      "fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "sensor",
-        "skill",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 5；证据信号：governance、large-body。",
-      "evidence_paths": [
-        "DocERP:governance/BRAIN.md",
-        "DocERP:governance/POLICY.md",
-        "DocERP:governance/README.md",
-        "DocERP:governance/WORKFLOW.md",
-        "DocERP:governance/log-writing-rules.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, sensor, skill, template；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "cross-project-governance-audit",
-      "display_name": "跨工程治理审计",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程治理审计"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-cross-project-governance-audit",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 3,
-      "max_score": 20,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [
-        "governance",
-        "small-body"
-      ],
-      "fingerprint": [
-        "governance",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "large-body",
-        "sensor",
-        "skill",
-        "template"
-      ],
-      "evidence_note": "动态重扫得分 3；证据信号：governance、small-body。",
-      "evidence_paths": [
-        "H100:.codex/context/harness-feedback-ledger.md",
-        "H100:.codex/context/main-control-harness.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "cross-project-governance-audit",
-      "display_name": "跨工程治理审计",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "跨工程治理审计"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-cross-project-governance-audit",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 20,
-      "score_gap": 20,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "DocFilmCommunity"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "problem-focused-visual-presentation",
       "display_name": "问题聚焦式图文呈现",
       "scope": "general",
@@ -8381,8 +5892,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8400,7 +5909,8 @@
       "max_score": 23,
       "score_gap": 3,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8457,8 +5967,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8476,7 +5984,8 @@
       "max_score": 23,
       "score_gap": 1,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8535,8 +6044,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8554,7 +6061,8 @@
       "max_score": 23,
       "score_gap": 0,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8612,8 +6120,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8625,13 +6131,14 @@
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-problem-focused-visual-presentation",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 20,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 23,
       "max_score": 23,
-      "score_gap": 3,
+      "score_gap": 0,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8648,7 +6155,8 @@
       ],
       "signals": [
         "TRANSFER",
-        "body",
+        "governance",
+        "large-body",
         "sensor",
         "skill",
         "template",
@@ -8657,24 +6165,24 @@
       "fingerprint": [
         "TRANSFER",
         "body",
+        "governance",
+        "large-body",
         "sensor",
         "skill",
         "small-body",
         "template",
         "views"
       ],
-      "missing_leader_signals": [
-        "governance",
-        "large-body"
-      ],
-      "evidence_note": "动态重扫得分 20；证据信号：skill、TRANSFER、sensor、views、template、body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 23；证据信号：skill、TRANSFER、sensor、views、governance、template、large-body。",
       "evidence_paths": [
+        "DocFilmCommunity:governance/problem-focused-visual-presentation-rules.md",
         "DocFilmCommunity:scripts/check_problem_focused_visual_presentation.py",
         "DocFilmCommunity:skills/problem-focused-visual-presentation/SKILL.md",
         "DocFilmCommunity:templates/problem-focused-lens-template.md",
         "DocFilmCommunity:views/lens-registry.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "problem-focused-visual-presentation",
@@ -8688,8 +6196,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8707,7 +6213,8 @@
       "max_score": 23,
       "score_gap": 4,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8762,8 +6269,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8781,7 +6286,8 @@
       "max_score": 23,
       "score_gap": 7,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8834,8 +6340,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8853,7 +6357,8 @@
       "max_score": 23,
       "score_gap": 7,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8909,8 +6414,6 @@
         "AcknowledgeBase",
         "DocCustomeranalysis",
         "DocFilmCommunity",
-        "H100",
-        "LifeOS",
         "Software/wiki",
         "customeranalysis",
         "fetch-adapter",
@@ -8928,7 +6431,8 @@
       "max_score": 23,
       "score_gap": 8,
       "leaders": [
-        "DocCustomeranalysis"
+        "DocCustomeranalysis",
+        "DocFilmCommunity"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -8970,295 +6474,20 @@
       "recommended_direction": "追齐领先信号：优先补 body, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
-      "skill": "problem-focused-visual-presentation",
-      "display_name": "问题聚焦式图文呈现",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "问题聚焦式图文呈现"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "H100",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-problem-focused-visual-presentation",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 20,
-      "max_score": 23,
-      "score_gap": 3,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "signals": [
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "template",
-        "views"
-      ],
-      "fingerprint": [
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER"
-      ],
-      "evidence_note": "动态重扫得分 20；证据信号：skill、sensor、views、governance、template、large-body。",
-      "evidence_paths": [
-        "LifeOS:.codex/skills/problem-focused-lens/SKILL.md",
-        "LifeOS:automation/scripts/check_problem_focused_lens.py",
-        "LifeOS:rules/problem-focused-lens.md",
-        "LifeOS:templates/lens.md",
-        "LifeOS:views/current/a-b-moving-priority-lens.html"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "problem-focused-visual-presentation",
-      "display_name": "问题聚焦式图文呈现",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "问题聚焦式图文呈现"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "H100",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-problem-focused-visual-presentation",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 23,
-      "score_gap": 23,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "problem-focused-visual-presentation",
-      "display_name": "问题聚焦式图文呈现",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "问题聚焦式图文呈现"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "H100",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-problem-focused-visual-presentation",
-      "status": "adopted",
-      "status_label": "接入",
-      "score": 9,
-      "max_score": 23,
-      "score_gap": 14,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "signals": [
-        "skill",
-        "small-body"
-      ],
-      "fingerprint": [
-        "skill",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "template",
-        "views"
-      ],
-      "evidence_note": "动态重扫得分 9；证据信号：skill、small-body。",
-      "evidence_paths": [
-        "H100:.codex/skills/problem-focused-visual-presentation/SKILL.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "problem-focused-visual-presentation",
-      "display_name": "问题聚焦式图文呈现",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "问题聚焦式图文呈现"
-      ],
-      "source_projects": [
-        "AcknowledgeBase",
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "H100",
-        "LifeOS",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "AcknowledgeBase"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-problem-focused-visual-presentation",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 23,
-      "score_gap": 23,
-      "leaders": [
-        "DocCustomeranalysis"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "template",
-        "views"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
       "skill": "project-context-entry",
       "display_name": "项目上下文入口",
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9271,8 +6500,7 @@
       "max_score": 12,
       "score_gap": 12,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9300,18 +6528,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9324,8 +6549,7 @@
       "max_score": 12,
       "score_gap": 12,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9353,18 +6577,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9377,8 +6598,7 @@
       "max_score": 12,
       "score_gap": 12,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9406,18 +6626,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9430,8 +6647,7 @@
       "max_score": 12,
       "score_gap": 12,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9459,18 +6675,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9483,8 +6696,7 @@
       "max_score": 12,
       "score_gap": 3,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9518,18 +6730,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9542,8 +6751,7 @@
       "max_score": 12,
       "score_gap": 12,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9571,18 +6779,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9595,8 +6800,7 @@
       "max_score": 12,
       "score_gap": 3,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9630,18 +6834,15 @@
       "scope": "project-bound",
       "scope_label": "项目 / 领域绑定",
       "member_names": [
-        "Film Community 文档入口",
         "customeranalysis 文档入口",
         "客群管线文档入口"
       ],
       "source_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
       ],
       "origin_projects": [
-        "17lang",
         "customeranalysis",
         "fetch-adapter",
         "prefect"
@@ -9654,8 +6855,7 @@
       "max_score": 12,
       "score_gap": 0,
       "leaders": [
-        "customeranalysis",
-        "17lang"
+        "customeranalysis"
       ],
       "leader_gap": false,
       "leader_rule_note": "",
@@ -9681,225 +6881,6 @@
       "evidence_paths": [
         "customeranalysis:.codex/context/customeranalysis-engineering-context.md",
         "customeranalysis:.codex/skills/customeranalysis-docs/SKILL.md"
-      ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
-    },
-    {
-      "skill": "project-context-entry",
-      "display_name": "项目上下文入口",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Film Community 文档入口",
-        "customeranalysis 文档入口",
-        "客群管线文档入口"
-      ],
-      "source_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-project-context-entry",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 12,
-      "score_gap": 12,
-      "leaders": [
-        "customeranalysis",
-        "17lang"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "project-context-entry",
-      "display_name": "项目上下文入口",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Film Community 文档入口",
-        "customeranalysis 文档入口",
-        "客群管线文档入口"
-      ],
-      "source_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-project-context-entry",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 12,
-      "score_gap": 12,
-      "leaders": [
-        "customeranalysis",
-        "17lang"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "project-context-entry",
-      "display_name": "项目上下文入口",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Film Community 文档入口",
-        "customeranalysis 文档入口",
-        "客群管线文档入口"
-      ],
-      "source_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-project-context-entry",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 12,
-      "score_gap": 12,
-      "leaders": [
-        "customeranalysis",
-        "17lang"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "project-context-entry",
-      "display_name": "项目上下文入口",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Film Community 文档入口",
-        "customeranalysis 文档入口",
-        "客群管线文档入口"
-      ],
-      "source_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "origin_projects": [
-        "17lang",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-project-context-entry",
-      "status": "leader",
-      "status_label": "领先",
-      "score": 12,
-      "max_score": 12,
-      "score_gap": 0,
-      "leaders": [
-        "customeranalysis",
-        "17lang"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [
-        "body",
-        "governance",
-        "skill"
-      ],
-      "fingerprint": [
-        "body",
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "missing_leader_signals": [],
-      "evidence_note": "动态重扫得分 12；证据信号：skill、governance、body。",
-      "evidence_paths": [
-        "17lang:.codex/context/film-community-17lang-context.md",
-        "17lang:.codex/skills/film-community-docs/SKILL.md"
       ],
       "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
@@ -9937,18 +6918,15 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 8,
-      "max_score": 19,
-      "score_gap": 11,
+      "max_score": 22,
+      "score_gap": 14,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10015,18 +6993,15 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 19,
-      "max_score": 19,
-      "score_gap": 0,
+      "max_score": 22,
+      "score_gap": 3,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10060,7 +7035,7 @@
         "Software/wiki:scripts/check_documentation_maintenance.py",
         "Software/wiki:skills/documentation-maintenance/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -10096,18 +7071,15 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 19,
-      "max_score": 19,
-      "score_gap": 0,
+      "max_score": 22,
+      "score_gap": 3,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10141,7 +7113,7 @@
         "DocCustomeranalysis:scripts/check_documentation_maintenance.py",
         "DocCustomeranalysis:skills/documentation-maintenance/SKILL.md"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
+      "recommended_direction": "追齐领先信号：优先补 views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -10174,21 +7146,18 @@
       ],
       "project": "DocFilmCommunity",
       "anchor": "diag-docfilmcommunity-documentation-maintenance",
-      "status": "mature",
-      "status_label": "成熟",
-      "score": 14,
-      "max_score": 19,
-      "score_gap": 5,
+      "status": "leader",
+      "status_label": "领先",
+      "score": 22,
+      "max_score": 22,
+      "score_gap": 0,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10198,27 +7167,32 @@
       ],
       "signals": [
         "TRANSFER",
+        "governance",
         "large-body",
-        "skill"
+        "sensor",
+        "skill",
+        "views"
       ],
       "fingerprint": [
         "TRANSFER",
         "body",
-        "large-body",
-        "skill",
-        "small-body"
-      ],
-      "missing_leader_signals": [
         "governance",
+        "large-body",
         "sensor",
+        "skill",
+        "small-body",
         "views"
       ],
-      "evidence_note": "动态重扫得分 14；证据信号：skill、TRANSFER、large-body。",
+      "missing_leader_signals": [],
+      "evidence_note": "动态重扫得分 22；证据信号：skill、TRANSFER、sensor、views、governance、large-body。",
       "evidence_paths": [
         "DocFilmCommunity:AGENTS.md",
-        "DocFilmCommunity:skills/documentation-maintenance/SKILL.md"
+        "DocFilmCommunity:governance/documentation-maintenance-rules.md",
+        "DocFilmCommunity:scripts/check_documentation_maintenance.py",
+        "DocFilmCommunity:skills/documentation-maintenance/SKILL.md",
+        "DocFilmCommunity:views/current/governance/documentation-maintenance.html"
       ],
-      "recommended_direction": "追齐领先信号：优先补 governance, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
     },
     {
       "skill": "documentation-maintenance",
@@ -10254,18 +7228,15 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 16,
-      "max_score": 19,
-      "score_gap": 3,
+      "max_score": 22,
+      "score_gap": 6,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10335,18 +7306,15 @@
       "status": "adopted",
       "status_label": "接入",
       "score": 12,
-      "max_score": 19,
-      "score_gap": 7,
+      "max_score": 22,
+      "score_gap": 10,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10365,7 +7333,6 @@
         "small-body"
       ],
       "missing_leader_signals": [
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10376,7 +7343,7 @@
         "train_platform:.codex/skills/documentation-maintenance/SKILL.md",
         "train_platform:AGENTS.md"
       ],
-      "recommended_direction": "追齐领先信号：优先补 body, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
+      "recommended_direction": "追齐领先信号：优先补 governance, large-body, sensor, views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     },
     {
       "skill": "documentation-maintenance",
@@ -10409,21 +7376,18 @@
       ],
       "project": "prefect",
       "anchor": "diag-prefect-documentation-maintenance",
-      "status": "mature",
-      "status_label": "成熟",
+      "status": "adopted",
+      "status_label": "接入",
       "score": 14,
-      "max_score": 19,
-      "score_gap": 5,
+      "max_score": 22,
+      "score_gap": 8,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
+      "leader_gap": false,
       "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10492,18 +7456,15 @@
       "status": "mature",
       "status_label": "成熟",
       "score": 19,
-      "max_score": 19,
-      "score_gap": 0,
+      "max_score": 22,
+      "score_gap": 3,
       "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
+        "DocFilmCommunity"
       ],
-      "leader_gap": true,
-      "leader_rule_note": "最高分但未覆盖同技能下其他工程的独特证据信号，按互补优秀处理为成熟；需补齐全体证据信号并集后才能标为领先。",
+      "leader_gap": false,
+      "leader_rule_note": "",
       "required_leader_fingerprint": [
         "TRANSFER",
-        "body",
         "governance",
         "large-body",
         "sensor",
@@ -10537,848 +7498,7 @@
         "customeranalysis:AGENTS.md",
         "customeranalysis:scripts/check_agent_harness.py"
       ],
-      "recommended_direction": "互补优秀但不能标为领先：先补齐同技能全体工程的独特信号 views；覆盖证据信号并集后，才可重新评为领先。"
-    },
-    {
-      "skill": "documentation-maintenance",
-      "display_name": "文档与 Agent 规则维护",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Agent 规则同步",
-        "documentation maintenance",
-        "文档写作",
-        "文档变更检查"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-documentation-maintenance",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 1,
-      "max_score": 19,
-      "score_gap": 18,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [
-        "small-body"
-      ],
-      "fingerprint": [
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "views"
-      ],
-      "evidence_note": "动态重扫得分 1；证据信号：small-body。",
-      "evidence_paths": [
-        "LifeOS:AGENTS.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "documentation-maintenance",
-      "display_name": "文档与 Agent 规则维护",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Agent 规则同步",
-        "documentation maintenance",
-        "文档写作",
-        "文档变更检查"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-documentation-maintenance",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 2,
-      "max_score": 19,
-      "score_gap": 17,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [
-        "body"
-      ],
-      "fingerprint": [
-        "body",
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "views"
-      ],
-      "evidence_note": "动态重扫得分 2；证据信号：body。",
-      "evidence_paths": [
-        "DocERP:AGENTS.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, governance, large-body, sensor；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "documentation-maintenance",
-      "display_name": "文档与 Agent 规则维护",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Agent 规则同步",
-        "documentation maintenance",
-        "文档写作",
-        "文档变更检查"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-documentation-maintenance",
-      "status": "partial",
-      "status_label": "局部",
-      "score": 1,
-      "max_score": 19,
-      "score_gap": 18,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [
-        "small-body"
-      ],
-      "fingerprint": [
-        "small-body"
-      ],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "views"
-      ],
-      "evidence_note": "动态重扫得分 1；证据信号：small-body。",
-      "evidence_paths": [
-        "H100:AGENTS.md"
-      ],
-      "recommended_direction": "追齐领先信号：优先补 TRANSFER, body, governance, large-body；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
-    },
-    {
-      "skill": "documentation-maintenance",
-      "display_name": "文档与 Agent 规则维护",
-      "scope": "general",
-      "scope_label": "通用 / 可迁移",
-      "member_names": [
-        "Agent 规则同步",
-        "documentation maintenance",
-        "文档写作",
-        "文档变更检查"
-      ],
-      "source_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "origin_projects": [
-        "DocCustomeranalysis",
-        "DocFilmCommunity",
-        "Software/wiki",
-        "customeranalysis",
-        "fetch-adapter",
-        "prefect",
-        "train_platform"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-documentation-maintenance",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 19,
-      "score_gap": 19,
-      "leaders": [
-        "Software/wiki",
-        "DocCustomeranalysis",
-        "customeranalysis"
-      ],
-      "leader_gap": true,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "TRANSFER",
-        "body",
-        "governance",
-        "large-body",
-        "sensor",
-        "skill",
-        "small-body",
-        "views"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "AcknowledgeBase",
-      "anchor": "diag-acknowledgebase-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "Software/wiki",
-      "anchor": "diag-software-wiki-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "DocCustomeranalysis",
-      "anchor": "diag-doccustomeranalysis-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "DocFilmCommunity",
-      "anchor": "diag-docfilmcommunity-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "fetch-adapter",
-      "anchor": "diag-fetch-adapter-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "train_platform",
-      "anchor": "diag-train-platform-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "prefect",
-      "anchor": "diag-prefect-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "customeranalysis",
-      "anchor": "diag-customeranalysis-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "LifeOS",
-      "anchor": "diag-lifeos-lifeos-management",
-      "status": "leader",
-      "status_label": "领先",
-      "score": 11,
-      "max_score": 11,
-      "score_gap": 0,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "missing_leader_signals": [],
-      "evidence_note": "动态重扫得分 11；证据信号：skill、governance、small-body。",
-      "evidence_paths": [
-        "LifeOS:.codex/skills/inbox-triage/SKILL.md",
-        "LifeOS:.codex/skills/life-decision-review/SKILL.md",
-        "LifeOS:.codex/skills/life-matter-routing/SKILL.md",
-        "LifeOS:.codex/skills/weekly-review/SKILL.md",
-        "LifeOS:rules/life-matter-routing.md"
-      ],
-      "recommended_direction": "保持领先：继续把可复用增量沉淀到 TRANSFER / sensor / 示例产物，避免让一次性项目事实进入通用能力。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "DocERP",
-      "anchor": "diag-docerp-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "H100",
-      "anchor": "diag-h100-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
-    },
-    {
-      "skill": "lifeos-management",
-      "display_name": "生活系统管理",
-      "scope": "project-bound",
-      "scope_label": "项目 / 领域绑定",
-      "member_names": [
-        "Inbox 整理",
-        "周报",
-        "生活事项路由",
-        "生活决策复盘"
-      ],
-      "source_projects": [
-        "LifeOS"
-      ],
-      "origin_projects": [
-        "LifeOS"
-      ],
-      "project": "17lang",
-      "anchor": "diag-17lang-lifeos-management",
-      "status": "none",
-      "status_label": "未见",
-      "score": 0,
-      "max_score": 11,
-      "score_gap": 11,
-      "leaders": [
-        "LifeOS"
-      ],
-      "leader_gap": false,
-      "leader_rule_note": "",
-      "required_leader_fingerprint": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "signals": [],
-      "fingerprint": [],
-      "missing_leader_signals": [
-        "governance",
-        "skill",
-        "small-body"
-      ],
-      "evidence_note": "未在常见 skill / governance / sensor 路径发现等价能力。",
-      "evidence_paths": [],
-      "recommended_direction": "先补入口：新增或对齐 SKILL.md / 治理页中的触发条件、事实源、输出格式和禁止项，再补可检测的 sensor 或示例产物。"
+      "recommended_direction": "追齐领先信号：优先补 views；若已具备能力但未被识别，把入口文件、TRANSFER、sensor 或 views 路径命名对齐。"
     }
   ]
 }

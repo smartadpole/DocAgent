@@ -15,6 +15,7 @@ from typing import Any, Dict, Iterable, List, Union
 
 
 ROOT = Path(__file__).resolve().parents[1]
+REGISTRY = ROOT / "projects" / "governance" / "registry.md"
 OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-matrix.html"
 DIAGNOSTICS_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-diagnostics.md"
 DIAGNOSTICS_HTML_OUTPUT = ROOT / "views" / "current" / "governance" / "skill-maturity-diagnostics.html"
@@ -36,22 +37,6 @@ class Evidence:
     note: str
     hits: List[Path]
     signals: List[str]
-
-
-PROJECTS = [
-    Project("ack", "AcknowledgeBase", "治理中控 / 源能力", ROOT, "L3+ reference"),
-    Project("wiki", "Software/wiki", "模板源", Path("/Users/hai/Documents/Software/wiki"), "L3 reference"),
-    Project("doccust", "DocCustomeranalysis", "主控", Path("/Users/hai/Documents/Code/DocCustomeranalysis"), "L3 assessed"),
-    Project("docfilm", "DocFilmCommunity", "主控", Path("/Users/hai/Documents/Code/DocFilmCommunity"), "L2 assessed"),
-    Project("fetch", "fetch-adapter", "子工程", Path("/Users/hai/Documents/Code/Customer/fetch-adapter"), "L2 unenrolled"),
-    Project("train", "train_platform", "子工程", Path("/Users/hai/Documents/Code/train_platform"), "L1-L2 unenrolled"),
-    Project("prefect", "prefect", "子工程", Path("/Users/hai/Documents/Code/prefect"), "L1 unenrolled"),
-    Project("customer", "customeranalysis", "子工程", Path("/Users/hai/Documents/Code/customeranalysis"), "special unenrolled"),
-    Project("life", "LifeOS", "生活系统 / 下游强化源", Path("/Users/hai/Documents/Life"), "out-of-registry reference"),
-    Project("docerp", "DocERP", "主控候选", Path("/Users/hai/Documents/Code/DocERP"), "observed"),
-    Project("h100", "H100", "软件专题工程", Path("/Users/hai/Documents/Software/H100"), "observed"),
-    Project("17lang", "17lang", "实现工程", Path("/Users/hai/Documents/Code/17lang"), "observed"),
-]
 
 
 ALIASES: Dict[str, List[str]] = {
@@ -235,6 +220,65 @@ def run(cmd: List[str], cwd: Path = ROOT) -> str:
 
 def normalize(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+
+
+PROJECT_KEY_OVERRIDES = {
+    "AcknowledgeBase": "ack",
+    "Software/wiki": "wiki",
+    "DocCustomeranalysis": "doccust",
+    "DocFilmCommunity": "docfilm",
+    "fetch-adapter": "fetch",
+    "train_platform": "train",
+    "customeranalysis": "customer",
+}
+
+
+def project_key_for(label: str) -> str:
+    return PROJECT_KEY_OVERRIDES.get(label, normalize(label))
+
+
+def parse_registry_projects() -> List[Project]:
+    text = REGISTRY.read_text(encoding="utf-8")
+    marker = "## 工程注册表"
+    if marker not in text:
+        raise SystemExit(f"missing project registry section: {REGISTRY}")
+
+    section = text.split(marker, 1)[1]
+    projects: List[Project] = []
+    for line in section.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            if projects:
+                break
+            continue
+        if not stripped.startswith("|"):
+            if projects:
+                break
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if len(cells) < 8:
+            continue
+        if cells[0] == "工程" or set("".join(cells)) <= {"-", ":"}:
+            continue
+        label, role, _, path_text, maturity, phase = cells[:6]
+        path_value = path_text.strip("`")
+        registry_level = f"{maturity} {phase.strip('`')}".strip()
+        projects.append(
+            Project(
+                key=project_key_for(label),
+                label=label,
+                role=role,
+                path=Path(path_value),
+                registry_level=registry_level,
+            )
+        )
+
+    if not projects:
+        raise SystemExit(f"no projects parsed from registry: {REGISTRY}")
+    return projects
+
+
+PROJECTS = parse_registry_projects()
 
 
 def canonical_skill_name(value: str) -> str:

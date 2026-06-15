@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-15
+
+### 技能成熟度矩阵改为严格跟随治理注册表
+
+- **记录人**：sunhao
+- **用户意图**：用户要求对刚刷新的跨工程技能成熟度矩阵“重新评估”，确认矩阵是否真的遵守 [[projects/governance/registry]] 这份工程真相源，而不是继续混入脚本手写的观察工程。
+- **主题**：
+  1. 复核 `scripts/update_skill_maturity_matrix.py` 的工程清单是否与 [[projects/governance/registry]] 一致。
+  2. 如果矩阵评估范围已经漂移，优先修复脚本的项目来源，而不是继续接受错误范围下的生成结果。
+  3. 重新生成矩阵、诊断页、JSON 和 ignored PDF / PNG，并验证当前视图只覆盖注册表中的治理工程。
+- **关键动作**：
+  1. 确认脚本原先手写了 `LifeOS`、`DocERP`、`H100`、`17lang` 等未登记工程，和注册表 `source_of_truth: true` 冲突。
+  2. 更新 `scripts/update_skill_maturity_matrix.py`，改为直接解析 [[projects/governance/registry]] 的“工程注册表”段落构建 `PROJECTS`，不再在脚本中维护第二份工程列表。
+  3. 运行 `python3 scripts/update_skill_maturity_matrix.py`、`python3 scripts/export_skill_maturity_matrix.py` 和 `python3 scripts/check_all.py`，重写 [[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]] 和 `views/current/governance/skill-maturity-matrix.data.json`，并同步导出 `views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+- **结论**：技能成熟度矩阵当前的评估范围必须以 [[projects/governance/registry]] 为单一信息源；未登记工程可以作为 source skill 的历史反哺来源存在于 skill / TRANSFER 正文里，但不能再作为当前矩阵的工程列和逐工程诊断对象混入治理视图。
+- **影响页面**：`scripts/update_skill_maturity_matrix.py`、[[views/current/governance/skill-maturity-matrix.html]]、[[views/current/governance/skill-maturity-diagnostics.html]]、[[views/current/governance/skill-maturity-diagnostics]]、`views/current/governance/skill-maturity-matrix.data.json`、[[log]]；ignored export：`views/.exports/skill-maturity-matrix.pdf`、`views/.exports/skill-maturity-matrix.png`。
+
 ## 2026-06-12
 
 ### 技能成熟度矩阵吸收新的通用能力源头与领先判断
