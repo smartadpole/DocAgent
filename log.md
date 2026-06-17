@@ -7,6 +7,21 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-17
+
+### 接入 Loop Engineering 循环控制能力
+
+- **记录人**：Codex
+- **用户意图**：用户纠正“不是只要迁移包”，目标是在本工程实际接入 Loop Engineering，并以工程自身结构、sensor 验证和 scoped commit 收尾；目标不是 handoff，而是具备持续发现、分派、验证、持久化和下一轮决策能力。
+- **关键动作**：
+  1. 新增 [[skills/loop-engineering/SKILL]] 与 `TRANSFER.md`，把 Loop Engineering 固定为控制面能力，说明 Discovery source、Run queue、Worker ownership、Evaluator oracle、Persistent state、Scheduler / trigger、Budget / stop 和禁止新建平行 loop 看板。
+  2. 新增 [[templates/loop-contract-template]] 与 [[templates/run-capsule-template]]，分别承接循环控制面和单轮 Worker 回传 / evaluator 合流字段。
+  3. 新增 `scripts/check_loop_engineering.py` 并接入 `python3 scripts/check_all.py --only loop-engineering`，检查 skill、TRANSFER、模板、入口和总门禁接线。
+  4. 更新 [[AGENTS]]、[[README]]、[[INDEX]]、[[governance/README]]、[[skills/README]] 和 [[templates/README]] 的最小入口，使 agent 能发现 Loop Engineering、Loop Contract、Run Capsule 和专项检查命令。
+- **验证**：本轮按用户要求运行本工程已有相关检查和新增 `loop-engineering` key；检查结果见最终回传。
+- **边界**：未启动任何自动循环、未写业务状态、未关闭 Gate / FP / EP / TASK / Issue、未合并 / 发布 / 改生产事实，且未提交 commit。
+- **影响页面**：[[skills/loop-engineering/SKILL]]、[[templates/loop-contract-template]]、[[templates/run-capsule-template]]、[[skills/README]]、[[templates/README]]、[[governance/README]]、[[README]]、[[INDEX]]、[[AGENTS]]、[[log]]、`scripts/check_all.py`、`scripts/check_loop_engineering.py`。
+
 ## 2026-06-12
 
 ### 纠偏成熟度诊断吸收边界并收敛过长模板

@@ -174,3 +174,10 @@ tags: [index, root]
 - 工具名和概念名尽量用 `[[双向链接]]`
 - 新内容先写成摘要卡片，再汇总到概念页和索引页
 - 长期不变的规则和偏好分别写进 [[BRAIN]]、[[POLICY]] 和 `workspace-memory`
+
+## Loop Engineering 接入
+
+- [[skills/loop-engineering/SKILL]]：持续 agent 循环控制技能，用于判断何时从一次性 Goal / Run Capsule 升级为可验证、可停、可持久化的 loop。
+- [[templates/loop-contract-template]]：Loop Contract 控制面，记录 discovery source、run queue、evaluator、persistent state、budget / stop 和 next-run decision。
+- [[templates/run-capsule-template]]：单轮运行胶囊，承接 Parent Loop Contract、Input discovery item、Worker limits、State transition 和 Next-run recommendation。
+- 专项检查：`python3 scripts/check_all.py --only loop-engineering`。

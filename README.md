@@ -222,3 +222,10 @@ tags: [entry, root]
 - 只有实际内容或结构变更才需要 commit；本地状态和缓存不纳入正式提交。
 
 更细的会话级约束、读取顺序和提交规则，以 [[AGENTS]] 和 [[WORKFLOW]] 为准。
+
+## Loop Engineering 接入
+
+- [[skills/loop-engineering/SKILL]]：持续 agent 循环控制技能，用于判断何时从一次性 Goal / Run Capsule 升级为可验证、可停、可持久化的 loop。
+- [[templates/loop-contract-template]]：Loop Contract 控制面，记录 discovery source、run queue、evaluator、persistent state、budget / stop 和 next-run decision。
+- [[templates/run-capsule-template]]：单轮运行胶囊，承接 Parent Loop Contract、Input discovery item、Worker limits、State transition 和 Next-run recommendation。
+- 专项检查：`python3 scripts/check_all.py --only loop-engineering`。

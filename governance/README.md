@@ -98,3 +98,10 @@ tags: [entry, governance]
 - 如果问题是“调研能否形成可行动判断”，优先写 [[research-capability-rules]]
 
 优先级上，先看 [[POLICY]] 的裁定，再由 [[AGENTS]] 把它落实成执行纪律。
+
+## Loop Engineering 接入
+
+- [[skills/loop-engineering/SKILL]]：持续 agent 循环控制技能，用于判断何时从一次性 Goal / Run Capsule 升级为可验证、可停、可持久化的 loop。
+- [[templates/loop-contract-template]]：Loop Contract 控制面，记录 discovery source、run queue、evaluator、persistent state、budget / stop 和 next-run decision。
+- [[templates/run-capsule-template]]：单轮运行胶囊，承接 Parent Loop Contract、Input discovery item、Worker limits、State transition 和 Next-run recommendation。
+- 专项检查：`python3 scripts/check_all.py --only loop-engineering`。

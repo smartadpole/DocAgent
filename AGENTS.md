@@ -378,3 +378,9 @@
 - 找过时结论。
 - 找没有实体页的重要概念。
 - 找适合拆分成新页面的高频主题。
+
+### Loop Engineering
+
+当用户要求用 Loop Engineering 武装工程、持续发现 / 处理复杂问题、周期性调度、多 agent 合流或直到闭环时，先读 [[skills/loop-engineering/SKILL]]，并按 [[templates/loop-contract-template]] 判断是否具备 Discovery source、Run queue、Evaluator oracle、Persistent state、Scheduler / trigger、Budget / stop 和人工确认边界。
+
+Loop Engineering 只能作为控制面：不新建平行 `loop` 看板，不自动关闭 Gate / FP / EP / TASK / Issue / release，不自动合并、发布、改生产事实或改高优先级规则。Worker 回传必须通过 [[templates/run-capsule-template]] 写清 `limits`、证据层级、State transition 和 Next-run recommendation；缺少独立 evaluator 的回传不能上推为整体闭环。相关改动后运行 `python3 scripts/check_all.py --only loop-engineering`。

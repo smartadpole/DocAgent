@@ -12,6 +12,7 @@ from pathlib import Path
 CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ("project-docs", "project docs", (sys.executable, "scripts/check_project_docs.py")),
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),
+    ("loop-engineering", "loop engineering", (sys.executable, "scripts/check_loop_engineering.py")),
     ("skill-maturity", "skill maturity", (sys.executable, "scripts/check_skill_maturity.py")),
     (
         "problem-focused-visual-presentation",
