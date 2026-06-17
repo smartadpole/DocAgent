@@ -3,3 +3,6 @@
 views/.exports/
 views/exports/
 views/**/.exports/
+views/**/*.pdf
+views/**/*.png
+views/**/*.svg

@@ -9,6 +9,18 @@
 
 ## 2026-06-17
 
+### 接入 public-html-publish HTML 公开发布能力
+
+- **记录人**：sunhao
+- **用户意图**：用户要求 wiki、DocCustomeranalysis、DocFilmCommunity 三个文档类仓库统一接入 AcknowledgeBase 的 public-html-publish 能力；目标是本仓库具备 HTML-only 发布合同、publication profile、public_url 公式和专项 sensor，不复制 LifeOS 的 host / prefix / secret。
+- **关键动作**：
+  1. 新增 [[skills/public-html-publish/SKILL]] 与 `TRANSFER.md`，明确只吸收 AcknowledgeBase 源能力的抽象发布合同，禁止复制 LifeOS 运行事实。
+  2. 新增 [[views/publication]]，把本仓库发布状态设为 `blocked`，声明 source root、`/wiki/views/` prefix 候选、public_url 公式、HTML-only、multi-host / multi-project 和 live readback 边界。
+  3. 新增 `scripts/check_public_html_publish.py` 并接入 `python3 scripts/check_all.py --only public-html-publish`，同步 [[README]]、[[skills/README]]、[[views/README]] 和 `.gitignore`。
+- **验证**：`python3 scripts/check_public_html_publish.py` 与 `python3 scripts/check_all.py --only public-html-publish` 均通过；`python3 scripts/check_public_html_publish.py --live` 按预期返回 blocked，因为没有真实 host / deploy target。
+- **边界**：未配置公网 host、token、tunnel 或静态托管；未发布任何 URL；未把本机 HTML、localhost、截图或导出件写成公网完成。
+- **影响页面**：[[skills/public-html-publish/SKILL]]、[[views/publication]]、[[skills/README]]、[[views/README]]、[[README]]、[[log]]、`.gitignore`、`scripts/check_all.py`、`scripts/check_public_html_publish.py`。
+
 ### 接入 Loop Engineering 循环控制能力
 
 - **记录人**：Codex

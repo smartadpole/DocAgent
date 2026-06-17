@@ -19,6 +19,7 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "problem-focused visual presentation",
         (sys.executable, "scripts/check_problem_focused_visual_presentation.py"),
     ),
+    ("public-html-publish", "public HTML publish", (sys.executable, "scripts/check_public_html_publish.py")),
     ("knowledge-linking", "knowledge linking", (sys.executable, "scripts/check_knowledge_linking.py")),
     ("documentation-maintenance", "documentation maintenance", (sys.executable, "scripts/check_documentation_maintenance.py")),
     ("harness-feedback-ledger", "harness feedback ledger", (sys.executable, "scripts/check_harness_feedback_ledger.py")),
