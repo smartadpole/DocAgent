@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_FILES = (
     "skills/public-html-publish/SKILL.md",
     "skills/public-html-publish/TRANSFER.md",
+    "governance/public-html-publish-rules.md",
+    "templates/public-html-publication-template.md",
     "views/publication.md",
     "views/README.md",
     "skills/README.md",
@@ -33,6 +35,8 @@ REQUIRED_TERMS = {
         "multi-host",
         "blocked",
         "LifeOS",
+        "public-html-publish-rules",
+        "public-html-publication-template",
     ),
     "skills/public-html-publish/TRANSFER.md": (
         "AcknowledgeBase",
@@ -43,6 +47,25 @@ REQUIRED_TERMS = {
         "live readback",
         "public_url",
         "HTML-only",
+        "blocked",
+    ),
+    "governance/public-html-publish-rules.md": (
+        "Public HTML Publish Rules",
+        "canonical HTML",
+        "public_url",
+        "HTML",
+        "live readback",
+        "blocked",
+        "LifeOS",
+        "不能替代",
+    ),
+    "templates/public-html-publication-template.md": (
+        "Public HTML Publication Profile Template",
+        "public_url 公式",
+        "HTML Only",
+        "Multi-Host Boundary",
+        "Multi-Project Boundary",
+        "自动公开合同",
         "blocked",
     ),
     "views/publication.md": (

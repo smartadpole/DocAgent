@@ -35,8 +35,11 @@
 
 ## 当前技能
 
-- [[skills/technology-research/SKILL]]：技术、开源工程、行业 / AI 赛道或 PoC 调研总控技能。用于先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
+- [[skills/research-capability/SKILL]]：调研 / 研究能力聚合技能。用于把技术、开源工程、产品、公司、行业、AI、PoC 和源码工程研究统一到调研合同、证据等级、行动等级、风险门和沉淀落位。
+- [[skills/technology-research/SKILL]]：research-capability 的当前执行分支。用于技术、开源工程、行业 / AI 赛道或 PoC 调研，先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于新增、调研或大改长期知识页时判断分层落位、入口、上位 / 邻接关系、反向回链和验证方式，避免知识成为孤岛。
+- [[skills/goal-contract/SKILL]]：长时任务完成契约技能。用于终点清楚但路径需要探索、可能跨多轮推进、跨工程回传或证据边界敏感时，先固定目标、范围、证据层级、验证面、预算、停止条件和记录落点。
+- [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能。用于根据矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens。

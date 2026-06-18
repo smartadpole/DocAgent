@@ -113,6 +113,7 @@
 - 下游项目反哺模板时，先按 [[template-feedback-rules]] 判断是否属于可复用系统层信息；回写结构、流程、规则、记忆路由、模板、通用写法和自动化契约，不复制项目事实、业务名、具体技术拍板或一次性状态。
 - 模板反哺里的“规则默认反哺”指默认进入候选并必须判断，不表示原样写入；写入前必须完成抽象、事实剥离、冲突、单一信息源和规则体积检查。
 - 下游项目出现可复用 agent 技能时，只吸收任务触发条件、事实源分层、定位方法、输出格式、回写守卫和禁止项；不要把下游项目的业务链路、服务名、数据表、运行 ID、仓库路径或本地 handoff 规则原样写入模板技能。
+- 跨工程通用技能吸收、矩阵缺口处理或外部附件建议吸收时，先使用 [[skills/transferable-skill-governance/SKILL]] 判定 `true-gap / recognition-gap / signal-only-gap` 和 `recognize / complete / upgrade / merge / adapt / defer / reject`，再决定是否写入 skill、TRANSFER、template、governance、sensor 或 views。
 - 跨项目采纳设计时，禁止整库同步、整目录复制或把对方项目设计页原样搬进当前库；必须先列候选项并标注系统层信息 / 项目材料，只有通过事实剥离后的系统规则、结构、流程、技能、模板和自动化契约才能写入。
 - 如果具体工程或下游项目提供“不适合吸收”的清单，只把它当作下游处理项目材料和反哺边界的参考；当前库作为上游模板库，只从具体工程中抽象吸收系统层信息，不在本库维护模板到项目的吸收状态或项目侧同步记录。
 
@@ -125,6 +126,8 @@
 - 快速诊断只默认读取入口规则和最相关的少量事实源；它可以给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出、提交或规则升级。
 - 如果根因已经形成而后续是在沉淀、验收、规则升级或收尾，必须显式告诉用户当前阶段，不要把治理闭环伪装成仍在分析。
 - 当用户要求长时间持续推进、反复尝试、直到完成或跨多轮跟进时，先判断是否需要 Goal Contract；主控侧定义完成契约，子工程侧按契约回传证据，不用 Goal 自述替代验收关闭。
+- 当用户要求调研、研究、技术 / 产品 / 公司 / 开源工程评估、PoC 判断或会影响选型 / 采购 / 架构的当前事实时，使用 [[skills/research-capability/SKILL]]，并按 [[research-capability-rules]] 区分一手事实、信号、推论、行动等级和未验证边界。
+- 当用户要求 canonical HTML 公网访问、外部分发或 public URL 时，使用 [[skills/public-html-publish/SKILL]]，并按 [[public-html-publish-rules]] 和 [[views/publication]] 区分 HTML-only、host / prefix、live readback 和 blocked 口径。
 - 如果本轮出现用户纠偏、检查失败、模式切换、重复失守或明显可脚本化缺口，先判断是否写入 [[harness-feedback-ledger]]；单次 episode 不直接新增硬规则，按 [[harness-evolution]] 判断是否晋升为模板、sensor、技能或规则。
 - 如果用户只要求“为什么 / 在哪 / 先分析”，默认不自动扩大成正式 issue、TASK、Gate 或状态回写；除非发现明确长期项目价值、用户授权沉淀，或当前规则要求必须沉淀。
 - 复杂问题不要一次改完，先拆成几个中间节点，再逐步推进。

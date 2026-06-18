@@ -2,7 +2,7 @@
 name: public-html-publish
 description: HTML 公开发布技能。用于把本仓库 canonical HTML views 通过受控 public URL、静态托管或等价公网入口发布给外部阅读者，同时维护 HTML-only 边界、host / prefix 分离、public_url 公式、live readback 和 blocked 口径。
 maturity: active
-evidence_signals: [skill, TRANSFER, publication-profile, quality-gate, sensor, views]
+evidence_signals: [skill, TRANSFER, governance, template, publication-profile, quality-gate, sensor, views]
 transfer_ready: true
 source_capability: AcknowledgeBase
 sensor: python3 scripts/check_all.py --only public-html-publish
@@ -33,7 +33,15 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 7. 完成前运行静态检查；有公网条件时再运行 live readback 和 denial readback，并确认 multi-project / multi-host 边界没有互相借用。
 8. 生成或刷新 canonical HTML 后，最终回复必须给出 public URL；如果不能给出，必须说明具体 blocked 原因。
 
-## 成熟度
+## 成熟度与证据信号
+
+- `skill`：本页定义触发、发布对象、工作流、验收口径和禁止项。
+- `TRANSFER`：跨工程迁移边界见 [[skills/public-html-publish/TRANSFER]]。
+- `governance`：公开发布裁定见 [[public-html-publish-rules]]。
+- `template`：publication profile 骨架见 [[templates/public-html-publication-template]]。
+- `views`：当前仓库发布 profile 见 [[views/publication]]。
+- `sensor`：`python3 scripts/check_all.py --only public-html-publish` 检查 skill、TRANSFER、governance、template、profile、gitignore 和 canonical HTML 边界。
+- `evidence boundary`：结构接线和静态检查只能证明发布合同存在；真实公网完成必须以 live readback 为准。
 
 | Level | 名称 | 最低要求 |
 | --- | --- | --- |
@@ -44,6 +52,21 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 | L5 | multi-project safe publish | 支持多工程 / 多主机边界、撤销 / secret rotation、隐私审查和迁移验证。 |
 
 当前仓库默认目标为 L3；除非 [[views/publication]] 有真实 host 和 live readback，否则状态保持 `blocked`。
+
+## 输出格式
+
+```markdown
+**Public HTML Publish**
+- Canonical HTML:
+- Publication profile:
+- Public URL:
+- Mode:
+- Static check:
+- Live readback:
+- Denial readback:
+- Blocked reason:
+- Not published:
+```
 
 ## 验收口径
 
@@ -63,6 +86,8 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 ## 相关入口
 
 - [[skills/public-html-publish/TRANSFER]]
+- [[public-html-publish-rules]]
+- [[templates/public-html-publication-template]]
 - [[views/publication]]
 - [[views/README]]
 - [[skills/problem-focused-visual-presentation/SKILL]]

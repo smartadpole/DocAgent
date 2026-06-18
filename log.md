@@ -7,6 +7,30 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-18
+
+### 全面升级通用可迁移技能能力面
+
+- **记录人**：Codex
+- **用户意图**：用户要求以 AcknowledgeBase 最新技能成熟度矩阵和诊断为输入，全面升级本工程 `scope=general` 的通用 / 可迁移技能能力面；目标不是刷分，也不是照搬 AcknowledgeBase 目录形态，而是让本工程具备可执行、可验证、可维护的 agent 能力。
+- **矩阵锚点**：读取 `/Users/hai/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-diagnostics.md` 与 `skill-maturity-matrix.data.json`，锚定 `generated_at=2026-06-18 10:53`、`source_revision=904deee`、`scoring_schema_version=agent-evidence-v4`；同时读取 AcknowledgeBase `skills/README.md`、`transferable-skill-governance`、`cross-project-skill-adoption-prompt` 和相关源能力资料。
+- **关键判断**：
+  1. `goal-contract`、`transferable-skill-governance`、`research-capability` 是真缺口或识别缺口，需要补 repo-native `SKILL.md` / `TRANSFER.md` / 入口 / sensor。
+  2. `public-html-publish` 已有 skill、TRANSFER、profile 和 sensor，但缺可复用 profile 模板和治理裁定页，属于可升级缺口；保持 live readback blocked 口径。
+  3. `retrospective-capability`、`knowledge-linking`、`problem-focused-visual-presentation` 的剩余缺口主要是 `views`、`body`、`large-body` 或 `benchmark` 这类不应为追分硬补的信号，保留现有体系，不创建空 view 或长正文。
+  4. `loop-engineering`、`issue-analysis`、`cross-project-skill-adoption-prompt`、`cross-project-governance-audit`、`documentation-maintenance` 已达到当前结构领先或可识别成熟状态，本轮只作为边界对照。
+- **关键动作**：
+  1. 新增 [[skills/goal-contract/SKILL]] 与 `TRANSFER.md`，把长时任务完成契约从模板 / 治理规则升级为可发现技能入口。
+  2. 新增 [[skills/transferable-skill-governance/SKILL]] 与 `TRANSFER.md`，明确 `true-gap / recognition-gap / signal-only-gap` 和 `recognize / complete / upgrade / merge / adapt / defer / reject` 决策面。
+  3. 新增 [[skills/research-capability/SKILL]] 与 `TRANSFER.md`，把 research-capability 作为聚合入口接到 [[skills/technology-research/SKILL]]、研究模板和 [[research-capability-rules]]，不平铺外部 13 个研究子项。
+  4. 新增 [[public-html-publish-rules]] 与 [[templates/public-html-publication-template]]，并增强 `scripts/check_public_html_publish.py`，让 public HTML 发布具备治理页、模板和 sensor 识别。
+  5. 新增 `scripts/check_research_capability.py` 并接入 `python3 scripts/check_all.py --only research-capability`。
+  6. 更新 [[AGENTS]]、`.codex/AGENTS.md`、[[README]]、[[INDEX]]、[[governance/README]]、[[skills/README]] 和 [[templates/README]]，让 agent 能从入口规则发现这些通用技能。
+- **明确未吸收**：未复制 AcknowledgeBase 的矩阵分数作为本库事实，未复制 LifeOS host / prefix / secret / LaunchAgent / screen session，未复制任何下游项目状态、业务名、服务名、表名、运行 ID、历史 log、一次性验收结果或 handoff。
+- **验证**：已通过 `python3 scripts/check_all.py --only skill-maturity`、`python3 scripts/check_all.py --only research-capability`、`python3 scripts/check_all.py --only public-html-publish` 和 `python3 scripts/check_all.py --only project-docs`；完整门禁在提交前运行。
+- **边界**：本轮证明的是结构 wiring、入口可发现性、模板 / governance / sensor 接线和静态检查；矩阵状态需要 AcknowledgeBase 后续重新生成才能反映，不代表真实运行质量、真实公网发布、调研质量、审美质量或任何项目验收闭环。
+- **影响页面**：[[skills/goal-contract/SKILL]]、[[skills/research-capability/SKILL]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/public-html-publish/SKILL]]、[[public-html-publish-rules]]、[[templates/public-html-publication-template]]、[[skills/README]]、[[templates/README]]、[[governance/README]]、[[README]]、[[INDEX]]、[[AGENTS]]、`.codex/AGENTS.md`、[[log]]、`scripts/check_all.py`、`scripts/check_public_html_publish.py`、`scripts/check_research_capability.py`。
+
 ## 2026-06-17
 
 ### 接入 public-html-publish HTML 公开发布能力

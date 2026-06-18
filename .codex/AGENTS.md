@@ -10,13 +10,18 @@
 - 如果涉及 Harness 自演进、用户纠偏、检查失败、模式切换或规则反哺，再读 [[harness-evolution]] 和 [[harness-feedback-ledger]]。
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
 - 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
-- 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[concepts/codex-goals]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
+- 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[skills/goal-contract/SKILL]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
+- 如果用户要求调研、研究、选型、产品 / 公司 / 开源工程评估或 PoC 判断，先读 [[skills/research-capability/SKILL]] 和 [[research-capability-rules]]。
+- 如果用户要求吸收外部矩阵、附件建议或下游工程通用技能，先读 [[skills/transferable-skill-governance/SKILL]]，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
+- 如果用户要求 canonical HTML 公网访问、外部分发或 public URL，先读 [[skills/public-html-publish/SKILL]]、[[public-html-publish-rules]] 和 [[views/publication]]。
 - 如果用户要求复盘阶段、专题、交付链、Issue / 事故后经验或 Agent 工作流，读 [[concepts/project-retrospective]]、[[projects/retrospectives/README]]；历史对话和 Agent 工作复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
 
 ## 工作阶段检查
 
 - 工作阶段优先跑专项 sensor：`python3 scripts/check_all.py --only harness-governance`。
 - 技能页、技能入口或技能模板改动跑：`python3 scripts/check_all.py --only skill-maturity`。
+- research-capability 聚合入口、调研模板或研究治理改动跑：`python3 scripts/check_all.py --only research-capability`。
+- public-html-publish skill、profile、治理页或发布模板改动跑：`python3 scripts/check_all.py --only public-html-publish`。
 - 知识关联 skill 或落位规则改动跑：`python3 scripts/check_all.py --only knowledge-linking`。
 - 问题聚焦式图文呈现、`views/`、lens 模板或导出守卫改动跑：`python3 scripts/check_all.py --only problem-focused-visual-presentation`。
 - H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
