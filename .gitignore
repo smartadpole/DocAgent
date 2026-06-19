@@ -6,3 +6,4 @@ views/**/.exports/
 views/**/*.pdf
 views/**/*.png
 views/**/*.svg
+.codex/local/*.env

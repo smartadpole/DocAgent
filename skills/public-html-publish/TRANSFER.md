@@ -58,3 +58,8 @@
 - 公网读回：`python3 scripts/check_public_html_publish.py --live`
 
 没有真实 host 或 live readback 时，`--live` 必须保持 blocked，不得把本机文件、localhost、截图或导出件当作公网完成证据。
+
+
+## L5 live profile update (2026-06-19)
+
+This project now treats public-html-publish as a live share-only publication contract. A valid publication claim must include `public_url`, HTML-only source scope, `host / prefix`, canonical path mapping, live readback, denial readback, multi-project prefix isolation, and multi-host boundary notes. If any host, secret, prefix, or live denial check is unavailable, the result must downgrade to blocked instead of claiming L5.

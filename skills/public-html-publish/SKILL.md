@@ -91,3 +91,8 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 - [[views/publication]]
 - [[views/README]]
 - [[skills/problem-focused-visual-presentation/SKILL]]
+
+
+## L5 live profile update (2026-06-19)
+
+This project now treats public-html-publish as a live share-only publication contract. A valid publication claim must include `public_url`, HTML-only source scope, `host / prefix`, canonical path mapping, live readback, denial readback, multi-project prefix isolation, and multi-host boundary notes. If any host, secret, prefix, or live denial check is unavailable, the result must downgrade to blocked instead of claiming L5.

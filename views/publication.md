@@ -1,91 +1,51 @@
 ---
 type: publication-profile
 domain: views
-status: blocked
-source_capability: AcknowledgeBase
-updated_at: 2026-06-17
+status: live
+updated_at: 2026-06-19
 tags: [views, html, public, publish]
 ---
 
 # Public HTML Publication Profile
 
-本页定义当前 wiki 仓库 HTML views 的公网发布口径。它只承接发布入口和访问边界，不替代 Markdown 真相源、项目状态、验收关闭或发布裁决。
+本页定义 Software Wiki 的 public-html-publish 发布口径。
 
 ## 当前方案
 
-- 发布方式：blocked；尚未配置真实公网 host、静态托管项目、tunnel 或 deploy token。
-- 公网入口：未配置。
-- 本机或部署服务：未配置。
-- 当前运行模式：blocked。
-- 可选运行模式：share-only live host、static site deploy、internal preview。
-- host：未配置，不能复用 LifeOS host。
-- path prefix：`/wiki/views/`，仅作为本仓库独立 prefix 候选，未绑定真实 host。
-- source root：`views/current/` 与 `views/snapshots/`。
-- public_url 公式：`https://<host>/wiki/views/<canonical-relative-path>`；host 缺失时输出 blocked 原因。
-- access shape：blocked。
-- secret / token 存放：未配置；未来只能使用本仓库自己的 ignored local secret / deploy config。
-- cache / headers：未配置。
-- revoke / rotation：未配置。
+- 发布方式：共享本机 Cloudflare Tunnel 后端上的 share-only static HTML。
+- 公网 host：`https://hai-macbook-pro.smartadpole.com`。
+- 本仓 mount：`/wiki/views/` -> `views/`。
+- source root：`views/`。
+- path prefix：`/wiki/views`。
+- access shape：share-only；无目录入口；直接文件路径、隐藏目录、`.exports` 和非 HTML 默认返回 404。
+- public_url 公式：`views/<relative>.html` + `.codex/local/public-html-share.env` 中的 `PUBLIC_HTML_SHARE_SECRET` -> `https://hai-macbook-pro.smartadpole.com/wiki/views/share/<relative-stem>--<signature>.html`。
+- sample canonical HTML：`views/current/public-html-publish-status.html`。
+- sample public URL：运行 `python3 scripts/check_public_html_publish.py --url` 生成。
+- live readback：运行 `python3 scripts/check_public_html_publish.py --live`，必须同时验证 200 share URL 和 404 denial paths / denial readback。
+- secret / token storage：`.codex/local/public-html-share.env` 只保留在本机，不提交 Git。
+- service command：`python3 /Users/hai/Documents/Life/automation/scripts/start_public_views_screen.py --restart`。
+- revoke / rotation：删除或替换本仓 `.codex/local/public-html-share.env` 后重启 `lifeos-public-views`，旧 URL 自动失效。
 
 ## HTML Only
 
-默认公网对象只包含 canonical HTML：
-
-- 发布：`views/current/**/*.html`、`views/snapshots/**/*.html`。
-- 排除：`views/exports/`、`views/.exports/`、`views/**/.exports/`、PDF / PNG / SVG 导出件。
-- 不默认公开：Markdown 真相源、`projects/`、`raw/`、`assets/`、日志、Obsidian 配置、凭据、密钥、个人信息或整个仓库。
-
-这个边界用于避免把源文档、日志、导出缓存、原始附件、凭据、健康 / 合同 / 票据 / 个人信息或整个仓库随 HTML 一起公开。
+默认只发布 `views/**/*.html` 中的 canonical HTML，排除 `.exports`、Markdown、PDF / PNG / SVG、日志、项目页、数据库导出、原始 assets、密钥和本地运行状态。
 
 ## Multi-Host Boundary
 
-- host 是部署或机器级入口，不是项目真相源。
-- 每台主机或部署环境使用自己的 token、secret、hostname、service 或 deploy target。
-- 当前 host 的 live readback 不能上推到其他电脑、环境或工程。
+`https://hai-macbook-pro.smartadpole.com` 只证明当前 MacBook Pro 的 tunnel 和本机服务可用；其他主机必须配置自己的 host、secret、mount 和 live readback。
 
 ## Multi-Project Boundary
 
-- 多工程共享同一 host 时必须用 path prefix 分隔。
-- 当前工程 prefix：`/wiki/views/`。
-- 其他工程不得复用该 prefix。
-- 不把 LifeOS 或其他工程的 Cloudflare / Netlify / Pages 业务事实写入当前工程规则；只吸收 AcknowledgeBase 的通用发布合同和验证口径。
+多工程共享同一 host，但必须用 path prefix 隔离。本工程固定使用 `/wiki/views`，不能复用其他工程 prefix；其他工程的 live readback 不能替代本工程验收。
 
 ## 自动公开合同
 
-只要满足以下条件，新增 HTML 可以获得 public URL：
+新增 HTML 只有在以下条件同时成立时才可声称已发布：
 
-1. 文件位于 canonical HTML source root。
-2. 文件不是 `.exports`、隐藏文件、导出缓存或非 HTML。
-3. host / deploy / tunnel / preview 环境可用。
-4. public_url 生成命令或 deploy output 可用。
-5. live readback 能读取 public URL。
+1. 位于 `views/` 下且后缀为 `.html`。
+2. 不在隐藏目录、`.exports` 或导出缓存中。
+3. `lifeos-public-views` screen session 正在运行，并挂载了 `/wiki/views=<repo>/views`。
+4. 使用本仓 secret 生成 semantic share URL。
+5. `python3 scripts/check_public_html_publish.py --live` 通过 share 200 和 denial readback 404 验证。
 
-当前状态为 `blocked`，不能声称公网完成。生成或刷新 canonical HTML 后，最终回复必须给出 public URL；如果没有给出，必须说明未生成 HTML、未发布、服务不可用、权限缺失、隐私阻塞或其他具体原因。
-
-根域名、全局目录、直接路径、导出缓存和非公开对象必须按本 profile 返回 404 / 403 / blocked。
-
-## 验证
-
-静态检查：
-
-```sh
-python3 scripts/check_public_html_publish.py
-```
-
-公网读回：
-
-```sh
-python3 scripts/check_public_html_publish.py --live
-```
-
-生成某个 HTML 的 public URL：
-
-```sh
-# blocked until host/deploy target is configured.
-```
-
-启动或部署服务：
-
-```sh
-# blocked until this repository owns a host/deploy target.
-```
+最终回复如声称本工程 HTML 已公开，必须给出对应 public URL；不能用 `file://`、localhost、截图或静态检查替代公网 live readback。

@@ -19,3 +19,4 @@ tags: [views, current]
 当前暂无持久 current lens。
 
 新增后必须同步 [[views/lens-registry]]。
+- `current/public-html-publish-status.html`: public-html-publish live readback status sample.

@@ -38,3 +38,6 @@ tags: [views, lens, presentation]
 - [[templates/problem-focused-lens-template]]
 - [[views/lens-registry]]
 - [[views/publication]]
+- `views/publication.md`: public-html-publish profile and public_url contract.
+- `current/public-html-publish-status.html`: stable public-html-publish live readback sample.
+- HTML-only public sharing excludes `.exports`, Markdown, PDF / PNG / SVG, logs, raw assets, and local secrets.
