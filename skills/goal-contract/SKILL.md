@@ -39,9 +39,11 @@ Goal Contract 是本仓库的长时任务完成契约能力，位置固定在 [[
 1. 判适用性：说明为什么这不是普通一次性任务；不适用时直接说明原因，不创建空合同。
 2. 建立合同：使用 [[templates/goal-contract-template]] 写清 objective、expected final state、scope、acceptance criteria、verification surface、evidence layers、budget、stop conditions 和 closure boundary。
 3. 绑定记录落点：chat-level、TASK、Issue、AP、handoff、episode package 或其他 owning page；不能只靠最终回复成为长期事实源。
-4. 执行中校准：每轮继续前回看合同，不让中间日志、health、子工程自述或矩阵分数改写目标。
-5. 合流验证：关闭前逐条检查 acceptance criteria，区分完成证据、辅助证据、不能上推的证据和仍需人工确认项。
-6. 收口沉淀：按 [[harness-evolution]] 判断是否进入 log、ledger、memory、skill、template、sensor 或 rule。
+4. 记录 Pipeline trace：写清用户目标、source pack、执行位置、Run Capsule / handoff、验证面和沉淀落点之间的链路。
+5. 多 agent 或子工程任务进入 [[agent-orchestration]]：使用 [[templates/run-capsule-template]] 固定 Orchestrator、Worker、Evaluator、Subproject Git Preflight 和 Worker 不能上推的证据边界。
+6. 执行中校准：每轮继续前回看合同，不让中间日志、health、子工程自述或矩阵分数改写目标。
+7. 合流验证：关闭前逐条检查 acceptance criteria，区分完成证据、辅助证据、不能上推的证据和仍需人工确认项。
+8. 收口沉淀：按 [[agent-governance-strategy]] 和 [[harness-evolution]] 判断 Method capture decision、Persistence landing、Reuse decision、Retrospective trigger decision 是否进入 log、ledger、memory、skill、template、sensor、rule 或 retrospective。
 
 ## 输出格式
 
@@ -57,6 +59,10 @@ Goal Contract 是本仓库的长时任务完成契约能力，位置固定在 [[
 - Evidence layers:
 - Verification surface:
 - Record landing:
+- Pipeline trace:
+- Method capture decision:
+- Persistence landing:
+- Reuse decision:
 - Iteration budget:
 - Stop / blocked conditions:
 - Closure boundary:

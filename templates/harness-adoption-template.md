@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-HARNESS-ADOPTION-001
 status: active
-updated: 2026-05-25
+updated: 2026-06-22
 tags: [template, harness, agent]
 ---
 
@@ -37,10 +37,21 @@ tags: [template, harness, agent]
 
 - **默认模式**：
 - **快速诊断事实源**：
+- **引导式设计触发条件**：
 - **进入沉淀的触发条件**：
 - **进入验收关闭的触发条件**：
 - **进入规则升级的触发条件**：
+- **进入收尾模式的触发条件**：
 - **首次 checkpoint 目标**：
+
+## Agent Harness Core
+
+- **根规则入口**：root AGENTS / thin adapter / project-specific adapter。
+- **治理分级**：P0 hard constraint / P1 semantic gate / P2 workflow default / P3 backlog。
+- **状态约束**：权限、remote、dirty / diverged / local-only、预算、外部服务、人工确认。
+- **Run Capsule / 编排**：Orchestrator、Worker、Evaluator、allowed writes、required evidence、Subproject Git Preflight。
+- **Loop Contract**：discovery source、run queue、scheduler、state store、evaluator oracle、budget / stop、next-run decision。
+- **最终交付合同**：修改位置、检查结果、commit hash、未验证边界和不能上推的证据。
 
 ## Goal Contract
 
@@ -68,6 +79,8 @@ tags: [template, harness, agent]
 - **状态关闭条件**：
 - **风险 / 会议归口**：
 - **提交 / 推送要求**：
+- **Worker 不能宣布整体闭环**：
+- **Evaluator 合流规则**：
 
 ## Feedback Sensors
 
@@ -75,10 +88,11 @@ tags: [template, harness, agent]
 - **缺失检查**：
 - **可脚本化规则**：
 - **需要保留为人工判断的事项**：
+- **sensor 边界**：只证明结构 wiring，不证明真实运行质量。
 
 ## 规则反哺
 
 - **可复用系统层信息**：
 - **必须剥离的项目事实**：
-- **候选落点**：[[WORKFLOW]] / [[AGENTS]] / [[POLICY]] / [[skills/README]] / [[templates/README]] / [[BRAIN]]
+- **候选落点**：[[WORKFLOW]] / [[AGENTS]] / [[POLICY]] / [[agent-governance-strategy]] / [[state-constraint-reasoning]] / [[agent-orchestration]] / [[skills/README]] / [[templates/README]] / [[BRAIN]]
 - **冲突或待拍板**：

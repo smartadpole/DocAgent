@@ -33,6 +33,9 @@ tags: [index, root]
 - [[POLICY]]：规则、优先级和 memory 路由
 - [[response-mode-routing]]：响应模式路由，决定 agent 每轮先快速诊断、沉淀、验收、实现还是升级规则
 - [[proactive-dialogue-system]]：主动对话与引导式设计，决定目标未成形时如何自动判定场景、少量提问、带假设推进并产物化
+- [[agent-governance-strategy]]：Agent 治理分级，决定规则、模板、sensor、log、Goal 或复盘应按 P0 / P1 / P2 / P3 落位
+- [[state-constraint-reasoning]]：状态约束推理，决定权限、远程、dirty 状态、预算和证据层级是否允许执行动作
+- [[agent-orchestration]]：Agent 编排入口，定义 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由
 - [[instruction-adherence]]：指令遵循治理，决定已有规则如何进入触发矩阵、模板字段、sensor、门禁和最终证明
 - [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
@@ -79,6 +82,9 @@ tags: [index, root]
 
 - [[WORKFLOW#1.9.0 新应用探索模式]]：全新桌面端、web 或 app 从多方向探索到当前项目推进的轻量路径
 - [[response-mode-routing]]：agent 工作先快后重的统一路由，避免简单诊断默认进入完整治理闭环。
+- [[agent-governance-strategy]]：Agent Governance Strategy，用 P0 / P1 / P2 / P3 防止规则和检查过重。
+- [[state-constraint-reasoning]]：State Constraint Reasoning，把权限、远程状态、预算和证据边界传播到可执行动作。
+- [[agent-orchestration]]：Agent Orchestration，用 Run Capsule 管主控 / Worker / Evaluator 和子工程 Git preflight。
 - [[skills/technology-research/SKILL]]：技术调研总控，先固定调研合同、证据等级、成熟度、风险门和沉淀落位。
 - [[skills/research-capability/SKILL]]：research-capability 聚合入口，避免把外部研究子项原样平铺进本库。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把已沉淀技能生成目标工程可执行迁移任务书。
@@ -153,7 +159,7 @@ tags: [index, root]
 ## 层级
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 呈现层：[[views/README]] 和 `views/`
 - 运行层：`projects/`，其中复盘档案入口是 [[projects/retrospectives/README]]

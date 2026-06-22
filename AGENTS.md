@@ -5,7 +5,7 @@
 ## 分层总览
 
 - 入口层：[[README]]、[[INDEX]]
-- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
+- 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[POLICY]]、[[BRAIN]]
 - 技能层：[[skills/README]] 和 `skills/`
 - 呈现层：[[views/README]] 和 `views/`
 - 运行层：[[projects/README]] 和 `projects/`
@@ -55,6 +55,9 @@
 - [[WORKFLOW]]：流程编排层。回答“通常按什么顺序推进”
 - [[response-mode-routing]]：响应效率路由层。回答“本轮先快诊断、沉淀、验收、实现还是升级规则”
 - [[proactive-dialogue-system]]：主动对话与引导式设计层。回答“目标不完整时，agent 怎么自动判定场景、少量提问、带假设推进并产物化”
+- [[agent-governance-strategy]]：Agent 治理分级层。回答“哪些规则是 P0 硬约束，哪些只是 P1/P2/P3 语义门、流程默认或 backlog”
+- [[state-constraint-reasoning]]：状态约束推理层。回答“当前权限、远程、预算、证据和人工确认状态允许做什么”
+- [[agent-orchestration]]：Agent 编排层。回答“Goal、Run Capsule、Orchestrator、Worker、Evaluator、子工程 Git preflight 和沉淀路由怎么分工”
 - [[instruction-adherence]]：指令遵循层。回答“已有规则怎样升级成触发器、模板字段、sensor、门禁和最终证明”
 - [[execution-contract-semantics]]：执行合同语义层。回答“当前执行合同是否被参考规则、非目标或上层证据污染”
 - [[harness-evolution]]：Harness 自演进层。回答“用户纠偏、检查失败、模式切换和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
@@ -68,6 +71,9 @@
 - 如果问题是“怎么推进”，先看 [[WORKFLOW]]
 - 如果问题是“要不要先轻量诊断、何时进入重治理”，先看 [[response-mode-routing]]
 - 如果问题是“用户只有粗糙目标、需要把想法想完整或要更智能地推进”，先看 [[proactive-dialogue-system]]
+- 如果问题是“治理动作是否过重、规则该升级还是降级”，先看 [[agent-governance-strategy]]
+- 如果问题是“当前状态是否允许执行、提交、推送、发布或关闭”，先看 [[state-constraint-reasoning]]
+- 如果问题是“多 agent、子工程、Worker / Evaluator 如何分工”，先看 [[agent-orchestration]]
 - 如果问题是“规则已有但没有执行”，先看 [[instruction-adherence]]
 - 如果问题是“当前事项到底要不要做、做到哪算关闭”，先看 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，先看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
@@ -107,6 +113,8 @@
 - `projects/trace.md` 是项目演进链入口，承接需求从原始意图到当前实现的结构化收敛过程。
 - 探索全新应用时，先判断是否仍是多方向探索；如果还没有明确选定当前项目，默认使用 `inbox/`、`raw/`、`articles/`、`concepts/` 轻量收集和比较，不为每个候选应用铺完整 `projects/` 结构。
 - 当用户提出新系统、新工具、新应用、粗糙产品想法，或只给出“更智能 / 更前沿 / 更高效”这类质量目标时，先按 [[proactive-dialogue-system]] 自动判定场景包和置信度；高置信可带假设推进，中低置信只问会改变结构、权限、成本或验收的关键问题。
+- 当规则、模板、sensor、log、复盘或 Goal 看起来可能被过度使用时，先按 [[agent-governance-strategy]] 做 P0 / P1 / P2 / P3 分级；不要把一次偏差直接升级成硬规则。
+- 当行动依赖权限、远程状态、dirty / diverged 工作区、浏览器 profile、外部服务、预算或人工确认时，先按 [[state-constraint-reasoning]] 判断 `executable / conditional / blocked / ask-human`，再写计划或执行。
 - 研发项目的阶段和状态由人读项目主页手动推进，不做隐藏自动流控。
 - 活跃研发项目先读项目主页，再改需求、设计、决策、记忆、发布或运行记录。
 - 极简小项目默认只保留一个项目主页，除非内容明显变多，否则不要先建空的需求、设计、发布之类页面。
@@ -126,6 +134,8 @@
 - 快速诊断只默认读取入口规则和最相关的少量事实源；它可以给 `confirmed / likely / possible / blocked` checkpoint，但不能替代验收、关闭、准出、提交或规则升级。
 - 如果根因已经形成而后续是在沉淀、验收、规则升级或收尾，必须显式告诉用户当前阶段，不要把治理闭环伪装成仍在分析。
 - 当用户要求长时间持续推进、反复尝试、直到完成或跨多轮跟进时，先判断是否需要 Goal Contract；主控侧定义完成契约，子工程侧按契约回传证据，不用 Goal 自述替代验收关闭。
+- 当任务涉及多 agent、多线程、主控 / 子工程或 Worker / Evaluator 分工时，使用 [[agent-orchestration]] 和 [[templates/run-capsule-template]]；Worker 只交证据，不能宣布整体闭环。
+- 涉及子工程代码前必须做 Subproject Git Preflight：目录、分支、remote、fetch 后 ahead / behind / diverged、dirty / local-only 状态和更新策略；默认不 pull / merge / rebase / reset，除非用户授权且 fast-forward safe。
 - 当用户要求调研、研究、技术 / 产品 / 公司 / 开源工程评估、PoC 判断或会影响选型 / 采购 / 架构的当前事实时，使用 [[skills/research-capability/SKILL]]，并按 [[research-capability-rules]] 区分一手事实、信号、推论、行动等级和未验证边界。
 - 当用户要求 canonical HTML 公网访问、外部分发或 public URL 时，使用 [[skills/public-html-publish/SKILL]]，并按 [[public-html-publish-rules]] 和 [[views/publication]] 区分 HTML-only、host / prefix、live readback 和 blocked 口径。
 - 如果本轮出现用户纠偏、检查失败、模式切换、重复失守或明显可脚本化缺口，先判断是否写入 [[harness-feedback-ledger]]；单次 episode 不直接新增硬规则，按 [[harness-evolution]] 判断是否晋升为模板、sensor、技能或规则。

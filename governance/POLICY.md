@@ -6,7 +6,7 @@ scope: shared
 status: confirmed
 priority: highest
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-06-22
 tags: [policy]
 ---
 
@@ -85,6 +85,9 @@ tags: [policy]
 ## 自动写入边界
 
 - agent 每轮必须先按 [[response-mode-routing]] 判断本轮响应模式。快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传和批处理的读取深度、默认写入和收尾动作不同，不得用同一套重治理动作覆盖所有问题。
+- 规则、模板、sensor、log、复盘和 Goal Contract 的强度先按 [[agent-governance-strategy]] 分级：P0 才进入硬约束，P1 进入语义门或模板字段，P2 作为工作流默认，P3 先留在 ledger / backlog。
+- 行动依赖权限、远程状态、dirty / diverged / local-only 工作区、浏览器 profile、外部服务、预算或人工确认时，先按 [[state-constraint-reasoning]] 判断可执行状态，不得把 blocked / ask-human 动作写成默认计划。
+- 多 agent、多线程或主控 / 子工程任务按 [[agent-orchestration]] 和 Run Capsule 分工；Worker 只交证据，不能宣布整体闭环。涉及子工程代码前必须做 Subproject Git Preflight，默认不 pull / merge / rebase / reset。
 - 当用户提出新系统、新工具、新应用、粗糙产品想法，或要求更智能、更前沿、更高效但没有定义成功标准时，默认按 [[proactive-dialogue-system]] 进入引导式设计。agent 可以自动提出少量关键问题、声明假设并生成草案，但不能替用户拍板业务目标、预算、真实 owner、合规、生产事实或最终验收。
 - 如果规则已经存在但没有被执行，先按 [[instruction-adherence]] 判断该补触发器、模板字段、sensor、门禁或最终证明；不得默认继续堆自然语言硬规则。
 - 执行类页面必须按 [[execution-contract-semantics|执行合同语义]] 保持当前裁决单值。参考规则、条件路由、非目标、上层发布 / 准出证据和辅助日志不能下沉为当前 TASK、issue、AP 或报告目标包的隐形待办。

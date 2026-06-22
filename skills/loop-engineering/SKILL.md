@@ -37,7 +37,7 @@ Loop Engineering 是持续 agent 循环控制技能。它在 Goal Contract、[[t
 1. [[AGENTS]] 和 [[governance/README]]：确认本工程 agent 边界、响应模式、写权限和单一信息源。
 2. [[templates/loop-contract-template]]：建立 Loop Contract，不把运行状态只留在聊天里。
 3. Goal Contract 与 [[templates/goal-contract-template]]：固定最终状态、证据边界和停止条件；没有本地 Goal Contract skill 时，使用本工程等价完成契约入口。
-4. [[templates/run-capsule-template]]：定义单轮运行、Worker ownership、证据层级、State transition 和 Next-run recommendation。
+4. [[agent-orchestration]] 与 [[templates/run-capsule-template]]：定义单轮运行、Orchestrator / Worker / Evaluator、Subproject Git preflight、Worker ownership、证据层级、State transition 和 Next-run recommendation。
 5. Harness、issue、TASK、risk、AP、报告、服务台账、memory、log 或 feedback ledger 等本工程既有 owner 页面。
 6. 变更技能、模板或入口后，运行 `python3 scripts/check_all.py --only loop-engineering`。
 
@@ -75,7 +75,7 @@ Loop Contract 是控制面，不是新项目状态页。状态类事实仍回到
 
 ### 3. 分派 Worker
 
-主线程是 Orchestrator，负责目标、边界、证据和合流。每个 Worker 必须收到：
+主线程是 Orchestrator，负责目标、边界、证据和合流；必要时标注 Execution posture：orchestrator-only / worker-assisted / evaluator-required / blocked。每个 Worker 必须收到：
 
 - scope：本 Worker 只负责什么。
 - ownership：允许读 / 写哪些文件，或只读审计。
@@ -85,6 +85,8 @@ Loop Contract 是控制面，不是新项目状态页。状态类事实仍回到
 - output state：passed / partial / blocked / failed。
 
 缺少 `limits`、没有回到同一个 Loop Contract / Run Capsule，或把局部证据写成整体闭环的 Worker 回传，默认不能用于关闭整体循环。
+
+涉及子工程代码前必须执行 Subproject Git preflight：目录、branch / upstream、remotes、fetch state、ahead / behind / diverged、dirty / untracked、local-only risk 和 update policy。默认不 pull / merge / rebase / reset，除非用户授权且 fast-forward safe。
 
 ### 4. Evaluator 合流
 
@@ -103,9 +105,12 @@ Evaluator 必须独立判断：
 每轮收口至少写清：
 
 - consumed inputs：本轮消费了哪些发现项。
+- Process record：关键命令、文件变更、失败项、用户确认和状态变化落到哪里；过程记录不替代事实源。
 - state transition：queued / running / passed / partial / blocked / failed / skipped 如何变化。
 - evidence landing：证据落到哪里。
 - next-run decision：stop / rerun / retry-after / split / escalate / wait-human / schedule-next。
+- Reuse decision：是否进入 skill / template / sensor / rule；不复用时写明 no-op 理由。
+- Retrospective trigger decision：no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘，由 Evaluator 裁决。
 - prune decision：哪些候选是噪音，应降级、合并或删除。
 
 如果发现软件研发问题，默认落到既有 Gate / FP / EP / TASK、risk、Issue、AP、测试报告、服务台账或 engineering feedback，不新建 loop 看板。

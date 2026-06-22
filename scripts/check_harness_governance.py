@@ -10,6 +10,9 @@ from pathlib import Path
 REQUIRED_FILES = (
     "governance/response-mode-routing.md",
     "governance/proactive-dialogue-system.md",
+    "governance/agent-governance-strategy.md",
+    "governance/state-constraint-reasoning.md",
+    "governance/agent-orchestration.md",
     "governance/instruction-adherence.md",
     "governance/execution-contract-semantics.md",
     "governance/harness-evolution.md",
@@ -54,6 +57,7 @@ RESPONSE_MODES = (
     "规则升级",
     "子工程实现 / 回传",
     "批处理",
+    "收尾",
 )
 
 ROUTING_REQUIRED_TERMS = (
@@ -80,6 +84,9 @@ ROUTING_REQUIRED_TERMS = (
     "场景包",
     "置信度",
     "性能预算",
+    "agent-governance-strategy",
+    "state-constraint-reasoning",
+    "agent-orchestration",
 )
 
 PROACTIVE_DIALOGUE_REQUIRED_TERMS = (
@@ -202,6 +209,9 @@ H5_LEDGER_REQUIRED_TERMS = (
 
 CODEX_ADAPTER_REQUIRED_TERMS = (
     "response-mode-routing",
+    "agent-governance-strategy",
+    "state-constraint-reasoning",
+    "agent-orchestration",
     "instruction-adherence",
     "execution-contract-semantics",
     "harness-evolution",
@@ -216,6 +226,7 @@ GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS = (
     "## 迭代和停止",
     "## 证据审计",
     "## 主控 / 子工程分工",
+    "## 沉淀和复用",
 )
 
 GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = (
@@ -231,6 +242,40 @@ GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = (
     "health、日志、子工程自述或中间态误当成真正闭环",
     "响应模式判断之后、正式长时执行之前",
     "复杂 bug 复现、性能优化、迁移、跨轮调研、反复验证的修复、主控和子工程之间的长任务回传",
+    "Pipeline trace",
+    "Method capture decision",
+    "Persistence landing",
+    "Reuse decision",
+    "Verification-loop",
+)
+
+AGENT_STRATEGY_REQUIRED_TERMS = (
+    "P0 hard constraint",
+    "P1 semantic gate",
+    "P2 workflow default",
+    "P3 backlog",
+    "log eligibility",
+    "check budget",
+    "Goal Contract",
+    "template feedback",
+)
+
+STATE_CONSTRAINT_REQUIRED_TERMS = (
+    "State variables",
+    "executable / conditional / blocked / ask-human",
+    "dirty / diverged / local-only",
+    "权限、远程、预算、证据和人工确认状态",
+    "不能上推",
+)
+
+AGENT_ORCHESTRATION_REQUIRED_TERMS = (
+    "Goal Contract -> Run Capsule -> Orchestrator -> Worker -> Evaluator -> Persistence Routing",
+    "Worker 只交证据，不能宣布整体闭环",
+    "Subproject Git Preflight",
+    "ahead / behind / diverged",
+    "默认不 pull / merge / rebase / reset",
+    "no-op / log / harness ledger / retrospective / memory / skill / template / sensor / rule",
+    "sensor 只证明结构 wiring，不证明真实运行质量",
 )
 
 
@@ -439,6 +484,40 @@ def check_instruction_and_semantics_wiring(repo: Path) -> list[str]:
     return errors
 
 
+def check_agent_harness_core(repo: Path) -> list[str]:
+    errors: list[str] = []
+    strategy = read_text(repo, "governance/agent-governance-strategy.md", errors)
+    state = read_text(repo, "governance/state-constraint-reasoning.md", errors)
+    orchestration = read_text(repo, "governance/agent-orchestration.md", errors)
+    agents = read_text(repo, "AGENTS.md", errors)
+    readme = read_text(repo, "README.md", errors)
+    index = read_text(repo, "INDEX.md", errors)
+    governance_readme = read_text(repo, "governance/README.md", errors)
+
+    for term in AGENT_STRATEGY_REQUIRED_TERMS:
+        if strategy and term not in strategy:
+            errors.append(f"governance/agent-governance-strategy.md: missing governance strategy term {term}")
+    for term in STATE_CONSTRAINT_REQUIRED_TERMS:
+        if state and term not in state:
+            errors.append(f"governance/state-constraint-reasoning.md: missing state constraint term {term}")
+    for term in AGENT_ORCHESTRATION_REQUIRED_TERMS:
+        if orchestration and term not in orchestration:
+            errors.append(f"governance/agent-orchestration.md: missing orchestration term {term}")
+
+    for rel, text in (
+        ("AGENTS.md", agents),
+        ("README.md", readme),
+        ("INDEX.md", index),
+        ("governance/README.md", governance_readme),
+    ):
+        if not text:
+            continue
+        for term in ("agent-governance-strategy", "state-constraint-reasoning", "agent-orchestration"):
+            if term not in text:
+                errors.append(f"{rel}: missing Agent Harness core wiring {term}")
+    return errors
+
+
 def check_harness_governance(repo: Path) -> list[str]:
     errors: list[str] = []
     errors.extend(check_required_files(repo))
@@ -450,6 +529,7 @@ def check_harness_governance(repo: Path) -> list[str]:
     errors.extend(check_quality_gate_script(repo))
     errors.extend(check_h5_evolution(repo))
     errors.extend(check_instruction_and_semantics_wiring(repo))
+    errors.extend(check_agent_harness_core(repo))
     return errors
 
 

@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-06-22
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-22 | 整体 Agent Harness 模块接入 | 用户要求不是只迁移 skills，而是把入口规则、响应模式、运行合同、任务编排、写入边界、沉淀路由、sensor 门禁、复盘自演进和最终交付合同接入目标工程 | 规则升级 | 可优化成本 | 新增 [[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]；升级 Goal / Run / Loop 模板、Loop skill、入口规则和 `check_harness_governance.py` / `check_loop_engineering.py` | `python3 scripts/check_all.py --only harness-governance,loop-engineering` | active |
 | 2026-05-28 | wiki 独立治理 sensor 拆分 | 跨 `wiki`、`DocCustomeranalysis`、`DocFilmCommunity` 对比后发现 wiki 作为模板级 Harness 已有规则页，但 H5 ledger、指令遵循和入口结构检查仍集中在 `check_harness_governance.py`，缺少可单独运行的工作阶段 sensor | 规则升级 | 可优化成本 | 新增 `scripts/check_harness_feedback_ledger.py`、`scripts/check_instruction_adherence.py`、`scripts/check_project_docs.py`，接入 `scripts/check_all.py --list` 和 `.codex/AGENTS.md` 工作阶段检查；同步 [[instruction-adherence]]、[[harness-evolution]] 和本 ledger | `python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence,project-docs` | active |
 | 2026-05-28 | 主动对话和性能预算升级 | 用户要求把 wiki 智能体系统升级得更前沿、更智能，同时注意性能 | 规则升级 | 可优化成本 | 新增 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]，把场景自动判定、无感交流等级、每轮产物化和读取 / 问题 / 检查 / 产物大小预算写入 Harness | `python3 scripts/check_all.py --only harness-governance` | promoted |
 | 2026-05-26 | DocCustomeranalysis 测试成熟度与口径漂移反哺 | 用户要求吸收同定位工程最近完善的 harness 设计、测试环节规则和口径漂移治理 | 规则升级 | 可优化成本 | 新增 [[instruction-adherence]]、[[execution-contract-semantics]]、[[concepts/software-testing-acceptance-release]]、测试计划 / AP 层和对应 sensors | `python3 scripts/check_all.py --only testing-system-maturity,execution-contract-semantics,harness-governance` | promoted |
@@ -45,6 +46,7 @@ tags: [agent, harness, feedback, episode]
 | 执行合同语义检查 | 非目标、上层规则或证据说明容易漂移成隐形待办 | 当前由 `check_execution_contract_semantics.py` 覆盖入口 wiring 和可见污染模式 | active |
 | 主动对话产物化检查 | 引导式设计容易只停在聊天，或为了智能化扩大读取和结构成本 | 当前由 `check_harness_governance.py` 检查 [[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]、性能预算和入口 wiring | active |
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
+| Agent Harness core wiring | 编排、状态约束和治理分级容易只停在自然语言 | `check_harness_governance.py` 检查 [[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、入口和模板字段 | active |
 
 ## Rule Promotion Queue
 
@@ -60,6 +62,9 @@ tags: [agent, harness, feedback, episode]
 | 测试报告必须引用事项页计划或 AP，环境按证据面路由而不是阶梯上推 | DocCustomeranalysis 测试成熟度与口径漂移反哺 | [[projects/development/plan/test-acceptance-planning-model]] / `scripts/check_testing_system_maturity.py` | promoted |
 | 研发事项日常维护先走总控页入口顺序，治理层只在改变默认规则时修改 | 研发事项入口顺序和结构化 sensor | [[projects/development/plan/README]] / [[WORKFLOW]] | promoted |
 | 主动对话先自动判定场景包和置信度，再用少量问题、明确假设和性能预算推进产物化 | 主动对话和性能预算升级 | [[proactive-dialogue-system]] / [[templates/guided-discovery-session-template]] / `scripts/check_harness_governance.py` | promoted |
+| 多 agent / 子工程任务必须由 Orchestrator 定义 Run Capsule，Worker 只交证据，Evaluator 做合流裁决；涉及代码前先做 Subproject Git Preflight | 整体 Agent Harness 模块接入 | [[agent-orchestration]] / [[templates/run-capsule-template]] / `scripts/check_harness_governance.py` | active |
+| 规则、模板、sensor、log、复盘和 Goal 的强度先做 P0 / P1 / P2 / P3 分级，避免所有偏差都升级成硬规则 | 整体 Agent Harness 模块接入 | [[agent-governance-strategy]] / [[POLICY]] / [[WORKFLOW]] | active |
+| 行动依赖权限、远程、dirty / diverged、预算或人工确认时先做 state constraint reasoning | 整体 Agent Harness 模块接入 | [[state-constraint-reasoning]] / [[WORKFLOW]] / [[POLICY]] | active |
 
 ## Rule Prune Queue
 

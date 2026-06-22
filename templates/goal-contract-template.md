@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-GOAL-CONTRACT-001
 status: active
-updated: 2026-05-25
+updated: 2026-06-22
 tags: [template, harness, goal, contract]
 ---
 
@@ -20,6 +20,9 @@ Goal 只解决三件事：
 
 - **任务 / 事项 ID**：
 - **当前响应模式**：
+- **当前执行位置**：主控 / 子工程 / Worker / Evaluator / 其他
+- **owning page / record landing**：
+- **质量门 / sensor**：
 - **为什么需要完成契约**：
 - **为什么不是普通一次性任务**：
 - **不使用 Goal Contract 的理由**：
@@ -30,6 +33,8 @@ Goal 只解决三件事：
 - **期望最终状态**：用可观察结果写清完成后应该变成什么样。
 - **完成判定**：哪些结果出现才算完成；哪些结果只能算 partial / review / blocked。
 - **验证面**：测试 / benchmark / 报告 / artifact / DB readback / 日志 / UI / 人工确认 / 其他
+- **Source pack**：必须读取或引用的事实源；区分一手事实、辅助事实和推论。
+- **Pipeline trace**：本轮从用户目标到执行、验证、沉淀的链路；主控 / 子工程任务要写明 Run Capsule 或 handoff 位置。
 - **必须保持的约束**：
 - **允许使用的文件 / 工具 / 数据 / 环境**：
 - **明确不做项**：
@@ -59,3 +64,12 @@ Goal 只解决三件事：
 - **子工程执行**：实现范围、本地验证、失败项、未验证边界、回传证据
 - **主控吸收入口**：
 - **子工程回传入口**：
+- **Run Capsule**：多 agent / 多线程 / 子工程运行时链接 [[templates/run-capsule-template]] 或实际 Run Capsule。
+
+## 沉淀和复用
+
+- **Method capture decision**：no-op / log / harness ledger / memory / skill / template / sensor / rule / retrospective
+- **Persistence landing**：
+- **Reuse decision**：本轮是否形成可复用方法；如果不复用，写明理由。
+- **Verification-loop**：下一轮是否需要 rerun / retry-after / split / escalate / wait-human / stop。
+- **Retrospective trigger decision**：no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘。

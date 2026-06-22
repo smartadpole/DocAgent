@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-RUN-CAPSULE-001
 status: active
-updated: 2026-06-17
+updated: 2026-06-22
 tags: [template, harness, goal, orchestration, evaluator]
 ---
 
@@ -32,11 +32,27 @@ Run Capsule 是 Goal、多 agent、多线程或跨工程长任务的最小运行
 ## Agent Topology
 
 - **Orchestrator / 主线程**：
+- **Execution posture**：orchestrator-only / worker-assisted / evaluator-required / blocked
 - **Worker agents / 子线程**：
 - **Acceptance / evaluator thread**：
 - **是否使用独立 worktree / 独立仓库 / 只读研究**：
 - **并行理由**：
 - **不适合并行的部分**：
+
+## Subproject Git Preflight
+
+涉及子工程代码、handoff 或外部仓库时填写；不涉及则写不适用。
+
+| Field | Value |
+| --- | --- |
+| directory |  |
+| branch / upstream |  |
+| remotes |  |
+| fetch state | not-run / fetched / blocked |
+| ahead / behind / diverged |  |
+| dirty / untracked |  |
+| local-only risk |  |
+| update policy | 默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
 
 ## Worker Ownership
 
@@ -88,10 +104,12 @@ Worker 必须继承本次 Goal / Parent Loop Contract / Run Capsule / AGENTS / o
 - **Run Capsule 状态**：passed / partial / blocked / failed
 - **Worker 回传是否齐全**：
 - **Evaluator 结论**：
+- **Process Record**：本轮关键命令、文件变更、决策和失败项落点；不把流水写成事实源。
 - **State transition**：queued / running / passed / partial / blocked / failed / skipped
 - **Consumed inputs**：
 - **Next-run recommendation**：stop / rerun / retry-after / split / escalate / wait-human / schedule-next
 - **Retrospective trigger decision**：no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘；如由 Worker 提供信号，写明 evaluator 裁决理由
+- **Reuse entry proof**：如形成可复用流程，说明进入 skill / template / sensor / rule 的证据；否则写 no-op。
 - **沉淀路由及理由**：
 - **检查 / sensor**：
 - **仍需人工确认**：

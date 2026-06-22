@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-LOOP-CONTRACT-001
 status: active
-updated: 2026-06-17
+updated: 2026-06-22
 tags: [template, loop, harness, orchestration, evaluator]
 ---
 
@@ -61,10 +61,26 @@ Loop Contract 是持续 agent 循环的控制面。它不替代 [[templates/goal
 ## Agent Topology
 
 - **Orchestrator / 主线程**：
+- **Execution posture**：orchestrator-only / worker-assisted / evaluator-required / blocked
 - **Worker agents / 子线程**：
 - **Evaluator**：
 - **是否使用独立 worktree / 独立线程 / 只读研究**：
 - **子 agent 继承规则**：必须读取 Goal / Loop Contract / Run Capsule / AGENTS / owning page
+
+## Subproject Git Preflight
+
+Loop 涉及子工程代码或外部仓库时，每轮 Run Capsule 必须继承并刷新；不涉及则写不适用。
+
+| Field | Value |
+| --- | --- |
+| directory |  |
+| branch / upstream |  |
+| remotes |  |
+| fetch state | not-run / fetched / blocked |
+| ahead / behind / diverged |  |
+| dirty / untracked |  |
+| local-only risk |  |
+| update policy | 默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
 
 ## Worker Ownership
 
@@ -125,6 +141,8 @@ Worker 缺少 `limits`、没有回到同一个 Loop Contract，或把局部证�
 - **本轮状态**：passed / partial / blocked / failed / skipped
 - **下一轮动作**：stop / rerun / retry-after / split / escalate / wait-human / schedule-next
 - **下一轮触发条件**：
+- **Process Record**：本轮消费输入、关键动作、失败项和状态变更落点。
+- **Reuse entry proof**：进入 skill / template / sensor / rule 的复用证据；没有则写 no-op。
 - **Retrospective trigger decision**：no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘
 - **需人工确认**：
 - **需补 sensor / 模板 / skill / rule**：

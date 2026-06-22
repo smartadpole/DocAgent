@@ -7,6 +7,27 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-22
+
+### 升级整体 Agent Harness 体系
+
+- **记录人**：Codex
+- **用户意图**：用户要求以 AcknowledgeBase 的治理、Goal、Run Capsule、Loop、复盘和模板资料为参考，全面升级本工程自己的 Agent Harness；目标不是只迁移 skills，也不是复制 AcknowledgeBase 目录，而是把入口规则、响应模式、运行合同、任务编排、写入边界、沉淀路由、sensor 门禁、复盘自演进和最终交付合同接入当前 wiki 结构。
+- **源资料边界**：读取 AcknowledgeBase 的 `AGENTS.md`、`WORKFLOW.md`、`POLICY.md`、`BRAIN.md`、response mode、agent orchestration、execution contract、state constraint、instruction adherence、governance strategy、harness evolution / ledger、Goal / Loop / documentation / retrospective skills 和 Goal / Run / Loop 模板；只吸收触发条件、角色分工、字段、sensor 和禁止项，不复制项目事实、历史 log、服务实例、运行 ID、业务链路、handoff 原文、commit hash、下游路径或一次性验收结论。
+- **关键裁决**：
+  1. 响应模式、Goal Contract、Loop Engineering、H5 ledger、instruction-adherence 和 execution-contract-semantics 已有本库等价体系，处理方式是 `recognized / updated`。
+  2. Agent 编排、Subproject Git Preflight、状态约束推理和治理强度分级是本轮真实缺口，处理方式是 `added / adapted`。
+  3. AcknowledgeBase 的 Gate / FP / EP / TASK、views / registry、log 写法和检查脚本结构只做抽象吸收；本库继续使用自己的项目结构、模板层和 sensor 体系。
+- **关键动作**：
+  1. 新增 [[agent-governance-strategy]]、[[state-constraint-reasoning]] 和 [[agent-orchestration]]，分别承接 P0 / P1 / P2 / P3 分级、可执行状态判断、Orchestrator / Worker / Evaluator / Subproject Git Preflight / Persistence Routing。
+  2. 更新 [[AGENTS]]、`.codex/AGENTS.md`、[[README]]、[[INDEX]]、[[governance/README]]、[[WORKFLOW]]、[[POLICY]] 和 [[response-mode-routing]]，把三张新治理页、收尾模式和子工程 preflight 接入默认读取路径。
+  3. 更新 [[templates/goal-contract-template]]、[[templates/run-capsule-template]]、[[templates/loop-contract-template]] 和 [[templates/harness-adoption-template]]，补 Pipeline trace、Method capture decision、Persistence landing、Reuse decision、Process Record、Subproject Git Preflight、Retrospective trigger decision 和最终交付合同字段。
+  4. 更新 [[skills/goal-contract/SKILL]]、[[skills/loop-engineering/SKILL]] 和 [[concepts/harness-engineering]]，让技能触发后能落到本库的编排、状态约束、沉淀路由和 sensor。
+  5. 更新 `scripts/check_harness_governance.py` 和 `scripts/check_loop_engineering.py`，把 Agent Harness core wiring、Goal / Run / Loop 字段和入口接线纳入专项检查。
+- **二阶反思**：本轮缺口不是“缺更多自然语言规则”，而是已有 Harness 模块之间缺少编排、状态约束和强度分级的中间层；后续如果再出现类似失守，应先判断能否用模板字段或 sensor 捕获，而不是继续膨胀根入口。
+- **验证边界**：本轮证明的是结构 wiring、模板字段、入口可发现性、脚本语法和静态 sensor 通过；不证明任何真实长时任务已经完成、不证明多 agent 运行质量、不证明外部子工程 Git 状态可靠，也不代表 AcknowledgeBase 矩阵已重新评分。
+- **影响页面**：[[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[AGENTS]]、`.codex/AGENTS.md`、[[README]]、[[INDEX]]、[[governance/README]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[templates/goal-contract-template]]、[[templates/run-capsule-template]]、[[templates/loop-contract-template]]、[[templates/harness-adoption-template]]、[[skills/goal-contract/SKILL]]、[[skills/loop-engineering/SKILL]]、[[concepts/harness-engineering]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`、`scripts/check_loop_engineering.py`。
+
 ## 2026-06-18
 
 ### 全面升级通用可迁移技能能力面

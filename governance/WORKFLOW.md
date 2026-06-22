@@ -20,6 +20,7 @@
 - **规则升级**：要改变默认读取顺序、自动写入边界、优先级或 agent 行为时，先读 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和相关技能 / 模板，优先改旧规则或补澄清。
 - **子工程实现 / 回传**：明确授权改外部代码仓库时，主控文档默认只读；实现仓库产出测试证据、handoff 和主控吸收建议。
 - **批处理**：大量同类材料先做批次级校准，再复用共享读取集。
+- **收尾**：用户明确要求收尾，或本轮实质变更进入提交前时，只做范围核对、入口同步、log eligibility、二阶反思资格、检查、同主题提交和最终交付说明。
 
 长时任务的 Goal Contract 放在响应模式判断之后、正式长时执行之前：
 
@@ -27,12 +28,17 @@
 - 子工程接到主控任务时，不重新定义关闭口径；只把 Goal Contract 转成实现范围、测试方案、回传包和未验证边界。
 - Goal Contract 不是验收结论；health、日志、子工程自述、任务 accepted / running 等中间态只能作为辅助证据，状态关闭仍按验收关闭模式执行。
 - 普通解释、一行改动、一次性整理或范围未裁定的任务不默认套用 Goal Contract。
+- 多 agent、多线程或主控 / 子工程任务使用 [[agent-orchestration]] 和 [[templates/run-capsule-template]]；Worker 只交证据，Evaluator 才能做整体闭环裁决。
+- 涉及子工程代码前必须做 Subproject Git Preflight：目录、分支、remote、fetch 后 ahead / behind / diverged、dirty / local-only 状态和更新策略；默认不 pull / merge / rebase / reset。
+- 行动依赖权限、远程状态、浏览器 profile、预算、外部服务或人工确认时，先按 [[state-constraint-reasoning]] 判断 `executable / conditional / blocked / ask-human`。
+- 规则、模板、sensor、log、复盘或 Goal 是否需要升级，先按 [[agent-governance-strategy]] 做 P0 / P1 / P2 / P3 分级。
 
 模式切换要显式说明：快速诊断形成根因后，如果继续做沉淀、验收、规则升级或收尾，要告诉用户“分析结论已形成，现在进入某某闭环”。这不是额外仪式感，而是响应效率治理的一部分。
 
 工作阶段检查也按模式分层：
 
 - 当前只改 Harness wiring、模板入口或响应路由时，优先跑 `python3 scripts/check_all.py --only harness-governance`。
+- 当前只改 Agent 编排、状态约束、治理分级、Run Capsule 或 Subproject Git Preflight 时，优先跑 `python3 scripts/check_all.py --only harness-governance,loop-engineering`。
 - 当前只改项目内技能、技能模板、技能入口或技能成熟度证据信号时，优先跑 `python3 scripts/check_all.py --only skill-maturity`。
 - 当前只改 Gate / FP / EP / TASK / Issue / risk / test / 验收 / 服务台账 wiring 时，优先跑 `python3 scripts/check_all.py --only work-item-matrix`。
 - 当前只改测试计划、AP、fixture / oracle、人工确认、报告计划来源或发布 runbook 时，优先跑 `python3 scripts/check_all.py --only testing-system-maturity`。

@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-05-25
+updated: 2026-06-22
 tags: [ai-agent, software-engineering]
 ---
 
@@ -35,6 +35,8 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - Scripts / Sensors：lint、测试、CI、静态分析、架构检查、trace、日志、SLO。
 - MCP / Tools：外部系统、宿主环境和受控工具能力。
 - Goal Contract：像 [[concepts/codex-goals]] 这样的线程级完成契约，用来让长时任务在多轮之间保留终点线和证据审计面。
+- Run Capsule：把一次多 agent / 子工程运行中的 Orchestrator、Worker、Evaluator、Subproject Git Preflight、证据层级和沉淀路由固定下来。
+- State Constraint Reasoning：把权限、远程、dirty 状态、预算和人工确认传播到可执行动作，避免把 blocked 写成 plan。
 - Memory：会话延续和偏好辅助；团队真相源应优先文件化。
 - Observability：运行记录、失败归因、干预记录和 harness 变更证据。
 
@@ -43,12 +45,16 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 当前 wiki 把自己定位成模板级 Agent Harness，而不是某个具体业务项目的第二真相源。
 
 - [[response-mode-routing]] 承接响应效率治理：每轮先判快速诊断、知识沉淀、Issue 分析、验收关闭、规则升级、子工程实现或批处理。
+- [[agent-governance-strategy]] 承接治理强度分级：P0 / P1 / P2 / P3，避免把普通流程默认升级成硬规则。
+- [[state-constraint-reasoning]] 承接状态约束推理：权限、远程、dirty / diverged、预算、证据和人工确认会限制当前可执行动作。
+- [[agent-orchestration]] 承接多 agent 和子工程编排：Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由。
 - [[harness-evolution]] 和 [[harness-feedback-ledger]] 承接 H5 自演进：把真实 episode、用户纠偏、检查失败和重复失守先沉淀成数据，再决定是否晋升为 sensor、模板、技能或规则。
 - [[AGENTS]] 保持硬约束和短入口，不承担百科全书式正文。
 - [[WORKFLOW]] 承接执行顺序，[[POLICY]] 承接自动写入边界和优先级。
 - [[skills/issue-analysis/SKILL]] 承接高频问题分析方法，并区分快速根因链和完整沉淀链。
 - [[templates/harness-adoption-template]] 承接新系统接入时的主控关系、单一信息源、写权限、验证层级、handoff 和 feedback sensor。
 - [[templates/goal-contract-template]] 承接长时任务的期望最终状态、完成判定、验证面 / 证据边界、约束、预算、探索边界和阻塞停止条件。
+- [[templates/run-capsule-template]] 和 [[templates/loop-contract-template]] 承接单轮编排与持续循环控制面。
 - [[templates/harness-episode-package-template]] 和 [[templates/harness-evolution-review-template]] 承接单次 episode 和周期复盘。
 - `scripts/check_all.py` 是本库本地门禁入口，`scripts/check_harness_governance.py` 先覆盖 Harness wiring。
 
@@ -67,6 +73,7 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - 只有自然语言规则，没有脚本、测试或 CI 反馈。
 - 把隐藏 memory 当团队单一信息源。
 - 多 Agent 没有交接材料、打回规则和完成定义。
+- Worker 自述、health、handoff 或 local pass 被上推成整体完成。
 
 ## 相关页面
 
@@ -75,6 +82,9 @@ Harness Engineering 包含 Prompt Engineering 和 Context Engineering，但不�
 - [[AGENTS]]
 - [[WORKFLOW]]
 - [[response-mode-routing]]
+- [[agent-governance-strategy]]
+- [[state-constraint-reasoning]]
+- [[agent-orchestration]]
 - [[harness-evolution]]
 - [[harness-feedback-ledger]]
 - [[POLICY]]

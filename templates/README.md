@@ -43,5 +43,5 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新系统、主控仓库或子工程接入 Agent Harness 可以参考 [[templates/harness-adoption-template]]
 - 新单次 Harness episode 可以参考 [[templates/harness-episode-package-template]]
 - 新周期性 Harness 演进复盘可以参考 [[templates/harness-evolution-review-template]]
-- 新持续 agent 循环控制面可以参考 [[templates/loop-contract-template]]；单轮多 agent / Worker 回传可以参考 [[templates/run-capsule-template]]。
+- 新持续 agent 循环控制面可以参考 [[templates/loop-contract-template]]；单轮多 agent / Worker 回传可以参考 [[templates/run-capsule-template]]，并按 [[agent-orchestration]] 做 Orchestrator / Worker / Evaluator 和 Subproject Git Preflight 分工。
 - 如果你启用了 Obsidian 的 Templates 插件，这个目录可以直接作为模板目录

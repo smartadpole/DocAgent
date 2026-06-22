@@ -4,7 +4,7 @@ id: GOV-RESPONSE-MODE-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-28
+updated: 2026-06-22
 tags: [agent, workflow, efficiency, harness]
 ---
 
@@ -39,6 +39,7 @@ tags: [agent, workflow, efficiency, harness]
 | 规则升级 | “以后都这样”“升级规则”“写进 AGENTS / WORKFLOW / POLICY” | 先判断改旧规则、补澄清还是新增模式 | [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、相关技能 / 模板 | 是 | 同步入口、log、必要模板和二阶反思 |
 | 子工程实现 / 回传 | 明确授权改代码仓库或子工程 | 明确主控输入、实现范围、回传格式 | 主控裁决 + 子工程入口规则 + 目标代码上下文 | 在被授权仓库内 | 产出测试证据、handoff 和主控吸收建议 |
 | 批处理 | 大量同类摘要、归类、补链接 | 批次级校准和共享读取集 | 共享入口 + 单份直接来源 | 是 | 每小批回看链接和落点，异常即退出批处理 |
+| 收尾 | 用户明确要求“收尾 / finalize”，或本轮实质变更已经进入提交前 | 范围核对、入口同步、log eligibility、二阶反思资格、检查和提交计划 | 本轮 diff + 受影响入口 + 专项 sensor | 是 | 同主题提交，最终回复写明检查、commit hash 和未验证边界 |
 
 ## Goal Contract 边界
 
@@ -55,6 +56,8 @@ Goal Contract 的位置固定在响应模式判断之后、正式长时执行之
 - 知识沉淀发现内容会改变默认执行方式、自动写入边界或优先级时，必须切到规则升级模式。
 - 知识沉淀发现复盘对象是历史对话或 Agent 工作流时，使用 [[skills/historical-dialogue-retrospective/SKILL]]；发现重复失守、可模板化或可脚本化缺口时，按 [[harness-evolution]] 进入 Harness 自演进。
 - Issue 分析进入状态修改、任务关闭、Gate 准出或发布判断时，必须切到验收关闭模式。
+- 多 agent、子工程或跨仓库回传需要拆分 Worker / Evaluator 时，切到 [[agent-orchestration]] 和 Run Capsule。
+- 行动依赖权限、远程、dirty / diverged 工作区、预算或人工确认时，先按 [[state-constraint-reasoning]] 判断可执行状态。
 - 任何模式发现用户未授权的写入边界、外部服务操作或子工程修改时，先停在建议和回传包，不越权执行。
 
 ## 读取预算
@@ -88,6 +91,7 @@ Goal Contract 的位置固定在响应模式判断之后、正式长时执行之
 - 不为了提速省掉用户可见症状保真、证据分层、权限边界、非默认值 / 边界值验证、人工确认边界或提交闭环。
 - 不把“更智能”理解成无边界扩大读取、长问卷、一次铺满项目结构或静默替用户拍板高风险事项。
 - 不把候选规则直接写进 [[POLICY]]，除非本轮已进入规则升级并完成冲突检查。
+- 不把 P2 / P3 的流程默认或 backlog 按 P0 硬规则执行；规则强度先看 [[agent-governance-strategy]]。
 - 不把 [[AGENTS]] 扩成百科全书；细节优先放 [[WORKFLOW]]、技能、模板或这页。
 
 ## Harness 维护检查
