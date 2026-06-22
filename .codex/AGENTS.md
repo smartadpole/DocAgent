@@ -33,6 +33,7 @@
 - 执行合同语义、非目标或环境路由改动跑：`python3 scripts/check_all.py --only execution-contract-semantics`。
 - 复盘体系、复盘模板或复盘 skill 改动跑：`python3 scripts/check_all.py --only retrospective-system`。
 - Agent 编排、状态约束、治理分级、Run Capsule 或 Subproject Git Preflight 改动跑：`python3 scripts/check_all.py --only harness-governance,loop-engineering`。
+- Agent Harness L5 验证、最终回复证明或不上推边界改动跑：`python3 scripts/check_all.py --only agent-harness-l5`。
 - 收尾或提交前跑完整门禁：`python3 scripts/check_all.py`。
 - `scripts/check_all.py` 是本库本地门传真相源；CI 或平台配置只是适配层。
 

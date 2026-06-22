@@ -9,6 +9,17 @@
 
 ## 2026-06-22
 
+### 补强 Agent Harness L5 验证闭环
+
+- **记录人**：Codex
+- **用户意图**：用户指出上一轮最终回复仍保留“未验证边界”，要求必须把边界验证好并达到 L5；这不是继续扩写规则，而是补上可回放的代表性运行验证和最终证明。
+- **关键动作**：
+  1. 新增 `scripts/check_agent_harness_l5.py`，用 Goal Contract dry-run 验证 local-only 证据不能上推，用 Run Capsule dry-run 验证 Worker 自评不能关闭整体，用真实 Git preflight 验证 branch / upstream / remote / ahead-behind / status 可读。
+  2. 新增 [[projects/development/reports/2026-06-22-agent-harness-l5-validation]]，把验证对象、方案、oracle、local / service-side / end-to-end 对应面、非默认边界和不上推边界写成证据层报告。
+  3. 将 `agent-harness-l5` 接入 `scripts/check_all.py`，并同步 `.codex/AGENTS.md` 和 [[harness-feedback-ledger]]。
+- **L5 裁决**：本轮把上一轮“结构 wiring 但未验证真实运行质量”的边界收敛为：Harness 能力层已由 L3 sensor、L4 `check_all` 和 L5 final proof 证明；但不能上推为未来任意业务任务、多 agent 执行或外部仓库都会成功。
+- **影响页面**：`scripts/check_agent_harness_l5.py`、`scripts/check_all.py`、[[projects/development/reports/2026-06-22-agent-harness-l5-validation]]、`.codex/AGENTS.md`、[[harness-feedback-ledger]]、[[log]]。
+
 ### 升级整体 Agent Harness 体系
 
 - **记录人**：Codex
