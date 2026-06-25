@@ -19,7 +19,7 @@ tags: [concept, retrospective, project-management]
 
 复盘总技能：[[skills/retrospective-capability/SKILL]]
 
-这页是项目复盘的通用方法入口。它沉淀跨项目可复用的复盘方法，不记录某个具体项目的历史细节。具体项目事实、事故、决策和状态仍回到项目层对应页面，具体复盘档案默认进入 [[projects/retrospectives/README]]。
+这页是项目复盘的通用方法入口。它沉淀跨项目可复用的复盘方法，不记录某个具体项目的历史细节。具体项目事实、事故、决策和状态仍回到项目层对应页面，具体复盘档案默认进入 [[projects/retrospectives/README]] 管辖的年份目录。
 
 ## 定义
 
@@ -51,18 +51,18 @@ tags: [concept, retrospective, project-management]
 
 ## 文件落位
 
-复盘方法和分类放在本页及子专题；具体复盘文件默认放在 [[projects/retrospectives/README]] 所在目录。
+复盘方法和分类放在本页及子专题；具体复盘文件默认放在 `projects/retrospectives/<year>/`，并从 [[projects/retrospectives/README]] 和索引页可达。
 
 默认分工：
 
-- `projects/retrospectives/`：承接当前项目的阶段复盘、专题复盘、交付链复盘、Issue / 事故后专题复盘和 Agent 协作复盘档案。
+- `projects/retrospectives/`：承接当前项目复盘 archive root、年度目录和多维索引；标准 / 深度复盘正文进入 `projects/retrospectives/<year>/`。
 - [[projects/incidents/README]]：承接事故主档案和事故事实保真；事故经验上升为长期学习主题时，再回链到 `projects/retrospectives/`。
 - [[projects/development/issues/README]]：承接已发生 bug、偏差、验收失败的案件档案；Issue 暴露机制缺口时，再形成复盘。
 - [[projects/development/reports/README]]：承接测试、复验和准出证据；报告不能替代复盘。
 - [[log]]：承接对话主题、用户意图和关键动作，不替代复盘正文。
 - `articles/` 和 `concepts/`：承接抽象后可复用的方法、模型和专题成果，不保存具体项目复盘流水。
 
-如果一篇复盘只对当前项目有意义，留在 `projects/retrospectives/`；如果其中某个结论抽象后能跨项目复用，再回写本页、子专题、模板、skill 或治理页。
+如果一篇复盘只对当前项目有意义，留在 `projects/retrospectives/<year>/`；如果其中某个结论抽象后能跨项目复用，再回写本页、子专题、模板、skill 或治理页。
 
 ## 复盘层级
 

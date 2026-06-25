@@ -52,8 +52,8 @@ sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 | --- | --- | --- | --- |
 | no-op | 普通一次性解释、小修小改、无用户纠偏、无检查失败、无结构性新信息 | 不调用本技能，只在最终回复说明已无复盘触发 | reply only |
 | 轻量复盘 checkpoint | 长 Goal、Run Capsule、多 agent、Loop iteration 或复杂规则升级顺利结束，但没有明显失守 | 用本技能的证据地图和质量自检做短判断，不新建复盘档案 | [[log]] / Closeout Proof / next-run decision |
-| 标准复盘 | 用户纠偏、明显返工、漏验证 / 漏提交 / 漏沉淀、模式切换成本偏高、Worker 证据被 evaluator 打回 | 启动本技能完整框架，判断偏差、效率质量和沉淀路由 | [[projects/retrospectives/README]] 或 [[harness-feedback-ledger]] |
-| 深度复盘 | 同类失守重复出现、sensor / 模板 / skill / 规则失效、Loop evaluator 漏停、持续调度失控、影响默认执行方式 | 启动本技能并同步 [[harness-evolution]]，形成复盘档案和晋升 / 降级候选 | 复盘档案 + ledger + skill / template / sensor / rule |
+| 标准复盘 | 用户纠偏、明显返工、漏验证 / 漏提交 / 漏沉淀、模式切换成本偏高、Worker 证据被 evaluator 打回 | 启动本技能完整框架，判断偏差、效率质量和沉淀路由 | `projects/retrospectives/<year>/` 或 [[harness-feedback-ledger]] |
+| 深度复盘 | 同类失守重复出现、sensor / 模板 / skill / 规则失效、Loop evaluator 漏停、持续调度失控、影响默认执行方式 | 启动本技能并同步 [[harness-evolution]]，形成复盘档案和晋升 / 降级候选 | 年份复盘档案 + ledger + skill / template / sensor / rule |
 
 自动触发时要写清为什么达到该等级、为什么没有升到更高等级、哪些证据不足。轻量 checkpoint 不得冒充标准复盘；标准复盘也不得自动升级硬规则。子 agent / Worker 只标注 `retrospective-signal: none / checkpoint / standard / deep` 和证据，最终由主线程 evaluator 合流裁决。
 
@@ -74,7 +74,8 @@ sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 分析重心：
 
 - 首轮目标和用户纠偏是最高优先级证据，先解释 agent 是否围绕它们推进。
-- 对话产物必须先落成档案或 owner 页；最终回复只做摘要和指针。
+- 对话产物必须先落成 `projects/retrospectives/<year>/` 档案或 owner 页；最终回复只做摘要和指针。
+- 标准 / 深度复盘正文落档后，必须同步 [[projects/retrospectives/indexes/by-year]]；如果属于稳定主题或类型，同步 [[projects/retrospectives/indexes/by-theme]] 或 [[projects/retrospectives/indexes/by-type]]。
 - 必须新增“上层抽象与举一反三”：抽象失败模式，判断同类问题还会在哪些入口、模板、sensor、skill 或规则中复发。
 
 ## 响应模式
@@ -262,3 +263,4 @@ sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 - 不因一次偏差直接新增硬规则；先判断是否重复、影响面大或可脚本化。
 - 不为了“完整复盘”无限扩读；先定义时间窗和抽样边界。
 - 不重写历史结论；新判断写成新复盘结果，并标注证据时间点。
+- 不把历史对话或 Harness 复盘正文平铺到 `projects/retrospectives/` 根目录；archive root 只保留 README、indexes 和年份目录。

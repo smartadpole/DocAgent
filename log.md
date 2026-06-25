@@ -9,6 +9,24 @@
 
 ## 2026-06-25
 
+### 升级 Harness 复盘 archive 和 sensor 闭环
+
+- **记录人**：Codex
+- **用户意图**：用户要求升级本工程的 Harness 复盘体系和复盘文件存放结构，不只是新增 skill 或目录，而是把复盘触发、档案落位、文件爆炸控制、行动分流、Harness 自演进和本地 sensor 接成可验证闭环。
+- **目录归类与落位判断**：本轮读取目标工程入口后确认当前 wiki 已有 [[projects/retrospectives/README]]、`skills/`、`templates/`、`governance/`、`projects/incidents/`、`projects/development/issues/` 和 `scripts/check_all.py`；因此 archive root 继续使用 `projects/retrospectives/`，复盘正文落到 `projects/retrospectives/<year>/`，不新建平行 postmortem / lessons-learned / docs-retrospectives 体系。
+- **源资料边界**：读取 AcknowledgeBase 的 retrospective-capability、delivery-retrospective、historical-dialogue-retrospective、复盘 archive README、年度 / 主题 / 类型索引、复盘存放结构专题、复盘模板和 Harness governance sensor；只吸收统一入口、显式复盘默认落档、深度复盘、年度物理分区、多维索引、文件爆炸控制、行动分流和 retrospective-system sensor 口径，不复制对方项目事实、历史复盘正文、ledger 条目、log、运行 ID、用户偏好或一次性 handoff。
+- **关键动作**：
+  1. 将 [[projects/retrospectives/README]] 收敛为 archive root 入口，明确根目录只保留 README、`indexes/` 和年份目录；正文进入 `projects/retrospectives/<year>/`。
+  2. 新增 [[projects/retrospectives/2026/README]]、[[projects/retrospectives/indexes/by-year]]、[[projects/retrospectives/indexes/by-theme]] 和 [[projects/retrospectives/indexes/by-type]]，建立年度物理分区和多维索引。
+  3. 新增 [[projects/design/topics/retrospective-archive-storage-structure]]，记录 wiki 自己的存放结构裁决、文件爆炸控制和验收口径。
+  4. 更新 [[skills/retrospective-capability/SKILL]]、[[templates/project-retrospective-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、`.codex/AGENTS.md`、[[README]]、[[INDEX]]、[[projects/README]]、[[projects/STRUCTURE]]、[[templates/README]] 和相关入口，明确显式复盘默认标准复盘并落档、显式深度复盘产物即档案、复盘不替代 Issue / 事故 / 测试报告 / handoff / ledger / log。
+  5. 扩展 `scripts/check_retrospective_system.py`，检查 archive root 不平铺正文、年份目录存在、by-year 收录正文、模板字段完整、显式复盘规则、行动分流和单一信息源边界，并继续由 `scripts/check_all.py --only retrospective-system` 调用。
+  6. 更新 [[harness-feedback-ledger]]，把本轮作为可脚本化治理升级 episode 和 active sensor backlog 记录。
+- **迁移情况**：本轮检查到旧 archive root 下没有独立复盘正文，只有 README；因此没有迁移旧正文。新增的是结构入口、索引和 sensor。
+- **检查结果**：`python3 scripts/check_all.py --only retrospective-system`、`python3 scripts/check_all.py --only project-docs,harness-governance,retrospective-system`、`python3 scripts/check_all.py --only skill-maturity` 和完整 `python3 scripts/check_all.py` 均已通过。
+- **二阶反思**：复盘体系的风险不是缺页面，而是正文、索引、行动项和治理反馈互相抢 owner。后续新增复盘时，先按总 skill 固定合同和粒度，再决定是否写正文；正文只进年份目录，行动进入 owner 页面，重复失守才进入 ledger / template / skill / sensor / rule。
+- **影响页面**：[[projects/retrospectives/README]]、[[projects/retrospectives/2026/README]]、[[projects/retrospectives/indexes/by-year]]、[[projects/retrospectives/indexes/by-theme]]、[[projects/retrospectives/indexes/by-type]]、[[projects/design/topics/retrospective-archive-storage-structure]]、[[skills/retrospective-capability/SKILL]]、[[templates/project-retrospective-template]]、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[README]]、[[INDEX]]、[[projects/README]]、[[projects/STRUCTURE]]、[[templates/README]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_retrospective_system.py`。
+
 ### 升级完整复盘能力体系
 
 - **记录人**：Codex

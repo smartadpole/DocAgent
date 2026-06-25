@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-22
+updated: 2026-06-25
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06-25 | 复盘 archive 与 sensor 闭环升级 | 用户要求把 Harness 复盘触发、档案落位、文件爆炸控制、行动分流、自演进和本地 sensor 接成可验证闭环 | 规则升级 | 可优化成本 | 建立 `projects/retrospectives/<year>/` 与 `indexes/` 结构，更新 [[projects/retrospectives/README]]、[[projects/design/topics/retrospective-archive-storage-structure]]、[[skills/retrospective-capability/SKILL]]、[[templates/project-retrospective-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和 `scripts/check_retrospective_system.py` | `python3 scripts/check_all.py --only retrospective-system` | active |
 | 2026-06-22 | Agent Harness L5 验证补强 | 用户指出上一轮仍把真实运行质量、多 agent 运行质量和外部 Git 状态写成未验证边界，要求必须验证到 L5 | 验收关闭 | 必要成本 | 新增 `scripts/check_agent_harness_l5.py` 和 [[projects/development/reports/2026-06-22-agent-harness-l5-validation]]，把 Goal dry-run、Run Capsule dry-run、Subproject Git Preflight live readback、Harness Evolution route 和最终回复证明接到 `check_all`；同步规则升级入口 | `python3 scripts/check_all.py --only agent-harness-l5` | active |
 | 2026-06-22 | 整体 Agent Harness 模块接入 | 用户要求不是只迁移 skills，而是把入口规则、响应模式、运行合同、任务编排、写入边界、沉淀路由、sensor 门禁、复盘自演进和最终交付合同接入目标工程 | 规则升级 | 可优化成本 | 新增 [[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]；升级 Goal / Run / Loop 模板、Loop skill、入口规则和 `check_harness_governance.py` / `check_loop_engineering.py` | `python3 scripts/check_all.py --only harness-governance,loop-engineering` | active |
 | 2026-05-28 | wiki 独立治理 sensor 拆分 | 跨 `wiki`、`DocCustomeranalysis`、`DocFilmCommunity` 对比后发现 wiki 作为模板级 Harness 已有规则页，但 H5 ledger、指令遵循和入口结构检查仍集中在 `check_harness_governance.py`，缺少可单独运行的工作阶段 sensor | 规则升级 | 可优化成本 | 新增 `scripts/check_harness_feedback_ledger.py`、`scripts/check_instruction_adherence.py`、`scripts/check_project_docs.py`，接入 `scripts/check_all.py --list` 和 `.codex/AGENTS.md` 工作阶段检查；同步 [[instruction-adherence]]、[[harness-evolution]] 和本 ledger | `python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence,project-docs` | active |
@@ -37,6 +38,7 @@ tags: [agent, harness, feedback, episode]
 
 | 候选项 | 触发来源 | 拟补 sensor / 模板 | 当前状态 |
 | --- | --- | --- | --- |
+| 复盘 archive 结构检查 | 复盘 archive 与 sensor 闭环升级 | `scripts/check_retrospective_system.py` 检查 archive root 不平铺正文、年份目录、by-year 收录、模板字段、显式复盘规则和行动分流 | active |
 | H5 ledger 独立 sensor | wiki 独立治理 sensor 拆分 | `scripts/check_harness_feedback_ledger.py` 检查四张表、状态词表、active episode、sensor backlog 和 promotion 来源回链 | active |
 | 指令遵循独立 sensor | wiki 独立治理 sensor 拆分 | `scripts/check_instruction_adherence.py` 检查 [[instruction-adherence]]、ledger、`.codex/AGENTS.md` 和 `scripts/check_all.py` 的执行覆盖接线 | active |
 | Markdown / wikilink / frontmatter 检查 | 多入口文档库容易出现链接和元数据漂移 | `scripts/check_project_docs.py` 检查入口页、治理 frontmatter 和本地 wikilink | active |

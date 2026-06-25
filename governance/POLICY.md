@@ -100,7 +100,7 @@ tags: [policy]
 - agent 可以自动写入：`inbox/`、临时草稿、已确认结构下的普通项目页、已确认模板的 frontmatter
 - agent 可以自动写入 [[log]]，但只记录按对话整理后的主题、用户意图、关键动作、结构变化和结论，不机械转录每个提问
 - agent 可以自动写入 [[projects/trace]]，前提是这轮已经形成明确的项目推进内容，而且该变化会影响当前需求主题的实现口径；写入时要和相关 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]] 同轮联动，不把它写成第二份 [[log]]，也不记录原始来源材料清单、出处或格式转换过程
-- agent 可以自动写入 [[projects/retrospectives/README]] 和具体复盘档案，前提是本轮已经形成阶段、专题、交付链、Issue / 事故后或 Agent 协作的长期学习价值。显式“复盘 / 写复盘 / 沉淀复盘”默认标准复盘并落档；显式“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出和上层抽象。复盘不能替代 [[log]]、Issue、事故、测试报告、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面。
+- agent 可以自动写入 [[projects/retrospectives/README]] 和 `projects/retrospectives/<year>/` 下的具体复盘档案，前提是本轮已经形成阶段、专题、交付链、Issue / 事故后或 Agent 协作的长期学习价值。显式“复盘 / 写复盘 / 沉淀复盘 / 总结教训”默认标准复盘并落档；显式“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出、产物即档案和上层抽象。标准 / 深度复盘正文不得平铺在 archive root，必须同步 [[projects/retrospectives/indexes/by-year]]，稳定主题或类型再同步主题 / 类型索引。复盘不能替代 [[log]]、Issue、事故、测试报告、handoff、ledger、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面，不能留在复盘目录形成平行看板。
 - agent 必须把有项目价值的新信息同轮沉淀到正确位置：需求变化、事实纠偏、架构判断、决策倾向、待讨论问题、实现计划、风险、环境约束和用户明确偏好，不得只留在最终回复里。
 - agent 必须显性化新发现的阻塞、问题和待拍板事项：只要影响当前阶段、Gate 准入、下一步、风险归口或会议议题，就同轮更新 [[projects/status]]、[[projects/development/risks/README]]、[[projects/meetings/README]]、[[projects/development/execution/todo]] 或 [[projects/decisions]]；需要用户或 owner 决议的事项只能标为待定 / 会议议题。
 - 对外 API、调度入口、服务间回调、webhook、跨工程数据合同和数据库写入接口属于稳定合同；新增或变更时必须进入正式中文文档，不能只留在 handoff、测试报告或最终回复中。
@@ -154,7 +154,7 @@ tags: [policy]
 - 文档库本体的框架级说明和层级边界，默认写根 [[README]]；如果需要补背景，写 [[BRAIN]]；如果需要写规则，写 [[POLICY]]
 - 下游项目反哺模板时，先进入 [[template-feedback-rules]] 的判断流程；可复用的结构写入口和结构页，可复用的执行顺序写 [[WORKFLOW]]，硬约束写 [[AGENTS]]，规则边界和记忆路由写 [[POLICY]]，共享背景写 [[BRAIN]]，可复制写法和模板骨架写 `templates/`
 - Harness 自演进先进入 [[harness-evolution]] 和 [[harness-feedback-ledger]]；只有重复出现、影响面大或已经能由 sensor / 模板稳定表达的 episode，才继续晋升到 [[WORKFLOW]]、[[AGENTS]]、[[POLICY]]、技能或脚本。
-- 复盘先按 [[skills/retrospective-capability/SKILL]] 固定统一合同和子项路由；项目交付 / 软件研发链进入 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流进入 [[skills/historical-dialogue-retrospective/SKILL]]。复盘结论按影响分流：单次表现写复盘或 [[log]] 继续观察；重复失守进 [[harness-feedback-ledger]]；可模板化进 `templates/`；可技能化进 `skills/`；可脚本化进 sensor；影响执行顺序进 [[WORKFLOW]]；影响必须 / 禁止行为进 [[AGENTS]]；影响优先级或自动沉淀边界才进 [[POLICY]]。
+- 复盘先按 [[skills/retrospective-capability/SKILL]] 固定统一合同和子项路由；项目交付 / 软件研发链进入 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流进入 [[skills/historical-dialogue-retrospective/SKILL]]。复盘正文进入 `projects/retrospectives/<year>/` 并同步 [[projects/retrospectives/indexes/by-year]]，根目录不得平铺正文。复盘结论按影响分流：单次表现写复盘或 [[log]] 继续观察；重复失守进 [[harness-feedback-ledger]]；可模板化进 `templates/`；可技能化进 `skills/`；可脚本化进 sensor；影响执行顺序进 [[WORKFLOW]]；影响必须 / 禁止行为进 [[AGENTS]]；影响优先级或自动沉淀边界才进 [[POLICY]]。
 - 可复用的 agent 技能写 [[skills/README]] 和对应 `skills/<name>/SKILL.md`；如果技能页成为高频文件类型，再补 [[templates/skill-template]]。
 - 如果反哺候选和既有规则冲突，或者会覆盖旧规则、扩大自动写入边界、改变优先级顺序，先按冲突处理流程升级，不直接写入模板默认规则
 - 除非明确是当前项目的结论，否则不要把这类内容写进 `projects/`、`projects/memory/` 或 `projects/design/memory/`

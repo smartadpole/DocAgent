@@ -19,7 +19,7 @@ tags: [concept, retrospective, ai-agent, harness, workflow]
 
 Agent 工作复盘关注 agent 作为执行主体时，它的工作方式、效率、质量、边界感和自我改进是否可靠。它不是对项目结果的替代复盘，而是对“这个 agent 是怎样完成工作的”做结构化回看。
 
-具体复盘档案默认放在 [[projects/retrospectives/README]] 所在目录；结构性 Harness episode 仍进入 [[harness-feedback-ledger]]。
+具体复盘档案默认放在 `projects/retrospectives/<year>/`，并从 [[projects/retrospectives/README]] 和索引页可达；结构性 Harness episode 仍进入 [[harness-feedback-ledger]]。
 
 ## 定义
 

@@ -866,10 +866,11 @@
 复盘启动前先判断对象和粒度：
 
 - 先用 [[skills/retrospective-capability/SKILL]] 固定复盘对象、复盘目标、深度等级、证据计划、上轮行动兑现回检、输出形态和不做项。
-- 用户显式要求“复盘 / 写复盘 / 沉淀复盘”时，默认标准复盘并落档；显式要求“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”时，进入深度复盘。
+- 用户显式要求“复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认标准复盘并落档到 `projects/retrospectives/<year>/`；显式要求“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”时，进入深度复盘，产物即档案。
 - 轻量 checkpoint：只写 [[log]]、工作记录或 owning page。
-- 标准复盘：阶段、专题、交付链、明显返工、验收偏差、Issue / 事故后机制缺口进入 [[projects/retrospectives/README]]。
-- 深度复盘：跨阶段、重大事故、重复失守或会改变模板 / skill / sensor / 规则的经验进入复盘档案，并同步相关治理页。
+- 标准复盘：阶段、专题、交付链、明显返工、验收偏差、Issue / 事故后机制缺口进入 `projects/retrospectives/<year>/`，并同步 [[projects/retrospectives/indexes/by-year]]。
+- 深度复盘：跨阶段、重大事故、重复失守或会改变模板 / skill / sensor / 规则的经验进入年份复盘档案，并同步相关治理页、年度索引和必要的主题 / 类型索引。
+- Archive root [[projects/retrospectives/README]] 只保留系统运行闭环、落位规则、文件爆炸控制、索引入口、行动分流和维护说明；不得把复盘正文平铺在 archive root。
 
 复盘和其他页面的分工固定如下：
 
@@ -877,6 +878,8 @@
 - Issue 保存已发生 bug、偏差和验收失败的原始现象、根因边界、关闭标准和最新有效报告。
 - 事故保存事故事实、影响、修复、恢复、回滚和状态。
 - 测试报告保存每轮验证证据，不解释长期机制。
+- handoff 保存执行交接和临时证据，不替代复盘正文或行动 owner。
+- [[harness-feedback-ledger]] 保存重复失守和机制缺口 episode，不替代标准 / 深度复盘档案。
 - [[projects/decisions]] 保存关键取舍和最终拍板。
 - [[projects/memory/README]] 保存项目长期稳定事实。
 - [[projects/trace]] 保存需求从原始意图到当前实现口径的演进链。

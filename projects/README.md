@@ -109,7 +109,7 @@ tags: [project]
 - [[projects/development/feature-points/README]]：功能点实体目录。这里放工程师视角的单功能点执行页和状态索引。
 - [[projects/development/execution/worklog]]：开发过程记录。这里放时间顺序的实现、验证和排障流水。
 - [[projects/meetings/README]]：会议主入口。这里放会前材料、纪要、行动项和会后分流规则。
-- [[projects/retrospectives/README]]：复盘档案入口。这里放阶段、专题、交付链、Issue / 事故后和 Agent 协作复盘索引、共性主题和沉淀路由；执行总入口看 [[skills/retrospective-capability/SKILL]]。
+- [[projects/retrospectives/README]]：复盘 archive root。这里放系统运行闭环、正文落位、索引入口、文件爆炸控制、共性主题和沉淀路由；复盘正文进入 `projects/retrospectives/<year>/`，执行总入口看 [[skills/retrospective-capability/SKILL]]。
 - [[projects/releases]]：发布主文件。这里放上线范围、验证和回滚。
 - [[projects/incidents/README]]：事故总览。这里放事故状态、索引和共性改进项。
 - [[projects/memory/README]]：项目级稳定记忆入口。这里放项目长期背景和路由。

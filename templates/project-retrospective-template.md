@@ -3,6 +3,10 @@ type: retrospective
 project: <project-id>
 status: draft
 updated: YYYY-MM-DD
+archive_year: YYYY
+retrospective_type: stage | topic | delivery-chain | issue | incident | agent-work | harness | governance
+themes: []
+index_status: draft | indexed
 tags: [retrospective]
 ---
 
@@ -11,6 +15,8 @@ tags: [retrospective]
 上游：
 
 关联对象：
+
+索引入口：[[projects/retrospectives/indexes/by-year]]、[[projects/retrospectives/indexes/by-theme]]、[[projects/retrospectives/indexes/by-type]]
 
 沉淀路由：
 

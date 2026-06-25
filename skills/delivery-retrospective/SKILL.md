@@ -35,7 +35,7 @@ sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 
 ## 响应模式
 
-- 显式交付复盘请求：默认标准复盘并落档。
+- 显式交付复盘请求：默认标准复盘并落档到 `projects/retrospectives/<year>/`，并同步 [[projects/retrospectives/indexes/by-year]]。
 - 重大事故、重复验收失败、跨阶段交付偏差或会改变模板 / sensor / 规则的经验：深度复盘。
 - 只是问单点原因：先快速诊断或 Issue 分析，不直接扩成全项目复盘。
 - 涉及关闭事项、发布准出或验收裁决：切到验收关闭，本技能只提供学习和改进路由。
@@ -64,6 +64,7 @@ sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 5. 区分事实主档案和学习档案：Issue、事故和 report 保留事实；复盘解释机制和下轮改进。
 6. 写保留做法、改进行动、沉淀路由和未验证边界。
 7. 把行动分流到已有 owner 页面，并按 [[harness-evolution]] 判断是否进入 ledger、模板、skill、sensor 或规则。
+8. 如果形成标准 / 深度复盘正文，同步 [[projects/retrospectives/indexes/by-year]]，必要时同步 [[projects/retrospectives/indexes/by-theme]] 或 [[projects/retrospectives/indexes/by-type]]。
 
 ## 交付链回看
 
@@ -93,3 +94,4 @@ sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
 - 不把一次事故直接泛化成全项目结论。
 - 不把项目事实原样搬进通用模板、skill 或治理规则。
 - 不让行动项停留在复盘正文里，也不新建平行看板。
+- 不把交付复盘正文平铺到 `projects/retrospectives/` 根目录；正文进入年份目录，索引页承接阅读路径。

@@ -109,7 +109,13 @@ projects/
     worklog.md
   retrospectives/
     README.md
-    YYYY-MM-DD-topic.md
+    indexes/
+      by-year.md
+      by-theme.md
+      by-type.md
+    2026/
+      README.md
+      YYYY-MM-DD-topic.md
   releases.md
   incidents/
     README.md
@@ -374,10 +380,10 @@ projects/
 ### 3.9 复盘层
 
 - `projects/retrospectives/README.md`
-  这是复盘档案入口
-  适合放阶段、专题、交付链、Issue 后、事故后和 Agent 协作复盘索引、共性主题和沉淀路由
-- 每一个具体复盘单独成文，放在 `projects/retrospectives/` 目录下
-- 复盘层不替代 [[log]]、Issue、事故、测试报告、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面
+  这是复盘 archive root
+  适合放系统运行闭环、文件落位、索引入口、文件爆炸控制、共性主题和沉淀路由
+- 每一个具体复盘单独成文，放在 `projects/retrospectives/<year>/` 目录下；archive root 只保留 README、`indexes/` 和年份目录
+- 复盘层不替代 [[log]]、Issue、事故、测试报告、handoff、ledger、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面
 - 复盘方法看 [[concepts/project-retrospective]]，执行总入口看 [[skills/retrospective-capability/SKILL]]，软件研发维度看 [[concepts/software-development-project-retrospective]] 和 [[skills/delivery-retrospective/SKILL]]，Agent 工作复盘看 [[concepts/agent-work-retrospective]] 和 [[skills/historical-dialogue-retrospective/SKILL]]
 
 ### 3.10 项目记忆层

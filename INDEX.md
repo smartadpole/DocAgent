@@ -61,7 +61,8 @@ tags: [index, root]
 - [[projects/trace]]：需求演进链入口
 - [[projects/service-registry]]：服务实例台账入口
 - [[projects/meetings/README]]：项目正式会议入口
-- [[projects/retrospectives/README]]：复盘档案入口，承接阶段、专题、交付链、Issue / 事故后和 Agent 协作复盘
+- [[projects/retrospectives/README]]：复盘 archive root，承接触发、落位、文件爆炸控制、行动分流和索引入口
+- [[projects/retrospectives/indexes/by-year]]、[[projects/retrospectives/indexes/by-theme]]、[[projects/retrospectives/indexes/by-type]]：复盘年度、主题和类型索引
 - [[trace-writing-rules]]：`[[projects/trace]]` 的记录规则入口
 - [[template-feedback-rules]]：下游项目系统层信息反哺入口
 

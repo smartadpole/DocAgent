@@ -4,7 +4,7 @@ id: DES-TOPICS-001
 project: wiki
 status: optional
 stage: design
-updated: 2026-04-25
+updated: 2026-06-25
 tags: [design, topics]
 ---
 
@@ -41,7 +41,7 @@ tags: [design, topics]
 
 ### 后续储备
 
-- 暂无
+- [[projects/design/topics/retrospective-archive-storage-structure]]：复盘 archive root、年份目录、多维索引和文件爆炸控制的结构裁决。
 
 ## 使用约束
 

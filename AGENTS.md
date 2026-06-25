@@ -31,7 +31,7 @@
 - `projects/design/`：正式设计层。`README.md` 做总入口；`tech-selection.md`、`architecture.md`、`backend-frontend-structure.md`、`permission-boundary.md`、`write-boundary.md`、`database.md`、`deployment.md`、`runtime-quality.md` 共同组成完整软件架构包；`topics/` 承接重要设计专题和专项储备。
 - `projects/design/diagrams/`：设计图资产层。承接正式架构图、服务拓扑图、业务到实现总览图和设计推演图；Excalidraw 是当前主力源文件格式，Diagrams.Net 只用于架构稳定后的正式交付版，Markdown 正文默认嵌入 SVG / PNG 作为可读预览，并在同段落回链 Excalidraw 源文件用于编辑。
 - `projects/meetings/`：会议层。正式会议材料、纪要、行动项和会后分流放这里，`worklog.md` 记录时间线。
-- `projects/retrospectives/`：复盘档案层。承接阶段、专题、交付链、事故后、Issue 后和 Agent 协作复盘；复盘行动项必须分流到已有 Issue / 事故、事项、会议、决策、项目记忆、trace、模板、skill、sensor 或治理页，不在这里形成平行看板。
+- `projects/retrospectives/`：复盘 archive root。根目录只保留 `README.md`、`indexes/` 和年份目录；阶段、专题、交付链、事故后、Issue 后和 Agent 协作复盘正文进入 `projects/retrospectives/<year>/`。复盘行动项必须分流到已有 Issue / 事故、事项、会议、决策、项目记忆、trace、模板、skill、sensor 或治理页，不在这里形成平行看板。
 - `projects/design/topics/`：设计专题层。承接未拍板但需要持续推进的设计问题，以及当前不进入完整架构包、但要长期保留的专项设计储备；会议页只引用，不重复维护主正文。
 - `projects/development/plan/`：研发总控层。承接当前阶段、阶段门摘要、执行入口、事项关系模型和支撑文件分组。
 - `projects/development/execution/`：执行控制层。承接 EP 执行包、TASK、待办、编码交接、工程反馈闭环和开发过程记录。
@@ -94,9 +94,9 @@
 - TASK 是父 EP 下的状态化交付合同；没有父 EP 的任务只能作为待关系校准候选，不能直接派发为正式编码任务。
 - risk 是事前风险或待确认项；已发生 bug、偏差、验收失败或用户可见问题必须进入 [[projects/development/issues/README]]，并保留原始现象，不让日志、API 错误或推测根因改写问题陈述。
 - 测试报告是验证证据，不是案件单一信息源。已发生问题的主档案在 Issue；报告必须回链 Issue / EP / TASK / FP / Gate，并写明本次证据能关闭哪一层、不能上推到哪一层。
-- 复盘是长期学习工程，不替代 [[log]]、Issue、事故、报告、决策、memory 或 trace。测试报告通过、Issue 关闭或事故修复都不能自动等价为复盘完成；只有当目标、事实、偏差、原因、保留做法、改进行动和沉淀路由形成可复用学习资产时，才进入 [[projects/retrospectives/README]]。
+- 复盘是长期学习工程，不替代 [[log]]、Issue、事故、报告、handoff、ledger、决策、memory 或 trace。测试报告通过、Issue 关闭或事故修复都不能自动等价为复盘完成；只有当目标、事实、偏差、原因、保留做法、改进行动和沉淀路由形成可复用学习资产时，才进入 [[projects/retrospectives/README]]。
 - 复盘体系统一入口是 [[skills/retrospective-capability/SKILL]]；项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。不要把这些子项平铺成互相竞争的入口。
-- 用户显式要求“复盘 / 写复盘 / 沉淀复盘”时，默认标准复盘并落档；显式要求“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”时，进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出和上层抽象。自动触发的 `no-op / 轻量 checkpoint` 不能降级显式复盘请求。
+- 用户显式要求“复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认标准复盘并落档到 `projects/retrospectives/<year>/`；显式要求“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”时，进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出、产物即档案和上层抽象。自动触发的 `no-op / 轻量 checkpoint` 不能降级显式复盘请求。标准 / 深度复盘必须同步 [[projects/retrospectives/indexes/by-year]]，稳定主题或类型再同步主题 / 类型索引。
 - 代码工程或外部工程里的 agent 处理本库 TASK / EP / FP / Gate 时，默认把本库作为只读上下文源；TODO 只作轻量兼容视图。除非任务明确授权“受控回写”，否则不得直接改本库文档、改 TASK / EP 状态、关闭 Gate 或提交文档仓库。
 - 本库侧 agent 默认不直接修改代码工程或子工程文件、handoff 或代码；除非用户明确授权修改该子工程，否则只在本库测试报告、TASK、父 EP、风险和最终回复中写清需要子工程吸收的证据与建议。
 - 源码工程解读必须先使用 [[projects/codebase/source-code-audit-workflow]]，明确本次目标等级、实际达到等级、证据覆盖矩阵和未读 / 阻塞清单；没有完成 L3 自审时，不得暗示已经完成完整源码审计或已经可以做生产接入结论。
@@ -229,7 +229,7 @@
 - `projects/trace.md` 上连项目主页、需求页和设计页，横向连接决策与开发，负责把原始意图、约束变化、修补性需求和最终范围串成一条可回看主链；原始来源材料的出处和整理过程不放进去。
 - `projects/codebase/README.md` 上连项目主页、需求页、设计页和决策页，横向连接页面图、schema 图、基础设施、冲突和复用边界；它只记录现实实现事实和复用判断，不反向覆盖主需求或主设计。
 - `projects/meetings/README.md` 上连项目主页、需求页、设计页、设计专题页、决策页和开发页，横向连接正式会议记录、行动项和会后分流。
-- `projects/retrospectives/README.md` 上连项目主页、trace、决策、开发、Issue、事故、log 和复盘概念页；它承接具体复盘档案、跨复盘共性主题和沉淀路由，不替代事实主档案、决策页或行动项 owner 页面。
+- `projects/retrospectives/README.md` 上连项目主页、trace、决策、开发、Issue、事故、log 和复盘概念页；它承接 archive root 规则、索引入口、跨复盘共性主题和沉淀路由，不承接正文平铺，不替代事实主档案、决策页或行动项 owner 页面。
 - 设计页上连项目主页和需求页，横向连接决策页，必要时连到相关 `concepts/`；如果设计层拆出技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署、运行质量等子页，它们仍然属于同一个设计层。
 - 决策页要能回溯到需求、设计和当时约束，必要时连到开发页、发布页、记忆页或事故目录。
 - 记忆页连接项目主页、决策、设计和运行记录，是稳定背景，不是过程日志。
@@ -246,7 +246,7 @@
 - 全新应用探索的早期链路是：`inbox/` / `raw/` -> `articles/` / `concepts/` -> [[projects/requirements]] -> [[projects/trace]] -> [[projects/design/topics/README]] -> [[projects/decisions]] -> [[projects/design/README]] -> [[projects/development/README]]；进入 `projects/` 前，先确认它已经不是多个候选方向之一，而是当前要推进的应用。
 - 当信息开始参与当前项目判断和推进时，进入 `projects/`。
 - 当正式会议材料、会议纪要和行动项开始参与当前项目判断和推进时，优先进入 `projects/meetings/`。
-- 当阶段、专题、事故、Issue、交付链或 Agent 协作暴露长期学习价值时，具体复盘档案进入 `projects/retrospectives/`；抽象后的方法再回写 `concepts/`、`templates/`、`skills/` 或治理层。
+- 当阶段、专题、事故、Issue、交付链或 Agent 协作暴露长期学习价值时，具体复盘档案进入 `projects/retrospectives/<year>/` 并同步索引；抽象后的方法再回写 `concepts/`、`templates/`、`skills/` 或治理层。
 - 当项目里的某些结论已经脱离当前阶段、可以跨阶段或跨问题复用时，提升到 `articles/` 或 `concepts/`。
 - 当某类 agent 分析动作在当前项目中反复出现，且需要项目语境、证据链、分工和验证格式保持稳定时，可以沉淀到 `skills/`。
 - 当一个主题需要长期导航、分类和检索时，再由 `indexes/` 收口。

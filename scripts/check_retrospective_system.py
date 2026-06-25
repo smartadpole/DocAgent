@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import sys
+import re
 from pathlib import Path
 
 
@@ -12,6 +13,11 @@ REQUIRED_FILES = (
     "concepts/software-development-project-retrospective.md",
     "concepts/agent-work-retrospective.md",
     "projects/retrospectives/README.md",
+    "projects/retrospectives/2026/README.md",
+    "projects/retrospectives/indexes/by-year.md",
+    "projects/retrospectives/indexes/by-theme.md",
+    "projects/retrospectives/indexes/by-type.md",
+    "projects/design/topics/retrospective-archive-storage-structure.md",
     "templates/project-retrospective-template.md",
     "skills/retrospective-capability/SKILL.md",
     "skills/retrospective-capability/TRANSFER.md",
@@ -23,6 +29,7 @@ REQUIRED_FILES = (
 ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
     "README.md": (
         "projects/retrospectives/README",
+        "projects/retrospectives/indexes/by-year",
         "concepts/project-retrospective",
         "templates/project-retrospective-template",
         "skills/retrospective-capability/SKILL",
@@ -31,6 +38,7 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
     ),
     "INDEX.md": (
         "projects/retrospectives/README",
+        "projects/retrospectives/indexes/by-year",
         "concepts/project-retrospective",
         "templates/project-retrospective-template",
         "skills/retrospective-capability/SKILL",
@@ -71,6 +79,7 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
     ),
     "governance/response-mode-routing.md": (
         "projects/retrospectives/",
+        "projects/retrospectives/<year>/",
         "skills/retrospective-capability/SKILL",
         "skills/delivery-retrospective/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
@@ -78,6 +87,7 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
     "projects/README.md": ("projects/retrospectives/README",),
     "projects/STRUCTURE.md": (
         "projects/retrospectives/README",
+        "projects/retrospectives/<year>/",
         "concepts/project-retrospective",
     ),
     "projects/incidents/README.md": ("projects/retrospectives/README",),
@@ -101,7 +111,8 @@ RETROSPECTIVE_INDEX_REQUIRED_TERMS = (
     "这页不负责什么",
     "文件落位",
     "复盘粒度",
-    "当前复盘索引",
+    "索引入口",
+    "文件爆炸控制",
     "共性主题",
     "行动项分流",
     "沉淀路由",
@@ -111,7 +122,10 @@ RETROSPECTIVE_INDEX_REQUIRED_TERMS = (
     "自动触发关系",
     "上轮行动兑现回检",
     "no-op / 轻量复盘 checkpoint 只适用于自动触发判断",
-    "projects/retrospectives/",
+    "projects/retrospectives/<year>/",
+    "projects/retrospectives/indexes/by-year",
+    "projects/retrospectives/indexes/by-theme",
+    "projects/retrospectives/indexes/by-type",
     "templates/project-retrospective-template",
     "skills/retrospective-capability/SKILL",
     "skills/delivery-retrospective/SKILL",
@@ -182,6 +196,11 @@ TEMPLATE_REQUIRED_SECTIONS = (
 
 TEMPLATE_REQUIRED_TERMS = (
     "project: <project-id>",
+    "archive_year: YYYY",
+    "retrospective_type:",
+    "themes: []",
+    "index_status:",
+    "索引入口",
     "证据地图",
     "原始 session / rollout",
     "git diff / commit",
@@ -198,10 +217,15 @@ RETROSPECTIVE_CAPABILITY_REQUIRED_TERMS = (
     "上轮行动兑现回检",
     "no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘",
     "显式复盘请求",
+    "总结教训",
     "深度复盘",
     "首轮目标",
     "用户纠偏序列",
+    "产物即档案",
     "行动分流",
+    "projects/retrospectives/<year>/",
+    "projects/retrospectives/indexes/by-year",
+    "文件爆炸控制",
     "不把测试报告当复盘",
 )
 
@@ -239,8 +263,37 @@ SKILL_REQUIRED_TERMS = (
     "首轮目标",
     "用户纠偏序列",
     "上层抽象与举一反三",
+    "projects/retrospectives/<year>",
     "不因一次偏差直接新增硬规则",
 )
+
+INDEX_REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
+    "projects/retrospectives/indexes/by-year.md": (
+        "复盘年度索引",
+        "projects/retrospectives/2026/README",
+        "完整时间索引",
+    ),
+    "projects/retrospectives/indexes/by-theme.md": (
+        "复盘主题索引",
+        "主题索引不改变文件物理位置",
+    ),
+    "projects/retrospectives/indexes/by-type.md": (
+        "复盘类型索引",
+        "类型索引不改变文件物理位置",
+    ),
+}
+
+RETROSPECTIVE_INDEX_FILES = (
+    "projects/retrospectives/indexes/by-year.md",
+    "projects/retrospectives/indexes/by-theme.md",
+    "projects/retrospectives/indexes/by-type.md",
+)
+
+ARCHIVE_ROOT_ALLOWED_FILES = {"README.md"}
+ARCHIVE_ROOT_ALLOWED_DIRS = {"indexes"}
+YEAR_DIR_RE = re.compile(r"^\d{4}$")
+RETROSPECTIVE_BODY_RE = re.compile(r"^\d{4}-\d{2}-\d{2}-.+\.md$")
+
 
 def read_text(repo: Path, rel: str, errors: list[str]) -> str:
     path = repo / rel
@@ -262,6 +315,67 @@ def require_terms(rel: str, text: str, terms: tuple[str, ...], errors: list[str]
 def check_required_files(repo: Path, errors: list[str]) -> None:
     for rel in REQUIRED_FILES:
         read_text(repo, rel, errors)
+
+
+def check_archive_structure(repo: Path, errors: list[str]) -> None:
+    archive_root = repo / "projects/retrospectives"
+    if not archive_root.exists():
+        errors.append("projects/retrospectives: archive root is missing")
+        return
+
+    year_dirs: list[Path] = []
+    for child in archive_root.iterdir():
+        if child.is_file():
+            if child.name not in ARCHIVE_ROOT_ALLOWED_FILES:
+                errors.append(
+                    f"projects/retrospectives/{child.name}: archive root must not contain retrospective body files"
+                )
+            continue
+        if child.name in ARCHIVE_ROOT_ALLOWED_DIRS:
+            continue
+        if child.is_dir() and YEAR_DIR_RE.match(child.name):
+            year_dirs.append(child)
+            continue
+        errors.append(
+            f"projects/retrospectives/{child.name}: archive root only allows README.md, indexes/, and year directories"
+        )
+
+    if not year_dirs:
+        errors.append("projects/retrospectives: at least one year directory is required")
+
+    indexes = archive_root / "indexes"
+    if not indexes.is_dir():
+        errors.append("projects/retrospectives/indexes: indexes directory is missing")
+
+    for rel in RETROSPECTIVE_INDEX_FILES:
+        read_text(repo, rel, errors)
+    for rel, terms in INDEX_REQUIRED_TERMS.items():
+        require_terms(rel, read_text(repo, rel, errors), terms, errors)
+
+    root_text = read_text(repo, "projects/retrospectives/README.md", errors)
+    for rel in (
+        "projects/retrospectives/indexes/by-year",
+        "projects/retrospectives/indexes/by-theme",
+        "projects/retrospectives/indexes/by-type",
+        "projects/retrospectives/2026",
+    ):
+        if rel not in root_text:
+            errors.append(f"projects/retrospectives/README.md: missing archive link {rel}")
+
+    by_year = read_text(repo, "projects/retrospectives/indexes/by-year.md", errors)
+    for year_dir in sorted(year_dirs):
+        if year_dir.name not in by_year:
+            errors.append(f"projects/retrospectives/indexes/by-year.md: missing year {year_dir.name}")
+        if not (year_dir / "README.md").exists():
+            errors.append(f"projects/retrospectives/{year_dir.name}: year directory must have README.md")
+        for body in sorted(year_dir.glob("*.md")):
+            if body.name == "README.md":
+                continue
+            rel = body.relative_to(repo).with_suffix("").as_posix()
+            if not RETROSPECTIVE_BODY_RE.match(body.name):
+                errors.append(f"{body.relative_to(repo)}: retrospective body filename must be YYYY-MM-DD-topic.md")
+            if rel not in by_year:
+                errors.append(f"projects/retrospectives/indexes/by-year.md: missing body {rel}")
 
 
 def check_retrospective_content(repo: Path, errors: list[str]) -> None:
@@ -358,6 +472,7 @@ def main() -> int:
     errors: list[str] = []
 
     check_required_files(repo, errors)
+    check_archive_structure(repo, errors)
     check_retrospective_content(repo, errors)
     check_entrypoint_wiring(repo, errors)
     check_no_parallel_action_board(repo, errors)

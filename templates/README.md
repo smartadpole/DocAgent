@@ -22,7 +22,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新阶段门可以参考 [[templates/development-gate-template]]
 - 新复杂验收计划可以参考 [[templates/development-acceptance-plan-template]]
 - 新测试或准出报告可以参考 [[templates/development-test-report-template]]
-- 新项目、阶段、交付链、Issue / 事故后或 Agent 工作复盘可以参考 [[templates/project-retrospective-template]]；复盘合同先看 [[skills/retrospective-capability/SKILL]]，软件研发交付链看 [[skills/delivery-retrospective/SKILL]]，Agent 工作回看按对象启用
+- 新项目、阶段、交付链、Issue / 事故后或 Agent 工作复盘可以参考 [[templates/project-retrospective-template]]；复盘合同先看 [[skills/retrospective-capability/SKILL]]，正文进入 `projects/retrospectives/<year>/` 并同步索引，软件研发交付链看 [[skills/delivery-retrospective/SKILL]]，Agent 工作回看按对象启用
 - 新研发风险登记可以参考 [[templates/development-risk-template]]
 - 新开发过程记录可以参考 [[templates/development-worklog-entry-template]]
 - 新编码任务执行单可以参考 [[templates/developer-task-brief-template]]

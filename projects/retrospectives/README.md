@@ -4,7 +4,7 @@ id: PROJ-RETROSPECTIVE-INDEX-001
 project: PROJ-WIKI-001
 status: active
 source_of_truth: true
-updated: 2026-06-03
+updated: 2026-06-25
 tags: [project, retrospective, learning-loop]
 ---
 
@@ -20,7 +20,9 @@ tags: [project, retrospective, learning-loop]
 
 执行子项：[[skills/delivery-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]]
 
-这页是当前项目的复盘档案入口。它负责把阶段、专题、事故后、Issue 后、交付链偏差和 Agent 协作偏差沉淀成可回看的学习资产，并把复盘结论分流到已有单一信息源。
+存放结构：[[projects/design/topics/retrospective-archive-storage-structure]]
+
+这页是当前项目的复盘 archive root。它负责说明复盘触发、正文落位、索引维护、文件爆炸控制、行动分流和 Harness 自演进关系；复盘正文只进入年份目录，不在 archive root 平铺。
 
 复盘不是普通总结，也不是 [[log]] 的加厚版。复盘要把原始目标、实际结果、关键事实、偏差原因、保留做法、改进行动和沉淀路由串起来，让下一轮需求判断、方案设计、研发实践、工程治理、测试验收、运行质量和 Agent 工作方式都能复用这次经验。
 
@@ -29,7 +31,7 @@ tags: [project, retrospective, learning-loop]
 当前复盘体系按五层运行：
 
 1. **方法入口**：[[concepts/project-retrospective]] 定义复盘是什么、何时启动、和其他页面如何分工；软件研发和 Agent 工作分别看 [[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]。
-2. **档案入口**：本页承接具体复盘文件、命名、索引、共性主题和沉淀路由。
+2. **档案入口**：本页承接 archive root 规则、年份目录、索引入口、共性主题和沉淀路由；具体正文进入 `projects/retrospectives/<year>/`。
 3. **执行骨架**：[[skills/retrospective-capability/SKILL]] 是复盘总技能，承接统一合同、子项路由、证据等级和行动兑现回检；项目交付 / 软件研发链复盘由 [[skills/delivery-retrospective/SKILL]] 执行，历史对话 / Agent 工作流复盘由 [[skills/historical-dialogue-retrospective/SKILL]] 执行。
 4. **行动兑现回检**：标准 / 深度复盘开始前，先回检相关上一篇复盘的 open 改进行动是否兑现、是否 stale、证据在哪里、下一步落到哪个 owner 页。
 5. **行动分流和自演进**：复盘行动项必须进入已有 owner 页面；重复失守、模板缺口、skill 缺口或可脚本化检查再进入 [[harness-feedback-ledger]] 和 [[harness-evolution]]。
@@ -38,7 +40,7 @@ tags: [project, retrospective, learning-loop]
 
 ## 显式复盘请求
 
-用户明确要求“复盘 / 做复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认按标准复盘处理，并默认落文件到本目录。除非用户同时明确说“只口头 / 不写文件 / 先分析 / 只判断原因”，否则不能把显式复盘请求降级成只在回复里解释、只写 [[log]]，或只做轻量 checkpoint。
+用户明确要求“复盘 / 做复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认按标准复盘处理，并默认落文件到 `projects/retrospectives/<year>/`。除非用户同时明确说“只口头 / 不写文件 / 先分析 / 只判断原因”，否则不能把显式复盘请求降级成只在回复里解释、只写 [[log]]，或只做轻量 checkpoint。
 
 用户要求“深度复盘 / 完整复盘 / 全面复盘 / 复盘这段对话 / 分析为什么没自动做好 / 举一反三”时，进入显式深度复盘模式：深读历史、首轮目标和用户纠偏优先、产物即档案、上层抽象和举一反三是必做项。无法读取原始 session / rollout 或 memory 线索时，必须写入未验证边界。
 
@@ -58,8 +60,8 @@ tags: [project, retrospective, learning-loop]
 ## 这页负责什么
 
 - 汇总当前项目内已经形成的复盘档案。
-- 说明复盘文件落位、命名、粒度和最小字段。
-- 维护跨复盘的共性主题、保留做法和改进方向。
+- 说明复盘文件落位、命名、粒度、索引入口和最小字段。
+- 维护跨复盘的共性主题、保留做法、改进方向和文件爆炸控制规则。
 - 把复盘行动分流到 Issue、事故、事项、会议、决策、memory、trace、模板、skill、sensor 或治理页。
 
 ## 这页不负责什么
@@ -69,11 +71,26 @@ tags: [project, retrospective, learning-loop]
 - 不替代 [[projects/incidents/README]]；事故事实、影响、修复和恢复链先在事故主档案保真。
 - 不替代 [[projects/development/reports/README]]；测试报告是验证证据，不是复盘。
 - 不替代 [[projects/decisions]]；复盘可以提出决策候选，最终拍板仍进决策页。
+- 不替代 handoff；handoff 承接执行交接和临时证据，不能作为复盘正文或行动 owner。
 - 不新建平行看板或平行动作看板；复盘行动项必须落到已有 owner 页面和可检查位置。
 
 ## 文件落位
 
-具体复盘文件默认放在本目录。
+Archive root 固定为 `projects/retrospectives/`：
+
+```text
+projects/retrospectives/
+  README.md
+  indexes/
+    by-year.md
+    by-theme.md
+    by-type.md
+  2026/
+    README.md
+    YYYY-MM-DD-topic.md
+```
+
+具体复盘正文默认放入对应年份目录，例如 `projects/retrospectives/2026/`。根目录只保留本入口、`indexes/` 和年份目录；不得把复盘正文平铺在 archive root。
 
 建议命名：
 
@@ -96,12 +113,26 @@ tags: [project, retrospective, learning-loop]
 | 粒度 | 适用场景 | 落位 |
 | --- | --- | --- |
 | 轻量 checkpoint | 单次小纠偏、无长期影响的小结 | [[log]]、相关工作记录或 owning page |
-| 标准复盘 | 阶段、专题、重要交付链、明显返工或验收偏差 | `projects/retrospectives/` |
-| 深度复盘 | 跨阶段、重复失守、重大事故、会改变模板 / skill / 规则 / sensor 的经验 | `projects/retrospectives/`，并同步相关治理或项目主页面 |
+| 标准复盘 | 阶段、专题、重要交付链、明显返工或验收偏差 | `projects/retrospectives/<year>/`，并同步索引 |
+| 深度复盘 | 跨阶段、重复失守、重大事故、会改变模板 / skill / 规则 / sensor 的经验 | `projects/retrospectives/<year>/`，并同步相关治理或项目主页面 |
 
-## 当前复盘索引
+## 索引入口
 
-暂无独立复盘档案。后续新增复盘文件时按时间降序补到这里。
+- [[projects/retrospectives/indexes/by-year]]：完整时间索引，按年份和日期列出复盘正文。
+- [[projects/retrospectives/indexes/by-theme]]：主题索引，按复盘体系、Harness 治理、交付链、Agent 协作等长期主题组织。
+- [[projects/retrospectives/indexes/by-type]]：类型索引，按项目交付、软件研发链、Agent 工作、Harness 自演进、Issue / 事故后专题等对象组织。
+
+Archive root 不维护完整历史长列表。当前没有需要迁移的旧复盘正文；新增标准 / 深度复盘时先进入年份目录，再同步年度索引，必要时同步主题和类型索引。
+
+## 文件爆炸控制
+
+默认落文件不等于“一次信号一个复盘档案”。复盘文件只承接有长期学习价值的标准 / 深度复盘；同类轻量信号先聚合，不为每个纠偏、Issue、agent episode 或检查失败单独新建档案。
+
+- **同源保留**：待复盘信息保留在原 owner 目录，Issue、事故、报告、会议、log、ledger、handoff 和 TASK 不搬进本目录，也不在本目录镜像一套同构子树。
+- **聚合优先**：同一机制缺口下的多条信号优先合成一篇专题复盘；只有目标、证据链或 owner 明显不同，才拆成多篇。
+- **队列轻量化**：待复盘候选先放在 owner 页、[[harness-feedback-ledger]]、[[log]] 或 Closeout Proof 中；没有形成标准 / 深度复盘合同前，不预建空正文。
+- **索引分层**：本页只保留索引入口、当前重点和共性主题；完整清单按年度、主题和类型索引分组，主题 / 类型不做物理目录。
+- **容量回检**：当某个年份目录或索引段落明显膨胀时，先回检同类档案是否应合并、索引是否应拆分，不把正文回退成根目录平铺。
 
 ## 共性主题
 
@@ -159,7 +190,9 @@ tags: [project, retrospective, learning-loop]
 
 ## 维护说明
 
-- 新复盘文件优先复制 [[templates/project-retrospective-template]]。
+- 新复盘文件优先复制 [[templates/project-retrospective-template]]，放入 `projects/retrospectives/<year>/`。
+- 新标准 / 深度复盘必须同步 [[projects/retrospectives/indexes/by-year]]；如果有稳定主题或类型，同步 [[projects/retrospectives/indexes/by-theme]] 或 [[projects/retrospectives/indexes/by-type]]。
+- 新复盘文件不得直接放在 `projects/retrospectives/` 根目录；维护后用 `python3 scripts/check_all.py --only retrospective-system` 检查。
 - 复盘结论如果改变需求主题，同轮更新 [[projects/trace]]。
 - 复盘结论如果改变关键取舍，同轮更新 [[projects/decisions]]。
 - 复盘结论如果是项目级稳定事实，同轮更新 [[projects/memory/README]]。
