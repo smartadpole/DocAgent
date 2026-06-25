@@ -4,7 +4,7 @@ id: VIEWS-CURRENT-README-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-12
+updated: 2026-06-25
 tags: [views, current]
 ---
 
@@ -16,7 +16,6 @@ tags: [views, current]
 
 ## 当前索引
 
-当前暂无持久 current lens。
-
 新增后必须同步 [[views/lens-registry]]。
 - `current/public-html-publish-status.html`: public-html-publish live readback status sample.
+- `current/problem-focused-visual-presentation-system-sample.html`: problem-focused visual presentation system validation sample with same-source PDF / PNG export contract and `static_visual_qa`.

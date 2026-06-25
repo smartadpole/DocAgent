@@ -42,7 +42,7 @@
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能。用于根据矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
-- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens。
+- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens；持久 HTML 还必须同步 registry、保留 `static_visual_qa`，并同源导出 PDF / PNG 到忽略目录。
 - [[skills/public-html-publish/SKILL]]：HTML 公开发布技能。用于把 canonical HTML views 按 [[views/publication]] 生成 public_url 或明确 blocked 原因，并守住 HTML-only、host / prefix 和 live readback 边界。
 - [[skills/documentation-maintenance/SKILL]]：文档维护技能。用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。

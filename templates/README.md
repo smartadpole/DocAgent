@@ -31,7 +31,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
-- 新问题聚焦式图文 lens 可以参考 [[templates/problem-focused-lens-template]]；持久 lens 还要同步 [[views/lens-registry]]
+- 新问题聚焦式图文 lens 可以参考 [[templates/problem-focused-lens-template]]；持久 lens 还要同步 [[views/lens-registry]]，填写视觉策略、组件语义 manifest、`static_visual_qa` 和同源 PDF / PNG 导出合同
 - 新问题聚焦式图文 lens 的 source pack 和交付前审核可以参考 [[templates/problem-focused-lens-source-pack-contract]]、[[templates/problem-focused-lens-review-contract]]
 - 新 HTML 公开发布 profile 可以参考 [[templates/public-html-publication-template]]；真实发布仍以 [[views/publication]] 和 live readback 为准。
 - 新技术、开源工程、行业 / AI、产品或 PoC 调研启动前，可以参考 [[templates/technology-research-contract-template]]；正式研究结果可以参考 [[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]]

@@ -4,7 +4,7 @@ id: VIEWS-LENS-REGISTRY-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-12
+updated: 2026-06-25
 tags: [views, lens, registry]
 ---
 
@@ -12,13 +12,39 @@ tags: [views, lens, registry]
 
 本页登记 `views/` 下的持久 lens。
 
-每条记录至少写清：`lens_id`、`path`、`lens_type`、`focus_object`、`judgement_purpose`、`source_pages`、`generated_at`、`source_revision`、`evidence_boundary`、`output_mode`、`visual_structure`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。
+每条记录至少写清：`lens_id`、`path`、`lens_type`、`focus_object`、`judgement_purpose`、`source_pages`、`generated_at`、`source_revision`、`evidence_boundary`、`output_mode`、`visual_structure`、`art_direction_brief`、`page_paradigm`、`component_semantic_manifest`、`static_visual_qa`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。
 
-每条记录还要能回到 source pack，并用中文写清证据边界、未读来源和不能上推范围。PDF / PNG / SVG 导出缓存必须进入 gitignore 忽略目录，不作为 registry 的事实源。
+每条记录还要能回到 source pack，并用中文写清证据边界、未读来源、同源导出关系和不能上推范围。PDF / PNG / SVG 导出缓存必须进入 gitignore 忽略目录，不作为 registry 的事实源。
 
 ## Current
 
-当前暂无登记。
+### problem-focused-visual-presentation-system-sample
+
+- `lens_id`: `problem-focused-visual-presentation-system-sample`
+- `path`: `views/current/problem-focused-visual-presentation-system-sample.html`
+- `lens_type`: `knowledge / status / acceptance validation sample`
+- `focus_object`: problem-focused visual presentation system in this wiki
+- `judgement_purpose`: validate that the local lens system covers trigger rules, source pack, visual strategy, static visual QA, registry and same-source export flow
+- `source_pages`: `skills/problem-focused-visual-presentation/SKILL.md`; `templates/problem-focused-lens-template.md`; `governance/problem-focused-visual-presentation-rules.md`; `views/README.md`; `views/lens-registry.md`; `scripts/check_problem_focused_visual_presentation.py`
+- `generated_at`: `2026-06-25`
+- `source_revision`: current working tree at generation time; commit hash must be read from git after commit
+- `evidence_boundary`: confirmed for local structure and generated export artifacts; blocked for public URL, human design approval and source truth completeness beyond the listed source pack
+- `output_mode`: `current html_report / print_view`
+- `visual_structure`: concept map + validation matrix + evidence strip + timeline
+- `art_direction_brief`: restrained technical control room with a single source-truth-to-export path as the visual hero
+- `page_paradigm`: `concept map / matrix / operations map`
+- `component_semantic_manifest`: stored in the HTML manifest under `component_semantic_manifest`
+- `static_visual_qa`: stored in the HTML manifest under `static_visual_qa`
+- `export_profile`: same-source PDF and PNG are generated to `views/current/.exports/`; exports are ignored and not truth sources
+- `print_profile`: A4 print CSS from the canonical HTML
+- `equivalence_profile`: HTML / PDF / PNG share the same canonical HTML and manifest
+- `default_auto_exports`: `pdf+png` when the HTML is generated or refreshed
+- `conversation_png_preview`: `views/current/.exports/problem-focused-visual-presentation-system-sample.png`
+- `canonical_policy`: tracked HTML is the presentation source; source pages remain the truth source
+- `snapshot_policy`: move to `views/snapshots/` only for dated external distribution or phase freeze
+- `staleness_policy`: stale when the skill, template, governance page, registry or sensor changes
+- `refresh_trigger`: problem-focused visual presentation rules, template fields, sensor requirements, or export pipeline changes
+- `cannot_promote`: this lens cannot close an issue, approve a release, replace source pages, or prove visual beauty beyond recorded QA.
 
 ## Snapshots
 

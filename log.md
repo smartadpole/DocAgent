@@ -9,6 +9,25 @@
 
 ## 2026-06-25
 
+### 升级问题聚焦式图文呈现和 HTML Lens 闭环
+
+- **记录人**：Codex
+- **用户意图**：用户要求升级本工程的「问题聚焦式图文呈现 / HTML Lens 视觉呈现体系」，目标不是新增 HTML 模板或漂亮卡片，而是让 agent 在用户要看文档、主题、状态、风险、决策、计划、验收、issue 或知识材料时，能自动生成可读、可追溯、有视觉主角、有证据边界、可导出验证的图文 lens。
+- **目录归类与落位判断**：本轮先读取目标工程 README、INDEX、AGENTS、`.codex/AGENTS.md`、`skills/`、`templates/`、`views/`、`governance/` 和 `scripts/check_all.py`，确认本库已有 [[views/README]]、[[views/lens-registry]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和专项 sensor；因此不新建平行 report / artifact / lens 体系，而是在既有 `views/current/`、`views/snapshots/`、registry、模板、治理页和 sensor 上补闭环。
+- **源资料边界**：读取 AcknowledgeBase 的 problem-focused-visual-presentation skill / transfer / template / 概念页 / 视觉设计系统 / 图文布局系统 / 色彩美学系统 / page paradigm / component semantic manifest / visual finish rubric / sensor；只吸收 focus contract、source pack、背景框、证据边界、lens 类型、视觉策略、页面范式、组件语义、静态视觉 QA、同源导出、registry、sensor 和最终回复要求，不复制源工程项目事实、业务状态、log、服务实例、视图实例、图片路径、运行 ID 或一次性对话记录。
+- **关键动作**：
+  1. 升级 [[skills/problem-focused-visual-presentation/SKILL]] 和 `TRANSFER.md`，把触发条件、非触发条件、focus contract、source pack、完整视觉流水线、视觉策略字段、同源导出和 `static_visual_qa` 固定为统一执行口径。
+  2. 升级 [[templates/problem-focused-lens-template]]，补 `source_pack`、`persistent_or_temporary`、`export_required`、视觉策略、组件语义、导出检查和 Static Visual QA 字段。
+  3. 升级 [[problem-focused-visual-presentation-rules]]、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[skills/README]] 和 [[templates/README]]，明确 lens 不替代事实源、状态推进、验收关闭、Issue 关闭、决策拍板或测试报告。
+  4. 新增 `skills/problem-focused-visual-presentation/reference/` 下的 page paradigm、component semantic manifest 和 visual finish rubric，作为本库抽象 reference，不承接外部项目实例。
+  5. 升级 [[views/README]]、[[views/current/README]] 和 [[views/lens-registry]]，登记 current 样本、同源导出、导出忽略目录、刷新触发和不可上推边界。
+  6. 新增 `views/current/problem-focused-visual-presentation-system-sample.html`，作为 current HTML 验证样本，覆盖单文档、跨文档主题、状态 / issue / 验收、知识 / 概念、矩阵和导出样本，并在 HTML manifest 中保留 `static_visual_qa`。
+  7. 升级 `scripts/check_problem_focused_visual_presentation.py`，检查 reference、模板字段、HTML manifest、`static_visual_qa`、registry、导出忽略规则和总门禁接线；导出文件允许本地存在但不得被 Git 跟踪。
+- **导出验证**：用系统 Chrome headless 从同一个 canonical HTML 生成 `views/current/.exports/problem-focused-visual-presentation-system-sample.pdf` 和 `views/current/.exports/problem-focused-visual-presentation-system-sample.png`；PNG 预览已人工读回，能看到首屏判断、pipeline、证据边界、知识 / 概念样本、矩阵和追溯入口；二者被 `.gitignore` 的 `views/**/.exports/` 规则忽略，不作为事实源提交。
+- **检查结果**：`python3 scripts/check_problem_focused_visual_presentation.py`、`python3 scripts/check_problem_focused_visual_presentation.py --verify-exports`、`python3 scripts/check_all.py --only problem-focused-visual-presentation` 和完整 `python3 scripts/check_all.py` 均已通过。
+- **二阶反思**：本轮缺口不是缺 HTML 文件，而是缺“视觉完成度”和“导出真实性”的可验证闭环。后续生成持久 lens 时，先固定 source truth 和 focus contract，再决定视觉范式；只有 HTML / PDF / PNG 同源导出、registry 和 `static_visual_qa` 都完成，才能在最终回复声称已生成可验证 lens。
+- **影响页面**：[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/problem-focused-visual-presentation/TRANSFER]]、`skills/problem-focused-visual-presentation/reference/page-paradigm-library.md`、`skills/problem-focused-visual-presentation/reference/component-semantic-manifest.md`、`skills/problem-focused-visual-presentation/reference/visual-finish-rubric.md`、[[templates/problem-focused-lens-template]]、[[problem-focused-visual-presentation-rules]]、[[views/README]]、[[views/current/README]]、[[views/lens-registry]]、`views/current/problem-focused-visual-presentation-system-sample.html`、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、[[POLICY]]、[[README]]、[[INDEX]]、[[skills/README]]、[[templates/README]]、[[log]]、`scripts/check_problem_focused_visual_presentation.py`。
+
 ### 升级 Harness 复盘 archive 和 sensor 闭环
 
 - **记录人**：Codex

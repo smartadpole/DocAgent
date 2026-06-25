@@ -240,7 +240,7 @@
 
 - 外部来源进入 `raw/` 或 `inbox/`
 - 当前项目判断和推进进入 `projects/`
-- 问题聚焦式图文呈现进入 `views/`，只承接 current / snapshot lens 和 registry，不替代事实源
+- 问题聚焦式图文呈现进入 `views/`，只承接 current / snapshot lens 和 registry，不替代事实源；持久 HTML lens 必须先固定 focus contract、source pack、evidence boundary、visual strategy、page paradigm、component semantic manifest 和 `static_visual_qa`，并同轮生成同源 PDF / PNG 到忽略目录
 - 高频 agent 分析流程进入 `skills/`
 - 稳定结论沉到 `articles/`、`concepts/`、`indexes/`
 - 失去主入口职责但仍需保留的内容进入 `archive/`

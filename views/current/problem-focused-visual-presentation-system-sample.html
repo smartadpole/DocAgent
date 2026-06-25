@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="lens_id" content="problem-focused-visual-presentation-system-sample">
+  <meta name="focus_object" content="problem-focused visual presentation system in this wiki">
+  <meta name="lens_type" content="knowledge / status / acceptance">
+  <meta name="judgement_purpose" content="validate local HTML lens system coverage">
+  <meta name="evidence_boundary" content="confirmed for local structure and export artifacts; blocked for public URL and human design approval">
+  <meta name="output_mode" content="current html_report / print_view">
+  <meta name="persistent_or_temporary" content="persistent current">
+  <meta name="export_required" content="pdf+png">
+  <meta name="source_pack" content="skills, templates, governance, views, sensor">
+  <meta name="export_profile" content="same-source PDF and PNG generated to ignored views/current/.exports">
+  <title>Problem-Focused Visual Presentation System Sample</title>
+  <style>
+    @page { size: A4 portrait; margin: 14mm; }
+    :root {
+      color-scheme: light;
+      --paper: #f6f8fb;
+      --ink: #172033;
+      --muted: #566275;
+      --line: #cbd5e1;
+      --panel: #ffffff;
+      --blue: #2563eb;
+      --green: #17815a;
+      --amber: #a16207;
+      --red: #b42318;
+      --cyan: #0891b2;
+      --violet: #6d5dfc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+    main { max-width: 1180px; margin: 0 auto; padding: 28px 22px 36px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: 34px; line-height: 1.12; margin-bottom: 10px; font-weight: 500; }
+    h2 { font-size: 20px; margin-bottom: 12px; font-weight: 500; }
+    h3 { font-size: 15px; margin-bottom: 8px; font-weight: 500; }
+    p { color: var(--muted); margin-bottom: 10px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; overflow-wrap: anywhere; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.3fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .verdict {
+      border-top: 8px solid var(--blue);
+      min-height: 286px;
+    }
+    .eyebrow { color: var(--blue); font-size: 12px; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+    .status-line { display: grid; gap: 8px; margin-top: 18px; }
+    .status-line div { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+    .stage-map {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+      min-height: 286px;
+    }
+    .stage {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 128px;
+    }
+    .stage strong { font-size: 14px; font-weight: 500; }
+    .stage span { color: var(--muted); font-size: 12px; }
+    .stage.active { border-color: var(--blue); background: #eef5ff; }
+    .section-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .wide { grid-column: span 2; }
+    .full { grid-column: 1 / -1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { border: 1px solid var(--line); border-radius: 999px; padding: 5px 8px; font-size: 12px; background: #fbfdff; color: var(--ink); }
+    .boundary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .boundary div { border-radius: 8px; padding: 10px; min-height: 96px; color: #ffffff; }
+    .confirmed { background: var(--green); }
+    .likely { background: var(--blue); }
+    .possible { background: var(--amber); }
+    .blocked { background: var(--red); }
+    .concept-map { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: stretch; }
+    .node { border: 1px solid var(--line); background: #fbfdff; border-radius: 8px; padding: 12px; min-height: 112px; }
+    .node.core { border-color: var(--violet); background: #f2f0ff; }
+    .node strong { display: block; margin-bottom: 8px; font-weight: 500; }
+    .matrix { display: grid; grid-template-columns: 1.1fr repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .cell { min-height: 74px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px; font-size: 13px; background: #ffffff; }
+    .cell:nth-child(5n) { border-right: 0; }
+    .cell.head { background: #edf2f7; color: var(--ink); font-weight: 500; }
+    .cell.ok { background: #dff6ec; }
+    .cell.warn { background: #fff3cf; }
+    .cell.stop { background: #ffe4e0; }
+    .cell.info { background: #e4f6fb; }
+    .timeline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+    .tick { border-left: 4px solid var(--cyan); padding: 8px 10px; background: #f6fdff; border-radius: 6px; min-height: 92px; }
+    .trace { display: grid; gap: 8px; }
+    .trace a { color: var(--blue); overflow-wrap: anywhere; }
+    footer { border-top: 1px solid var(--line); padding-top: 12px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 900px) {
+      main { padding: 18px 12px; }
+      .hero, .section-grid { grid-template-columns: 1fr; }
+      .stage-map, .boundary, .concept-map, .timeline { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      .matrix { grid-template-columns: 1fr; }
+      .cell, .cell:nth-child(5n) { border-right: 0; }
+    }
+    @media print {
+      body { background: #ffffff; }
+      main { max-width: none; padding: 0; }
+      .panel, .stage, .node, .tick, .matrix { break-inside: avoid; }
+    }
+  </style>
+  <script id="problem-focused-lens-metadata" type="application/json">
+{
+  "lens_id": "problem-focused-visual-presentation-system-sample",
+  "focus_object": "problem-focused visual presentation system in this wiki",
+  "lens_type": "knowledge / status / acceptance",
+  "judgement_purpose": "validate that the local lens system covers trigger rules, source pack, visual strategy, static visual QA, registry and same-source export flow",
+  "source_pack": {
+    "read": [
+      "skills/problem-focused-visual-presentation/SKILL.md",
+      "templates/problem-focused-lens-template.md",
+      "governance/problem-focused-visual-presentation-rules.md",
+      "views/README.md",
+      "views/lens-registry.md",
+      "scripts/check_problem_focused_visual_presentation.py"
+    ],
+    "unread_related": [
+      "future user-generated project lenses",
+      "external public-html live readback"
+    ],
+    "updated_at": "2026-06-25",
+    "evidence": "local files, registry entry, sensor output and generated export artifacts",
+    "inferences": "the page demonstrates the required validation sample families in one current lens",
+    "cannot_prove": "human visual approval, public URL availability, or source truth completeness beyond the listed source pack"
+  },
+  "evidence_boundary": {
+    "confirmed": "local structure, template fields, registry entry and same-source export artifacts after local generation",
+    "likely": "future agents can reuse the focus contract and static QA if they follow the skill",
+    "possible": "additional page paradigms may be needed for domain-specific dashboards",
+    "blocked": "public URL, independent design review and source truth outside the listed source pack"
+  },
+  "output_mode": "current html_report / print_view",
+  "persistent_or_temporary": "persistent current",
+  "export_required": "pdf+png",
+  "visual_strategy": {
+    "art_direction_brief": "restrained technical control room with a single source-truth-to-export path as the visual hero",
+    "information_topology": "pipeline plus concept map plus validation matrix",
+    "layout_morphology_plan": "hero verdict and pipeline first, then source pack, evidence boundary, concept map, matrix, timeline and trace footer",
+    "topic_visual_language": "source truth path, full-cell status matrix, evidence colors and trace rails",
+    "primary_visual_metaphor": "operations map from source truth to rendered export",
+    "theme_specific_elements": "focus contract tags, component semantic manifest, static visual QA gates and same-source export badge",
+    "anti_information_listing_strategy": "long source details move to trace rail; matrix cells use whole-cell status color; body copy stays short",
+    "page_paradigm": "current-status-dashboard / concept-map / matrix / operations-map",
+    "component_semantic_manifest": "verdict-strip, context-frame, source-pack-rail, evidence-boundary, matrix-cell, concept-cluster, timeline-node, action-router, export-badge, static-qa-block",
+    "human_rubric": "reader can see trigger, source pack, evidence boundary, visual workflow, export state and cannot-replace guard without reading source files",
+    "result_cluster_diagnosis": "not a pure card list; the visual hero is a pipeline map, with concept and matrix sections as secondary structures"
+  },
+  "component_semantic_manifest": {
+    "verdict_strip": {"semantic_role": "one-glance system status", "visual_weight": "hero", "export_fallback": "text verdict"},
+    "pipeline_map": {"semantic_role": "same-source workflow", "visual_weight": "hero", "export_fallback": "ordered stage list"},
+    "evidence_boundary": {"semantic_role": "proof strength", "visual_weight": "strong", "export_fallback": "four-level table"},
+    "validation_matrix": {"semantic_role": "sample coverage", "visual_weight": "strong", "export_fallback": "matrix table"},
+    "trace_links": {"semantic_role": "source return path", "visual_weight": "supporting", "export_fallback": "link list"}
+  },
+  "static_visual_qa": {
+    "layout_frame": "desktop 1180px content frame, responsive single-column mobile, A4 print page rules",
+    "type_scale": "34px hero, 20px section headings, 15px subheads, 12-13px support text",
+    "spacing_rhythm": "8px component grid, 12-18px section rhythm, 28px outer frame",
+    "semantic_palette": "blue primary workflow, green confirmed, amber possible, red blocked, cyan timeline, violet concept core",
+    "component_roles": "verdict-strip, context-frame, source-pack-rail, evidence-boundary, matrix-cell, concept-cluster, timeline-node, action-router, export-badge, static-qa-block",
+    "accessibility_checks": "semantic headings, aria labels, no negative letter spacing, mobile collapse, print contrast",
+    "export_render_check": "same canonical HTML exported to PDF and PNG through Playwright",
+    "finish_grade": "usable",
+    "visual_strength_gate": "pass: one pipeline visual hero",
+    "hierarchy_amplitude_gate": "pass: hero, boundary, concept map, matrix and footer have distinct weight",
+    "component_variety_gate": "pass: map, matrix, boundary, timeline and trace components are distinct",
+    "color_budget_single_hero_gate": "pass: blue workflow is primary; semantic colors are limited",
+    "adjustment_loop": "static readback plus desktop/mobile overflow check after rendering",
+    "rendered_visual_review": "required",
+    "review_artifact": "views/current/.exports/problem-focused-visual-presentation-system-sample.png",
+    "visual_acceptance_result": "pass for local validation sample; not independent aesthetic approval"
+  },
+  "export_profile": "same-source PDF and PNG are generated to views/current/.exports/ and ignored by git",
+  "print_profile": "@page A4 portrait; @media print removes background and avoids breaking panels",
+  "equivalence_profile": "HTML / PDF / PNG share this canonical HTML and embedded manifest",
+  "default_auto_exports": "pdf+png when generated or refreshed",
+  "conversation_png_preview": "views/current/.exports/problem-focused-visual-presentation-system-sample.png",
+  "canonical_policy": "tracked HTML is the presentation source; listed source pages remain truth sources",
+  "snapshot_policy": "snapshot only for dated external distribution or phase freeze",
+  "staleness_policy": "stale when skill, template, governance, registry or sensor requirements change",
+  "refresh_trigger": "problem-focused visual presentation rules, template fields, sensor requirements, source pack or export pipeline changes"
+}
+  </script>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-label="system overview">
+      <div class="panel verdict">
+        <div class="eyebrow">Current lens · validation sample</div>
+        <h1>问题聚焦式图文呈现已经接成闭环</h1>
+        <p>本页验证本库 agent 生成 HTML lens 时，能先冻结关注合同，再把 source pack、证据边界、视觉策略、静态 QA 和同源导出串成一个可追溯视图。</p>
+        <div class="status-line" aria-label="one glance judgement">
+          <div><strong>Lens type</strong><span>knowledge / status / acceptance</span></div>
+          <div><strong>Boundary</strong><span>confirmed locally, blocked for public URL</span></div>
+          <div><strong>Export</strong><span>PDF + PNG from same HTML</span></div>
+        </div>
+      </div>
+      <div class="stage-map panel" aria-label="visual pipeline">
+        <div class="stage active"><strong>Source truth</strong><span>skills, template, governance, views, sensor</span></div>
+        <div class="stage"><strong>Content contract</strong><span>focus object, type, purpose, source pack</span></div>
+        <div class="stage active"><strong>Visual strategy</strong><span>pipeline hero, concept map, matrix</span></div>
+        <div class="stage"><strong>Renderer</strong><span>canonical HTML and print CSS</span></div>
+        <div class="stage active"><strong>Export QA</strong><span>PDF, PNG, overflow and pagination</span></div>
+        <div class="stage"><strong>Owner guard</strong><span>lens 不能替代 source 页面</span></div>
+      </div>
+    </section>
+
+    <section class="section-grid" aria-label="source and boundary">
+      <div class="panel">
+        <h2>单文档样本</h2>
+        <p>读取技能入口后，一眼判断是：本技能负责 lens 生成流程，不负责推进项目状态或关闭验收。</p>
+        <div class="tag-row">
+          <span class="tag">一眼判断</span><span class="tag">背景框</span><span class="tag">追溯入口</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>跨文档主题样本</h2>
+        <p>技能、模板、治理页、registry 和 sensor 共同构成系统；任何单页都不是完整闭环。</p>
+        <div class="tag-row">
+          <span class="tag">关系</span><span class="tag">冲突</span><span class="tag">时间线</span><span class="tag">证据链</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>状态 / issue / 验收样本</h2>
+        <p>本页可以标清 lens 类型、source pack 和不可上推范围，但不能替代 Issue、验收报告或状态 owner 页面。</p>
+        <div class="tag-row">
+          <span class="tag">status</span><span class="tag">issue</span><span class="tag">acceptance</span>
+        </div>
+      </div>
+      <div class="panel wide">
+        <h2>证据边界</h2>
+        <div class="boundary" aria-label="evidence boundary">
+          <div class="confirmed"><strong>confirmed</strong><br>本地结构、模板字段、registry、sensor 和导出件。</div>
+          <div class="likely"><strong>likely</strong><br>后续 agent 可按同一合同生成新 lens。</div>
+          <div class="possible"><strong>possible</strong><br>特定业务域可能需要更多范式。</div>
+          <div class="blocked"><strong>blocked</strong><br>公网 URL、人审美感、未读 source truth。</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Source Pack</h2>
+        <p>已读：skill、template、governance、views、registry、sensor。未读但相关：未来业务 lens 和公网发布 readback。</p>
+      </div>
+    </section>
+
+    <section class="section-grid" aria-label="concept and matrix">
+      <div class="panel wide">
+        <h2>知识 / 概念样本</h2>
+        <div class="concept-map" aria-label="concept map">
+          <div class="node"><strong>触发</strong>信息乱、HTML、状态页、风险页、验收页、主题梳理。</div>
+          <div class="node core"><strong>关注合同</strong>focus_object、lens_type、source_pack、evidence_boundary、output_mode。</div>
+          <div class="node"><strong>产物</strong>canonical HTML、PDF、PNG、registry、owner 回写。</div>
+          <div class="node"><strong>视觉策略</strong>主视觉、信息拓扑、组件语义、反列表策略。</div>
+          <div class="node"><strong>静态 QA</strong>layout、type、palette、accessibility、export、review artifact。</div>
+          <div class="node"><strong>守卫</strong>lens 不能替代事实源、验收、issue、决策或 log。</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>导出样本</h2>
+        <p>HTML、PDF 和 PNG 来自同一 canonical HTML 与嵌入 manifest。导出文件进入 `views/current/.exports/`，不提交为事实源。</p>
+        <div class="tag-row"><span class="tag">same source</span><span class="tag">print CSS</span><span class="tag">ignored exports</span></div>
+      </div>
+      <div class="panel full">
+        <h2>矩阵样本</h2>
+        <div class="matrix" aria-label="validation matrix">
+          <div class="cell head">样本</div><div class="cell head">结构</div><div class="cell head">证据</div><div class="cell head">视觉</div><div class="cell head">边界</div>
+          <div class="cell head">单文档</div><div class="cell ok">一眼判断</div><div class="cell ok">已读入口</div><div class="cell info">背景框</div><div class="cell warn">不替代源页</div>
+          <div class="cell head">跨文档</div><div class="cell ok">关系图</div><div class="cell ok">source pack</div><div class="cell info">证据链</div><div class="cell warn">未读降级</div>
+          <div class="cell head">验收 / issue</div><div class="cell ok">矩阵</div><div class="cell ok">检查输出</div><div class="cell info">整格填色</div><div class="cell stop">不能关闭 issue</div>
+          <div class="cell head">知识概念</div><div class="cell ok">概念图</div><div class="cell ok">技能和模板</div><div class="cell info">分层地图</div><div class="cell warn">不是知识真相源</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid" aria-label="timeline and trace">
+      <div class="panel wide">
+        <h2>运行时间线</h2>
+        <div class="timeline">
+          <div class="tick"><strong>Read</strong><br>读取参考源和本库入口。</div>
+          <div class="tick"><strong>Adapt</strong><br>复用既有 `views/`，补 delta。</div>
+          <div class="tick"><strong>Render</strong><br>生成 canonical HTML。</div>
+          <div class="tick"><strong>Export</strong><br>同源 PDF / PNG。</div>
+          <div class="tick"><strong>Check</strong><br>专项 sensor + 总检查。</div>
+        </div>
+      </div>
+      <div class="panel trace">
+        <h2>追溯入口</h2>
+        <a href="../../skills/problem-focused-visual-presentation/SKILL.md">skills/problem-focused-visual-presentation/SKILL.md</a>
+        <a href="../../templates/problem-focused-lens-template.md">templates/problem-focused-lens-template.md</a>
+        <a href="../../governance/problem-focused-visual-presentation-rules.md">governance/problem-focused-visual-presentation-rules.md</a>
+        <a href="../lens-registry.md">views/lens-registry.md</a>
+        <a href="../../scripts/check_problem_focused_visual_presentation.py">scripts/check_problem_focused_visual_presentation.py</a>
+      </div>
+    </section>
+
+    <footer>
+      本 lens 不能替代技能、模板、治理规则、Issue、验收报告、项目状态、决策或 log。它只呈现本轮已读 source pack 的结构、边界和导出验证结果。
+    </footer>
+  </main>
+</body>
+</html>
