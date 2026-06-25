@@ -46,7 +46,9 @@
 - [[skills/public-html-publish/SKILL]]：HTML 公开发布技能。用于把 canonical HTML views 按 [[views/publication]] 生成 public_url 或明确 blocked 原因，并守住 HTML-only、host / prefix 和 live readback 边界。
 - [[skills/documentation-maintenance/SKILL]]：文档维护技能。用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
-- [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能。用于复盘当前上下文、log、Harness ledger、原始 session / rollout、git diff / commit、检查输出、memory 和最终回复里的 agent 协作质量、偏差和改进路由。
+- [[skills/retrospective-capability/SKILL]]：复盘能力总技能。用于把项目交付、软件研发链、历史对话、Agent 工作流、Harness episode 和治理自演进复盘收敛到统一合同、子项路由、行动兑现回检和沉淀边界。
+- [[skills/delivery-retrospective/SKILL]]：项目交付与软件研发链复盘子技能。用于阶段、里程碑、发布、事故后专题、Issue 后专题或交付链复盘，覆盖需求、设计、拆解、实现、测试验收、发布运行和协作治理。
+- [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘子技能。用于复盘当前上下文、log、Harness ledger、原始 session / rollout、git diff / commit、检查输出、memory 和最终回复里的 agent 协作质量、偏差和改进路由。
 
 - [[skills/loop-engineering/SKILL]]：Loop Engineering / 持续 agent 循环控制技能。用于把 Goal、Run Capsule、子 agent、harness、memory 和软件研发体系组织成可持续的发现、分派、验证、持久化和下一轮决策闭环；不替代项目状态、验收或发布。
 

@@ -7,6 +7,26 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-25
+
+### 升级完整复盘能力体系
+
+- **记录人**：Codex
+- **用户意图**：用户要求升级本工程的完整复盘能力体系，不只是新增复盘目录、模板或说明页，而是覆盖项目交付、软件研发链、历史对话、Agent 工作流、Harness episode、行动分流和治理自演进的可持续运行系统。
+- **目录归类与落位判断**：本轮先读取目标工程入口和结构，确认当前 wiki 已有 `projects/retrospectives/`、`templates/`、`skills/`、`governance/` 和 `scripts/check_all.py`；因此复盘档案继续落在 [[projects/retrospectives/README]]，复盘总入口落在 [[skills/retrospective-capability/SKILL]]，交付复盘执行流程落在 [[skills/delivery-retrospective/SKILL]]，模板继续使用 [[templates/project-retrospective-template]]，不新建平行 postmortem / lessons-learned 目录。
+- **参考版本锚点**：读取 AcknowledgeBase 当前参考提交 `2c145b65f2775f4a73e7957dda06d6b98bb3b055` 下的 retrospective-capability、delivery-retrospective、historical-dialogue-retrospective、项目复盘概念页、复盘模板、复盘档案入口、Harness 自演进和检查脚本；只吸收系统层信息，不复制项目事实、历史 log、复盘正文、ledger 条目、运行 ID、服务路径、用户偏好或一次性 handoff。
+- **关键动作**：
+  1. 新增 [[skills/retrospective-capability/SKILL]] 和 `TRANSFER.md`，把复盘总技能固定为统一入口，承接复盘对象、深度等级、证据计划、子项路由、上轮行动兑现回检、输出形态和不做项。
+  2. 新增 [[skills/delivery-retrospective/SKILL]] 和 `TRANSFER.md`，把项目交付 / 软件研发链复盘落成可执行子项，覆盖需求、设计、拆解、实现、测试验收、发布运行和协作治理。
+  3. 升级 [[skills/historical-dialogue-retrospective/SKILL]]，明确它是复盘总技能的历史对话 / Agent 工作流子项，并补 `no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘` 自动触发矩阵和显式深度历史复盘证据要求。
+  4. 升级 [[templates/project-retrospective-template]]，新增首轮目标与用户纠偏锚点、证据地图、上轮行动兑现回检、上层抽象与举一反三、治理自演进判断。
+  5. 升级 [[projects/retrospectives/README]]，补系统运行闭环、显式复盘请求默认落档、自动触发关系、行动兑现回检、行动分流和治理自演进关系。
+  6. 同步 [[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[README]]、[[INDEX]]、[[AGENTS]]、`.codex/AGENTS.md`、[[governance/README]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[harness-evolution]]、[[projects/README]]、[[projects/STRUCTURE]]、[[concepts/README]]、[[skills/README]] 和 [[templates/README]]，只放短链接和边界，不复制复盘正文。
+  7. 升级 `scripts/check_retrospective_system.py`，让专项 sensor 检查总 skill、交付子 skill、历史子 skill、模板字段、显式请求、自动触发、行动分流和入口 wiring。
+- **检查结果**：`python3 scripts/check_all.py --only retrospective-system`、`python3 scripts/check_all.py --only skill-maturity`、`python3 scripts/check_all.py --only project-docs,harness-feedback-ledger` 均已通过；完整门禁在提交前运行。
+- **二阶反思**：这次不是补一个复盘模板，而是修正“复盘能力入口仍偏散”的系统缺口。后续复盘先进入总技能，再按对象路由到交付或历史对话子项；显式复盘请求不能被自动触发矩阵降级；复盘行动必须回到 owner 页，重复失守才进入 ledger、模板、skill、sensor 或规则晋升。
+- **影响页面**：[[skills/retrospective-capability/SKILL]]、[[skills/delivery-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]]、[[projects/retrospectives/README]]、[[templates/project-retrospective-template]]、[[concepts/project-retrospective]]、[[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]、[[README]]、[[INDEX]]、[[AGENTS]]、`.codex/AGENTS.md`、[[governance/README]]、[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[harness-evolution]]、[[projects/README]]、[[projects/STRUCTURE]]、[[concepts/README]]、[[skills/README]]、[[templates/README]]、[[log]]、`scripts/check_retrospective_system.py`。
+
 ## 2026-06-22
 
 ### 补强 Agent Harness L5 验证闭环

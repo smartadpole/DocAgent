@@ -27,6 +27,8 @@
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘方法
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘方法
 
+复盘执行流程统一看 [[skills/retrospective-capability/SKILL]]；项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
+
 ## 维护原则
 
 - 同一个概念只保留一个主页面。

@@ -18,6 +18,7 @@ H5 不是“规则更多”，而是让 Harness 可以从真实 episode 中学�
 
 - 每次用户纠偏、平台假设错误、重复手工检查、明显变慢、模式切换、检查失败或返工，都要判断是否形成 episode 数据。
 - episode 数据先进入 [[harness-feedback-ledger]]，不直接晋升成硬规则。
+- 长 Goal、Run Capsule、多 agent 或 Loop iteration 收尾时，先进入 [[skills/retrospective-capability/SKILL]]，再按 [[skills/historical-dialogue-retrospective/SKILL#自动触发矩阵]] 判断 no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘；只有标准 / 深度复盘或结构性信号才进入 ledger。
 - 重复出现、影响面大或已经被 sensor 验证的模式，才进入规则、模板、脚本或技能。
 - 已经过期、制造噪音或无法被证据支持的规则，要进入降级 / 删除候选。
 
@@ -30,6 +31,7 @@ H5 不是“规则更多”，而是让 Harness 可以从真实 episode 中学�
 - 快速诊断切到沉淀、验收、规则升级或收尾，且切换原因值得复用。
 - 工作阶段检查或统一门禁失败，并暴露出规则、模板或 sensor 缺口。
 - 复杂 episode 明显变慢，但慢点不是业务事实复杂，而是 Harness 路由、读取、检查或提交闭环不清。
+- 复盘触发矩阵被跳过，导致长 Goal、多 agent、Run Capsule / Loop 或重复纠偏没有形成应有 checkpoint / 标准复盘 / 深度复盘。
 
 最小字段为：触发信号、响应模式、成本类型、用户可见影响、已采取改动、对应 sensor / 模板 / 规则、当前状态。
 

@@ -13,6 +13,10 @@ REQUIRED_FILES = (
     "concepts/agent-work-retrospective.md",
     "projects/retrospectives/README.md",
     "templates/project-retrospective-template.md",
+    "skills/retrospective-capability/SKILL.md",
+    "skills/retrospective-capability/TRANSFER.md",
+    "skills/delivery-retrospective/SKILL.md",
+    "skills/delivery-retrospective/TRANSFER.md",
     "skills/historical-dialogue-retrospective/SKILL.md",
 )
 
@@ -21,34 +25,43 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
         "projects/retrospectives/README",
         "concepts/project-retrospective",
         "templates/project-retrospective-template",
+        "skills/retrospective-capability/SKILL",
+        "skills/delivery-retrospective/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
     ),
     "INDEX.md": (
         "projects/retrospectives/README",
         "concepts/project-retrospective",
         "templates/project-retrospective-template",
+        "skills/retrospective-capability/SKILL",
+        "skills/delivery-retrospective/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
     ),
     "AGENTS.md": (
         "projects/retrospectives/README",
         "concepts/project-retrospective",
+        "skills/retrospective-capability/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
     ),
     ".codex/AGENTS.md": (
         "projects/retrospectives/README",
         "concepts/project-retrospective",
+        "skills/retrospective-capability/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
         "retrospective-system",
     ),
     "governance/README.md": (
         "projects/retrospectives/README",
         "concepts/project-retrospective",
+        "skills/retrospective-capability/SKILL",
         "harness-feedback-ledger",
     ),
     "governance/WORKFLOW.md": (
         "projects/retrospectives/README",
         "concepts/project-retrospective",
         "templates/project-retrospective-template",
+        "skills/retrospective-capability/SKILL",
+        "skills/delivery-retrospective/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
         "retrospective-system",
     ),
@@ -58,6 +71,8 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
     ),
     "governance/response-mode-routing.md": (
         "projects/retrospectives/",
+        "skills/retrospective-capability/SKILL",
+        "skills/delivery-retrospective/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
     ),
     "projects/README.md": ("projects/retrospectives/README",),
@@ -71,9 +86,14 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
         "concepts/project-retrospective",
         "concepts/software-development-project-retrospective",
         "concepts/agent-work-retrospective",
+        "skills/retrospective-capability/SKILL",
     ),
     "templates/README.md": ("templates/project-retrospective-template",),
-    "skills/README.md": ("skills/historical-dialogue-retrospective/SKILL",),
+    "skills/README.md": (
+        "skills/retrospective-capability/SKILL",
+        "skills/delivery-retrospective/SKILL",
+        "skills/historical-dialogue-retrospective/SKILL",
+    ),
 }
 
 RETROSPECTIVE_INDEX_REQUIRED_TERMS = (
@@ -86,8 +106,15 @@ RETROSPECTIVE_INDEX_REQUIRED_TERMS = (
     "行动项分流",
     "沉淀路由",
     "维护说明",
+    "系统运行闭环",
+    "显式复盘请求",
+    "自动触发关系",
+    "上轮行动兑现回检",
+    "no-op / 轻量复盘 checkpoint 只适用于自动触发判断",
     "projects/retrospectives/",
     "templates/project-retrospective-template",
+    "skills/retrospective-capability/SKILL",
+    "skills/delivery-retrospective/SKILL",
     "skills/historical-dialogue-retrospective/SKILL",
 )
 
@@ -100,6 +127,9 @@ PROJECT_RETROSPECTIVE_REQUIRED_TERMS = (
     "最小产出",
     "改进行动跟踪",
     "治理自演进",
+    "复盘系统",
+    "retrospective-capability",
+    "delivery-retrospective",
     "log",
     "Issue",
     "事故",
@@ -116,6 +146,7 @@ SOFTWARE_RETROSPECTIVE_REQUIRED_TERMS = (
     "运行质量",
     "服务台账",
     "协作治理",
+    "delivery-retrospective",
 )
 
 AGENT_RETROSPECTIVE_REQUIRED_TERMS = (
@@ -130,6 +161,7 @@ AGENT_RETROSPECTIVE_REQUIRED_TERMS = (
     "沉淀路由",
     "收尾和提交质量",
     "harness-feedback-ledger",
+    "retrospective-capability",
 )
 
 TEMPLATE_REQUIRED_SECTIONS = (
@@ -137,23 +169,58 @@ TEMPLATE_REQUIRED_SECTIONS = (
     "## 原始目标",
     "## 实际结果",
     "## 关键事实",
+    "## 首轮目标与用户纠偏锚点",
+    "## 上轮行动兑现回检",
     "## 偏差与原因",
     "## 保留做法",
     "## 改进行动",
     "## 沉淀路由",
+    "## 上层抽象与举一反三",
+    "## 治理自演进判断",
     "## 未验证边界",
 )
 
 TEMPLATE_REQUIRED_TERMS = (
     "project: <project-id>",
+    "证据地图",
+    "原始 session / rollout",
+    "git diff / commit",
     "## 可选回看模块",
     "只保留和复盘对象相关的模块",
     "### 软件研发交付链回看（适用时）",
     "### Agent 工作回看（适用时）",
 )
 
+RETROSPECTIVE_CAPABILITY_REQUIRED_TERMS = (
+    "复盘能力总技能",
+    "统一复盘合同",
+    "子项路由",
+    "上轮行动兑现回检",
+    "no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘",
+    "显式复盘请求",
+    "深度复盘",
+    "首轮目标",
+    "用户纠偏序列",
+    "行动分流",
+    "不把测试报告当复盘",
+)
+
+DELIVERY_SKILL_REQUIRED_TERMS = (
+    "项目交付与软件研发链复盘子技能",
+    "需求 -> 设计 -> 拆解 -> 实现 -> 测试验收 -> 发布运行",
+    "证据读取顺序",
+    "交付链回看",
+    "上轮行动兑现回检",
+    "需求偏差",
+    "设计偏差",
+    "验证偏差",
+    "不把测试报告当复盘",
+)
+
 SKILL_REQUIRED_TERMS = (
     "触发场景",
+    "自动触发矩阵",
+    "显式深度历史复盘",
     "响应模式",
     "证据源分层",
     "复盘对象框定",
@@ -169,6 +236,9 @@ SKILL_REQUIRED_TERMS = (
     "检查 / 测试输出",
     "memory",
     "最终回复 / handoff",
+    "首轮目标",
+    "用户纠偏序列",
+    "上层抽象与举一反三",
     "不因一次偏差直接新增硬规则",
 )
 
@@ -229,6 +299,18 @@ def check_retrospective_content(repo: Path, errors: list[str]) -> None:
         "templates/project-retrospective-template.md",
         read_text(repo, "templates/project-retrospective-template.md", errors),
         TEMPLATE_REQUIRED_TERMS,
+        errors,
+    )
+    require_terms(
+        "skills/retrospective-capability/SKILL.md",
+        read_text(repo, "skills/retrospective-capability/SKILL.md", errors),
+        RETROSPECTIVE_CAPABILITY_REQUIRED_TERMS,
+        errors,
+    )
+    require_terms(
+        "skills/delivery-retrospective/SKILL.md",
+        read_text(repo, "skills/delivery-retrospective/SKILL.md", errors),
+        DELIVERY_SKILL_REQUIRED_TERMS,
         errors,
     )
     require_terms(

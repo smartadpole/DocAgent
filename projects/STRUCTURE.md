@@ -133,6 +133,8 @@ projects/
 - [[concepts/project-retrospective]]：项目复盘方法入口
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘维度
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘维度
+- [[skills/retrospective-capability/SKILL]]：复盘总技能，统一合同、子项路由、行动兑现回检和自动触发边界
+- [[skills/delivery-retrospective/SKILL]]：项目交付 / 软件研发链复盘执行子项
 - [[log]]：主题化的历史记录
 
 这不是要求一次性建全，而是推荐的扩展方向。
@@ -376,7 +378,7 @@ projects/
   适合放阶段、专题、交付链、Issue 后、事故后和 Agent 协作复盘索引、共性主题和沉淀路由
 - 每一个具体复盘单独成文，放在 `projects/retrospectives/` 目录下
 - 复盘层不替代 [[log]]、Issue、事故、测试报告、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面
-- 复盘方法看 [[concepts/project-retrospective]]，软件研发维度看 [[concepts/software-development-project-retrospective]]，Agent 工作复盘看 [[concepts/agent-work-retrospective]]
+- 复盘方法看 [[concepts/project-retrospective]]，执行总入口看 [[skills/retrospective-capability/SKILL]]，软件研发维度看 [[concepts/software-development-project-retrospective]] 和 [[skills/delivery-retrospective/SKILL]]，Agent 工作复盘看 [[concepts/agent-work-retrospective]] 和 [[skills/historical-dialogue-retrospective/SKILL]]
 
 ### 3.10 项目记忆层
 

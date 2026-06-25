@@ -17,6 +17,8 @@ tags: [concept, retrospective, project-management]
 
 模板：[[templates/project-retrospective-template]]
 
+复盘总技能：[[skills/retrospective-capability/SKILL]]
+
 这页是项目复盘的通用方法入口。它沉淀跨项目可复用的复盘方法，不记录某个具体项目的历史细节。具体项目事实、事故、决策和状态仍回到项目层对应页面，具体复盘档案默认进入 [[projects/retrospectives/README]]。
 
 ## 定义
@@ -33,6 +35,19 @@ tags: [concept, retrospective, project-management]
 - 哪些经验可以进入下一轮项目、规则、模板、skill、sensor 或记忆。
 
 复盘的长期价值不止是解释过去。它要把问题总结、经验沉淀和机制修正连接起来，持续服务未来研发实践、方案设计、工程实现、测试验收、运行治理和 agent 协作质量。
+
+## 复盘系统
+
+复盘不是单篇模板，而是一套能持续运行的学习系统。最小组成是：
+
+- **方法论**：定义复盘对象、启动判断、证据读取、偏差分析和沉淀路由。
+- **档案层**：保存具体阶段、专题、事故后、Issue 后、交付链和 Agent 协作复盘文件。
+- **模板层**：提供可复制字段，确保目标、事实、偏差、行动、路由和未验证边界不丢。
+- **技能层**：由 [[skills/retrospective-capability/SKILL]] 统一承接复盘合同、子项路由和行动兑现回检；项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
+- **行动 owner**：把改进行动分流到 Issue、事故、研发事项、会议、决策、memory、trace、模板、skill、sensor 或规则入口。
+- **治理自演进**：重复失守、可模板化、可技能化或可脚本化的经验进入 Harness 自演进链。
+
+这套系统的目标不是制造更多文档，而是让项目经验能被下一轮需求判断、方案设计、工程治理、测试验收、运行质量和 Agent 工作方式复用。
 
 ## 文件落位
 
@@ -75,8 +90,8 @@ tags: [concept, retrospective, project-management]
 
 默认路由：
 
-- 项目结果和管理链路：使用本页。
-- 软件研发交付链：进入 [[concepts/software-development-project-retrospective]]。
+- 项目结果和管理链路：进入 [[skills/delivery-retrospective/SKILL]]，并以本页作为概念边界。
+- 软件研发交付链：进入 [[skills/delivery-retrospective/SKILL]] 和 [[concepts/software-development-project-retrospective]]。
 - Agent 执行和协作方式：进入 [[concepts/agent-work-retrospective]]，必要时启动 [[skills/historical-dialogue-retrospective/SKILL]]。
 - 已发生 Issue 或事故：先进入 [[projects/development/issues/README]] 或 [[projects/incidents/README]]，再判断是否提炼通用经验。
 

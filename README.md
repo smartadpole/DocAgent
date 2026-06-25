@@ -80,7 +80,8 @@ tags: [entry, root]
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想看“Gate、FP、EP、TASK、Issue、risk、test、验收和台账怎么组织” -> 读 [[projects/development/plan/work-item-system-model]]
 - 想看“测试计划、AP 验收计划、环境路由和测试报告怎么分工” -> 读 [[projects/development/plan/test-acceptance-planning-model]] 和 [[projects/development/acceptance/README]]
-- 想看“复盘体系、复盘档案和经验沉淀怎么运行” -> 读 [[concepts/project-retrospective]]、[[projects/retrospectives/README]] 和 [[templates/project-retrospective-template]]
+- 想看“复盘体系、复盘档案和经验沉淀怎么运行” -> 读 [[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]、[[projects/retrospectives/README]] 和 [[templates/project-retrospective-template]]
+- 想复盘“项目交付或软件研发链” -> 读 [[skills/delivery-retrospective/SKILL]] 和 [[concepts/software-development-project-retrospective]]
 - 想复盘“历史对话或 Agent 工作流” -> 读 [[concepts/agent-work-retrospective]] 和 [[skills/historical-dialogue-retrospective/SKILL]]
 - 想知道“新建目录 / 新建文件 / 修改文件怎么做” -> 读 [[WORKFLOW]]
 - 想知道“`[[log]]` 应该怎么写、怎么合并主题” -> 读 [[log-writing-rules]]
@@ -193,7 +194,7 @@ tags: [entry, root]
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
 8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和服务台账关系理清。
-9. 如果这轮暴露了阶段、事故、Issue、交付链或 Agent 协作里的长期学习价值，把复盘档案写进 [[projects/retrospectives/README]]；方法看 [[concepts/project-retrospective]]，模板看 [[templates/project-retrospective-template]]。
+9. 如果这轮暴露了阶段、事故、Issue、交付链或 Agent 协作里的长期学习价值，先按 [[skills/retrospective-capability/SKILL]] 固定复盘合同，再把复盘档案写进 [[projects/retrospectives/README]]；项目交付 / 软件研发链看 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流看 [[skills/historical-dialogue-retrospective/SKILL]]，模板看 [[templates/project-retrospective-template]]。
 10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页；技能成熟度按 `skill / README entry / template / governance / sensor / TRANSFER / evidence boundary` 证据信号判断。
 11. 如果这轮需要持久图文呈现，把 canonical lens 写进 [[views/README]] 管辖的 current / snapshot 结构，并同步 [[views/lens-registry]]；PDF / PNG / SVG 导出件只进忽略目录。
 11. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。

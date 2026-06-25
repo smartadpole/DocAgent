@@ -36,7 +36,7 @@ tags: [entry, governance]
 - [[problem-focused-visual-presentation-rules]]：problem-focused lens 的 source pack、导出、views 和不上推规则
 - [[public-html-publish-rules]]：public-html-publish 的 HTML-only、public_url、host / prefix、live readback 和 blocked 裁定规则
 - [[research-capability-rules]]：research-capability 的证据等级、行动等级、查证和沉淀落位规则
-- 复盘方法看 [[concepts/project-retrospective]]，具体复盘档案看 [[projects/retrospectives/README]]；复盘暴露的重复失守或机制缺口再回到 [[harness-evolution]] 和 [[harness-feedback-ledger]]
+- 复盘总入口看 [[skills/retrospective-capability/SKILL]]，复盘方法看 [[concepts/project-retrospective]]，具体复盘档案看 [[projects/retrospectives/README]]；项目交付 / 软件研发链复盘用 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流复盘用 [[skills/historical-dialogue-retrospective/SKILL]]，复盘暴露的重复失守或机制缺口再回到 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 会议材料和正式纪要的治理，优先看 [[WORKFLOW]] 里的会议管理段，再看 [[projects/meetings/README]]
 
 ## 逻辑结构

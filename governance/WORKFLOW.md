@@ -865,6 +865,8 @@
 
 复盘启动前先判断对象和粒度：
 
+- 先用 [[skills/retrospective-capability/SKILL]] 固定复盘对象、复盘目标、深度等级、证据计划、上轮行动兑现回检、输出形态和不做项。
+- 用户显式要求“复盘 / 写复盘 / 沉淀复盘”时，默认标准复盘并落档；显式要求“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”时，进入深度复盘。
 - 轻量 checkpoint：只写 [[log]]、工作记录或 owning page。
 - 标准复盘：阶段、专题、交付链、明显返工、验收偏差、Issue / 事故后机制缺口进入 [[projects/retrospectives/README]]。
 - 深度复盘：跨阶段、重大事故、重复失守或会改变模板 / skill / sensor / 规则的经验进入复盘档案，并同步相关治理页。
@@ -895,4 +897,4 @@
 - 可脚本化检查进 sensor 或 check script。
 - 执行规则变化进 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或等价规则入口。
 
-如果复盘对象是历史对话或 Agent 工作流，优先使用 [[skills/historical-dialogue-retrospective/SKILL]]。不要只凭 [[log]] 或当前上下文判断完整历史；必要时补读原始 session / rollout、git diff / commit、检查输出、memory 和最终回复 / handoff。
+如果复盘对象是项目交付或软件研发链，使用 [[skills/delivery-retrospective/SKILL]]，至少回看需求、设计、拆解、实现、测试验收、发布运行和协作治理。如果复盘对象是历史对话或 Agent 工作流，使用 [[skills/historical-dialogue-retrospective/SKILL]]。不要只凭 [[log]] 或当前上下文判断完整历史；必要时补读原始 session / rollout、git diff / commit、检查输出、memory 和最终回复 / handoff。

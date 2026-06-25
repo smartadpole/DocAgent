@@ -15,6 +15,8 @@ tags: [concept, retrospective, ai-agent, harness, workflow]
 
 可启动技能：[[skills/historical-dialogue-retrospective/SKILL]]
 
+复盘总入口：[[skills/retrospective-capability/SKILL]]
+
 Agent 工作复盘关注 agent 作为执行主体时，它的工作方式、效率、质量、边界感和自我改进是否可靠。它不是对项目结果的替代复盘，而是对“这个 agent 是怎样完成工作的”做结构化回看。
 
 具体复盘档案默认放在 [[projects/retrospectives/README]] 所在目录；结构性 Harness episode 仍进入 [[harness-feedback-ledger]]。
@@ -77,6 +79,8 @@ Agent 工作复盘是在一次任务、一个阶段、一次长时目标或一�
 - 最终回复 / handoff：agent 对用户或下游的交付表达，不能替代 diff 和检查。
 
 如果复盘目标是找 agent 偏差或 workflow 改进，优先启动 [[skills/historical-dialogue-retrospective/SKILL]]，不要只凭 [[log]] 或当前记忆下结论。
+
+历史对话和 Agent 工作流复盘是 [[skills/retrospective-capability/SKILL]] 的内部子项；它不替代项目交付复盘，也不替代 Issue、事故、测试报告或验收关闭。
 
 ## 和 Harness 的分工
 

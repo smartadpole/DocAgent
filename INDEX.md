@@ -52,7 +52,9 @@ tags: [index, root]
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能
 - [[skills/documentation-maintenance/SKILL]]：代码、结构或规则变化后的文档维护技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
-- [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘技能
+- [[skills/retrospective-capability/SKILL]]：复盘能力总技能，统一项目交付、软件研发链、历史对话、Agent 工作流、Harness episode 和治理自演进复盘合同
+- [[skills/delivery-retrospective/SKILL]]：项目交付与软件研发链复盘子技能
+- [[skills/historical-dialogue-retrospective/SKILL]]：历史对话与 Agent 工作流复盘子技能
 - [[views/README]]：图文呈现层入口，承接 current / snapshot lens 和 registry
 - [[projects/README]]：活跃软件研发项目的运行入口
 - [[projects/memory/README]]：项目级稳定记忆入口
@@ -101,6 +103,7 @@ tags: [index, root]
 - [[concepts/project-retrospective]]：项目复盘方法入口，说明复盘和 log、Issue、事故、决策、memory、trace 的分工。
 - [[concepts/software-development-project-retrospective]]：软件研发项目复盘维度，覆盖需求、设计、事项、实现、测试、发布、运行和协作治理。
 - [[concepts/agent-work-retrospective]]：Agent 工作复盘维度，覆盖目标理解、阶段判断、上下文读取、工具使用、验证、沟通、边界和收尾质量。
+- [[skills/retrospective-capability/SKILL]]：复盘总技能，先固定复盘对象、深度等级、证据计划、子项路由和行动兑现回检。
 - [[concepts/software-testing-acceptance-release]]：软件测试、验收和上线的通用概念，强调环境是证据面而不是荣誉阶梯。
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
@@ -123,7 +126,7 @@ tags: [index, root]
 - [[templates/development-task-template]]：TASK 任务模板
 - [[templates/development-issue-template]]：Issue 案件模板
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
-- [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘的通用核心模板，可按对象启用软件研发或 Agent 回看模块
+- [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘的通用核心模板，包含证据地图、上轮行动兑现回检、行动分流、治理自演进和未验证边界
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
 - [[templates/problem-focused-lens-template]]：问题聚焦式图文 lens 模板，用于 current / snapshot / print view 的 source pack、证据边界和导出字段
 - [[templates/problem-focused-lens-source-pack-contract]] / [[templates/problem-focused-lens-review-contract]]：问题聚焦 lens 的 source pack 和审核合同

@@ -17,7 +17,7 @@
 - 如果用户要求调研、研究、选型、产品 / 公司 / 开源工程评估或 PoC 判断，先读 [[skills/research-capability/SKILL]] 和 [[research-capability-rules]]。
 - 如果用户要求吸收外部矩阵、附件建议或下游工程通用技能，先读 [[skills/transferable-skill-governance/SKILL]]，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
 - 如果用户要求 canonical HTML 公网访问、外部分发或 public URL，先读 [[skills/public-html-publish/SKILL]]、[[public-html-publish-rules]] 和 [[views/publication]]。
-- 如果用户要求复盘阶段、专题、交付链、Issue / 事故后经验或 Agent 工作流，读 [[concepts/project-retrospective]]、[[projects/retrospectives/README]]；历史对话和 Agent 工作复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
+- 如果用户要求复盘阶段、专题、交付链、Issue / 事故后经验或 Agent 工作流，先读 [[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]、[[projects/retrospectives/README]]；项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话和 Agent 工作复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
 
 ## 工作阶段检查
 

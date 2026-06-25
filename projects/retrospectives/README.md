@@ -16,11 +16,44 @@ tags: [project, retrospective, learning-loop]
 
 模板：[[templates/project-retrospective-template]]
 
-Agent / 历史对话复盘技能：[[skills/historical-dialogue-retrospective/SKILL]]
+复盘总技能：[[skills/retrospective-capability/SKILL]]
+
+执行子项：[[skills/delivery-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]]
 
 这页是当前项目的复盘档案入口。它负责把阶段、专题、事故后、Issue 后、交付链偏差和 Agent 协作偏差沉淀成可回看的学习资产，并把复盘结论分流到已有单一信息源。
 
 复盘不是普通总结，也不是 [[log]] 的加厚版。复盘要把原始目标、实际结果、关键事实、偏差原因、保留做法、改进行动和沉淀路由串起来，让下一轮需求判断、方案设计、研发实践、工程治理、测试验收、运行质量和 Agent 工作方式都能复用这次经验。
+
+## 系统运行闭环
+
+当前复盘体系按五层运行：
+
+1. **方法入口**：[[concepts/project-retrospective]] 定义复盘是什么、何时启动、和其他页面如何分工；软件研发和 Agent 工作分别看 [[concepts/software-development-project-retrospective]]、[[concepts/agent-work-retrospective]]。
+2. **档案入口**：本页承接具体复盘文件、命名、索引、共性主题和沉淀路由。
+3. **执行骨架**：[[skills/retrospective-capability/SKILL]] 是复盘总技能，承接统一合同、子项路由、证据等级和行动兑现回检；项目交付 / 软件研发链复盘由 [[skills/delivery-retrospective/SKILL]] 执行，历史对话 / Agent 工作流复盘由 [[skills/historical-dialogue-retrospective/SKILL]] 执行。
+4. **行动兑现回检**：标准 / 深度复盘开始前，先回检相关上一篇复盘的 open 改进行动是否兑现、是否 stale、证据在哪里、下一步落到哪个 owner 页。
+5. **行动分流和自演进**：复盘行动项必须进入已有 owner 页面；重复失守、模板缺口、skill 缺口或可脚本化检查再进入 [[harness-feedback-ledger]] 和 [[harness-evolution]]。
+
+这五层缺一不可：只有方法没有档案会变成口号，只有模板没有行动分流会变成报告存档，只有行动没有回检和自演进会让同类问题反复靠人工提醒。
+
+## 显式复盘请求
+
+用户明确要求“复盘 / 做复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认按标准复盘处理，并默认落文件到本目录。除非用户同时明确说“只口头 / 不写文件 / 先分析 / 只判断原因”，否则不能把显式复盘请求降级成只在回复里解释、只写 [[log]]，或只做轻量 checkpoint。
+
+用户要求“深度复盘 / 完整复盘 / 全面复盘 / 复盘这段对话 / 分析为什么没自动做好 / 举一反三”时，进入显式深度复盘模式：深读历史、首轮目标和用户纠偏优先、产物即档案、上层抽象和举一反三是必做项。无法读取原始 session / rollout 或 memory 线索时，必须写入未验证边界。
+
+如果用户只是问“为什么 / 在哪 / 先分析”，且没有要求复盘，才按 [[response-mode-routing]] 的快速诊断处理；若诊断后用户要求复盘，再回到本节默认落文件。
+
+## 自动触发关系
+
+复盘也不只靠用户显式说“复盘”。长 Goal、Run Capsule、多 agent、Loop iteration 或复杂规则升级收尾时，evaluator 必须按 [[skills/historical-dialogue-retrospective/SKILL#自动触发矩阵]] 判断：
+
+- `no-op`：普通任务顺利完成，无结构性新信息，不新建复盘。
+- `轻量复盘 checkpoint`：复杂运行顺利结束，只在 Closeout Proof、[[log]] 或 next-run decision 记录短判断。
+- `标准复盘`：出现用户纠偏、返工、漏验证、漏提交、漏沉淀或 Worker 证据被打回，使用复盘技能完整框架。
+- `深度复盘`：重复失守、sensor / 模板 / skill / rule 失效或 Loop evaluator 漏停，同步复盘档案、[[harness-feedback-ledger]] 和治理自演进。
+
+自动触发只决定是否调用复盘技能，不自动覆盖显式复盘请求的默认落文件规则，不自动关闭项目事项、不替代 Issue / 事故主档案、不把行动项留在本目录。`no-op / 轻量复盘 checkpoint 只适用于自动触发判断`。
 
 ## 这页负责什么
 
@@ -85,6 +118,8 @@ Agent / 历史对话复盘技能：[[skills/historical-dialogue-retrospective/SK
 
 复盘行动项不能只停留在复盘正文里：
 
+新建标准 / 深度复盘时，先用 [[templates/project-retrospective-template]] 的“上轮行动兑现回检”字段检查相关上一篇复盘的 open 行动。回检只记录状态和证据，不把复盘目录变成行动看板；需要继续推进的行动仍分流到下表 owner 页面。
+
 | 行动类型 | 分流落点 |
 | --- | --- |
 | bug、实施偏差、验收失败 | [[projects/development/issues/README]] |
@@ -108,6 +143,19 @@ Agent / 历史对话复盘技能：[[skills/historical-dialogue-retrospective/SK
 - Agent / Harness 缺口先进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升。
 - 规则变化先做冲突和单一信息源检查，必要时再更新 [[WORKFLOW]]、[[AGENTS]] 或 [[POLICY]]。
 - 单次表现只记录复盘或 log，继续观察；不要把所有复盘结论都升级成硬规则。
+
+## 治理自演进关系
+
+复盘结论按影响面逐级上推：
+
+- 单次表现：写入复盘或 [[log]]，保留未验证边界，继续观察。
+- 重复失守：进入 [[harness-feedback-ledger]]，记录触发信号、成本类型、已采取改动和状态。
+- 可模板化：更新 [[templates/project-retrospective-template]] 或相关模板字段。
+- 可技能化：更新 [[skills/retrospective-capability/SKILL]]、[[skills/delivery-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]] 或更窄子项技能。
+- 可脚本化：新增或扩展 sensor，并接入 `scripts/check_all.py`。
+- 影响执行顺序：更新 [[WORKFLOW]] 或 [[response-mode-routing]]。
+- 影响必须 / 禁止行为：更新 [[AGENTS]]。
+- 影响优先级、自动沉淀边界或裁定规则：更新 [[POLICY]]。
 
 ## 维护说明
 

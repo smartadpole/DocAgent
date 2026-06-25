@@ -32,7 +32,7 @@ tags: [agent, workflow, efficiency, harness]
 | --- | --- | --- | --- | --- | --- |
 | 快速诊断 | “为什么”“在哪”“先分析”“差异是什么” | `confirmed / likely / possible / blocked` 分级结论和证据边界 | 入口规则 + 1 到 3 个最相关事实源 | 否 | 说明是否需要升级到沉淀、验收或规则升级 |
 | 引导式设计 | “设计一个系统”“帮我想完整”“更智能 / 更前沿 / 更高效”“还不知道怎么开始” | 自动判定场景包、置信度和关键假设，只问会改变结构的问题 | [[proactive-dialogue-system]] + owning page + 必要事实源 | 是；对话所得和 agent 思考结果必须产物化 | 写清场景包、假设、待确认项、性能预算和落地位置 |
-| 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘”“知识关联” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 总入口 + 单一信息源 + 来源；新增长期知识时调用 [[skills/knowledge-linking/SKILL]] | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
+| 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘”“知识关联” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 总入口 + 单一信息源 + 来源；新增长期知识时调用 [[skills/knowledge-linking/SKILL]]；复盘先调用 [[skills/retrospective-capability/SKILL]] | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
 | 图文呈现 | “图文”“一图胜千言”“HTML 呈现”“看得更直观”“做成 lens” | 先识别关注合同和 source pack，再选择短答、Markdown、Mermaid、HTML、print view、current 或 snapshot | [[skills/problem-focused-visual-presentation/SKILL]] + 目标真相源 + 必要来源 | 条件写入；只有持久 lens 才写 `views/` | 写清证据边界、导出状态、registry 和不能上推范围 |
 | Issue 分析 + 沉淀 | 现场问题、联调失败、验收争议、跨工程阻塞 | 先给根因 checkpoint，再进入主控沉淀 | 项目主入口 + 当前工作项 / 报告 / 风险 + 直接证据 | 是 | 同步单一信息源、风险 / 报告 / 状态，跑必要检查 |
 | 验收关闭 | “验收”“复验”“关闭”“准出”“done” | 先声明验收对象和证据层级 | TASK / EP / FP / Gate / Issue + 最新证据 + 必要运行事实；TODO 仅作轻量兼容视图 | 是 | 写清 local / service-side / end-to-end 和人工确认边界 |
@@ -54,7 +54,8 @@ Goal Contract 的位置固定在响应模式判断之后、正式长时执行之
 - 引导式设计发现方向已经选定且验收标准稳定时，切到知识沉淀、正式研发链路或 Goal Contract。
 - 快速诊断发现结论会影响关闭、准出、发布或生产判断时，必须切到验收关闭模式。
 - 知识沉淀发现内容会改变默认执行方式、自动写入边界或优先级时，必须切到规则升级模式。
-- 知识沉淀发现复盘对象是历史对话或 Agent 工作流时，使用 [[skills/historical-dialogue-retrospective/SKILL]]；发现重复失守、可模板化或可脚本化缺口时，按 [[harness-evolution]] 进入 Harness 自演进。
+- 知识沉淀发现复盘对象时，先使用 [[skills/retrospective-capability/SKILL]] 固定复盘合同和子项路由；项目交付 / 软件研发链使用 [[skills/delivery-retrospective/SKILL]]，历史对话或 Agent 工作流使用 [[skills/historical-dialogue-retrospective/SKILL]]；发现重复失守、可模板化或可脚本化缺口时，按 [[harness-evolution]] 进入 Harness 自演进。
+- 长 Goal、Run Capsule、多 agent、Loop iteration 或复杂规则升级收尾时，evaluator 必须裁决 `no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘`；显式复盘请求默认标准复盘并落档，不能被自动触发的 `no-op` 降级。
 - Issue 分析进入状态修改、任务关闭、Gate 准出或发布判断时，必须切到验收关闭模式。
 - 多 agent、子工程或跨仓库回传需要拆分 Worker / Evaluator 时，切到 [[agent-orchestration]] 和 Run Capsule。
 - 行动依赖权限、远程、dirty / diverged 工作区、预算或人工确认时，先按 [[state-constraint-reasoning]] 判断可执行状态。
