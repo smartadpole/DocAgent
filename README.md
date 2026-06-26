@@ -68,8 +68,10 @@ tags: [entry, root]
 - 想找“可复制模板” -> 读 [[templates/README]]
 - 想使用或维护“项目内 agent 技能”或判断技能成熟度 -> 读 [[skills/README]]
 - 想做调研、研究、选型、产品 / 公司 / 开源工程评估或 PoC 判断 -> 读 [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] 和 [[research-capability-rules]]
+- 想把外部技术材料、论文、repo、产品更新或社区讨论先归一成研究输入 -> 读 [[templates/research-intake-template]]，再按 [[skills/research-capability/SKILL]] 分流。
 - 想给长时任务建立完成契约、防止目标或证据漂移 -> 读 [[skills/goal-contract/SKILL]] 和 [[templates/goal-contract-template]]
 - 想根据外部矩阵或下游经验吸收通用技能 -> 读 [[skills/transferable-skill-governance/SKILL]]
+- 想为某个通用技能做迁移源能力清单 -> 读 [[templates/skill-transfer-manifest-template]]；真正交给目标工程 agent 的任务书再用 [[templates/skill-transfer-contract-template]]。
 - 想生成或维护“问题聚焦式图文 lens / HTML / print view / PDF / PNG” -> 读 [[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和 [[views/README]]，先固定 focus contract、source pack、证据边界、视觉策略和同源导出要求
 - 想把 canonical HTML views 公开发布或生成 public URL -> 读 [[skills/public-html-publish/SKILL]]、[[public-html-publish-rules]] 和 [[views/publication]]
 - 想看“现实代码 / 旧工程怎么审计” -> 读 [[projects/codebase/README]]

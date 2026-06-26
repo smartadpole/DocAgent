@@ -13,7 +13,7 @@ sensor: python3 scripts/check_all.py --only research-capability
 
 本技能是本仓库的调研 / 研究能力总入口。它把“调研”固定成一个聚合能力，而不是把外部工程的所有研究子项原样搬进本库。
 
-当前执行分支由 [[skills/technology-research/SKILL]] 承接，覆盖技术专题、开源工程、行业 / AI、产品 / 公司、PoC 和本地源码工程转接。市场、用户、竞争、尽调、科研、政策、战略前瞻等外部子项只作为方法储备；除非本仓库出现稳定高频需求，否则不单独建空 skill。
+当前执行分支由 [[skills/technology-research/SKILL]] 承接，覆盖技术专题、开源工程、行业 / AI、产品 / 公司、PoC 和本地源码工程转接。Frontier Technology Intake / 前沿技术信息流处理作为本技能的前置 intake 子项，由 [[templates/research-intake-template]] 承接 source package、access boundary、A3 compensation、parser agent、evaluator oracle、route 和 writeback 字段，不单独平铺成新的通用 skill。市场、用户、竞争、尽调、科研、政策、战略前瞻等外部子项只作为方法储备；除非本仓库出现稳定高频需求，否则不单独建空 skill。
 
 ## 触发场景
 
@@ -36,12 +36,13 @@ sensor: python3 scripts/check_all.py --only research-capability
 ## 工作流
 
 1. 固定调研合同：对象、决策目标、关键问题、深度、证据计划、输出形态和不做项。
-2. 判对象分支：技术专题、开源工程、行业 / AI、产品 / 公司、PoC、本地源码工程或其他。
-3. 建证据等级：L1 一手事实、L2 权威分析、L3 产业信号、L4 媒体 / 社区线索、L5 推论、L6 建议。
-4. 做当前性审计：版本、release、license、pricing、CVE、API、政策、benchmark、公司状态和平台能力必须查当前来源。
-5. 给行动等级：Adopt / Trial / Assess / Hold / Blocked，并连接风险门和下一步。
-6. 决定沉淀落位：article、concept、template、project、decision、trace、report、skill 或只留本轮回复。
-7. 长期沉淀时调用 [[skills/knowledge-linking/SKILL]] 补入口、上位、邻接和回链。
+2. 如果输入是外部信息流、论文、repo、社区讨论、产品更新、截图或用户转发材料，先用 [[templates/research-intake-template]] 建 Research Intake：记录 source_type、source_ref、access boundary、raw landing、capture method、extraction quality、parser agent、evaluator oracle、A3 compensation 和 landing plan。
+3. 判对象分支：技术专题、开源工程、行业 / AI、产品 / 公司、PoC、本地源码工程或其他。
+4. 建证据等级：L1 一手事实、L2 权威分析、L3 产业信号、L4 媒体 / 社区线索、L5 推论、L6 建议。
+5. 做当前性审计：版本、release、license、pricing、CVE、API、政策、benchmark、公司状态和平台能力必须查当前来源。
+6. 给行动等级：Adopt / Trial / Assess / Hold / Blocked，并连接风险门和下一步。
+7. 决定沉淀落位：raw、article、concept、template、project、decision、trace、report、skill 或只留本轮回复。
+8. 长期沉淀时调用 [[skills/knowledge-linking/SKILL]] 补入口、上位、邻接和回链。
 
 ## 输出格式
 
@@ -59,6 +60,17 @@ sensor: python3 scripts/check_all.py --only research-capability
 - L2 权威分析：
 - L3 信号：
 - 待核验 / blocked：
+
+**Research Intake / Source Package**
+- source_type：
+- source_ref：
+- access_boundary：
+- capture_method：
+- extraction_quality：
+- parser_agent：
+- evaluator_oracle：
+- A3 compensation：
+- raw_landing：
 
 **分支路由**
 - 主分支：
@@ -83,7 +95,9 @@ sensor: python3 scripts/check_all.py --only research-capability
 ## 禁止项
 
 - 不把外部 13 个研究子项原样平铺成本库技能目录。
+- 不把 frontier technology intake 平铺成新的通用 skill；它是本技能的前置 source package / route 子项。
 - 不把热点、宣传、Star 数、媒体报道、旧价格、旧 release 或二级文章直接写成结论。
+- 不把没有原文保真、access boundary、extraction quality 或 evaluator 的聊天摘要写成 L1 / confirmed。
 - 不在缺少一手事实、当前性核验或本地验证时写强采用、强购买、强生产接入。
 - 不让研究结论替代采购、合规、安全、源码审计、PoC 验收、准出或人工拍板。
 - 不把外部项目事实、公司结论、报告排行、source revision 或一次性调研数据写进通用技能。

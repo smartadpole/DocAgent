@@ -16,7 +16,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 看到缺口就照单全收，复制项目事实或目录形态。
 - 看到 leader / 领先就误以为真实执行质量已经通过验证。
 
-本仓库是 wiki / 模板源工程，吸收对象必须先经过本库身份筛选，只落到既有 `skills/`、`templates/`、`governance/`、`scripts/`、`views/` 等层级。
+本仓库是 wiki / 模板源工程，吸收对象必须先经过本库身份筛选，只落到既有 repo-local `skills/`、`templates/`、`governance/`、`scripts/`、`views/` 等层级。Path ROOT 永远是当前目标工程根目录，而不是 AcknowledgeBase 或矩阵里显示的来源路径；所有外部路径只读参考。
 
 ## 触发场景
 
@@ -55,6 +55,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 7. 最终回复列明未复制内容、未验证边界和结构 wiring 与真实运行质量的区别。
 
 ## 输出格式
+
+Output The decision table first, then list the updated files, validation commands, and remaining boundaries. short-description 要能一句话说明：本轮是在本工程结构内升级通用 agent 技能体系，不是复制 AcknowledgeBase 目录。
 
 ```markdown
 | 能力 | 矩阵原状态 | 缺口类型 | 处理方式 | 落位 | 剩余边界 |

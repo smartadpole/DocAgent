@@ -21,6 +21,7 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - 当前分支改了公开 API、CLI、配置、行为、目录结构、agent 规则、模板或检查脚本。
 - 准备提交、PR、发布、合并后复查或规则同步。
 - 本轮发现文档中的命令、路径、状态、职责、入口、模板字段或 AGENTS 约束已经漂移。
+- 本轮发现 duplicate-rule、over-thick-rule、generated-touch、规则已有但未执行、thin adapter 漂移或同一事实进入多个 owner 页面。
 
 ## 边界
 
@@ -35,7 +36,9 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - `template`：输出报告格式即最小骨架；若后续频繁生成文档维护报告，再抽模板。
 - `governance`：文档同步、log、提交和规则升级回到 [[governance/documentation-maintenance-rules]]、[[response-mode-routing]]、[[POLICY]]、[[AGENTS]] 和 [[template-feedback-rules]]。
 - `TRANSFER`：迁移边界见 [[skills/documentation-maintenance/TRANSFER]]。
-- `sensor`：`python3 scripts/check_all.py --only documentation-maintenance` 检查技能、TRANSFER、治理页、入口和总门禁接线。
+- `quality-gate`：文档维护必须先说明 stale / missing / duplicate-rule / broken-example / generated / no-change 的证据分类，不能制造无依据发现。
+- `verification-loop`：报告模式要能回到 diff / 事实源；编辑模式要跑专项 sensor、完整检查或手工回看，并说明未覆盖边界。
+- `sensor`：`python3 scripts/check_all.py --only documentation-maintenance` 检查技能、TRANSFER、治理页、quality-gate、verification-loop、入口和总门禁接线。
 - `evidence boundary`：本技能证明文档和当前 diff / 事实源的一致性检查，不代表代码行为已经验收。
 
 ## 工作流
@@ -82,7 +85,9 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 
 - `Stale`：文档写了旧行为、旧参数、旧路径、旧命令或旧规则。
 - `Missing`：新公开能力、入口或规则没有文档入口。
+- `Duplicate-rule`：同一裁定同时写进多个入口，或 thin adapter 复制了根正文。
 - `Broken example`：示例代码、命令或链接已经不可用。
+- `Generated`：目标是导出件、缓存、机器生成物或声明禁止手改的文件，只能改源或生成器。
 - `No changes needed`：已检查但无需改。
 
 ### 5. 保守修正

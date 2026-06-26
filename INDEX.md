@@ -132,8 +132,10 @@ tags: [index, root]
 - [[templates/problem-focused-lens-template]]：问题聚焦式图文 lens 模板，用于 current / snapshot / print view 的 source pack、证据边界、视觉策略、`static_visual_qa` 和导出字段
 - [[templates/problem-focused-lens-source-pack-contract]] / [[templates/problem-focused-lens-review-contract]]：问题聚焦 lens 的 source pack 和审核合同
 - [[templates/public-html-publication-template]]：HTML 公开发布 profile 模板，用于声明 source root、public_url、HTML-only、multi-host / multi-project 和 blocked 口径
+- [[templates/research-intake-template]]：研究 intake 模板，用于外部技术材料、论文、repo、产品更新或社区讨论进入 research-capability 前的 source package、access boundary、A3 compensation、parser / evaluator 和 writeback 字段
 - [[templates/technology-research-contract-template]] / [[templates/technology-research-report-template]]：调研合同和正式研究报告骨架
 - [[templates/technology-research-evidence-matrix-template]] / [[templates/technology-research-adoption-contract-template]]：研究证据矩阵和采用合同
+- [[templates/skill-transfer-manifest-template]]：跨工程技能迁移源能力清单，用于归一 source-depth、可吸收 / 抽象 / 禁止复制、目标工程自检和任务书基线
 - [[templates/skill-transfer-contract-template]] / [[templates/skill-transfer-evidence-contract]] / [[templates/skill-transfer-review-contract]]：跨工程技能迁移任务书、证据和审核合同
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板

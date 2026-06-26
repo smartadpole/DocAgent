@@ -26,6 +26,7 @@
 - LifeOS、AcknowledgeBase 或其他工程的 host、prefix、secret、启动方式、部署脚本和拒绝路径只能抽象成目标工程自己的 publication profile 字段。
 - 目标工程可以使用 `views/`、`reports/html/`、`docs/views/` 或自己的 canonical HTML root，不强制照搬目录。
 - 检查脚本可以用 Python、Node、Makefile、CI job 或平台 CLI 实现，重点是 HTML-only、public_url、live readback 和 blocked 口径。
+- Cloudflare Tunnel、Cloudflare Pages、Pages Direct Upload、Netlify、GitHub Pages 或本机 share-only host 都只是发布模式候选；目标工程必须写自己的 host / prefix / deploy target / secret / denial path / live readback，不能借用来源工程事实。
 
 ## 禁止复制
 
@@ -57,7 +58,7 @@
 - 门禁验证：`python3 scripts/check_all.py --only public-html-publish`
 - 公网读回：`python3 scripts/check_public_html_publish.py --live`
 
-没有真实 host 或 live readback 时，`--live` 必须保持 blocked，不得把本机文件、localhost、截图或导出件当作公网完成证据。
+没有真实 host、secret、mount、deploy target 或 live readback 时，`--live` 必须保持 blocked，不得把本机文件、localhost、截图、Cloudflare / Pages 配置存在或导出件当作公网完成证据。
 
 
 ## L5 live profile update (2026-06-19)

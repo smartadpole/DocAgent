@@ -13,6 +13,7 @@ updated: 2026-06-17
 ## 可以吸收
 
 - Loop 方法入口：何时从一次性 Goal / Run Capsule 升级为 loop，以及何时只能 `not-ready` 或 `discovery-only`。
+- Execution posture：每轮必须标清 `orchestrator-only`、`orchestrator-plus-workers`、`direct-execution` 或 `blocked`；direct-execution 只能用于权限、写入边界和验证合同都清楚的小范围动作。
 - Loop Contract 字段：Objective、Discovery Source、Trigger / Schedule、Run Queue And State、Agent Topology、Worker Ownership、Evaluator Oracle、Persistence Routing、Budget And Safety、Next-run Decision。
 - Run Capsule / Worker 回传接线：Parent Loop Contract、Input discovery item、Allowed writes、Required evidence、Limits、State transition、Next-run recommendation。
 - Evaluator oracle：脚本、独立 agent、人工 reviewer 或真实运行工具；禁止生成者自评替代 evaluator。
@@ -26,6 +27,7 @@ updated: 2026-06-17
 - 目标工程已有 issue / task / risk / report / service registry / memory / log / feedback ledger 时，Loop 结果必须分流到这些 owner 页面；没有时先建立等价记录落点，不硬造平行看板。
 - 目标工程没有 `skills/`、`templates/` 或 `scripts/check_all.py` 时，可把能力落到 agent workflow、governance 入口或结构化 review 清单，但仍要保留 Worker limits、Evaluator oracle 和 Next-run decision。
 - 业务循环脚本只能作为 discovery source、Worker 工具或 evaluator oracle 候选，不能冒充 Loop Contract 或持久状态。
+- `git fetch --all --prune` 只刷新远端视图；`pull / merge / rebase / reset / checkout` 不是默认动作。只有 clean、behind、用户授权且可 fast-forward 时，才能裁决为 `ff-only update`。
 
 ## 禁止复制
 
@@ -41,8 +43,9 @@ updated: 2026-06-17
 2. 是否已有 Goal Contract、Run Capsule、handoff、task brief、runbook 或等价运行控制面。
 3. 是否有稳定 Discovery source、可去重 Run queue、Persistent state 和 Evaluator oracle。
 4. Loop 结果应回写到哪些单一信息源：issue、TASK、risk、AP、report、service-registry、memory、log、harness ledger 或 engineering feedback。
-5. 哪些动作必须人工批准：写入生产、合并、发布、关闭状态、改规则、启用定时调度或外部事件触发。
-6. 是否已有检查脚本；若无，至少写结构化 review 清单覆盖入口、模板字段、Worker limits、Evaluator oracle、禁止项和单一信息源。
+5. 涉及子工程时，是否已记录目录、branch、remote / upstream、fetch 结果、ahead / behind / diverged、dirty / local-only、update decision 和 worker launch allowed？
+6. 哪些动作必须人工批准：写入生产、合并、发布、关闭状态、改规则、启用定时调度或外部事件触发。
+7. 是否已有检查脚本；若无，至少写结构化 review 清单覆盖入口、模板字段、Worker limits、Evaluator oracle、禁止项和单一信息源。
 
 ## 验证要求
 

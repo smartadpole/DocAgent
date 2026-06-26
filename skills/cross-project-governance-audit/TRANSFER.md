@@ -11,6 +11,9 @@
 - 证据分级：confirmed、partial、missing、blocked。
 - 输出骨架：维度表、共性模式、不反哺项目材料、handoff 候选和证据边界。
 - 审计不上推边界：治理信号不等于业务质量或验收状态。
+- source-depth：审计必须说明读取深度；只读根入口、只读矩阵或只读 handoff 时不得写成完整治理审计。
+- handoff-ready：建议足够交给目标工程执行，不代表目标工程已经完成修复。
+- non-reference：项目事实、排行榜、旧 source revision、路径和一次性状态只能列为不反哺材料。
 
 ## 只能抽象吸收
 
@@ -37,6 +40,7 @@
 ## 验证要求
 
 - 对目标工程自身跑一次轻量审计，输出 confirmed / partial / missing / blocked。
+- 审计报告必须写明 source-depth 和 no runtime validation 边界。
 - 如果新增 sensor，运行对应检查并说明是否做了负向测试。
 - handoff 只作为建议，除非用户授权，不直接执行目标工程改动。
 - 最终回复写清审计对象、证据边界、更新文件和检查结果。

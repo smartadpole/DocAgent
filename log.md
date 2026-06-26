@@ -7,6 +7,31 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-26
+
+### 二次合流通用 agent 技能体系
+
+- **记录人**：Codex
+- **用户意图**：用户要求基于 AcknowledgeBase 2026-06-26 11:39、`source_revision=308bc64`、`agent-evidence-v12` 的技能成熟度快照，全面升级本工程通用 agent 技能体系；目标不是复制 AcknowledgeBase 目录，也不是只新增 `SKILL.md`，而是把通用能力吸收到本工程 repo-native 的 skill、TRANSFER、template、sensor、入口和验证闭环。
+- **目录归类与落位判断**：本轮确认该工作属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的技能 / 治理体系升级，落位在本仓已有 [[skills/README]]、`skills/`、`templates/`、`scripts/`、[[README]]、[[INDEX]] 和 [[log]]；不新建平行 AcknowledgeBase 目录，不触碰 `.obsidian/` 预存本地配置改动。
+- **源资料边界**：读取 AcknowledgeBase 的技能入口、`transferable-skill-governance`、`cross-project-skill-adoption-prompt`、迁移 manifest 模板、矩阵 JSON / 诊断页，以及 Goal、Loop、复盘、文档维护、Issue 分析、图文呈现、公开发布、知识关联、研究、跨工程治理审计和 frontier intake 源资料；只吸收触发条件、事实源分层、流程、输出格式、验证、回写守卫、迁移边界和 sensor 口径，不复制项目事实、路径、服务名、运行 ID、handoff、历史 log、source revision 或一次性验收样例。
+- **关键裁决**：
+  1. Goal Contract、Loop Engineering、复盘和 Public HTML Publish 作为 baseline 候选处理；本仓已有 owner，采取 `recognize / complete / upgrade`，不另造平行体系。
+  2. research-capability 的真实缺口是 frontier technology intake 前置 source package，本轮作为研究 intake 子项吸收，不新增并列通用 skill。
+  3. cross-project-skill-adoption-prompt 的缺口是缺源能力 manifest 层和 `taskbook-ready` 质量门，本轮新增 manifest 模板并补 source-depth / golden baseline 口径。
+  4. project-context-entry、work-item-auto-decomposition、customer-group-db-readback、backlog-management 和 lifeos-management 判为 project-bound，只抽象方法，不迁移业务事实。
+- **关键动作**：
+  1. 更新 [[skills/README]]，新增本工程 baseline conformance 声明，覆盖 `local_source_of_truth`、`allowed_write_scope`、`required_profile`、`validation_command`、`blocked_when_missing` 和 `exceptions`，并记录逐能力 `recognize / complete / upgrade / merge / adapt / defer / reject` 裁决。
+  2. 新增 [[templates/skill-transfer-manifest-template]]，承接源能力覆盖矩阵、可吸收 / 抽象 / 禁止复制、目标工程结构自检、任务书基线和最终回复要求。
+  3. 新增 [[templates/research-intake-template]]，承接外部材料进入研究流程前的 source package、access boundary、capture method、extraction quality、parser agent、evaluator oracle、A3 compensation 和 writeback。
+  4. 更新 [[skills/research-capability/SKILL]] 和 `TRANSFER.md`，把 Frontier Technology Intake 作为 research-capability 前置 intake 子项接入，不平铺外部研究子技能。
+  5. 更新 cross-project skill adoption、transferable-skill-governance、cross-project-governance-audit、documentation-maintenance、goal-contract、loop-engineering、problem-focused-visual-presentation、public-html-publish 和 knowledge-linking 的技能或迁移边界，补 source-depth、handoff-ready、duplicate-rule、manual-confirmation、ff-only、live readback、visual_acceptance_floor 和 skill-transfer manifest 等识别 / 执行信号。
+  6. 更新 `scripts/check_skill_maturity.py`、`scripts/check_research_capability.py` 和 `scripts/check_documentation_maintenance.py`，让专项 sensor 检查 conformance、manifest 模板、research intake 和 duplicate-rule / verification-loop 接线。
+  7. 同步 [[README]]、[[INDEX]] 和 [[templates/README]] 的短入口。
+- **检查结果**：`python3 scripts/check_all.py --only skill-maturity,research-capability,documentation-maintenance,loop-engineering,public-html-publish,problem-focused-visual-presentation,knowledge-linking` 已通过；收尾前继续运行完整 `python3 scripts/check_all.py` 和 `git diff --check`。
+- **二阶反思**：本轮不是缺更多自然语言规则，而是需要把“矩阵提示的通用能力”落成目标工程自己的 conformance、manifest、intake 和 sensor wiring。以后同类升级先问：本仓已有 owner 是谁、缺口是真能力还是识别信号、是否需要模板 / sensor，避免为追分制造空 skill 或平行事实源。
+- **影响页面**：[[skills/README]]、[[skills/research-capability/SKILL]]、`skills/research-capability/TRANSFER.md`、`skills/cross-project-skill-adoption-prompt/SKILL.md`、`skills/cross-project-skill-adoption-prompt/TRANSFER.md`、`skills/transferable-skill-governance/SKILL.md`、`skills/cross-project-governance-audit/SKILL.md`、`skills/cross-project-governance-audit/TRANSFER.md`、`skills/documentation-maintenance/SKILL.md`、`skills/goal-contract/TRANSFER.md`、`skills/loop-engineering/TRANSFER.md`、`skills/problem-focused-visual-presentation/TRANSFER.md`、`skills/public-html-publish/SKILL.md`、`skills/public-html-publish/TRANSFER.md`、`skills/knowledge-linking/TRANSFER.md`、[[templates/skill-transfer-manifest-template]]、[[templates/research-intake-template]]、[[templates/README]]、[[README]]、[[INDEX]]、`scripts/check_skill_maturity.py`、`scripts/check_research_capability.py`、`scripts/check_documentation_maintenance.py`、[[log]]。
+
 ## 2026-06-25
 
 ### 升级问题聚焦式图文呈现和 HTML Lens 闭环

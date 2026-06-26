@@ -10,6 +10,15 @@ from pathlib import Path
 
 README_TERMS = (
     "## 技能成熟度模型",
+    "## 本工程 baseline conformance",
+    "local_source_of_truth",
+    "allowed_write_scope",
+    "required_profile",
+    "validation_command",
+    "blocked_when_missing",
+    "exceptions",
+    "## 本轮通用能力吸收裁决",
+    "recognize / complete / upgrade / merge / adapt / defer / reject",
     "证据信号",
     "README entry",
     "template",
@@ -27,6 +36,22 @@ TEMPLATE_TERMS = (
     "## 成熟度与证据信号",
     "evidence boundary",
     "TRANSFER.md",
+)
+TRANSFER_MANIFEST_TEMPLATE_TERMS = (
+    "Skill Transfer Manifest Template",
+    "源能力覆盖矩阵",
+    "可以吸收",
+    "只能抽象吸收",
+    "禁止复制",
+    "目标工程结构自检",
+    "local_source_of_truth",
+    "allowed_write_scope",
+    "required_profile",
+    "validation_command",
+    "blocked_when_missing",
+    "exceptions",
+    "任务书基线",
+    "最终回复要求",
 )
 CHECK_ALL_TERMS = ("skill-maturity", "check_skill_maturity.py")
 WORKFLOW_TERMS = ("skill-maturity", "技能成熟度")
@@ -117,6 +142,7 @@ def check_skill_maturity(repo: Path) -> list[str]:
     errors: list[str] = []
     readme = read_text(repo, "skills/README.md", errors)
     template = read_text(repo, "templates/skill-template.md", errors)
+    transfer_manifest_template = read_text(repo, "templates/skill-transfer-manifest-template.md", errors)
     check_all = read_text(repo, "scripts/check_all.py", errors)
     workflow = read_text(repo, "governance/WORKFLOW.md", errors)
     agents = read_text(repo, "AGENTS.md", errors)
@@ -128,6 +154,13 @@ def check_skill_maturity(repo: Path) -> list[str]:
         check_skill_files(repo, readme, errors)
     if template:
         require_terms("templates/skill-template.md", template, TEMPLATE_TERMS, errors)
+    if transfer_manifest_template:
+        require_terms(
+            "templates/skill-transfer-manifest-template.md",
+            transfer_manifest_template,
+            TRANSFER_MANIFEST_TEMPLATE_TERMS,
+            errors,
+        )
     if check_all:
         require_terms("scripts/check_all.py", check_all, CHECK_ALL_TERMS, errors)
     for rel, text in (

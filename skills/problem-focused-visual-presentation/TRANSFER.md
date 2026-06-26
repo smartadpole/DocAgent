@@ -16,6 +16,8 @@
 - 视觉策略字段：`art_direction_brief`、`information_topology`、`layout_morphology_plan`、`topic_visual_language`、`primary_visual_metaphor`、`theme_specific_elements`、`anti_information_listing_strategy`、`page_paradigm`、`component_semantic_manifest`、`human_rubric`、`result_cluster_diagnosis`。
 - 静态视觉 QA 字段：`layout_frame`、`type_scale`、`spacing_rhythm`、`semantic_palette`、`component_roles`、`accessibility_checks`、`export_render_check`、`finish_grade`、`visual_strength_gate`、`hierarchy_amplitude_gate`、`component_variety_gate`、`color_budget_single_hero_gate`、`adjustment_loop`、`rendered_visual_review`、`review_artifact`、`visual_acceptance_result`。
 - 图文结构选择：状态卡、矩阵、时间线、关系图、证据链、行动地图、概念图、边界图。
+- visual_acceptance_floor：复杂或持久 lens 若声明 decision-lens / polished / full-page，最低必须达到 `impact-required`；只做到信息正确、字段齐全或卡片整齐时只能标为 usable / draft。
+- 证据图片和截图默认 `object-fit: contain` 或等价不裁切策略，除非 source pack 明确允许裁切；裁切证据细节会降低证据可信度。
 - 持久化守卫：canonical HTML / source、`views/current/`、`views/snapshots/`、snapshot、ignored exports、导出一致性、同源一致性、[[views/lens-registry]] 或等价 registry。
 - sensor：检查入口、模板字段、HTML meta、`static_visual_qa`、导出缓存忽略规则和 registry 接线。
 

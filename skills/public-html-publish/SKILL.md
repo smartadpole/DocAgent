@@ -51,7 +51,7 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 | L4 | live readback | 有公网 200、内容标记、拒绝路径和内部链接可达验证。 |
 | L5 | multi-project safe publish | 支持多工程 / 多主机边界、撤销 / secret rotation、隐私审查和迁移验证。 |
 
-当前仓库默认目标为 L3；除非 [[views/publication]] 有真实 host 和 live readback，否则状态保持 `blocked`。
+当前仓库按 [[views/publication]] 使用 share-only live host；只有 `python3 scripts/check_public_html_publish.py --live` 同时通过 share 200、denial 404 和 multi-project prefix 边界时，才能声称本仓 HTML 已公开。若 host、secret、mount、Cloudflare Tunnel / Pages Direct Upload / 其他 deploy target 或 live readback 缺失，必须降级为 `blocked`。
 
 ## 输出格式
 

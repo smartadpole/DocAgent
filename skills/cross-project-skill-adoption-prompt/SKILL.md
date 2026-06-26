@@ -32,7 +32,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 ## 成熟度与证据信号
 
 - `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；暂未维护 golden examples。
-- `template`：可复制任务书骨架见 [[templates/skill-transfer-contract-template]]；最终产物仍必须按目标工程结构自检后裁剪。
+- `template`：源能力归一清单见 [[templates/skill-transfer-manifest-template]]；可复制任务书骨架见 [[templates/skill-transfer-contract-template]]，证据和审核分别见 [[templates/skill-transfer-evidence-contract]]、[[templates/skill-transfer-review-contract]]；最终产物仍必须按目标工程结构自检后裁剪。
 - `governance`：跨项目反哺和项目事实剥离回到 [[template-feedback-rules]]；写入目标工程前必须确认授权。
 - `TRANSFER`：迁移边界见 [[skills/cross-project-skill-adoption-prompt/TRANSFER]]。
 - `evidence boundary`：本技能生成的是迁移任务书，不代表目标工程已经完成迁移或通过验收。
@@ -60,6 +60,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 验证方式、sensor、检查命令或人工自检。
 
 如果源技能没有 `TRANSFER.md`，先生成一次性任务书，同时建议补迁移边界。
+
+源能力归一时先形成 source-depth 判断：源 `SKILL.md`、`TRANSFER.md`、模板、治理页、sensor、views / registry 和 owner 页面分别提供什么证据，哪些只是历史样例或项目事实。高价值通用技能应优先填 [[templates/skill-transfer-manifest-template]] 的能力目标、可吸收、只能抽象吸收、禁止复制、目标工程结构自检、验证要求和任务书基线；缺少 manifest 时，任务书只能标为 `source-needs-normalization` 或一次性迁移建议。
 
 ### 3. 判断是否要先归一源能力
 
@@ -116,6 +118,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - `模块要求` 是否到字段级，能让目标 agent 直接执行。
 - `验证要求` 是否包含专项 sensor、总检查、手工回看和未验证边界。
 - `最终回复` 是否要求交代已更新文件、检查结果、未吸收内容和 commit。
+- `Transfer Manifest` 是否说明了 source-depth、taskbook-ready、harness-governance 接线和不复制项目事实。
+- `Golden baseline` 如存在，生成稿是否 `generated >= baseline`，没有弱化章节顺序、字段粒度、禁止项、验证和最终回复要求。
 
 如果缺任一项，先补任务书，不急着迁移目标工程。
 
@@ -155,3 +159,5 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 不复制下游工程的业务事实、服务名、表名、运行 ID、本地路径或提交规则。
 - 不预设目标工程结构；让目标工程 agent 自检并保守落位。
 - 不把迁移任务书当成目标工程已经完成迁移。
+- 不在缺少 source-depth、Transfer Manifest 或等价自检时声称任务书已经 `taskbook-ready`。
+- 不把 golden baseline 压缩成更短、更抽象的说明文；只能做通用化补丁和边界增强。

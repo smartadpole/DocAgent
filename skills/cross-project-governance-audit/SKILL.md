@@ -35,7 +35,8 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 - `template`：当前不维护独立漂移报告模板；审计输出格式可作为最小骨架。
 - `governance`：本库自查使用 [[response-mode-routing]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[template-feedback-rules]] 和 [[POLICY]]。
 - `TRANSFER`：迁移边界见 [[skills/cross-project-governance-audit/TRANSFER]]。
-- `evidence boundary`：审计结论代表本轮文件证据信号，不代表目标工程运行质量、业务交付或验收状态。
+- `source-depth`：审计必须说明读取了哪些根规则、治理页、技能、模板、sensor、检查输出或 handoff；只读单一入口时只能给轻量判断。
+- `evidence boundary`：审计结论代表本轮文件证据信号和 no runtime validation 边界，不代表目标工程运行质量、业务交付或验收状态。
 
 ## 工作流
 
@@ -92,6 +93,8 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 - 不反哺项目材料。
 - 建议动作和 owner 页面。
 - 如果需要，生成目标工程任务书：范围、逐条操作、验证、禁止项和最终回复。
+- `handoff-ready` 只表示建议足够交给目标工程 agent 执行；它不是目标工程已修复、已提交、已验证或已验收。
+- `non-reference` 材料必须单列：项目事实、业务状态、一次性检查、旧 source revision、排行榜或路径不能进入平台标准。
 
 ## 输出格式
 

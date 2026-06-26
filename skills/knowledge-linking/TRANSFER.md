@@ -9,6 +9,7 @@
 - 沉淀模式：快速补链、标准知识沉淀、调研沉淀、机制升级。
 - 分层落位：raw / inbox / assets、articles、concepts、governance、skills、templates、log 或目标工程等价层。
 - 关系画像：主入口、上位页、邻接页、反向回链、来源、适用边界和检查命令。
+- 技能迁移场景的关系画像：`skill-transfer`、Transfer Manifest、源 `SKILL.md`、`TRANSFER.md`、任务书模板、sensor 和最终 owner 页面必须互相可发现；manifest 不能只留在最终回复或 log。
 - 单一信息源规则：概念、文章、规则、技能、模板各自承担不同职责。
 - 验证方式：入口更新、回链检查、专项 sensor 或人工自检。
 

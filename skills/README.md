@@ -33,6 +33,40 @@
 
 跨工程技能成熟度矩阵只作为“发现缺口和评价维度”的来源，不作为本库事实源。吸收通用技能时只拿触发条件、事实源分层、流程、输出格式、验证、回写守卫、迁移边界和成熟度证据信号；不复制外部工程排行、分数、源头标记、项目状态、本地路径、业务表、服务名、运行 ID、source revision 或一次性 handoff。项目 / 领域绑定能力只能抽象方法，不能直接变成本库通用技能。
 
+## 本工程 baseline conformance
+
+本节是本仓通用 agent 技能体系的 project conformance 声明。它只描述本仓自己的执行事实和验证入口，不代表 AcknowledgeBase、下游工程或矩阵快照已经完成迁移。
+
+| 字段 | 本工程声明 |
+| --- | --- |
+| `local_source_of_truth` | [[skills/README]] 是通用技能入口；各技能 `SKILL.md` 是执行流程源；同目录 `TRANSFER.md` 是迁移边界源；[[governance/README]]、[[POLICY]]、[[WORKFLOW]] 和 [[AGENTS]] 是规则入口；`views/` 只承接持久呈现；`projects/` 继续承接项目事实。 |
+| `allowed_write_scope` | 本仓 agent 可在本轮授权范围内更新 `skills/`、`templates/`、`governance/`、`scripts/`、`views/`、`projects/` 和 [[log]]；不得把外部工程项目事实、运行 ID、服务实例、handoff 或历史 log 写成本仓通用事实。 |
+| `required_profile` | 先按 [[response-mode-routing]] 判断响应模式；跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；长时执行使用 [[skills/goal-contract/SKILL]]；持续循环使用 [[skills/loop-engineering/SKILL]]；持久图文和公开发布分别使用 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
+| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
+| `blocked_when_missing` | 缺少目标工程结构自检、`TRANSFER.md` 迁移边界、owner 页面、专项 sensor、人工确认边界、live readback 或真实证据时，只能写 `partial / blocked / review`，不能写成验收完成、发布完成或迁移完成。 |
+| `exceptions` | 简单问答、一次性小修、只读解释、没有持久沉淀价值的临时判断不强行套完整技能包；项目 / 领域绑定能力只抽象方法，不新建通用 skill；sensor 只证明 wiring，不证明真实运行质量、审美质量或业务验收。 |
+
+## 本轮通用能力吸收裁决
+
+以下裁决基于本仓现有结构和 AcknowledgeBase 2026-06-26 11:39 `agent-evidence-v12` 快照。它用于指导本仓落位，不把矩阵分数写成事实源。
+
+| 能力 | 分类 | 缺口类型 | 处理方式 | 本仓落位 |
+| --- | --- | --- | --- | --- |
+| Goal Contract | baseline 候选 | recognition-gap + 局部 true-gap | complete | 保留 [[skills/goal-contract/SKILL]]，补手工确认、非默认值、code-level / business-flow、method-candidate 和 conformance 边界到 `TRANSFER`。 |
+| Loop Engineering | baseline 候选 | recognition-gap | upgrade | 保留 [[skills/loop-engineering/SKILL]]，补 direct-execution、ff-only update 和 Orchestrator-only / Worker preflight 边界。 |
+| 复盘能力 | baseline 候选 | signal-only-gap | recognize | 现有总技能、子项、archive、索引和 sensor 已是 owner；不新建平行复盘体系，只保持 `views` 不替代复盘档案。 |
+| Public HTML Publish | baseline 候选 | recognition-gap | complete | 保留 [[skills/public-html-publish/SKILL]]、[[views/publication]] 和 sensor；补 share-only live profile 与 Cloudflare Pages / Pages Direct Upload 只是可选模式的边界。 |
+| 文档维护 | transferable skill | recognition-gap | upgrade | 保留 [[skills/documentation-maintenance/SKILL]]，显式补 duplicate-rule、generated guard、quality-gate 和 verification-loop。 |
+| Issue 分析 | transferable skill | signal-only-gap | recognize | 保留 [[skills/issue-analysis/SKILL]] 和 [[templates/development-issue-template]]；不复制下游业务 issue 事实。 |
+| 图文呈现 | transferable skill | signal-only-gap + 局部 true-gap | recognize / complete | 现有 `views/`、registry、reference、HTML 样本和 sensor 继续作为 owner；补 visual floor 词汇时只为明确完成合同，不追求堆视觉术语。 |
+| 知识关联 | transferable skill | recognition-gap | recognize | 保留 [[skills/knowledge-linking/SKILL]]；`skill-transfer` 和 `Transfer Manifest` 只作为迁移场景的关系画像要求。 |
+| 调研 / 研究能力 | transferable skill | true-gap | upgrade | 保留聚合入口，不平铺外部子项；把 frontier technology intake 吸收为研究 intake 子项和模板字段。 |
+| 跨工程治理审计 | transferable skill | recognition-gap | upgrade | 保留自查 / 审计技能，补 source-depth、handoff-ready、non-reference 和 no runtime validation 边界。 |
+| 跨工程技能迁移任务书 | transferable skill | recognition-gap | upgrade | 保留 meta skill，新增 [[templates/skill-transfer-manifest-template]]，任务书必须达到 `taskbook-ready` 并区分源能力、目标结构自检和验证。 |
+| Transferable Skill Governance | transferable skill | recognition-gap | complete | 本页和 [[skills/transferable-skill-governance/SKILL]] 作为裁决面；补 repo-native、Path ROOT 和输出裁决表口径。 |
+| Frontier Technology Intake | transferable skill 子项 | true-gap | adapt | 不新增并列 skill；作为 [[skills/research-capability/SKILL]] 的前沿信息流 intake 子项和 [[templates/research-intake-template]] 吸收。 |
+| project-context-entry、work-item-auto-decomposition、customer-group-db-readback、backlog-management、lifeos-management | project-bound | 不适用 | reject / adapt | 只抽象事实源分层、批处理、验收或上下文加载方法；不迁移业务表、运行 ID、队列、生活项目事实或开源 backlog 状态。 |
+
 ## 当前技能
 
 - [[skills/research-capability/SKILL]]：调研 / 研究能力聚合技能。用于把技术、开源工程、产品、公司、行业、AI、PoC 和源码工程研究统一到调研合同、证据等级、行动等级、风险门和沉淀落位。
