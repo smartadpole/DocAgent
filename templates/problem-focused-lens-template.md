@@ -18,6 +18,7 @@ tags: [template, lens, problem-focused, visual-presentation, html-lens]
 - `focus_object`:
 - `lens_type`: status / plan / decision / risk / issue / acceptance / knowledge / resource / owner / timeline
 - `judgement_purpose`: 看懂 / 比较 / 行动 / 验收 / 追责 / 回顾 / 学习 / 沉淀
+- `decision-lens`: yes / no；yes 时必须写选项、判断标准、So-What、反证、deal-breaker、manual-confirmation 和不能上推边界
 - `source_pages`:
 - `source_scope`:
 - `generated_at`:
@@ -28,6 +29,8 @@ tags: [template, lens, problem-focused, visual-presentation, html-lens]
 - `persistent_or_temporary`:
 - `export_required`: none / pdf / png / pdf+png / slide
 - `visual_structure`: status-card / matrix / timeline / relation-map / evidence-chain / action-map / concept-map / boundary-map / mixed
+- `visual_acceptance_floor`: impact-required
+- `real-world-unverified`: yes / no
 - `export_profile`:
 - `print_profile`:
 - `equivalence_profile`:
@@ -82,6 +85,8 @@ tags: [template, lens, problem-focused, visual-presentation, html-lens]
 ## 视觉策略
 
 - `art_direction_brief`：
+- `object-fit: contain`：图片、截图或真实对象保持完整可见。
+- `full-page`：主视觉是否承担整页判断，而非局部装饰。
 - `information_topology`：
 - `layout_morphology_plan`：
 - `topic_visual_language`：
@@ -145,6 +150,9 @@ tags: [template, lens, problem-focused, visual-presentation, html-lens]
 - `rendered_visual_review`：
 - `review_artifact`：
 - `visual_acceptance_result`：
+- `font-weight`：
+- `box-shadow`：
+- `linear-gradient`：
 
 ## 导出与持久化
 
@@ -169,5 +177,9 @@ tags: [template, lens, problem-focused, visual-presentation, html-lens]
 
 - 未读来源：
 - 待人工确认：
+- service-side：
+- end-to-end：
+- manual-confirmation：
+- real-world-unverified：
 - 不适用场景：
 - 下次刷新触发：

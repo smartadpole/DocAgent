@@ -54,11 +54,13 @@ sensor: python3 scripts/check_all.py --only problem-focused-visual-presentation,
 - `focus_object`：本轮聚焦的文档、主题、状态、风险、决策、计划、验收、issue、知识或资源。
 - `lens_type`：`status / plan / decision / risk / issue / acceptance / knowledge / resource / owner / timeline`。
 - `judgement_purpose`：看懂、比较、行动、验收、追责、回顾、学习或沉淀。
+- `decision-lens`：如果页面服务决策，必须写清选项、判断标准、So-What、反证、deal-breaker、manual-confirmation 和不能上推边界；不只是漂亮页面。
 - `source_pack`：已读来源、未读但相关来源、更新时间、证据和推断。
 - `evidence_boundary`：`confirmed / likely / possible / blocked`。
 - `output_mode`：短答、Markdown、Mermaid、HTML、HTML + assets、PDF / PNG、slide、临时 artifact、持久 current 或 snapshot。
 - `persistent_or_temporary`：聊天内临时、`views/current/` 或 `views/snapshots/`。
 - `export_required`：是否必须导出 PDF / PNG / print view / slide。
+- `real-world-unverified`：如果没有 service-side、end-to-end 或人工现场确认，lens 只能写本地结构 / 静态呈现通过，不能写真实世界已验证。
 
 简单问答不启动完整 lens。显式要求 HTML、图文文件、打印、PDF / PNG 或持久页面时，默认进入持久 lens 路径。
 
@@ -104,6 +106,10 @@ source pack 必须标明已读、未读但相关、更新时间、哪些结论�
 - `page_paradigm`：选用 `current-status-dashboard / decision-comparison / evidence-chain / concept-map / timeline / matrix / boundary-map / resource-map` 等范式。
 - `component_semantic_manifest`：本页组件角色清单，例如 verdict strip、evidence rail、matrix cell、timeline node、boundary block、trace link。
 - `human_rubric`：完成前由人读时用来判断是否真的直观的标准。
+- `visual_acceptance_floor=impact-required`：至少要让读者更快判断、比较或行动；未达到 impact-required 时不能只因 HTML 存在而通过。
+- `object-fit: contain`：真实图片、截图或产品对象默认保持完整可见，不为版式裁切掉关键信息。
+- `full-page`：需要全局判断的 lens 应让主视觉覆盖完整页面节奏，而不是把关键证据塞进局部卡片。
+- `finish_tokens`：检查 font-weight、box-shadow、linear-gradient 等视觉完成度信号时，只作为 polish 证据，不能替代 source pack 和证据边界。
 - `result_cluster_diagnosis`：如果页面退化成标题 + 卡片 + 表格，要指出并调整。
 
 ### 5. 选择图文结构
@@ -199,6 +205,10 @@ sensor 只能检查字段、导出留痕和同源约束，不能替代人审或�
 - PDF / PNG：
 - static_visual_qa：
 - 未覆盖边界：
+- service-side：
+- end-to-end：
+- manual-confirmation：
+- real-world-unverified：
 ```
 
 ## 禁止项

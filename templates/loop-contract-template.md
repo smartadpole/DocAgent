@@ -61,7 +61,7 @@ Loop Contract 是持续 agent 循环的控制面。它不替代 [[templates/goal
 ## Agent Topology
 
 - **Orchestrator / 主线程**：
-- **Execution posture**：orchestrator-only / worker-assisted / evaluator-required / blocked
+- **Execution posture**：direct-execution / orchestrator-only / worker-assisted / evaluator-required / blocked
 - **Worker agents / 子线程**：
 - **Evaluator**：
 - **是否使用独立 worktree / 独立线程 / 只读研究**：
@@ -80,7 +80,7 @@ Loop 涉及子工程代码或外部仓库时，每轮 Run Capsule 必须继承�
 | ahead / behind / diverged |  |
 | dirty / untracked |  |
 | local-only risk |  |
-| update policy | 默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
+| update policy | ff-only update；默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
 
 ## Worker Ownership
 

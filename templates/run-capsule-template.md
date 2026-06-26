@@ -32,7 +32,7 @@ Run Capsule 是 Goal、多 agent、多线程或跨工程长任务的最小运行
 ## Agent Topology
 
 - **Orchestrator / 主线程**：
-- **Execution posture**：orchestrator-only / worker-assisted / evaluator-required / blocked
+- **Execution posture**：direct-execution / orchestrator-only / worker-assisted / evaluator-required / blocked
 - **Worker agents / 子线程**：
 - **Acceptance / evaluator thread**：
 - **是否使用独立 worktree / 独立仓库 / 只读研究**：
@@ -52,7 +52,7 @@ Run Capsule 是 Goal、多 agent、多线程或跨工程长任务的最小运行
 | ahead / behind / diverged |  |
 | dirty / untracked |  |
 | local-only risk |  |
-| update policy | 默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
+| update policy | ff-only update；默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
 
 ## Worker Ownership
 

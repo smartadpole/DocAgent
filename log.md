@@ -9,6 +9,24 @@
 
 ## 2026-06-26
 
+### 把 wiki 升级为 whole Agent Harness System 前列工程
+
+- **记录人**：Codex
+- **用户意图**：用户要求 wiki 在评分矩阵中位列前茅且符合自身设计；随后明确这不是只升级 skill 体系，还要覆盖 Agent、Harness、Memory、Goal、Loop、Run Capsule、sensor、views 和报告，并且 Loop Engineering 必须实际使用、结构升级和验证证明三层齐全。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的 agent / harness / skill / template / sensor / report 升级；实现改动落在本仓已有 `skills/`、`templates/`、`scripts/`、`governance/`、`projects/development/reports/` 和 `log.md`，不触碰 `.obsidian/` 预存本地改动，不把 AcknowledgeBase 生成产物纳入本仓提交。
+- **运行控制**：本轮按 Goal / Loop 验收口径执行，先落 Phase 1A 最小闭环，再继续 whole harness system 收口。Loop Contract 的 discovery source、run queue、worker topology、evaluator oracle、persistence routing、next-run decision 和 stop / blocked conditions 已写入 [[projects/development/reports/2026-06-26-agent-harness-system-phase-1a]] 和 [[projects/development/reports/2026-06-26-agent-harness-skill-maturity-upgrade]]。
+- **关键动作**：
+  1. 将 [[skills/research-capability/SKILL]] 和 [[templates/research-intake-template]] 从资料调研推进为决策型研究资产合同，补 So-What、counter-evidence、deal-breaker、Frontier Tech Intake、evidence level、decision output、staleness / update trigger、深度等级、可选研究 lens、Path ROOT 和行动兑现回检，并升级 `scripts/check_research_capability.py`。
+  2. 升级 [[skills/goal-contract/SKILL]]、[[skills/loop-engineering/SKILL]]、[[templates/goal-contract-template]]、[[templates/loop-contract-template]] 和 [[templates/run-capsule-template]]，补 non-default / boundary、business-flow / code-level、manual-confirmation、trace-only、method-candidate、direct-execution、orchestrator-only、ff-only update、next-run decision 和 stop / blocked conditions。
+  3. 升级 [[skills/cross-project-governance-audit/SKILL]]、[[templates/cross-project-governance-audit-contract-template]]、[[agent-governance-strategy]]、`scripts/check_cross_project_governance_audit.py` 和 L5 sensor 识别面，补 source-depth、handoff-ready、Transfer Manifest、non-reference、no runtime validation、git remote / fetch readback 和 Drift Report。
+  4. 升级 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[templates/problem-focused-lens-template]]，补 decision-lens、object-fit: contain、full-page、manual-confirmation、real-world-unverified、service-side / end-to-end、visual_acceptance_floor=impact-required 和视觉完成度边界。
+  5. 升级 [[skills/public-html-publish/SKILL]]、[[templates/public-html-publication-template]] 和 [[templates/public-html-publication-contract-template]]，补 Cloudflare Pages / Pages Direct Upload、verification-loop、artifact completeness、action owner 和 live readback 不上推边界。
+  6. 更新 [[skills/issue-analysis/SKILL]] 的 issue-id、Issue Intake、report-or-task、artifact-class 和 root-cause 合同；保持 project-bound 技能 reject / adapt，不为 customer / LifeOS / backlog / performance 类项目事实新建空 skill。
+- **矩阵验收**：AcknowledgeBase 本轮按只读吸收处理，未把其 current 产物纳入本仓提交；主控运行矩阵生成脚本读回复核后恢复 AcknowledgeBase 生成文件，核心 8 项均不再是 `局部 / 未见`：research-capability `领先 46/49`、cross-project-governance-audit `领先 55/55`、problem-focused-visual-presentation `领先 52/52`、goal-contract `成熟 60/63`、loop-engineering `成熟 50/52`、issue-analysis `领先 41/41`、documentation-maintenance `成熟 55/56`、public-html-publish `成熟 57/61`；Software/wiki general / transferable 读回合计 `597/614`。
+- **检查结果**：专项 `research-capability,skill-maturity,loop-engineering,problem-focused-visual-presentation,public-html-publish,documentation-maintenance,harness-governance` 通过；`agent-harness-l5,cross-project-governance-audit` 通过；`git diff --check` 通过；完整检查在提交前执行。
+- **二阶反思**：这次真正缺口不是“多写 skill”，而是矩阵中的 recognition / signal / true-gap 需要回到 whole harness owner：主控 Goal、Loop Contract、Run Capsule、memory / persistence 路由、sensor 和报告缺一不可。后续同类升级先固定 whole-system coverage，再决定哪些 skill 需要升级，避免 skill-only 跑偏。
+- **影响页面**：[[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]]、[[skills/goal-contract/SKILL]]、[[skills/loop-engineering/SKILL]]、[[skills/cross-project-governance-audit/SKILL]]、[[skills/issue-analysis/SKILL]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]]、[[templates/research-intake-template]]、[[templates/goal-contract-template]]、[[templates/loop-contract-template]]、[[templates/run-capsule-template]]、[[templates/problem-focused-lens-template]]、[[templates/public-html-publication-template]]、[[templates/public-html-publication-contract-template]]、[[templates/cross-project-governance-audit-contract-template]]、[[templates/README]]、[[agent-governance-strategy]]、`scripts/check_research_capability.py`、`scripts/check_loop_engineering.py`、`scripts/check_cross_project_governance_audit.py`、`scripts/check_agent_harness_l5.py`、[[projects/development/reports/2026-06-26-agent-harness-system-phase-1a]]、[[projects/development/reports/2026-06-26-agent-harness-skill-maturity-upgrade]]、[[projects/trace]]、[[log]]。
+
 ### 二次合流通用 agent 技能体系
 
 - **记录人**：Codex

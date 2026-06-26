@@ -14,6 +14,12 @@
 - source-depth：审计必须说明读取深度；只读根入口、只读矩阵或只读 handoff 时不得写成完整治理审计。
 - handoff-ready：建议足够交给目标工程执行，不代表目标工程已经完成修复。
 - non-reference：项目事实、排行榜、旧 source revision、路径和一次性状态只能列为不反哺材料。
+- 深度等级：quick scan / targeted audit / deep governance audit / handoff package；深度模式必须与用户目标、读取预算和验证面匹配。
+- 证据计划：写清将读取 AGENTS、governance、skills、TRANSFER、templates、sensor、reports、matrix 还是 Git preflight。
+- 触发优先级：显式审计请求、主控验收、重复治理失守、矩阵异常和下游反哺候选优先；普通只读询问不自动升级。
+- 完整产物：正式审计至少包括 Audit Header、Source Depth、Drift Report、Handoff-Ready Taskbook、Transfer Manifest、Closeout Proof。
+- 行动 owner、检查方式、完成口径：handoff-ready 输出必须让目标工程 agent 能按 owner、命令和证据层执行，而不是只读建议。
+- 上层抽象 / 举一反三：只吸收可复用模式、同类失败和同类风险，不复制目标工程业务事实。
 
 ## 只能抽象吸收
 

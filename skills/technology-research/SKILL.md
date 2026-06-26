@@ -11,7 +11,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 定位
 
-本技能把“调研一个技术 / 项目 / AI 方向 / 产品机会”从资料搜集收敛成可判断、可复查、可沉淀的研究流程。
+本技能把“调研一个技术 / 项目 / AI 方向 / 产品机会”从资料搜集收敛成可判断、可复查、可沉淀、可支撑决策的研究流程。
 
 它吸收 AcknowledgeBase 的技术调研总控、技术专题调研、开源工程调研和 IT / AI 行业调研方法，但不复制其文章、模板、项目事实、排行或来源路径。本库当前采用合并版技能：先做对象路由，再按技术专题、开源工程、行业 / AI 或 PoC 分支执行。
 
@@ -25,6 +25,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 ## 边界
 
 - 不把“资料多”当作“调研充分”；必须形成问题、证据、判断和行动。
+- 不把“支持材料多”当作“可以采用”；必须写 So-What、counter-evidence / 反证、deal-breaker 和 decision output。
 - 涉及近期事实、价格、版本、license、release、政策、公司状态、benchmark、CVE、开源活跃度或模型能力时，必须查证当前来源。
 - 没有运行验证、PoC 或本地约束验证时，不给“可生产 / 可正式接入”的强结论。
 - 调研结论不能替代项目决策、采购拍板、验收报告或安全合规审查。
@@ -73,6 +74,10 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 刷新触发：release、法规、价格、benchmark、CVE、融资、产品变化、PoC 结果等。
 - 阻断风险：安全、license、供应链、隐私、合规、AI 评测、成本、维护和组织落地。
 - 观察风险：暂不阻断，但需要复查的条件。
+- So-What：证据对当前选型、采购、PoC、治理或继续观察的实际含义。
+- counter-evidence / 反证：反向证据、失败案例、替代解释、不可复现信号和社区争议。
+- deal-breaker：足以否决、延后、降级为人工确认或停止投入的条件。
+- decision output：`直接使用 / 封装使用 / Fork / 只参考 / 放弃 / 继续观察`。
 
 ### 4. 路由分支
 
@@ -125,6 +130,10 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 对比 / 替代：
 - 适用场景：
 - 不适用场景：
+- So-What：
+- 反证 / counter-evidence：
+- deal-breaker：
+- decision output：直接使用 / 封装使用 / Fork / 只参考 / 放弃 / 继续观察
 - 行动等级：
 - 下一步：
 - 刷新触发：

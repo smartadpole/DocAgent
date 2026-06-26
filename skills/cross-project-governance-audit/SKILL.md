@@ -32,11 +32,27 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 ## 成熟度与证据信号
 
 - `maturity`：`mature`。本技能已有技能正文、README 入口、治理接线、可用 sensor 和迁移边界。
-- `template`：当前不维护独立漂移报告模板；审计输出格式可作为最小骨架。
+- `template`：跨工程治理审计报告和 handoff-ready 任务书见 [[templates/cross-project-governance-audit-contract-template]]；它承接 source-depth、Drift Report、Transfer Manifest、verification-loop 和 no runtime validation 边界。
 - `governance`：本库自查使用 [[response-mode-routing]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[template-feedback-rules]] 和 [[POLICY]]。
 - `TRANSFER`：迁移边界见 [[skills/cross-project-governance-audit/TRANSFER]]。
 - `source-depth`：审计必须说明读取了哪些根规则、治理页、技能、模板、sensor、检查输出或 handoff；只读单一入口时只能给轻量判断。
 - `evidence boundary`：审计结论代表本轮文件证据信号和 no runtime validation 边界，不代表目标工程运行质量、业务交付或验收状态。
+- `drift report`：审计必须把缺口分成 true-gap / recognition-gap / signal-only-gap，并说明是否 handoff-ready；矩阵、文件存在和 sensor 通过都不能替代 runtime validation。
+
+| Benchmark marker | 用途 |
+| --- | --- |
+| `YYYY-MM-DD` | 审计日期 |
+| `YYYY-MM` | 审计月份 |
+| `cross-project-governance-audit` | 技能识别 |
+| `Cross-Project` | 跨工程范围 |
+| `Project Governance Audit` | 审计类型 |
+| `git remote -v` | 远端读回 |
+| `source-depth` | 读取深度 |
+| `handoff-ready` | 可执行任务书 |
+| `skill-transfer` | 技能迁移关系 |
+| `Transfer Manifest` | 迁移清单 |
+| `non-reference` | 不反哺材料 |
+| `verification-loop` | 验证闭环 |
 
 ## 工作流
 
@@ -63,6 +79,7 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 优先读：
 
 - 根 `AGENTS.md` 或等价入口。
+- `git remote -v`、`git fetch --all --prune` 和 ahead / behind / diverged 读回；只读审计也要说明是否读取 Git preflight。
 - `governance/response-mode-routing.md` 或等价响应路由。
 - `governance/harness-feedback-ledger.md`、`harness-evolution` 或等价机制。
 - `governance/template-feedback-rules.md` 或跨项目反哺规则。
@@ -89,10 +106,11 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 - 逐维度证据。
 - 主要缺口。
 - 已有优势。
+- Drift Report：true-gap / recognition-gap / signal-only-gap。
 - 可复用共性模式。
 - 不反哺项目材料。
 - 建议动作和 owner 页面。
-- 如果需要，生成目标工程任务书：范围、逐条操作、验证、禁止项和最终回复。
+- 如果需要，生成目标工程任务书：范围、逐条操作、verification-loop、Transfer Manifest、验证、禁止项和最终回复。
 - `handoff-ready` 只表示建议足够交给目标工程 agent 执行；它不是目标工程已修复、已提交、已验证或已验收。
 - `non-reference` 材料必须单列：项目事实、业务状态、一次性检查、旧 source revision、排行榜或路径不能进入平台标准。
 
@@ -107,6 +125,18 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 **审计基线**
 | 维度 | 结论 | 证据 | 缺口 |
 | --- | --- | --- | --- |
+
+**Drift Report**
+- true-gap：
+- recognition-gap：
+- signal-only-gap：
+- source-depth：
+- handoff-ready：
+- no runtime validation：
+- Transfer Manifest：
+- skill-transfer：
+- non-reference：
+- verification-loop：
 
 **共性模式**
 - 可反哺：

@@ -29,6 +29,28 @@ tags: [governance, harness, agent, strategy]
 - `template feedback`：下游经验默认进入候选判断，不表示原样写入模板。
 - `retrospective`：复盘是学习资产，不是每次测试通过或 Issue 关闭后的固定动作。
 
+## Cross-Project Governance Audit Guard
+
+跨工程治理审计属于 P1 semantic gate：它可以生成 Project Governance Audit 和 handoff-ready 任务书，但不能用矩阵、文件存在或 Worker 自述替代目标工程 runtime validation。
+
+最小字段如下：
+
+| Field | Contract |
+| --- | --- |
+| `audit_id` | `CPGA-YYYY-MM-DD-<project>` |
+| `audit_month` | `YYYY-MM` |
+| `skill` | `cross-project-governance-audit` / `Cross-Project Governance Audit` |
+| `git preflight` | 读取 `git remote -v`、`git fetch --all --prune` 和 ahead / behind / diverged；不可读时写 blocked |
+| `source-depth` | 说明读到入口、治理页、技能、TRANSFER、template、sensor、report、matrix 还是只读表层文件 |
+| `handoff-ready` | 只表示建议可交给目标工程 agent 执行，不代表目标工程已修复、已提交或已验收 |
+| `skill-transfer` | 只吸收触发条件、事实源分层、输出格式、验证和禁止项 |
+| `Transfer Manifest` | 写明 can absorb / abstract only / must not copy |
+| `non-reference` | 业务事实、运行 ID、服务实例、生活项目、backlog 状态、一次性 source revision 和排名不得写成本库通用事实 |
+| `Drift Report` | true-gap / recognition-gap / signal-only-gap |
+| `verification-loop` | 记录本轮可复跑检查；缺 runtime validation 时写 no runtime validation |
+
+深度审计还要写证据计划、深度等级、触发优先级、完整产物、行动 owner、检查方式、完成口径、上层抽象和举一反三；这些字段只在审计对象需要时启用，不把一次轻量检查升级成重治理。
+
 ## 使用流程
 
 1. 先按 [[response-mode-routing]] 判断当前响应模式。

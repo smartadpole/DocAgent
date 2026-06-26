@@ -29,6 +29,20 @@ REPORT_TERMS = (
     "0\t0",
 )
 
+# Cross-Project Governance Audit depth terms are intentionally kept in a
+# sensor layer so matrix/depth checks do not rely only on governance prose.
+CROSS_PROJECT_GOVERNANCE_AUDIT_DEPTH_TERMS = (
+    "证据计划",
+    "深度等级",
+    "触发优先级",
+    "完整产物",
+    "行动 owner",
+    "检查方式",
+    "完成口径",
+    "上层抽象",
+    "举一反三",
+)
+
 
 @dataclass(frozen=True)
 class GoalSample:

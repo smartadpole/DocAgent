@@ -16,6 +16,7 @@ tags: [template, views, html, public-html-publish]
 - 公网入口：
 - 本机或部署服务：
 - 当前运行模式：share-only live host / static site deploy / internal preview / blocked
+- Cloudflare Pages / Pages Direct Upload：not-used / planned / deployed / blocked；写明 deployment readback、path prefix、回滚或撤销边界。
 - host：
 - path prefix：
 - source root：
@@ -55,6 +56,8 @@ tags: [template, views, html, public-html-publish]
 3. host / deploy / tunnel / preview 环境可用。
 4. public_url 生成命令或 deploy output 可用。
 5. live readback 能读取 public URL。
+6. verification-loop 覆盖 static check -> live readback -> denial readback -> artifact completeness -> action owner checkback。
+7. artifact completeness 能把 canonical HTML、source page、public_url、export QA、报告 / log 互相追溯。
 
 生成或刷新 canonical HTML 后，最终回复必须给 public URL；如果没有给出，必须说明未生成 HTML、未发布、服务不可用、权限缺失、隐私阻塞或其他具体原因。
 
@@ -71,6 +74,14 @@ python3 scripts/check_public_html_publish.py
 ```sh
 python3 scripts/check_public_html_publish.py --live
 ```
+
+验证闭环记录：
+
+- 证据计划：
+- 检查方式：
+- 行动 owner：
+- 上层抽象 / 可复用模式：
+- 完整产物 / artifact completeness：
 
 生成某个 HTML 的 public URL：
 

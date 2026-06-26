@@ -1,7 +1,7 @@
 ---
 name: loop-engineering
 description: Loop Engineering / 持续 agent 循环控制技能。用于把 Goal、Run Capsule、子 agent、harness、memory 和软件研发体系组织成可持续的发现、分派、验证、持久化和下一轮决策闭环；它是控制面能力，不是无人值守自动化许可，也不新建平行项目状态系统。
-maturity: active
+maturity: mature
 evidence_signals: [skill, README entry, template, governance, verification-loop, sensor, TRANSFER]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only loop-engineering
@@ -43,7 +43,7 @@ Loop Engineering 是持续 agent 循环控制技能。它在 Goal Contract、[[t
 
 ## 成熟度与证据信号
 
-- `maturity`：`active`。本工程已具备技能正文、Loop Contract 模板、Run Capsule 模板、README / INDEX / governance 入口和专项 sensor。
+- `maturity`：`mature`。本工程已具备技能正文、Loop Contract 模板、Run Capsule 模板、README / INDEX / governance 入口、专项 sensor、Subproject Git Preflight、Worker / Evaluator 分工、next-run decision 和 stop / blocked conditions；真实事项完成仍必须由对应验收证据证明。
 - `evidence_signals`：`skill`、`README entry`、`template`、`governance`、`verification-loop`、`sensor`、`TRANSFER`。
 - `template`：[[templates/loop-contract-template]] 负责循环控制面，[[templates/run-capsule-template]] 负责单轮执行和 Worker 回传。
 - `governance`：启动条件、人工确认边界、禁止自动关闭状态和单一信息源回写在 [[AGENTS]] 与 [[governance/README]] 中可发现。
@@ -75,8 +75,10 @@ Loop Contract 是控制面，不是新项目状态页。状态类事实仍回到
 
 ### 3. 分派 Worker
 
-主线程是 Orchestrator，负责目标、边界、证据和合流；必要时标注 Execution posture：orchestrator-only / worker-assisted / evaluator-required / blocked。每个 Worker 必须收到：
+主线程是 Orchestrator，负责目标、边界、证据和合流；必要时标注 Execution posture：direct-execution / orchestrator-only / worker-assisted / evaluator-required / blocked。每个 Worker 必须收到：
 
+- execution mode：direct-execution / orchestrator-only / worker-assisted / evaluator-required / blocked。
+- update policy：涉及子工程代码时默认 ff-only update，且只在用户授权、fetch 后 ahead / behind / diverged 可解释、dirty 风险可控时执行；默认不 pull / merge / rebase / reset。
 - scope：本 Worker 只负责什么。
 - ownership：允许读 / 写哪些文件，或只读审计。
 - inherited context：必须读取哪些规则、Goal、Loop Contract、Run Capsule 或 owning page。
@@ -120,6 +122,7 @@ Evaluator 必须独立判断：
 ```markdown
 **Loop Engineering**
 - Mode: discovery-only / assisted-patch / structured-auto-fix / not-ready
+- Execution mode: direct-execution / orchestrator-only / worker-assisted / evaluator-required / blocked
 - Discovery source:
 - Trigger / schedule:
 - Run queue state:
@@ -129,6 +132,7 @@ Evaluator 必须独立判断：
 - Persistent state:
 - Budget / stop:
 - Human approval:
+- ff-only update:
 - Software-development landing:
 - Persistence routing:
 - Next-run decision:

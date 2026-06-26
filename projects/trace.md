@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-06-03
+updated: 2026-06-26
 tags: [trace, project]
 ---
 
@@ -125,6 +125,20 @@ tags: [trace, project]
   - 复盘是长期学习工程，不替代 [[log]]、Issue、事故、测试报告、决策、memory 或 trace。
   - 事故事实仍由 [[projects/incidents/README]] 保真；Issue 仍由 [[projects/development/issues/README]] 保真；复盘只承接跨阶段、跨交付链或 Agent 协作的学习资产。
   - 复盘行动项必须分流到已有 owner 页面，不新建平行看板；重复失守或机制缺口先进入 [[harness-feedback-ledger]]，再按 [[harness-evolution]] 判断是否晋升模板、skill、sensor 或规则。
+
+#### 2026-06-26 whole Agent Harness System 矩阵升级
+
+- **记录人**：Codex
+- **角色**：agent
+- **本轮变化**：
+  - **范围修正**：用户把目标从 skill-only 升级扩展为整个 Agent / Harness / Memory / Skill / Governance / Views / Sensor / Loop 体系。
+  - **运行合同**：本轮以 Goal Contract 和 Loop Contract 控制执行，明确 Worker 不能自闭环、局部证据不能上推、矩阵分数不能单独作为完成结论。
+  - **sensor 优先**：先落 research-capability 最小闭环，再补 loop sensor、cross-project-governance-audit sensor 和 whole harness validation report。
+  - **矩阵影响**：主控矩阵读回复核显示核心可迁移项均已脱离 `局部 / 未见`，至少 5 项达到 `成熟 / 领先`；AcknowledgeBase 生成文件只作复核输入，未纳入 wiki 提交。
+- **当前实现口径**：
+  - wiki 的优先定位是研究资产、知识治理、图文呈现、公开发布和 agent 运行合同；不为 `project-context-entry`、`work-item-auto-decomposition`、`customer-group-db-readback`、`backlog-management`、`lifeos-management` 或 `performance-bandwidth-analysis` 新建空技能。
+  - 长期身份和规则进入 BRAIN / POLICY / governance；执行过程、验证结果和矩阵 expected impact 进入报告、log 和 trace，不进入长期 memory。
+  - 新的可脚本化缺口优先进入专项 sensor，再考虑模板、skill 或规则升级。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

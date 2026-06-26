@@ -14,6 +14,10 @@ tags: [development, reports, testing]
 上游：[[projects/development/plan/test-acceptance-planning-model]]、[[projects/development/acceptance/README]]、[[projects/development/execution/todo]]、[[projects/development/gates/README]]  \
 下游：[[projects/status]]、[[projects/releases]]、[[projects/incidents/README]]
 
+## 最新报告
+
+- [[projects/development/reports/2026-06-26-agent-harness-skill-maturity-upgrade]]：Agent Harness 和技能成熟度升级验收报告。
+
 ## 这页负责什么
 
 这页收口测试方案、测试用例 / 检查点、测试结论、相关功能回归范围、Issue 复验记录和 Gate 准出报告。

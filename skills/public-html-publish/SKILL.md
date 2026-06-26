@@ -1,7 +1,7 @@
 ---
 name: public-html-publish
 description: HTML 公开发布技能。用于把本仓库 canonical HTML views 通过受控 public URL、静态托管或等价公网入口发布给外部阅读者，同时维护 HTML-only 边界、host / prefix 分离、public_url 公式、live readback 和 blocked 口径。
-maturity: active
+maturity: mature
 evidence_signals: [skill, TRANSFER, governance, template, publication-profile, quality-gate, sensor, views]
 transfer_ready: true
 source_capability: AcknowledgeBase
@@ -27,14 +27,18 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 1. 读取 [[views/publication]]、[[views/README]]、相关 canonical HTML 和本技能的 `TRANSFER.md`。
 2. 区分发布对象：canonical HTML、Markdown 真相源、导出缓存、原始 assets、snapshot 和全局目录入口。
 3. 判定发布模式：`share-only live host`、`static site deploy`、`internal preview` 或 `blocked`。
+   - `Cloudflare Pages` / `Pages Direct Upload` 可作为 static site deploy 模式；只有完成部署读回、路径隔离、回滚或撤销说明后，才能写为可公开访问。
+   - `Cloudflare Tunnel` 或本机 share-only host 只证明当前隧道 / profile 可访问，不等同于 Pages 持久部署。
 4. 默认只发布 `views/current/**/*.html` 与 `views/snapshots/**/*.html`；不默认公开 Markdown、`projects/`、`raw/`、日志、assets、`.exports` 或整个仓库。
 5. 按 publication profile 生成 public_url：host + path prefix + canonical relative path；缺少 host / deploy / token / live readback 时只输出 blocked 原因。
 6. 发布前检查 HTML 中是否包含本不该公开的本机绝对路径、内部系统地址、凭据、密钥、票据、健康、合同或个人联系信息。
 7. 完成前运行静态检查；有公网条件时再运行 live readback 和 denial readback，并确认 multi-project / multi-host 边界没有互相借用。
-8. 生成或刷新 canonical HTML 后，最终回复必须给出 public URL；如果不能给出，必须说明具体 blocked 原因。
+8. verification-loop 必须包含证据计划、检查方式、行动 owner、完整产物和上层抽象：静态检查证明合同，live readback 证明公网访问，denial readback 证明拒绝路径，artifact completeness 证明 public URL / canonical HTML / source page / export QA 可互相追溯。
+9. 生成或刷新 canonical HTML 后，最终回复必须给出 public URL；如果不能给出，必须说明具体 blocked 原因。
 
 ## 成熟度与证据信号
 
+- `maturity`：`mature`。本技能已有 skill、TRANSFER、governance、publication profile、canonical HTML sample、template、views registry 和 sensor；具体公开可访问结论必须另有 live readback，缺失时降级为 blocked。
 - `skill`：本页定义触发、发布对象、工作流、验收口径和禁止项。
 - `TRANSFER`：跨工程迁移边界见 [[skills/public-html-publish/TRANSFER]]。
 - `governance`：公开发布裁定见 [[public-html-publish-rules]]。
@@ -64,6 +68,9 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 - Static check:
 - Live readback:
 - Denial readback:
+- Cloudflare Pages / Pages Direct Upload:
+- verification-loop:
+- Artifact completeness:
 - Blocked reason:
 - Not published:
 ```

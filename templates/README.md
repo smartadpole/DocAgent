@@ -33,10 +33,11 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
 - 新问题聚焦式图文 lens 可以参考 [[templates/problem-focused-lens-template]]；持久 lens 还要同步 [[views/lens-registry]]，填写视觉策略、组件语义 manifest、`static_visual_qa` 和同源 PDF / PNG 导出合同
 - 新问题聚焦式图文 lens 的 source pack 和交付前审核可以参考 [[templates/problem-focused-lens-source-pack-contract]]、[[templates/problem-focused-lens-review-contract]]
-- 新 HTML 公开发布 profile 可以参考 [[templates/public-html-publication-template]]；真实发布仍以 [[views/publication]] 和 live readback 为准。
+- 新 HTML 公开发布 profile 可以参考 [[templates/public-html-publication-template]]；发布验证闭环可以参考 [[templates/public-html-publication-contract-template]]；真实发布仍以 [[views/publication]] 和 live readback 为准。
 - 新技术、开源工程、行业 / AI、产品或 PoC 调研启动前，可以参考 [[templates/technology-research-contract-template]]；正式研究结果可以参考 [[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]]
 - 新外部技术材料、论文、repo、社区讨论或产品更新进入研究流程前，可以参考 [[templates/research-intake-template]]；它只承接 intake 和 source package，不替代正式研究报告。
 - 新跨工程技能迁移源能力清单可以参考 [[templates/skill-transfer-manifest-template]]；新跨工程技能迁移任务书可以参考 [[templates/skill-transfer-contract-template]]、[[templates/skill-transfer-evidence-contract]] 和 [[templates/skill-transfer-review-contract]]
+- 新 Cross-Project / Project Governance Audit 可以参考 [[templates/cross-project-governance-audit-contract-template]]；报告必须写 source-depth、handoff-ready、Transfer Manifest、verification-loop、git remote -v / git fetch --all --prune 读回和 no runtime validation 边界。
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]
 - 新长时任务需要防跑偏、防证据漂移、防无限探索时，可以参考 [[templates/goal-contract-template]]

@@ -33,6 +33,8 @@ Goal 只解决三件事：
 - **期望最终状态**：用可观察结果写清完成后应该变成什么样。
 - **完成判定**：哪些结果出现才算完成；哪些结果只能算 partial / review / blocked。
 - **验证面**：测试 / benchmark / 报告 / artifact / DB readback / 日志 / UI / 人工确认 / 其他
+- **合同类型**：implementation-goal / trace-only / method-candidate / research-decision / orchestrator-acceptance
+- **证据层级**：code-level / unit、functional / business-flow、service-side、end-to-end、non-default / boundary、manual-confirmation；不适用或缺失时写明 partial / blocked。
 - **Source pack**：必须读取或引用的事实源；区分一手事实、辅助事实和推论。
 - **Pipeline trace**：本轮从用户目标到执行、验证、沉淀的链路；主控 / 子工程任务要写明 Run Capsule 或 handoff 位置。
 - **必须保持的约束**：

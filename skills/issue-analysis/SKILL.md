@@ -54,6 +54,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 先写一个短问题框：
 
+- **issue-id**：已有正式 Issue 时写 issue-id；没有时写 `intake-only`，不得为了分析强行建 issue。
+- **Issue Intake**：把原始现象、触发入口、report-or-task 关系、artifact-class 和 root-cause 状态先冻结，再进入分工。
 - **现象**：用户看到什么不对，或哪条链路失败。
 - **业务影响**：影响用户结果、项目推进、Gate 准出、TODO / FP 关闭、服务运行、数据可信度、UI 展示还是跨工程协作。
 - **期望行为**：按当前需求 / 设计 / TODO / 合同应该发生什么。
@@ -61,6 +63,9 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - **范围**：环境、服务、模型 / 算法、数据库、业务对象、样本量、运行轨道、时间窗口。
 - **当前证据**：日志、截图、接口返回、DB readback、artifact、handoff、测试报告、代码路径、项目文档链接。
 - **主控问题**：这是要定位根因、裁定状态、拆分任务、修正验收标准、升级风险，还是组织联测。
+- **report-or-task**：本轮输出是测试报告、Issue 案件、TASK 修复、risk、handoff 还是只读分析。
+- **artifact-class**：log / API response / DB readback / UI screenshot / HTML lens / report / handoff / code diff / service state / other。
+- **root-cause**：confirmed / likely / possible / blocked；没有证据链时不得写 confirmed。
 
 如果期望行为不清晰，先标为“待确认期望”，不要直接替用户拍板。
 
@@ -193,10 +198,15 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 是否需要升级：
 
 **问题框**
+- issue-id：
+- Issue Intake：
 - 现象：
 - 业务影响：
 - 期望行为：
 - 当前范围：
+- report-or-task：
+- artifact-class：
+- root-cause：
 
 **定位结论**
 - 权威事实源：
