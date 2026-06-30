@@ -16,6 +16,7 @@ tags: [development, reports, testing]
 
 ## 最新报告
 
+- [[projects/development/reports/2026-06-30-agent-system-maturity-phase-1a]]：Agent System Maturity Phase 1A 验证报告。
 - [[projects/development/reports/2026-06-26-agent-harness-skill-maturity-upgrade]]：Agent Harness 和技能成熟度升级验收报告。
 
 ## 这页负责什么

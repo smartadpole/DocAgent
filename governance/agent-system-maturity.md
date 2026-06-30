@@ -1,0 +1,78 @@
+---
+type: governance
+id: GOV-AGENT-SYSTEM-MATURITY-001
+scope: shared
+status: active
+source_of_truth: true
+updated: 2026-06-30
+tags: [governance, agent-system, maturity, intelligence, evaluation]
+---
+
+# Agent System Maturity
+
+主入口：[[governance/README]]
+
+相关：[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+
+## 定位
+
+这页是本仓 Agent System Capability Package 的 owner。它回答“wiki 作为目标工程，是否具备可运行、可评估、可迁移、可被外部矩阵识别的 agent system”，而不是回答某个单项 skill 是否写得完整。
+
+本页只承接体系对象、证据边界、评估 capsule、缺口分类和本仓落位；不承接 AcknowledgeBase 的当前分数、profile hash、历史 snapshot、项目事实或一次性矩阵输出。
+
+## 七层对象
+
+| 层 | 本仓 owner | 最小证据 | 不上推边界 |
+| --- | --- | --- | --- |
+| skill | [[skills/README]] 和各 `skills/*/SKILL.md` | skill frontmatter、README entry、TRANSFER 或不可迁移说明、专项 sensor | skill 完整不能证明 agent system 完整。 |
+| runtime | `AGENTS.md`、`.codex/AGENTS.md`、tool / browser profile 规则、[[projects/service-registry]] | shell / git / browser profile / service registry readback 或 blocked 原因 | 工具列表不能证明工具被正确使用。 |
+| harness | [[response-mode-routing]]、[[skills/goal-contract/SKILL]]、[[skills/loop-engineering/SKILL]]、[[agent-orchestration]] | Goal、Loop、Run Capsule、Subproject Git Preflight、closeout proof | harness 结构不能自动关闭 TASK / EP / Gate。 |
+| memory | [[BRAIN]]、[[projects/memory/README]]、[[projects/trace]]、[[log]] | owner-first 读取、source-of-truth routing、log / trace / memory 分层 | 记忆存在不能替代当前 live readback。 |
+| evaluation | `scripts/check_all.py`、`scripts/check_agent_system_maturity.py`、测试报告、受控 snapshot | 专项 sensor、完整检查、runtime / outcome / blocked 证据、报告 | 本地 green 不能冒充外部 evaluator 通过。 |
+| governance | [[harness-evolution]]、[[harness-feedback-ledger]]、[[instruction-adherence]] | 用户纠偏、检查失败、模板 / sensor / skill 晋升或降级路由 | ledger 通道存在不等于 agent 已经学会。 |
+| migration | [[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、skill transfer templates | true-gap / recognition-gap / signal-only-gap、target self-check、Goodhart guard | 不复制源工程目录形态或项目事实。 |
+
+## Intelligence Evidence Lens
+
+智能化不直接给总分。首版只要求八维证据位全部出现；缺行为证据时必须保持 `insufficient-evidence`，`agent_intelligence_score` 为 `null`。
+
+| 维度 | 本仓可读证据 | 当前状态 |
+| --- | --- | --- |
+| `intent_modeling` | Goal Contract、trace、最终范围 / 不做项 | `insufficient-evidence`，缺跨轮正负样本审查。 |
+| `mode_selection` | [[response-mode-routing]]、log、报告中的阶段判断 | `insufficient-evidence`，缺 rubric-backed 行为评估。 |
+| `tool_and_runtime_use` | git / shell / browser profile readback、非默认值验证记录 | `insufficient-evidence`，缺系统化负证据审查。 |
+| `context_and_memory_use` | BRAIN / project memory / trace / log 路由 | `insufficient-evidence`，缺行为样本和 stale memory 反查。 |
+| `decomposition_and_orchestration` | [[agent-orchestration]]、Run Capsule、work-item decomposition | `insufficient-evidence`，缺 worker / evaluator 合流行为证据。 |
+| `evidence_judgment` | 测试报告、service registry、external readback / blocked 口径 | `insufficient-evidence`，缺结构 / runtime / outcome / manual 边界样本审查。 |
+| `recovery_and_learning` | [[harness-feedback-ledger]]、复盘、sensor 晋升 | `insufficient-evidence`，缺偏差后实际学习效果评估。 |
+| `user_alignment` | scope control、dirty worktree guard、commit 范围、最终回复证据 | `insufficient-evidence`，缺用户纠偏序列审查。 |
+
+## Matrix Recognition Capsule
+
+| Field | Current value |
+| --- | --- |
+| evaluator | AcknowledgeBase skill maturity matrix + agent-system maturity diagnostics；外部 evaluator 循环由主控持有。 |
+| candidate files / scanned surfaces | `AGENTS.md`、`.codex/AGENTS.md`、`governance/`、`skills/`、`templates/`、`scripts/check_*.py`、`views/`、`projects/development/reports/`、[[projects/service-registry]]。 |
+| current baseline | 2026-06-30 本地 baseline：`skill-maturity` 和 `work-item-matrix` 专项通过；外部旧诊断中 wiki 的 `work-item-auto-decomposition` 为缺口，agent-system/intelligence 需要目标工程本地 snapshot。 |
+| true-gap | 缺本仓自己的 agent-system owner、runtime / evaluation snapshot、intelligence 八维证据位、事项自动拆解项目绑定入口。 |
+| recognition-gap | cross-project skill adoption 和 transferable governance 已有，但缺 agent-system / matrix recognition capsule 字段在本仓本地 owner 中成套出现。 |
+| signal-only-gap | 为矩阵识别补 entrypoint link、checker key 和 expected impact；不得扩写空能力或复制 AcknowledgeBase 当前分数。 |
+| Goodhart guard | 不复制项目事实、不补空 skill、不把 skill 高分上推成 agent system / intelligence 高分、不把本地 green 当外部 readback。 |
+| external readback | 本轮只提供主控可刷新的 capsule 和 expected impact；外部矩阵未在本仓内运行，状态为 `blocked-by-orchestrator-readback`。 |
+
+## Gap Table
+
+| 能力 | 缺口类型 | 本仓处理 | 剩余边界 |
+| --- | --- | --- | --- |
+| Agent System Capability Package | true-gap | 本页 + `governance/agent-system-maturity-snapshot.v1.json` + `scripts/check_agent_system_maturity.py` | 仍需主控外部矩阵读回。 |
+| Intelligence Evidence Refresh | true-gap | 八维证据位入 snapshot，全部缺行为证据时保持 `insufficient-evidence` | 不输出正式智能化总分。 |
+| Cross-project skill adoption frontier maintenance | recognition-gap | 在 [[skills/cross-project-skill-adoption-prompt/SKILL]] 和 TRANSFER 补 matrix capsule / source-depth / golden boundary | 不代表目标工程已迁移。 |
+| Transferable Skill Governance review contract | recognition-gap | 在 [[skills/transferable-skill-governance/SKILL]] 和 TRANSFER 补 review contract | sensor 只证明 wiring。 |
+| work-item-auto-decomposition | true-gap + project-bound | 新增本仓项目 / 领域绑定 skill，并接入 work-item matrix checker | 不硬升为通用可迁移 skill。 |
+
+## 验证口径
+
+- 专项：`python3 scripts/check_all.py --only agent-system-maturity,skill-maturity,work-item-matrix`
+- 完整：`python3 scripts/check_all.py`
+- whitespace：`git diff --check`
+- 外部 evaluator：由主控刷新 AcknowledgeBase matrix；本仓只回传 capsule、expected impact、blocked reason 和未验证边界。

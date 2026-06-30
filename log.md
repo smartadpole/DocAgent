@@ -7,6 +7,27 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-06-30
+
+### 升级 Agent System Maturity 并绑定事项自动拆解能力
+
+- **记录人**：Codex
+- **用户意图**：用户要求继续升级目标工程的 Agent 体系、智能化成熟度、通用 skill 前沿维护能力，以及项目 / 领域绑定的事项自动拆解能力。目标不是新增几个 `SKILL.md`，而是让 wiki 具备可运行、可评估、可迁移、可被外部矩阵识别的 agent system；同时把 `work-item-auto-decomposition` 做成当前工程自己的领域绑定能力，不硬升为通用 skill。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的治理 / 技能 / 模板 / sensor / 报告升级。Agent system owner 落到 [[agent-system-maturity]]，snapshot 落到 `governance/agent-system-maturity-snapshot.v1.json`，项目绑定事项拆解落到 [[skills/work-item-auto-decomposition/SKILL]]，验证证据落到 [[projects/development/reports/2026-06-30-agent-system-maturity-phase-1a]]，未触碰预存 `.obsidian/` 本地改动。
+- **源资料边界**：读取 AcknowledgeBase 的 agent-system maturity 设计、profile / schema、cross-project skill adoption、work-item system / task model、矩阵 diagnostics 和本仓入口 / skill / checker / report；只吸收七层对象、八维 intelligence lens、Matrix Recognition Capsule、true-gap / recognition-gap / signal-only-gap、Goodhart guard、树状编号、关系节点和不上推边界，不复制上游当前分数、profile hash、snapshot、项目事实、运行 ID 或历史 log。
+- **关键动作**：
+  1. 新增 [[agent-system-maturity]]，建立本仓 Agent System Capability Package owner，覆盖 skill、runtime、harness、memory、evaluation、governance、migration 七层对象，以及 Matrix Recognition Capsule。
+  2. 新增 `governance/agent-system-maturity-snapshot.v1.json`，把八个 intelligence 维度全部列出并诚实保持 `insufficient-evidence`；`agent_intelligence_score` 保持 `null`，外部 readback 标为 `blocked-by-orchestrator-readback`。
+  3. 新增 `scripts/check_agent_system_maturity.py` 并接入 `scripts/check_all.py --only agent-system-maturity`，检查 owner、snapshot、entrypoints、八维证据位、negative_evidence_reviewed 和 external readback 边界。
+  4. 新增 [[skills/work-item-auto-decomposition/SKILL]]，把事项自动拆解绑定到本仓 `Gate -> FP -> EP -> TASK` 模型、树状编号、关系矩阵、`risk:`、`test:`、`验收:`、`issue-trigger:`、关闭证据和不上推边界。
+  5. 更新 [[projects/development/plan/work-item-system-model]]、[[templates/development-work-item-matrix-template]] 和 `scripts/check_work_item_matrix.py`，让 work-item matrix 识别树状编号和项目绑定自动拆解入口。
+  6. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]] / `TRANSFER.md` 和 [[skills/transferable-skill-governance/SKILL]] / `TRANSFER.md`，补 source-depth、Matrix Recognition Capsule、Agent System Capability Package、frontier maintenance、external readback 和项目绑定能力不可通用迁移边界。
+  7. 同步 [[README]]、[[INDEX]]、[[governance/README]]、[[skills/README]]、[[templates/README]]、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、报告索引和 [[projects/trace]]。
+- **检查基线**：改动前 `python3 scripts/check_all.py --only skill-maturity,work-item-matrix` 通过；远端读回后 `master` 对 `origin/master` ahead 1、对 `hai/master` ahead 5，无 behind；`.obsidian` 预存脏改动不属于本轮。
+- **验证边界**：本轮新增的是本地 Phase 1A wiring、snapshot 和 checker；外部 AcknowledgeBase matrix 未在本仓刷新，browser / MCP runtime live probe 未运行，八维 intelligence 未做正负行为语料评分，不关闭任何 Gate / FP / EP / TASK / issue。
+- **二阶反思**：这次缺口不是“再写一个成熟 skill”，而是 agent-system / intelligence / external evaluator 三者的证据层级容易被 skill maturity 混淆。后续同类任务先建立 Matrix Recognition Capsule 和七层 owner，再决定哪些是通用 skill 前沿维护、哪些只能项目绑定落位，避免 Goodhart 式补空壳。
+- **影响页面**：[[agent-system-maturity]]、`governance/agent-system-maturity-snapshot.v1.json`、[[skills/work-item-auto-decomposition/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[skills/cross-project-skill-adoption-prompt/TRANSFER]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/transferable-skill-governance/TRANSFER]]、[[projects/development/plan/work-item-system-model]]、[[templates/development-work-item-matrix-template]]、[[projects/development/reports/2026-06-30-agent-system-maturity-phase-1a]]、[[projects/development/reports/README]]、[[README]]、[[INDEX]]、[[governance/README]]、[[skills/README]]、[[templates/README]]、[[AGENTS]]、`.codex/AGENTS.md`、[[WORKFLOW]]、[[projects/trace]]、[[log]]、`scripts/check_agent_system_maturity.py`、`scripts/check_work_item_matrix.py`、`scripts/check_all.py`。
+
 ## 2026-06-26
 
 ### 把 wiki 升级为 whole Agent Harness System 前列工程

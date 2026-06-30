@@ -19,6 +19,7 @@ REQUIRED_FILES = (
     "projects/development/plan/README.md",
     "projects/development/plan/work-item-system-model.md",
     "projects/development/plan/task-design-model.md",
+    "skills/work-item-auto-decomposition/SKILL.md",
     "projects/development/execution/execution-packages/README.md",
     "projects/development/execution/tasks/README.md",
     "projects/development/execution/developer-execution-workflow.md",
@@ -41,10 +42,23 @@ CONCEPT_TERMS: dict[str, tuple[str, ...]] = {
         "Issue 是案件档案",
         "报告是每次庭审记录",
         "服务台账",
+        "work-item-auto-decomposition",
     ),
     "projects/development/plan/task-design-model.md": (
         "状态化交付合同",
         "Done Contract",
+    ),
+    "skills/work-item-auto-decomposition/SKILL.md": (
+        "项目 / 领域绑定",
+        "true-gap",
+        "recognition-gap",
+        "signal-only-gap",
+        "risk:",
+        "test:",
+        "验收:",
+        "issue-trigger:",
+        "TASK done",
+        "不能自动关闭父 EP、FP 或 Gate",
     ),
     "projects/development/issues/README.md": (
         "Issue 是案件档案",
@@ -112,6 +126,7 @@ REQUIRED_HEADINGS: dict[str, tuple[str, ...]] = {
 }
 
 MATRIX_COLUMNS = (
+    "树状编号",
     "上游需求 / 目标",
     "Gate",
     "功能点 / 候选项",
@@ -240,6 +255,7 @@ ENTRYPOINT_LINKS: dict[str, tuple[str, ...]] = {
         "[[templates/development-issue-template]]",
         "[[templates/code-handoff-template]]",
         "[[templates/developer-task-brief-template]]",
+        "[[templates/development-work-item-matrix-template]]",
     ),
     "governance/WORKFLOW.md": (
         "projects/development/plan/README.md#维护者入口顺序",
@@ -343,7 +359,7 @@ def require_matrix_columns(repo: Path, errors: list[str]) -> None:
     text = read_text(repo, rel_path, errors)
     if not text:
         return
-    header = parse_first_table_header(text, "上游需求 / 目标")
+    header = parse_first_table_header(text, "树状编号")
     if not header:
         errors.append(f"{rel_path}: missing matrix header row")
         return

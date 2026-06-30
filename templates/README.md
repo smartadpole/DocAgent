@@ -14,7 +14,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新正式决策可以参考 [[templates/decision-entry-template]]
 - 新研发项目可以复制 [[templates/project-template]]，也可以直接手写项目主页；极简小项目不必先用模板
 - 新功能点实体可以复制 [[templates/development-feature-point-template]]
-- 新研发事项矩阵可以参考 [[templates/development-work-item-matrix-template]]
+- 新研发事项矩阵可以参考 [[templates/development-work-item-matrix-template]]；自动候选拆解先看 [[skills/work-item-auto-decomposition/SKILL]]，矩阵里的 `树状编号`、`risk:`、`test:`、`验收:`、`issue-trigger:` 和不上推边界必须保留
 - 新 EP 执行包可以复制 [[templates/development-execution-package-template]]
 - 新 TASK 任务可以复制 [[templates/development-task-template]]
 - 新 Issue 案件可以复制 [[templates/development-issue-template]]

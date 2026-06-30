@@ -18,12 +18,16 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 本仓库是 wiki / 模板源工程，吸收对象必须先经过本库身份筛选，只落到既有 repo-local `skills/`、`templates/`、`governance/`、`scripts/`、`views/` 等层级。Path ROOT 永远是当前目标工程根目录，而不是 AcknowledgeBase 或矩阵里显示的来源路径；所有外部路径只读参考。
 
+当吸收对象从单项 skill 扩展到 agent system / intelligence maturity 时，本技能必须先使用 [[agent-system-maturity]] 的七层对象和 Matrix Recognition Capsule 做裁决。skill maturity 高分只能作为 skill 子层证据，不能上推成 runtime、memory、evaluation、governance、migration 或 intelligence 高分。
+
 ## 触发场景
 
 - 用户要求根据 AcknowledgeBase、矩阵、诊断、下游工程或附件升级通用技能。
 - 某个技能有成熟度缺口、source project、leader 标记或跨工程迁移任务。
 - 需要判断外部经验是系统层信息、项目材料、一次性状态还是不可吸收内容。
 - 新增或重写 `SKILL.md`、`TRANSFER.md`、模板、governance、sensor 或 views 接线。
+- 需要判断通用 skill 是否具备前沿维护能力：source-depth、TRANSFER、golden example / review contract、verification-loop、runtime / outcome / external readback 边界。
+- 需要判断某项能力是通用可迁移能力，还是只能做成当前项目 / 领域绑定能力。
 
 ## 成熟度与证据信号
 
@@ -33,6 +37,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - `template`：跨工程任务书、证据和 review 使用 [[templates/skill-transfer-contract-template]]、[[templates/skill-transfer-evidence-contract]]、[[templates/skill-transfer-review-contract]]。
 - `sensor`：`skill-maturity` 检查技能 frontmatter、README entry、TRANSFER 和必要结构；它只证明 wiring，不证明真实执行质量。
 - `evidence boundary`：矩阵是缺口雷达，不是执行命令。
+- `frontier maintenance`：通用 skill 的前沿维护必须至少能回答 source-depth、true-gap / recognition-gap / signal-only-gap、review contract、verification-loop、external readback / blocked 和 Goodhart guard；缺一项时不直接提 maturity。
 
 ## 工作流
 
@@ -42,6 +47,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
    - `true-gap`：本地确实缺触发、流程、模板、sensor、验证或入口。
    - `recognition-gap`：本地已有能力，但命名、入口、TRANSFER 或 sensor 不可识别。
    - `signal-only-gap`：缺的是 body、large-body、benchmark 等弱信号，不值得为分数补噪声。
+   - `project-bound-gap`：能力依赖目标工程自己的研发结构、领域事实、服务实例、业务流程或生活系统 owner，只能在目标工程绑定落位，不能上推为通用 skill。
 4. 再判处理方式：
    - `recognize`：承认已有体系，不改或只补入口说明。
    - `complete`：补缺失的耐久落点。
@@ -51,8 +57,10 @@ sensor: python3 scripts/check_all.py --only skill-maturity
    - `defer`：适用但当前没有运行条件或证据。
    - `reject`：不适用、冲突、隐私风险或第二真相源风险。
 5. 对要升级的能力选择最小耐久落点：`SKILL.md`、`TRANSFER.md`、模板、governance、sensor、views，按真实需要组合。
-6. 更新入口页和检查脚本，运行专项检查和完整检查。
-7. 最终回复列明未复制内容、未验证边界和结构 wiring 与真实运行质量的区别。
+6. 对通用 skill 做前沿维护 review：检查 source-depth、TRANSFER、golden / review contract、verification-loop、runtime / outcome / external readback 边界是否齐全。
+7. 对外部 evaluator 任务填写 Matrix Recognition Capsule；外部 readback 不能运行时写 blocked 和 expected impact。
+8. 更新入口页和检查脚本，运行专项检查和完整检查。
+9. 最终回复列明未复制内容、未验证边界和结构 wiring 与真实运行质量的区别。
 
 ## 输出格式
 
@@ -64,6 +72,8 @@ Output The decision table first, then list the updated files, validation command
 |  |  | true-gap / recognition-gap / signal-only-gap | recognize / complete / upgrade / merge / adapt / defer / reject |  |  |
 ```
 
+如果涉及外部矩阵或 agent-system maturity，先输出 Matrix Recognition Capsule 摘要，再输出上表。
+
 ## 禁止项
 
 - 不复制项目事实、业务链路、服务名、表名、运行 ID、真实路径、历史 log、一次性 handoff、密钥或环境配置。
@@ -71,3 +81,5 @@ Output The decision table first, then list the updated files, validation command
 - 不把 `leader / 领先` 当作真实执行质量、审美质量、验收闭环或项目状态。
 - 不让外部目录形态压过本工程已有结构。
 - 不把下游工程“不吸收清单”变成本库维护下游同步状态的台账。
+- 不把项目 / 领域绑定能力硬升为通用 skill；只能在目标工程自己的 owner、template、sensor 或报告中承接。
+- 不把外部 evaluator 的 expected impact 写成已经 readback。

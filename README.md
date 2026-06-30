@@ -57,6 +57,7 @@ tags: [entry, root]
 - 想知道“规则、模板、Goal、log 或 sensor 是否用得过重” -> 读 [[agent-governance-strategy]]
 - 想知道“当前权限、远程、dirty 状态或证据层级是否允许继续执行” -> 读 [[state-constraint-reasoning]]
 - 想知道“多 agent、Run Capsule、子工程 Git preflight 和 Worker / Evaluator 怎么分工” -> 读 [[agent-orchestration]]
+- 想判断“目标工程 agent system 是否具备七层能力、外部矩阵能否识别、智能化证据是否足够” -> 读 [[agent-system-maturity]]
 - 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 想知道“规则已有但为什么执行会漏、如何升级成触发器 / 模板 / sensor / 最终证明” -> 读 [[instruction-adherence]]
 - 想知道“当前执行页有没有把参考规则、非目标或证据说明漂成隐形待办” -> 读 [[execution-contract-semantics]]
@@ -81,6 +82,7 @@ tags: [entry, root]
 - 想看“大型架构图 / 服务拓扑图怎么画、放哪、怎么维护” -> 读 [[projects/design/diagrams/README]]
 - 想看“还没拍板但已经需要持续推进的设计专题” -> 读 [[projects/design/topics/README]]
 - 想看“Gate、FP、EP、TASK、Issue、risk、test、验收和台账怎么组织” -> 读 [[projects/development/plan/work-item-system-model]]
+- 想自动拆解本仓研发事项、补齐 Gate / FP / EP / TASK / risk / issue / test / 验收关系 -> 读 [[skills/work-item-auto-decomposition/SKILL]]
 - 想看“测试计划、AP 验收计划、环境路由和测试报告怎么分工” -> 读 [[projects/development/plan/test-acceptance-planning-model]] 和 [[projects/development/acceptance/README]]
 - 想看“复盘体系、复盘档案和经验沉淀怎么运行” -> 读 [[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]、[[projects/retrospectives/README]]、[[projects/retrospectives/indexes/by-year]] 和 [[templates/project-retrospective-template]]
 - 想复盘“项目交付或软件研发链” -> 读 [[skills/delivery-retrospective/SKILL]] 和 [[concepts/software-development-project-retrospective]]
@@ -111,6 +113,7 @@ tags: [entry, root]
 - [[agent-governance-strategy]] 负责把规则和检查分成 P0 / P1 / P2 / P3，避免把普通任务推成重治理。
 - [[state-constraint-reasoning]] 负责在提交、推送、发布、关闭状态或调用外部工具前判断当前状态是否可执行。
 - [[agent-orchestration]] 负责把 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由接起来。
+- [[agent-system-maturity]] 负责 Agent System Capability Package、Matrix Recognition Capsule、intelligence evidence lens 和 external evaluator blocked/readback 边界。
 - [[instruction-adherence]] 负责把关键规则从自然语言推进到触发矩阵、模板字段、sensor、门禁和最终回复证明。
 - [[execution-contract-semantics]] 负责防止参考规则、条件路由、非目标和上层证据污染当前执行合同。
 - [[harness-evolution]] 和 [[harness-feedback-ledger]] 负责把用户纠偏、检查失败、模式切换和重复失守记录成 episode，再决定是否晋升为 sensor、模板、技能或规则。
@@ -195,9 +198,9 @@ tags: [entry, root]
 5. 把按对话整理后的主题、用户意图、关键动作和关键决策写进 [[log]]。
 6. 把共享背景写进 [[BRAIN]]，把规则写进 [[POLICY]]，把项目级稳定记忆写进 [[projects/memory/README]]。
 7. 如果这轮已经进入项目推进或实现，就把需求演进链写进 [[projects/trace]]。
-8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和服务台账关系理清。
+8. 如果这轮已经进入研发拆解、执行或准出，就按 [[projects/development/plan/work-item-system-model]] 把 `Gate -> FP -> EP -> TASK` 主链，以及 risk、issue、test、验收、报告和服务台账关系理清；如果需要 agent 自动候选拆解，使用 [[skills/work-item-auto-decomposition/SKILL]]，它是本仓项目 / 领域绑定能力，不硬升为所有工程通用 skill。
 9. 如果这轮暴露了阶段、事故、Issue、交付链或 Agent 协作里的长期学习价值，先按 [[skills/retrospective-capability/SKILL]] 固定复盘合同，再把复盘正文写进 `projects/retrospectives/<year>/` 并同步 [[projects/retrospectives/indexes/by-year]]；项目交付 / 软件研发链看 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流看 [[skills/historical-dialogue-retrospective/SKILL]]，模板看 [[templates/project-retrospective-template]]。
-10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页；技能成熟度按 `skill / README entry / template / governance / sensor / TRANSFER / evidence boundary` 证据信号判断。
+10. 如果某类 agent 分析动作会反复出现，把可复用流程沉淀到 [[skills/README]] 和对应技能页；技能成熟度按 `skill / README entry / template / governance / sensor / TRANSFER / evidence boundary` 证据信号判断。若目标是 Agent System Capability Package，不能只看 skill maturity，要回到 [[agent-system-maturity]] 分层判断。
 11. 如果这轮需要持久图文呈现，把 canonical lens 写进 [[views/README]] 管辖的 current / snapshot 结构，并同步 [[views/lens-registry]]；PDF / PNG / SVG 导出件只进忽略目录。
 11. 个人稳定偏好继续放进 `workspace-memory`，避免下次重复决定。
 12. 如果某个下游项目进化出了可复用的系统层信息，按 [[template-feedback-rules]] 反哺回模板。

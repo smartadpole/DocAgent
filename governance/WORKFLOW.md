@@ -39,6 +39,7 @@
 
 - 当前只改 Harness wiring、模板入口或响应路由时，优先跑 `python3 scripts/check_all.py --only harness-governance`。
 - 当前只改 Agent 编排、状态约束、治理分级、Run Capsule 或 Subproject Git Preflight 时，优先跑 `python3 scripts/check_all.py --only harness-governance,loop-engineering`。
+- 当前只改 Agent System Capability Package、agent-system maturity、intelligence evidence 或 external evaluator capsule 时，优先跑 `python3 scripts/check_all.py --only agent-system-maturity`。
 - 当前只改项目内技能、技能模板、技能入口或技能成熟度证据信号时，优先跑 `python3 scripts/check_all.py --only skill-maturity`。
 - 当前只改 Gate / FP / EP / TASK / Issue / risk / test / 验收 / 服务台账 wiring 时，优先跑 `python3 scripts/check_all.py --only work-item-matrix`。
 - 当前只改测试计划、AP、fixture / oracle、人工确认、报告计划来源或发布 runbook 时，优先跑 `python3 scripts/check_all.py --only testing-system-maturity`。
@@ -133,7 +134,7 @@
 - 项目内 agent 技能：看 [[skills/README]]
 - 长期概念和通用知识：看 `concepts/`、`articles/`、`indexes/`
 
-研发事项维护的日常入口顺序统一看 `projects/development/plan/README.md#维护者入口顺序`。只有当本轮要改变默认规则、写权限、自动沉淀边界或入口顺序时，才回到 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 修改治理层。
+研发事项维护的日常入口顺序统一看 `projects/development/plan/README.md#维护者入口顺序`。如果需要 agent 自动候选拆解本仓事项，使用 [[skills/work-item-auto-decomposition/SKILL]]；它只绑定当前 wiki 的事项模型，不硬升为通用 skill。只有当本轮要改变默认规则、写权限、自动沉淀边界或入口顺序时，才回到 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 修改治理层。
 
 ### 0.1 共享脑怎么用
 

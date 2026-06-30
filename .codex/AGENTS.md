@@ -11,11 +11,13 @@
 - 如果本轮规则、模板、sensor、log、复盘或 Goal 可能过重，先读 [[agent-governance-strategy]] 做 P0 / P1 / P2 / P3 分级。
 - 如果动作依赖权限、远程状态、dirty / diverged 工作区、浏览器 profile、外部服务、预算或人工确认，先读 [[state-constraint-reasoning]]。
 - 如果涉及多 agent、多线程、主控 / 子工程、Worker / Evaluator 或 Subproject Git Preflight，读 [[agent-orchestration]] 和 [[templates/run-capsule-template]]。
+- 如果涉及 agent-system maturity、intelligence evidence、外部矩阵识别或 Agent System Capability Package，读 [[agent-system-maturity]]，并区分 local wiring、expected impact、external readback 和 `insufficient-evidence`。
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
 - 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
 - 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[skills/goal-contract/SKILL]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
 - 如果用户要求调研、研究、选型、产品 / 公司 / 开源工程评估或 PoC 判断，先读 [[skills/research-capability/SKILL]] 和 [[research-capability-rules]]。
 - 如果用户要求吸收外部矩阵、附件建议或下游工程通用技能，先读 [[skills/transferable-skill-governance/SKILL]]，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
+- 如果用户要求自动拆解当前 wiki 的研发事项，读 [[skills/work-item-auto-decomposition/SKILL]]；它是项目 / 领域绑定能力，不硬升为通用 skill。
 - 如果用户要求 canonical HTML 公网访问、外部分发或 public URL，先读 [[skills/public-html-publish/SKILL]]、[[public-html-publish-rules]] 和 [[views/publication]]。
 - 如果用户要求图文 lens、HTML、状态页、风险页、计划页、验收页、决策页、主题梳理、一图胜千言、PDF / PNG 或持久视图，先读 [[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和 [[views/README]]；持久 HTML 必须同步 registry，生成同源 PDF / PNG 到忽略目录，并保留 `static_visual_qa`。
 - 如果用户要求复盘阶段、专题、交付链、Issue / 事故后经验或 Agent 工作流，先读 [[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]、[[projects/retrospectives/README]]；标准 / 深度复盘正文进入 `projects/retrospectives/<year>/` 并同步 [[projects/retrospectives/indexes/by-year]]，项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话和 Agent 工作复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
@@ -29,6 +31,8 @@
 - 知识关联 skill 或落位规则改动跑：`python3 scripts/check_all.py --only knowledge-linking`。
 - 问题聚焦式图文呈现、`views/`、lens 模板或导出守卫改动跑：`python3 scripts/check_all.py --only problem-focused-visual-presentation`。
 - H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
+- Agent System Capability Package、intelligence evidence 或外部矩阵识别 capsule 改动跑：`python3 scripts/check_all.py --only agent-system-maturity`。
+- 研发事项模型、事项矩阵或 work-item-auto-decomposition 改动跑：`python3 scripts/check_all.py --only work-item-matrix`。
 - 入口、wikilink 或治理元数据改动跑：`python3 scripts/check_all.py --only project-docs`。
 - 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。
 - 执行合同语义、非目标或环境路由改动跑：`python3 scripts/check_all.py --only execution-contract-semantics`。

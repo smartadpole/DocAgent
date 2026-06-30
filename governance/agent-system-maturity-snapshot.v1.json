@@ -1,0 +1,301 @@
+{
+  "schema_version": "agent-system-maturity-snapshot-v1",
+  "profile_version": "agent-system-maturity-profile-v1-adapted-for-wiki",
+  "generated_at": "2026-06-30T00:00:00+08:00",
+  "project": "Software/wiki",
+  "profile_hash": "local-owner-20260630",
+  "input_hash": "local-entrypoints-20260630",
+  "system": {
+    "skill": {
+      "verdict": "pass",
+      "status": "fresh",
+      "score": 0.7,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "skills/README.md",
+        "scripts/check_skill_maturity.py"
+      ],
+      "non_upgrade_boundary": "skill maturity cannot be promoted to full agent-system maturity"
+    },
+    "runtime": {
+      "verdict": "partial",
+      "status": "fresh",
+      "score": null,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "git remote -v",
+        "git fetch --all --prune",
+        "AGENTS.md browser profile rules"
+      ],
+      "non_upgrade_boundary": "runtime profile readback is partial; browser / MCP live probes were not needed for this patch"
+    },
+    "harness": {
+      "verdict": "pass",
+      "status": "fresh",
+      "score": 0.8,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "governance/response-mode-routing.md",
+        "skills/goal-contract/SKILL.md",
+        "skills/loop-engineering/SKILL.md",
+        "governance/agent-orchestration.md"
+      ],
+      "non_upgrade_boundary": "harness wiring cannot close project work items by itself"
+    },
+    "memory": {
+      "verdict": "pass",
+      "status": "fresh",
+      "score": 0.8,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "governance/BRAIN.md",
+        "projects/memory/README.md",
+        "projects/trace.md",
+        "log.md"
+      ],
+      "non_upgrade_boundary": "memory routing does not replace present-state readback"
+    },
+    "evaluation": {
+      "verdict": "partial",
+      "status": "fresh",
+      "score": null,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "scripts/check_agent_system_maturity.py",
+        "scripts/check_all.py",
+        "projects/development/reports/2026-06-30-agent-system-maturity-phase-1a.md"
+      ],
+      "non_upgrade_boundary": "local checks prove wiring only; external evaluator readback is blocked to orchestrator"
+    },
+    "governance": {
+      "verdict": "pass",
+      "status": "fresh",
+      "score": 0.8,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "governance/harness-evolution.md",
+        "governance/harness-feedback-ledger.md",
+        "governance/instruction-adherence.md"
+      ],
+      "non_upgrade_boundary": "self-correction channel existence is not behavioral recovery proof"
+    },
+    "migration": {
+      "verdict": "partial",
+      "status": "fresh",
+      "score": null,
+      "checked_at": "2026-06-30",
+      "freshness_days": 0,
+      "proof": [
+        "skills/transferable-skill-governance/SKILL.md",
+        "skills/cross-project-skill-adoption-prompt/SKILL.md",
+        "templates/skill-transfer-manifest-template.md"
+      ],
+      "non_upgrade_boundary": "migration package is local Phase 1A; external matrix loop remains controller-owned"
+    }
+  },
+  "intelligence": {
+    "intelligence_observed": "insufficient-evidence",
+    "agent_intelligence_score": null,
+    "dimension_scores": {
+      "intent_modeling": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Goal / trace surfaces exist, but no rubric-backed behavior corpus was scored.",
+        "rubric_ref": "agent-intelligence-rubric-v0:intent_modeling",
+        "positive_evidence": [
+          "skills/goal-contract/SKILL.md",
+          "projects/trace.md"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "positive behavior evidence not collected",
+          "negative evidence review not collected",
+          "rubric-backed evaluator provenance incomplete"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "mode_selection": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Response-mode owner exists, but no scored behavior sample was reviewed.",
+        "rubric_ref": "agent-intelligence-rubric-v0:mode_selection",
+        "positive_evidence": [
+          "governance/response-mode-routing.md"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "mode-selection behavior sample not collected",
+          "negative evidence review not collected"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "tool_and_runtime_use": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Git and shell readback were used for this patch; browser/MCP/runtime behavior was not scored.",
+        "rubric_ref": "agent-intelligence-rubric-v0:tool_and_runtime_use",
+        "positive_evidence": [
+          "git remote -v",
+          "git fetch --all --prune"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "runtime profile behavior corpus not collected",
+          "non-default runtime validation not applicable to this patch"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "context_and_memory_use": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Memory and owner pages exist, but no scored cross-turn behavior corpus was collected.",
+        "rubric_ref": "agent-intelligence-rubric-v0:context_and_memory_use",
+        "positive_evidence": [
+          "governance/BRAIN.md",
+          "projects/memory/README.md",
+          "projects/trace.md"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "stale-memory negative review not collected",
+          "owner-first behavior sample not scored"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "decomposition_and_orchestration": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Work-item decomposition and orchestration owners exist, but worker/evaluator behavior is unscored.",
+        "rubric_ref": "agent-intelligence-rubric-v0:decomposition_and_orchestration",
+        "positive_evidence": [
+          "governance/agent-orchestration.md",
+          "skills/work-item-auto-decomposition/SKILL.md"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "worker output merge sample not collected",
+          "blocked/partial preservation sample not scored"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "evidence_judgment": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Reports and checkers separate local/external evidence, but no behavior corpus is scored.",
+        "rubric_ref": "agent-intelligence-rubric-v0:evidence_judgment",
+        "positive_evidence": [
+          "projects/development/reports/2026-06-30-agent-system-maturity-phase-1a.md",
+          "scripts/check_all.py"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "structure/runtime/outcome/manual boundary samples not scored",
+          "external evaluator readback not run locally"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "recovery_and_learning": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Recovery channels exist, but this snapshot did not review repeated failure episodes.",
+        "rubric_ref": "agent-intelligence-rubric-v0:recovery_and_learning",
+        "positive_evidence": [
+          "governance/harness-evolution.md",
+          "governance/harness-feedback-ledger.md"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "user correction sequence not reviewed",
+          "sensor/template promotion outcome not scored"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      },
+      "user_alignment": {
+        "status": "insufficient-evidence",
+        "score": null,
+        "reason": "Scope and dirty-worktree guards exist, but user-alignment behavior has not been scored.",
+        "rubric_ref": "agent-intelligence-rubric-v0:user_alignment",
+        "positive_evidence": [
+          "AGENTS.md",
+          "governance/state-constraint-reasoning.md"
+        ],
+        "negative_evidence": [],
+        "missing_evidence": [
+          "user correction review not collected",
+          "final reply alignment corpus not scored"
+        ],
+        "confidence": "low",
+        "cap_reason": "rubric gate is not satisfied"
+      }
+    },
+    "evidence_corpus": [
+      "AGENTS.md",
+      ".codex/AGENTS.md",
+      "governance/agent-system-maturity.md",
+      "governance/response-mode-routing.md",
+      "governance/agent-orchestration.md",
+      "governance/harness-evolution.md",
+      "governance/harness-feedback-ledger.md",
+      "skills/README.md",
+      "skills/work-item-auto-decomposition/SKILL.md",
+      "scripts/check_agent_system_maturity.py",
+      "scripts/check_work_item_matrix.py",
+      "projects/development/reports/2026-06-30-agent-system-maturity-phase-1a.md"
+    ],
+    "missing_evidence": [
+      "rubric-backed positive behavior corpus",
+      "negative evidence review",
+      "external evaluator readback",
+      "runtime outcome evidence beyond local structural checks"
+    ],
+    "confidence": "low",
+    "known_blind_spots": [
+      "external AcknowledgeBase matrix not refreshed in this repo",
+      "no browser/MCP runtime probe was required for this doc patch",
+      "no historical rollout corpus scored for intelligence behavior"
+    ],
+    "evaluator_provenance": {
+      "evaluator": "local structural checker + controller-blocked external matrix capsule",
+      "checked_at": "2026-06-30",
+      "input_refs": [
+        "governance/agent-system-maturity.md",
+        "governance/agent-system-maturity-snapshot.v1.json",
+        "scripts/check_agent_system_maturity.py"
+      ],
+      "input_hash": "local-entrypoints-20260630",
+      "freshness_days": 0,
+      "negative_evidence_reviewed": false,
+      "known_blind_spots": [
+        "external matrix readback unavailable locally",
+        "negative evidence corpus not collected"
+      ],
+      "reason": "Phase 1A records evidence positions and blocked boundaries without assigning an intelligence score"
+    }
+  },
+  "external_readback": {
+    "status": "blocked-by-orchestrator-readback",
+    "expected_impact": [
+      "agent-system owner becomes discoverable",
+      "intelligence dimensions appear with honest insufficient-evidence status",
+      "work-item-auto-decomposition is visible as project-bound capability, not universal skill"
+    ],
+    "goodhart_guard": [
+      "no source project facts copied",
+      "no empty universal skill created",
+      "no local green promoted to external readback"
+    ]
+  }
+}

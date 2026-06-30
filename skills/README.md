@@ -33,6 +33,8 @@
 
 跨工程技能成熟度矩阵只作为“发现缺口和评价维度”的来源，不作为本库事实源。吸收通用技能时只拿触发条件、事实源分层、流程、输出格式、验证、回写守卫、迁移边界和成熟度证据信号；不复制外部工程排行、分数、源头标记、项目状态、本地路径、业务表、服务名、运行 ID、source revision 或一次性 handoff。项目 / 领域绑定能力只能抽象方法，不能直接变成本库通用技能。
 
+当目标是 Agent System Capability Package 或 intelligence maturity，不用 skill maturity 替代整体判断；先读 [[agent-system-maturity]]，再区分 skill、runtime、harness、memory、evaluation、governance、migration 和八维 `insufficient-evidence` 边界。
+
 ## 本工程 baseline conformance
 
 本节是本仓通用 agent 技能体系的 project conformance 声明。它只描述本仓自己的执行事实和验证入口，不代表 AcknowledgeBase、下游工程或矩阵快照已经完成迁移。
@@ -66,6 +68,8 @@
 | Transferable Skill Governance | transferable skill | recognition-gap | complete | 本页和 [[skills/transferable-skill-governance/SKILL]] 作为裁决面；补 repo-native、Path ROOT 和输出裁决表口径。 |
 | Frontier Technology Intake | transferable skill 子项 | true-gap | adapt | 不新增并列 skill；作为 [[skills/research-capability/SKILL]] 的前沿信息流 intake 子项和 [[templates/research-intake-template]] 吸收。 |
 | project-context-entry、work-item-auto-decomposition、customer-group-db-readback、backlog-management、lifeos-management | project-bound | 不适用 | reject / adapt | 只抽象事实源分层、批处理、验收或上下文加载方法；不迁移业务表、运行 ID、队列、生活项目事实或开源 backlog 状态。 |
+| Agent System Capability Package | system capability | true-gap + recognition-gap | complete | 落到 [[agent-system-maturity]]、`governance/agent-system-maturity-snapshot.v1.json` 和 `scripts/check_agent_system_maturity.py`；不把 skill maturity 上推为 intelligence 总分。 |
+| work-item-auto-decomposition | project-bound | true-gap | adapt | 落到 [[skills/work-item-auto-decomposition/SKILL]]，绑定本仓 `Gate -> FP -> EP -> TASK` 模型；`transfer_ready: false`，不硬升通用 skill。 |
 
 ## 当前技能
 
@@ -76,6 +80,7 @@
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能。用于根据矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
+- [[skills/work-item-auto-decomposition/SKILL]]：项目 / 领域绑定的研发事项自动拆解技能。用于本仓需求、Gate、FP、EP、TASK、risk、issue、test、验收关系不完整时，生成候选拆解、关系节点和关闭证据；不作为通用迁移 skill。
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens；持久 HTML 还必须同步 registry、保留 `static_visual_qa`，并同源导出 PDF / PNG 到忽略目录。
 - [[skills/public-html-publish/SKILL]]：HTML 公开发布技能。用于把 canonical HTML views 按 [[views/publication]] 生成 public_url 或明确 blocked 原因，并守住 HTML-only、host / prefix 和 live readback 边界。
 - [[skills/documentation-maintenance/SKILL]]：文档维护技能。用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
@@ -92,4 +97,5 @@
 - 技能正文只写可复用流程，不复制项目主页、设计页或 TODO 的长正文。
 - 如果技能引入新的项目事实判断口径，同轮检查是否需要回写 [[BRAIN]]、[[POLICY]]、[[WORKFLOW]] 或项目主页面。
 - 从外部矩阵、lens 或下游工程再次吸收技能时，先判断它是通用可迁移能力、治理能力还是项目 / 领域绑定能力；只有前两类可落为本库技能，项目 / 领域绑定能力只抽象方法并记录不复制原因。
+- 例外：当用户明确要求把项目 / 领域绑定能力做成当前目标工程自己的能力时，可以落为 `transfer_ready: false` 的本地 skill，并必须绑定本仓 owner、template、sensor 和不上推边界。
 - 外部诊断里的 `missing signals` 是候选修复方向，不是执行命令；补完后要回看本库是否更清晰、更可维护，而不是只看矩阵分数是否更高。

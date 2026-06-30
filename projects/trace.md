@@ -140,6 +140,20 @@ tags: [trace, project]
   - 长期身份和规则进入 BRAIN / POLICY / governance；执行过程、验证结果和矩阵 expected impact 进入报告、log 和 trace，不进入长期 memory。
   - 新的可脚本化缺口优先进入专项 sensor，再考虑模板、skill 或规则升级。
 
+#### 2026-06-30 Agent System Maturity 与事项自动拆解 Phase 1A
+
+- **记录人**：Codex
+- **角色**：agent
+- **本轮变化**：
+  - **对象升级**：把 whole harness / skill-maturity 的实现口径继续升级为 Agent System Capability Package，明确 skill、runtime、harness、memory、evaluation、governance、migration 七层对象。
+  - **智能化证据边界**：新增本仓 `governance/agent-system-maturity-snapshot.v1.json`，八个 intelligence 维度全部出现，但在缺少正负行为语料和外部 evaluator provenance 前保持 `insufficient-evidence`，不输出 `agent_intelligence_score`。
+  - **外部识别胶囊**：新增 [[agent-system-maturity]] 的 Matrix Recognition Capsule，区分 true-gap、recognition-gap、signal-only-gap、Goodhart guard 和 external readback blocked。
+  - **项目绑定能力**：将 `work-item-auto-decomposition` 做成本仓自己的项目 / 领域绑定 skill，绑定 [[projects/development/plan/work-item-system-model]]、树状编号、关系矩阵和 `work-item-matrix` sensor；不硬升为通用可迁移 skill。
+- **当前实现口径**：
+  - agent-system / intelligence maturity 不再由 skill maturity 代答；必须回到 [[agent-system-maturity]] 和 snapshot 分层判断。
+  - 本仓事项自动拆解只输出候选 Gate / FP / EP / TASK、关系节点、关闭证据和回写建议；正式状态推进仍由对应 owner 页面决定。
+  - 外部 AcknowledgeBase matrix 仍由主控 / Orchestrator 刷新；本仓只回传本地检查、expected impact、blocked reason 和未验证边界。
+
 ### TRACE-001 文档系统分层与项目运行链路
 
 - **原始意图**：

@@ -36,6 +36,7 @@ tags: [index, root]
 - [[agent-governance-strategy]]：Agent 治理分级，决定规则、模板、sensor、log、Goal 或复盘应按 P0 / P1 / P2 / P3 落位
 - [[state-constraint-reasoning]]：状态约束推理，决定权限、远程、dirty 状态、预算和证据层级是否允许执行动作
 - [[agent-orchestration]]：Agent 编排入口，定义 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由
+- [[agent-system-maturity]]：Agent System Capability Package、Matrix Recognition Capsule、intelligence evidence lens 和 external evaluator readback 边界
 - [[instruction-adherence]]：指令遵循治理，决定已有规则如何进入触发矩阵、模板字段、sensor、门禁和最终证明
 - [[execution-contract-semantics]]：执行合同语义，防止参考规则、非目标和证据说明漂移成隐形待办
 - [[harness-evolution]]：Harness H5 自演进入口，决定 episode 如何晋升为 sensor、模板、技能或规则
@@ -49,6 +50,7 @@ tags: [index, root]
 - [[skills/knowledge-linking/SKILL]]：知识关联、落位、入口和回链技能
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能
+- [[skills/work-item-auto-decomposition/SKILL]]：本仓项目 / 领域绑定的事项自动拆解技能，用于补齐 Gate / FP / EP / TASK / risk / issue / test / 验收关系
 - [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能，承接 focus contract、source pack、视觉策略、静态 QA 和同源导出
 - [[skills/documentation-maintenance/SKILL]]：代码、结构或规则变化后的文档维护技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
@@ -88,6 +90,7 @@ tags: [index, root]
 - [[agent-governance-strategy]]：Agent Governance Strategy，用 P0 / P1 / P2 / P3 防止规则和检查过重。
 - [[state-constraint-reasoning]]：State Constraint Reasoning，把权限、远程状态、预算和证据边界传播到可执行动作。
 - [[agent-orchestration]]：Agent Orchestration，用 Run Capsule 管主控 / Worker / Evaluator 和子工程 Git preflight。
+- [[agent-system-maturity]]：当目标是 agent system / intelligence maturity 或外部矩阵识别时，先填写 Matrix Recognition Capsule，区分 true-gap、recognition-gap 和 signal-only-gap。
 - [[skills/technology-research/SKILL]]：技术调研总控，先固定调研合同、证据等级、成熟度、风险门和沉淀落位。
 - [[skills/research-capability/SKILL]]：research-capability 聚合入口，避免把外部研究子项原样平铺进本库。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把已沉淀技能生成目标工程可执行迁移任务书。
@@ -109,6 +112,7 @@ tags: [index, root]
 - [[concepts/progressive-design-freeze]]：阶段门滚动冻结
 - [[projects/development/plan/README]]：研发执行总控
 - [[projects/development/plan/work-item-system-model]]：`Gate -> FP -> EP -> TASK` 事项系统模型
+- [[skills/work-item-auto-decomposition/SKILL]]：当前 wiki 研发事项自动拆解能力；只绑定本仓事项模型，不硬升为通用 skill
 - [[projects/development/plan/test-acceptance-planning-model]]：测试计划与验收合同模型
 - [[projects/development/acceptance/README]]：验收计划入口
 - [[projects/development/acceptance/plans/README]]：AP 验收计划索引

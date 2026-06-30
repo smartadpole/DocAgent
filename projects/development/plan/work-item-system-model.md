@@ -16,6 +16,8 @@ tags: [development, planning, work-items, traceability]
 横向：[[projects/development/feature-points/README]]、[[projects/development/execution/execution-packages/README]]、[[projects/development/execution/tasks/README]]、[[projects/development/execution/engineering-feedback-loop]]、[[projects/development/risks/README]]、[[projects/development/issues/README]]、[[projects/development/plan/test-acceptance-planning-model]]  \
 下游：[[projects/development/acceptance/README]]、[[projects/development/reports/README]]、[[projects/status]]
 
+项目绑定自动拆解入口：[[skills/work-item-auto-decomposition/SKILL]]
+
 ## 这页解决什么
 
 这页回答“需求、目标、Gate、FP、EP、TASK、risk、issue、test、验收和证据之间是什么关系”。
@@ -74,6 +76,20 @@ tags: [development, planning, work-items, traceability]
 | 它的反馈要回写到哪 | 避免局部修复改变总目标却没有 trace | [[projects/trace]]、设计页、风险、会议或决策 |
 
 没有上游目标、Gate / FP / EP 归属、关系类型和关闭证据的 EP / TASK，不应作为 Gate 准出依据。
+
+## 项目绑定自动拆解
+
+`work-item-auto-decomposition` 是当前 wiki 的项目 / 领域绑定能力，入口是 [[skills/work-item-auto-decomposition/SKILL]]。它只把本仓既有研发事项模型变成可执行拆解流程，不硬升为所有工程通用 skill。
+
+自动拆解只能输出候选 Gate / FP / EP / TASK、关系类型、主责模块、输出物、关闭证据、回归守卫、关系节点覆盖和反馈回写建议。正式状态推进仍回到对应 owner 页面；本技能输出、`work-item-matrix` green 或本地报告都不能自动关闭父 EP、FP 或 Gate。
+
+拆解时必须先分类缺口：
+
+| 缺口类型 | 含义 | 处理 |
+| --- | --- | --- |
+| `true-gap` | 父级、关系节点、关闭证据、回归守卫或测试计划确实缺失 | 补候选事项或关系节点，回写到对应 owner。 |
+| `recognition-gap` | 已有事项关系，但模板、入口或 sensor 不可识别 | 对齐矩阵模板、入口链接或 checker，不制造新事项。 |
+| `signal-only-gap` | 只影响外部矩阵信号，不影响真实交付 | 记录 expected impact，不创建空 EP / TASK / skill。 |
 
 ## 关系类型
 
@@ -157,7 +173,7 @@ Issue 是案件档案，报告是每次庭审记录。
 矩阵列必须包含：
 
 ```text
-上游需求 / 目标 | Gate | 功能点 / 候选项 | EP | TASK | 子工程增量 | 关系类型 | 主责模块 | 当前状态 | 输出物 | 关闭证据 | 回归守卫 | 关系节点覆盖 | 反馈回写 | 未确认项 | 备注
+树状编号 | 上游需求 / 目标 | Gate | 功能点 / 候选项 | EP | TASK | 子工程增量 | 关系类型 | 主责模块 | 当前状态 | 输出物 | 关闭证据 | 回归守卫 | 关系节点覆盖 | 反馈回写 | 未确认项 | 备注
 ```
 
 其中 `关系节点覆盖` 必须包含 `risk:`、`test:`、`验收:`、`issue-trigger:`。缺失任一项时，这一行不能作为 Gate 准出证据。
