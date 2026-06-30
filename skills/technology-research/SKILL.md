@@ -11,7 +11,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 定位
 
-本技能把“调研一个技术 / 项目 / AI 方向 / 产品机会”从资料搜集收敛成可判断、可复查、可沉淀、可支撑决策的研究流程。
+本技能把“调研一个技术 / 项目 / AI 方向 / 产品机会”从资料搜集收敛成可判断、可复查、可沉淀、可支撑决策的研究流程。它优先处理技术类对象；市场、用户、竞争、尽调、科研、政策、战略前瞻和生活 / 现场决策等方法储备见 [[skills/research-capability/reference/research-method-route-map]]，由 [[skills/research-capability/SKILL]] 统一路由。
 
 它吸收 AcknowledgeBase 的技术调研总控、技术专题调研、开源工程调研和 IT / AI 行业调研方法，但不复制其文章、模板、项目事实、排行或来源路径。本库当前采用合并版技能：先做对象路由，再按技术专题、开源工程、行业 / AI 或 PoC 分支执行。
 
@@ -51,6 +51,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 证据计划：哪些事实必须联网或回到一手来源查证。
 - 输出形态：短答、研究报告、比较矩阵、PoC 方案、源码审计入口、知识页或项目任务。
 - 不做项：本轮不展开的对象、不会给出的强结论和不能越界的部分。
+- 溯源入口：外部原文、raw / source ledger、数据快照或社区深读入口放在哪里。
 
 ### 2. 建证据等级
 
@@ -78,6 +79,18 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - counter-evidence / 反证：反向证据、失败案例、替代解释、不可复现信号和社区争议。
 - deal-breaker：足以否决、延后、降级为人工确认或停止投入的条件。
 - decision output：`直接使用 / 封装使用 / Fork / 只参考 / 放弃 / 继续观察`。
+
+### 3.1 判研究深度
+
+| 深度 | 使用场景 | 技术调研输出 |
+| --- | --- | --- |
+| R0 线索 | 只需要识别材料价值和下一步是否值得读 | source package、对象假设、明显风险 |
+| R1 桌面初筛 | 需要候选筛选或方向比较 | L1 / L2 来源、成熟度假设、风险门、刷新触发 |
+| R2 验证计划 | 准备 PoC、运行验证或用户 / 市场验证 | 验证目标、样本、指标、成功 / 退出条件 |
+| R3 结构分析 | 需要方案、机制、生态和替代路线 | 证据矩阵、反证、替代方案、适用边界 |
+| R4 尽调 / 接入 | 会影响采购、合作、生产接入或长期承诺 | 三角验证、license / 供应链 / 安全 / 合规、人工确认边界 |
+
+R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须声明不能替代采购、法务、合规、安全或人工拍板。
 
 ### 4. 路由分支
 
@@ -119,7 +132,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 **分支判断**
 - 分支：
-- 调研深度：
+- 调研深度：R0 / R1 / R2 / R3 / R4
 - 成熟度：
 - 置信度：
 - 风险门：
@@ -140,6 +153,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 **沉淀**
 - 主落位：
+- 溯源入口：
 - 入口 / 回链：
 - 检查：
 ```

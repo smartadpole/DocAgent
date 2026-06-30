@@ -33,7 +33,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 成熟度与证据信号
 
-- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；暂未维护 golden examples。
+- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界和治理接线；如源工程或本库维护 golden examples / golden baseline，生成任务书必须按 `generated >= baseline` 做产物级对照。
 - `template`：源能力归一清单见 [[templates/skill-transfer-manifest-template]]；可复制任务书骨架见 [[templates/skill-transfer-contract-template]]，证据和审核分别见 [[templates/skill-transfer-evidence-contract]]、[[templates/skill-transfer-review-contract]]；最终产物仍必须按目标工程结构自检后裁剪。
 - `governance`：跨项目反哺和项目事实剥离回到 [[template-feedback-rules]]；写入目标工程前必须确认授权。
 - `TRANSFER`：迁移边界见 [[skills/cross-project-skill-adoption-prompt/TRANSFER]]。
@@ -117,7 +117,21 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - 验证、提交、未验证边界和最终回复是否写清。
 - 是否误带具体目标工程事实、源工程排行或未确认提交锚点。
 
-### 7. 任务书质量门
+### 7. Golden baseline 对照
+
+当用户提供手写样稿、旧提示词、参考任务书，或源工程存在 `examples/` golden 样例时，先把样稿拆成 baseline rubric，再生成。baseline 至少检查：
+
+- 开头命令是否明确升级 `<能力名称>`，而不是只新增目录、模板或说明页。
+- 目标定义是否说明长期问题和应反哺的流程、规则、模板、验证或 agent 工作方式。
+- 参考资料是否覆盖源 `SKILL.md`、`TRANSFER.md`、相关 concept / docs、template、governance、sensor 或检查脚本。
+- 吸收边界是否写清可以吸收、只能抽象吸收和禁止复制。
+- 目标工程结构自检是否要求先读目标工程入口，再按既有 docs / projects / skills / templates / reports / governance / scripts 落位。
+- 主题模块是否来自当前源 skill / `TRANSFER.md`，并展开到目标、必填字段 / 判断项、反模式和验证点。
+- 入口同步、验证、提交和最终回复是否让目标 agent 能照单完成并回传证据。
+
+如果生成稿比 baseline 更短、更抽象、缺少字段级模块、缺少禁止项或更像说明文而不是任务书，判定为失败并重写。通用化只能删除具体工程事实，不能删除任务书主干、章节顺序、字段粒度、验证和最终交付要求。
+
+### 8. 任务书质量门
 
 生成迁移任务书前，逐项检查：
 
@@ -131,7 +145,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 - `Transfer Manifest` 是否说明了 source-depth、taskbook-ready、harness-governance 接线和不复制项目事实。
 - `Matrix Recognition Capsule` 是否说明 evaluator、candidate files、baseline、true-gap、recognition-gap、signal-only-gap、Goodhart guard 和 external readback / blocked。
 - `Agent System Capability Package` 是否覆盖 skill、runtime、harness、memory、evaluation、governance、migration 和 intelligence evidence lens。
-- `Golden baseline` 如存在，生成稿是否 `generated >= baseline`，没有弱化章节顺序、字段粒度、禁止项、验证和最终回复要求。
+- `Golden baseline` 如存在，生成稿是否 `generated >= baseline`，没有弱化章节顺序、字段粒度、禁止项、验证和最终回复要求；如果没有本地 baseline，要在任务书里说明按源 `TRANSFER.md` 和目标工程结构自检补齐。
 
 如果缺任一项，先补任务书，不急着迁移目标工程。
 

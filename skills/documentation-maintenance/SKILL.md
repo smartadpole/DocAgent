@@ -1,6 +1,6 @@
 ---
 name: documentation-maintenance
-description: 文档维护技能；用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
+description: 文档与 Agent 规则维护技能；用于代码、结构、规则、技能、模板、sensor、views 或公开行为变化后，保守检查文档和 Agent 入口是否过期、缺失、重复或不准确，并产出修正报告或受控文档改动。
 maturity: leading
 evidence_signals: [skill, README entry, governance, sensor, TRANSFER]
 transfer_ready: true
@@ -11,7 +11,7 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 
 ## 定位
 
-本技能把“代码 / 结构 / 规则变了，文档要不要同步”收敛成可审计、可保守执行的维护流程。
+本技能把“代码 / 结构 / 规则 / 技能 / 模板 / sensor / views 或公开面变了，文档和 Agent 入口要不要同步”收敛成可审计、可保守执行的维护流程。
 
 它吸收 fetch-adapter / prefect 的 `document-changes`、`AGENTS.md sync` 和写作文档技能中的通用方法，但不复制其产品文档、Mintlify 组件、仓库路径、提交规则或 CI 细节。
 
@@ -22,6 +22,7 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - 准备提交、PR、发布、合并后复查或规则同步。
 - 本轮发现文档中的命令、路径、状态、职责、入口、模板字段或 AGENTS 约束已经漂移。
 - 本轮发现 duplicate-rule、over-thick-rule、generated-touch、规则已有但未执行、thin adapter 漂移或同一事实进入多个 owner 页面。
+- 根 `AGENTS.md`、`.codex/AGENTS.md`、技能、模板、sensor 或治理页之间出现重复正文、职责倒挂、入口过厚或方案正文落错层。
 
 ## 边界
 
@@ -29,6 +30,7 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - 只修正确实过期、缺失或错误的文档；不为了风格偏好重写准确内容。
 - 自动生成文档、导出件、API reference、examples 或目标工程声明的 generated 文件不手改。
 - 不把代码仓库的产品文档规范原样搬进本库；只吸收 diff 驱动、公开面识别、保守修正、质量门和 AGENTS 层级同步方法。
+- 方案、专题设计、跨工程接入和 owner page 设计未裁决前，优先落到 `projects/design/topics/` 或既有 design owner；治理页和技能页只放短路由，不抢方案正文。
 
 ## 成熟度与证据信号
 
@@ -49,6 +51,8 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - 编辑模式：用户明确授权、本库规则要求同步，或收尾必须修正文档漂移。
 - AGENTS 同步模式：代码结构、命令、模块职责或 agent 约束发生变化。
 - 规则 / 模板同步模式：治理页、模板、skill、sensor 变化，需要更新入口和检查说明。
+- Generated guard 模式：HTML / PDF / PNG / SVG 导出件、缓存、运行产物或机器输出进入 durable docs 时，先找源文件、生成器或忽略策略。
+- Design owner guard 模式：系统方案、专题设计、安装分发、跨工程接入或 owner page 讨论先判断是否应落到 `projects/design/topics/`，未裁决前不写成已生效规则。
 
 ### 2. 确定 diff 或事实变化
 
@@ -86,6 +90,10 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - `Stale`：文档写了旧行为、旧参数、旧路径、旧命令或旧规则。
 - `Missing`：新公开能力、入口或规则没有文档入口。
 - `Duplicate-rule`：同一裁定同时写进多个入口，或 thin adapter 复制了根正文。
+- `Duplicated-truth`：同一事实、规则或状态被多个页面共同维护，已经形成第二真相源。
+- `Over-thick-rule`：入口页或 AGENTS 为防漏堆入过厚流程，应该下沉到 governance、skill、template 或 sensor。
+- `Design-misroute`：专题讨论、系统方案、安装分发或跨工程接入设计被直接写进 governance / skill / template / sensor，缺少 design owner。
+- `Generated-touch`：手改 generated HTML / PDF / PNG / SVG、缓存、运行产物或机器输出，而不是改源文件或生成器。
 - `Broken example`：示例代码、命令或链接已经不可用。
 - `Generated`：目标是导出件、缓存、机器生成物或声明禁止手改的文件，只能改源或生成器。
 - `No changes needed`：已检查但无需改。
@@ -99,6 +107,8 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - 如果新内容需要独立页，先确认主入口和单一信息源。
 - 修改代码块时确认语法、命令和测试说明。
 - 更新 AGENTS 时遵守层级：共享知识放最浅共同入口，特定模块规则放最近 owning 文件。
+- 入口页只放一句话和链接，规则页写裁定条件，技能页写执行流程，模板页写字段骨架，sensor 写机器可检查门禁。
+- AGENTS 只保留 P0 guard、模式触发和 owning page 链接；细节下沉，避免变成百科或第二份治理手册。
 
 ### 6. 验证和收尾
 
@@ -137,3 +147,4 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 - 不手改自动生成文档、导出缓存或目标工程禁止手改的文件。
 - 不把每个内部 helper 都要求写文档；只关注用户、维护者或 agent 会遇到的公开面。
 - 不让 AGENTS 变成文件清单；它应承接隐藏约束、职责边界、惯例和坑点。
+- 不把方案正文、系统设计和待裁决 owner page 直接写进技能或治理页。

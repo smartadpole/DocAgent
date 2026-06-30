@@ -9,6 +9,21 @@
 
 ## 2026-06-30
 
+### 吸收 AcknowledgeBase 更细的同类技能方法
+
+- **记录人**：Codex
+- **用户意图**：用户指出 Acknowledge 工程有很多同样技能，但细节更出色，希望把能力学习到当前 wiki。目标不是复制 AcknowledgeBase 目录，而是把更成熟的执行细节抽象吸收到本仓已有技能、reference、报告和检查闭环。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的技能体系升级；研究方法储备落到 `skills/research-capability/reference/`，技能正文继续落在既有 `skills/` owner，验证证据落到 [[projects/development/reports/2026-06-30-acknowledge-skill-detail-adoption]]，过程记录进入 [[log]]。
+- **源资料边界**：读取 AcknowledgeBase 的 research-capability、technology-research-router、研究子技能、documentation-maintenance 和 cross-project-skill-adoption-prompt；只吸收 R0-R4 深度分级、溯源入口、子项路由、thin adapter / generated guard / design-misroute、golden baseline 和任务书质量门，不复制项目事实、生活事实、历史 log、矩阵分数、source revision、运行 ID 或一次性验收证据。
+- **关键动作**：
+  1. 新增 [[skills/research-capability/reference/research-method-route-map]]，把技术专题、开源工程、行业 / AI、问题拆解、结构化判断、市场、用户、竞争情报、尽调、科研、战略前瞻、社会政策和生活 / 现场决策吸收为研究方法 lens。
+  2. 更新 [[skills/research-capability/SKILL]] 和 [[skills/technology-research/SKILL]]，补 R0-R4 深度等级、方法路由、读者可见溯源入口、正式研究资产的反证 / 风险门 / 行动兑现要求。
+  3. 更新 [[skills/documentation-maintenance/SKILL]]，补 Generated guard、Design owner guard、duplicated-truth、over-thick-rule、design-misroute、入口页 / 规则页 / 技能页 / 模板页 / sensor 分工。
+  4. 更新 [[skills/cross-project-skill-adoption-prompt/SKILL]]，补 golden baseline 对照和 `generated >= baseline` 任务书质量门。
+- **验证边界**：`python3 scripts/check_all.py --only research-capability,documentation-maintenance,skill-maturity`、完整 `python3 scripts/check_all.py` 和 `git diff --check` 均已通过。检查通过只证明结构 wiring 和字段可发现，不证明未来每次研究、文档维护或迁移任务书都自动达到 AcknowledgeBase 的真实执行质量。
+- **二阶反思**：同类技能“更出色”的差距往往不是缺新入口，而是缺深度分级、溯源可见性、失败模式和样稿回归。后续吸收成熟工程能力时，优先找这些可执行细节，而不是增加并列 skill 数量。
+- **影响页面**：[[skills/research-capability/reference/research-method-route-map]]、[[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]]、[[skills/documentation-maintenance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/reports/2026-06-30-acknowledge-skill-detail-adoption]]、[[projects/development/reports/README]]、[[log]]、`scripts/check_research_capability.py`。
+
 ### 升级 Agent System Maturity 并绑定事项自动拆解能力
 
 - **记录人**：Codex
