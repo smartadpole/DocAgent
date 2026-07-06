@@ -4,7 +4,7 @@ id: GOV-AGENT-SYSTEM-MATURITY-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-30
+updated: 2026-07-06
 tags: [governance, agent-system, maturity, intelligence, evaluation]
 ---
 
@@ -12,13 +12,15 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 
 主入口：[[governance/README]]
 
-相关：[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[agent-system-cross-project-alignment.v1]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 ## 定位
 
 这页是本仓 Agent System Capability Package 的 owner。它回答“wiki 作为目标工程，是否具备可运行、可评估、可迁移、可被外部矩阵识别的 agent system”，而不是回答某个单项 skill 是否写得完整。
 
 本页只承接体系对象、证据边界、评估 capsule、缺口分类和本仓落位；不承接 AcknowledgeBase 的当前分数、profile hash、历史 snapshot、项目事实或一次性矩阵输出。
+
+跨工程智能化能力吸收的 source pack 和 adoption decision 由 [[agent-system-cross-project-alignment.v1]] 承接。它用于处理“借鉴所有工程的 agent / harness / memory / workflow 能力”这类任务，并把源工程信号分类为 `recognize / complete / upgrade / adapt / defer / reject`，不复制源工程事实或目录形态。
 
 ## 七层对象
 
@@ -69,6 +71,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 | Cross-project skill adoption frontier maintenance | recognition-gap | 在 [[skills/cross-project-skill-adoption-prompt/SKILL]] 和 TRANSFER 补 matrix capsule / source-depth / golden boundary | 不代表目标工程已迁移。 |
 | Transferable Skill Governance review contract | recognition-gap | 在 [[skills/transferable-skill-governance/SKILL]] 和 TRANSFER 补 review contract | sensor 只证明 wiring。 |
 | work-item-auto-decomposition | true-gap + project-bound | 新增本仓项目 / 领域绑定 skill，并接入 work-item matrix checker | 不硬升为通用可迁移 skill。 |
+| Cross-project agent intelligence alignment | true-gap | 新增 [[agent-system-cross-project-alignment.v1]]，把 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity、LifeOS 等工程的系统层能力抽象到本仓七层对象 | 结构对齐不能上推为行为智能得分。 |
 
 ## 验证口径
 

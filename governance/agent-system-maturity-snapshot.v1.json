@@ -1,16 +1,16 @@
 {
   "schema_version": "agent-system-maturity-snapshot-v1",
   "profile_version": "agent-system-maturity-profile-v1-adapted-for-wiki",
-  "generated_at": "2026-06-30T00:00:00+08:00",
+  "generated_at": "2026-07-06T17:06:07+08:00",
   "project": "Software/wiki",
-  "profile_hash": "local-owner-20260630",
-  "input_hash": "local-entrypoints-20260630",
+  "profile_hash": "local-owner-20260706-cross-project-alignment",
+  "input_hash": "local-entrypoints-20260706-cross-project-alignment",
   "system": {
     "skill": {
       "verdict": "pass",
       "status": "fresh",
       "score": 0.7,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
         "skills/README.md",
@@ -22,7 +22,7 @@
       "verdict": "partial",
       "status": "fresh",
       "score": null,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
         "git remote -v",
@@ -35,7 +35,7 @@
       "verdict": "pass",
       "status": "fresh",
       "score": 0.8,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
         "governance/response-mode-routing.md",
@@ -49,7 +49,7 @@
       "verdict": "pass",
       "status": "fresh",
       "score": 0.8,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
         "governance/BRAIN.md",
@@ -63,11 +63,12 @@
       "verdict": "partial",
       "status": "fresh",
       "score": null,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
         "scripts/check_agent_system_maturity.py",
         "scripts/check_all.py",
+        "governance/agent-system-cross-project-alignment.v1.md",
         "projects/development/reports/2026-06-30-agent-system-maturity-phase-1a.md"
       ],
       "non_upgrade_boundary": "local checks prove wiring only; external evaluator readback is blocked to orchestrator"
@@ -76,7 +77,7 @@
       "verdict": "pass",
       "status": "fresh",
       "score": 0.8,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
         "governance/harness-evolution.md",
@@ -89,9 +90,10 @@
       "verdict": "partial",
       "status": "fresh",
       "score": null,
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "freshness_days": 0,
       "proof": [
+        "governance/agent-system-cross-project-alignment.v1.md",
         "skills/transferable-skill-governance/SKILL.md",
         "skills/cross-project-skill-adoption-prompt/SKILL.md",
         "templates/skill-transfer-manifest-template.md"
@@ -245,6 +247,7 @@
       "AGENTS.md",
       ".codex/AGENTS.md",
       "governance/agent-system-maturity.md",
+      "governance/agent-system-cross-project-alignment.v1.md",
       "governance/response-mode-routing.md",
       "governance/agent-orchestration.md",
       "governance/harness-evolution.md",
@@ -264,37 +267,41 @@
     "confidence": "low",
     "known_blind_spots": [
       "external AcknowledgeBase matrix not refreshed in this repo",
+      "cross-project alignment is structure-only and does not score behavior",
       "no browser/MCP runtime probe was required for this doc patch",
       "no historical rollout corpus scored for intelligence behavior"
     ],
     "evaluator_provenance": {
       "evaluator": "local structural checker + controller-blocked external matrix capsule",
-      "checked_at": "2026-06-30",
+      "checked_at": "2026-07-06",
       "input_refs": [
         "governance/agent-system-maturity.md",
+        "governance/agent-system-cross-project-alignment.v1.md",
         "governance/agent-system-maturity-snapshot.v1.json",
         "scripts/check_agent_system_maturity.py"
       ],
-      "input_hash": "local-entrypoints-20260630",
+      "input_hash": "local-entrypoints-20260706-cross-project-alignment",
       "freshness_days": 0,
       "negative_evidence_reviewed": false,
       "known_blind_spots": [
         "external matrix readback unavailable locally",
         "negative evidence corpus not collected"
       ],
-      "reason": "Phase 1A records evidence positions and blocked boundaries without assigning an intelligence score"
+      "reason": "Phase 1A plus cross-project alignment records source coverage, evidence positions and blocked boundaries without assigning an intelligence score"
     }
   },
   "external_readback": {
     "status": "blocked-by-orchestrator-readback",
     "expected_impact": [
       "agent-system owner becomes discoverable",
+      "cross-project alignment map becomes discoverable",
       "intelligence dimensions appear with honest insufficient-evidence status",
       "work-item-auto-decomposition is visible as project-bound capability, not universal skill"
     ],
     "goodhart_guard": [
       "no source project facts copied",
       "no empty universal skill created",
+      "no structure-only alignment promoted to behavior intelligence",
       "no local green promoted to external readback"
     ]
   }

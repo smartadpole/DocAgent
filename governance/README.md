@@ -23,6 +23,7 @@ tags: [entry, governance]
 - [[state-constraint-reasoning]]：状态约束推理。回答“当前权限、远程、预算、证据和用户确认状态允许 agent 做什么”
 - [[agent-orchestration]]：Agent 编排。回答“Goal、Run Capsule、Orchestrator、Worker、Evaluator、子工程 Git preflight 和沉淀路由怎么分工”
 - [[agent-system-maturity]]：Agent System Maturity。回答“目标工程 agent system 七层对象、智能化证据、外部矩阵识别和 Goodhart 边界怎么判断”
+- [[agent-system-cross-project-alignment.v1]]：跨工程智能化吸收图。回答“所有工程里的 agent、harness、memory、workflow、evaluation 和 migration 能力如何抽象到本仓，而不复制项目事实”
 - [[instruction-adherence]]：指令遵循治理。回答“已有规则怎样变成触发器、模板字段、sensor、门禁和最终证明”
 - [[execution-contract-semantics]]：执行合同语义。回答“当前执行裁决是否被参考规则、非目标或上层证据污染”
 - [[harness-evolution]]：Harness H5 自演进。回答“用户纠偏、检查失败和重复失守如何形成 episode，并何时晋升为 sensor、模板、技能或规则”
@@ -45,7 +46,7 @@ tags: [entry, governance]
 当前整套系统按七层理解：
 
 1. 入口层：[[README]]、[[INDEX]]
-2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[POLICY]]、[[BRAIN]]
+2. 治理层：[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[agent-system-maturity]]、[[agent-system-cross-project-alignment.v1]]、[[instruction-adherence]]、[[execution-contract-semantics]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[POLICY]]、[[BRAIN]]
 3. 技能层：[[skills/README]] 和 `skills/`
 4. 运行层：[[projects/README]] 和 `projects/`
 5. 沉淀层：`articles/`、`concepts/`、`indexes/`
@@ -74,12 +75,13 @@ tags: [entry, governance]
 7. 如果要判断当前状态是否允许执行、提交、推送、发布或关闭，再看 [[state-constraint-reasoning]]
 8. 如果要拆分多 agent、子工程或 Worker / Evaluator，再看 [[agent-orchestration]]
 9. 如果要判断 agent-system / intelligence maturity、外部矩阵识别或七层能力包，再看 [[agent-system-maturity]]
-10. 如果要判断规则已有但没执行的问题，再看 [[instruction-adherence]]
-11. 如果要判断执行页是否出现口径漂移，再看 [[execution-contract-semantics]]
-12. 如果要判断本轮偏差是否应沉淀成 episode，再看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
-13. 如果要实际执行修改，再看 [[WORKFLOW]]
-14. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
-15. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
+10. 如果要从多个工程吸收 agent、harness、memory、workflow、evaluation 或 migration 能力，再看 [[agent-system-cross-project-alignment.v1]]
+11. 如果要判断规则已有但没执行的问题，再看 [[instruction-adherence]]
+12. 如果要判断执行页是否出现口径漂移，再看 [[execution-contract-semantics]]
+13. 如果要判断本轮偏差是否应沉淀成 episode，再看 [[harness-evolution]] 和 [[harness-feedback-ledger]]
+14. 如果要实际执行修改，再看 [[WORKFLOW]]
+15. 如果要知道 agent 的行为边界，再看 [[AGENTS]]
+16. 如果要治理 `[[log]]`、[[projects/trace]] 或模板反哺，再看对应规则页
 
 ## `POLICY` 和 `AGENTS` 的权衡
 
@@ -99,6 +101,7 @@ tags: [entry, governance]
 - 如果问题是“当前状态是否允许执行某动作”，优先写 [[state-constraint-reasoning]]
 - 如果问题是“多 agent、子工程、Worker 和 Evaluator 怎么分工”，优先写 [[agent-orchestration]]
 - 如果问题是“agent 体系成熟度、智能化证据或外部 evaluator 识别怎么判”，优先写 [[agent-system-maturity]]
+- 如果问题是“跨工程智能化能力怎么吸收但不复制项目事实”，优先写 [[agent-system-cross-project-alignment.v1]]
 - 如果问题是“规则已有但执行失守”，优先写 [[instruction-adherence]]
 - 如果问题是“执行裁决被参考规则、非目标或上层证据污染”，优先写 [[execution-contract-semantics]]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，优先写 [[harness-evolution]] 和 [[harness-feedback-ledger]]

@@ -10,6 +10,7 @@ from pathlib import Path
 
 REQUIRED_OWNER_TERMS = (
     "Agent System Capability Package",
+    "agent-system-cross-project-alignment.v1",
     "skill",
     "runtime",
     "harness",
@@ -27,6 +28,25 @@ REQUIRED_OWNER_TERMS = (
     "agent_intelligence_score",
 )
 
+REQUIRED_ALIGNMENT_TERMS = (
+    "Cross-Project Agent Intelligence Alignment Map",
+    "Source Coverage",
+    "AcknowledgeBase",
+    "train_platform",
+    "H100",
+    "DocCustomeranalysis",
+    "DocFilmCommunity",
+    "LifeOS",
+    "Agent System Capability Package",
+    "source freshness",
+    "L5 blocked-boundary proof",
+    "per-dialogue / run trace",
+    "structure-only",
+    "insufficient-evidence",
+    "not copied",
+    "blocked-by-orchestrator-readback",
+)
+
 DIMENSIONS = (
     "intent_modeling",
     "mode_selection",
@@ -42,8 +62,8 @@ SYSTEM_LAYERS = ("skill", "runtime", "harness", "memory", "evaluation", "governa
 
 ENTRYPOINT_TERMS = {
     "README.md": ("[[agent-system-maturity]]", "Agent System Capability Package"),
-    "INDEX.md": ("[[agent-system-maturity]]",),
-    "governance/README.md": ("[[agent-system-maturity]]",),
+    "INDEX.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
+    "governance/README.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
     "skills/README.md": ("work-item-auto-decomposition", "项目 / 领域绑定"),
     ".codex/AGENTS.md": ("agent-system-maturity", "work-item-auto-decomposition"),
 }
@@ -111,11 +131,15 @@ def check_snapshot(repo: Path, errors: list[str]) -> None:
     provenance = intelligence.get("evaluator_provenance", {})
     if provenance.get("negative_evidence_reviewed") is not False:
         errors.append(f"{rel}: negative_evidence_reviewed must be false until review is actually done")
+    if "governance/agent-system-cross-project-alignment.v1.md" not in provenance.get("input_refs", []):
+        errors.append(f"{rel}: evaluator_provenance.input_refs missing cross-project alignment map")
     external = data.get("external_readback", {})
     if external.get("status") != "blocked-by-orchestrator-readback":
         errors.append(f"{rel}: external_readback.status must state orchestrator-blocked readback")
     if not external.get("goodhart_guard"):
         errors.append(f"{rel}: missing goodhart_guard")
+    if "no structure-only alignment promoted to behavior intelligence" not in external.get("goodhart_guard", []):
+        errors.append(f"{rel}: missing structure-only Goodhart guard")
 
 
 def main() -> int:
@@ -125,6 +149,15 @@ def main() -> int:
     owner = read_text(repo, "governance/agent-system-maturity.md", errors)
     if owner:
         require_terms("governance/agent-system-maturity.md", owner, REQUIRED_OWNER_TERMS, errors)
+
+    alignment = read_text(repo, "governance/agent-system-cross-project-alignment.v1.md", errors)
+    if alignment:
+        require_terms(
+            "governance/agent-system-cross-project-alignment.v1.md",
+            alignment,
+            REQUIRED_ALIGNMENT_TERMS,
+            errors,
+        )
 
     for rel, terms in ENTRYPOINT_TERMS.items():
         text = read_text(repo, rel, errors)

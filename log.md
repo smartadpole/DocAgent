@@ -7,6 +7,24 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-06
+
+### 吸收多工程 Agent / Harness / Memory / Workflow 智能化能力
+
+- **记录人**：Codex
+- **用户意图**：用户要求不只学习 Acknowledge 工程的同类技能细节，还要借鉴所有工程里的智能化能力，尤其是 agent、harness、memory、workflow 等系统能力。目标是让当前 wiki 把多工程已经验证过的系统层做法吸收为 repo-native 能力，而不是复制任一工程的目录、业务事实或一次性状态。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的治理 / agent-system / sensor / 报告升级；跨工程 source pack 和 adoption decision 落到 [[agent-system-cross-project-alignment.v1]]，主 owner 继续是 [[agent-system-maturity]]，验证证据落到 [[projects/development/reports/2026-07-06-cross-project-agent-intelligence-absorption]]，过程记录进入 [[log]]。
+- **源资料边界**：读取 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity 等工程的 agent system、harness、memory、issue、work-item、lens、publication、frontier intake 和治理入口；LifeOS、OpsMind、fetch-adapter、prefect、haimind、customeranalysis 作为候选 source coverage 或 memory-index 信号处理。只吸收系统层信息，不复制源工程项目事实、运行 ID、服务名、端口、业务对象、矩阵分数、历史 log 或 handoff。
+- **关键动作**：
+  1. 新增 [[agent-system-cross-project-alignment.v1]]，用 Source Coverage、Seven-Layer Absorption Matrix 和 Adoption Decisions 承接跨工程 agent / harness / memory / workflow / evaluation / migration 能力。
+  2. 更新 [[agent-system-maturity]]，把跨工程吸收图接入 Agent System Capability Package owner，并把 `Cross-project agent intelligence alignment` 写入 Gap Table。
+  3. 更新 `governance/agent-system-maturity-snapshot.v1.json`，加入对齐图 proof、evidence corpus、evaluator input refs 和 Goodhart guard，同时保持 `agent_intelligence_score: null` 与全维度 `insufficient-evidence`。
+  4. 更新 `scripts/check_agent_system_maturity.py`，让专项 sensor 检查对齐图、source coverage、`source freshness`、`L5 blocked-boundary proof`、`per-dialogue / run trace`、`structure-only`、`not copied` 和外部 readback 边界。
+  5. 同步 [[README]]、[[INDEX]]、[[governance/README]]、报告索引和本条 [[log]]。
+- **验证边界**：本轮验证对象是结构吸收、入口可发现、snapshot 证据边界和 checker wiring；不证明未来 agent 行为已经被评分，不关闭任何 Gate / FP / EP / TASK / issue，不把本地 green 上推为外部 evaluator readback。
+- **二阶反思**：多工程“智能化能力”最容易被误落成更多自然语言规则或平行 skill。更稳的吸收单元是七层能力包：skill、runtime、harness、memory、evaluation、governance、migration；每个候选能力都先判 true-gap / recognition-gap / signal-only-gap，再决定 recognize、complete、upgrade、adapt、defer 或 reject。
+- **影响页面**：[[agent-system-cross-project-alignment.v1]]、[[agent-system-maturity]]、`governance/agent-system-maturity-snapshot.v1.json`、[[projects/development/reports/2026-07-06-cross-project-agent-intelligence-absorption]]、[[projects/development/reports/README]]、[[README]]、[[INDEX]]、[[governance/README]]、[[log]]、`scripts/check_agent_system_maturity.py`。
+
 ## 2026-06-30
 
 ### 吸收 AcknowledgeBase 更细的同类技能方法

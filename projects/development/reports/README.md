@@ -3,7 +3,7 @@ type: development_reports
 id: DEV-REPORTS-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-05-09
+updated: 2026-07-06
 tags: [development, reports, testing]
 ---
 
@@ -16,6 +16,7 @@ tags: [development, reports, testing]
 
 ## 最新报告
 
+- [[projects/development/reports/2026-07-06-cross-project-agent-intelligence-absorption]]：跨工程智能化能力吸收报告。
 - [[projects/development/reports/2026-06-30-acknowledge-skill-detail-adoption]]：Acknowledge 技能细节吸收报告。
 - [[projects/development/reports/2026-06-30-agent-system-maturity-phase-1a]]：Agent System Maturity Phase 1A 验证报告。
 - [[projects/development/reports/2026-06-26-agent-harness-skill-maturity-upgrade]]：Agent Harness 和技能成熟度升级验收报告。
