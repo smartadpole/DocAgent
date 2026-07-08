@@ -46,25 +46,33 @@ tags: [design, agent, git, branch, sync, governance]
 
 ## 方案 B：git 同步语义
 
-候选口径：
+同步合同候选：
 
-- “git 同步”不是只 push 当前分支。
-- 默认先 `fetch --all --prune`，再分别检查当前分支和 `master` 的 upstream / remote / ahead / behind。
-- 当前分支与 `master` 都需要和对应远程分支读回 `0 0`。
-- 当前分支与本地 `master` 也必须完成关系判断：是否互相包含、是否分叉、是否存在未解释差异；需要代码一致时，只能用明确且安全的 fast-forward / merge / rebase 策略处理。
+`git 同步` 默认检查并处理 3 组关系：
+
+1. **本分支 ↔ 远程本分支**
+   当前工作分支和对应远程分支同步，读回 ahead / behind 为 `0 0`。
+2. **本地 `master` ↔ 远程 `master`**
+   本地 `master` 和远程 `master` 同步，读回 ahead / behind 为 `0 0`。
+3. **本分支 ↔ 本地 `master`**
+   本分支和本地 `master` 也要对齐：至少确认两边是否互相包含、是否分叉、是否存在未解释差异。如果需要让两者代码完全一致，必须通过 fast-forward / merge / rebase 等明确策略完成；如果有冲突、脏工作区或会改写历史，就停下确认，不能自动 reset 或覆盖。
+
+更严谨的完成口径：
+
+- 只有“本分支、`master`、远程本分支、远程 `master`”四个面都读回清楚，并且本分支与本地 `master` 的关系没有未解释差异，才能说 `git 同步` 完成。
 - 多远程仓库需要逐一说明同步状态；只读、缺分支、无权限或远程不存在时写为边界或阻塞。
-- dirty、diverged、无 upstream、缺少 `master`、当前分支与本地 `master` 冲突或存在未跟踪文件时，优先保护用户改动，并将动作降级为 `conditional / blocked`。
+- dirty、diverged、无 upstream、缺少 `master`、本分支与本地 `master` 冲突或存在未跟踪文件时，优先保护用户改动，并将动作降级为 `conditional / blocked`。
 
 待拍板问题：
 
 - `master` 是否固定为第二同步分支，还是应按仓库默认分支自动识别 `master / main`。
 - 多远程同步是否必须覆盖所有 remote，还是只覆盖当前 upstream 和用户指定 remote。
-- 当前分支与本地 `master` 的目标是完全一致、互相包含，还是只要求没有未解释差异。
+- 本分支与 `master` 的同步，是要求两边代码完全一致，还是只要求 `master` 包含本分支 / 本分支包含 `master` 的最新变化。
 - 对脏工作区是否允许自动 stash，还是必须先请求确认。
 
 本轮确认：
 
-- “git 同步”至少要覆盖三组关系：当前分支 ↔ 远程当前分支、本地 `master` ↔ 远程 `master`、当前分支 ↔ 本地 `master`。
+- “git 同步”至少要覆盖三组关系：本分支 ↔ 远程本分支、本地 `master` ↔ 远程 `master`、本分支 ↔ 本地 `master`。
 - 若第三组关系不能安全收敛，最终回复必须写清阻塞原因、当前差异和需要用户拍板的合并策略。
 
 ## 可能落位
@@ -82,7 +90,7 @@ tags: [design, agent, git, branch, sync, governance]
 - 已确认适用范围：本机偏好、wiki 工程规则、还是跨工程 agent 模板规则。
 - 已确认默认分支策略：固定 `macpro`，还是设备名变量。
 - 已确认默认同步分支策略：固定 `master`，还是识别仓库默认分支。
-- 已确认当前分支与本地 `master` 的同步目标和允许策略。
+- 已确认本分支与本地 `master` 的同步目标和允许策略。
 - 已确认多远程和 dirty 工作区处理策略。
 - 已有最小验证：至少一个仓库的 current branch、`master`、remote、branch-to-master 关系和 dirty 状态读回样例。
 

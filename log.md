@@ -9,6 +9,20 @@
 
 ## 2026-07-08
 
+### 将 git 同步 topic 改成三关系同步合同
+
+- **记录人**：Codex
+- **用户意图**：用户指出 topic 里仍是旧规则摘要，没有把“git 同步默认检查并处理三组关系、四个面读回清楚、第三点待拍板”这段完整合同沉淀进去。
+- **关键判断**：
+  1. 现有 topic 虽然提到三组关系，但缺少同步合同结构，读起来仍像旧规则扩写。
+  2. 需要把“本分支 ↔ 远程本分支”“本地 master ↔ 远程 master”“本分支 ↔ 本地 master”作为显式三条合同写入。
+  3. 第三组关系的目标仍是待拍板问题：完全一致，还是包含最新变化。
+- **关键动作**：
+  1. 更新 [[projects/design/topics/local-git-branch-and-sync-semantics]] 的“方案 B”，改为 `同步合同候选`。
+  2. 写入更严谨完成口径：本分支、master、远程本分支、远程 master 四个面都读回清楚，且本分支与本地 master 没有未解释差异，才能说完成。
+- **验证 / 边界**：本轮只修正 topic 表达，不执行真实 git 同步，也不把 topic 升级成 wiki 当前硬规则。
+- **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[log]]。
+
 ### 补全 git 同步 topic 的本地 master 关系
 
 - **记录人**：Codex
