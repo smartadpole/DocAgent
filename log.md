@@ -9,6 +9,21 @@
 
 ## 2026-07-08
 
+### 补全 git 同步 topic 的本地 master 关系
+
+- **记录人**：Codex
+- **用户意图**：用户确认“git 同步”不仅要覆盖当前分支和 `master` 各自与远程同步，也要覆盖当前分支与本地 `master` 之间的代码同步关系。
+- **关键判断**：
+  1. 系统 Codex 执行规则需要补第三组关系：当前分支 ↔ 本地 `master`。
+  2. wiki 工程仍保持 topic 形态，只更新 [[projects/design/topics/local-git-branch-and-sync-semantics]] 的候选合同与已确认口径，不升级为 wiki 当前硬规则。
+  3. 第三组关系必须保护用户未提交改动；不能用 reset / overwrite 强行制造一致。
+- **关键动作**：
+  1. 更新系统 Codex 全局 `AGENTS.md`，把“git 同步”定义为三组关系同步。
+  2. 新增本机记忆 note，记录当前分支、本地 `master` 与远程分支的三关系同步语义。
+  3. 更新 [[projects/design/topics/local-git-branch-and-sync-semantics]]，加入当前分支 ↔ 本地 `master` 的关系判断、阻塞边界和采纳条件。
+- **验证 / 边界**：本轮只更新规则文本和 topic，不执行实际仓库同步；wiki topic 仍为 `proposed`。
+- **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[log]]。
+
 ### 将本机 Git 分支与同步方案改为设计 topic
 
 - **记录人**：Codex

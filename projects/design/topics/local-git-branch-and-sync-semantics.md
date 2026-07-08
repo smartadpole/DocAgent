@@ -19,7 +19,7 @@ tags: [design, agent, git, branch, sync, governance]
 本专题沉淀两个本机 Codex 工作流设计方案：
 
 1. 本机 Git 工程默认在以本机命名的分支工作；当前本机名为 `macpro`。
-2. 用户说“git 同步”时，同步目标默认覆盖当前分支、`master` 分支，以及它们各自的远程分支状态。
+2. 用户说“git 同步”时，同步目标默认覆盖当前分支、`master` 分支、它们各自的远程分支状态，以及当前分支与本地 `master` 之间的代码关系。
 
 这两个方案当前只作为 agent 升级 topic 保存，不等价于已经写入 wiki 当前硬规则。
 
@@ -50,15 +50,22 @@ tags: [design, agent, git, branch, sync, governance]
 
 - “git 同步”不是只 push 当前分支。
 - 默认先 `fetch --all --prune`，再分别检查当前分支和 `master` 的 upstream / remote / ahead / behind。
-- 当前分支与 `master` 都需要和对应远程分支读回 `0 0`，才能回答“已同步”。
+- 当前分支与 `master` 都需要和对应远程分支读回 `0 0`。
+- 当前分支与本地 `master` 也必须完成关系判断：是否互相包含、是否分叉、是否存在未解释差异；需要代码一致时，只能用明确且安全的 fast-forward / merge / rebase 策略处理。
 - 多远程仓库需要逐一说明同步状态；只读、缺分支、无权限或远程不存在时写为边界或阻塞。
-- dirty、diverged、无 upstream、缺少 `master` 或存在未跟踪文件时，优先保护用户改动，并将动作降级为 `conditional / blocked`。
+- dirty、diverged、无 upstream、缺少 `master`、当前分支与本地 `master` 冲突或存在未跟踪文件时，优先保护用户改动，并将动作降级为 `conditional / blocked`。
 
 待拍板问题：
 
 - `master` 是否固定为第二同步分支，还是应按仓库默认分支自动识别 `master / main`。
 - 多远程同步是否必须覆盖所有 remote，还是只覆盖当前 upstream 和用户指定 remote。
+- 当前分支与本地 `master` 的目标是完全一致、互相包含，还是只要求没有未解释差异。
 - 对脏工作区是否允许自动 stash，还是必须先请求确认。
+
+本轮确认：
+
+- “git 同步”至少要覆盖三组关系：当前分支 ↔ 远程当前分支、本地 `master` ↔ 远程 `master`、当前分支 ↔ 本地 `master`。
+- 若第三组关系不能安全收敛，最终回复必须写清阻塞原因、当前差异和需要用户拍板的合并策略。
 
 ## 可能落位
 
@@ -75,8 +82,9 @@ tags: [design, agent, git, branch, sync, governance]
 - 已确认适用范围：本机偏好、wiki 工程规则、还是跨工程 agent 模板规则。
 - 已确认默认分支策略：固定 `macpro`，还是设备名变量。
 - 已确认默认同步分支策略：固定 `master`，还是识别仓库默认分支。
+- 已确认当前分支与本地 `master` 的同步目标和允许策略。
 - 已确认多远程和 dirty 工作区处理策略。
-- 已有最小验证：至少一个仓库的 current branch、`master`、remote 和 dirty 状态读回样例。
+- 已有最小验证：至少一个仓库的 current branch、`master`、remote、branch-to-master 关系和 dirty 状态读回样例。
 
 ## 当前裁决
 
