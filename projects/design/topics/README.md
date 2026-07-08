@@ -37,7 +37,7 @@ tags: [design, topics]
 
 ### 待拍板专题
 
-- 暂无
+- [[projects/design/topics/local-git-branch-and-sync-semantics]]：本机 `macpro` 默认分支与“git 同步”覆盖当前分支、`master` 和远程读回的 agent 工作流候选规则。
 
 ### 后续储备
 

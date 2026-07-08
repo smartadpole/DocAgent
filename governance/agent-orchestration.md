@@ -4,7 +4,7 @@ id: GOV-AGENT-ORCHESTRATION-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-08
+updated: 2026-06-22
 tags: [governance, harness, orchestration, run-capsule]
 ---
 
@@ -44,10 +44,6 @@ Worker 只交证据，不能宣布整体闭环。
 | dirty state | 本轮相关改动、预存脏改动和未跟踪文件 |
 | local-only risk | 本地领先、未推送或无 upstream 的风险 |
 | update policy | 默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
-
-默认本机分支是 `macpro`。Subproject Git Preflight 发现目标仓库不在 `macpro` 时，先判断用户是否明确指定了其他分支、PR / 远程分支或仓库级 release / hotfix 约束；没有这些条件时，优先切换或创建 `macpro`，并保留预存脏改动。
-
-当 Run Capsule 或用户指令包含“git 同步”时，Preflight 的更新目标必须扩展为当前分支与 `master` 双分支：先 fetch 所有远程，再分别确认当前分支和 `master` 与各自远程分支的 ahead / behind；多远程逐一说明。dirty、diverged、无 upstream、缺少 `master`、无推送权限或远程分支不存在时，Worker 只能报告 blocked / conditional，不得自行 reset、覆盖或把局部 push 说成完整同步。
 
 ## Persistence Routing
 

@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-08
+updated: 2026-06-25
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,7 +23,6 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07-08 | 本机 Git 分支与同步语义升级 | 用户先后要求系统 Codex 默认在本机命名分支 `macpro` 工作，并要求“git 同步”同时覆盖当前分支、`master` 和远程分支；随后纠正这些方案要沉淀到 wiki 工程中 | 规则升级 | 必要成本 | 将 `macpro` 默认分支、当前分支 + `master` 双分支同步、fetch / ahead-behind 读回、多远程说明和脏工作区保护写入 [[AGENTS]]、[[state-constraint-reasoning]]、[[agent-orchestration]] 与 [[instruction-adherence]] | [[state-constraint-reasoning]] / [[agent-orchestration#Subproject Git Preflight]] / [[instruction-adherence]] / `python3 scripts/check_all.py --only harness-governance,instruction-adherence,project-docs` | active |
 | 2026-06-25 | 复盘 archive 与 sensor 闭环升级 | 用户要求把 Harness 复盘触发、档案落位、文件爆炸控制、行动分流、自演进和本地 sensor 接成可验证闭环 | 规则升级 | 可优化成本 | 建立 `projects/retrospectives/<year>/` 与 `indexes/` 结构，更新 [[projects/retrospectives/README]]、[[projects/design/topics/retrospective-archive-storage-structure]]、[[skills/retrospective-capability/SKILL]]、[[templates/project-retrospective-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和 `scripts/check_retrospective_system.py` | `python3 scripts/check_all.py --only retrospective-system` | active |
 | 2026-06-22 | Agent Harness L5 验证补强 | 用户指出上一轮仍把真实运行质量、多 agent 运行质量和外部 Git 状态写成未验证边界，要求必须验证到 L5 | 验收关闭 | 必要成本 | 新增 `scripts/check_agent_harness_l5.py` 和 [[projects/development/reports/2026-06-22-agent-harness-l5-validation]]，把 Goal dry-run、Run Capsule dry-run、Subproject Git Preflight live readback、Harness Evolution route 和最终回复证明接到 `check_all`；同步规则升级入口 | `python3 scripts/check_all.py --only agent-harness-l5` | active |
 | 2026-06-22 | 整体 Agent Harness 模块接入 | 用户要求不是只迁移 skills，而是把入口规则、响应模式、运行合同、任务编排、写入边界、沉淀路由、sensor 门禁、复盘自演进和最终交付合同接入目标工程 | 规则升级 | 可优化成本 | 新增 [[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]；升级 Goal / Run / Loop 模板、Loop skill、入口规则和 `check_harness_governance.py` / `check_loop_engineering.py` | `python3 scripts/check_all.py --only harness-governance,loop-engineering` | active |
@@ -70,7 +69,6 @@ tags: [agent, harness, feedback, episode]
 | 多 agent / 子工程任务必须由 Orchestrator 定义 Run Capsule，Worker 只交证据，Evaluator 做合流裁决；涉及代码前先做 Subproject Git Preflight | 整体 Agent Harness 模块接入 | [[agent-orchestration]] / [[templates/run-capsule-template]] / `scripts/check_harness_governance.py` | active |
 | 规则、模板、sensor、log、复盘和 Goal 的强度先做 P0 / P1 / P2 / P3 分级，避免所有偏差都升级成硬规则 | 整体 Agent Harness 模块接入 | [[agent-governance-strategy]] / [[POLICY]] / [[WORKFLOW]] | active |
 | 行动依赖权限、远程、dirty / diverged、预算或人工确认时先做 state constraint reasoning | 整体 Agent Harness 模块接入 | [[state-constraint-reasoning]] / [[WORKFLOW]] / [[POLICY]] | active |
-| 本机工程默认优先在 `macpro` 分支工作；用户说“git 同步”时，当前分支和 `master` 都必须与远程分支完成同步证明 | 本机 Git 分支与同步语义升级 | [[AGENTS]] / [[state-constraint-reasoning]] / [[agent-orchestration]] / [[instruction-adherence]] | active |
 | L5 不等于泛称“已验证”；必须给用户可见的命令、结果、commit / push readback、不能上推边界和例外原因 | Agent Harness L5 验证补强 | [[instruction-adherence]] / `scripts/check_agent_harness_l5.py` / 本轮验证报告 | active |
 
 ## Rule Prune Queue

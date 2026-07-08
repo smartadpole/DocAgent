@@ -4,7 +4,7 @@ id: GOV-STATE-CONSTRAINT-REASONING-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-08
+updated: 2026-06-22
 tags: [governance, harness, state, constraints]
 ---
 
@@ -31,16 +31,6 @@ tags: [governance, harness, state, constraints]
 | tool state | 浏览器 profile、端口、服务可用性、凭据存在性 |
 | owner | 主控、子工程、Worker、Evaluator、人工 reviewer |
 
-## Git 状态约束
-
-Git 相关动作必须先把 branch、remote、upstream、ahead / behind、dirty、diverged 和 local-only 风险拆开判断，不能合并成一句“已同步 / 未同步”。
-
-- 默认本机工作分支：当前本机名是 `macpro`，本机 Git 工程默认优先在 `macpro` 分支工作；用户明确指定其他分支、指定 PR / 远程分支，或仓库级 release / hotfix 规则优先时才切到其他分支。
-- `git 同步` 语义：默认同时覆盖当前分支与 `master` 分支；先 `fetch --all --prune`，再分别判断当前分支和 `master` 对应远程分支的 ahead / behind。
-- 多远程语义：如果仓库存在多个已配置且可写远程，逐一确认当前分支和 `master` 在各远程的同步状态；只读、缺分支或无权限的远程必须作为边界写出。
-- 脏工作区保护：未提交改动、未跟踪文件、生成物或用户预存脏改动存在时，不得为了 pull / merge / rebase / reset / checkout / push 覆盖或丢弃；只能选择安全暂存、保留原状、请求确认或标记 blocked。
-- 完成证明：只有当前分支和 `master` 对应远程分支读回 ahead / behind 为 `0 0`，且多远程边界已说明，才能回答“git 同步完成”。
-
 ## 约束传播
 
 1. 先列出会限制行动的状态变量。
@@ -65,6 +55,5 @@ Git 相关动作必须先把 branch、remote、upstream、ahead / behind、dirty
 
 - 不把需要授权的 pull / merge / rebase / reset / publish / production write 写成默认动作。
 - 不在 remote、branch、dirty 或 upstream 未确认时承诺已经完成同步。
-- 不把只推当前分支、只看本地 commit、只看缓存的 `origin/*` 或只同步 `master` 包装成完整 `git 同步`。
 - 不把 local check 通过写成 end-to-end 验收。
 - 不把“可后续考虑”自动变成当前任务或阻塞项。

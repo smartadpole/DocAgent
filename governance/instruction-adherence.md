@@ -5,7 +5,7 @@ scope: shared
 status: active
 source_of_truth: true
 truth_scope: instruction_adherence_execution_coverage
-updated: 2026-07-08
+updated: 2026-05-28
 tags: [agent, harness, instruction-following]
 ---
 
@@ -44,7 +44,6 @@ tags: [agent, harness, instruction-following]
 | 本轮产生实际文件变更 | 更新 [[log]]、跑相关 sensor、收尾跑 `python3 scripts/check_all.py`、区分本轮改动和预存脏改、提交或说明例外 | [[WORKFLOW]] / `scripts/check_all.py` | 哪些脏改属于本轮 |
 | 用户提供截图、日志、接口响应或运行输出 | 在 issue / incident / 报告里转成结构化证据；拿不到原始二进制时写明原因和待补路径 | 模板字段 / 项目文档检查 | 当前工具是否真实取得原图 |
 | 用户要求验收、复验、关闭、准出或写 `done` | 先锁定验收对象、测试计划来源、证据层级、人工确认边界和不上推边界 | [[projects/development/plan/test-acceptance-planning-model]] / [[projects/development/reports/README]] | 证据是否足以关闭当前层级 |
-| 用户说“git 同步”“同步 git”或等价表达 | 按 [[state-constraint-reasoning]] 和 [[agent-orchestration#Subproject Git Preflight]] 先 fetch 并拆分当前分支、`master`、remote、upstream、ahead / behind、dirty / diverged；同步完成必须证明当前分支和 `master` 均与对应远程 `0 0`，多远程逐一说明 | `git status --short --branch` / `git fetch --all --prune` / `git rev-list --left-right --count` / 最终回复证明 | 脏工作区、缺分支、无 upstream、无权限、分叉历史是否允许继续 |
 | 执行页出现“默认不需要，但如果”、`可选 / 视情况 / 后续可能` 或非目标展开 | 按 [[governance/execution-contract-semantics]] 上移参考规则，当前事项只保留单值裁决 | `scripts/check_execution_contract_semantics.py` | 该句是否承担当前执行裁决 |
 | 用户指出规则没有被遵循 | 写入或更新 [[harness-feedback-ledger]]，判断是否晋升模板 / sensor / 流程 | [[harness-evolution]] | 一次性失误还是可复用缺口 |
 | 规则改动或规则迁移 | 做原始规则保全，判断补充、澄清、弱化、替换或冲突 | [[POLICY]] / [[template-feedback-rules]] | 改动是否降低旧规则强度 |
