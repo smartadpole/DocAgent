@@ -141,6 +141,8 @@
 - 当用户要求长时间持续推进、反复尝试、直到完成或跨多轮跟进时，先判断是否需要 Goal Contract；主控侧定义完成契约，子工程侧按契约回传证据，不用 Goal 自述替代验收关闭。
 - 当任务涉及多 agent、多线程、主控 / 子工程或 Worker / Evaluator 分工时，使用 [[agent-orchestration]] 和 [[templates/run-capsule-template]]；Worker 只交证据，不能宣布整体闭环。
 - 涉及子工程代码前必须做 Subproject Git Preflight：目录、分支、remote、fetch 后 ahead / behind / diverged、dirty / local-only 状态和更新策略；默认不 pull / merge / rebase / reset，除非用户授权且 fast-forward safe。
+- 本机 Git 工程默认工作分支按设备名收口：当前本机默认分支是 `macpro`；除非用户明确指定其他分支、指定 PR / 远程分支，或仓库级 release / hotfix 规则优先，否则新建、接手或继续本机工程前先检查并优先使用 `macpro`。
+- 用户说“git 同步”“同步 git”或等价指令时，默认不是只推当前分支；必须把当前分支和 `master` 分支都与各自远程分支同步，并在 fetch 后分别读回 ahead / behind。多远程仓库逐一说明；脏工作区、缺少分支、无 upstream、权限不足或分叉时停下写清阻塞，不得 reset / overwrite 用户未提交改动。
 - 当用户要求调研、研究、技术 / 产品 / 公司 / 开源工程评估、PoC 判断或会影响选型 / 采购 / 架构的当前事实时，使用 [[skills/research-capability/SKILL]]，并按 [[research-capability-rules]] 区分一手事实、信号、推论、行动等级和未验证边界。
 - 当用户要求 canonical HTML 公网访问、外部分发或 public URL 时，使用 [[skills/public-html-publish/SKILL]]，并按 [[public-html-publish-rules]] 和 [[views/publication]] 区分 HTML-only、host / prefix、live readback 和 blocked 口径。
 - 当用户要求看文档、主题、状态、风险、计划、验收、issue、知识材料，或说“图文”“HTML”“一图胜千言”“直观看”“状态页”“风险页”“验收页”“决策页”时，先按 [[skills/problem-focused-visual-presentation/SKILL]] 固定 focus contract、source pack、证据边界、视觉策略和输出模式；持久 HTML 必须同步 [[views/lens-registry]]，并同轮生成同源 PDF / PNG 到忽略目录。Lens 只负责呈现，不替代项目状态、验收关闭、issue 关闭、决策拍板、测试报告或规则裁定。

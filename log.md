@@ -7,6 +7,25 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-08
+
+### 将本机 Git 分支与同步语义沉淀进 wiki 工程
+
+- **记录人**：Codex
+- **用户意图**：用户要求把两个已确定的系统 Codex 设计方案沉淀到 wiki 工程的合适位置，作为 agent 升级规则之一；随后纠正目标不是 OpsMind，而是 `/Users/hai/Documents/Software/wiki` 工程。
+- **目录归类与落位判断**：本轮属于既有 wiki 工程内的 agent harness / governance 规则升级；主落位是 [[AGENTS]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[instruction-adherence]] 和 [[harness-feedback-ledger]]，不新建平行 Git 规则页。
+- **关键规则**：
+  1. 本机 Git 工程默认优先在本机命名分支工作；当前本机默认分支是 `macpro`，除非用户明确指定其他分支、PR / 远程分支或仓库级 release / hotfix 规则优先。
+  2. 用户说“git 同步”时，默认同步范围是当前分支 + `master`；两者都要与对应远程分支完成 fetch 后 ahead / behind 读回，多远程逐一说明。
+  3. 脏工作区、缺少分支、无 upstream、无权限或分叉历史时只能写 `blocked / conditional`，不得 reset、覆盖或把局部 push 包装成完整同步。
+- **关键动作**：
+  1. 在 [[AGENTS]] 的会话级规则中补入 `macpro` 默认分支和“git 同步”双分支同步硬约束。
+  2. 在 [[state-constraint-reasoning]] 中新增 Git 状态约束，固定 branch / remote / upstream / ahead-behind / dirty / multi-remote 的执行判断。
+  3. 在 [[agent-orchestration]] 的 Subproject Git Preflight 中补入 `macpro` 默认分支和当前分支 + `master` 双分支同步扩展。
+  4. 在 [[instruction-adherence]] 的触发矩阵中补入“git 同步”触发信号和最终证明要求；在 [[harness-feedback-ledger]] 记录本次规则升级 episode 与晋升项。
+- **验证 / 边界**：本轮只沉淀规则和执行触发，不对所有仓库实际执行 git 同步；进入 wiki 工程时已从 `master` 新建并切到 `macpro`，保留预存 `.obsidian/` 本地脏改动。
+- **影响页面**：[[AGENTS]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[instruction-adherence]]、[[harness-feedback-ledger]]、[[log]]。
+
 ## 2026-07-06
 
 ### 吸收多工程 Agent / Harness / Memory / Workflow 智能化能力
