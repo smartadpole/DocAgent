@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-11
+
+### 纠偏本机 Git 分支方案的配置目标
+
+- **记录人**：Codex
+- **用户意图**：用户指出前序执行把 [[projects/design/topics/local-git-branch-and-sync-semantics]] 的目标理解偏了，要求整改该方案页，确保后续不会把系统级 Codex 配置误执行成 wiki 仓库规则、仓库分支或远程分支操作。
+- **关键判断**：
+  1. 该方案的真实目标是升级本机系统级 Codex 配置，主落位是 `/Users/hai/.codex/AGENTS.md`。
+  2. `config.toml` 不是默认分支 / git 同步语义主入口；`default.rules` 只承接命令级 allow 规则。
+  3. 后续使用该方案时，不应修改 wiki 的 [[AGENTS]] / [[WORKFLOW]] / [[POLICY]]，不应创建仓库 `macmini` 分支或远程 `origin/macmini`。
+- **关键动作**：
+  1. 将 [[projects/design/topics/local-git-branch-and-sync-semantics]] 改为“本机 Codex Git 分支与同步语义配置方案”，明确目标一句话、目标配置位置、非目标、验证方式和失败模式。
+  2. 将默认分支从旧候选 `macpro` 纠正为本机 `macmini`。
+  3. 更新 [[projects/design/topics/README]]，把该专题从待拍板候选改成已采纳的系统级 Codex 配置方案入口。
+- **验证 / 边界**：本轮只整改 wiki 方案页和专题入口，不修改 `/Users/hai/.codex/AGENTS.md`、不执行仓库分支操作、不执行 git 同步。
+- **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[projects/design/topics/README]]、[[log]]。
+
 ## 2026-07-08
 
 ### 将 git 同步 topic 改成三关系同步合同

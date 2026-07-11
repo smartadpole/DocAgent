@@ -2,100 +2,123 @@
 type: design-topic
 id: DES-TOPIC-LOCAL-GIT-SYNC-001
 project: PROJ-WIKI-001
-status: proposed
+status: adopted-for-system-codex-config
 stage: governance-design
-updated: 2026-07-08
-tags: [design, agent, git, branch, sync, governance]
+updated: 2026-07-11
+tags: [design, agent, git, branch, sync, codex-config]
 ---
 
-# 本机 Git 分支与同步语义设计专题
+# 本机 Codex Git 分支与同步语义配置方案
 
-上游：[[projects/design/topics/README]]、[[agent-orchestration]]、[[state-constraint-reasoning]]、[[instruction-adherence]]
+上游：[[projects/design/topics/README]]
 
-关联：[[AGENTS]]、[[harness-feedback-ledger]]、[[log]]
+关联：[[log]]
 
-## 设计对象
+## 目标一句话
 
-本专题沉淀两个本机 Codex 工作流设计方案：
+本方案的目标是升级本机**系统级 Codex 配置**，让后续所有本机 Codex 任务默认遵守：
 
-1. 本机 Git 工程默认在以本机命名的分支工作；当前本机名为 `macpro`。
-2. 用户说“git 同步”时，同步目标默认覆盖当前分支、`master` 分支、它们各自的远程分支状态，以及当前分支与本地 `master` 之间的代码关系。
+1. 默认本机工作分支名为 `macmini`。
+2. 用户说“git 同步”时，必须按三组关系读回和收敛。
 
-这两个方案当前只作为 agent 升级 topic 保存，不等价于已经写入 wiki 当前硬规则。
+配置目标不是当前 wiki 仓库，也不是任一业务仓库。
 
-## 非目标
+## 目标配置位置
 
-- 不直接修改 [[AGENTS]]、[[POLICY]]、[[WORKFLOW]] 或治理页的生效规则。
-- 不要求本轮批量扫描、切换或同步所有本机 Git 仓库。
-- 不把一次本机偏好自动上推为所有工程、所有机器或所有远程的通用规则。
-- 不允许为了分支切换或同步而重置、覆盖或丢弃用户未提交改动。
+本方案只允许落到这些系统级位置：
 
-## 方案 A：本机命名分支
+- `/Users/hai/.codex/AGENTS.md`：Codex 全局行为规则。默认分支和“git 同步”语义必须写在这里。
+- `/Users/hai/.codex/rules/default.rules`：命令级 allow 规则。只在需要放通固定命令时更新，例如 `git fetch --all --prune`。
+- `/Users/hai/.gitconfig`：Git 自身默认新仓库分支名。只用于 `init.defaultBranch = macmini`。
 
-候选口径：
+其中，默认分支和同步语义的单一主落位是 `/Users/hai/.codex/AGENTS.md`。
 
-- 本机工作默认分支按设备名收口；当前设备名是 `macpro`，默认工作分支为 `macpro`。
-- 新建、接手或继续本机 Git 工程时，先读当前分支、remote 和 dirty 状态。
-- 若用户明确指定其他分支、PR / 远程分支，或仓库级 release / hotfix 规则优先，则按更高优先级执行，并在最终回复说明原因。
+## 明确非目标
 
-待拍板问题：
+- 不修改当前 wiki 仓库的 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或治理页，把它们伪装成系统级 Codex 配置。
+- 不在当前 wiki 仓库或任意业务仓库创建 `macmini` 分支。
+- 不创建或删除远程 `origin/macmini`。
+- 不执行仓库同步、merge、rebase、reset、stash、push 或 force push。
+- 不把 `macmini` 当成 GitHub 默认分支、发布分支、PR 分支或所有机器统一分支。
+- 不把本机配置自动上推为 SmartMacPro、Windows 或其他机器的配置。
 
-- 该规则是否只适用于 Codex 本机任务，还是也作为目标工程通用 agent 模板能力。
-- 已经长期使用 `master` / `main` / 项目专用分支的仓库，是否需要自动创建 `macpro`，还是仅在新任务中使用。
-- 多设备协作时是否使用各设备名分支，还是统一使用任务分支。
+如果后续 agent 因为本方案开始操作仓库分支、远程分支或 wiki 治理页，说明执行目标已经走偏，应立即停止并回到本页。
 
-## 方案 B：git 同步语义
+## 配置规则 A：默认本机分支
 
-同步合同候选：
+写入 `/Users/hai/.codex/AGENTS.md` 的语义应当是：
 
-`git 同步` 默认检查并处理 3 组关系：
+- 默认本机分支是 `macmini`。
+- 创建、切换或接手仓库前，先检查当前分支、upstream、remote、dirty / untracked、local-only、本地 `master` 和远程关系。
+- 用户没有指定其他分支，且仓库没有更高优先级的 release / hotfix / PR / 项目专用分支规则时，优先切换或创建 `macmini`。
+- 如果需要创建 `macmini`，只能在不会覆盖用户改动、不会改写历史、不会破坏仓库既有分支策略时执行。
+- 不默认使用 `codex/`、随机任务名前缀或一次性临时分支来替代本机工作分支，除非用户明确要求或项目级规则要求。
+- 已经长期使用 `master`、`main`、项目专用分支或 PR 分支的仓库，不因本规则自动改名或强制迁移。
 
-1. **本分支 ↔ 远程本分支**
-   当前工作分支和对应远程分支同步，读回 ahead / behind 为 `0 0`。
-2. **本地 `master` ↔ 远程 `master`**
-   本地 `master` 和远程 `master` 同步，读回 ahead / behind 为 `0 0`。
-3. **本分支 ↔ 本地 `master`**
-   本分支和本地 `master` 也要对齐：至少确认两边是否互相包含、是否分叉、是否存在未解释差异。如果需要让两者代码完全一致，必须通过 fast-forward / merge / rebase 等明确策略完成；如果有冲突、脏工作区或会改写历史，就停下确认，不能自动 reset 或覆盖。
+## 配置规则 B：git 同步语义
 
-更严谨的完成口径：
+写入 `/Users/hai/.codex/AGENTS.md` 的语义应当是：
 
-- 只有“本分支、`master`、远程本分支、远程 `master`”四个面都读回清楚，并且本分支与本地 `master` 的关系没有未解释差异，才能说 `git 同步` 完成。
-- 多远程仓库需要逐一说明同步状态；只读、缺分支、无权限或远程不存在时写为边界或阻塞。
-- dirty、diverged、无 upstream、缺少 `master`、本分支与本地 `master` 冲突或存在未跟踪文件时，优先保护用户改动，并将动作降级为 `conditional / blocked`。
+用户说“git 同步”“同步 git”“同步到远程”“和远程 master 同步”“做好同步”或同类请求时，默认覆盖三组关系：
 
-待拍板问题：
+1. 当前分支与远程当前分支。
+2. 本地 `master` 与远程 `master`。
+3. 当前分支与本地 `master`。
 
-- `master` 是否固定为第二同步分支，还是应按仓库默认分支自动识别 `master / main`。
-- 多远程同步是否必须覆盖所有 remote，还是只覆盖当前 upstream 和用户指定 remote。
-- 本分支与 `master` 的同步，是要求两边代码完全一致，还是只要求 `master` 包含本分支 / 本分支包含 `master` 的最新变化。
-- 对脏工作区是否允许自动 stash，还是必须先请求确认。
+默认执行顺序：
 
-本轮确认：
+1. 先读 `git status --short --branch`、当前分支、upstream、remote、dirty / untracked 和 local-only 状态。
+2. 再执行 `git fetch --all --prune`，不要用陈旧 tracking ref 判断“已经最新”。
+3. 分别读回当前分支 ↔ 远程当前分支、本地 `master` ↔ 远程 `master`、当前分支 ↔ 本地 `master` 的 ahead / behind / diverged 关系。
+4. 如果三组关系能通过 fast-forward 或普通 merge 安全收敛，按用户目标执行并读回验证。
+5. 如果出现 dirty、diverged、无 upstream、缺远程分支、缺本地 `master`、冲突、无权限、可能改写历史，或需要 stash / rebase / reset / force push，必须降级为 `conditional / blocked / ask-human`，并写清当前差异和需要用户拍板的策略。
 
-- “git 同步”至少要覆盖三组关系：本分支 ↔ 远程本分支、本地 `master` ↔ 远程 `master`、本分支 ↔ 本地 `master`。
-- 若第三组关系不能安全收敛，最终回复必须写清阻塞原因、当前差异和需要用户拍板的合并策略。
+完成口径：
 
-## 可能落位
+- 只有当前分支、本地 `master`、远程当前分支、远程 `master` 四个面都读回清楚，并且当前分支与本地 `master` 没有未解释差异，才能说同步完成。
+- 不允许为了完成同步而自动 reset、overwrite、force push、删除分支、丢弃未提交改动或把未跟踪文件当成可以清理的垃圾。
+- 多 remote 仓库至少说明当前 upstream 和用户指定 remote 的状态；是否覆盖所有 remote 取决于用户目标、权限和成本。
 
-如果后续拍板为 wiki 生效规则，推荐分层落位：
+## 对照样本
 
-- [[AGENTS]]：只写最短硬约束和触发词。
-- [[state-constraint-reasoning]]：承接 branch、remote、upstream、ahead / behind、dirty、diverged 和权限状态判断。
-- [[agent-orchestration]]：承接 Subproject Git Preflight 和 Worker / Evaluator 的同步证明边界。
-- [[instruction-adherence]]：承接“git 同步”触发矩阵和最终回复证明。
-- [[harness-feedback-ledger]]：只在真实失守或规则晋升时记录 episode。
+SmartMacPro 的只读检查结论：
 
-## 采纳条件
+- `/Users/hai/.codex/config.toml` 不承接分支和 git 同步语义，只承接插件、项目 trust level、MCP 等运行配置。
+- `/Users/hai/.codex/AGENTS.md` 承接默认分支和“git 同步”语义。
+- `/Users/hai/.codex/rules/default.rules` 只承接命令级 allow 规则，不承接语义规则。
 
-- 已确认适用范围：本机偏好、wiki 工程规则、还是跨工程 agent 模板规则。
-- 已确认默认分支策略：固定 `macpro`，还是设备名变量。
-- 已确认默认同步分支策略：固定 `master`，还是识别仓库默认分支。
-- 已确认本分支与本地 `master` 的同步目标和允许策略。
-- 已确认多远程和 dirty 工作区处理策略。
-- 已有最小验证：至少一个仓库的 current branch、`master`、remote、branch-to-master 关系和 dirty 状态读回样例。
+因此，本机 `macmini` 也必须按同样结构配置，不能把语义规则错写到 wiki 仓库文档或 `config.toml`。
+
+## 验证方式
+
+完成本方案时，只验证系统级配置：
+
+```bash
+sed -n '1,120p' /Users/hai/.codex/AGENTS.md
+rg -n "Git 分支规则|Git 同步规则|macmini|git fetch --all --prune" /Users/hai/.codex/AGENTS.md
+git config --global --show-origin --get init.defaultBranch
+```
+
+如果检查命令级 allow 规则，只读：
+
+```bash
+rg -n "git fetch --all --prune|git merge --no-ff" /Users/hai/.codex/rules/default.rules
+```
+
+不需要、也不应该用创建仓库分支或推送远程分支来验证本方案。
+
+## 失败模式与纠偏
+
+| 走偏表现 | 为什么错 | 正确纠偏 |
+| --- | --- | --- |
+| 去改 wiki 的 [[AGENTS]] / [[WORKFLOW]] / [[POLICY]] | 这些是 wiki 项目规则，不是系统级 Codex 配置 | 改 `/Users/hai/.codex/AGENTS.md` |
+| 在 wiki 仓库创建 `macmini` 分支 | 把配置目标误解成仓库状态 | 删除误建分支，回到系统配置 |
+| 创建远程 `origin/macmini` | 把本机工作分支偏好误解成远程发布目标 | 删除误建远程分支 |
+| 只改 `git config --global init.defaultBranch` | 只影响新仓库初始分支，不影响 Codex 行为语义 | 同步写入 `/Users/hai/.codex/AGENTS.md` |
+| 把规则写进 `config.toml` | `config.toml` 不是语义规则主入口 | 使用 `~/.codex/AGENTS.md` |
 
 ## 当前裁决
 
-状态：`proposed`。
+状态：`adopted-for-system-codex-config`。
 
-本专题只保存设计方案和待拍板问题。没有进一步拍板前，不把它写成 wiki 当前生效的 agent 硬规则。
+本方案已经明确：配置对象是本机系统级 Codex 配置，默认分支名是 `macmini`，不是 wiki 仓库治理升级，也不是仓库分支操作方案。
