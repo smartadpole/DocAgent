@@ -9,6 +9,22 @@
 
 ## 2026-07-11
 
+### 将 Codex Git 配置方案改为跨机器自发现
+
+- **记录人**：Codex
+- **用户意图**：用户继续纠偏，指出 [[projects/design/topics/local-git-branch-and-sync-semantics]] 不能写死主目标位置和默认分支；方案需要适配不同机器，配置入口应由 agent 自己发现，默认分支如果没有明确指定就使用主机名。
+- **关键判断**：
+  1. `/Users/hai/.codex/AGENTS.md` 只能作为当前 Mac 的样例路径，不能写成跨机器固定目标。
+  2. `macmini` 只能作为本轮用户指定值，不能写成所有机器默认值；未指定时应从当前机器主机名推导。
+  3. 方案页必须把“变量如何确定”写清楚，否则后续 agent 会继续把样例值当成规则。
+- **关键动作**：
+  1. 更新 [[projects/design/topics/local-git-branch-and-sync-semantics]]，新增 `CODEX_HOME` / home 目录发现顺序和 `<CODEX_HOME>/AGENTS.md` 占位口径。
+  2. 将默认分支规则改为：用户指定优先；未指定时读取当前主机名并归一化为可用 Git 分支名；主机名不可信时停止确认。
+  3. 更新验证命令和失败模式，明确禁止写死 `/Users/hai/.codex/AGENTS.md` 或 `macmini`。
+  4. 更新 [[projects/design/topics/README]] 的专题摘要，改为跨机器自发现口径。
+- **验证 / 边界**：本轮只整改 wiki 方案页、专题入口和 log，不修改任何机器的 Codex 配置，不执行仓库分支操作。
+- **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[projects/design/topics/README]]、[[log]]。
+
 ### 纠偏本机 Git 分支方案的配置目标
 
 - **记录人**：Codex

@@ -16,48 +16,62 @@ tags: [design, agent, git, branch, sync, codex-config]
 
 ## 目标一句话
 
-本方案的目标是升级本机**系统级 Codex 配置**，让后续所有本机 Codex 任务默认遵守：
+本方案的目标是升级当前机器的**系统级 Codex 配置**，让后续该机器上的 Codex 任务默认遵守：
 
-1. 默认本机工作分支名为 `macmini`。
+1. 默认本机工作分支名由本轮用户指定；如果用户没有指定，则从当前主机名推导。
 2. 用户说“git 同步”时，必须按三组关系读回和收敛。
 
 配置目标不是当前 wiki 仓库，也不是任一业务仓库。
 
 ## 目标配置位置
 
+本方案不写死配置路径，必须先在当前机器上自发现 Codex home 和全局指令入口。推荐发现顺序：
+
+1. 读取环境变量 `CODEX_HOME`。
+2. 如果没有 `CODEX_HOME`，使用当前用户 home 下的 `.codex`，例如 macOS / Linux 的 `~/.codex`，Windows 的 `%USERPROFILE%\.codex`。
+3. 在候选 Codex home 中确认 `config.toml`、`AGENTS.md`、`rules/default.rules` 等实际存在情况。
+4. 如当前机器存在多份 Codex home，优先使用当前 Codex 进程实际读取的那一份；无法确认时停止并说明候选路径，不凭惯性写入。
+
 本方案只允许落到这些系统级位置：
 
-- `/Users/hai/.codex/AGENTS.md`：Codex 全局行为规则。默认分支和“git 同步”语义必须写在这里。
-- `/Users/hai/.codex/rules/default.rules`：命令级 allow 规则。只在需要放通固定命令时更新，例如 `git fetch --all --prune`。
-- `/Users/hai/.gitconfig`：Git 自身默认新仓库分支名。只用于 `init.defaultBranch = macmini`。
+- `<CODEX_HOME>/AGENTS.md`：Codex 全局行为规则。默认分支和“git 同步”语义必须写在这里。
+- `<CODEX_HOME>/rules/default.rules`：命令级 allow 规则。只在需要放通固定命令时更新，例如 `git fetch --all --prune`。
+- 当前用户的全局 Git 配置：只用于 `init.defaultBranch = <default-local-branch>`，不承接 Codex 行为语义。
 
-其中，默认分支和同步语义的单一主落位是 `/Users/hai/.codex/AGENTS.md`。
+其中，默认分支和同步语义的单一主落位是当前机器自发现到的 `<CODEX_HOME>/AGENTS.md`，不是固定的某台机器路径。
 
 ## 明确非目标
 
 - 不修改当前 wiki 仓库的 [[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 或治理页，把它们伪装成系统级 Codex 配置。
-- 不在当前 wiki 仓库或任意业务仓库创建 `macmini` 分支。
-- 不创建或删除远程 `origin/macmini`。
+- 不在当前 wiki 仓库或任意业务仓库创建默认本机分支。
+- 不创建或删除远程默认本机分支。
 - 不执行仓库同步、merge、rebase、reset、stash、push 或 force push。
-- 不把 `macmini` 当成 GitHub 默认分支、发布分支、PR 分支或所有机器统一分支。
-- 不把本机配置自动上推为 SmartMacPro、Windows 或其他机器的配置。
+- 不把默认本机分支当成 GitHub 默认分支、发布分支、PR 分支或所有机器统一分支。
+- 不把一台机器的配置路径、主机名或默认分支自动上推为 SmartMacPro、Windows 或其他机器的配置。
 
 如果后续 agent 因为本方案开始操作仓库分支、远程分支或 wiki 治理页，说明执行目标已经走偏，应立即停止并回到本页。
 
 ## 配置规则 A：默认本机分支
 
-写入 `/Users/hai/.codex/AGENTS.md` 的语义应当是：
+先确定 `default-local-branch`：
 
-- 默认本机分支是 `macmini`。
+1. 用户本轮明确指定默认分支名时，使用用户指定值，例如 `macmini`。
+2. 用户没有指定时，从当前主机名推导：读取 `hostname -s`、macOS 的 `scutil --get LocalHostName` / `scutil --get ComputerName` 或 Windows 的 `%COMPUTERNAME%`，选取最能代表当前机器的短名。
+3. 将主机名归一化为可用 Git 分支名：转小写，去掉空格和不适合分支名的标点，保留清晰可读的机器名；归一化前后需要在最终回复里读回说明。
+4. 如果主机名为空、明显是临时容器名、或多台机器身份混淆，停止并要求用户指定，不自动猜测。
+
+写入 `<CODEX_HOME>/AGENTS.md` 的语义应当是：
+
+- 默认本机分支是 `<default-local-branch>`。
 - 创建、切换或接手仓库前，先检查当前分支、upstream、remote、dirty / untracked、local-only、本地 `master` 和远程关系。
-- 用户没有指定其他分支，且仓库没有更高优先级的 release / hotfix / PR / 项目专用分支规则时，优先切换或创建 `macmini`。
-- 如果需要创建 `macmini`，只能在不会覆盖用户改动、不会改写历史、不会破坏仓库既有分支策略时执行。
+- 用户没有指定其他分支，且仓库没有更高优先级的 release / hotfix / PR / 项目专用分支规则时，优先切换或创建 `<default-local-branch>`。
+- 如果需要创建 `<default-local-branch>`，只能在不会覆盖用户改动、不会改写历史、不会破坏仓库既有分支策略时执行。
 - 不默认使用 `codex/`、随机任务名前缀或一次性临时分支来替代本机工作分支，除非用户明确要求或项目级规则要求。
 - 已经长期使用 `master`、`main`、项目专用分支或 PR 分支的仓库，不因本规则自动改名或强制迁移。
 
 ## 配置规则 B：git 同步语义
 
-写入 `/Users/hai/.codex/AGENTS.md` 的语义应当是：
+写入 `<CODEX_HOME>/AGENTS.md` 的语义应当是：
 
 用户说“git 同步”“同步 git”“同步到远程”“和远程 master 同步”“做好同步”或同类请求时，默认覆盖三组关系：
 
@@ -83,26 +97,26 @@ tags: [design, agent, git, branch, sync, codex-config]
 
 SmartMacPro 的只读检查结论：
 
-- `/Users/hai/.codex/config.toml` 不承接分支和 git 同步语义，只承接插件、项目 trust level、MCP 等运行配置。
-- `/Users/hai/.codex/AGENTS.md` 承接默认分支和“git 同步”语义。
-- `/Users/hai/.codex/rules/default.rules` 只承接命令级 allow 规则，不承接语义规则。
+- `<SmartMacPro CODEX_HOME>/config.toml` 不承接分支和 git 同步语义，只承接插件、项目 trust level、MCP 等运行配置。
+- `<SmartMacPro CODEX_HOME>/AGENTS.md` 承接默认分支和“git 同步”语义。
+- `<SmartMacPro CODEX_HOME>/rules/default.rules` 只承接命令级 allow 规则，不承接语义规则。
 
-因此，本机 `macmini` 也必须按同样结构配置，不能把语义规则错写到 wiki 仓库文档或 `config.toml`。
+因此，不同机器都必须按同样结构配置，但路径和默认分支值要在各自机器上自发现或由用户指定，不能把某台机器的 `/Users/...` 路径或 `macmini` / `macpro` 直接复制到另一台机器。
 
 ## 验证方式
 
-完成本方案时，只验证系统级配置：
+完成本方案时，只验证系统级配置。先读回当前机器的 `CODEX_HOME` 和 `default-local-branch`，再替换下列占位：
 
 ```bash
-sed -n '1,120p' /Users/hai/.codex/AGENTS.md
-rg -n "Git 分支规则|Git 同步规则|macmini|git fetch --all --prune" /Users/hai/.codex/AGENTS.md
+sed -n '1,120p' <CODEX_HOME>/AGENTS.md
+rg -n "Git 分支规则|Git 同步规则|<default-local-branch>|git fetch --all --prune" <CODEX_HOME>/AGENTS.md
 git config --global --show-origin --get init.defaultBranch
 ```
 
 如果检查命令级 allow 规则，只读：
 
 ```bash
-rg -n "git fetch --all --prune|git merge --no-ff" /Users/hai/.codex/rules/default.rules
+rg -n "git fetch --all --prune|git merge --no-ff" <CODEX_HOME>/rules/default.rules
 ```
 
 不需要、也不应该用创建仓库分支或推送远程分支来验证本方案。
@@ -111,14 +125,16 @@ rg -n "git fetch --all --prune|git merge --no-ff" /Users/hai/.codex/rules/defaul
 
 | 走偏表现 | 为什么错 | 正确纠偏 |
 | --- | --- | --- |
-| 去改 wiki 的 [[AGENTS]] / [[WORKFLOW]] / [[POLICY]] | 这些是 wiki 项目规则，不是系统级 Codex 配置 | 改 `/Users/hai/.codex/AGENTS.md` |
-| 在 wiki 仓库创建 `macmini` 分支 | 把配置目标误解成仓库状态 | 删除误建分支，回到系统配置 |
-| 创建远程 `origin/macmini` | 把本机工作分支偏好误解成远程发布目标 | 删除误建远程分支 |
-| 只改 `git config --global init.defaultBranch` | 只影响新仓库初始分支，不影响 Codex 行为语义 | 同步写入 `/Users/hai/.codex/AGENTS.md` |
-| 把规则写进 `config.toml` | `config.toml` 不是语义规则主入口 | 使用 `~/.codex/AGENTS.md` |
+| 去改 wiki 的 [[AGENTS]] / [[WORKFLOW]] / [[POLICY]] | 这些是 wiki 项目规则，不是系统级 Codex 配置 | 自发现当前机器的 `<CODEX_HOME>/AGENTS.md` |
+| 写死 `/Users/hai/.codex/AGENTS.md` | 该路径只适合某些 macOS 用户，不适合不同用户名、Windows 或 remote host | 先读 `CODEX_HOME`，否则按当前用户 home 发现 |
+| 写死 `macmini` | 默认分支会随机器变化；用户未指定时应使用主机名 | 用户指定优先，否则从当前主机名归一化 |
+| 在 wiki 仓库创建默认本机分支 | 把配置目标误解成仓库状态 | 删除误建分支，回到系统配置 |
+| 创建远程默认本机分支 | 把本机工作分支偏好误解成远程发布目标 | 删除误建远程分支 |
+| 只改 `git config --global init.defaultBranch` | 只影响新仓库初始分支，不影响 Codex 行为语义 | 同步写入 `<CODEX_HOME>/AGENTS.md` |
+| 把规则写进 `config.toml` | `config.toml` 不是语义规则主入口 | 使用 `<CODEX_HOME>/AGENTS.md` |
 
 ## 当前裁决
 
 状态：`adopted-for-system-codex-config`。
 
-本方案已经明确：配置对象是本机系统级 Codex 配置，默认分支名是 `macmini`，不是 wiki 仓库治理升级，也不是仓库分支操作方案。
+本方案已经明确：配置对象是当前机器自发现到的系统级 Codex 配置；默认分支由用户指定或当前主机名推导；它不是 wiki 仓库治理升级，也不是仓库分支操作方案。

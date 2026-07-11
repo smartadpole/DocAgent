@@ -37,7 +37,7 @@ tags: [design, topics]
 
 ### 已采纳专题
 
-- [[projects/design/topics/local-git-branch-and-sync-semantics]]：本机系统级 Codex 配置方案；默认分支名为 `macmini`，并把“git 同步”定义为当前分支、远程当前分支、本地 `master`、远程 `master` 三组关系读回。目标配置位置是 `/Users/hai/.codex/AGENTS.md`，不是 wiki 仓库规则或仓库分支操作。
+- [[projects/design/topics/local-git-branch-and-sync-semantics]]：系统级 Codex 配置方案；配置入口需在当前机器自发现，默认分支由用户指定或主机名推导，并把“git 同步”定义为当前分支、远程当前分支、本地 `master`、远程 `master` 三组关系读回。它不是 wiki 仓库规则或仓库分支操作。
 
 ### 待拍板专题
 
