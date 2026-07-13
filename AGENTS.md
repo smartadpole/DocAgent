@@ -130,6 +130,7 @@
 - 跨项目采纳设计时，禁止整库同步、整目录复制或把对方项目设计页原样搬进当前库；必须先列候选项并标注系统层信息 / 项目材料，只有通过事实剥离后的系统规则、结构、流程、技能、模板和自动化契约才能写入。
 - 如果具体工程或下游项目提供“不适合吸收”的清单，只把它当作下游处理项目材料和反哺边界的参考；当前库作为上游模板库，只从具体工程中抽象吸收系统层信息，不在本库维护模板到项目的吸收状态或项目侧同步记录。
 - 升级 agent 规则、治理层、memory、workflow、skill、harness、evaluator、sensor、template 或 agent 入口默认行为时，先保留本仓库项目事实、handoff、验证证据和 conformance，再向 AcknowledgeBase 回传抽象后的 System Governance Upgrade Return Package；回传包必须写清 owner discovery、system-layer delta、本地 conformance、验证证据、禁止项、不上推边界，以及 `design-owner: existing / deferred / not-applicable`。
+- 收尾必须给出 Persistence Decision：`artifact-needed / no-op / blocked`。可复用 workflow、agent-system、Worker findings、治理 delta、未来任务知识或自动沉淀方案必须写清 owner、landing path、发现入口和最终回复证明；`no-op` 要有理由，`blocked` 要有恢复条件。
 
 ## 会话级规则
 

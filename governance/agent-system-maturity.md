@@ -4,7 +4,7 @@ id: GOV-AGENT-SYSTEM-MATURITY-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-06
+updated: 2026-07-14
 tags: [governance, agent-system, maturity, intelligence, evaluation]
 ---
 
@@ -72,6 +72,16 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 | Transferable Skill Governance review contract | recognition-gap | 在 [[skills/transferable-skill-governance/SKILL]] 和 TRANSFER 补 review contract | sensor 只证明 wiring。 |
 | work-item-auto-decomposition | true-gap + project-bound | 新增本仓项目 / 领域绑定 skill，并接入 work-item matrix checker | 不硬升为通用可迁移 skill。 |
 | Cross-project agent intelligence alignment | true-gap | 新增 [[agent-system-cross-project-alignment.v1]]，把 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity、LifeOS 等工程的系统层能力抽象到本仓七层对象 | 结构对齐不能上推为行为智能得分。 |
+
+## Persistence Decision
+
+每次升级 agent 规则、workflow、harness、skill、evaluator、sensor、template 或默认入口行为时，本仓必须在收尾写明 `artifact-needed / no-op / blocked`：
+
+- `artifact-needed`：已形成可复用系统层知识，落到 owner、skill、template、sensor、ledger 或 AcknowledgeBase 回传包，并能从入口发现。
+- `no-op`：只产生 wiki 局部事实、一次性验证或无长期价值结论，说明不沉淀原因。
+- `blocked`：识别出应沉淀内容但缺 owner、权限、证据或上游裁决，记录恢复条件。
+
+Worker findings、治理 delta 和 future-task knowledge 没有完成 Persistence Decision 时，不能上推成 AcknowledgeBase 系统层方案；项目事实、服务实例、运行 ID 和本地 handoff 不得原样上推。
 
 ## 验证口径
 

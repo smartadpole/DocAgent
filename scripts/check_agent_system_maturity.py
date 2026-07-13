@@ -26,6 +26,8 @@ REQUIRED_OWNER_TERMS = (
     "external readback",
     "insufficient-evidence",
     "agent_intelligence_score",
+    "Persistence Decision",
+    "Worker findings",
 )
 
 REQUIRED_ALIGNMENT_TERMS = (
@@ -65,6 +67,7 @@ ENTRYPOINT_TERMS = {
     "INDEX.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
     "governance/README.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
     "skills/README.md": ("work-item-auto-decomposition", "项目 / 领域绑定"),
+    "AGENTS.md": ("System Governance Upgrade Return Package", "Persistence Decision", "conformance"),
     ".codex/AGENTS.md": ("agent-system-maturity", "work-item-auto-decomposition"),
 }
 
