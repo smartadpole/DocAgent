@@ -7,6 +7,23 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-14
+
+### 收紧 git 同步完成态为同 commit
+
+- **记录人**：Codex
+- **用户意图**：用户在 LifeOS 仓库同步中纠正执行口径，指出“git 同步”不是只要当前分支、`master` 和远程之间差异可解释，而是要求本分支、`master`、本地和远程最终指向同一个 commit。
+- **关键判断**：
+  1. 既有 [[projects/design/topics/local-git-branch-and-sync-semantics]] 已承接本机 Codex Git 同步语义，是本次沉淀的 owner。
+  2. “当前分支已包含 master、master 不是当前分支祖先差异”只能作为中间状态解释，不能作为默认完成态。
+  3. 多 remote 仓库如果远程可写，默认完成态也要覆盖所有相关远程的当前分支和 `master`。
+- **关键动作**：
+  1. 更新 [[projects/design/topics/local-git-branch-and-sync-semantics]]，把完成口径改为本地当前分支、本地 `master`、远程当前分支、远程 `master` 同 commit。
+  2. 补充 fast-forward 收敛路径：当前分支包含 `master` 时，把 `master` fast-forward 到当前分支；`master` 包含当前分支时，把当前分支 fast-forward 到 `master`；分叉或需要危险操作时降级为 blocked / ask-human。
+  3. 更新 [[projects/design/topics/README]] 的专题摘要，避免索引仍停留在“三组关系读回”而漏掉同 commit 完成态。
+- **验证 / 边界**：本轮只沉淀 wiki 方案页、专题入口和 log，不修改系统级 Codex 配置，不执行 wiki 仓库 git 同步策略变更；`.obsidian` 预存本地改动不属于本轮。
+- **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[projects/design/topics/README]]、[[log]]。
+
 ## 2026-07-11
 
 ### 将 Codex Git 配置方案改为跨机器自发现

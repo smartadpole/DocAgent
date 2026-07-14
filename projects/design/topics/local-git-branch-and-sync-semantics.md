@@ -4,7 +4,7 @@ id: DES-TOPIC-LOCAL-GIT-SYNC-001
 project: PROJ-WIKI-001
 status: adopted-for-system-codex-config
 stage: governance-design
-updated: 2026-07-11
+updated: 2026-07-14
 tags: [design, agent, git, branch, sync, codex-config]
 ---
 
@@ -19,7 +19,7 @@ tags: [design, agent, git, branch, sync, codex-config]
 本方案的目标是升级当前机器的**系统级 Codex 配置**，让后续该机器上的 Codex 任务默认遵守：
 
 1. 默认本机工作分支名由本轮用户指定；如果用户没有指定，则从当前主机名推导。
-2. 用户说“git 同步”时，必须按三组关系读回和收敛。
+2. 用户说“git 同步”时，必须按三组关系读回和收敛，默认完成态是当前分支、`master`、远程当前分支和远程 `master` 指向同一个 commit。
 
 配置目标不是当前 wiki 仓库，也不是任一业务仓库。
 
@@ -89,9 +89,14 @@ tags: [design, agent, git, branch, sync, codex-config]
 
 完成口径：
 
-- 只有当前分支、本地 `master`、远程当前分支、远程 `master` 四个面都读回清楚，并且当前分支与本地 `master` 没有未解释差异，才能说同步完成。
+- 默认完成态不是“差异可解释”，而是本地当前分支、本地 `master`、远程当前分支、远程 `master` 指向同一个 commit。
+- 多 remote 且都可写时，完成态覆盖每一个相关远程的当前分支和 `master`；任一远程缺分支、只读或无权限时，必须在最终回复中列为 `blocked` 或边界。
+- 只有当前分支、本地 `master`、远程当前分支、远程 `master` 四个面都读回清楚，且所有要求覆盖的 ref 都达到同一 commit，才能说同步完成。
+- 如果当前分支已经包含 `master`，安全策略通常是把本地 `master` fast-forward 到当前分支，再推送当前分支和 `master` 到所有要求覆盖的远程，最后重新 fetch 并用 `rev-list --left-right --count` 与 `for-each-ref` 读回。
+- 如果 `master` 包含当前分支，安全策略通常是把当前分支 fast-forward 到 `master`，再推送并读回。
+- 如果当前分支与 `master` 分叉，或任何一步需要非 fast-forward、冲突解决、rebase、reset、force push、stash 或丢弃未提交改动，不能自行假装同步完成；必须停下说明分叉和可选策略。
 - 不允许为了完成同步而自动 reset、overwrite、force push、删除分支、丢弃未提交改动或把未跟踪文件当成可以清理的垃圾。
-- 多 remote 仓库至少说明当前 upstream 和用户指定 remote 的状态；是否覆盖所有 remote 取决于用户目标、权限和成本。
+- 多 remote 仓库至少说明当前 upstream 和用户指定 remote 的状态；如果仓库有多个已配置且可写的远程，默认覆盖所有这些远程，除非用户目标明确排除或权限 / 成本形成阻塞。
 
 ## 对照样本
 
