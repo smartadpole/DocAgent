@@ -7,6 +7,22 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-20
+
+### 收口通用 agent 技能矩阵吸收清单和 sensor
+
+- **记录人**：Codex
+- **用户意图**：用户要求全面升级本工程通用 agent 技能体系，吸收 AcknowledgeBase 2026-06-26 11:39、`source_revision=308bc64`、`agent-evidence-v12` 技能成熟度快照里的通用能力；目标不是复制目录或只新增 `SKILL.md`，而是形成 repo-native 的技能、规则、模板、sensor、入口和验证闭环。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的技能 / 治理 / sensor 升级；落位到既有 [[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、`templates/`、`scripts/`、入口页、[[projects/status]]、[[projects/trace]] 和 [[log]]，不触碰 `.obsidian` 预存本地配置改动，不把 AcknowledgeBase 目录形态复制进本仓。
+- **源资料边界**：读取 AcknowledgeBase 指定的技能入口、transferable-skill-governance、cross-project-skill-adoption-prompt、skill-transfer manifest 模板、矩阵 JSON / diagnostics，以及 Goal、Loop、复盘、文档维护、Issue 分析、图文呈现、公开发布、知识关联、研究、跨工程治理审计和 frontier intake 源资料；只吸收触发、事实源分层、流程、输出、禁止项、迁移边界、conformance 和 sensor 口径，不复制项目事实、路径、服务名、运行 ID、handoff、历史 log 或一次性验收样例。
+- **关键动作**：
+  1. 新增 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]，记录源快照、吸收原则、project conformance、逐能力分类、验证命令、未验证边界和人工确认事项。
+  2. 新增 `scripts/check_transferable_skill_baseline.py` 并接入 `scripts/check_all.py --only transferable-skill-baseline`，检查 manifest、关键 skill / TRANSFER、模板、README / INDEX / governance / status 入口和 conformance 字段。
+  3. 更新 [[skills/README]]、[[skills/transferable-skill-governance/SKILL]] / `TRANSFER.md`、[[templates/skill-transfer-manifest-template]]、[[README]]、[[INDEX]]、[[governance/README]]、[[templates/README]]、[[projects/status]] 和 [[projects/trace]] 的短入口与验证口径。
+- **验证 / 边界**：本轮验证对象是结构 wiring 和 repo-native baseline conformance；不刷新 AcknowledgeBase 外部矩阵，不证明真实运行质量、审美质量、public live readback 或 agent intelligence 行为分，不关闭任何 Gate / FP / EP / TASK / Issue。
+- **二阶反思**：同类“全面吸收”很容易在入口页写一张大表后失去可检查性。后续矩阵级吸收必须同时有 manifest owner、入口短链、专项 sensor 和未验证边界，避免让 `skills/README` 或最终回复变成唯一证据。
+- **影响页面**：[[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、`skills/transferable-skill-governance/TRANSFER.md`、[[templates/skill-transfer-manifest-template]]、[[README]]、[[INDEX]]、[[governance/README]]、[[templates/README]]、[[projects/status]]、[[projects/trace]]、[[log]]、`scripts/check_transferable_skill_baseline.py`、`scripts/check_all.py`。
+
 ## 2026-07-14
 
 ### 收紧 git 同步完成态为同 commit

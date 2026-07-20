@@ -5,8 +5,8 @@ project: PROJ-WIKI-001
 status: active
 stage: design
 source_of_truth: true
-updated: 2026-05-25
-next_action: observe-work-item-governance-and-expand-sensors
+updated: 2026-07-20
+next_action: observe-agent-skill-baseline-and-runtime-evidence
 current_entry: projects/README.md
 blockers:
   - remaining-page-normalization
@@ -28,6 +28,7 @@ tags: [status]
 
 - 基于 [[projects/development/plan/work-item-system-model]] 观察后续研发任务是否能稳定按 `Gate -> FP -> EP -> TASK` 拆解，并把 Issue、risk、test、验收和服务台账关系补齐
 - 继续把 Markdown / wikilink、frontmatter 和更大范围模板完整性检查扩展成 `scripts/check_all.py` 下的 feedback sensor；技能成熟度已补 `skill-maturity` sensor，研发事项矩阵已升级为结构化字段 / 表头 / 章节检查
+- 通用 agent 技能体系已有矩阵级吸收清单 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]] 和 `transferable-skill-baseline` sensor；下一步只在出现真实运行证据、外部 evaluator readback 或新的高频触发时升级 runtime / intelligence 证据，不为矩阵分数补空壳
 - 定期做规则减肥：合并重复入口、删除过期补丁，把可执行约束迁到模板或检查脚本
 
 ## 功能点镜像
@@ -77,4 +78,4 @@ tags: [status]
 ## 阻塞项
 
 - 还没有把更大范围的页面批量规范化
-- Harness H5、`harness-governance` sensor 和结构化 `work-item-matrix` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖
+- Harness H5、`harness-governance`、`skill-maturity`、`transferable-skill-baseline` 和结构化 `work-item-matrix` sensor 已完成吸收，但更大范围的文档结构 sensor 仍未覆盖；agent intelligence 行为证据仍需外部 evaluator 或正负样本 readback。

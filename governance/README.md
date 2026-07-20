@@ -32,6 +32,7 @@ tags: [entry, governance]
 - [[log-writing-rules]]：`[[log]]` 的治理规则
 - [[trace-writing-rules]]：`[[projects/trace]]` 的治理规则
 - [[template-feedback-rules]]：下游项目系统层信息反哺规则
+- [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]：矩阵级通用技能吸收清单，证明本仓如何把 AcknowledgeBase 2026-06-26 `agent-evidence-v12` 快照吸收到 repo-native owner、template、sensor 和 conformance 中；专项检查为 `transferable-skill-baseline`
 - [[documentation-maintenance-rules]]：documentation-maintenance 的触发、证据顺序、保守同步和 sensor 接线
 - [[knowledge-linking-rules]]：knowledge-linking 的有效链接、单一信息源和关系画像规则
 - [[issue-analysis-rules]]：issue-analysis 的快速根因链、完整案件和验收 / 规则升级分流
@@ -107,6 +108,7 @@ tags: [entry, governance]
 - 如果问题是“Harness 怎样从真实 episode 里自我修正”，优先写 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 如果问题是“哪些背景以后默认成立”，优先写 [[BRAIN]]
 - 如果问题是“下游项目的进化能不能带回模板”，优先写 [[template-feedback-rules]]
+- 如果问题是“矩阵级技能吸收已经落到本仓哪里”，优先看 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]，再看 [[skills/README]]
 - 如果问题是“文档是否随代码、规则或结构变化同步”，优先写 [[documentation-maintenance-rules]]
 - 如果问题是“新增知识怎样落位、入口和回链”，优先写 [[knowledge-linking-rules]]
 - 如果问题是“问题要快诊断、完整 Issue、验收还是规则升级”，优先写 [[issue-analysis-rules]]

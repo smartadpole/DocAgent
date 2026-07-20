@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-06-26
+updated: 2026-07-20
 tags: [trace, project]
 ---
 
@@ -153,6 +153,18 @@ tags: [trace, project]
   - agent-system / intelligence maturity 不再由 skill maturity 代答；必须回到 [[agent-system-maturity]] 和 snapshot 分层判断。
   - 本仓事项自动拆解只输出候选 Gate / FP / EP / TASK、关系节点、关闭证据和回写建议；正式状态推进仍由对应 owner 页面决定。
   - 外部 AcknowledgeBase matrix 仍由主控 / Orchestrator 刷新；本仓只回传本地检查、expected impact、blocked reason 和未验证边界。
+
+#### 2026-07-20 通用 agent 技能 baseline manifest 和 sensor 收口
+
+- **记录人**：Codex
+- **角色**：agent
+- **本轮变化**：
+  - **源快照固化**：将 AcknowledgeBase `generated_at=2026-06-26 11:39`、`source_revision=308bc64`、`agent-evidence-v12` 的矩阵级吸收结果落成 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]，作为本仓 repo-native 证据清单。
+  - **conformance 收口**：把 `local_source_of_truth`、`allowed_write_scope`、`required_profile`、`validation_command`、`blocked_when_missing` 和 `exceptions` 从入口摘要提升为可检查清单字段。
+  - **sensor 接线**：新增 `scripts/check_transferable_skill_baseline.py` 并接入 `scripts/check_all.py --only transferable-skill-baseline`，检查 manifest、关键技能、TRANSFER、模板、入口和项目状态 wiring。
+- **当前实现口径**：
+  - 技能成熟度、矩阵级吸收、agent-system maturity 三者分层处理：`skill-maturity` 看技能结构，`transferable-skill-baseline` 看矩阵吸收清单和 conformance，[[agent-system-maturity]] 看七层对象和 `insufficient-evidence` 边界。
+  - 本轮不刷新 AcknowledgeBase 外部矩阵，不声称外部 evaluator 已 readback；只证明本仓当前结构和裁决可发现、可检查。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

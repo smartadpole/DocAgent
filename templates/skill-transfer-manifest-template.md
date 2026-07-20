@@ -17,6 +17,7 @@ tags: [template, skill-transfer, manifest, transferable-skill-governance]
 - **适用迁移场景**：
 - **不适用场景**：
 - **上游归一状态**：ready / source-needs-normalization / target-needs-discovery / blocked
+- **矩阵快照 / source_revision**：
 
 ## 参考资料路径
 
@@ -27,6 +28,15 @@ tags: [template, skill-transfer, manifest, transferable-skill-governance]
 - **规则 / workflow**：
 - **运行层或档案入口**：
 - **检查脚本 / sensor**：
+
+## Project Conformance
+
+- **local_source_of_truth**：
+- **allowed_write_scope**：
+- **required_profile**：
+- **validation_command**：
+- **blocked_when_missing**：
+- **exceptions**：
 
 ## 源能力覆盖矩阵
 

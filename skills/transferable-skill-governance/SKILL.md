@@ -20,6 +20,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 当吸收对象从单项 skill 扩展到 agent system / intelligence maturity 时，本技能必须先使用 [[agent-system-maturity]] 的七层对象和 Matrix Recognition Capsule 做裁决。skill maturity 高分只能作为 skill 子层证据，不能上推成 runtime、memory、evaluation、governance、migration 或 intelligence 高分。
 
+本仓矩阵级吸收证据清单是 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]。它承接 AcknowledgeBase 2026-06-26 `agent-evidence-v12` 快照的 repo-native source-depth、逐能力裁决、project conformance 和未验证边界；后续类似全面吸收不能只改 `skills/README` 或最终回复。
+
 ## 触发场景
 
 - 用户要求根据 AcknowledgeBase、矩阵、诊断、下游工程或附件升级通用技能。
@@ -60,7 +62,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 6. 对通用 skill 做前沿维护 review：检查 source-depth、TRANSFER、golden / review contract、verification-loop、runtime / outcome / external readback 边界是否齐全。
 7. 对外部 evaluator 任务填写 Matrix Recognition Capsule；外部 readback 不能运行时写 blocked 和 expected impact。
 8. 更新入口页和检查脚本，运行专项检查和完整检查。
-9. 最终回复列明未复制内容、未验证边界和结构 wiring 与真实运行质量的区别。
+9. 若本轮是矩阵级或多能力吸收，更新 Matrix adoption manifest 或等价清单，并运行 `python3 scripts/check_all.py --only transferable-skill-baseline`。
+10. 最终回复列明未复制内容、未验证边界和结构 wiring 与真实运行质量的区别。
 
 ## 输出格式
 

@@ -39,18 +39,22 @@
 
 本节是本仓通用 agent 技能体系的 project conformance 声明。它只描述本仓自己的执行事实和验证入口，不代表 AcknowledgeBase、下游工程或矩阵快照已经完成迁移。
 
+矩阵级源能力吸收清单见 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]。它记录 AcknowledgeBase `generated_at=2026-06-26 11:39`、`source_revision=308bc64`、`scoring_schema_version=agent-evidence-v12` 快照下的逐能力 `true-gap / recognition-gap / signal-only-gap` 和 `recognize / complete / upgrade / merge / adapt / defer / reject` 裁决；本页只保留当前生效入口和 conformance 摘要。
+
 | 字段 | 本工程声明 |
 | --- | --- |
 | `local_source_of_truth` | [[skills/README]] 是通用技能入口；各技能 `SKILL.md` 是执行流程源；同目录 `TRANSFER.md` 是迁移边界源；[[governance/README]]、[[POLICY]]、[[WORKFLOW]] 和 [[AGENTS]] 是规则入口；`views/` 只承接持久呈现；`projects/` 继续承接项目事实。 |
 | `allowed_write_scope` | 本仓 agent 可在本轮授权范围内更新 `skills/`、`templates/`、`governance/`、`scripts/`、`views/`、`projects/` 和 [[log]]；不得把外部工程项目事实、运行 ID、服务实例、handoff 或历史 log 写成本仓通用事实。 |
 | `required_profile` | 先按 [[response-mode-routing]] 判断响应模式；跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；长时执行使用 [[skills/goal-contract/SKILL]]；持续循环使用 [[skills/loop-engineering/SKILL]]；持久图文和公开发布分别使用 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
-| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
+| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,transferable-skill-baseline,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance,cross-project-governance-audit`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
 | `blocked_when_missing` | 缺少目标工程结构自检、`TRANSFER.md` 迁移边界、owner 页面、专项 sensor、人工确认边界、live readback 或真实证据时，只能写 `partial / blocked / review`，不能写成验收完成、发布完成或迁移完成。 |
 | `exceptions` | 简单问答、一次性小修、只读解释、没有持久沉淀价值的临时判断不强行套完整技能包；项目 / 领域绑定能力只抽象方法，不新建通用 skill；sensor 只证明 wiring，不证明真实运行质量、审美质量或业务验收。 |
 
 ## 本轮通用能力吸收裁决
 
 以下裁决基于本仓现有结构和 AcknowledgeBase 2026-06-26 11:39 `agent-evidence-v12` 快照。它用于指导本仓落位，不把矩阵分数写成事实源。
+
+完整裁决和 source-depth 见 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]；本节保留短表，避免入口页膨胀成迁移报告。
 
 | 能力 | 分类 | 缺口类型 | 处理方式 | 本仓落位 |
 | --- | --- | --- | --- | --- |
