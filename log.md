@@ -9,6 +9,22 @@
 
 ## 2026-07-23
 
+### 将“你好”升级为首次问候引导入口
+
+- **记录人**：Codex
+- **用户意图**：用户希望未来从 wiki clone 的工程里，用户只说“你好”时，agent 不只是寒暄，而能通过引导式对话推进项目；同时 agent 可以选择把当前 wiki / agent 体系建设分块呈现给用户，引导其继续优化定位、workflow、memory、harness、skill 等体系。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的主动对话 / 响应模式治理升级；更新 [[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和对应 sensor，不新建平行 greeting skill。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic updated。
+- **关键判断**：
+  1. `你好` 在新 clone、模板工程或身份未初始化工程里，可以触发轻量引导入口。
+  2. 首次问候不应自动启动 Goal、全量调研、写 log 或铺完整项目结构；默认只读工程身份信号，给出少量可选推进方向。
+  3. 当上下文显示用户在建设 wiki / agent 体系时，agent 可以按定位与 owner、workflow、memory、harness、skill、evaluation、runtime / ops、clone 初始化等分块呈现，引导用户校准。
+- **关键动作**：
+  1. 更新 [[proactive-dialogue-system]]，新增“首次问候入口”和“wiki / agent 体系分块呈现”。
+  2. 更新 [[response-mode-routing]]，把新 clone / 模板工程中的低信息问候纳入引导式设计触发，并允许无新增判断时 no-op。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，把首次问候入口纳入 Harness episode 与 sensor required terms。
+- **验证 / 边界**：本轮验证对象是问候入口的默认行为和治理接线；不证明所有未来 clone 工程已完成身份初始化，也不把普通寒暄强制写文件。
+- **影响页面**：[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
+
 ### 将 clone 画像边界改为正向职责声明
 
 - **记录人**：Codex
