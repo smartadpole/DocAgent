@@ -17,9 +17,9 @@ tags: [project]
 
 ## 当前项目定位
 
-当前 wiki 是实现类工程合集与模板系统。它既是本仓自身的软件研发文档库，也是主控、子工程、runtime service、数据 / 模型工程、文档治理工程接入时的本地模板源。
+当前 wiki 是实现类工程合集与模板系统。它既是本仓自身的软件研发文档库，也是主控、子工程、runtime service、数据 / 模型工程、知识库 / 文档治理工程、运维 agent 或 hybrid 工程接入时的本地模板源。wiki 的模板身份不是某一种工程模板，而是 Template Kernel + Project Profile Overlay + Capability Pack 的母体工程。
 
-新实现类工程接入时，先看 [[projects/design/topics/implementation-engineering-template-system]]，再使用 [[templates/implementation-project-profile-template]] 固定 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract 和 Closeout Proof。AcknowledgeBase topic 中已经覆盖的 agent、workflow、memory、harness、skill、evaluation、topic 和 migration 方案，通过 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 落到本仓本地 owner。
+新实现类工程接入时，先看 [[projects/design/topics/implementation-engineering-template-system]]，再使用 [[templates/implementation-project-profile-template]] 固定 project_role、primary / secondary profiles、required / optional / forbidden packs、project_bound_facts、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract 和 Closeout Proof。AcknowledgeBase topic 中已经覆盖的 agent、workflow、memory、harness、skill、evaluation、topic 和 migration 方案，通过 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 落到本仓本地 owner。
 
 ## 和知识库模式的关系
 

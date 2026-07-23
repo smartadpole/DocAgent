@@ -15,7 +15,8 @@ tags: [memory, shared]
 ## 当前稳定事实
 
 - 当前 vault 的用途是一个面向软件研发的文档系统。
-- 当前 wiki 的目标角色已经升级为所有实现类工程的合集与模板：主控、子工程、runtime service、数据 / 模型工程和文档治理工程都应能从本仓找到本地 profile、agent system 七层、control plane、implementation boundaries、evidence contract、template adoption 和 closeout proof。
+- 当前 wiki 的目标角色已经升级为所有实现类工程的合集与模板，但不再把自己定义成某一种工程模板；稳定口径是 Template Kernel + Project Profile Overlay + Capability Pack 的模板母体工程。
+- 主控、子工程、runtime service、数据 / 模型工程、知识库 / 文档治理工程、运维 agent 和 hybrid 工程接入时，都应先声明 project_role、primary / secondary profiles、required / optional / forbidden packs、project_bound_facts，再从本仓找到本地 profile、agent system 七层、control plane、implementation boundaries、evidence contract、template adoption 和 closeout proof。
 - 当前运行模式是单库、单项目。
 - 当前项目就是这个 wiki 系统本身。
 - 现阶段仍然是半自动：人决定做哪一项，agent 按规则辅助执行。

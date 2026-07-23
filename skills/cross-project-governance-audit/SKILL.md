@@ -13,14 +13,14 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 
 本技能把多个工程的 agent / harness / governance 状态对照同一组抽象标准做审计，输出漂移、缺口、共性模式和可执行建议。
 
-它吸收 AcknowledgeBase 的跨工程治理审计能力，但适配本库边界：本库可以审计和生成建议，不默认维护外部工程注册表，也不直接修改其他工程。
+它吸收上游知识治理库的跨工程治理审计能力，但适配本库边界：本库可以审计和生成建议，不默认维护外部工程注册表，也不直接修改其他工程。wiki 作为对外统一模板时，只输出工程角色、source archetype、capability pack 和证据边界，不把内部工程名写成模板概念。
 
 ## 适用场景
 
 - 用户说“审计某工程治理”“看这个工程治理成熟度”“生成漂移报告”。
 - 用户要求比较多个工程的 AGENTS、响应路由、harness ledger、sensor、模板反哺或技能成熟度。
 - 用户要求把跨工程治理经验吸收到本库模板、规则、技能或 sensor。
-- 用户说“举一反三”“所有工程都需要吸收”“不只是某个工程”或等价要求时，必须按 AcknowledgeBase registry 或等价登记面逐工程审计；不能用最强样本、旧矩阵摘要、能力覆盖集或本机路径扫描替代注册表全集。
+- 用户说“举一反三”“所有工程都需要吸收”“不只是某个工程”或等价要求时，必须按内部 source registry 或等价登记面逐工程审计；不能用最强样本、旧矩阵摘要、能力覆盖集或本机路径扫描替代注册表全集；输出到 wiki 模板面时必须匿名化为 source archetype / capability pack。
 - 周期性检查当前 wiki 自身治理 wiring 是否仍然完整。
 
 ## 边界
@@ -81,6 +81,7 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 2. `system-layer capability`：可抽象吸收的 agent / workflow / memory / harness / skill / evaluation / governance / template / migration 能力。
 3. `wiki landing / guard`：进入哪个本仓 owner / skill / sensor；或为什么只 `recognize / adapt / reject`。
 4. `project-bound fact`：哪些路径、服务、数据、模型、运行 ID、业务事实或一次性 handoff 不上推。
+5. `template-facing name`：输出给 wiki 对外模板时使用工程角色或能力包名，不使用 source project 名称。
 
 ### 3. 读取证据
 

@@ -58,13 +58,14 @@ tags: [governance, agent, workflow, memory, harness, skill, evaluation, sensor]
 
 ## 注册表全工程吸收要求
 
-当用户要求“举一反三”“所有工程都吸收一下”或等价目标时，本仓不能用单一强工程、旧矩阵摘要、某个能力覆盖集或本机 `find` 扫描结果替代 AcknowledgeBase registry。默认完成口径是 registry-driven：
+当用户要求“举一反三”“所有工程都吸收一下”或等价目标时，本仓不能用单一强工程、旧矩阵摘要、某个能力覆盖集或本机 `find` 扫描结果替代内部 source registry。默认完成口径是 registry-driven，但 wiki 对外模板面必须 source-deidentified：
 
-1. 先读取 AcknowledgeBase `projects/governance/registry.md` 或等价登记面，确认注册表全集；能力覆盖集、优先级列表和额外本地路径只能作为补充证据。
-2. 对注册表每一行写出 `system-layer capability`、`decision`、`wiki landing / guard`；轻量仓也要说明最小治理 profile 或无可吸收增量。
+1. 先读取内部 source registry 或等价登记面，确认注册表全集；能力覆盖集、优先级列表和额外本地路径只能作为补充证据。
+2. 对注册表每一行完成内部审计，但进入 wiki 正文时写成 source archetype、project profile、capability pack、`decision` 和 `wiki landing / guard`；轻量仓也要说明最小治理 profile 或无可吸收增量。
 3. 对已上升到 agent 治理层级的能力，不能只写 `candidate`；必须进入 owner、skill、template、sensor、harness 或 evaluation contract。
 4. 对项目事实、业务链路、服务实例、数据库、运行 ID、账号、端口、数据集、模型、机器和一次性 handoff，必须写明不复制边界。
 5. 本地存在 AcknowledgeBase 且本轮改变 agent / workflow / memory / harness / skill / evaluator / sensor / template 默认行为时，对应 topic 必须 `updated` 才能报 complete。
+6. 具体 source project 名称只允许留在上游 registry、内部审计证据、历史 log 或受控 provenance；不得成为 wiki 对外模板的工程类型、能力名称或默认 profile 名。
 
 ## 执行包
 

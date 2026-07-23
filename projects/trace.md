@@ -3,7 +3,7 @@ type: trace
 id: TRACE-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-07-20
+updated: 2026-07-23
 tags: [trace, project]
 ---
 
@@ -165,6 +165,19 @@ tags: [trace, project]
 - **当前实现口径**：
   - 技能成熟度、矩阵级吸收、agent-system maturity 三者分层处理：`skill-maturity` 看技能结构，`transferable-skill-baseline` 看矩阵吸收清单和 conformance，[[agent-system-maturity]] 看七层对象和 `insufficient-evidence` 边界。
   - 本轮不刷新 AcknowledgeBase 外部矩阵，不声称外部 evaluator 已 readback；只证明本仓当前结构和裁决可发现、可检查。
+
+#### 2026-07-23 Project Profile Overlay 设计收口
+
+- **记录人**：Codex
+- **角色**：agent
+- **本轮变化**：
+  - **定位细化**：用户明确 wiki 是独立模板工程，既能做主控模板、子工程模板、知识库，也能做运维 agent；因此不能再把 wiki 写成某一种工程模板或一张万能大模板。
+  - **结构收敛**：把实现类工程模板系统细化为 Template Kernel + Project Profile Overlay + Capability Pack 的模板母体工程。
+  - **接入合同**：新增 profile overlay、required / optional / forbidden packs、project_bound_facts 和 closeout_proof 字段，让目标工程按角色裁剪，而不是复制 wiki 整库。
+- **当前实现口径**：
+  - wiki 只维护不变内核、工程画像、能力包、组合规则和验证门。
+  - controller、subproject、runtime-service、knowledge-base、data-model、ops-agent 和 hybrid 都是接入画像，不是互相复制的平行模板。
+  - 下游工程贡献可抽象能力包，不贡献业务事实、运行 ID、端口、数据集、模型、服务名、路径或一次性 handoff。
 
 ### TRACE-001 文档系统分层与项目运行链路
 

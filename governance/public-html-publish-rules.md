@@ -47,7 +47,7 @@ python3 scripts/check_public_html_publish.py --live
 
 ## 禁止项
 
-- 不复制 LifeOS、AcknowledgeBase 或其他工程的 host、prefix、secret、token、服务名、运行状态或一次性 live readback。
+- 不复制来源工程、上游知识库或其他工程的 host、prefix、secret、token、服务名、运行状态或一次性 live readback。
 - 不把 public HTML 变成第二份真相源。
 - 不把 publication profile 当项目发布裁决、验收关闭或安全审查。
 - 不为了矩阵信号创建无真实发布语义的空 view。

@@ -91,7 +91,7 @@ Worker 只交证据，不能宣布整体闭环。
 
 ## Production-Grade Control Plane Hardening
 
-从 DocCustomeranalysis 等实战工程吸收的控制面能力，一旦已经上升到 agent 治理层，就不再只是下游经验，而是本仓实现类工程模板的默认合同。它们包括：
+从生产控制面型 source archetype 吸收的能力，一旦已经上升到 agent 治理层，就不再只是下游经验，而是本仓实现类工程模板的默认合同。它们包括：
 
 | Capability | Wiki contract | Non-goal |
 | --- | --- | --- |
@@ -111,4 +111,4 @@ Worker 只交证据，不能宣布整体闭环。
 - 不让 Worker 修改未授权仓库、事项状态或规则入口。
 - 不把子工程 local pass、handoff、自述、accepted / running 或 health 上推成主控闭环。
 - 不在没有持久状态、evaluator oracle 和停止条件时伪装成 Loop。
-- 不把 DocCustomeranalysis 等下游工程的生产事实、机器、表、运行 ID、项目专属 gate 或脚本路径复制成本仓治理事实。
+- 不把下游工程的生产事实、机器、表、运行 ID、项目专属 gate、source project 名称或脚本路径复制成本仓治理事实。

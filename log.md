@@ -9,6 +9,23 @@
 
 ## 2026-07-23
 
+### 将全工程吸收矩阵去项目名化为模板角色和能力包
+
+- **记录人**：Codex
+- **用户意图**：用户指出 wiki 是统一模板、也是对外工程，上一轮把一串内部工程名直接写成 wiki 概念不合适；需要把具体 source project 和对外模板语言分层。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的治理边界纠偏；更新现有设计 owner、模板、治理合同、审计技能和 sensor，不新建平行目录。AcknowledgeBase 本地存在，因此同步其既有过程方案沉淀 topic。
+- **关键判断**：
+  1. wiki 对外输出应是 `Template Kernel + Project Profile Overlay + Capability Pack`，不是内部 source project 清单。
+  2. source registry 仍可作为内部审计和 provenance，但进入 wiki 正文时必须匿名化为工程角色、source archetype、能力包和证据边界。
+  3. 历史 log 可保留当时来源名作为事实记录；当前生效模板页和 sensor 不应强制项目名。
+- **关键动作**：
+  1. 更新 [[implementation-engineering-template-system]]，新增对外模板身份、Project Profile Overlay 和 Capability Packs，明确主控模板、子工程模板、runtime-service、knowledge-base、ops-agent、data-model、lightweight repo 和 hybrid 的组合方式。
+  2. 更新 [[templates/implementation-project-profile-template]]，新增 `profile_overlay`、required / optional / forbidden capability packs 和 source deidentification 字段。
+  3. 更新 [[agent-system-cross-project-alignment.v1]]，把具名注册工程矩阵改为 source archetype / capability pack 矩阵，并把控制面 delta 从项目名改为生产控制面来源。
+  4. 更新 [[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]] 和相关 sensor，要求 registry-driven 审计可以具名，但 wiki 模板输出必须去项目名化。
+- **验证 / 边界**：本轮修的是模板边界和当前生效 owner，不回写历史 log 的旧来源名，不删除 AcknowledgeBase registry 的 provenance。
+- **影响页面**：[[implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]]、[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`、`scripts/check_agent_system_maturity.py`、`scripts/check_implementation_template_system.py`；AcknowledgeBase 侧同步更新过程方案沉淀 topic 和 log。
+
 ### 按 AcknowledgeBase 注册表全集吸收所有工程治理能力
 
 - **记录人**：Codex

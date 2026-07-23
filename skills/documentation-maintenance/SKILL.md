@@ -13,7 +13,7 @@ sensor: python3 scripts/check_all.py --only documentation-maintenance,skill-matu
 
 本技能把“代码 / 结构 / 规则 / 技能 / 模板 / sensor / views 或公开面变了，文档和 Agent 入口要不要同步”收敛成可审计、可保守执行的维护流程。
 
-它吸收 fetch-adapter / prefect 的 `document-changes`、`AGENTS.md sync` 和写作文档技能中的通用方法，但不复制其产品文档、Mintlify 组件、仓库路径、提交规则或 CI 细节。
+它吸收 source implementation repos 中 `document-changes`、`AGENTS.md sync` 和写作文档技能的通用方法，但不复制其产品文档、组件库、仓库路径、提交规则、CI 细节或 source project 名称。
 
 ## 适用场景
 

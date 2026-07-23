@@ -95,7 +95,7 @@ tags: [agent, harness, dialogue, discovery, design, performance]
 
 判定信号：
 
-- **工作区 / 路径**：当前在主控文档库、子工程、服务运行仓库、知识库、LifeOS 或外部参考源。
+- **工作区 / 路径**：当前在主控文档库、子工程、服务运行仓库、知识库、领域系统或外部参考源。
 - **用户动词**：设计、整理、沉淀、验收、排障、比较、计划、提醒、部署、修复。
 - **预期产物**：文档、索引、需求、架构、任务、报告、决策、行动清单、自动化提醒。
 - **已有入口**：是否已有 requirements、trace、design、issue、report、service-registry、articles、concepts、log。

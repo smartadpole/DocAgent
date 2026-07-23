@@ -6,11 +6,11 @@
 
 ## 来源
 
-- 源能力：AcknowledgeBase `skills/public-html-publish/SKILL.md`
-- 源模板：AcknowledgeBase `templates/public-html-publication-template.md`
-- 源检查：AcknowledgeBase `scripts/check_public_html_publish.py`
+- 源能力：上游 `skills/public-html-publish/SKILL.md`
+- 源模板：上游 `templates/public-html-publication-template.md`
+- 源检查：上游 `scripts/check_public_html_publish.py`
 
-当前 wiki 仓库只采用 AcknowledgeBase 已抽象后的能力，不直接读取或复制 LifeOS 的 host、prefix、secret、启动器、screen session、照片路径、领域事实或一次性 live readback。
+当前 wiki 仓库只采用上游已抽象后的能力，不直接读取或复制来源工程的 host、prefix、secret、启动器、screen session、照片路径、领域事实或一次性 live readback。
 
 ## 可以吸收
 
@@ -23,14 +23,14 @@
 
 ## 只能抽象吸收
 
-- LifeOS、AcknowledgeBase 或其他工程的 host、prefix、secret、启动方式、部署脚本和拒绝路径只能抽象成目标工程自己的 publication profile 字段。
+- 来源工程、上游知识库或其他工程的 host、prefix、secret、启动方式、部署脚本和拒绝路径只能抽象成目标工程自己的 publication profile 字段。
 - 目标工程可以使用 `views/`、`reports/html/`、`docs/views/` 或自己的 canonical HTML root，不强制照搬目录。
 - 检查脚本可以用 Python、Node、Makefile、CI job 或平台 CLI 实现，重点是 HTML-only、public_url、live readback 和 blocked 口径。
 - Cloudflare Tunnel、Cloudflare Pages、Pages Direct Upload、Netlify、GitHub Pages 或本机 share-only host 都只是发布模式候选；目标工程必须写自己的 host / prefix / deploy target / secret / denial path / live readback，不能借用来源工程事实。
 
 ## 禁止复制
 
-- 不复制 LifeOS host、`/life/views/` prefix、share secret、token、LaunchAgent label、screen session 或本机运行状态。
+- 不复制来源工程 host、path prefix、share secret、token、启动器 label、screen session 或本机运行状态。
 - 不复制其他工程的业务事实、项目状态、私有路径、服务名或一次性 readback 结果。
 - 不默认公开 `.exports`、PDF / PNG / SVG、Markdown、日志、项目页、assets、raw data 或整个仓库。
 

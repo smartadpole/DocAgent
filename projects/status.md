@@ -24,13 +24,13 @@ tags: [status]
 - 状态：active
 - 阶段：design
 - 当前主入口：[[projects/README]]
-- 当前定位：实现类工程合集与模板；入口见 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]
+- 当前定位：Template Kernel + Project Profile Overlay + Capability Pack 的模板母体工程；入口见 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]
 
 ## 下一步
 
 - 基于 [[projects/development/plan/work-item-system-model]] 观察后续研发任务是否能稳定按 `Gate -> FP -> EP -> TASK` 拆解，并把 Issue、risk、test、验收和服务台账关系补齐
 - 继续把 Markdown / wikilink、frontmatter 和更大范围模板完整性检查扩展成 `scripts/check_all.py` 下的 feedback sensor；技能成熟度已补 `skill-maturity` sensor，研发事项矩阵已升级为结构化字段 / 表头 / 章节检查
-- 通用 agent 技能体系已有矩阵级吸收清单 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]、实现类工程 profile [[templates/implementation-project-profile-template]] 和 `implementation-template-system` sensor；下一步是在新目标工程接入时用 profile 真实填一次，并继续等待 runtime / intelligence 行为证据，不为矩阵分数补空壳
+- 通用 agent 技能体系已有矩阵级吸收清单 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]、实现类工程 profile overlay / capability pack 模板 [[templates/implementation-project-profile-template]] 和 `implementation-template-system` sensor；下一步是在新目标工程接入时用 profile 真实填一次，并继续等待 runtime / intelligence 行为证据，不为矩阵分数补空壳
 - 定期做规则减肥：合并重复入口、删除过期补丁，把可执行约束迁到模板或检查脚本
 
 ## 功能点镜像

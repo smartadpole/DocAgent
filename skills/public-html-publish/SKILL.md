@@ -4,7 +4,7 @@ description: HTML 公开发布技能。用于把本仓库 canonical HTML views �
 maturity: mature
 evidence_signals: [skill, TRANSFER, governance, template, publication-profile, quality-gate, sensor, views]
 transfer_ready: true
-source_capability: AcknowledgeBase
+source_capability: upstream-publication-contract
 sensor: python3 scripts/check_all.py --only public-html-publish
 ---
 
@@ -14,7 +14,7 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 
 本技能承接当前 wiki 仓库内 canonical HTML views / lens / report 的公网发布合同。它只负责发布入口、访问边界、URL 生成和公网读回验证，不替代 Markdown 真相源、项目状态、验收关闭、发布裁决或人工确认。
 
-本仓库统一采用 AcknowledgeBase 的 `public-html-publish` 源能力；只吸收抽象后的 HTML-only、host / prefix / canonical path、public_url、live readback、拒绝路径和 blocked 口径。禁止复制 LifeOS 的 host、prefix、secret、LaunchAgent、screen session 或任何一次性运行事实。
+本仓库统一采用上游 `public-html-publish` 源能力；只吸收抽象后的 HTML-only、host / prefix / canonical path、public_url、live readback、拒绝路径和 blocked 口径。禁止复制来源工程的 host、prefix、secret、启动器、screen session 或任何一次性运行事实。
 
 ## 触发
 
@@ -88,7 +88,7 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 - 不混用 Cloudflare Tunnel、Pages、Workers、Netlify、GitHub Pages、本机服务和内网预览事实。
 - 不默认公开 assets、logs、projects、raw data、Markdown 真相源或整个仓库。
 - 不让 public HTML 成为第二份真相源。
-- 不复制 LifeOS host、path prefix、share secret、LaunchAgent、screen session 或运行状态。
+- 不复制来源工程 host、path prefix、share secret、启动器、screen session 或运行状态。
 
 ## 相关入口
 

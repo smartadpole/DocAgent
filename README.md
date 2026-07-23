@@ -59,6 +59,7 @@ tags: [entry, root]
 - 想知道“多 agent、Run Capsule、子工程 Git preflight 和 Worker / Evaluator 怎么分工” -> 读 [[agent-orchestration]]
 - 想判断“wiki 治理体系全面整改是否真的完成，还是只做了文档 / manifest / sensor 子项” -> 读 [[wiki-governance-system-contract.v1]]
 - 想判断“目标工程 agent system 是否具备七层能力、外部矩阵能否识别、智能化证据是否足够” -> 读 [[agent-system-maturity]]
+- 想判断“wiki 作为独立模板工程应该按主控、子工程、知识库、运维 agent 还是 hybrid 被采纳” -> 读 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]，先裁决 Project Profile Overlay、Capability Packs、required / optional / forbidden packs 和 project_bound_facts
 - 想把所有工程里的 agent、harness、memory、workflow、evaluation 和 migration 能力抽象吸收到本仓 -> 读 [[agent-system-cross-project-alignment.v1]]
 - 想确认 AcknowledgeBase 所有 design topics 是否逐 topic 落到 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 体系 -> 读 [[acknowledgebase-topic-system-adoption.v1]]
 - 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
