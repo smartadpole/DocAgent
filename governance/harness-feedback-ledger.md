@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-23 | 首次接触和常规引导不应割裂 | 用户指出首次接触和常规引导应该在一起，并给出“wiki / 软件工程知识库的协作维护者 + 四个常规方向 + 这轮想解决什么”的目标口径 | 规则升级 | 可优化成本 | 将 P0 冷启动从“四标签逐项输出”改为“首次接触 + 常规引导融合入口”；四项设定可在首段自然覆盖，随后给常规方向和推荐第一步；sensor 改查融合入口、常规引导、协作维护者和“这轮想解决什么” | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次接触与常规引导新任务烟测通过 | 用户要求设置 Goal 并由 agent 自己开新对话测试，直到拿到首次引导和常规引导 | 验收关闭 | 必要成本 | 创建新 Codex 任务 `019f8e75-7479-7292-88e9-cab93543d709`；首轮只发“你好”，返回可见 `系统角色 / 用户目标 / 协作方式 / 第一步成果` 四项；第二轮明确进入项目运行层，返回入口、项目主控、Gate / FP / EP / TASK、风险、证据和下一步决策的常规引导 | `codex_app.create_thread` / `codex_app.wait_threads` / `python3 scripts/check_all.py` | promoted |
 | 2026-07-23 | 首次接触四项设定未显式输出 | 截图显示 agent 对“你好”仍只给出“协作维护者”定位和梳理状态、写规则、实现、验收、收尾、提交等使用过程菜单，没有在可见正文中逐项输出系统角色、用户目标、协作方式和第一步成果 | 规则升级 | 可优化成本 | 将首次接触升级为根 AGENTS 顶部 P0 冷启动规则，要求四个标签必须逐项可见输出；禁止把状态梳理、写规则、实现、验收、收尾、提交作为首次接触默认方向；sensor 增加 P0 和逐项输出检查词 | `python3 scripts/check_all.py --only harness-governance` / [[AGENTS]] / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次接触 onboarding 被实现为运行菜单 | 截图显示新对话对“你好”已部分规避 Git / TASK 等术语，但仍推荐“检查当前项目状态”“下达实现或收尾指令”，没有显式设定系统角色、用户目标、协作方式和第一步成果 | 规则升级 | 可优化成本 | 在首次接触最低回复中增加可复用参考回复骨架，并禁止把检查当前项目状态、实现或收尾指令作为首次接触默认方向；sensor 检查这些 guard 词 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
