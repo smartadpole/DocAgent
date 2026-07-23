@@ -9,6 +9,22 @@
 
 ## 2026-07-23
 
+### 拆分首次接触 onboarding 和使用过程引导
+
+- **记录人**：Codex
+- **用户意图**：用户用截图指出，“你好”后的回答仍不对：它输出的是使用过程中的项目运行引导，而不是首次接触时应有的 onboarding 引导。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话 / 冷启动规则的语义分层纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
+- **关键判断**：
+  1. 首次接触和使用过程项目引导是两个层面；前者是认识 agent / 工程、建立协作入口，后者才是分支、dirty、TASK、EP、Gate、diff、检查和收尾。
+  2. 首次接触不能主动暴露运行层信息，否则会把新用户直接推入内部治理术语。
+  3. 正确最低形态应是首次接触定位、协作承诺、首次接触方向和推荐第一步。
+- **关键动作**：
+  1. 将 [[proactive-dialogue-system]] 的“首次问候入口”改为“首次接触 onboarding”，并新增和使用过程项目引导的对照表。
+  2. 更新根 [[AGENTS]]、[[.codex/AGENTS]] 和 [[response-mode-routing]]，把首次接触从项目运行层引导中拆开。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，让 sensor 检查 onboarding 四要素，并锁住 `Persistence Decision`、当前分支等运行层术语不得进入首次接触默认回复。
+- **验证 / 边界**：本轮验证对象是规则和 sensor 接线；不证明外部已打开旧会话已热更新，也不证明 UI 模型绝不会复述旧缓存规则。
+- **影响页面**：[[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
+
 ### 把首次问候收紧为零工具快速回复
 
 - **记录人**：Codex

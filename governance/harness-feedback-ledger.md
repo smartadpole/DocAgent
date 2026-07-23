@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-23 | 首次接触与使用过程引导串层 | 截图显示 agent 对“你好”输出路径、分支、dirty、projects/README、TASK / EP / Gate 和收尾等使用过程信息，没有突出首次接触 onboarding | 规则升级 | 可优化成本 | 将首次问候入口重命名并拆分为“首次接触 onboarding”和“使用过程项目引导”；首次接触禁止主动暴露运行层信息，sensor 检查 onboarding 四要素和禁用术语 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次问候为了定位身份触发读文件和命令 | 截图显示一个“你好”工作 28 秒，读取文件并执行命令后仍未回复 | 规则升级 | 应避免成本 | 将首次问候收紧为零工具 / 零读盘 / 零命令快速回复路径；身份不确定时把“定位工程身份”列为选项而不是先读取；sensor 检查冷启动入口和主动对话页的性能预算词 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次问候规则没有进入冷启动必读层 | 用户指出新开对话不生效，只有当前对话因上下文存在才生效 | 规则升级 | 可优化成本 | 将首次问候最低回复形态上提到根 [[AGENTS]] 和 [[.codex/AGENTS]]，并让 `check_harness_governance.py` 检查冷启动 greeting guard | `python3 scripts/check_all.py --only harness-governance` / [[AGENTS]] | active |
 | 2026-07-23 | 首次问候退化成闲聊分叉 | 截图显示 agent 对“你好”只回答“继续处理 wiki 还是先聊点别的”，没有工程身份、推进方向或推荐分块 | 规则升级 | 可优化成本 | 在 [[proactive-dialogue-system]] 增加首次问候最低回复形态，要求工程身份、主体推进能力、2 到 4 个可选推进方向和推荐下一步；在 [[response-mode-routing]] 和 sensor 中锁定该形态 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
