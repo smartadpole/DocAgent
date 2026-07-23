@@ -27,6 +27,7 @@
   6. 按 Goal 要求创建新 Codex 任务 `019f8e75-7479-7292-88e9-cab93543d709` 做烟测：首轮“你好”返回四项首次引导；第二轮明确进入项目运行层后，返回入口、项目主控、Gate / FP / EP / TASK、风险、证据和下一步决策的常规引导。
   7. 根据用户最新校准，将 P0 冷启动改为首次接触 + 常规引导融合入口：首段自然覆盖系统角色、用户目标、协作方式和第一步成果，随后给梳理状态、写入事实、推进实现 / 验收 / 收尾、讨论新系统想法等常规方向；推荐第一步固定为“这轮想解决什么”并路由到快速诊断、设计引导、沉淀、验收或实现路径。
   8. 新任务 `019f8e81-f6ca-7cd1-9a8e-8175d74390cb` 首轮“你好”仍把骨架压缩，未稳定保留编号列表和 `推荐第一步：` 位置；因此把完整融合入口骨架上提到根 [[AGENTS]] 顶部 P0 规则，并要求默认直接使用，保留段落顺序、编号列表、`可以从这几个方向开始：` 和 `推荐第一步：` 两个锚点。
+  9. 新任务 `019f8e84-3a98-7ab3-b1b8-1c153a413e9b` 首轮“你好”仍把 4 个方向压缩成无编号一行；因此把 P0 骨架升级为“唯一合格回复”，要求逐字接近输出、保留换行和 `1.` 到 `4.` 编号，并让 sensor 检查四条编号 literal。
 - **验证 / 边界**：新任务烟测证明当前 wiki 项目冷启动在新任务中已经能输出首次引导，并能在用户明确进入项目运行层后切到常规引导；不证明已经打开的旧会话会热更新。
 - **影响页面**：[[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
 

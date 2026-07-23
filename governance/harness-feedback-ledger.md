@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-23 | 融合入口编号列表被压缩 | 新任务 `019f8e84-3a98-7ab3-b1b8-1c153a413e9b` 首轮“你好”保留了首段和推荐语，但把 4 个方向压缩成无编号一行，未稳定保留用户认可的常规引导形态 | 规则升级 | 可优化成本 | 将 P0 骨架从“默认直接使用”升级为“唯一合格回复”；要求逐字接近输出、保留换行、`1.` 到 `4.` 编号、`可以从这几个方向开始：` 和 `推荐第一步：`；sensor 增加 4 条编号 literal | `codex_app.create_thread` / [[AGENTS]] / `python3 scripts/check_all.py --only harness-governance` | active |
 | 2026-07-23 | 融合入口骨架被压缩 | 新任务 `019f8e81-f6ca-7cd1-9a8e-8175d74390cb` 首轮“你好”虽然输出协作维护者和四个方向，但把推荐第一步提前、压缩编号列表，未稳定保留用户认可的融合入口形态 | 规则升级 | 可优化成本 | 将完整融合入口骨架上提到根 AGENTS P0 冷启动规则，要求默认直接使用并保留段落顺序、编号列表、`可以从这几个方向开始：` 和 `推荐第一步：` 两个锚点；sensor 增加锚点检查 | `codex_app.create_thread` / [[AGENTS]] / `python3 scripts/check_all.py --only harness-governance` | active |
 | 2026-07-23 | 首次接触和常规引导不应割裂 | 用户指出首次接触和常规引导应该在一起，并给出“wiki / 软件工程知识库的协作维护者 + 四个常规方向 + 这轮想解决什么”的目标口径 | 规则升级 | 可优化成本 | 将 P0 冷启动从“四标签逐项输出”改为“首次接触 + 常规引导融合入口”；四项设定可在首段自然覆盖，随后给常规方向和推荐第一步；sensor 改查融合入口、常规引导、协作维护者和“这轮想解决什么” | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次接触与常规引导新任务烟测通过 | 用户要求设置 Goal 并由 agent 自己开新对话测试，直到拿到首次引导和常规引导 | 验收关闭 | 必要成本 | 创建新 Codex 任务 `019f8e75-7479-7292-88e9-cab93543d709`；首轮只发“你好”，返回可见 `系统角色 / 用户目标 / 协作方式 / 第一步成果` 四项；第二轮明确进入项目运行层，返回入口、项目主控、Gate / FP / EP / TASK、风险、证据和下一步决策的常规引导 | `codex_app.create_thread` / `codex_app.wait_threads` / `python3 scripts/check_all.py` | promoted |
