@@ -9,6 +9,21 @@
 
 ## 2026-07-23
 
+### 刷新所有登记工程能力吸收判断
+
+- **记录人**：Codex
+- **用户意图**：用户追问 wiki 是否已经吸收好其他工程能力，并特别指出 `DocCustomeranalysis` 最近升级了很多；需要按所有工程重新分析，而不是沿用旧的跨工程吸收摘要。
+- **关键判断**：
+  1. 旧版 [[agent-system-cross-project-alignment.v1]] 已覆盖实现类工程模板和 AcknowledgeBase topic adoption，但对 `DocCustomeranalysis` 的描述仍停在 issue / work-item / lens / publication 层。
+  2. `DocCustomeranalysis` 当前已经形成更强的控制面能力：Goal / Loop 长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、性能分层、runtime 配置切换和 DB readback 分层。
+  3. wiki 不能把客户分析业务事实、149 / 141 服务、数据库表、运行 ID、Prefect 当前状态或项目专属 owner gate 搬进模板；能吸收的是系统层合同、证据分层和 future sensor 候选。
+- **关键动作**：
+  1. 更新 [[agent-system-cross-project-alignment.v1]] 的 source coverage，把 AcknowledgeBase registry 覆盖的 14 个工程分组纳入本轮 refresh 判断。
+  2. 新增 `DocCustomeranalysis Delta Decision`，逐项标注 `recognize / complete / adapt / defer / reject`，区分通用控制面、混合型技能和项目绑定 sensor。
+  3. 更新 `scripts/check_agent_system_maturity.py`，把 `agent-finalizer`、`external-write-boundary`、`acceptance-governance`、`performance-bandwidth-analysis`、`runtime-config-switch` 和 `customer-group-db-readback` 纳入跨工程对齐页的可发现词汇。
+- **验证 / 边界**：本轮是源覆盖刷新和系统层吸收判断，不证明所有登记工程已经同步采用 wiki 新规则；不新增空 skill，不复制下游项目事实。AcknowledgeBase 本机存在，因此同轮同步更新其过程方案沉淀 topic。
+- **影响页面**：[[agent-system-cross-project-alignment.v1]]、[[log]]、`scripts/check_agent_system_maturity.py`；AcknowledgeBase 侧同步更新 `projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
+
 ### 收紧 AcknowledgeBase 本地存在时的 topic updated 闭环
 
 - **记录人**：Codex
