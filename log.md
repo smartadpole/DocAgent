@@ -9,6 +9,23 @@
 
 ## 2026-07-23
 
+### 将 wiki 定义为模板内核、工程画像和能力包的母体工程
+
+- **记录人**：Codex
+- **用户意图**：用户要求落实新的主题方案，明确 wiki 是独立模板工程，既可以做主控模板、子工程模板、知识库，也可以做运维 agent；因此不应继续把 wiki 定义成某一种工程模板，或把所有类型压进一张大模板。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的设计 topic / 模板 / 项目记忆 / sensor 确认与补记；不新建平行模板工程，不触碰 `.obsidian` 本地状态。
+- **关键判断**：
+  1. wiki 的稳定定位应是 Template Kernel + Project Profile Overlay + Capability Pack 的模板母体工程。
+  2. 工程角色需要成为一等对象：controller、subproject、runtime-service、knowledge-base、data-model、ops-agent 和 hybrid 都通过 overlay 裁剪 Kernel，而不是互相复制。
+  3. 能力包应和工程类型解耦；下游工程只反哺 work-item、runtime、research、visual、acceptance、memory / trace / log、handoff、ops diagnostics 等可抽象能力，不上推项目事实。
+- **关键动作**：
+  1. 读回确认 [[projects/design/topics/implementation-engineering-template-system]] 已承接模板母体分层、Project Profile Overlay、Capability Pack 和 Adoption Matrix 设计。
+  2. 读回确认 [[templates/implementation-project-profile-template]] 已包含 Template Kernel、profile overlay、capability packs、required / optional / forbidden packs、project_bound_facts 和 closeout_proof 字段。
+  3. 读回确认 [[projects/design/topics/README]]、[[templates/README]]、[[projects/README]]、[[projects/status]]、[[projects/memory/shared]]、[[INDEX]]、[[README]] 和 [[projects/trace]] 已同步入口与当前口径。
+  4. 读回确认 `scripts/check_implementation_template_system.py` 已让 `implementation-template-system` sensor 检查 overlay / pack / adoption matrix 关键词，并补写本条 log 记录。
+- **验证 / 边界**：本轮验证对象是 wiki 作为模板母体的结构和入口接线；不证明任何目标工程已经采用 profile，不证明 runtime / live readback / end-to-end 或外部 evaluator 已完成。
+- **影响页面**：[[projects/design/topics/implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]]、[[projects/design/topics/README]]、[[templates/README]]、[[projects/README]]、[[projects/status]]、[[projects/memory/shared]]、[[INDEX]]、[[README]]、[[projects/trace]]、[[log]]、`scripts/check_implementation_template_system.py`；本轮新增 diff 仅为 [[log]] 补记。
+
 ### 将全工程吸收矩阵去项目名化为模板角色和能力包
 
 - **记录人**：Codex
