@@ -9,6 +9,22 @@
 
 ## 2026-07-23
 
+### 将 clone 画像边界改为正向职责声明
+
+- **记录人**：Codex
+- **用户意图**：用户纠偏上一轮 owner topology 设计，认为 clone 画像不需要优先声明“不做什么”，更应该声明自身角色和主体要做的事。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的 profile 语义修正；更新当前生效设计页、profile 模板、trace、log 和专项 sensor，不重写历史 log。AcknowledgeBase 本地存在，因此同步其个人能力体系 topic updated。
+- **关键判断**：
+  1. clone 初始画像的主语应该是目标工程自身，不是一组否定清单。
+  2. `not_owner / 不承接什么` 适合风险 guard、禁止项或冲突裁决，不适合作为目标工程身份声明的主字段。
+  3. 当前 profile 应改为 `responsibility_scope`、`core_workflows`、`primary_facts_and_evidence` 等正向字段；必要的隐私、当前性和项目事实不上推仍保留在独立 guard 里。
+- **关键动作**：
+  1. 更新 [[projects/design/topics/implementation-engineering-template-system]]，把 owner topology 的 `content_boundary` 改为 `responsibility_scope`，并强调 profile 先声明主体角色和负责事项。
+  2. 更新 [[templates/implementation-project-profile-template]]，移除 `not_owner` 字段，改用 `responsibility_scope`、`core_workflows` 和 `primary_facts_and_evidence`。
+  3. 扩展 `scripts/check_implementation_template_system.py`，让 sensor 检查正向职责字段，避免后续模板退回否定式画像。
+- **验证 / 边界**：本轮验证对象是 clone profile 的表达语义和字段 wiring；不创建目标工程，不迁移个人事实，不重写历史记录中已经作为事实存在的旧边界表述。
+- **影响页面**：[[projects/design/topics/implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]]、[[projects/trace]]、[[log]]、`scripts/check_implementation_template_system.py`；AcknowledgeBase 侧同步更新 `projects/design/topics/personal-capability-system-architecture.md` 和 `log.md`。
+
 ### 补强 clone 工程的 owner 拓扑画像
 
 - **记录人**：Codex

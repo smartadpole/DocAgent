@@ -32,7 +32,7 @@ wiki 是统一模板工程，对外输出的是 **Template Kernel + Project Prof
 
 因此 wiki 可以生成主控模板、子工程模板、知识库模板或运维 agent 模板，但不能把任何真实工程名变成 profile 名、能力名或默认事实。目标工程接入时先裁决 profile 和 pack，再选择本地 owner；不得复制 wiki 整库结构来证明采纳。
 
-画像和能力包不是能力裁剪菜单。wiki 的 Template Kernel 默认保留完整 agent / workflow / memory / harness / skill / evaluation / governance / migration 能力；profile 只决定事实归口、默认 owner、证据解释和哪些重治理默认不自动展开。目标工程如果暂时不需要某项能力，后续可以在本地 owner 中显式关闭或降级，但不能在 clone 初期因为少选能力而破坏基础智能体系。
+画像和能力包不是能力裁剪菜单。wiki 的 Template Kernel 默认保留完整 agent / workflow / memory / harness / skill / evaluation / governance / migration 能力；profile 先正向声明主体角色、负责事项、事实归口、默认 owner、证据解释和哪些重治理默认不自动展开。目标工程如果暂时不需要某项能力，后续可以在本地 owner 中显式关闭或降级，但不能在 clone 初期因为少选能力而破坏基础智能体系。
 
 ## 工程类型覆盖
 
@@ -71,13 +71,13 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | --- | --- |
 | `owner_topology_role` | method-center / life-owner / strategy-owner / career-owner / wealth-risk-owner / public-output-owner / software-governance-object / implementation-object / hybrid-owner |
 | `owner_independence_gate` | independent-owner / subordinate-view / registry-object / temporary-incubator；用于判断它是不是长期单一信息源。 |
-| `content_boundary` | 这个工程承接哪些事实、方法、证据和行动闭环；同时写清不承接什么。 |
+| `responsibility_scope` | 这个工程的主体职责、核心事项、事实归口、方法、证据和行动闭环。 |
 | `privacy_currentness_boundary` | 是否涉及私密、高敏、外部当前事实、生产状态或需人工确认的内容。 |
 | `research_depth_default` | strong / medium / light；表示默认调研证据等级，不表示是否具备调研能力。 |
 | `clone_instantiation_mode` | new-owner / implementation-object / knowledge-owner / ops-agent / hybrid；用于第一次从模板落地时选择初始化检查。 |
 | `mother_seed_policy` | keep-as-template-reference / archive / remove-from-current-state；用于避免模板母体内容污染目标工程当前事实。 |
 
-这条身份轴只回答“这个 clone 出来的库在个人能力体系或工程治理体系里是什么 owner”。它不替代 `project_role`，也不改变 wiki 全能力内核。举例：`knowledge-base-profile` 可以是方法中控、人生策略库、职业资本库或公共输出库；真正差别不在于它有没有 memory / research / lens 能力，而在于 owner 拓扑、隐私边界、当前事实边界和研究深度默认值。
+这条身份轴只回答“这个 clone 出来的库在个人能力体系或工程治理体系里是什么 owner”。它不替代 `project_role`，也不改变 wiki 全能力内核。举例：`knowledge-base-profile` 可以是方法中控、人生策略库、职业资本库或公共输出库；真正差别不在于它有没有 memory / research / lens 能力，而在于 owner 拓扑、主体职责、隐私边界、当前事实边界和研究深度默认值。
 
 ## Capability Packs
 
@@ -108,6 +108,7 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | `forbidden_packs` | 不应引入的重治理、runtime、发布或主控能力 |
 | `owner_topology_role` | 目标工程在个人能力 owner 拓扑或软件治理集合中的身份 |
 | `owner_independence_gate` | 是否已经是独立 owner，还是 view、registry object 或 incubator |
+| `responsibility_scope` | 目标工程的主体职责、核心事项、事实归口、方法、证据和行动闭环 |
 | `clone_instantiation_mode` | clone 初始落地方式和初始化检查口径 |
 | `mother_seed_policy` | 模板母体内容在目标工程中保留、归档或移除的策略 |
 | `privacy_currentness_boundary` | 隐私、当前性、生产事实和人工确认边界 |

@@ -18,6 +18,7 @@ tags: [template, implementation, project, agent-system, harness]
 - **project_role**：controller / subproject / runtime-service / knowledge-base / documentation-governance / data-model / ops-agent / hybrid
 - **owner_topology_role**：method-center / life-owner / strategy-owner / career-owner / wealth-risk-owner / public-output-owner / software-governance-object / implementation-object / hybrid-owner
 - **owner_independence_gate**：independent-owner / subordinate-view / registry-object / temporary-incubator
+- **responsibility_scope**：
 - **clone_instantiation_mode**：new-owner / implementation-object / knowledge-owner / ops-agent / hybrid
 - **mother_seed_policy**：keep-as-template-reference / archive / remove-from-current-state
 - **research_depth_default**：strong / medium / light
@@ -45,14 +46,15 @@ tags: [template, implementation, project, agent-system, harness]
 
 ## Owner Topology Boundary
 
-画像不裁剪 wiki 的基础智能体系。目标工程从 wiki clone 后，默认仍继承完整 Template Kernel；本节只裁决它在个人能力 owner 拓扑或软件治理集合中的事实归口、隐私边界、当前性要求和研究深度。
+画像不裁剪 wiki 的基础智能体系。目标工程从 wiki clone 后，默认仍继承完整 Template Kernel；本节先正向声明它在个人能力 owner 拓扑或软件治理集合中的主体角色、负责事项、事实归口、隐私边界、当前性要求和研究深度。
 
 | Field | Value / decision |
 | --- | --- |
 | `owner_topology_role` |  |
 | `owner_independence_gate` |  |
-| `content_owner` |  |
-| `not_owner` |  |
+| `responsibility_scope` |  |
+| `core_workflows` |  |
+| `primary_facts_and_evidence` |  |
 | `privacy_currentness_boundary` |  |
 | `research_depth_default` |  |
 | `relation_to_software_governance_objects` |  |
@@ -118,6 +120,7 @@ tags: [template, implementation, project, agent-system, harness]
 | `forbidden_packs` |  |
 | `owner_topology_role` |  |
 | `owner_independence_gate` |  |
+| `responsibility_scope` |  |
 | `clone_instantiation_mode` |  |
 | `mother_seed_policy` |  |
 | `privacy_currentness_boundary` |  |
