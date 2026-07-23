@@ -52,6 +52,8 @@ tags: [index, root]
 - [[skills/research-capability/SKILL]]：调研 / 研究能力聚合入口，统一调研合同、证据等级、行动等级、风险门和沉淀落位
 - [[skills/goal-contract/SKILL]]：长时任务完成契约技能，用于防目标漂移、证据漂移和无限探索
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能，用于矩阵驱动升级时判定 true-gap / recognition-gap / signal-only-gap
+- [[skills/performance-bandwidth-analysis/SKILL]]：性能、计时 trace 与带宽分析技能，用于建立 timing ledger、coverage matrix 和生产容量不上推边界
+- [[skills/runtime-config-switch/SKILL]]：Runtime 配置切换技能，用于只改配置、不改代码的 live config readback、smoke、cleanup、rollback 和 service-registry 回写
 - [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]：AcknowledgeBase 2026-06-26 `agent-evidence-v12` 快照在本仓的 repo-native 吸收清单和 conformance；专项检查为 `python3 scripts/check_all.py --only transferable-skill-baseline`
 - [[skills/knowledge-linking/SKILL]]：知识关联、落位、入口和回链技能
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能

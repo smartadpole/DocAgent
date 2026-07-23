@@ -30,7 +30,7 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 | AcknowledgeBase design topics | source topic manifest | 所有 source topic 按 ability adoption 落到 wiki agent / workflow / memory / harness / skill / evaluation / governance / template / topic / migration owner | 逐 topic 覆盖只证明结构接线，不证明行为智能评分。 |
 | train_platform | owner docs + memory / harness + checker | Agent System Capability Package、source freshness、alignment map、evaluation correction closeout、Agent Memory Contract | 不复制 dataset、benchmark、运行状态或工程内记录。 |
 | H100 | `.codex/governance` + AGENTS | L5 blocked-boundary proof、Run Capsule、Loop Contract、Subproject Git Preflight、final reply contract | 不复制远程机器事实、任务状态或 handoff 路径。 |
-| DocCustomeranalysis | AGENTS + governance / skills / templates / checker inventory, 2026-07-23 refresh | 主控治理、Issue 案件链、work-item 拆解、service registry、delivery bundle、public profile live readback、Goal / Loop 长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、performance-bandwidth-analysis、runtime-config-switch、customer-group-db-readback | 不复制客户分析业务链路、149 / 141 服务实例、数据库表、运行 ID、发布 URL、Prefect 当前状态或项目专属 owner gate。 |
+| DocCustomeranalysis | AGENTS + governance / skills / templates / checker inventory, 2026-07-23 refresh | 主控治理、Issue 案件链、work-item 拆解、service registry、delivery bundle、public profile live readback、Goal / Loop 长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、performance-bandwidth-analysis、runtime-config-switch、production readback | 不复制客户分析业务链路、149 / 141 服务实例、数据库表、运行 ID、发布 URL、Prefect 当前状态、DB readback 业务 skill 或项目专属 owner gate。 |
 | DocFilmCommunity | AGENTS + frontier intake skill | Frontier Technology Intake、Intelligence Contract、parser / evaluator / A3 compensation、knowledge landing | 不复制影像社区业务事实或候选技术结论。 |
 | LifeOS | AGENTS + presentation / publication profiles, partial read | owner-first personal memory、domain routing、public / lens 边界 | 只作为记忆路由信号；未作为直接 adoption 证据。 |
 | OpsMind | AGENTS + governance / skills / checker inventory | workstation / remote-control、第三方工程摄入边界、repo-native skill package、browser / runtime profile readback、visual delivery verification | 不复制本机皮肤路径、远程控制会话、插件资产或一次性性能样例。 |
@@ -44,7 +44,7 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 | --- | --- | --- |
 | AcknowledgeBase | 上游 topic / skill / template / harness / research owner 最完整，是系统层方案来源。 | 继续通过 [[acknowledgebase-topic-system-adoption.v1]] 和本页证明 topic 到 wiki owner 的结构吸收；本机存在 AcknowledgeBase 时，相关 topic 必须 `updated` 才算闭环。 |
 | Software/wiki | 已有实现类工程模板、跨工程对齐图、agent-system maturity、harness / instruction / execution-contract / research / lens / public / testing sensors。 | 本轮补齐 source freshness 和 DocCustomeranalysis 后发升级的显式裁决。 |
-| DocCustomeranalysis | 近期升级明显超过本页旧摘要：控制面已经覆盖 Goal / Loop 长任务编排、Run Capsule / dispatch、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、issue070-owner-gate、module-regression-guards、prefect-concurrency-drift，以及 performance / runtime-config / DB readback 专项技能。 | `recognize + adapt`：吸收“证据分层、长任务控制面、finalizer 范围证明、外部写边界、验收治理、runtime 配置切换、性能流水账、DB readback 分层”的系统层合同；不新增空技能，不复制业务事实。 |
+| DocCustomeranalysis | 近期升级明显超过本页旧摘要：控制面已经覆盖 Goal / Loop 长任务编排、Run Capsule / dispatch、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、issue070-owner-gate、module-regression-guards、prefect-concurrency-drift，以及 performance / runtime-config / DB readback 专项技能。 | `upgrade + adapt`：吸收“证据分层、长任务控制面、finalizer 范围证明、外部写边界、验收治理、runtime 配置切换、性能流水账、生产 readback”的系统层合同；DB readback 只保留证据分层，不新增通用业务 skill。 |
 | DocFilmCommunity / OpsMind | 已有 repo-native skill、frontier / visual / runtime / third-party boundary 等强信号。 | `recognize`：继续作为研究、视觉交付、第三方摄入和 runtime readback 的源信号；若 wiki 出现同类高频任务再 `upgrade` 为本地 skill / sensor。 |
 | LifeOS | owner-first memory、domain routing、lens / publication 表达强，主要是个人知识工程。 | `adapt`：吸收 owner-first 路由和呈现边界；不把生活域任务事实写入实现类工程模板。 |
 | fetch-adapter / train_platform / prefect / customeranalysis / H100 / haimind / store_stream_download / data_analysis | 主要提供子工程、runtime、数据 / 模型、服务台账、生产 readback、窄 sensor 的 implementation evidence。 | `recognize`：作为实现类工程 profile 的工程类型和证据合同样例；具体脚本、参数、服务状态和数据事实留在各自仓库。 |
@@ -54,11 +54,11 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 | Capability from DocCustomeranalysis | Gap type | Decision | Wiki landing / guard |
 | --- | --- | --- | --- |
 | Goal / Loop 长任务编排、Run Capsule、subproject dispatch、Evaluator | recognition-gap | complete through existing owner | 由 [[agent-orchestration]]、[[skills/goal-contract/SKILL]] 和 [[skills/loop-engineering/SKILL]] 承接；本页补 source freshness，不复制 ISSUE-070 / TASK-152 状态。 |
-| `agent-finalizer` 的 scoped commit / dirty residual / post-write proof | true-gap-lite | upgrade-candidate | 先作为 closeout proof 模式进入本页和 [[harness-evolution]] 候选；不立刻复制 DocCustomeranalysis 脚本，避免把它的路径和 protected child repo 规则带入 wiki。 |
-| `external-write-boundary` | recognition-gap | adapt | 已由 AcknowledgeBase topic updated 规则、Subproject Git Preflight 和上游写入授权门承接；本页把它标为 DocCustomeranalysis 后发信号。 |
-| `acceptance-governance` / `long-task-progress` | true-gap-lite | upgrade-candidate | wiki 已有验收、testing maturity 和 agent-orchestration 口径；后续若出现长任务验收反复失守，再新增本地窄 sensor。 |
-| `performance-bandwidth-analysis` | mixed | adapt / defer skill | 吸收“first timing ledger、分层证据、非单点指标、runtime trace / API / DB / UI / receipt 分离”；暂不新增空 skill，除非 wiki 真实出现稳定性能诊断任务。 |
-| `runtime-config-switch` | mixed | adapt / defer skill | 吸收“配置修改必须证明 live service 实际使用新配置、service-registry 回写、smoke / rollback / cleanup”的合同；不复制客户分析运行参数。 |
+| `agent-finalizer` 的 scoped commit / dirty residual / post-write proof | true-gap | upgrade | 进入 [[agent-orchestration#Production-Grade Control Plane Hardening]] 和 `agent-control-plane-hardening` sensor；本仓只规定范围证明、预存 dirty 分类、post-write check 和最终状态读回，不复制脚本路径。 |
+| `external-write-boundary` | recognition-gap + true-gap-lite | upgrade | 进入 [[agent-orchestration#Production-Grade Control Plane Hardening]]；与 AcknowledgeBase topic updated 规则、Subproject Git Preflight 和上游写入授权门共同承接。 |
+| `acceptance-governance` / `long-task-progress` | true-gap | upgrade | 进入 [[agent-orchestration#Production-Grade Control Plane Hardening]]；补长 Goal / Loop 的 current_slice、blocked_for_done、not_blocked_for_implementation、monitoring policy 和验收上推边界。 |
+| `performance-bandwidth-analysis` | mixed general | complete | 新增 [[skills/performance-bandwidth-analysis/SKILL]] 和 [[skills/performance-bandwidth-analysis/TRANSFER]]；吸收 timing ledger、coverage matrix、分层证据、非单点指标和生产容量不上推边界。 |
+| `runtime-config-switch` | mixed general | complete | 新增 [[skills/runtime-config-switch/SKILL]] 和 [[skills/runtime-config-switch/TRANSFER]]；吸收 live service config readback、service-registry 回写、smoke / cleanup / rollback 合同。 |
 | `customer-group-db-readback` | project-bound | reject / adapt | 不迁移业务表、账号、DSN 或批次前缀；只保留“receipt、ingress、DB / service-side readback 不能互相替代”的通用证据分层。 |
 | `issue070-owner-gate`、`module-regression-guards`、`prefect-concurrency-drift` | project-specific | defer / signal-only | 作为 narrow sensor 设计范例保留；不变成 wiki 默认门禁，除非本仓出现同名 owner 或同类执行合同。 |
 
@@ -88,7 +88,7 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 | evaluation correction closeout | true-gap-lite | adapt | 作为报告和 future sensor 候选；不把 train_platform 的具体 evaluation records 搬入本仓。 |
 | L5 blocked-boundary proof | recognition-gap | recognize + adapt | 继续由 [[agent-orchestration]]、[[state-constraint-reasoning]] 和报告口径承接；checker 只验证关键术语可发现。 |
 | public / lens delivery bundle | recognition-gap | recognize | 本仓已有 [[skills/problem-focused-visual-presentation/SKILL]] 和 [[views/README]]；DocCustomeranalysis 只作为信号。 |
-| DocCustomeranalysis long-task control plane | true-gap-lite | recognize + adapt | 本页新增 registered project refresh 和 delta decision；通用合同落到 [[agent-orchestration]]、验收 / testing owners 和未来 finalizer sensor 候选。 |
+| DocCustomeranalysis long-task control plane | true-gap | upgrade | 通用合同落到 [[agent-orchestration#Production-Grade Control Plane Hardening]]、[[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]] 和 `agent-control-plane-hardening` sensor。 |
 | Frontier Technology Intake Intelligence Contract | signal-only-gap | recognize | 已由 research intake / research-capability 承接；不新增并列研究技能。 |
 | source project facts, run IDs, secrets, ports, current scores | not reusable | reject | 任何目标工程事实不得写成本仓通用规则或 maturity 证据。 |
 

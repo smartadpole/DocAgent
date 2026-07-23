@@ -47,6 +47,7 @@
 | 多轮 / Worker / Evaluator | [[skills/loop-engineering/SKILL]]、[[agent-orchestration]] | Loop 只负责发现、分派、验证、持久化和 next-run decision。 |
 | 能力迁移与 topic 吸收 | [[skills/transferable-skill-governance/SKILL]]、[[acknowledgebase-topic-system-adoption.v1]] | 只吸收系统能力，不复制项目事实、分数或目录。 |
 | 调研和源计划 | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] | 调研证据不能直接上推为治理能力已落地。 |
+| 实战控制面 | [[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]]、[[agent-orchestration]] | 性能、配置、生产 readback、finalizer 和验收治理进入通用合同；DB readback 等业务绑定能力只抽象证据分层。 |
 | 复盘和纠偏学习 | [[skills/retrospective-capability/SKILL]]、[[harness-evolution]] | episode 先进入 ledger，再决定晋升为模板、sensor、skill 或 rule。 |
 | 文档维护和入口一致性 | [[skills/documentation-maintenance/SKILL]] | 入口同步不能替代 owner landing 和 sensor / evaluator。 |
 
@@ -89,6 +90,9 @@
 | Transferable Skill Governance | transferable skill | recognition-gap | complete | 本页和 [[skills/transferable-skill-governance/SKILL]] 作为裁决面；补 repo-native、Path ROOT 和输出裁决表口径。 |
 | Frontier Technology Intake | transferable skill 子项 | true-gap | adapt | 不新增并列 skill；作为 [[skills/research-capability/SKILL]] 的前沿信息流 intake 子项和 [[templates/research-intake-template]] 吸收。 |
 | project-context-entry、work-item-auto-decomposition、customer-group-db-readback、backlog-management、lifeos-management | project-bound | 不适用 | reject / adapt | 只抽象事实源分层、批处理、验收或上下文加载方法；不迁移业务表、运行 ID、队列、生活项目事实或开源 backlog 状态。 |
+| performance-bandwidth-analysis | mixed general | true-gap | complete | 新增 [[skills/performance-bandwidth-analysis/SKILL]] 和 `TRANSFER.md`，把 timing ledger、coverage matrix、runtime / service-side readback 和生产容量不上推边界做成通用技能。 |
+| runtime-config-switch | mixed general | true-gap | complete | 新增 [[skills/runtime-config-switch/SKILL]] 和 `TRANSFER.md`，把 live config readback、service registry 回写、smoke / cleanup / rollback 做成通用技能。 |
+| agent-finalizer / external-write-boundary / acceptance-governance / long-task-progress | governance control-plane | true-gap | upgrade | 进入 [[agent-orchestration#Production-Grade Control Plane Hardening]] 和 `agent-control-plane-hardening` sensor；不复制下游脚本路径或项目专属 owner gate。 |
 | Agent System Capability Package | system capability | true-gap + recognition-gap | complete | 落到 [[agent-system-maturity]]、`governance/agent-system-maturity-snapshot.v1.json` 和 `scripts/check_agent_system_maturity.py`；不把 skill maturity 上推为 intelligence 总分。 |
 | Implementation Project Template System | system capability | true-gap | complete | 落到 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]] 和 `implementation-template-system` sensor；wiki 明确作为所有实现类工程合集与模板。 |
 | work-item-auto-decomposition | project-bound | true-gap | adapt | 落到 [[skills/work-item-auto-decomposition/SKILL]]，绑定本仓 `Gate -> FP -> EP -> TASK` 模型；`transfer_ready: false`，不硬升通用 skill。 |
@@ -100,6 +104,8 @@
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于新增、调研或大改长期知识页时判断分层落位、入口、上位 / 邻接关系、反向回链和验证方式，避免知识成为孤岛。
 - [[skills/goal-contract/SKILL]]：长时任务完成契约技能。用于终点清楚但路径需要探索、可能跨多轮推进、跨工程回传或证据边界敏感时，先固定目标、范围、证据层级、验证面、预算、停止条件和记录落点。
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能。用于根据矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
+- [[skills/performance-bandwidth-analysis/SKILL]]：性能、计时 trace 与带宽分析技能。用于诊断延迟、吞吐、传输、并发、runtime trace、服务入口和端到端链路差异，先建立 timing ledger 和 coverage matrix，再判断瓶颈、容量和不上推边界。
+- [[skills/runtime-config-switch/SKILL]]：Runtime 配置切换技能。用于只改配置、不改代码的服务入口、base URL、端口、环境变量、feature flag、部署参数、回调地址或写入目标切换，并证明 live service 正在使用新配置。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
 - [[skills/work-item-auto-decomposition/SKILL]]：项目 / 领域绑定的研发事项自动拆解技能。用于本仓需求、Gate、FP、EP、TASK、risk、issue、test、验收关系不完整时，生成候选拆解、关系节点和关闭证据；不作为通用迁移 skill。

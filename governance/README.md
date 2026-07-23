@@ -25,6 +25,7 @@ tags: [entry, governance]
 - [[wiki-governance-system-contract.v1]]：治理体系全面整改运行合同。回答“agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 怎么才算实际整改完成”
 - [[agent-system-maturity]]：Agent System Maturity。回答“目标工程 agent system 七层对象、智能化证据、外部矩阵识别和 Goodhart 边界怎么判断”
 - [[agent-system-cross-project-alignment.v1]]：跨工程智能化吸收图。回答“所有工程里的 agent、harness、memory、workflow、evaluation 和 migration 能力如何抽象到本仓，而不复制项目事实”
+- [[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]]：实战控制面技能。回答“性能 / 带宽 / trace / 容量证据怎么分层”和“只改配置时怎样证明 live service 真的用了新配置”
 - [[acknowledgebase-topic-system-adoption.v1]]：AcknowledgeBase topic 逐 topic 能力吸收清单。回答“每个 source topic 如何落实到 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 体系”
 - [[instruction-adherence]]：指令遵循治理。回答“已有规则怎样变成触发器、模板字段、sensor、门禁和最终证明”
 - [[execution-contract-semantics]]：执行合同语义。回答“当前执行裁决是否被参考规则、非目标或上层证据污染”

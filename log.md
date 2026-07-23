@@ -9,6 +9,24 @@
 
 ## 2026-07-23
 
+### 吸收 DocCustomeranalysis 实战控制面为 wiki 通用治理能力
+
+- **记录人**：Codex
+- **用户意图**：用户纠正上一轮“DocCustomeranalysis 某些实战型控制面仍更强”的边界，指出这些能力虽然来自业务实战，但已经上升到 agent 治理层级，应由 wiki 学习；DB readback 等强业务绑定能力可以不吸纳。
+- **Goal Contract 摘要**：本轮目标是全面浏览登记工程能力面，把已上升为治理层的实战控制面能力吸收到 wiki，并同步 AcknowledgeBase topic updated、验证和提交。完成边界是通用 owner / skill / sensor 接线和上游 topic 更新；不证明所有下游工程已采纳，也不复制业务事实。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区的治理 / skill / sensor 升级；新增通用 skill 落到 `skills/performance-bandwidth-analysis/` 和 `skills/runtime-config-switch/`，新增检查落到 `scripts/check_agent_control_plane_hardening.py`；AcknowledgeBase 本地存在，需同步其既有过程方案沉淀 topic。
+- **关键判断**：
+  1. `agent-finalizer`、`external-write-boundary`、`acceptance-governance`、`long-task-progress`、production readback、performance evidence ledger 和 runtime config switch 已不只是 DocCustomeranalysis 项目经验，而是通用 agent 控制面能力。
+  2. `customer-group-db-readback` 这类绑定业务表、账号、DSN、批次前缀或项目 schema 的能力不新增通用 skill，只吸收“receipt、ingress、DB / service-side readback 不能互替”的证据分层。
+  3. wiki 的吸收完成不能只写跨工程对齐表；必须进入 agent-orchestration、skills、TRANSFER、README / INDEX 和专项 sensor。
+- **关键动作**：
+  1. 更新 [[agent-orchestration]]，新增 `Production-Grade Control Plane Hardening`，把 finalizer、外部写边界、验收治理、长任务进度、生产读回、性能证据账本和 runtime 配置切换固定成默认控制面合同。
+  2. 新增 [[skills/performance-bandwidth-analysis/SKILL]] / `TRANSFER.md` 和 [[skills/runtime-config-switch/SKILL]] / `TRANSFER.md`，作为通用可迁移技能。
+  3. 更新 [[agent-system-cross-project-alignment.v1]] 和 [[wiki-governance-system-contract.v1]]，把 DocCustomeranalysis 后发能力从 `candidate` 推进为 `upgrade / complete`，同时保留业务事实不上推边界。
+  4. 新增 `scripts/check_agent_control_plane_hardening.py` 并接入 `scripts/check_all.py --only agent-control-plane-hardening`，同步 [[skills/README]]、[[governance/README]] 和 [[INDEX]] 的入口。
+- **验证 / 边界**：本轮验证对象是 wiki 通用控制面结构、技能迁移边界和 sensor 接线；不复制 DocCustomeranalysis 的 149 / 141 服务、Prefect 当前状态、数据库表、账号、运行 ID、项目专属 gate 或脚本路径。
+- **影响页面**：[[agent-orchestration]]、[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/README]]、[[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]]、[[governance/README]]、[[INDEX]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`、`scripts/check_all.py`；AcknowledgeBase 侧同步更新过程方案沉淀 topic 和 log。
+
 ### 刷新所有登记工程能力吸收判断
 
 - **记录人**：Codex

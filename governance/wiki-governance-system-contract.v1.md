@@ -46,6 +46,16 @@ tags: [governance, agent, workflow, memory, harness, skill, evaluation, sensor]
 | topic | source topic 到本地 owner 的 ability adoption | [[acknowledgebase-topic-system-adoption.v1]]、[[projects/design/topics/README]] | 只复制 topic 正文，或只写 topic family 摘要。 |
 | migration | recognize / complete / upgrade / adapt / defer / reject、source-depth、project conformance | [[agent-system-cross-project-alignment.v1]]、[[skills/transferable-skill-governance/SKILL]] | 把源工程目录、分数、运行 ID、业务事实写成本仓事实。 |
 
+## 实战控制面吸收要求
+
+当下游工程把生产 readback、长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、performance-bandwidth-analysis 或 runtime-config-switch 打磨到 agent 治理层时，wiki 不能只把它们记成 source signal。可迁移部分必须至少进入一个实际 owner：
+
+- 控制面默认行为进入 [[agent-orchestration#Production-Grade Control Plane Hardening]]。
+- 性能 / 带宽 / timing / capacity 方法进入 [[skills/performance-bandwidth-analysis/SKILL]]。
+- runtime 配置切换进入 [[skills/runtime-config-switch/SKILL]]。
+- 结构接线进入 `scripts/check_all.py --only agent-control-plane-hardening`。
+- 下游强业务绑定能力，例如带业务表、账号、DSN、批次前缀或项目 schema 的 DB readback，不新增通用 skill，只抽象“receipt、ingress、DB / service-side readback 不能互替”的证据分层。
+
 ## 执行包
 
 治理体系全面整改按这个顺序执行：

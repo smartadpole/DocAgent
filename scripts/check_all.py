@@ -34,6 +34,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "wiki governance system rectification",
         (sys.executable, "scripts/check_governance_system_rectification.py"),
     ),
+    (
+        "agent-control-plane-hardening",
+        "agent control-plane hardening",
+        (sys.executable, "scripts/check_agent_control_plane_hardening.py"),
+    ),
     ("skill-maturity", "skill maturity", (sys.executable, "scripts/check_skill_maturity.py")),
     (
         "transferable-skill-baseline",

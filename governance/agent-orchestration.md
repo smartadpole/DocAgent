@@ -4,7 +4,7 @@ id: GOV-AGENT-ORCHESTRATION-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-22
+updated: 2026-07-23
 tags: [governance, harness, orchestration, run-capsule]
 ---
 
@@ -89,9 +89,26 @@ Worker 只交证据，不能宣布整体闭环。
 - Persistence Routing 的实际落点。
 - 运行了哪些 sensor；sensor 只证明结构 wiring，不证明真实运行质量。
 
+## Production-Grade Control Plane Hardening
+
+从 DocCustomeranalysis 等实战工程吸收的控制面能力，一旦已经上升到 agent 治理层，就不再只是下游经验，而是本仓实现类工程模板的默认合同。它们包括：
+
+| Capability | Wiki contract | Non-goal |
+| --- | --- | --- |
+| `agent-finalizer` | 有文件改动、提交、跨仓回传或 scoped closeout 时，必须有范围证明、预存 dirty / residual 分类、post-write check 和最终状态读回；finalizer 可以是脚本、模板字段或人工 evaluator，但不能只靠最终回复自述。 | 不复制某个工程的脚本路径、protected repo 清单或提交数量。 |
+| `external-write-boundary` | 主控 / 子工程 / 上游 owner 必须分清 `not authorized / orchestrator-only / explicitly authorized`；能访问文件系统不等于有写授权。 | 不把目标工程事实写进 AcknowledgeBase、wiki 或用户级配置。 |
+| `acceptance-governance` | 验收前先冻结对象、测试方案、核心用例、环境路由、人工确认边界和上推边界；局部 smoke、health 或接口回显不能关闭父级 Goal / Gate / Issue。 | 不把下游具体 AP、TASK、Issue 状态复制成本仓状态。 |
+| `long-task-progress` | 长 Goal / Loop / Run Capsule 必须可读当前切片、已收集材料、已执行动作、结果 / 阻塞、下一步、证据入口、`blocked_for_done`、`not_blocked_for_implementation` 和 monitoring policy。 | 不把运行中、accepted 或 Worker 自述当整体完成。 |
+| production readback | 生产或 runtime 结论必须有 service-side / live readback；本地配置、代码 diff、health 绿灯和局部日志都只能作为辅助证据。 | 不复制具体机器、服务、端口、表名、账号或运行 ID。 |
+| performance evidence ledger | 触发性能、吞吐、带宽或容量判断时，使用 [[skills/performance-bandwidth-analysis/SKILL]] 先建立 timing ledger、coverage matrix 和不可上推边界。 | 不把单点 probe、raw transfer 或小样本 smoke 上推成生产容量。 |
+| runtime config switch | 触发配置切换时，使用 [[skills/runtime-config-switch/SKILL]] 证明 live service 使用新配置，并写回 service registry / TASK / report / log。 | 不把文件 diff、请求级 override 或 health 当默认配置已切换。 |
+
+这些能力的共性不是“更厚的流程”，而是防止 agent 把容易获得的 proxy evidence 上推为真实闭环。DB / service-side readback 只作为证据分层原则吸收；涉及业务表、账号、DSN、批次前缀或项目持久化 schema 的 DB readback skill 仍保持项目绑定，不进入本仓通用技能层。
+
 ## 禁止项
 
 - 不用多 agent 数量替代目标、边界和 evaluator。
 - 不让 Worker 修改未授权仓库、事项状态或规则入口。
 - 不把子工程 local pass、handoff、自述、accepted / running 或 health 上推成主控闭环。
 - 不在没有持久状态、evaluator oracle 和停止条件时伪装成 Loop。
+- 不把 DocCustomeranalysis 等下游工程的生产事实、机器、表、运行 ID、项目专属 gate 或脚本路径复制成本仓治理事实。
