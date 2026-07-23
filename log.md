@@ -7,6 +7,24 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-23
+
+### 建立实现类工程合集与模板系统
+
+- **记录人**：Codex
+- **用户意图**：用户要求设置 Goal，全面整改 wiki，使它不只是普通知识库或单项技能库，而是所有实现类工程的合集与模板；主控、子工程、runtime service、数据 / 模型工程和文档治理工程都要能覆盖，并且 AcknowledgeBase 已覆盖的调研、agent、workflow、memory、harness、skill 和 design topic 方案要落实到 wiki 的本地系统中。
+- **Goal Contract 摘要**：本轮目标是把 wiki 的实现类工程模板定位落成本地 owner、模板、入口、sensor 和验证，而不是复制 AcknowledgeBase 原目录或把 source topic 文案搬入 wiki。完成边界是结构接线和验证通过；runtime / live readback / end-to-end / 人工确认仍不能上推。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的治理 / 设计 topic / 模板 / sensor / memory 整改；新增内容落到 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、`scripts/check_implementation_template_system.py` 和相关入口页，不触碰 `.obsidian` 预存本地配置改动。
+- **关键动作**：
+  1. 新增 [[projects/design/topics/implementation-engineering-template-system]]，把 wiki 定位为实现类工程合集与模板，覆盖 controller、subproject、runtime-service、data-model、documentation-governance 等工程类型，并规定 Implementation Project Profile、Topic 到系统层落地和不能上推边界。
+  2. 新增 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]，把 AcknowledgeBase topic 家族按 agent、workflow、memory、harness、skill、evaluation、topic、migration 层落实到 wiki 本地 owner。
+  3. 新增 [[templates/implementation-project-profile-template]]，要求接入工程写清 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract、Template Adoption 和 Closeout Proof。
+  4. 新增 `scripts/check_implementation_template_system.py` 并接入 `scripts/check_all.py --only implementation-template-system`，防止实现类工程模板目标只停留在说明文字。
+  5. 同步 [[AGENTS]]、[[.codex/AGENTS]]、[[INDEX]]、[[skills/README]]、[[templates/README]]、[[agent-system-maturity]]、[[agent-system-cross-project-alignment.v1]]、[[projects/README]]、[[projects/status]]、[[projects/memory/README]] 和 [[projects/memory/shared]] 的入口、状态与长期背景。
+- **验证 / 边界**：`python3 scripts/check_all.py --only project-docs,implementation-template-system,agent-system-maturity,skill-maturity,harness-governance` 通过；完整 `python3 scripts/check_all.py` 通过；`git diff --check` 通过。验证对象是 wiki 本地 owner、模板、入口、sensor 和结构可发现性；不证明每个未来 agent 行为已经最智能，不证明任一具体工程已上线、已验收或已有 runtime 行为样本。
+- **二阶反思**：全面整改类目标如果只靠入口页声明，很容易再次变成“看起来覆盖、实际不可执行”。这次把目标拆成 design owner、profile template、entrypoint、sensor 和 memory 五层；后续每个实现类工程接入都必须先填 profile 或等价 owner，再用目标工程自己的验证闭环证明，而不能拿 wiki sensor 绿灯上推为具体工程完成。
+- **影响页面**：[[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、[[projects/design/topics/README]]、[[AGENTS]]、[[.codex/AGENTS]]、[[INDEX]]、[[skills/README]]、[[templates/README]]、[[agent-system-maturity]]、[[agent-system-cross-project-alignment.v1]]、[[projects/README]]、[[projects/status]]、[[projects/memory/README]]、[[projects/memory/shared]]、[[log]]、`scripts/check_implementation_template_system.py`、`scripts/check_all.py`。
+
 ## 2026-07-20
 
 ### 收口通用 agent 技能矩阵吸收清单和 sensor

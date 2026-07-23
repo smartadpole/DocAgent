@@ -45,8 +45,8 @@
 | --- | --- |
 | `local_source_of_truth` | [[skills/README]] 是通用技能入口；各技能 `SKILL.md` 是执行流程源；同目录 `TRANSFER.md` 是迁移边界源；[[governance/README]]、[[POLICY]]、[[WORKFLOW]] 和 [[AGENTS]] 是规则入口；`views/` 只承接持久呈现；`projects/` 继续承接项目事实。 |
 | `allowed_write_scope` | 本仓 agent 可在本轮授权范围内更新 `skills/`、`templates/`、`governance/`、`scripts/`、`views/`、`projects/` 和 [[log]]；不得把外部工程项目事实、运行 ID、服务实例、handoff 或历史 log 写成本仓通用事实。 |
-| `required_profile` | 先按 [[response-mode-routing]] 判断响应模式；跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；长时执行使用 [[skills/goal-contract/SKILL]]；持续循环使用 [[skills/loop-engineering/SKILL]]；持久图文和公开发布分别使用 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
-| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,transferable-skill-baseline,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance,cross-project-governance-audit`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
+| `required_profile` | 先按 [[response-mode-routing]] 判断响应模式；跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；长时执行使用 [[skills/goal-contract/SKILL]]；持续循环使用 [[skills/loop-engineering/SKILL]]；实现类工程接入先填 [[templates/implementation-project-profile-template]]；持久图文和公开发布分别使用 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
+| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,transferable-skill-baseline,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance,cross-project-governance-audit,implementation-template-system`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
 | `blocked_when_missing` | 缺少目标工程结构自检、`TRANSFER.md` 迁移边界、owner 页面、专项 sensor、人工确认边界、live readback 或真实证据时，只能写 `partial / blocked / review`，不能写成验收完成、发布完成或迁移完成。 |
 | `exceptions` | 简单问答、一次性小修、只读解释、没有持久沉淀价值的临时判断不强行套完整技能包；项目 / 领域绑定能力只抽象方法，不新建通用 skill；sensor 只证明 wiring，不证明真实运行质量、审美质量或业务验收。 |
 
@@ -73,6 +73,7 @@
 | Frontier Technology Intake | transferable skill 子项 | true-gap | adapt | 不新增并列 skill；作为 [[skills/research-capability/SKILL]] 的前沿信息流 intake 子项和 [[templates/research-intake-template]] 吸收。 |
 | project-context-entry、work-item-auto-decomposition、customer-group-db-readback、backlog-management、lifeos-management | project-bound | 不适用 | reject / adapt | 只抽象事实源分层、批处理、验收或上下文加载方法；不迁移业务表、运行 ID、队列、生活项目事实或开源 backlog 状态。 |
 | Agent System Capability Package | system capability | true-gap + recognition-gap | complete | 落到 [[agent-system-maturity]]、`governance/agent-system-maturity-snapshot.v1.json` 和 `scripts/check_agent_system_maturity.py`；不把 skill maturity 上推为 intelligence 总分。 |
+| Implementation Project Template System | system capability | true-gap | complete | 落到 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]] 和 `implementation-template-system` sensor；wiki 明确作为所有实现类工程合集与模板。 |
 | work-item-auto-decomposition | project-bound | true-gap | adapt | 落到 [[skills/work-item-auto-decomposition/SKILL]]，绑定本仓 `Gate -> FP -> EP -> TASK` 模型；`transfer_ready: false`，不硬升通用 skill。 |
 
 ## 当前技能

@@ -12,6 +12,7 @@
 - 如果动作依赖权限、远程状态、dirty / diverged 工作区、浏览器 profile、外部服务、预算或人工确认，先读 [[state-constraint-reasoning]]。
 - 如果涉及多 agent、多线程、主控 / 子工程、Worker / Evaluator 或 Subproject Git Preflight，读 [[agent-orchestration]] 和 [[templates/run-capsule-template]]。
 - 如果涉及 agent-system maturity、intelligence evidence、外部矩阵识别或 Agent System Capability Package，读 [[agent-system-maturity]]，并区分 local wiring、expected impact、external readback 和 `insufficient-evidence`。
+- 如果涉及主控、子工程、runtime service、数据 / 模型工程、文档治理工程或“wiki 作为实现类工程合集 / 模板”的升级，读 [[projects/design/topics/implementation-engineering-template-system]]，并使用 [[templates/implementation-project-profile-template]] 固定 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract 和 Closeout Proof。
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
 - 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
 - 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[skills/goal-contract/SKILL]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
@@ -32,6 +33,7 @@
 - 问题聚焦式图文呈现、`views/`、lens 模板或导出守卫改动跑：`python3 scripts/check_all.py --only problem-focused-visual-presentation`。
 - H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
 - Agent System Capability Package、intelligence evidence 或外部矩阵识别 capsule 改动跑：`python3 scripts/check_all.py --only agent-system-maturity`。
+- 实现类工程合集、主控 / 子工程模板、implementation project profile 或 topic landing 改动跑：`python3 scripts/check_all.py --only implementation-template-system`。
 - 研发事项模型、事项矩阵或 work-item-auto-decomposition 改动跑：`python3 scripts/check_all.py --only work-item-matrix`。
 - 入口、wikilink 或治理元数据改动跑：`python3 scripts/check_all.py --only project-docs`。
 - 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。

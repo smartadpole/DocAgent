@@ -28,6 +28,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新编码任务执行单可以参考 [[templates/developer-task-brief-template]]
 - 新代码工程回传包可以参考 [[templates/code-handoff-template]]
 - 新工程反馈可以参考 [[templates/engineering-feedback-template]]
+- 新主控、子工程、runtime service、数据 / 模型工程或文档治理工程接入 wiki 作为实现类工程合集与模板时，先参考 [[templates/implementation-project-profile-template|实现类工程 Profile]]；它必须写清 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract、Template Adoption 和 Closeout Proof。
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]

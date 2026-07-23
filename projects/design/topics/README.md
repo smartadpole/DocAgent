@@ -37,6 +37,8 @@ tags: [design, topics]
 
 ### 已采纳专题
 
+- [[projects/design/topics/implementation-engineering-template-system]]：实现类工程合集与模板系统，把 wiki 的定位升级为主控 / 子工程 / runtime service / 数据模型 / 文档治理等实现类工程的本地模板工程；要求每个接入工程先有 [[templates/implementation-project-profile-template]] 或等价 profile，并把 agent system 七层、控制面、证据合同和 Git preflight 写清。
+- [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]：Agent / Workflow / Memory / Harness / Skill 落地矩阵，把 AcknowledgeBase 已覆盖的 agent、workflow、memory、harness、skill、topic、evaluation 和 migration 方案按 wiki 本地 owner、template、sensor、blocked boundary 落实，不复制源工程事实。
 - [[projects/design/topics/local-git-branch-and-sync-semantics]]：系统级 Codex 配置方案；配置入口需在当前机器自发现，默认分支由用户指定或主机名推导，并把“git 同步”定义为当前分支、远程当前分支、本地 `master`、远程 `master` 三组关系读回和同 commit 收敛。它不是 wiki 仓库规则或仓库分支操作。
 
 ### 待拍板专题

@@ -12,11 +12,13 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 
 主入口：[[governance/README]]
 
-相关：[[agent-system-cross-project-alignment.v1]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 ## 定位
 
 这页是本仓 Agent System Capability Package 的 owner。它回答“wiki 作为目标工程，是否具备可运行、可评估、可迁移、可被外部矩阵识别的 agent system”，而不是回答某个单项 skill 是否写得完整。
+
+当前 wiki 的目标定位是**所有实现类工程的合集与模板**。主控、子工程、runtime service、数据 / 模型工程和文档治理工程接入时，必须优先使用 [[projects/design/topics/implementation-engineering-template-system]] 与 [[templates/implementation-project-profile-template]] 或等价 profile，证明本地 owner、agent system 七层、control plane、implementation boundaries 和 evidence contract 已经落地。
 
 本页只承接体系对象、证据边界、评估 capsule、缺口分类和本仓落位；不承接 AcknowledgeBase 的当前分数、profile hash、历史 snapshot、项目事实或一次性矩阵输出。
 
@@ -72,6 +74,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 | Transferable Skill Governance review contract | recognition-gap | 在 [[skills/transferable-skill-governance/SKILL]] 和 TRANSFER 补 review contract | sensor 只证明 wiring。 |
 | work-item-auto-decomposition | true-gap + project-bound | 新增本仓项目 / 领域绑定 skill，并接入 work-item matrix checker | 不硬升为通用可迁移 skill。 |
 | Cross-project agent intelligence alignment | true-gap | 新增 [[agent-system-cross-project-alignment.v1]]，把 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity、LifeOS 等工程的系统层能力抽象到本仓七层对象 | 结构对齐不能上推为行为智能得分。 |
+| Implementation Project Template System | true-gap | 新增 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]] 和 `scripts/check_implementation_template_system.py` | 模板接线不能上推为任何具体工程已上线、已验收或已具备行为智能。 |
 
 ## Persistence Decision
 
@@ -85,7 +88,7 @@ Worker findings、治理 delta 和 future-task knowledge 没有完成 Persistenc
 
 ## 验证口径
 
-- 专项：`python3 scripts/check_all.py --only agent-system-maturity,skill-maturity,work-item-matrix`
+- 专项：`python3 scripts/check_all.py --only agent-system-maturity,implementation-template-system,skill-maturity,work-item-matrix`
 - 完整：`python3 scripts/check_all.py`
 - whitespace：`git diff --check`
 - 外部 evaluator：由主控刷新 AcknowledgeBase matrix；本仓只回传 capsule、expected impact、blocked reason 和未验证边界。

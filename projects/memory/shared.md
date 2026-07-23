@@ -6,7 +6,7 @@ scope: project
 project: PROJ-WIKI-001
 status: confirmed
 source_of_truth: true
-updated: 2026-04-10
+updated: 2026-07-23
 tags: [memory, shared]
 ---
 
@@ -15,6 +15,7 @@ tags: [memory, shared]
 ## 当前稳定事实
 
 - 当前 vault 的用途是一个面向软件研发的文档系统。
+- 当前 wiki 的目标角色已经升级为所有实现类工程的合集与模板：主控、子工程、runtime service、数据 / 模型工程和文档治理工程都应能从本仓找到本地 profile、agent system 七层、control plane、implementation boundaries、evidence contract、template adoption 和 closeout proof。
 - 当前运行模式是单库、单项目。
 - 当前项目就是这个 wiki 系统本身。
 - 现阶段仍然是半自动：人决定做哪一项，agent 按规则辅助执行。
@@ -29,6 +30,7 @@ tags: [memory, shared]
 - 角色分层固定为：[[projects/README]] 偏 CTO / 项目负责人视角，[[projects/development/README]] 偏研发经理视角，[[projects/development/feature-points/README]] 和其下实体页偏工程师视角
 - 设计拆模块后，执行粒度以功能点实体页为准；状态镜像看 [[projects/status]]，过程流水看 [[projects/development/execution/worklog]]
 - 功能点用 `status` + `phase` 双轴管理：`status` 看生命周期，`phase` 看串联步骤；每个功能点实体页都要同时写这两个字段；功能点实体页一页一个功能点；旧 `in_progress` 口径已拆开
+- 实现类工程接入先看 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]；AcknowledgeBase topic 中的通用方案按 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 落到 agent、workflow、memory、harness、skill、evaluation、topic 和 migration 层，不复制源工程事实。
 
 ## 需要持续带入的前提
 
@@ -36,3 +38,4 @@ tags: [memory, shared]
 - 不需要先推翻目录重来
 - 先保留现有骨架，再逐步把 memory 路由和 policy 规则机器可读化
 - 任何冲突先升级到决策页，再同步回写共享背景或 policy
+- sensor 通过只能证明结构接线；没有 runtime / live readback / end-to-end / 人工确认时，任何实现类工程接入都只能报 `partial / review / blocked`，不能上推为已上线、已验收或行为智能达标。

@@ -19,6 +19,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "agent system maturity",
         (sys.executable, "scripts/check_agent_system_maturity.py"),
     ),
+    (
+        "implementation-template-system",
+        "implementation project template system",
+        (sys.executable, "scripts/check_implementation_template_system.py"),
+    ),
     ("skill-maturity", "skill maturity", (sys.executable, "scripts/check_skill_maturity.py")),
     (
         "transferable-skill-baseline",

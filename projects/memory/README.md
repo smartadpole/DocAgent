@@ -5,7 +5,7 @@ scope: project
 project: wiki
 status: active
 source_of_truth: true
-updated: 2026-04-13
+updated: 2026-07-23
 ---
 
 # 项目记忆
@@ -32,11 +32,15 @@ updated: 2026-04-13
 - [[projects/memory/shared]]：项目共享背景和稳定事实
 - [[projects/memory/policy-links]]：运行层和规则层的连接页
 - [[projects/meetings/README]]：项目正式会议入口和纪要分流页
+- [[projects/design/topics/implementation-engineering-template-system]]：实现类工程合集与模板系统的设计 owner
+- [[templates/implementation-project-profile-template]]：主控 / 子工程 / runtime service / 数据模型 / 文档治理工程的接入 profile
 
 ## 当前路由
 
 - 会话 / 临时收口区：临时信息
 - [[projects/memory/README]]：项目级稳定背景
+- [[projects/design/topics/implementation-engineering-template-system]]：实现类工程模板定位、工程类型覆盖和不能上推边界
+- [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]：AcknowledgeBase topic 到 wiki 系统层的落地矩阵
 - [[projects/trace]]：项目需求演进链
 - [[projects/meetings/README]]：项目正式会议入口
 - [[BRAIN]]：共享背景

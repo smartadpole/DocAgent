@@ -7,13 +7,19 @@ stage: design
 next_action: observe-work-item-governance-and-expand-sensors
 owner: team
 source_of_truth: true
-updated: 2026-05-25
+updated: 2026-07-23
 tags: [project]
 ---
 
 # 项目层
 
 这里放软件研发模式下的项目运行文档。
+
+## 当前项目定位
+
+当前 wiki 是实现类工程合集与模板系统。它既是本仓自身的软件研发文档库，也是主控、子工程、runtime service、数据 / 模型工程、文档治理工程接入时的本地模板源。
+
+新实现类工程接入时，先看 [[projects/design/topics/implementation-engineering-template-system]]，再使用 [[templates/implementation-project-profile-template]] 固定 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract 和 Closeout Proof。AcknowledgeBase topic 中已经覆盖的 agent、workflow、memory、harness、skill、evaluation、topic 和 migration 方案，通过 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 落到本仓本地 owner。
 
 ## 和知识库模式的关系
 
@@ -89,6 +95,8 @@ tags: [project]
 - [[projects/trace]]：需求演进链主文件。这里放原始意图、约束变化、修补性需求和最终实现口径之间的串联。
 - [[projects/design/README]]：设计主入口。这里放完整架构包，并链接技术选型、架构、工程结构、权限边界、写操作边界、数据库、部署和运行质量子页。
 - [[projects/design/topics/README]]：设计专题入口。这里放未拍板但重要的设计专题，以及不进入当前完整架构包的专项储备。
+- [[projects/design/topics/implementation-engineering-template-system]]：实现类工程合集与模板系统。
+- [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]：agent / workflow / memory / harness / skill / topic 落地矩阵。
 - [[projects/design/backend-frontend-structure]]：工程结构主页。这里放前后端模块拆分、接口口径和代码落点。
 - [[projects/design/permission-boundary]]：权限边界主页。这里放权限真相源、角色可见性和业务授权边界。
 - [[projects/design/write-boundary]]：写操作边界主页。这里放平台层轻量写、业务后端红线、页面映射和改造建议。
