@@ -20,6 +20,7 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 - 用户说“审计某工程治理”“看这个工程治理成熟度”“生成漂移报告”。
 - 用户要求比较多个工程的 AGENTS、响应路由、harness ledger、sensor、模板反哺或技能成熟度。
 - 用户要求把跨工程治理经验吸收到本库模板、规则、技能或 sensor。
+- 用户说“举一反三”“所有工程都需要吸收”“不只是某个工程”或等价要求时，必须按 AcknowledgeBase registry 或等价登记面逐工程审计；不能用最强样本、旧矩阵摘要、能力覆盖集或本机路径扫描替代注册表全集。
 - 周期性检查当前 wiki 自身治理 wiring 是否仍然完整。
 
 ## 边界
@@ -74,6 +75,13 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 5. 模板与技能成熟度：模板字段、技能 frontmatter、TRANSFER、证据边界。
 6. 跨工程协作规则：主控 / 子工程写权限、handoff、回传和不复制项目事实。
 
+若本轮是全登记工程吸收，额外固定四个字段：
+
+1. `registry_project`：工程来自哪张登记表，是否属于全集。
+2. `system-layer capability`：可抽象吸收的 agent / workflow / memory / harness / skill / evaluation / governance / template / migration 能力。
+3. `wiki landing / guard`：进入哪个本仓 owner / skill / sensor；或为什么只 `recognize / adapt / reject`。
+4. `project-bound fact`：哪些路径、服务、数据、模型、运行 ID、业务事实或一次性 handoff 不上推。
+
 ### 3. 读取证据
 
 优先读：
@@ -108,6 +116,7 @@ sensor: python3 scripts/check_all.py --only harness-governance,skill-maturity
 - 已有优势。
 - Drift Report：true-gap / recognition-gap / signal-only-gap。
 - 可复用共性模式。
+- 全登记工程吸收矩阵：每个 registry project 一行；轻量仓也要写最小治理 profile 或 no-op 理由。
 - 不反哺项目材料。
 - 建议动作和 owner 页面。
 - 如果需要，生成目标工程任务书：范围、逐条操作、verification-loop、Transfer Manifest、验证、禁止项和最终回复。

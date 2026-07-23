@@ -85,7 +85,7 @@
 | 图文呈现 | transferable skill | signal-only-gap + 局部 true-gap | recognize / complete | 现有 `views/`、registry、reference、HTML 样本和 sensor 继续作为 owner；补 visual floor 词汇时只为明确完成合同，不追求堆视觉术语。 |
 | 知识关联 | transferable skill | recognition-gap | recognize | 保留 [[skills/knowledge-linking/SKILL]]；`skill-transfer` 和 `Transfer Manifest` 只作为迁移场景的关系画像要求。 |
 | 调研 / 研究能力 | transferable skill | true-gap | upgrade | 保留聚合入口，不平铺外部子项；把 frontier technology intake 吸收为研究 intake 子项和模板字段。 |
-| 跨工程治理审计 | transferable skill | recognition-gap | upgrade | 保留自查 / 审计技能，补 source-depth、handoff-ready、non-reference 和 no runtime validation 边界。 |
+| 跨工程治理审计 | transferable skill | recognition-gap | upgrade | 保留自查 / 审计技能，补 source-depth、handoff-ready、non-reference、no runtime validation 和 registry-driven 全工程逐行吸收边界；“举一反三 / 所有工程”不能只看单一强工程或能力覆盖集。 |
 | 跨工程技能迁移任务书 | transferable skill | recognition-gap | upgrade | 保留 meta skill，新增 [[templates/skill-transfer-manifest-template]]，任务书必须达到 `taskbook-ready` 并区分源能力、目标结构自检和验证。 |
 | Transferable Skill Governance | transferable skill | recognition-gap | complete | 本页和 [[skills/transferable-skill-governance/SKILL]] 作为裁决面；补 repo-native、Path ROOT 和输出裁决表口径。 |
 | Frontier Technology Intake | transferable skill 子项 | true-gap | adapt | 不新增并列 skill；作为 [[skills/research-capability/SKILL]] 的前沿信息流 intake 子项和 [[templates/research-intake-template]] 吸收。 |

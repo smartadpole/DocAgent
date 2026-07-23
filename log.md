@@ -9,6 +9,24 @@
 
 ## 2026-07-23
 
+### 按 AcknowledgeBase 注册表全集吸收所有工程治理能力
+
+- **记录人**：Codex
+- **用户意图**：用户纠正“不是只有 DocCustomeranalysis”，要求举一反三吸收所有工程能力，并进一步指出应看 AcknowledgeBase 台账中登记的工程集合，不能把单一强工程或本地路径扫描当成全工程闭环。
+- **Goal Contract 摘要**：本轮目标改为 registry-driven 全登记工程能力吸收。完成边界是按 AcknowledgeBase `projects/governance/registry.md` 逐工程写出系统层能力、wiki 落点、裁决和不上推边界，并同步 AcknowledgeBase topic updated；不证明所有下游工程已采用，也不复制下游业务事实。
+- **目录归类与落位判断**：本轮仍属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区的治理 / skill / sensor 升级；更新既有治理页、既有技能和既有 sensor，不新建平行工程清单。AcknowledgeBase 本地存在，更新其既有过程方案沉淀 topic。
+- **关键判断**：
+  1. AcknowledgeBase 当前工程注册表是全工程吸收的单一口径；治理优先级列表、public HTML publish 覆盖集、旧矩阵摘要和本机 `find` 结果都只能作为补充证据。
+  2. 14 个登记工程都需要逐行裁决：AcknowledgeBase、wiki、OpsMind、DocCustomeranalysis、DocFilmCommunity、LifeOS、fetch-adapter、train_platform、prefect、customeranalysis、H100、haimind、store_stream_download、data_analysis。
+  3. 轻量仓也有可吸收的 minimum viable governance profile；但业务路径、服务、数据集、模型、机器、账号、端口、运行 ID 和一次性 handoff 不能上推为通用规则。
+- **关键动作**：
+  1. 更新 [[agent-system-cross-project-alignment.v1]]，新增 `Registered Project Capability Absorption` 矩阵，逐 registry project 写明 system-layer capability、decision、wiki landing / guard 和 project-bound boundary。
+  2. 更新 [[wiki-governance-system-contract.v1]]，加入“注册表全工程吸收要求”，固定 `registry-driven`、逐行裁决、项目事实剥离和 AcknowledgeBase topic updated 完成态。
+  3. 更新 [[skills/cross-project-governance-audit/SKILL]] 和 [[skills/README]]，让“举一反三 / 所有工程”触发 registry-driven 逐工程审计，而不是只看最强样本。
+  4. 扩展 `scripts/check_agent_control_plane_hardening.py`，检查全登记工程矩阵、关键工程名、代表性治理能力和审计技能接线。
+- **验证 / 边界**：本轮验证对象是 wiki 侧全工程吸收口径和结构接线；不声称所有登记工程已经同步采用 wiki 新口径，也不把 AcknowledgeBase registry 之外的额外本地路径纳入闭环。
+- **影响页面**：[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]]、[[skills/README]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`；AcknowledgeBase 侧同步更新过程方案沉淀 topic 和 log。
+
 ### 吸收 DocCustomeranalysis 实战控制面为 wiki 通用治理能力
 
 - **记录人**：Codex

@@ -24,6 +24,8 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 
 ## Source Coverage
 
+本页的“全工程”口径以 AcknowledgeBase `projects/governance/registry.md` 当前工程注册表为准。能力扫描可以额外发现本机目录信号，但闭环判断不能把“本地扫到路径”混成“注册表工程”；也不能只挑 `DocCustomeranalysis` 这一个最强样本就回答“所有工程已吸收”。
+
 | Source | Read depth | Reusable signal | Boundary |
 | --- | --- | --- | --- |
 | AcknowledgeBase | design topic + matrix / migration concept | 七层 Agent System 对象、per-dialogue / run trace、三层迁移验收、`structure-only` 与 `insufficient-evidence` 边界 | 不复制当前分数、profile hash、项目事实或 source layout。 |
@@ -32,22 +34,32 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 | H100 | `.codex/governance` + AGENTS | L5 blocked-boundary proof、Run Capsule、Loop Contract、Subproject Git Preflight、final reply contract | 不复制远程机器事实、任务状态或 handoff 路径。 |
 | DocCustomeranalysis | AGENTS + governance / skills / templates / checker inventory, 2026-07-23 refresh | 主控治理、Issue 案件链、work-item 拆解、service registry、delivery bundle、public profile live readback、Goal / Loop 长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、performance-bandwidth-analysis、runtime-config-switch、production readback | 不复制客户分析业务链路、149 / 141 服务实例、数据库表、运行 ID、发布 URL、Prefect 当前状态、DB readback 业务 skill 或项目专属 owner gate。 |
 | DocFilmCommunity | AGENTS + frontier intake skill | Frontier Technology Intake、Intelligence Contract、parser / evaluator / A3 compensation、knowledge landing | 不复制影像社区业务事实或候选技术结论。 |
-| LifeOS | AGENTS + presentation / publication profiles, partial read | owner-first personal memory、domain routing、public / lens 边界 | 只作为记忆路由信号；未作为直接 adoption 证据。 |
+| LifeOS | AGENTS + domain / lens / harness profiles | owner-first memory、domain routing、life-matter-routing、problem-focused-lens、L5 closeout proof | 只吸收 owner-first 和领域路由方法；不把生活、健康、旅行、采购等事实写成实现类工程默认。 |
 | OpsMind | AGENTS + governance / skills / checker inventory | workstation / remote-control、第三方工程摄入边界、repo-native skill package、browser / runtime profile readback、visual delivery verification | 不复制本机皮肤路径、远程控制会话、插件资产或一次性性能样例。 |
 | fetch-adapter / prefect / customeranalysis / H100 / haimind / store_stream_download / data_analysis | registered project inventory + AGENTS / local checker signal | 子工程 Git preflight、runtime service readback、conformance profile、implementation evidence、narrow repo-local sensor 的实现类工程信号 | 只吸收工程类型、证据合同和不上推边界；不把这些仓库的当前服务状态、数据根、脚本参数或部署事实写成本仓通用默认。 |
 
-## 2026-07-23 Registered Project Refresh
+## 2026-07-23 Registered Project Capability Absorption
 
-本轮按 AcknowledgeBase registry 覆盖的 14 个工程做能力盘点。结论不是“所有能力已完全吸收”，而是：
+本轮按 AcknowledgeBase registry 逐行覆盖 14 个登记工程。结论不是“所有项目事实都进入 wiki”，而是每个工程的可复用 agent 治理层能力都有 `recognize / complete / upgrade / adapt / defer / reject` 裁决，并写清本仓 owner / sensor / 不上推边界。
 
-| Project group | Current judgment | Wiki action |
-| --- | --- | --- |
-| AcknowledgeBase | 上游 topic / skill / template / harness / research owner 最完整，是系统层方案来源。 | 继续通过 [[acknowledgebase-topic-system-adoption.v1]] 和本页证明 topic 到 wiki owner 的结构吸收；本机存在 AcknowledgeBase 时，相关 topic 必须 `updated` 才算闭环。 |
-| Software/wiki | 已有实现类工程模板、跨工程对齐图、agent-system maturity、harness / instruction / execution-contract / research / lens / public / testing sensors。 | 本轮补齐 source freshness 和 DocCustomeranalysis 后发升级的显式裁决。 |
-| DocCustomeranalysis | 近期升级明显超过本页旧摘要：控制面已经覆盖 Goal / Loop 长任务编排、Run Capsule / dispatch、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、issue070-owner-gate、module-regression-guards、prefect-concurrency-drift，以及 performance / runtime-config / DB readback 专项技能。 | `upgrade + adapt`：吸收“证据分层、长任务控制面、finalizer 范围证明、外部写边界、验收治理、runtime 配置切换、性能流水账、生产 readback”的系统层合同；DB readback 只保留证据分层，不新增通用业务 skill。 |
-| DocFilmCommunity / OpsMind | 已有 repo-native skill、frontier / visual / runtime / third-party boundary 等强信号。 | `recognize`：继续作为研究、视觉交付、第三方摄入和 runtime readback 的源信号；若 wiki 出现同类高频任务再 `upgrade` 为本地 skill / sensor。 |
-| LifeOS | owner-first memory、domain routing、lens / publication 表达强，主要是个人知识工程。 | `adapt`：吸收 owner-first 路由和呈现边界；不把生活域任务事实写入实现类工程模板。 |
-| fetch-adapter / train_platform / prefect / customeranalysis / H100 / haimind / store_stream_download / data_analysis | 主要提供子工程、runtime、数据 / 模型、服务台账、生产 readback、窄 sensor 的 implementation evidence。 | `recognize`：作为实现类工程 profile 的工程类型和证据合同样例；具体脚本、参数、服务状态和数据事实留在各自仓库。 |
+| Registry project | System-layer capability to absorb | Decision | Wiki landing / guard |
+| --- | --- | --- | --- |
+| AcknowledgeBase | 上游 topic owner、过程方案沉淀、研究技能族、skill maturity / dynamic benchmark、cross-repository governance acceptance、`acknowledge_topic_update_required` | complete | [[acknowledgebase-topic-system-adoption.v1]]、[[wiki-governance-system-contract.v1]]、[[agent-system-maturity]] 和本页承接；闭环必须有 AcknowledgeBase topic `updated`。 |
+| Software/wiki | 实现类工程合集与模板、agent system maturity、implementation project profile、topic-to-owner adoption、本仓治理 system contract | complete | [[projects/design/topics/implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]]、[[wiki-governance-system-contract.v1]]；本仓是模板源，不把自身当前状态伪装成下游采纳。 |
+| OpsMind | `local-operations-diagnostics`、第三方工程 / 外部依赖 source metadata、browser / runtime profile live readback、visual delivery verification、remote-control 边界 | recognize / adapt | 第三方摄入边界已进 AcknowledgeBase topic；wiki 侧以 [[skills/research-capability/SKILL]]、[[state-constraint-reasoning]]、[[skills/problem-focused-visual-presentation/SKILL]] 承接，不复制本机工具路径和外部资产。 |
+| DocCustomeranalysis | Goal / Loop 长任务控制面、Run Capsule dispatch、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、production readback、performance-bandwidth-analysis、runtime-config-switch、DB / receipt / ingress readback 分层 | upgrade / complete / adapt | [[agent-orchestration#Production-Grade Control Plane Hardening]]、[[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]] 和 `agent-control-plane-hardening` sensor；DB readback 不新增通用业务 skill。 |
+| DocFilmCommunity | problem-focused visual presentation、frontier technology intake、Goal / Run / Loop / evaluator、A3 compensation、knowledge landing | recognize / adapt | 继续由 [[skills/problem-focused-visual-presentation/SKILL]]、[[skills/research-capability/SKILL]]、[[agent-orchestration]] 承接；不复制影视社区业务事实、候选技术结论或专项内容库。 |
+| LifeOS | owner-first memory、domain routing、life-matter-routing、life-decision-review、problem-focused-lens、weekly / system harness review、L5 closeout proof | adapt | 吸收 owner-first 路由、领域绑定能力不上推、lens / publication 证据边界；不把生活域事实、健康建议、旅行计划或家庭事务变成软件模板事实。 |
+| fetch-adapter | consumer-path smoke、service-side backend switch、store-id / source mapping preflight、runtime switch evidence | recognize / adapt | 作为 [[skills/runtime-config-switch/SKILL]] 和实现类工程 `evidence_contract` 的样例；不复制 store id、数据源、服务 URL、脚本参数或 pipeline 事实。 |
+| train_platform | evaluation-scheme-design、source freshness、formal evaluation vs release separation、dataset review app live link smoke、experiment sweep governance | recognize / adapt | 进入 [[agent-system-maturity]] 的 evaluation / source freshness 边界和 implementation profile 的 evidence contract；不复制数据集、checkpoint、模型、benchmark 或训练运行事实。 |
+| prefect | read-only preflight、真实操作优先于 mock、polling 而非同步断言、admission / lease / heartbeat、staged validation rollback、runtime config 切换 | recognize / adapt | 作为 [[agent-orchestration]] 的 scheduler / service orchestration invariant 和 [[state-constraint-reasoning]] 的可执行性门；不复制 Prefect API 内部实现、部署状态或并发参数。 |
+| customeranalysis | 根 AGENTS 与 CLAUDE / Cursor adapter 边界、`.cursor/rules` modular source、generated agent entry、service-side / end-to-end evidence boundary、read / write path fix preference | recognize / adapt | 吸收“agent 规则单一正文 + thin adapter / generated guard”模式到入口治理判断；不复制识别服务业务、141 / 149 环境、规则源码路径或生产数据。 |
+| H100 | L5 blocked-boundary proof、GPU / runtime / router preflight、implementation vs acceptance ownership split、live readback appendix、Persistence Decision | recognize / adapt | 进入 [[agent-orchestration]]、[[state-constraint-reasoning]] 和 [[agent-system-maturity]] 的 runtime-proof ladder；不复制机器、GPU、模型、端口或远程会话事实。 |
+| haimind | `.codex` governance conformance、agent-harness-conformance、runtime service facts local、public URL claims require live public readback、latency / service ledger 边界 | recognize / adapt | 吸收 conformance profile 与 service-registry / public readback 分层；不复制 Open WebUI 服务、地址、运行 ledger 或模型配置事实。 |
+| store_stream_download | 轻量代码仓最小 AGENTS、project conformance、Persistence Decision、运行验证本地化 | recognize | 作为 minimum viable governance profile：轻量仓也要有入口、conformance、validation 和 persistence 决策；不新增厚治理结构。 |
+| data_analysis | 轻量代码仓最小 AGENTS、预存业务配置改动避让、project conformance、Persistence Decision | recognize | 同 store_stream_download；额外吸收 dirty / local-only 边界，不能为治理整改覆盖业务配置。 |
+
+工程能力覆盖集可以小于注册表全集，例如 public HTML publish 当前覆盖 10 个 prefix、治理优先级只列 5 组；但当用户问“所有工程是否吸收”时，必须回到注册表全集逐行说明，不能用某个能力覆盖集替代全工程口径。
 
 ## DocCustomeranalysis Delta Decision
 
