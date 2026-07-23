@@ -68,7 +68,7 @@ ENTRYPOINT_TERMS = {
     "governance/README.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
     "templates/README.md": ("agent-intelligence-evaluation-template", "positive / negative behavior corpus"),
     "skills/README.md": ("work-item-auto-decomposition", "项目 / 领域绑定"),
-    "AGENTS.md": ("upstream_write_authorization", "Persistence Decision", "conformance"),
+    "AGENTS.md": ("本地是否存在 AcknowledgeBase", "对应 topic 必须 `updated`", "upstream_write_authorization", "Persistence Decision", "conformance"),
     ".codex/AGENTS.md": ("agent-system-maturity", "work-item-auto-decomposition"),
 }
 

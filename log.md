@@ -9,6 +9,21 @@
 
 ## 2026-07-23
 
+### 收紧 AcknowledgeBase 本地存在时的 topic updated 闭环
+
+- **记录人**：Codex
+- **用户意图**：用户纠正上一轮体检口径，明确不是泛泛判断 AcknowledgeBase 是否需要更新；应先判断本地是否存在 AcknowledgeBase，如果存在，则必须有对应 topic `updated` 才算闭环。
+- **关键判断**：
+  1. 本机 `/Users/hai/Documents/Docs/AcknowledgeBase` 存在，因此本轮不能只在 wiki 留 handback 或把 `rejected / deferred` 当作闭环。
+  2. `acknowledge_topic_update_required` 是 agent / workflow / memory / harness / skill / evaluator / sensor / template 等默认行为升级的完成条件；本地存在 AcknowledgeBase 时，完成态收紧为 topic `updated`。
+  3. `rejected / deferred` 只能说明上游 owner 作出明确裁决，不能替代“已吸收并闭环”。
+- **关键动作**：
+  1. 更新 [[AGENTS]] 的上游写回规则，加入“先判本地是否存在 AcknowledgeBase；存在则对应 topic 必须 `updated` 才算闭环”的硬口径。
+  2. 更新 `scripts/check_agent_system_maturity.py` 的入口词汇检查，防止该规则退回只检查 `upstream_write_authorization`。
+  3. 同步更新 AcknowledgeBase 对应 agent-system topic owner、执行约束和 handback 模板，使本轮不是 wiki 本地自述闭环。
+- **验证 / 边界**：本轮验证对象是规则入口、AcknowledgeBase topic owner 和 sensor 词汇接线；不处理 `.obsidian` 本地配置改动，也不接手 AcknowledgeBase 里本轮开始前已经存在的其他未提交改动。
+- **影响页面**：[[AGENTS]]、[[log]]、`scripts/check_agent_system_maturity.py`；AcknowledgeBase 侧为 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md`、`templates/system-governance-upgrade-return-template.md`、`skills/cross-project-skill-adoption-prompt/SKILL.md`、`log.md`。
+
 ### 全面整改 wiki 治理体系运行合同
 
 - **记录人**：Codex
