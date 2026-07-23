@@ -35,6 +35,23 @@
 
 当目标是 Agent System Capability Package 或 intelligence maturity，不用 skill maturity 替代整体判断；先读 [[agent-system-maturity]]，再区分 skill、runtime、harness、memory、evaluation、governance、migration 和八维 `insufficient-evidence` 边界。
 
+## Governance System Capability Pack
+
+当目标不是单个 skill，而是“全面整改 wiki 治理体系”或同时触及 agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 多层时，先读 [[wiki-governance-system-contract.v1]]，再决定哪些现有技能参与。
+
+技能层在这个 Capability Pack 中只承担可复用执行流程，不独占整体完成裁决：
+
+| 能力 | 主要技能 / owner | 完成边界 |
+| --- | --- | --- |
+| 长时目标和完成契约 | [[skills/goal-contract/SKILL]] | Goal Contract 不能替代验收和治理系统完成定义。 |
+| 多轮 / Worker / Evaluator | [[skills/loop-engineering/SKILL]]、[[agent-orchestration]] | Loop 只负责发现、分派、验证、持久化和 next-run decision。 |
+| 能力迁移与 topic 吸收 | [[skills/transferable-skill-governance/SKILL]]、[[acknowledgebase-topic-system-adoption.v1]] | 只吸收系统能力，不复制项目事实、分数或目录。 |
+| 调研和源计划 | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] | 调研证据不能直接上推为治理能力已落地。 |
+| 复盘和纠偏学习 | [[skills/retrospective-capability/SKILL]]、[[harness-evolution]] | episode 先进入 ledger，再决定晋升为模板、sensor、skill 或 rule。 |
+| 文档维护和入口一致性 | [[skills/documentation-maintenance/SKILL]] | 入口同步不能替代 owner landing 和 sensor / evaluator。 |
+
+治理体系整改的可复制字段使用 [[templates/governance-system-upgrade-contract-template]]；专项检查为 `python3 scripts/check_all.py --only governance-system-rectification`。
+
 ## 本工程 baseline conformance
 
 本节是本仓通用 agent 技能体系的 project conformance 声明。它只描述本仓自己的执行事实和验证入口，不代表 AcknowledgeBase、下游工程或矩阵快照已经完成迁移。

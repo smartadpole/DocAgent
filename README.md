@@ -57,6 +57,7 @@ tags: [entry, root]
 - 想知道“规则、模板、Goal、log 或 sensor 是否用得过重” -> 读 [[agent-governance-strategy]]
 - 想知道“当前权限、远程、dirty 状态或证据层级是否允许继续执行” -> 读 [[state-constraint-reasoning]]
 - 想知道“多 agent、Run Capsule、子工程 Git preflight 和 Worker / Evaluator 怎么分工” -> 读 [[agent-orchestration]]
+- 想判断“wiki 治理体系全面整改是否真的完成，还是只做了文档 / manifest / sensor 子项” -> 读 [[wiki-governance-system-contract.v1]]
 - 想判断“目标工程 agent system 是否具备七层能力、外部矩阵能否识别、智能化证据是否足够” -> 读 [[agent-system-maturity]]
 - 想把所有工程里的 agent、harness、memory、workflow、evaluation 和 migration 能力抽象吸收到本仓 -> 读 [[agent-system-cross-project-alignment.v1]]
 - 想确认 AcknowledgeBase 所有 design topics 是否逐 topic 落到 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 体系 -> 读 [[acknowledgebase-topic-system-adoption.v1]]
@@ -116,6 +117,7 @@ tags: [entry, root]
 - [[agent-governance-strategy]] 负责把规则和检查分成 P0 / P1 / P2 / P3，避免把普通任务推成重治理。
 - [[state-constraint-reasoning]] 负责在提交、推送、发布、关闭状态或调用外部工具前判断当前状态是否可执行。
 - [[agent-orchestration]] 负责把 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由接起来。
+- [[wiki-governance-system-contract.v1]] 负责治理体系全面整改的 source coverage、ability extraction、system layer landing、sensor / evaluator、persistence routing 和 closeout proof。
 - [[agent-system-maturity]] 负责 Agent System Capability Package、Matrix Recognition Capsule、intelligence evidence lens 和 external evaluator blocked/readback 边界。
 - [[agent-system-cross-project-alignment.v1]] 负责跨工程智能化能力的 source coverage、七层吸收矩阵、adoption decision 和 `structure-only` / `insufficient-evidence` 边界。
 - [[acknowledgebase-topic-system-adoption.v1]] 负责 AcknowledgeBase source topic 的 ability adoption manifest，逐 topic 证明能力落到 wiki 工程治理体系而不是复制文档。

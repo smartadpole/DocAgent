@@ -61,6 +61,23 @@ Worker 只交证据，不能宣布整体闭环。
 | 可机器检查 | `scripts/check_all.py --only <check-key>` |
 | P0 硬约束 | [[AGENTS]] / [[POLICY]] |
 
+## Governance System Run Capsule
+
+当任务目标是“全面整改 wiki 治理体系”或同时触及 agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 多层时，Run Capsule 必须引用 [[wiki-governance-system-contract.v1]]。
+
+最小字段：
+
+| Field | Required |
+| --- | --- |
+| source coverage | 上游 topic / 下游经验 / 用户纠偏 / 矩阵信号和不可复制边界 |
+| ability extraction | 触发条件、事实源、agent behavior、writeback guard、evidence boundary |
+| owner landing | 每一层实际写入的 owner、skill、template、memory、ledger 或 sensor |
+| evaluator | `governance-system-rectification` 专项、相关专项 sensor、完整 `check_all` 和人工 / external readback 边界 |
+| persistence routing | log、harness ledger、project memory、skill、template、sensor、rule 的 needed / no-op / blocked |
+| closeout proof | commit、structure-only、insufficient-evidence、runtime / external evaluator 未验证边界 |
+
+如果只完成 topic manifest、摘要矩阵、入口链接或单个 sensor，Evaluator 只能裁决 `partial / review`，不能裁决治理体系全面完成。
+
 ## Closeout Proof
 
 收尾时必须说明：

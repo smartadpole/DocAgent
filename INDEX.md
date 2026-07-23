@@ -36,6 +36,7 @@ tags: [index, root]
 - [[agent-governance-strategy]]：Agent 治理分级，决定规则、模板、sensor、log、Goal 或复盘应按 P0 / P1 / P2 / P3 落位
 - [[state-constraint-reasoning]]：状态约束推理，决定权限、远程、dirty 状态、预算和证据层级是否允许执行动作
 - [[agent-orchestration]]：Agent 编排入口，定义 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由
+- [[wiki-governance-system-contract.v1]]：治理体系全面整改运行合同，定义 agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 的实际完成标准
 - [[agent-system-maturity]]：Agent System Capability Package、Matrix Recognition Capsule、intelligence evidence lens 和 external evaluator readback 边界
 - [[agent-system-cross-project-alignment.v1]]：跨工程 agent / harness / memory / workflow / evaluation / migration 能力吸收图，记录 source coverage、七层矩阵、adoption decision 和 Goodhart 边界
 - [[acknowledgebase-topic-system-adoption.v1]]：AcknowledgeBase topic 逐 topic 能力吸收清单，检查每个 source topic 是否落实到 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 体系
@@ -95,6 +96,7 @@ tags: [index, root]
 - [[agent-governance-strategy]]：Agent Governance Strategy，用 P0 / P1 / P2 / P3 防止规则和检查过重。
 - [[state-constraint-reasoning]]：State Constraint Reasoning，把权限、远程状态、预算和证据边界传播到可执行动作。
 - [[agent-orchestration]]：Agent Orchestration，用 Run Capsule 管主控 / Worker / Evaluator 和子工程 Git preflight。
+- [[wiki-governance-system-contract.v1]]：当目标是治理体系全面整改时，先固定 source coverage、ability extraction、system layer landing、sensor / evaluator、persistence routing 和 closeout proof。
 - [[agent-system-maturity]]：当目标是 agent system / intelligence maturity 或外部矩阵识别时，先填写 Matrix Recognition Capsule，区分 true-gap、recognition-gap 和 signal-only-gap。
 - [[agent-system-cross-project-alignment.v1]]：当目标是借鉴所有工程的智能化能力时，先记录 source coverage 和 repo-native adoption decision，保持 `structure-only` 与 `insufficient-evidence` 边界。
 - [[acknowledgebase-topic-system-adoption.v1]]：当目标是把 AcknowledgeBase 所有 design topics 落实到 wiki 工程治理体系时，先逐 topic 检查 source_topic、capability extraction、wiki owner landing、agent-system action 和 validation。

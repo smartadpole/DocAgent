@@ -32,6 +32,7 @@ H5 不是“规则更多”，而是让 Harness 可以从真实 episode 中学�
 - 工作阶段检查或统一门禁失败，并暴露出规则、模板或 sensor 缺口。
 - 复杂 episode 明显变慢，但慢点不是业务事实复杂，而是 Harness 路由、读取、检查或提交闭环不清。
 - 复盘触发矩阵被跳过，导致长 Goal、多 agent、Run Capsule / Loop 或重复纠偏没有形成应有 checkpoint / 标准复盘 / 深度复盘。
+- 用户指出“只做逐 topic 清单 / 文档复制 / sensor 接线，不等于治理体系全面整改”，说明目标完成口径被子目标偷换；此类 episode 必须回到 [[wiki-governance-system-contract.v1]]，补 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 的 owner landing。
 
 最小字段为：触发信号、响应模式、成本类型、用户可见影响、已采取改动、对应 sensor / 模板 / 规则、当前状态。
 
@@ -63,6 +64,7 @@ H5 同时要求清理噪音。以下内容要进入降级 / 删除候选：
 ## 工作节奏
 
 - 工作阶段：按 [[response-mode-routing]] 先判模式，再用 `python3 scripts/check_all.py --only <check-key>` 跑相关 sensor。
+- 治理体系全面整改阶段：按 [[wiki-governance-system-contract.v1]] 和 [[templates/governance-system-upgrade-contract-template]] 固定 source coverage、ability extraction、system layer landing、sensor / evaluator、persistence routing 和 closeout proof；专项检查为 `python3 scripts/check_all.py --only governance-system-rectification`。
 - Ledger 结构更新后运行 `python3 scripts/check_all.py --only harness-feedback-ledger`；指令遵循覆盖更新后运行 `python3 scripts/check_all.py --only instruction-adherence`；入口、frontmatter 或 wikilink 改动运行 `python3 scripts/check_all.py --only project-docs`。
 - 阶段边界：如果发生模式切换、用户纠偏、检查失败或扩大编辑面，回看是否需要写入 [[harness-feedback-ledger]]，再跑相关专项 sensor。
 - 收尾阶段：完整门禁、提交和最终回复之后，判断本轮是否产生新的 H5 episode。

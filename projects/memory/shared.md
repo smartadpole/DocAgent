@@ -30,7 +30,8 @@ tags: [memory, shared]
 - 角色分层固定为：[[projects/README]] 偏 CTO / 项目负责人视角，[[projects/development/README]] 偏研发经理视角，[[projects/development/feature-points/README]] 和其下实体页偏工程师视角
 - 设计拆模块后，执行粒度以功能点实体页为准；状态镜像看 [[projects/status]]，过程流水看 [[projects/development/execution/worklog]]
 - 功能点用 `status` + `phase` 双轴管理：`status` 看生命周期，`phase` 看串联步骤；每个功能点实体页都要同时写这两个字段；功能点实体页一页一个功能点；旧 `in_progress` 口径已拆开
-- 实现类工程接入先看 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]；AcknowledgeBase topic 中的通用方案按 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 落到 agent、workflow、memory、harness、skill、evaluation、topic 和 migration 层，不复制源工程事实。
+- 实现类工程接入先看 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]；AcknowledgeBase source topic 中的通用方案按 [[acknowledgebase-topic-system-adoption.v1]] 逐 topic 落到 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 层，不复制源工程事实。
+- wiki 治理体系全面整改的完成定义以 [[wiki-governance-system-contract.v1]] 为准：只新增 manifest、摘要矩阵、入口链接或 sensor 只能算 `partial / review`，必须实际写入 owner、模板、memory、harness、skill、sensor 和 closeout proof 后才能说 complete。
 
 ## 需要持续带入的前提
 

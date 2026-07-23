@@ -29,6 +29,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "AcknowledgeBase topic system adoption",
         (sys.executable, "scripts/check_acknowledgebase_topic_adoption.py"),
     ),
+    (
+        "governance-system-rectification",
+        "wiki governance system rectification",
+        (sys.executable, "scripts/check_governance_system_rectification.py"),
+    ),
     ("skill-maturity", "skill maturity", (sys.executable, "scripts/check_skill_maturity.py")),
     (
         "transferable-skill-baseline",

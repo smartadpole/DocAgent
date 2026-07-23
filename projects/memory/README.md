@@ -33,6 +33,7 @@ updated: 2026-07-23
 - [[projects/memory/policy-links]]：运行层和规则层的连接页
 - [[projects/meetings/README]]：项目正式会议入口和纪要分流页
 - [[projects/design/topics/implementation-engineering-template-system]]：实现类工程合集与模板系统的设计 owner
+- [[wiki-governance-system-contract.v1]]：wiki 治理体系全面整改的运行合同
 - [[templates/implementation-project-profile-template]]：主控 / 子工程 / runtime service / 数据模型 / 文档治理工程的接入 profile
 
 ## 当前路由
@@ -40,7 +41,9 @@ updated: 2026-07-23
 - 会话 / 临时收口区：临时信息
 - [[projects/memory/README]]：项目级稳定背景
 - [[projects/design/topics/implementation-engineering-template-system]]：实现类工程模板定位、工程类型覆盖和不能上推边界
-- [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]：AcknowledgeBase topic 到 wiki 系统层的落地矩阵
+- [[wiki-governance-system-contract.v1]]：agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 的全面整改完成定义
+- [[acknowledgebase-topic-system-adoption.v1]]：AcknowledgeBase source topic 到 wiki 系统层的逐 topic ability adoption manifest
+- [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]：AcknowledgeBase topic 到 wiki 系统层的摘要矩阵
 - [[projects/trace]]：项目需求演进链
 - [[projects/meetings/README]]：项目正式会议入口
 - [[BRAIN]]：共享背景

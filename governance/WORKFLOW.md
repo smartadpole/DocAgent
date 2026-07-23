@@ -22,6 +22,21 @@
 - **批处理**：大量同类材料先做批次级校准，再复用共享读取集。
 - **收尾**：用户明确要求收尾，或本轮实质变更进入提交前时，只做范围核对、入口同步、log eligibility、二阶反思资格、检查、同主题提交和最终交付说明。
 
+### 0.0.1 治理体系全面整改
+
+当用户要求“全面整改 wiki 治理体系”，或明确点名 agent、workflow、memory、harness、skill、evaluation、template、sensor、closeout 等多层能力时，本轮按 [[wiki-governance-system-contract.v1]] 执行，不得只按单一 topic、单一 skill 或单一 sensor 收口。
+
+默认使用 [[templates/governance-system-upgrade-contract-template|Governance System Upgrade Contract]] 或等价结构，至少固定：
+
+- `source coverage`：上游 topic、下游经验、用户纠偏或矩阵信号是什么。
+- `ability extraction`：文档内容如何抽象成触发条件、事实源、agent behavior、writeback guard 和 evidence boundary。
+- `system layer landing`：agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 各自落到哪个 owner。
+- `sensor / evaluator`：可机器检查的内容进入 `scripts/check_all.py --only governance-system-rectification` 或专项 sensor；不可机器检查的行为写清人工 / external evaluator 边界。
+- `persistence routing`：是否写入 [[log]]、[[harness-feedback-ledger]]、[[projects/memory/README]]、skill、template 或 rule。
+- `closeout proof`：专项和全量检查、commit、structure-only / insufficient-evidence / runtime readback 边界。
+
+完成判断按 [[wiki-governance-system-contract.v1#完成定义]]；只完成逐 topic manifest、摘要矩阵、入口链接或 sensor 时，只能回答 `partial / review`，不能回答“全面整改完了”。
+
 长时任务的 Goal Contract 放在响应模式判断之后、正式长时执行之前：
 
 - 主控侧任务如果要“持续推进直到完成”，先用 [[templates/goal-contract-template]] 定义期望最终状态、完成判定、验证面 / 证据边界、约束、边界、预算、探索分支上限和阻塞停止条件。
@@ -40,6 +55,7 @@
 - 当前只改 Harness wiring、模板入口或响应路由时，优先跑 `python3 scripts/check_all.py --only harness-governance`。
 - 当前只改 Agent 编排、状态约束、治理分级、Run Capsule 或 Subproject Git Preflight 时，优先跑 `python3 scripts/check_all.py --only harness-governance,loop-engineering`。
 - 当前只改 Agent System Capability Package、agent-system maturity、intelligence evidence 或 external evaluator capsule 时，优先跑 `python3 scripts/check_all.py --only agent-system-maturity`。
+- 当前改 wiki 治理体系全面整改合同、agent / workflow / memory / harness / skill 多层 owner landing、治理升级模板或相关 closeout proof 时，优先跑 `python3 scripts/check_all.py --only governance-system-rectification`。
 - 当前只改项目内技能、技能模板、技能入口或技能成熟度证据信号时，优先跑 `python3 scripts/check_all.py --only skill-maturity`。
 - 当前只改 Gate / FP / EP / TASK / Issue / risk / test / 验收 / 服务台账 wiring 时，优先跑 `python3 scripts/check_all.py --only work-item-matrix`。
 - 当前只改测试计划、AP、fixture / oracle、人工确认、报告计划来源或发布 runbook 时，优先跑 `python3 scripts/check_all.py --only testing-system-maturity`。

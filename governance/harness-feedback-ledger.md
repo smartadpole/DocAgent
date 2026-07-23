@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-23 | 逐 topic 清单不等于治理体系完成 | 用户指出上一轮只把所有 topic 做成能力吸收 manifest 和 sensor，仍没有全面整改 wiki 的 agent、workflow、memory、harness、skill 等治理体系 | 规则升级 | 必要成本 | 新增 [[wiki-governance-system-contract.v1]]、[[templates/governance-system-upgrade-contract-template]] 和 `scripts/check_governance_system_rectification.py`，并把全面整改完成定义接入 agent adapter、WORKFLOW、memory、harness、skills、templates、ledger 和 check_all | `python3 scripts/check_all.py --only governance-system-rectification` / [[wiki-governance-system-contract.v1]] | active |
 | 2026-06-25 | 复盘 archive 与 sensor 闭环升级 | 用户要求把 Harness 复盘触发、档案落位、文件爆炸控制、行动分流、自演进和本地 sensor 接成可验证闭环 | 规则升级 | 可优化成本 | 建立 `projects/retrospectives/<year>/` 与 `indexes/` 结构，更新 [[projects/retrospectives/README]]、[[projects/design/topics/retrospective-archive-storage-structure]]、[[skills/retrospective-capability/SKILL]]、[[templates/project-retrospective-template]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]] 和 `scripts/check_retrospective_system.py` | `python3 scripts/check_all.py --only retrospective-system` | active |
 | 2026-06-22 | Agent Harness L5 验证补强 | 用户指出上一轮仍把真实运行质量、多 agent 运行质量和外部 Git 状态写成未验证边界，要求必须验证到 L5 | 验收关闭 | 必要成本 | 新增 `scripts/check_agent_harness_l5.py` 和 [[projects/development/reports/2026-06-22-agent-harness-l5-validation]]，把 Goal dry-run、Run Capsule dry-run、Subproject Git Preflight live readback、Harness Evolution route 和最终回复证明接到 `check_all`；同步规则升级入口 | `python3 scripts/check_all.py --only agent-harness-l5` | active |
 | 2026-06-22 | 整体 Agent Harness 模块接入 | 用户要求不是只迁移 skills，而是把入口规则、响应模式、运行合同、任务编排、写入边界、沉淀路由、sensor 门禁、复盘自演进和最终交付合同接入目标工程 | 规则升级 | 可优化成本 | 新增 [[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]；升级 Goal / Run / Loop 模板、Loop skill、入口规则和 `check_harness_governance.py` / `check_loop_engineering.py` | `python3 scripts/check_all.py --only harness-governance,loop-engineering` | active |
@@ -51,6 +52,7 @@ tags: [agent, harness, feedback, episode]
 | 规则降级 / 删除提醒 | 自然语言规则可能继续膨胀 | 周期复盘时用 [[templates/harness-evolution-review-template]] 标记 stale / noisy 规则 | observed |
 | Agent Harness core wiring | 编排、状态约束和治理分级容易只停在自然语言 | `check_harness_governance.py` 检查 [[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、入口和模板字段 | active |
 | Agent Harness L5 validation | 结构 wiring 容易被误写成真实运行质量 | `scripts/check_agent_harness_l5.py` 检查代表性 Goal / Run / Git preflight / ledger route 和 L5 final proof 报告 | active |
+| 治理体系全面整改 gate | 逐 topic 清单不等于治理体系完成 | `scripts/check_governance_system_rectification.py` 检查 [[wiki-governance-system-contract.v1]]、agent adapter、WORKFLOW、memory、harness、skill、template、ledger、topic adoption 和 `check_all` 接线 | active |
 
 ## Rule Promotion Queue
 
@@ -70,6 +72,7 @@ tags: [agent, harness, feedback, episode]
 | 规则、模板、sensor、log、复盘和 Goal 的强度先做 P0 / P1 / P2 / P3 分级，避免所有偏差都升级成硬规则 | 整体 Agent Harness 模块接入 | [[agent-governance-strategy]] / [[POLICY]] / [[WORKFLOW]] | active |
 | 行动依赖权限、远程、dirty / diverged、预算或人工确认时先做 state constraint reasoning | 整体 Agent Harness 模块接入 | [[state-constraint-reasoning]] / [[WORKFLOW]] / [[POLICY]] | active |
 | L5 不等于泛称“已验证”；必须给用户可见的命令、结果、commit / push readback、不能上推边界和例外原因 | Agent Harness L5 验证补强 | [[instruction-adherence]] / `scripts/check_agent_harness_l5.py` / 本轮验证报告 | active |
+| 全面整改不能用局部 coverage 代替系统能力落地；必须逐层写入 owner、模板、memory、harness、skill、sensor 和 closeout proof | 逐 topic 清单不等于治理体系完成 | [[wiki-governance-system-contract.v1]] / [[templates/governance-system-upgrade-contract-template]] / `scripts/check_governance_system_rectification.py` | active |
 
 ## Rule Prune Queue
 

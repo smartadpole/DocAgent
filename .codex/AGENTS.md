@@ -13,6 +13,7 @@
 - 如果涉及多 agent、多线程、主控 / 子工程、Worker / Evaluator 或 Subproject Git Preflight，读 [[agent-orchestration]] 和 [[templates/run-capsule-template]]。
 - 如果涉及 agent-system maturity、intelligence evidence、外部矩阵识别或 Agent System Capability Package，读 [[agent-system-maturity]]，并区分 local wiring、expected impact、external readback 和 `insufficient-evidence`。
 - 如果涉及 AcknowledgeBase design topics 到 wiki 工程治理体系的能力吸收，读 [[acknowledgebase-topic-system-adoption.v1]]，逐 source topic 检查 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 的本地 owner，不把复制文档当完成。
+- 如果用户要求全面整改 wiki 治理体系、agent 体系、workflow、memory、harness、skill、sensor、template 或 closeout 行为，读 [[wiki-governance-system-contract.v1]]，必要时使用 [[templates/governance-system-upgrade-contract-template]] 固定 source coverage、ability extraction、system layer landing、sensor / evaluator、persistence routing 和 closeout proof；只新增 manifest、入口链接或 sensor 不能回答完成。
 - 如果涉及主控、子工程、runtime service、数据 / 模型工程、文档治理工程或“wiki 作为实现类工程合集 / 模板”的升级，读 [[projects/design/topics/implementation-engineering-template-system]]，并使用 [[templates/implementation-project-profile-template]] 固定 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract 和 Closeout Proof。
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
 - 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
@@ -36,6 +37,7 @@
 - Agent System Capability Package、intelligence evidence 或外部矩阵识别 capsule 改动跑：`python3 scripts/check_all.py --only agent-system-maturity`。
 - 实现类工程合集、主控 / 子工程模板、implementation project profile 或 topic landing 改动跑：`python3 scripts/check_all.py --only implementation-template-system`。
 - AcknowledgeBase source topic 到 wiki agent / workflow / memory / harness / skill 等系统层的逐 topic 能力吸收改动跑：`python3 scripts/check_all.py --only acknowledge-topic-adoption`。
+- wiki 治理体系全面整改、能力层 owner landing、模板 / memory / harness / skill / sensor 接线改动跑：`python3 scripts/check_all.py --only governance-system-rectification`。
 - 研发事项模型、事项矩阵或 work-item-auto-decomposition 改动跑：`python3 scripts/check_all.py --only work-item-matrix`。
 - 入口、wikilink 或治理元数据改动跑：`python3 scripts/check_all.py --only project-docs`。
 - 测试计划 / AP / 报告计划来源改动跑：`python3 scripts/check_all.py --only testing-system-maturity`。

@@ -9,6 +9,22 @@
 
 ## 2026-07-23
 
+### 全面整改 wiki 治理体系运行合同
+
+- **记录人**：Codex
+- **用户意图**：用户继续纠偏，指出逐 topic manifest 仍不等于“全面整改 wiki 的治理体系”；真正目标是让 AcknowledgeBase topics 和本库通用方案进入 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、sensor 和 closeout 行为。
+- **关键判断**：
+  1. 上一阶段完成的是 topic coverage gate，不能上推为治理体系全面完成。
+  2. 全面整改必须有统一运行合同，并实际接入 agent adapter、WORKFLOW、memory、harness、skill、template、ledger 和 `check_all`。
+  3. 完成回复必须区分 `structure-only`、`insufficient-evidence`、runtime readback、external evaluator 和人工确认边界。
+- **关键动作**：
+  1. 新增 [[wiki-governance-system-contract.v1]]，定义治理体系全面整改的完成标准、层级合同、执行包、不完成条件和验证命令。
+  2. 新增 [[templates/governance-system-upgrade-contract-template]]，把 source coverage、ability extraction、system layer landing、sensor / evaluator、persistence routing 和 closeout proof 固定成可复用字段。
+  3. 新增 `scripts/check_governance_system_rectification.py` 并接入 `scripts/check_all.py --only governance-system-rectification`，检查 contract、entrypoint、WORKFLOW、memory、harness、skill、template、ledger、topic adoption 和 check_all 接线。
+  4. 更新 [[.codex/AGENTS]]、[[WORKFLOW]]、[[agent-orchestration]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[projects/memory/README]]、[[projects/memory/shared]]、[[skills/README]]、[[templates/README]]、[[governance/README]]、[[INDEX]] 和 [[README]]，把治理体系整改包接入实际 owner。
+- **验证 / 边界**：`python3 scripts/check_all.py --only governance-system-rectification` 通过；组合专项 `governance-system-rectification,acknowledge-topic-adoption,agent-system-maturity,implementation-template-system,harness-governance,skill-maturity,harness-feedback-ledger,project-docs` 通过。验证对象是治理系统结构、owner landing、模板、ledger 和 sensor 接线；不证明每个未来 agent 行为已经被外部 evaluator 评分或已有 runtime/live readback。
+- **影响页面**：[[wiki-governance-system-contract.v1]]、[[templates/governance-system-upgrade-contract-template]]、[[.codex/AGENTS]]、[[WORKFLOW]]、[[agent-orchestration]]、[[harness-evolution]]、[[harness-feedback-ledger]]、[[projects/memory/README]]、[[projects/memory/shared]]、[[skills/README]]、[[templates/README]]、[[governance/README]]、[[INDEX]]、[[README]]、[[log]]、`scripts/check_governance_system_rectification.py`、`scripts/check_all.py`。
+
 ### 纠偏为逐 topic 能力吸收到 agent 系统
 
 - **记录人**：Codex
