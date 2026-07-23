@@ -125,6 +125,10 @@ PROACTIVE_DIALOGUE_REQUIRED_TERMS = (
     "常规引导",
     "P0 首次接触冷启动",
     "参考回复骨架",
+    "默认直接使用",
+    "可以从这几个方向开始：",
+    "推荐第一步：",
+    "编号列表",
     "协作维护者",
     "这轮想解决什么",
     "wiki / agent 体系分块呈现",
@@ -397,7 +401,7 @@ def check_proactive_dialogue(repo: Path) -> list[str]:
             errors.append(f"{rel}: missing proactive-dialogue-system wiring")
     for rel, doc in (("AGENTS.md", agents), (".codex/AGENTS.md", codex_adapter)):
         if doc:
-            for term in ("P0 首次接触冷启动", "你好 / hi / 开始吧", "首次接触", "融合入口", "常规引导", "推荐第一步", "系统角色", "用户目标", "协作方式", "第一步成果", "协作维护者", "这轮想解决什么", "零工具", "零读盘", "零命令", "Persistence Decision", "检查结果", "提交状态"):
+            for term in ("P0 首次接触冷启动", "你好 / hi / 开始吧", "首次接触", "融合入口", "常规引导", "默认直接使用", "可以从这几个方向开始：", "推荐第一步：", "系统角色", "用户目标", "协作方式", "第一步成果", "协作维护者", "这轮想解决什么", "零工具", "零读盘", "零命令", "Persistence Decision", "检查结果", "提交状态"):
                 if term not in doc:
                     errors.append(f"{rel}: missing cold-start greeting guard {term}")
     return errors
