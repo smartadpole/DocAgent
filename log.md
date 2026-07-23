@@ -9,6 +9,22 @@
 
 ## 2026-07-23
 
+### 把首次问候收紧为零工具快速回复
+
+- **记录人**：Codex
+- **用户意图**：用户用截图指出，一个“你好”思考接近半分钟且读取文件 / 跑命令仍未出结果，这不合理。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话 / 冷启动规则的性能纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
+- **关键判断**：
+  1. 首次问候的目标是低压力入口，不是身份审计；为了更精确的工程身份去读 README、BRAIN、projects 或跑 `rg` / `git`，属于应避免成本。
+  2. 正确策略是零工具 / 零读盘 / 零命令 / 零调研即时回复；身份不确定时，把“先定位工程身份”列为可选推进方向。
+  3. 文件层可以 no-op，但用户可见层必须先回复；不能先进入 `Working...`。
+- **关键动作**：
+  1. 更新 [[proactive-dialogue-system]]，把首次问候默认动作改为只使用已加载上下文和启动入口身份，并加入 3 秒内快速回复预算。
+  2. 更新 [[response-mode-routing]]、根 [[AGENTS]] 和 [[.codex/AGENTS]]，把首次问候明确为零工具 / 零读盘 / 零命令路径。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，让 sensor 检查首次问候性能 guard。
+- **验证 / 边界**：本轮验证对象是规则和 sensor 接线；不证明外部已经打开的旧会话已热更新，也不证明 UI 绝不会显示短暂工作状态。
+- **影响页面**：[[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
+
 ### 把首次问候规则上提到冷启动必读层
 
 - **记录人**：Codex
