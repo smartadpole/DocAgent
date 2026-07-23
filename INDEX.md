@@ -38,6 +38,7 @@ tags: [index, root]
 - [[agent-orchestration]]：Agent 编排入口，定义 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由
 - [[agent-system-maturity]]：Agent System Capability Package、Matrix Recognition Capsule、intelligence evidence lens 和 external evaluator readback 边界
 - [[agent-system-cross-project-alignment.v1]]：跨工程 agent / harness / memory / workflow / evaluation / migration 能力吸收图，记录 source coverage、七层矩阵、adoption decision 和 Goodhart 边界
+- [[acknowledgebase-topic-system-adoption.v1]]：AcknowledgeBase topic 逐 topic 能力吸收清单，检查每个 source topic 是否落实到 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 体系
 - [[projects/design/topics/implementation-engineering-template-system]]：实现类工程合集与模板系统，覆盖主控、子工程、runtime service、数据 / 模型工程和文档治理工程的 profile、控制面、证据合同和不上推边界
 - [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]：AcknowledgeBase topic 到 wiki 的 agent / workflow / memory / harness / skill / evaluation / topic / migration 落地矩阵
 - [[instruction-adherence]]：指令遵循治理，决定已有规则如何进入触发矩阵、模板字段、sensor、门禁和最终证明
@@ -96,6 +97,7 @@ tags: [index, root]
 - [[agent-orchestration]]：Agent Orchestration，用 Run Capsule 管主控 / Worker / Evaluator 和子工程 Git preflight。
 - [[agent-system-maturity]]：当目标是 agent system / intelligence maturity 或外部矩阵识别时，先填写 Matrix Recognition Capsule，区分 true-gap、recognition-gap 和 signal-only-gap。
 - [[agent-system-cross-project-alignment.v1]]：当目标是借鉴所有工程的智能化能力时，先记录 source coverage 和 repo-native adoption decision，保持 `structure-only` 与 `insufficient-evidence` 边界。
+- [[acknowledgebase-topic-system-adoption.v1]]：当目标是把 AcknowledgeBase 所有 design topics 落实到 wiki 工程治理体系时，先逐 topic 检查 source_topic、capability extraction、wiki owner landing、agent-system action 和 validation。
 - [[skills/technology-research/SKILL]]：技术调研总控，先固定调研合同、证据等级、成熟度、风险门和沉淀落位。
 - [[skills/research-capability/SKILL]]：research-capability 聚合入口，避免把外部研究子项原样平铺进本库。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把已沉淀技能生成目标工程可执行迁移任务书。

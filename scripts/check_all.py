@@ -24,6 +24,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "implementation project template system",
         (sys.executable, "scripts/check_implementation_template_system.py"),
     ),
+    (
+        "acknowledge-topic-adoption",
+        "AcknowledgeBase topic system adoption",
+        (sys.executable, "scripts/check_acknowledgebase_topic_adoption.py"),
+    ),
     ("skill-maturity", "skill maturity", (sys.executable, "scripts/check_skill_maturity.py")),
     (
         "transferable-skill-baseline",

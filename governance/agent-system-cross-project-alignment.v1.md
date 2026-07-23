@@ -12,7 +12,7 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 
 主入口：[[agent-system-maturity]]
 
-相关：[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-governance-audit/SKILL]]、[[agent-orchestration]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[acknowledgebase-topic-system-adoption.v1]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-governance-audit/SKILL]]、[[agent-orchestration]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 ## 定位
 
@@ -20,13 +20,14 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 
 本页不复制源工程目录、项目事实、运行 ID、服务名、端口、矩阵分数、历史 log 或一次性 handoff。它只吸收系统层信息：触发条件、事实源分层、执行合同、记忆路由、评估口径、回写守卫、sensor 和不上推边界。
 
-2026-07-23 起，本页还承接 AcknowledgeBase topic 到 wiki 本地系统层的吸收图：落地入口是 [[projects/design/topics/implementation-engineering-template-system]] 与 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]，用于把 AcknowledgeBase topic 家族落实到 agent、workflow、memory、harness、skill、topic、evaluation 和 migration 方案。
+2026-07-23 起，本页还承接 AcknowledgeBase topic 到 wiki 本地系统层的吸收图：总览入口是 [[projects/design/topics/implementation-engineering-template-system]] 与 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]；逐 source topic 的 ability adoption 清单和系统落点以 [[acknowledgebase-topic-system-adoption.v1]] 为准。该 manifest 用来证明 source topic 已落实到 agent、workflow、memory、harness、skill、topic、evaluation、governance、template 和 migration 层，而不是只复制文档。
 
 ## Source Coverage
 
 | Source | Read depth | Reusable signal | Boundary |
 | --- | --- | --- | --- |
 | AcknowledgeBase | design topic + matrix / migration concept | 七层 Agent System 对象、per-dialogue / run trace、三层迁移验收、`structure-only` 与 `insufficient-evidence` 边界 | 不复制当前分数、profile hash、项目事实或 source layout。 |
+| AcknowledgeBase design topics | source topic manifest | 所有 source topic 按 ability adoption 落到 wiki agent / workflow / memory / harness / skill / evaluation / governance / template / topic / migration owner | 逐 topic 覆盖只证明结构接线，不证明行为智能评分。 |
 | train_platform | owner docs + memory / harness + checker | Agent System Capability Package、source freshness、alignment map、evaluation correction closeout、Agent Memory Contract | 不复制 dataset、benchmark、运行状态或工程内记录。 |
 | H100 | `.codex/governance` + AGENTS | L5 blocked-boundary proof、Run Capsule、Loop Contract、Subproject Git Preflight、final reply contract | 不复制远程机器事实、任务状态或 handoff 路径。 |
 | DocCustomeranalysis | AGENTS + issue / work-item / lens / publication skills | 主控治理、Issue 案件链、work-item 拆解、service registry、delivery bundle、public profile live readback | 不复制客户分析业务链路、服务实例、数据库或发布 URL。 |
@@ -46,14 +47,14 @@ tags: [governance, agent-system, cross-project, intelligence, harness, memory, w
 | governance | 用户纠偏、检查失败、重复失守和模式切换先形成 episode，再晋升模板 / sensor / skill / rule | [[harness-evolution]]、[[harness-feedback-ledger]]、[[instruction-adherence]] | recognize existing path |
 | migration | Agent System Capability Package、target self-check、project conformance、security boundary、rollback / defer | [[agent-system-maturity]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、skill transfer templates | complete cross-project alignment map |
 | implementation-template | 主控 / 子工程 / runtime service / data-model / documentation-governance 的工程画像、控制面和证据合同 | [[projects/design/topics/implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]] | complete local implementation template owner |
-| topic-landing | AcknowledgeBase topic 中已覆盖方案按 wiki 系统层吸收，不复制原目录 | [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] | complete topic landing matrix |
+| topic-landing | AcknowledgeBase topic 中已覆盖方案按 wiki 系统层吸收，不复制原目录 | [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[acknowledgebase-topic-system-adoption.v1]] | complete source topic adoption manifest |
 
 ## Adoption Decisions
 
 | Candidate | Gap type | Decision | Landing / guard |
 | --- | --- | --- | --- |
 | Cross-project agent intelligence alignment map | true-gap | complete | 本页作为 [[agent-system-maturity]] 的 source pack 和 decision record。 |
-| AcknowledgeBase topic landing into wiki systems | true-gap | complete | 使用 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 把 AcknowledgeBase topic 家族落到 agent / workflow / memory / harness / skill / evaluation / topic / migration 层。 |
+| AcknowledgeBase topic landing into wiki systems | true-gap | complete | 使用 [[acknowledgebase-topic-system-adoption.v1]] 逐 source topic 映射到 agent / workflow / memory / harness / skill / evaluation / governance / template / topic / migration 层；[[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 只保留摘要矩阵。 |
 | Implementation engineering template system | true-gap | complete | 使用 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]] 承接所有实现类工程合集与模板目标。 |
 | source freshness policy | recognition-gap | adapt | 在本页、snapshot 和 checker 中记录 source coverage；不伪造外部 freshness hash。 |
 | per-dialogue / run trace | true-gap | defer runtime implementation | 先承认为 intelligence evidence 缺口；没有行为语料时保持 `insufficient-evidence`。 |

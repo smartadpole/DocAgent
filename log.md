@@ -9,6 +9,21 @@
 
 ## 2026-07-23
 
+### 纠偏为逐 topic 能力吸收到 agent 系统
+
+- **记录人**：Codex
+- **用户意图**：用户纠正上一阶段口径，指出目标不是复制文档或只写 topic family 摘要，而是 AcknowledgeBase `projects/design/topics/` 中所有 topic 都要落实到 wiki 的工程治理体系，形成 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 的实际能力。
+- **关键判断**：
+  1. 既有 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 只是摘要矩阵，不能证明所有 source topic 都已逐一落到本地系统 owner。
+  2. 正确 owner 应是治理层 manifest，逐 source topic 写清 capability extraction、wiki system layers、wiki owner landing、agent-system action 和 validation。
+  3. 完成证据必须有专项 sensor，检查每个 source topic 是否出现并接入入口页；否则仍可能退化成“看起来覆盖”的文档列表。
+- **关键动作**：
+  1. 新增 [[acknowledgebase-topic-system-adoption.v1]]，逐一覆盖 AcknowledgeBase design topics 下的 source topic 文件，把每个 topic 抽象成 wiki 本地 agent system 能力和 owner landing。
+  2. 新增 `scripts/check_acknowledgebase_topic_adoption.py` 并接入 `scripts/check_all.py --only acknowledge-topic-adoption`，检查 source topic 全覆盖、系统层词汇、不复制边界和入口回链。
+  3. 更新 [[agent-system-maturity]]、[[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[INDEX]]、[[governance/README]]、[[README]]、[[.codex/AGENTS]] 和 [[projects/design/topics/README]]，把逐 topic manifest 接成主证据，不让摘要页替代全量能力吸收。
+- **验证 / 边界**：本轮验证对象是 wiki 本地逐 topic ability adoption、owner landing、entrypoint wiring 和 sensor coverage；它不证明每个未来 agent 行为已经被外部 evaluator 评分，也不把 AcknowledgeBase 的项目事实、状态、分数、运行记录或 handoff 复制进 wiki。
+- **影响页面**：[[acknowledgebase-topic-system-adoption.v1]]、[[agent-system-maturity]]、[[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[projects/design/topics/README]]、[[INDEX]]、[[governance/README]]、[[README]]、[[.codex/AGENTS]]、[[log]]、`scripts/check_acknowledgebase_topic_adoption.py`、`scripts/check_all.py`。
+
 ### 建立实现类工程合集与模板系统
 
 - **记录人**：Codex

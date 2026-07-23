@@ -59,6 +59,7 @@ tags: [entry, root]
 - 想知道“多 agent、Run Capsule、子工程 Git preflight 和 Worker / Evaluator 怎么分工” -> 读 [[agent-orchestration]]
 - 想判断“目标工程 agent system 是否具备七层能力、外部矩阵能否识别、智能化证据是否足够” -> 读 [[agent-system-maturity]]
 - 想把所有工程里的 agent、harness、memory、workflow、evaluation 和 migration 能力抽象吸收到本仓 -> 读 [[agent-system-cross-project-alignment.v1]]
+- 想确认 AcknowledgeBase 所有 design topics 是否逐 topic 落到 wiki 的 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 和 migration 体系 -> 读 [[acknowledgebase-topic-system-adoption.v1]]
 - 想知道“Harness 如何从真实 episode 中自我修正、何时升级 sensor / 模板 / 规则” -> 读 [[harness-evolution]] 和 [[harness-feedback-ledger]]
 - 想知道“规则已有但为什么执行会漏、如何升级成触发器 / 模板 / sensor / 最终证明” -> 读 [[instruction-adherence]]
 - 想知道“当前执行页有没有把参考规则、非目标或证据说明漂成隐形待办” -> 读 [[execution-contract-semantics]]
@@ -117,6 +118,7 @@ tags: [entry, root]
 - [[agent-orchestration]] 负责把 Goal、Run Capsule、Orchestrator、Worker、Evaluator、Subproject Git Preflight 和沉淀路由接起来。
 - [[agent-system-maturity]] 负责 Agent System Capability Package、Matrix Recognition Capsule、intelligence evidence lens 和 external evaluator blocked/readback 边界。
 - [[agent-system-cross-project-alignment.v1]] 负责跨工程智能化能力的 source coverage、七层吸收矩阵、adoption decision 和 `structure-only` / `insufficient-evidence` 边界。
+- [[acknowledgebase-topic-system-adoption.v1]] 负责 AcknowledgeBase source topic 的 ability adoption manifest，逐 topic 证明能力落到 wiki 工程治理体系而不是复制文档。
 - [[instruction-adherence]] 负责把关键规则从自然语言推进到触发矩阵、模板字段、sensor、门禁和最终回复证明。
 - [[execution-contract-semantics]] 负责防止参考规则、条件路由、非目标和上层证据污染当前执行合同。
 - [[harness-evolution]] 和 [[harness-feedback-ledger]] 负责把用户纠偏、检查失败、模式切换和重复失守记录成 episode，再决定是否晋升为 sensor、模板、技能或规则。

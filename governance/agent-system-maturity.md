@@ -12,7 +12,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 
 主入口：[[governance/README]]
 
-相关：[[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、[[templates/agent-intelligence-evaluation-template]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[agent-system-cross-project-alignment.v1]]、[[acknowledgebase-topic-system-adoption.v1]]、[[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、[[templates/agent-intelligence-evaluation-template]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 ## 定位
 
@@ -23,6 +23,8 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 本页只承接体系对象、证据边界、评估 capsule、缺口分类和本仓落位；不承接 AcknowledgeBase 的当前分数、profile hash、历史 snapshot、项目事实或一次性矩阵输出。
 
 跨工程智能化能力吸收的 source pack 和 adoption decision 由 [[agent-system-cross-project-alignment.v1]] 承接。它用于处理“借鉴所有工程的 agent / harness / memory / workflow 能力”这类任务，并把源工程信号分类为 `recognize / complete / upgrade / adapt / defer / reject`，不复制源工程事实或目录形态。
+
+AcknowledgeBase `projects/design/topics/` 的逐 topic 能力吸收由 [[acknowledgebase-topic-system-adoption.v1]] 承接。它是 wiki 对上游 design topics 的 ability adoption source of truth：每个 source topic 必须抽象落实到 agent、workflow、memory、harness、skill、evaluation、governance、template、topic 或 migration 的本地 owner，不能只复制文档或只写 family 摘要。
 
 ## 七层对象
 
@@ -76,6 +78,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 | Cross-project agent intelligence alignment | true-gap | 新增 [[agent-system-cross-project-alignment.v1]]，把 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity、LifeOS 等工程的系统层能力抽象到本仓七层对象 | 结构对齐不能上推为行为智能得分。 |
 | Implementation Project Template System | true-gap | 新增 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]] 和 `scripts/check_implementation_template_system.py` | 模板接线不能上推为任何具体工程已上线、已验收或已具备行为智能。 |
 | Agent Intelligence Evaluation Path | true-gap | 新增 [[templates/agent-intelligence-evaluation-template]]，把正负行为样本、八维 intelligence lens、evaluator provenance 和 Goodhart guard 固定成可复用评估合同 | 缺 negative evidence review、external readback 或人工 reviewer 时继续保持 `agent_intelligence_score: null`。 |
+| AcknowledgeBase Topic System Adoption | true-gap | 新增 [[acknowledgebase-topic-system-adoption.v1]] 和 `scripts/check_acknowledgebase_topic_adoption.py`，逐 source topic 检查能力是否落到 wiki 的 agent / workflow / memory / harness / skill / evaluation / governance / template / topic / migration 层 | 逐 topic 结构落地不能上推为未来每轮 agent 行为已通过外部 evaluator。 |
 
 ## Persistence Decision
 
@@ -89,7 +92,7 @@ Worker findings、治理 delta 和 future-task knowledge 没有完成 Persistenc
 
 ## 验证口径
 
-- 专项：`python3 scripts/check_all.py --only agent-system-maturity,implementation-template-system,skill-maturity,work-item-matrix`
+- 专项：`python3 scripts/check_all.py --only agent-system-maturity,implementation-template-system,acknowledge-topic-adoption,skill-maturity,work-item-matrix`
 - 完整：`python3 scripts/check_all.py`
 - whitespace：`git diff --check`
 - 外部 evaluator：由主控刷新 AcknowledgeBase matrix；本仓只回传 capsule、expected impact、blocked reason 和未验证边界。
