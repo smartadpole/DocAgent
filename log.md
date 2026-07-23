@@ -24,7 +24,8 @@
   3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，让 sensor 检查 onboarding 四要素，并锁住 `Persistence Decision`、当前分支等运行层术语不得进入首次接触默认回复。
   4. 新增首次接触参考回复骨架，并禁止把“检查当前项目状态”“下达实现或收尾指令”作为首次接触默认方向。
   5. 将首次接触四项设定上提为根 [[AGENTS]] 和 [[.codex/AGENTS]] 顶部 P0 冷启动规则，要求 **系统角色 / 用户目标 / 协作方式 / 第一步成果** 四个标签必须逐项可见输出，并把梳理状态、写规则、实现、验收、收尾、提交列为首次接触默认方向禁止项。
-- **验证 / 边界**：本轮验证对象是规则和 sensor 接线；不证明外部已打开旧会话已热更新，也不证明 UI 模型绝不会复述旧缓存规则。
+  6. 按 Goal 要求创建新 Codex 任务 `019f8e75-7479-7292-88e9-cab93543d709` 做烟测：首轮“你好”返回四项首次引导；第二轮明确进入项目运行层后，返回入口、项目主控、Gate / FP / EP / TASK、风险、证据和下一步决策的常规引导。
+- **验证 / 边界**：新任务烟测证明当前 wiki 项目冷启动在新任务中已经能输出首次引导，并能在用户明确进入项目运行层后切到常规引导；不证明已经打开的旧会话会热更新。
 - **影响页面**：[[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
 
 ### 把首次问候收紧为零工具快速回复
