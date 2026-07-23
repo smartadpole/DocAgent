@@ -16,6 +16,12 @@ tags: [template, implementation, project, agent-system, harness]
 
 - **project_name**：
 - **project_role**：controller / subproject / runtime-service / knowledge-base / documentation-governance / data-model / ops-agent / hybrid
+- **owner_topology_role**：method-center / life-owner / strategy-owner / career-owner / wealth-risk-owner / public-output-owner / software-governance-object / implementation-object / hybrid-owner
+- **owner_independence_gate**：independent-owner / subordinate-view / registry-object / temporary-incubator
+- **clone_instantiation_mode**：new-owner / implementation-object / knowledge-owner / ops-agent / hybrid
+- **mother_seed_policy**：keep-as-template-reference / archive / remove-from-current-state
+- **research_depth_default**：strong / medium / light
+- **privacy_currentness_boundary**：
 - **primary_profile**：
 - **secondary_profiles**：
 - **profile_overlay**：controller-profile / subproject-profile / runtime-service-profile / knowledge-base-profile / ops-agent-profile / data-model-profile / lightweight-repo-profile / hybrid-profile
@@ -36,6 +42,31 @@ tags: [template, implementation, project, agent-system, harness]
 - **source_provenance_location**：内部 registry / 审计报告 / 上游 topic / 历史 log。
 - **source_deidentification_rule**：模板正文使用工程角色、能力包和证据边界；不使用来源工程名作为 profile、capability 或默认事实。
 - **project_bound_facts**：路径、服务、数据、模型、运行 ID、业务事实、机器、端口、账号、一次性 handoff。
+
+## Owner Topology Boundary
+
+画像不裁剪 wiki 的基础智能体系。目标工程从 wiki clone 后，默认仍继承完整 Template Kernel；本节只裁决它在个人能力 owner 拓扑或软件治理集合中的事实归口、隐私边界、当前性要求和研究深度。
+
+| Field | Value / decision |
+| --- | --- |
+| `owner_topology_role` |  |
+| `owner_independence_gate` |  |
+| `content_owner` |  |
+| `not_owner` |  |
+| `privacy_currentness_boundary` |  |
+| `research_depth_default` |  |
+| `relation_to_software_governance_objects` |  |
+
+## Clone Instantiation
+
+| Field | Value / decision |
+| --- | --- |
+| `clone_instantiation_mode` |  |
+| `identity_rewrite_required` | project name / owner / source_of_truth / memory / trace / log / service registry / publication identity |
+| `mother_seed_policy` | keep-as-template-reference / archive / remove-from-current-state |
+| `current_state_reset` | clean / seeded / blocked |
+| `provenance_retention` |  |
+| `instantiation_validation` |  |
 
 ## Template Kernel
 
@@ -85,6 +116,12 @@ tags: [template, implementation, project, agent-system, harness]
 | `required_packs` |  |
 | `optional_packs` |  |
 | `forbidden_packs` |  |
+| `owner_topology_role` |  |
+| `owner_independence_gate` |  |
+| `clone_instantiation_mode` |  |
+| `mother_seed_policy` |  |
+| `privacy_currentness_boundary` |  |
+| `research_depth_default` |  |
 | `project_bound_facts` |  |
 | `closeout_proof` |  |
 

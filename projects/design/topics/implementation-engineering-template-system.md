@@ -32,6 +32,8 @@ wiki 是统一模板工程，对外输出的是 **Template Kernel + Project Prof
 
 因此 wiki 可以生成主控模板、子工程模板、知识库模板或运维 agent 模板，但不能把任何真实工程名变成 profile 名、能力名或默认事实。目标工程接入时先裁决 profile 和 pack，再选择本地 owner；不得复制 wiki 整库结构来证明采纳。
 
+画像和能力包不是能力裁剪菜单。wiki 的 Template Kernel 默认保留完整 agent / workflow / memory / harness / skill / evaluation / governance / migration 能力；profile 只决定事实归口、默认 owner、证据解释和哪些重治理默认不自动展开。目标工程如果暂时不需要某项能力，后续可以在本地 owner 中显式关闭或降级，但不能在 clone 初期因为少选能力而破坏基础智能体系。
+
 ## 工程类型覆盖
 
 | 工程类型 | wiki 必须提供的模板能力 | 本仓落位 |
@@ -58,6 +60,24 @@ wiki 是统一模板工程，对外输出的是 **Template Kernel + Project Prof
 | `hybrid-profile` | 先列主角色，再组合 2 到 3 个 overlay，并写明冲突裁决 | 按目标工程需要补 capability pack | 无限制叠加所有能力包。 |
 
 Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 owner precedence 裁决：运行事实以 service registry 为主，项目状态以项目主页 / status 为主，验收关闭以主控 evaluator 为主，知识沉淀以 owner topic / memory / trace 为主。
+
+## Owner Topology Compatibility
+
+个人能力 owner 拓扑和软件 / 代码工程治理集合是两层系统。wiki 作为模板母体要能被 clone 成 Personal Strategy、Career、Wealth、Public Output、知识库、运维 agent 或实现工程，但它不替这些 owner 保存真实人生事实、职业事实、财务事实、服务运行事实或代码项目事实。
+
+因此所有从 wiki clone 的目标工程，除工程画像外还要声明一条 owner 拓扑身份轴：
+
+| 字段 | 含义 |
+| --- | --- |
+| `owner_topology_role` | method-center / life-owner / strategy-owner / career-owner / wealth-risk-owner / public-output-owner / software-governance-object / implementation-object / hybrid-owner |
+| `owner_independence_gate` | independent-owner / subordinate-view / registry-object / temporary-incubator；用于判断它是不是长期单一信息源。 |
+| `content_boundary` | 这个工程承接哪些事实、方法、证据和行动闭环；同时写清不承接什么。 |
+| `privacy_currentness_boundary` | 是否涉及私密、高敏、外部当前事实、生产状态或需人工确认的内容。 |
+| `research_depth_default` | strong / medium / light；表示默认调研证据等级，不表示是否具备调研能力。 |
+| `clone_instantiation_mode` | new-owner / implementation-object / knowledge-owner / ops-agent / hybrid；用于第一次从模板落地时选择初始化检查。 |
+| `mother_seed_policy` | keep-as-template-reference / archive / remove-from-current-state；用于避免模板母体内容污染目标工程当前事实。 |
+
+这条身份轴只回答“这个 clone 出来的库在个人能力体系或工程治理体系里是什么 owner”。它不替代 `project_role`，也不改变 wiki 全能力内核。举例：`knowledge-base-profile` 可以是方法中控、人生策略库、职业资本库或公共输出库；真正差别不在于它有没有 memory / research / lens 能力，而在于 owner 拓扑、隐私边界、当前事实边界和研究深度默认值。
 
 ## Capability Packs
 
@@ -86,6 +106,12 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | `required_packs` | 完成当前工程角色必须接入的能力包 |
 | `optional_packs` | 可按阶段、规模或权限延后接入的能力包 |
 | `forbidden_packs` | 不应引入的重治理、runtime、发布或主控能力 |
+| `owner_topology_role` | 目标工程在个人能力 owner 拓扑或软件治理集合中的身份 |
+| `owner_independence_gate` | 是否已经是独立 owner，还是 view、registry object 或 incubator |
+| `clone_instantiation_mode` | clone 初始落地方式和初始化检查口径 |
+| `mother_seed_policy` | 模板母体内容在目标工程中保留、归档或移除的策略 |
+| `privacy_currentness_boundary` | 隐私、当前性、生产事实和人工确认边界 |
+| `research_depth_default` | 默认调研证据等级和升级触发 |
 | `project_bound_facts` | 不能上推到 wiki 模板的业务事实、运行事实和一次性证据 |
 | `closeout_proof` | 该角色怎么算完成，以及缺哪层证据时只能报 partial / blocked |
 
@@ -94,8 +120,13 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 [[templates/implementation-project-profile-template]] 是总 profile 模板，负责把 Kernel、Project Profile Overlay 和 Capability Pack 裁决写成一张可提交的接入合同。它至少裁决：
 
 - `project_role`：controller / subproject / runtime-service / knowledge-base / documentation-governance / data-model / ops-agent / hybrid。
+- `owner_topology_role`：method-center / life-owner / strategy-owner / career-owner / wealth-risk-owner / public-output-owner / software-governance-object / implementation-object / hybrid-owner。
+- `owner_independence_gate`：independent-owner / subordinate-view / registry-object / temporary-incubator。
 - `profile_overlay`：primary profile、secondary profiles、启用 / 禁用的 overlay 默认值。
 - `capability_packs`：required / optional / forbidden packs。
+- `clone_instantiation`：clone_instantiation_mode、mother_seed_policy、identity rewrite 和 current-state reset。
+- `privacy_currentness_boundary`：隐私、敏感事实、外部当前事实、生产状态和人工确认边界。
+- `research_depth_default`：strong / medium / light 以及升级触发；不表示工程没有调研能力。
 - `owner_surfaces`：项目主页、AGENTS、service registry、work-item chain、memory、trace、report、handoff。
 - `agent_system_layers`：skill、runtime、harness、memory、evaluation、governance、migration 七层是否有本地 owner。
 - `control_plane`：Goal / Loop / Run Capsule / Worker / Evaluator / Issue policy / persistence policy 的落点。

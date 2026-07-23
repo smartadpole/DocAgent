@@ -179,6 +179,18 @@ tags: [trace, project]
   - controller、subproject、runtime-service、knowledge-base、data-model、ops-agent 和 hybrid 都是接入画像，不是互相复制的平行模板。
   - 下游工程贡献可抽象能力包，不贡献业务事实、运行 ID、端口、数据集、模型、服务名、路径或一次性 handoff。
 
+#### 2026-07-23 Owner 拓扑与 clone 初始化补强
+
+- **记录人**：Codex
+- **角色**：agent
+- **本轮变化**：
+  - **用户约束**：用户确认 wiki 将作为未来目标工程的统一 clone 模板，同时担心画像不够全面或画像选择破坏既有智能体系。
+  - **调研校准**：参考平台 / 模板 / SRE / 团队拓扑等外部通用模式，确认合理做法不是先冻结能力再逐项激活，而是保留完整 Template Kernel，只让 profile 和 owner 拓扑裁决事实归口、证据边界、隐私 / 当前性和默认研究深度。
+  - **结构补强**：在 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]] 增加 `owner_topology_role`、`owner_independence_gate`、`clone_instantiation_mode`、`mother_seed_policy`、`privacy_currentness_boundary` 和 `research_depth_default`。
+- **当前实现口径**：
+  - `knowledge-base-profile` 不再承担所有个人能力 owner 的身份差异；Personal Strategy、Career、Wealth、Public Output、软件治理对象和实现工程的差异由 owner topology identity 表达。
+  - profile 不是能力开关；目标工程 clone 后默认保留完整 wiki 智能基线，后续只由本地 owner 显式关闭或降级不需要的能力。
+
 ### TRACE-001 文档系统分层与项目运行链路
 
 - **原始意图**：

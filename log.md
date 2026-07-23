@@ -9,6 +9,23 @@
 
 ## 2026-07-23
 
+### 补强 clone 工程的 owner 拓扑画像
+
+- **记录人**：Codex
+- **用户意图**：用户认可 profile / pack 方向，但要求确认画像足够全面；如果不足，需要启动调研技能做梳理，确保未来从 wiki clone 出来的目标工程能覆盖个人能力 owner 拓扑和实现类工程治理需求。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的设计 topic、模板和 sensor 补强；不新建平行 profile 系统，不触碰 `.obsidian` 本地状态。AcknowledgeBase 本地存在，因此同步其个人能力体系 topic updated。
+- **关键判断**：
+  1. 画像不应成为手工能力选择菜单，也不应让 clone 初期因为少选能力而破坏完整智能体系。
+  2. wiki 应默认保留完整 Template Kernel；profile 只裁决事实归口、owner、证据解释、隐私 / 当前性边界和重治理默认是否展开。
+  3. 未来 Personal Strategy、Career、Wealth、Public Output、知识库、运维 agent 和实现工程的差异，需要一条 `owner_topology_role` 身份轴，而不是把 `knowledge-base-profile` 写得无限泛化。
+- **关键动作**：
+  1. 使用本地 [[skills/research-capability/SKILL]] 做轻量外部校准，并对照 Team Topologies、landing zone、SRE / SLO 和 template repository 模式。
+  2. 更新 [[projects/design/topics/implementation-engineering-template-system]]，新增 Owner Topology Compatibility，明确 profile 不裁剪能力、clone 后默认继承完整智能基线。
+  3. 更新 [[templates/implementation-project-profile-template]]，新增 owner topology boundary、clone instantiation、identity rewrite、mother seed policy 和 current-state reset 字段。
+  4. 扩展 `scripts/check_implementation_template_system.py`，把 owner 拓扑和 clone 初始化字段纳入 `implementation-template-system` sensor。
+- **验证 / 边界**：本轮验证对象是模板画像完备性和可检查字段；不创建 Personal Strategy / Career 等真实工程，不迁移个人事实，不证明任何目标工程已经完成 clone 初始化。
+- **影响页面**：[[projects/design/topics/implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]]、[[projects/trace]]、[[log]]、`scripts/check_implementation_template_system.py`；AcknowledgeBase 侧同步更新 `projects/design/topics/personal-capability-system-architecture.md` 和 `log.md`。
+
 ### 将 wiki 定义为模板内核、工程画像和能力包的母体工程
 
 - **记录人**：Codex
