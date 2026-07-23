@@ -147,6 +147,7 @@ tags: [index, root]
 - [[templates/technology-research-evidence-matrix-template]] / [[templates/technology-research-adoption-contract-template]]：研究证据矩阵和采用合同
 - [[templates/skill-transfer-manifest-template]]：跨工程技能迁移源能力清单，用于归一 source-depth、可吸收 / 抽象 / 禁止复制、目标工程自检和任务书基线
 - [[templates/implementation-project-profile-template]]：实现类工程 Profile 模板，用于接入主控、子工程、runtime service、数据 / 模型工程或文档治理工程，固定 owner surfaces、agent system layers、control plane、implementation boundaries 和 evidence contract
+- [[templates/agent-intelligence-evaluation-template]]：Agent 行为智能评估模板，用 positive / negative behavior corpus、八维 intelligence lens、evaluator provenance 和 Goodhart guard 判断能否从 `insufficient-evidence` 推进到可评分
 - [[templates/skill-transfer-contract-template]] / [[templates/skill-transfer-evidence-contract]] / [[templates/skill-transfer-review-contract]]：跨工程技能迁移任务书、证据和审核合同
 - [[templates/guided-discovery-session-template]]：引导式设计会话模板，用于承接对话所得、agent 思考结果、场景包、性能预算和产物化闭环。
 - [[templates/harness-adoption-template]]：新系统或子工程接入 Agent Harness 时的单一信息源、写权限、验证层级和回传模板

@@ -12,7 +12,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 
 主入口：[[governance/README]]
 
-相关：[[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
+相关：[[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、[[templates/agent-intelligence-evaluation-template]]、[[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、[[skills/cross-project-skill-adoption-prompt/SKILL]]、[[projects/development/plan/work-item-system-model]]、[[harness-evolution]]、[[harness-feedback-ledger]]
 
 ## 定位
 
@@ -38,7 +38,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 
 ## Intelligence Evidence Lens
 
-智能化不直接给总分。首版只要求八维证据位全部出现；缺行为证据时必须保持 `insufficient-evidence`，`agent_intelligence_score` 为 `null`。
+智能化不直接给总分。首版只要求八维证据位全部出现；缺行为证据时必须保持 `insufficient-evidence`，`agent_intelligence_score` 为 `null`。从结构接线推进到行为评估时，使用 [[templates/agent-intelligence-evaluation-template]] 收集 positive / negative behavior corpus、evaluator provenance、Goodhart guard 和 external readback 边界。
 
 | 维度 | 本仓可读证据 | 当前状态 |
 | --- | --- | --- |
@@ -75,6 +75,7 @@ tags: [governance, agent-system, maturity, intelligence, evaluation]
 | work-item-auto-decomposition | true-gap + project-bound | 新增本仓项目 / 领域绑定 skill，并接入 work-item matrix checker | 不硬升为通用可迁移 skill。 |
 | Cross-project agent intelligence alignment | true-gap | 新增 [[agent-system-cross-project-alignment.v1]]，把 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity、LifeOS 等工程的系统层能力抽象到本仓七层对象 | 结构对齐不能上推为行为智能得分。 |
 | Implementation Project Template System | true-gap | 新增 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]] 和 `scripts/check_implementation_template_system.py` | 模板接线不能上推为任何具体工程已上线、已验收或已具备行为智能。 |
+| Agent Intelligence Evaluation Path | true-gap | 新增 [[templates/agent-intelligence-evaluation-template]]，把正负行为样本、八维 intelligence lens、evaluator provenance 和 Goodhart guard 固定成可复用评估合同 | 缺 negative evidence review、external readback 或人工 reviewer 时继续保持 `agent_intelligence_score: null`。 |
 
 ## Persistence Decision
 

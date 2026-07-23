@@ -29,6 +29,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新代码工程回传包可以参考 [[templates/code-handoff-template]]
 - 新工程反馈可以参考 [[templates/engineering-feedback-template]]
 - 新主控、子工程、runtime service、数据 / 模型工程或文档治理工程接入 wiki 作为实现类工程合集与模板时，先参考 [[templates/implementation-project-profile-template|实现类工程 Profile]]；它必须写清 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract、Template Adoption 和 Closeout Proof。
+- 新 Agent System 从结构接线推进到行为智能评估时，使用 [[templates/agent-intelligence-evaluation-template]] 收集 positive / negative behavior corpus、八维 intelligence dimensions、evaluator provenance、Goodhart guard、external readback 和 `agent_intelligence_score` 阻塞边界。
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]

@@ -66,10 +66,29 @@ ENTRYPOINT_TERMS = {
     "README.md": ("[[agent-system-maturity]]", "Agent System Capability Package"),
     "INDEX.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
     "governance/README.md": ("[[agent-system-maturity]]", "[[agent-system-cross-project-alignment.v1]]"),
+    "templates/README.md": ("agent-intelligence-evaluation-template", "positive / negative behavior corpus"),
     "skills/README.md": ("work-item-auto-decomposition", "项目 / 领域绑定"),
     "AGENTS.md": ("upstream_write_authorization", "Persistence Decision", "conformance"),
     ".codex/AGENTS.md": ("agent-system-maturity", "work-item-auto-decomposition"),
 }
+
+AGENT_INTELLIGENCE_TEMPLATE_TERMS = (
+    "Agent Intelligence Evaluation",
+    "positive / negative behavior corpus",
+    "intent_modeling",
+    "mode_selection",
+    "tool_and_runtime_use",
+    "context_and_memory_use",
+    "decomposition_and_orchestration",
+    "evidence_judgment",
+    "recovery_and_learning",
+    "user_alignment",
+    "evaluator provenance",
+    "Goodhart Guard",
+    "agent_intelligence_score",
+    "negative evidence review",
+    "external readback",
+)
 
 
 def read_text(repo: Path, rel: str, errors: list[str]) -> str:
@@ -152,6 +171,12 @@ def main() -> int:
     owner = read_text(repo, "governance/agent-system-maturity.md", errors)
     if owner:
         require_terms("governance/agent-system-maturity.md", owner, REQUIRED_OWNER_TERMS, errors)
+        require_terms(
+            "governance/agent-system-maturity.md",
+            owner,
+            ("agent-intelligence-evaluation-template", "positive / negative behavior corpus"),
+            errors,
+        )
 
     alignment = read_text(repo, "governance/agent-system-cross-project-alignment.v1.md", errors)
     if alignment:
@@ -166,6 +191,15 @@ def main() -> int:
         text = read_text(repo, rel, errors)
         if text:
             require_terms(rel, text, terms, errors)
+
+    intelligence_template = read_text(repo, "templates/agent-intelligence-evaluation-template.md", errors)
+    if intelligence_template:
+        require_terms(
+            "templates/agent-intelligence-evaluation-template.md",
+            intelligence_template,
+            AGENT_INTELLIGENCE_TEMPLATE_TERMS,
+            errors,
+        )
 
     check_snapshot(repo, errors)
 
