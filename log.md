@@ -9,6 +9,38 @@
 
 ## 2026-07-23
 
+### 把首次问候规则上提到冷启动必读层
+
+- **记录人**：Codex
+- **用户意图**：用户指出新开对话里“你好”仍不生效，只有当前对话因为刚讨论过规则才生效；这说明 agent 规则不够强，没有进入冷启动必读层。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有 agent 启动规则和 Harness sensor 升级；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
+- **关键判断**：
+  1. 新对话通常先看到根 `AGENTS.md` 或 thin adapter；如果“你好”触发器只在 [[proactive-dialogue-system]]，低信息输入可能不会触发读取。
+  2. 首次问候最低形态必须放进冷启动入口，而不是依赖当前对话上下文。
+  3. sensor 不能只检查治理页存在，还要检查 `AGENTS.md` / `.codex/AGENTS.md` 是否有 greeting guard。
+- **关键动作**：
+  1. 在根 [[AGENTS]] 和 [[.codex/AGENTS]] 写入“你好 / hi / 开始吧”的首次问候最低回复形态。
+  2. 扩展 `scripts/check_harness_governance.py`，检查冷启动入口包含工程身份、主体推进能力、可选推进方向和推荐下一步。
+  3. 在 [[harness-feedback-ledger]] 记录“规则没有进入冷启动必读层”的 episode。
+- **验证 / 边界**：本轮验证对象是 wiki 冷启动规则和 sensor 接线；不证明外部已打开的旧会话会自动热更新。
+- **影响页面**：[[AGENTS]]、[[.codex/AGENTS]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
+
+### 收紧首次问候最低回复形态
+
+- **记录人**：Codex
+- **用户意图**：用户用截图指出“你好”后的实际回答只剩“继续处理 wiki 还是先聊点别的”，没有实现上一轮要求的项目引导。
+- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话治理的执行形态纠偏；更新 [[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor，不新建 greeting skill。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic updated。
+- **关键判断**：
+  1. 上一轮规则仍允许“普通问候 no-op”，但没有锁定最低回复形态，导致 agent 可以退回普通闲聊分叉。
+  2. 首次问候可以 no-op 于文件层，但不能 no-op 于引导层；至少要说明工程身份、主体推进能力、可选推进方向和推荐下一步。
+  3. “继续 wiki 还是聊别的”不是项目引导，只是泛分叉，应该被明确禁止。
+- **关键动作**：
+  1. 在 [[proactive-dialogue-system]] 新增“首次问候最低回复形态”，要求工程身份、主体推进能力、2 到 4 个可选推进方向和推荐下一步。
+  2. 更新 [[response-mode-routing]]，把引导式设计首次反馈目标从“给可选方向”收紧为固定四要素。
+  3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，让该纠偏可被专项 sensor 识别。
+- **验证 / 边界**：本轮验证对象是首次问候行为的规则和 sensor 接线；不证明外部 UI 或其他已 clone 工程已自动更新到该规则。
+- **影响页面**：[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
+
 ### 将“你好”升级为首次问候引导入口
 
 - **记录人**：Codex

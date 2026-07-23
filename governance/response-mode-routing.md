@@ -31,7 +31,7 @@ tags: [agent, workflow, efficiency, harness]
 | 模式 | 典型触发 | 首次反馈目标 | 最小读取 | 默认写入 | 必要收尾 |
 | --- | --- | --- | --- | --- | --- |
 | 快速诊断 | “为什么”“在哪”“先分析”“差异是什么” | `confirmed / likely / possible / blocked` 分级结论和证据边界 | 入口规则 + 1 到 3 个最相关事实源 | 否 | 说明是否需要升级到沉淀、验收或规则升级 |
-| 引导式设计 | “设计一个系统”“帮我想完整”“更智能 / 更前沿 / 更高效”“还不知道怎么开始”；新 clone / 模板工程中的“你好 / hi / 开始吧” | 自动判定场景包、置信度和关键假设；首次问候先给可选推进方向，只问会改变结构的问题 | [[proactive-dialogue-system]] + owning page + 必要事实源；首次问候只读工程身份信号 | 条件写入；普通问候无新增判断可 no-op，形成项目意图 / 体系校准时必须产物化 | 写清场景包、假设、待确认项、性能预算和落地位置；no-op 时说明没有新增可沉淀信息 |
+| 引导式设计 | “设计一个系统”“帮我想完整”“更智能 / 更前沿 / 更高效”“还不知道怎么开始”；新 clone / 模板工程中的“你好 / hi / 开始吧” | 自动判定场景包、置信度和关键假设；首次问候必须给工程身份、主体推进能力、2 到 4 个可选推进方向和推荐下一步 | [[proactive-dialogue-system]] + owning page + 必要事实源；首次问候只读工程身份信号 | 条件写入；首次问候完成最低回复但没有新增判断可 no-op，形成项目意图 / 体系校准时必须产物化 | 写清场景包、假设、待确认项、性能预算和落地位置；no-op 时说明没有新增可沉淀信息 |
 | 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘”“知识关联” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 总入口 + 单一信息源 + 来源；新增长期知识时调用 [[skills/knowledge-linking/SKILL]]；复盘先调用 [[skills/retrospective-capability/SKILL]] | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/<year>/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
 | 图文呈现 | “图文”“一图胜千言”“HTML 呈现”“看得更直观”“做成 lens” | 先识别关注合同、source pack、证据边界和视觉策略，再选择短答、Markdown、Mermaid、HTML、print view、current 或 snapshot | [[skills/problem-focused-visual-presentation/SKILL]] + 目标真相源 + 必要来源 | 条件写入；只有持久 lens 才写 `views/` | 写清 `static_visual_qa`、同源 PDF / PNG、registry 和不能上推范围 |
 | Issue 分析 + 沉淀 | 现场问题、联调失败、验收争议、跨工程阻塞 | 先给根因 checkpoint，再进入主控沉淀 | 项目主入口 + 当前工作项 / 报告 / 风险 + 直接证据 | 是 | 同步单一信息源、风险 / 报告 / 状态，跑必要检查 |

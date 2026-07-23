@@ -111,9 +111,16 @@ PROACTIVE_DIALOGUE_REQUIRED_TERMS = (
     "通用主动对话内核",
     "场景化问题包",
     "首次问候入口",
+    "首次问候最低回复形态",
     "wiki / agent 体系分块呈现",
     "初始化工程身份",
+    "工程身份",
+    "主体推进能力",
+    "可选推进方向",
+    "推荐下一步",
+    "你想继续处理这个 wiki，还是先聊点别的？",
     "identity-and-owner",
+    "clone initialization",
     "场景包",
     "置信度",
     "可直接判断",
@@ -369,6 +376,11 @@ def check_proactive_dialogue(repo: Path) -> list[str]:
     ):
         if doc and "proactive-dialogue-system" not in doc:
             errors.append(f"{rel}: missing proactive-dialogue-system wiring")
+    for rel, doc in (("AGENTS.md", agents), (".codex/AGENTS.md", codex_adapter)):
+        if doc:
+            for term in ("你好 / hi / 开始吧", "工程身份", "主体推进能力", "可选推进方向", "推荐下一步"):
+                if term not in doc:
+                    errors.append(f"{rel}: missing cold-start greeting guard {term}")
     return errors
 
 

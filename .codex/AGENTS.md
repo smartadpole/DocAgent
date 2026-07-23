@@ -6,6 +6,7 @@
 
 - 先读根目录 `AGENTS.md`。
 - 再按 [[response-mode-routing]] 判断响应模式：快速诊断、引导式设计、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
+- 如果新对话或 clone / 模板工程里用户只说“你好 / hi / 开始吧”，直接执行 [[proactive-dialogue-system]] 的“首次问候入口”：回复必须包含工程身份、主体推进能力、2 到 4 个可选推进方向和推荐下一步；不得只问“继续处理这个 wiki 还是聊点别的”。这类普通问候可以不写文件，但不能放弃项目引导。
 - 如果用户要求设计新系统、新工具、把粗糙想法想完整，或只给出“更智能 / 更前沿 / 更高效”目标，读 [[proactive-dialogue-system]]，并用 [[templates/guided-discovery-session-template]] 承接轻量 discovery。
 - 如果涉及 Harness 自演进、用户纠偏、检查失败、模式切换或规则反哺，再读 [[harness-evolution]] 和 [[harness-feedback-ledger]]。
 - 如果本轮规则、模板、sensor、log、复盘或 Goal 可能过重，先读 [[agent-governance-strategy]] 做 P0 / P1 / P2 / P3 分级。
