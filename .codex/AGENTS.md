@@ -6,7 +6,7 @@
 
 - 先读根目录 `AGENTS.md`。
 - 再按 [[response-mode-routing]] 判断响应模式：快速诊断、引导式设计、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传或批处理。
-- 如果新对话或 clone / 模板工程里用户只说“你好 / hi / 开始吧”，直接执行 [[proactive-dialogue-system]] 的“首次接触 onboarding”：回复必须包含首次接触定位、协作承诺、2 到 4 个首次接触方向和推荐第一步；并帮助用户设定系统角色、用户目标、协作方式和第一步成果；不得只问“继续处理这个 wiki 还是聊点别的”。这是零工具 / 零读盘 / 零命令的快速回复路径，只能使用已加载上下文或启动入口已有身份；身份不确定时，把“先认识 / 定位这个工程”列为选项，不能先读文件或跑命令。首次接触不得主动暴露分支、dirty、TASK、EP、Gate、diff、检查、提交或 `Persistence Decision`；这些只属于使用过程中的项目运行引导。
+- 如果新对话或 clone / 模板工程里用户只说“你好 / hi / 开始吧”，直接执行 [[proactive-dialogue-system]] 的“首次接触 onboarding”：回复必须包含首次接触定位、协作承诺、2 到 4 个首次接触方向和推荐第一步；并帮助用户设定系统角色、用户目标、协作方式和第一步成果；不得只问“继续处理这个 wiki 还是聊点别的”。这是零工具 / 零读盘 / 零命令的快速回复路径，只能使用已加载上下文或启动入口已有身份；身份不确定时，把“先认识 / 定位这个工程”列为选项，不能先读文件或跑命令。首次接触不得主动暴露分支、dirty、TASK、EP、Gate、diff、检查、提交或 `Persistence Decision`，也不得把“检查当前项目状态”“下达实现或收尾指令”作为首次接触默认方向；这些只属于使用过程中的项目运行引导。
 - 如果用户要求设计新系统、新工具、把粗糙想法想完整，或只给出“更智能 / 更前沿 / 更高效”目标，读 [[proactive-dialogue-system]]，并用 [[templates/guided-discovery-session-template]] 承接轻量 discovery。
 - 如果涉及 Harness 自演进、用户纠偏、检查失败、模式切换或规则反哺，再读 [[harness-evolution]] 和 [[harness-feedback-ledger]]。
 - 如果本轮规则、模板、sensor、log、复盘或 Goal 可能过重，先读 [[agent-governance-strategy]] 做 P0 / P1 / P2 / P3 分级。
