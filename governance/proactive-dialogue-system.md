@@ -95,7 +95,7 @@ tags: [agent, harness, dialogue, discovery, design, performance]
 4. 如果当前上下文明显是在建设 wiki / agent 体系，agent 可以主动把体系分块呈现给用户校准：identity / owner、workflow、memory、harness / Goal、skills / research、evaluation / closeout、runtime / ops、clone initialization。
 5. 只有用户选择了方向，或问候中同时带有明确任务，才升级到对应响应模式；否则本轮可以不写文件，并在最终回复说明没有新增可沉淀信息。
 
-首次接触 onboarding 的输出应短、可继续、带引导感。它的目标是降低进入门槛，而不是把用户直接带进运行看板、Git 状态或治理术语。
+首次接触 onboarding 的输出应短、可继续、带引导感。它的目标是降低进入门槛，而不是把用户直接带进运行看板、Git 状态或治理术语。对新用户来说，它优先完成四项设定：`system_role`（系统角色）、`user_goal`（用户目标）、`collaboration_mode`（协作方式）、`first_outcome`（第一步成果）。
 
 ### 首次接触最低回复形态
 
@@ -107,6 +107,13 @@ tags: [agent, harness, dialogue, discovery, design, performance]
 2. **协作承诺**：一句话说明 agent 可以陪用户建立什么，例如理解工程、确定主体职责、把想法收成项目入口或带看 agent 体系。
 3. **首次接触方向**：列出 2 到 4 个适合第一次接触的方向，例如认识工程、选择目标、初始化身份、看一个体系分块。
 4. **推荐第一步**：如果上下文置信度高，推荐一个 onboarding 分块；若置信度低，只问一个会改变方向的问题。
+
+最低回复里的四项设定要可被用户直接理解：
+
+- **系统角色**：这个 agent / 工程现在以什么身份陪用户工作。
+- **用户目标**：用户可以先把目标定成知识库、主控模板、子工程模板、运维 agent、runtime service 或其他待识别方向。
+- **协作方式**：默认用引导式对话把目标、约束、第一步产物和后续节奏收敛出来。
+- **第一步成果**：本轮最小可交付应是一个定位、一个目标草案、一个项目入口或一个可继续的 agent 体系分块。
 
 禁止把首次问候只回答成“你想继续处理这个 wiki，还是先聊点别的？”这类二选一闲聊分叉。若当前工程是 wiki 模板母体，默认推荐先展开 `clone initialization` 或 `identity-and-owner`；若用户最近正在校准 agent 体系，默认推荐先展开最相关的 agent 体系分块。
 
