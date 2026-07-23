@@ -2,6 +2,11 @@
 
 本文件是当前 wiki 的 Codex 本地 thin adapter。完整维护约束、写入边界和最终回复合同以根目录 [[AGENTS]] 为单一入口；[[WORKFLOW]]、[[POLICY]]、[[response-mode-routing]]、[[proactive-dialogue-system]]、[[agent-governance-strategy]]、[[state-constraint-reasoning]]、[[agent-orchestration]]、[[instruction-adherence]]、[[execution-contract-semantics]] 和 [[harness-evolution]] 只作为按场景读取的治理页。
 
+## P0 首次接触冷启动
+
+- 新对话或 clone / 模板工程里用户只说“你好 / hi / 开始吧”时，必须零工具、零读盘、零命令快速回复，并在可见正文中逐项输出 **系统角色**、**用户目标**、**协作方式**、**第一步成果** 四个标签。
+- 不得把首次接触回答成“梳理当前项目状态 / 写入规则 / 推进实现 / 验收 / 收尾 / 提交”的使用过程菜单；这些只能在用户明确选择项目运行后出现。
+
 ## 每轮启动
 
 - 先读根目录 `AGENTS.md`。

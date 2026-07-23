@@ -12,7 +12,7 @@
 ### 拆分首次接触 onboarding 和使用过程引导
 
 - **记录人**：Codex
-- **用户意图**：用户用截图指出，“你好”后的回答仍不对：它输出的是使用过程中的项目运行引导，而不是首次接触时应有的 onboarding 引导；后续截图进一步确认它虽避开部分运行术语，但仍把首次接触写成“检查当前项目状态 / 实现或收尾指令”菜单，没有显式设定系统角色、用户目标、协作方式和第一步成果。
+- **用户意图**：用户用截图指出，“你好”后的回答仍不对：它输出的是使用过程中的项目运行引导，而不是首次接触时应有的 onboarding 引导；后续截图进一步确认它虽避开部分运行术语，但仍把首次接触写成“检查当前项目状态 / 实现或收尾指令”菜单；最新截图显示它仍只给“协作维护者”定位和梳理状态、写规则、实现、验收、收尾、提交等使用过程菜单，没有在可见正文中逐项输出系统角色、用户目标、协作方式和第一步成果。
 - **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话 / 冷启动规则的语义分层纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
 - **关键判断**：
   1. 首次接触和使用过程项目引导是两个层面；前者是认识 agent / 工程、建立协作入口，后者才是分支、dirty、TASK、EP、Gate、diff、检查和收尾。
@@ -23,6 +23,7 @@
   2. 更新根 [[AGENTS]]、[[.codex/AGENTS]] 和 [[response-mode-routing]]，把首次接触从项目运行层引导中拆开。
   3. 更新 [[harness-feedback-ledger]] 和 `scripts/check_harness_governance.py`，让 sensor 检查 onboarding 四要素，并锁住 `Persistence Decision`、当前分支等运行层术语不得进入首次接触默认回复。
   4. 新增首次接触参考回复骨架，并禁止把“检查当前项目状态”“下达实现或收尾指令”作为首次接触默认方向。
+  5. 将首次接触四项设定上提为根 [[AGENTS]] 和 [[.codex/AGENTS]] 顶部 P0 冷启动规则，要求 **系统角色 / 用户目标 / 协作方式 / 第一步成果** 四个标签必须逐项可见输出，并把梳理状态、写规则、实现、验收、收尾、提交列为首次接触默认方向禁止项。
 - **验证 / 边界**：本轮验证对象是规则和 sensor 接线；不证明外部已打开旧会话已热更新，也不证明 UI 模型绝不会复述旧缓存规则。
 - **影响页面**：[[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]]、`scripts/check_harness_governance.py`；AcknowledgeBase 侧同步更新 `AGENTS.md`、`projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
 

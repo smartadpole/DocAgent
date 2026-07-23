@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-23 | 首次接触四项设定未显式输出 | 截图显示 agent 对“你好”仍只给出“协作维护者”定位和梳理状态、写规则、实现、验收、收尾、提交等使用过程菜单，没有在可见正文中逐项输出系统角色、用户目标、协作方式和第一步成果 | 规则升级 | 可优化成本 | 将首次接触升级为根 AGENTS 顶部 P0 冷启动规则，要求四个标签必须逐项可见输出；禁止把状态梳理、写规则、实现、验收、收尾、提交作为首次接触默认方向；sensor 增加 P0 和逐项输出检查词 | `python3 scripts/check_all.py --only harness-governance` / [[AGENTS]] / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次接触 onboarding 被实现为运行菜单 | 截图显示新对话对“你好”已部分规避 Git / TASK 等术语，但仍推荐“检查当前项目状态”“下达实现或收尾指令”，没有显式设定系统角色、用户目标、协作方式和第一步成果 | 规则升级 | 可优化成本 | 在首次接触最低回复中增加可复用参考回复骨架，并禁止把检查当前项目状态、实现或收尾指令作为首次接触默认方向；sensor 检查这些 guard 词 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次接触与使用过程引导串层 | 截图显示 agent 对“你好”输出路径、分支、dirty、projects/README、TASK / EP / Gate 和收尾等使用过程信息，没有突出首次接触 onboarding | 规则升级 | 可优化成本 | 将首次问候入口重命名并拆分为“首次接触 onboarding”和“使用过程项目引导”；首次接触禁止主动暴露运行层信息，sensor 检查 onboarding 四要素和禁用术语 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
 | 2026-07-23 | 首次问候为了定位身份触发读文件和命令 | 截图显示一个“你好”工作 28 秒，读取文件并执行命令后仍未回复 | 规则升级 | 应避免成本 | 将首次问候收紧为零工具 / 零读盘 / 零命令快速回复路径；身份不确定时把“定位工程身份”列为选项而不是先读取；sensor 检查冷启动入口和主动对话页的性能预算词 | `python3 scripts/check_all.py --only harness-governance` / [[proactive-dialogue-system]] | active |
