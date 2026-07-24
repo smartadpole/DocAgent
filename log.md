@@ -7,6 +7,16 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-24
+
+### 升级 current HTML Markdown owner 渲染入口
+
+- **记录人**：Codex
+- **用户意图**：用户要求先把 AcknowledgeBase 已验证的 Markdown owner viewer 能力升级到 wiki，使 current HTML 里的 Markdown owner 链接进入渲染后的 HTML viewer，而不是 raw Markdown 纯文本。
+- **关键动作**：新增 `scripts/update_current_markdown_owner_viewer.py` 和 `scripts/check_markdown_owner_viewer.py`，并注册 `python3 scripts/check_all.py --only markdown-owner-viewer`；生成 `views/current/markdown-owner-viewer.html`，把 `views/current/problem-focused-visual-presentation-system-sample.html` 中的仓库内 `.md` 链接改为 viewer 链接和 share-only `data-share-href`。
+- **验证 / 边界**：viewer source pack 收录 4 个 owner Markdown；Markdown 真相源仍是原文件，share-only 模式不公开 raw `.md` 文件；本轮不改首次接触规则、冷启动规则或其他治理状态。
+- **影响页面 / 文件**：[[views/README]]、[[views/lens-registry]]、[[log]]、`views/current/markdown-owner-viewer.html`、`views/current/problem-focused-visual-presentation-system-sample.html`、`scripts/update_current_markdown_owner_viewer.py`、`scripts/check_markdown_owner_viewer.py`、`scripts/check_all.py`。
+
 ## 2026-07-23
 
 ### 拆分首次接触 onboarding 和使用过程引导

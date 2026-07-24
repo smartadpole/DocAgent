@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software Wiki Owner Markdown Viewer</title>
+  <meta name="lens_id" content="lens-markdown-owner-viewer-current">
+  <meta name="lens_type" content="resource">
+  <meta name="focus_object" content="owner page markdown reading surface for current HTML lenses">
+  <meta name="generated_from" content="views/current/**/*.html">
+  <meta name="evidence_boundary" content="viewer renders a controlled owner-page source pack; markdown owner pages remain source of truth; share-only publication still does not expose raw markdown files">
+  <meta name="output_mode" content="current html utility viewer">
+  <meta name="export_profile" content="canonical HTML only; no PDF / PNG export required for this utility viewer">
+  <meta name="print_profile" content="@page and @media print are declared for readable fallback printing">
+  <meta name="equivalence_profile" content="canonical HTML / source / manifest render the same source pack; markdown owner pages remain source of truth">
+  <meta name="default_auto_exports" content="not applicable; viewer is a utility page, not a problem-focused print lens">
+  <meta name="conversation_png_preview" content="not applicable for utility viewer">
+  <meta name="source_pack_contract" content="same source pack embedded in canonical HTML / source / manifest">
+  <style>
+    :root{
+      color-scheme:light;
+      --ink:#1d231e; --muted:#5f675d; --line:#dbe1d7; --line2:#c7d0c4; --paper:#ffffff; --wash:#f3f6f0;
+      --panel:#f9fbf7; --teal:#0b6b57; --blue:#255f9c; --amber:#9b6616; --red:#a0342f;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:linear-gradient(180deg,#eef3ec 0%,#f7f9f4 180px,#f5f7f2 100%);color:var(--ink);}
+    .wrap{width:min(1260px,calc(100vw - 32px));margin:0 auto;}
+    header{padding:24px 0 18px;}
+    .hero{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border:1px solid rgba(27,35,30,.08);border-radius:18px;padding:18px 20px;box-shadow:0 16px 50px rgba(31,38,33,.08);}
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);}
+    .hero h1{margin:8px 0 0;font-size:30px;line-height:1.2;}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+    .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted);}
+    .pill.warn{background:#fbefd8;color:var(--amber);border-color:#ecd39e;}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line2);background:var(--paper);color:var(--ink);border-radius:10px;padding:9px 12px;font-size:13px;text-decoration:none;}
+    .btn.primary{background:#0b6b57;color:#fff;border-color:#0b6b57;}
+    .btn.warn{background:#fbefd8;color:#9b6616;border-color:#ecd39e;}
+    main{padding:0 0 34px;}
+    .layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:18px;align-items:start;}
+    .panel,.frame{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px rgba(31,38,33,.08);overflow:hidden;}
+    .panel-head,.frame-head{padding:14px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fbfcf8 0%,#f6f8f3 100%);}
+    .panel-title{font-size:14px;font-weight:700;}
+    .panel-sub{margin-top:4px;font-size:12px;color:var(--muted);}
+    .owner-list{padding:10px;display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 220px);overflow:auto;}
+    .owner-link{display:block;width:100%;border:1px solid var(--line);border-radius:14px;background:#fbfcfa;padding:12px 13px;text-decoration:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer;}
+    .owner-link:hover{border-color:#b7c7b4;background:#f7fbf6;}
+    .owner-link.active{border-color:#0b6b57;background:#eef8f4;box-shadow:inset 0 0 0 1px rgba(11,107,87,.14);}
+    .owner-name{font-size:14px;font-weight:700;line-height:1.35;}
+    .owner-path{margin-top:5px;font-size:12px;color:var(--muted);word-break:break-all;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+    .frame-path{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--muted);word-break:break-all;}
+    .frame-body{padding:22px 24px 30px;}
+    .empty{padding:20px;border:1px dashed var(--line2);border-radius:12px;background:var(--panel);font-size:14px;color:var(--muted);}
+    .md-prose{font-size:15px;line-height:1.75;color:var(--ink);}
+    .md-prose h1,.md-prose h2,.md-prose h3,.md-prose h4,.md-prose h5,.md-prose h6{margin:1.35em 0 .55em;line-height:1.26;color:#15221b;}
+    .md-prose h1:first-child,.md-prose h2:first-child,.md-prose h3:first-child,.md-prose h4:first-child,.md-prose h5:first-child,.md-prose h6:first-child{margin-top:0;}
+    .md-prose h1{font-size:31px;}
+    .md-prose h2{font-size:25px;}
+    .md-prose h3{font-size:20px;}
+    .md-prose h4{font-size:17px;}
+    .md-prose p{margin:.78em 0;}
+    .md-prose ul,.md-prose ol{margin:.75em 0 .95em 1.35em;padding:0;}
+    .md-prose li{margin:.24em 0;}
+    .md-prose blockquote{margin:1em 0;padding:.3em 0 .3em 14px;border-left:4px solid #c9dbc6;color:#4f5b52;background:#f8fbf6;}
+    .md-prose hr{border:0;border-top:1px solid var(--line);margin:1.2em 0;}
+    .md-prose pre{margin:1em 0;padding:14px 16px;border-radius:12px;background:#1f2823;color:#edf6ef;overflow:auto;font-size:13px;line-height:1.58;}
+    .md-prose code{padding:.12em .35em;border-radius:6px;background:#eef2ea;color:#183126;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+    .md-prose pre code{padding:0;background:transparent;color:inherit;}
+    .md-prose table{width:100%;border-collapse:collapse;margin:1em 0;font-size:14px;}
+    .md-prose th,.md-prose td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;}
+    .md-prose th{background:#f5f7f1;text-align:left;}
+    .md-prose a{color:var(--blue);}
+    @media (max-width:980px){
+      .layout{grid-template-columns:1fr;}
+      .owner-list{max-height:none;}
+    }
+    @media (max-width:760px){
+      .wrap{width:min(100vw - 20px,1260px);}
+      .hero h1{font-size:24px;}
+      .frame-body{padding:18px 16px 24px;}
+    }
+    @page{size:A4;margin:14mm;}
+    @media print{
+      body{background:#fff;}
+      .wrap{width:auto;margin:0;}
+      .layout{grid-template-columns:1fr;}
+      .panel{display:none;}
+      .hero,.frame{box-shadow:none;}
+      .actions{display:none;}
+    }
+    </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="hero">
+      <div class="eyebrow">Owner Page Viewer</div>
+      <h1 id="title">Markdown owner 预览</h1>
+      <div class="meta">
+        <span class="pill">viewer scope: current HTML lenses</span>
+        <span class="pill">source of truth: markdown owner page</span>
+        <span class="pill warn">share-only 模式不公开 raw markdown</span>
+      </div>
+      <div class="actions">
+        <a class="btn primary" id="rawLink" href="#" target="_blank" rel="noopener noreferrer">打开原始文件</a>
+        <a class="btn" id="fallbackLink" href="markdown-owner-viewer.html">固定当前 viewer 入口</a>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="layout">
+      <aside class="panel">
+        <div class="panel-head">
+          <div class="panel-title">可切换 owner 页面</div>
+          <div class="panel-sub">直接打开 viewer 也可以从这里切换，不依赖外层页面传参。</div>
+        </div>
+        <div class="owner-list" id="ownerList"></div>
+      </aside>
+      <section class="frame">
+        <div class="frame-head">
+          <div class="frame-path" id="path">等待选择 owner page…</div>
+        </div>
+        <div class="frame-body" id="body">
+          <div class="empty">正在加载 owner page…</div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>(() => {
+
+    const sourcePack = {"generated_at": "2026-07-24T16:00:17", "source_revision": "8f4595c", "items": {"governance/problem-focused-visual-presentation-rules.md": {"owner_path": "governance/problem-focused-visual-presentation-rules.md", "title": "Problem-Focused Visual Presentation Rules", "markdown": "---\ntype: governance\nid: GOV-PROBLEM-FOCUSED-VISUAL-PRESENTATION-001\nscope: shared\nstatus: active\nsource_of_truth: true\nupdated: 2026-06-25\ntags: [governance, problem-focused-visual-presentation, problem-focused-lens, visual-presentation, lens]\n---\n\n# Problem-Focused Visual Presentation Rules\n\n本页是 `problem-focused-visual-presentation` 的治理合同。[[skills/problem-focused-visual-presentation/SKILL]] 负责执行图文 lens；[[templates/problem-focused-lens-template]] 负责字段骨架；[[views/README]] 和 [[views/lens-registry]] 负责持久呈现层。本页定义什么时候可以生成 lens、什么时候必须回到真相源、哪些导出件不能成为事实源。\n\n## 核心原则\n\n问题聚焦式图文呈现不是“把页面变漂亮”，而是把读者当前要判断的问题压缩成可见结构：\n\n- 先固定关注问题，再选择图形。\n- 先固定 source pack，再组织视觉层。\n- 先说明证据边界，再给一眼判断。\n- 先确认持久性，再写入 `views/`。\n- 先保护单一信息源，再谈导出。\n- 先通过静态视觉 QA 和同源导出，再声称 HTML / PDF / PNG 完成。\n\n如果没有明确问题，lens 只能是装饰图；如果没有 source pack，lens 会变成第二份不可靠事实源。\n\n持久 HTML、print view、PDF 或 PNG 还必须完成这条流水线：\n\n`Source truth -> Content contract -> Visual strategy -> Page paradigm / slot schema -> Component semantic manifest -> Renderer implementation -> Export / accessibility / regression QA -> Human rubric`\n\n字段齐全、token 合规、卡片整齐或文件存在都不能单独证明完成；它们只是可检查的结构信号。\n\n## 启动条件\n\n以下场景可以启动 problem-focused lens：\n\n- 用户明确要“图文”“HTML”“一图胜千言”“更直观”“直观看”“图文混排”“矩阵”“导出 PNG / PDF”“current / snapshot”。\n- 多个文档、报告、issue、风险、决策或状态需要压缩成一个可读视图。\n- 复杂主题需要呈现“当前判断 + 背景框 + 证据链 + 缺口 + 下一步”。\n- 需要给用户看矩阵、热力图、任务地图、时间线、关系图、状态看板或验收缺口。\n- 本轮形成稳定 current lens 或阶段 snapshot，且后续会复看。\n\n以下场景不启动持久 lens：\n\n- 用户只问一个简单事实、只查一个路径或只要一句结论。\n- source pack 不稳定，尚未确认主入口。\n- 结论会在几分钟内被一次命令刷新替代。\n- 正式状态、验收或规则裁决还没有写回主入口。\n- 只是为了通过矩阵成熟度而制造页面。\n\n如果用户明确要求“HTML”“PDF”“PNG”“打印”“一图胜千言”“图文混排”“状态页”“风险页”“验收页”“决策页”“主题梳理”，默认进入本技能；只有用户明确说只要口头结论、只分析不落文件或先看路径，才降级为聊天内 lens。\n\n## Source Pack 合同\n\n每个 lens 必须列出 source pack。source pack 不只是“引用列表”，而是证据合同：\n\n- `source_pages`：已读且直接支撑 lens 的页面。\n- `source_scope`：本轮覆盖范围和未读但相关范围。\n- `source_revision`：使用的 commit、生成时间或文件版本。\n- `evidence_boundary`：confirmed / likely / possible / blocked。\n- `refresh_trigger`：哪些源变化后必须刷新 lens。\n- `single_source_guard`：哪些页面仍是真相源，lens 不能替代它们。\n\n如果 source pack 里存在未读关键页面，lens 必须把相关判断降级，不允许写成 confirmed。\n\n## Focus Contract\n\n每个 lens 必须先冻结：\n\n- `focus_object`\n- `lens_type`\n- `judgement_purpose`\n- `source_pack`\n- `evidence_boundary`\n- `output_mode`\n- `persistent_or_temporary`\n- `export_required`\n\n`lens_type` 至少覆盖 `status / plan / decision / risk / issue / acceptance / knowledge / resource / owner / timeline`。自动生成时，不能用一个通用 `html` 类型替代真实关注对象。\n\n## 背景框\n\n成熟 lens 至少给出四层背景：\n\n- `上位背景`：属于哪个项目、治理主题、技能、模板、验收或知识体系。\n- `来源背景`：哪些文档、截图、数据、诊断或人工确认支撑了当前视图。\n- `历史背景`：这是 current、snapshot、旧结论修正、阶段对比还是一次性观察。\n- `关系背景`：连接哪些 owner、任务、风险、issue、报告、规则或资产。\n\n背景框的目标是让读者知道“这张图在回答哪个问题”，而不是把所有文档摘要塞进首屏。\n\n## 视觉结构选择\n\n| 关注问题 | 推荐结构 | 关键边界 |\n| --- | --- | --- |\n| 当前状态是什么 | 状态卡、红黄绿看板、矩阵 | 状态源必须写清 |\n| 哪些能力缺口最重要 | 热力矩阵、缺口表、优先级图 | 分数不能替代诊断 |\n| 哪条链路断了 | 流程图、泳道图、证据链 | 不能把候选根因写成事实 |\n| 多方案怎么比较 | 对比矩阵、雷达图、排序表 | 评分口径必须显式 |\n| 任务怎么推进 | 行动地图、依赖图、时间线 | owner 和验收层级分开 |\n| 知识如何组织 | 关系图、入口图、层级图 | 链接要有关系类型 |\n| 验收能否关闭 | 证据层级表、缺口矩阵 | 局部通过不能上推 |\n\nMermaid 只适合小流程和短链路。大型架构图、复杂拓扑或需要持续编辑的图，遵守本库 Excalidraw / Diagrams.Net 规则，不用 Mermaid 硬撑。\n\n## 视觉策略必填项\n\n复杂或持久 lens 必须在 metadata、模板正文或 HTML manifest 中写清：\n\n- `art_direction_brief`\n- `information_topology`\n- `layout_morphology_plan`\n- `topic_visual_language`\n- `primary_visual_metaphor`\n- `theme_specific_elements`\n- `anti_information_listing_strategy`\n- `page_paradigm`\n- `component_semantic_manifest`\n- `human_rubric`\n- `result_cluster_diagnosis`\n\n知识型内容优先考虑脑图、概念图、关系图或分层地图；流程用路径图 / 泳道图；系统边界用结构边界图；验收和对比用矩阵。不要把所有页面都退化成标题 + 卡片 + 表格。\n\n## 持久化规则\n\n本库持久呈现层固定为 `views/`：\n\n- `views/current/`：当前版本的 canonical lens。\n- `views/snapshots/`：阶段性快照、会议快照、验收快照或历史对比。\n- `views/lens-registry.md`：登记 lens id、主题、source pack、刷新触发、导出状态和人工边界。\n- `views/.exports/`、`views/exports/`、`views/**/.exports/`：PDF / PNG / SVG 导出缓存，默认不提交。\n\n持久 lens 写入时必须同步 registry。没有 registry 的孤立 HTML 不算完成。\n\n## 导出与同源一致性\n\nHTML、print view、PNG、PDF、SVG 之间必须保持同源：\n\n- canonical HTML 或 Markdown 是主呈现。\n- print view 只调整打印样式和分页，不改变事实。\n- PNG 用于聊天预览和快速复看，不成为第二份真相源。\n- PDF 用于分发和归档，不承接后续编辑。\n- SVG 只在图形源需要时保留，不能和 HTML 产生独立事实。\n\n只要本轮生成或刷新持久 HTML lens，就必须同轮生成同源 PDF 和至少一张 PNG 截图 / 长图到 `.gitignore` 忽略目录，并在最终回复用 Markdown 图片语法展示 PNG 预览。HTML / PDF / PNG 必须来自同一 source manifest 或 render pipeline；禁止为了聊天展示另画一张不同源 PNG。\n\n如果导出失败，最终回复只能说“未导出”或“导出未验证”；不能因为 HTML 存在就声称 PNG / PDF 已生成。\n\n## Static Visual QA\n\n复杂或持久 HTML / PDF / PNG 输出必须在产物自身 meta、JSON script 或等价机器可读块里留下 `static_visual_qa`，至少覆盖：\n\n- `layout_frame`\n- `type_scale`\n- `spacing_rhythm`\n- `semantic_palette`\n- `component_roles`\n- `accessibility_checks`\n- `export_render_check`\n- `finish_grade`\n- `visual_strength_gate`\n- `hierarchy_amplitude_gate`\n- `component_variety_gate`\n- `color_budget_single_hero_gate`\n- `adjustment_loop`\n- `rendered_visual_review`\n- `review_artifact`\n- `visual_acceptance_result`\n\nSensor 只检查字段、入口、导出路径和不上推边界；它不能替代人审、截图审阅或视觉模型判断美感。\n\n## 验收、状态和规则不上推\n\nLens 只能帮助看懂，不自动完成裁决：\n\n- 验收关闭回到 acceptance plan、test report、issue、TASK、EP、FP、Gate。\n- 项目状态回到 `projects/README.md` 或 owning status page。\n- 服务运行事实回到 `projects/service-registry.md`。\n- 规则裁定回到 `governance/`。\n- 技能成熟度回到 skill、TRANSFER、sensor、template、views 和专项检查。\n\n如果 lens 发现缺口，只能把缺口路由到对应主入口，不能让图本身成为修复完成证明。\n\n## 质量自检\n\n完成 lens 前至少检查：\n\n- 首屏是否回答当前关注问题。\n- 是否列出 source pack 和 evidence boundary。\n- 是否避免 metadata 抢占读者注意。\n- 是否有 current / snapshot 边界。\n- 是否写清 refresh_trigger。\n- 是否更新 `views/lens-registry.md`。\n- 是否没有提交 PDF / PNG / SVG 缓存作为事实源。\n- 是否在持久 HTML 中留下 `static_visual_qa` 和 `component_semantic_manifest`。\n- 是否为本轮更新的持久 HTML 实际生成同源 PDF / PNG，或明确写出失败原因。\n- 是否运行 `python3 scripts/check_all.py --only problem-focused-visual-presentation`。\n\n## 失败模式\n\n- `装饰化`：图很漂亮，但没有关注问题和证据边界。\n- `二次事实源`：lens 复制主页面正文并开始承接状态维护。\n- `快照冒充 current`：历史页面没有标记生成时间和刷新条件。\n- `导出冒充完成`：PNG / PDF 没生成或没验证，却写成已交付。\n- `矩阵替代诊断`：颜色和分数替代了原因、缺口和下一步。\n- `图文替代验收`：把看板绿灯当成 Gate / TASK 关闭证据。\n- `registry 漏登`：HTML 存在，但没有 registry、source pack 和刷新触发。\n- `视觉弱完成`：只有卡片和表格，没有主视觉、层级幅度、组件语义或 human rubric。\n- `不同源预览`：HTML、PDF、PNG 来自不同内容或临时重画截图。\n\n这些失败模式出现时，优先补合同和入口，不扩大成无关视觉重做。\n", "raw_href": "../../governance/problem-focused-visual-presentation-rules.md"}, "skills/problem-focused-visual-presentation/SKILL.md": {"owner_path": "skills/problem-focused-visual-presentation/SKILL.md", "title": "Problem-Focused Visual Presentation", "markdown": "---\nname: problem-focused-visual-presentation\ndescription: 问题聚焦式图文呈现技能；用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带视觉主角和证据边界的 HTML / 图文 lens。\nmaturity: leading\nevidence_signals: [skill, README entry, template, governance, sensor, TRANSFER, views, reference, exported-sample]\ntransfer_ready: true\nsensor: python3 scripts/check_all.py --only problem-focused-visual-presentation,skill-maturity\n---\n\n# Problem-Focused Visual Presentation\n\n## 定位\n\n本技能把复杂文字、文档、专题或项目状态重组为面向当前关注问题的图文 lens。\n\n它吸收 AcknowledgeBase 和下游工程中成熟的问题聚焦呈现方法，并在本库绑定既有 `views/` 持久呈现层。默认仍先产出聊天内 Markdown / 表格 / Mermaid / 结构化图文方案；只有用户明确要求 HTML、持久页面、打印、导出，或本轮已经形成可长期复用的 current / snapshot lens 时，才写入 [[views/README]]。\n\n统一流水线固定为：\n\n`Source truth -> Content contract -> Visual strategy -> Page paradigm / slot schema -> Component semantic manifest -> Renderer implementation -> Export / accessibility / regression QA -> Human rubric`\n\n## 适用场景\n\n- 用户说“信息乱”“阅读不方便”“一图胜千言”“直观看”“做成图文”“图文混排”“HTML 呈现”。\n- 用户要看一个文档、主题、状态页、风险页、计划页、决策页、验收页、issue、知识材料、资源、owner 或时间线。\n- 用户需要比较多个对象、看证据链、看缺口、看行动地图或把材料转成可分发视图。\n- 用户要求 HTML / PDF / PNG / 打印 / snapshot / current lens。\n\n## 不适用场景\n\n- 简单问答、只查一个路径、只要一句结论时，不启动完整 lens。\n- 正式验收关闭、状态推进、issue 关闭、发布准出或规则裁决不能被 lens 替代。\n- 测试报告、项目状态、Issue、风险、决策、handoff、log 和 memory 仍回到自己的 owner 页面。\n- 不为了视觉好看牺牲证据边界；必须写清来源、更新时间、未读来源和不可上推范围。\n- 不默认创建持久 HTML；只有用户要求或仓库已有持久呈现层时才落文件。\n\n## 成熟度与证据信号\n\n- `maturity`：`leading`。本技能已具备技能正文、README 入口、迁移边界、治理接线、模板、`views/` 持久呈现层、参考范式、导出样本和专项 sensor。\n- `template`：持久 lens 模板见 [[templates/problem-focused-lens-template]]，只承接字段骨架，不替代 source pack 或事实源。\n- `views`：持久 lens 入口见 [[views/README]]，current / snapshot 登记见 [[views/lens-registry]]；持久 lens 必须声明 `export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、视觉策略字段和 `static_visual_qa`，导出缓存必须落在 `.gitignore` 忽略目录。\n- `reference`：页面范式、组件语义和视觉完成度口径见 `skills/problem-focused-visual-presentation/reference/`，用于指导 renderer 和 sensor，不承接项目事实。\n- `governance`：持久化、证据边界、项目状态和验收不上推回到 [[governance/problem-focused-visual-presentation-rules]]、[[response-mode-routing]]、[[POLICY]] 和目标单一信息源。\n- `TRANSFER`：迁移边界见 [[skills/problem-focused-visual-presentation/TRANSFER]]；迁移时吸收 lens 合同、source pack、背景框、证据边界、视觉流水线、同源导出和 QA 守卫，不复制具体视图。\n- `sensor`：`python3 scripts/check_all.py --only problem-focused-visual-presentation` 检查技能、模板、`views/` registry、参考文件、HTML meta、`static_visual_qa`、导出缓存忽略规则和总门禁接线。\n- `evidence boundary`：本技能证明的是呈现质量和追溯边界，不证明原事实完整或验收完成。\n\n## 工作流\n\n### 1. 冻结关注合同\n\n每次生成 lens 前先冻结 focus contract：\n\n- `focus_object`：本轮聚焦的文档、主题、状态、风险、决策、计划、验收、issue、知识或资源。\n- `lens_type`：`status / plan / decision / risk / issue / acceptance / knowledge / resource / owner / timeline`。\n- `judgement_purpose`：看懂、比较、行动、验收、追责、回顾、学习或沉淀。\n- `decision-lens`：如果页面服务决策，必须写清选项、判断标准、So-What、反证、deal-breaker、manual-confirmation 和不能上推边界；不只是漂亮页面。\n- `source_pack`：已读来源、未读但相关来源、更新时间、证据和推断。\n- `evidence_boundary`：`confirmed / likely / possible / blocked`。\n- `output_mode`：短答、Markdown、Mermaid、HTML、HTML + assets、PDF / PNG、slide、临时 artifact、持久 current 或 snapshot。\n- `persistent_or_temporary`：聊天内临时、`views/current/` 或 `views/snapshots/`。\n- `export_required`：是否必须导出 PDF / PNG / print view / slide。\n- `real-world-unverified`：如果没有 service-side、end-to-end 或人工现场确认，lens 只能写本地结构 / 静态呈现通过，不能写真实世界已验证。\n\n简单问答不启动完整 lens。显式要求 HTML、图文文件、打印、PDF / PNG 或持久页面时，默认进入持久 lens 路径。\n\n### 2. 组装 source pack\n\n按对象读取最小必要源：\n\n- 单文档：目标文档、frontmatter、出链 / 入链、相关入口。\n- 主题：主题入口、概念页、相关文章、报告、决策、log、raw / assets。\n- 状态 / 验收 / issue：状态页、事项页、报告、issue、风险、服务台账或运行证据。\n- 运行 / 代码事实：代码位置、日志、测试、artifact、服务状态和相关文档。\n\nsource pack 必须标明已读、未读但相关、更新时间、哪些结论来自证据、哪些只是推断。\n\n### 3. 建背景框和证据边界\n\n每个 lens 都要包含：\n\n- 上位背景：属于哪个项目、主题、概念、计划或事件。\n- 来源背景：读了哪些文档，哪些只是邻接未读。\n- 历史背景：新结论、旧结论修正、阶段快照还是历史证据。\n- 关系背景：连接哪些文档、owner、任务、风险、决策或资产。\n- 使用边界：适合用于什么判断，不能上推到哪里。\n\n证据边界使用：\n\n- `confirmed`：已由源页面、记录、截图、票据、决策、人工确认、脚本检查或可靠数据支撑。\n- `likely`：证据较强，但缺少关键确认、最新核验或完整闭环。\n- `possible`：合理候选或推断，不能写成当前结论。\n- `blocked`：缺少权限、核验、人工确认、数据快照或源页面。\n\n### 4. 设计视觉策略\n\n复杂或持久 lens 必须先填写视觉策略，再开始写 HTML：\n\n- `art_direction_brief`：这张 lens 的视觉主角和阅读气质。\n- `information_topology`：信息之间是层级、网络、路径、矩阵、时间线还是边界结构。\n- `layout_morphology_plan`：首屏、主图、证据区、追溯区和行动区如何分布。\n- `topic_visual_language`：该主题专属图形、颜色、线条、标签、网格或图标语义。\n- `primary_visual_metaphor`：主视觉隐喻，例如地图、控制台、证据链、边界图或分层脑图。\n- `theme_specific_elements`：只属于本主题的视觉元素，避免通用卡片堆叠。\n- `anti_information_listing_strategy`：哪些长列表下沉，哪些信息前置为图形结构。\n- `page_paradigm`：选用 `current-status-dashboard / decision-comparison / evidence-chain / concept-map / timeline / matrix / boundary-map / resource-map` 等范式。\n- `component_semantic_manifest`：本页组件角色清单，例如 verdict strip、evidence rail、matrix cell、timeline node、boundary block、trace link。\n- `human_rubric`：完成前由人读时用来判断是否真的直观的标准。\n- `visual_acceptance_floor=impact-required`：至少要让读者更快判断、比较或行动；未达到 impact-required 时不能只因 HTML 存在而通过。\n- `object-fit: contain`：真实图片、截图或产品对象默认保持完整可见，不为版式裁切掉关键信息。\n- `full-page`：需要全局判断的 lens 应让主视觉覆盖完整页面节奏，而不是把关键证据塞进局部卡片。\n- `finish_tokens`：检查 font-weight、box-shadow、linear-gradient 等视觉完成度信号时，只作为 polish 证据，不能替代 source pack 和证据边界。\n- `result_cluster_diagnosis`：如果页面退化成标题 + 卡片 + 表格，要指出并调整。\n\n### 5. 选择图文结构\n\n| 目的 | 优先结构 |\n| --- | --- |\n| 一眼看状态 | 状态卡、看板、红黄绿矩阵 |\n| 比较方案 / 版本 / 缺口 | 表格、评分矩阵、差异热力表 |\n| 理解主题结构 | 脑图、树图、主题地图 |\n| 理解系统或边界 | 框图、架构图、边界图 |\n| 推进计划或排障 | 流程图、泳道图、行动地图 |\n| 回看演进 | 时间线、里程碑图 |\n| 看多文档关系 | 关系图、引用地图、证据链图 |\n| 验收或关闭 | 证据层级表、缺口矩阵、不可上推边界 |\n\n矩阵和热力图优先用整格状态表达，不把长证据塞进格子；详情放到卡片或追溯区。知识型内容优先考虑脑图、概念图、关系图或分层地图；流程用路径图 / 泳道图；系统边界用结构边界图；验收和对比用矩阵。不要让所有页面退化成标题 + 卡片 + 表格。\n\n页面范式和组件语义参考：\n\n- `skills/problem-focused-visual-presentation/reference/page-paradigm-library.md`\n- `skills/problem-focused-visual-presentation/reference/component-semantic-manifest.md`\n- `skills/problem-focused-visual-presentation/reference/visual-finish-rubric.md`\n\n### 6. 输出、持久化和同源导出\n\n默认聊天内输出即可。只有满足以下条件才写文件：\n\n- 用户明确要求 HTML / 图文文件 / 下载 / 打印 / PDF / PNG / 持久页面。\n- 当前主题稳定，适合作为 canonical current lens。\n- 本轮形成决策、验收、发布、事故、阶段复盘或外部分发 snapshot。\n- 当前仓库已有 `views/`、`reports/` 或等价呈现层。\n\n本库的持久呈现层固定为 [[views/README]]。新增 current lens 放 `views/current/` 并同步 [[views/lens-registry]]；阶段性 snapshot 放 `views/snapshots/` 并同步 registry。导出 PDF / PNG / SVG 缓存放 `views/.exports/`、`views/exports/`、`views/**/.exports/` 或等价忽略目录，不提交为第二份事实源。\n\n只要本轮生成或更新持久 HTML lens，就必须同轮从同一 source manifest / render pipeline 生成 PDF 和至少一张 PNG，并在最终回复里展示 PNG 预览。禁止为了聊天展示另画一张不同源 PNG。\n\n### 7. 静态视觉 QA\n\n复杂或持久 HTML / PDF / PNG 输出必须在产物自身 meta 或等价机器可读块里留下 `static_visual_qa`，至少覆盖：\n\n- `layout_frame`\n- `type_scale`\n- `spacing_rhythm`\n- `semantic_palette`\n- `component_roles`\n- `accessibility_checks`\n- `export_render_check`\n- `finish_grade`\n- `visual_strength_gate`\n- `hierarchy_amplitude_gate`\n- `component_variety_gate`\n- `color_budget_single_hero_gate`\n- `adjustment_loop`\n- `rendered_visual_review`\n- `review_artifact`\n- `visual_acceptance_result`\n\nsensor 只能检查字段、导出留痕和同源约束，不能替代人审或视觉模型判断美感。\n\n## 输出格式\n\n```markdown\n**一眼判断**\n- 当前结论：\n- 下一步 / 当前动作：\n- 风险或缺口：\n\n**背景框**\n- 上位背景：\n- 来源背景：\n- 历史背景：\n- 关系背景：\n- 使用边界：\n\n**图文主体**\n- 结构：\n- 图 / 表：\n\n**证据边界**\n- confirmed：\n- likely：\n- possible：\n- blocked：\n\n**证据与追溯**\n- 已读来源：\n- 关键证据：\n- 原始入口：\n\n**导出和持久化**\n- 是否持久：\n- 导出需求：\n- PDF / PNG：\n- static_visual_qa：\n- 未覆盖边界：\n- service-side：\n- end-to-end：\n- manual-confirmation：\n- real-world-unverified：\n```\n\n## 禁止项\n\n- 不把图文 lens 当作项目状态、验收、准出、关闭或规则裁决。\n- 不让 metadata 抢占首屏；首屏先回答用户现在该看什么。\n- 不把历史快照当 current。\n- 不在未生成和检查导出件时声称“已导出”。\n- 不提交同一 lens 的 HTML、PDF、PNG、SVG 等重复渲染物作为多个事实源。\n- 不绕开 [[templates/problem-focused-lens-template]] 和 [[views/lens-registry]] 生成孤立持久 HTML。\n", "raw_href": "../../skills/problem-focused-visual-presentation/SKILL.md"}, "templates/problem-focused-lens-template.md": {"owner_path": "templates/problem-focused-lens-template.md", "title": "Problem-Focused Lens Template", "markdown": "---\ntype: template\nid: TEMPLATE-PROBLEM-FOCUSED-LENS-001\nscope: shared\nstatus: active\nsource_of_truth: false\nupdated: 2026-06-25\ntags: [template, lens, problem-focused, visual-presentation, html-lens]\n---\n\n# Problem-Focused Lens Template\n\n> 用于生成或维护 `views/current/`、`views/snapshots/` 或一次性图文 lens。复制后删除提示文字，并保留证据边界。lens 只负责呈现，不替代 owner 页面。\n\n## Metadata\n\n- `lens_id`:\n- `focus_object`:\n- `lens_type`: status / plan / decision / risk / issue / acceptance / knowledge / resource / owner / timeline\n- `judgement_purpose`: 看懂 / 比较 / 行动 / 验收 / 追责 / 回顾 / 学习 / 沉淀\n- `decision-lens`: yes / no；yes 时必须写选项、判断标准、So-What、反证、deal-breaker、manual-confirmation 和不能上推边界\n- `source_pages`:\n- `source_scope`:\n- `generated_at`:\n- `source_revision`:\n- `evidence_boundary`: confirmed / likely / possible / blocked\n- `context_frame`:\n- `output_mode`: markdown / html_report / print_view / snapshot / current\n- `persistent_or_temporary`:\n- `export_required`: none / pdf / png / pdf+png / slide\n- `visual_structure`: status-card / matrix / timeline / relation-map / evidence-chain / action-map / concept-map / boundary-map / mixed\n- `visual_acceptance_floor`: impact-required\n- `real-world-unverified`: yes / no\n- `export_profile`:\n- `print_profile`:\n- `equivalence_profile`:\n- `default_auto_exports`:\n- `conversation_png_preview`:\n- `canonical_policy`:\n- `snapshot_policy`:\n- `staleness_policy`:\n- `refresh_trigger`:\n\n## Focus Contract\n\n- `focus_object`：\n- `lens_type`：\n- `judgement_purpose`：\n- `source_pack`：\n- `evidence_boundary`：\n- `output_mode`：\n- `persistent_or_temporary`：\n- `export_required`：\n\n## 一眼判断\n\n- 当前结论：\n- 下一步 / 当前动作：\n- 风险或缺口：\n- 不能上推：\n\n## 背景框\n\n- 上位背景：\n- 来源背景：\n- 历史背景：\n- 关系背景：\n- 使用边界：\n\n## Source Pack\n\n- 已读来源：\n- 未读但相关：\n- 最新性 / 更新时间：\n- 关键证据：\n- 推断：\n\n## 证据边界\n\n- `confirmed`：\n- `likely`：\n- `possible`：\n- `blocked`：\n\n## 视觉策略\n\n- `art_direction_brief`：\n- `object-fit: contain`：图片、截图或真实对象保持完整可见。\n- `full-page`：主视觉是否承担整页判断，而非局部装饰。\n- `information_topology`：\n- `layout_morphology_plan`：\n- `topic_visual_language`：\n- `primary_visual_metaphor`：\n- `theme_specific_elements`：\n- `anti_information_listing_strategy`：\n- `page_paradigm`：\n- `component_semantic_manifest`：\n- `human_rubric`：\n- `result_cluster_diagnosis`：\n\n## Page Paradigm / Slot Schema\n\n- 首屏判断区：\n- 背景框：\n- 主视觉：\n- 证据边界：\n- 追溯入口：\n- 行动分流或 owner 回写：\n- 导出和刷新说明：\n\n## 图文主体\n\n优先选择一种主视觉结构，不要把所有内容都堆成长文。\n\n- 主结构：\n- 图 / 表：\n- 详情卡：\n- 追溯入口：\n\n按 lens 类型选择：\n\n- `status`：状态总览、变化点、阻塞、下一步。\n- `plan`：阶段、路径、依赖、owner、验收点。\n- `decision`：选项、标准、取舍、待确认。\n- `risk`：风险源、影响面、触发条件、缓解动作。\n- `issue`：原始现象、证据层、修复层、复验层、不可关闭边界。\n- `acceptance`：验收对象、证据分层、缺口矩阵、人工确认边界。\n- `knowledge`：概念图、脑图、关系图或分层地图。\n- `resource`：资源类型、可用性、权限、更新条件。\n- `owner`：职责边界、协作接口、交接点。\n- `timeline`：事件顺序、版本、转折点、未确认段。\n\n## Static Visual QA\n\n复杂或持久 HTML / PDF / PNG 输出必须在产物自身 meta 或等价机器可读块里留下 `static_visual_qa`：\n\n- `layout_frame`：\n- `type_scale`：\n- `spacing_rhythm`：\n- `semantic_palette`：\n- `component_roles`：\n- `accessibility_checks`：\n- `export_render_check`：\n- `finish_grade`：\n- `visual_strength_gate`：\n- `hierarchy_amplitude_gate`：\n- `component_variety_gate`：\n- `color_budget_single_hero_gate`：\n- `adjustment_loop`：\n- `rendered_visual_review`：\n- `review_artifact`：\n- `visual_acceptance_result`：\n- `font-weight`：\n- `box-shadow`：\n- `linear-gradient`：\n\n## 导出与持久化\n\n- 是否持久：\n- current / snapshot：\n- canonical 文件：\n- registry：\n- PDF 导出：\n- PNG 预览：\n- 导出缓存目录：\n- 同源一致性：\n- final reply preview：\n\n## 回写守卫\n\n- owner 页面：\n- 需要分流的 issue / risk / decision / report / memory / trace：\n- lens 不能替代：\n- 不可上推范围：\n\n## 未覆盖边界\n\n- 未读来源：\n- 待人工确认：\n- service-side：\n- end-to-end：\n- manual-confirmation：\n- real-world-unverified：\n- 不适用场景：\n- 下次刷新触发：\n", "raw_href": "../../templates/problem-focused-lens-template.md"}, "views/lens-registry.md": {"owner_path": "views/lens-registry.md", "title": "Lens Registry", "markdown": "---\ntype: registry\nid: VIEWS-LENS-REGISTRY-001\nscope: shared\nstatus: active\nsource_of_truth: true\nupdated: 2026-06-25\ntags: [views, lens, registry]\n---\n\n# Lens Registry\n\n本页登记 `views/` 下的持久 lens。\n\n每条记录至少写清：`lens_id`、`path`、`lens_type`、`focus_object`、`judgement_purpose`、`source_pages`、`generated_at`、`source_revision`、`evidence_boundary`、`output_mode`、`visual_structure`、`art_direction_brief`、`page_paradigm`、`component_semantic_manifest`、`static_visual_qa`、`export_profile`、`print_profile`、`equivalence_profile`、`default_auto_exports`、`conversation_png_preview`、`canonical_policy`、`snapshot_policy`、`staleness_policy` 和 `refresh_trigger`。\n\n每条记录还要能回到 source pack，并用中文写清证据边界、未读来源、同源导出关系和不能上推范围。PDF / PNG / SVG 导出缓存必须进入 gitignore 忽略目录，不作为 registry 的事实源。\n\n## Current\n\n### markdown-owner-viewer-current\n\n- `lens_id`: `markdown-owner-viewer-current`\n- `path`: `views/current/markdown-owner-viewer.html`\n- `lens_type`: `resource / owner`\n- `focus_object`: rendered Markdown owner-page viewer for current HTML lens links\n- `source_pages`: `views/current/**/*.html`; linked repository Markdown owner pages\n- `generated_at`: `2026-07-24`\n- `source_revision`: generated by `python3 scripts/update_current_markdown_owner_viewer.py`\n- `evidence_boundary`: confirmed for packed owner Markdown rendering, browser-parseable JavaScript and current HTML link rewriting; source pages remain Markdown truth sources; share-only mode does not expose raw `.md` files.\n- `output_mode`: `current html utility viewer`\n- `canonical_policy`: tracked HTML viewer is regenerated from current HTML links and Markdown owner source pack.\n- `refresh_trigger`: current HTML links to Markdown owner pages, linked owner Markdown, share URL prefix/secret, or viewer script changes.\n\n### problem-focused-visual-presentation-system-sample\n\n- `lens_id`: `problem-focused-visual-presentation-system-sample`\n- `path`: `views/current/problem-focused-visual-presentation-system-sample.html`\n- `lens_type`: `knowledge / status / acceptance validation sample`\n- `focus_object`: problem-focused visual presentation system in this wiki\n- `judgement_purpose`: validate that the local lens system covers trigger rules, source pack, visual strategy, static visual QA, registry and same-source export flow\n- `source_pages`: `skills/problem-focused-visual-presentation/SKILL.md`; `templates/problem-focused-lens-template.md`; `governance/problem-focused-visual-presentation-rules.md`; `views/README.md`; `views/lens-registry.md`; `scripts/check_problem_focused_visual_presentation.py`\n- `generated_at`: `2026-06-25`\n- `source_revision`: current working tree at generation time; commit hash must be read from git after commit\n- `evidence_boundary`: confirmed for local structure and generated export artifacts; blocked for public URL, human design approval and source truth completeness beyond the listed source pack\n- `output_mode`: `current html_report / print_view`\n- `visual_structure`: concept map + validation matrix + evidence strip + timeline\n- `art_direction_brief`: restrained technical control room with a single source-truth-to-export path as the visual hero\n- `page_paradigm`: `concept map / matrix / operations map`\n- `component_semantic_manifest`: stored in the HTML manifest under `component_semantic_manifest`\n- `static_visual_qa`: stored in the HTML manifest under `static_visual_qa`\n- `export_profile`: same-source PDF and PNG are generated to `views/current/.exports/`; exports are ignored and not truth sources\n- `print_profile`: A4 print CSS from the canonical HTML\n- `equivalence_profile`: HTML / PDF / PNG share the same canonical HTML and manifest\n- `default_auto_exports`: `pdf+png` when the HTML is generated or refreshed\n- `conversation_png_preview`: `views/current/.exports/problem-focused-visual-presentation-system-sample.png`\n- `canonical_policy`: tracked HTML is the presentation source; source pages remain the truth source\n- `snapshot_policy`: move to `views/snapshots/` only for dated external distribution or phase freeze\n- `staleness_policy`: stale when the skill, template, governance page, registry or sensor changes\n- `refresh_trigger`: problem-focused visual presentation rules, template fields, sensor requirements, or export pipeline changes\n- `cannot_promote`: this lens cannot close an issue, approve a release, replace source pages, or prove visual beauty beyond recorded QA.\n\n## Snapshots\n\n当前暂无登记。\n\n## 维护规则\n\n- current lens 更新时，登记项应指向最新 canonical HTML / source / manifest。\n- snapshot lens 不覆盖旧记录；按时间新增登记。\n- PDF / PNG / SVG 导出缓存不在本页作为事实源登记，只记录导出状态和可再生成方式。\n", "raw_href": "../lens-registry.md"}}};
+    const fallbackShareUrl = "https://hai-macbook-pro.smartadpole.com/wiki/views/share/current/markdown-owner-viewer--34d54f0f3fd6ef40f78a611c.html";
+    const viewerVersion = encodeURIComponent(sourcePack.generated_at || sourcePack.source_revision || "current");
+    const rawShareMode = window.location.pathname.includes("/share/");
+    const params = new URLSearchParams(window.location.search);
+    const requestedPath = params.get("path") || "";
+    const pathNode = document.getElementById("path");
+    const titleNode = document.getElementById("title");
+    const bodyNode = document.getElementById("body");
+    const rawLink = document.getElementById("rawLink");
+    const fallbackLink = document.getElementById("fallbackLink");
+    const listNode = document.getElementById("ownerList");
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+    function renderInline(text) {
+      let out = escapeHtml(text);
+      out = out.replace(/`([^`]+)`/g, "<code>$1</code>");
+      out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => {
+        return `<code>[${label}](${href})</code>`;
+      });
+      out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      out = out.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      out = out.replace(/\[\[([^\]]+)\]\]/g, "<code>[[$1]]</code>");
+      return out;
+    }
+    function renderMarkdown(md) {
+      const lines = String(md || "").replace(/\r\n/g, "\n").split("\n");
+      const out = [];
+      let i = 0;
+      let inCode = false;
+      let code = [];
+      let listType = null;
+      function closeList() {
+        if (!listType) return;
+        out.push(listType === "ol" ? "</ol>" : "</ul>");
+        listType = null;
+      }
+      while (i < lines.length) {
+        const line = lines[i];
+        if (line.trim().startsWith("```")) {
+          closeList();
+          if (inCode) {
+            out.push("<pre><code>" + escapeHtml(code.join("\n")) + "</code></pre>");
+            inCode = false;
+            code = [];
+          } else {
+            inCode = true;
+            code = [];
+          }
+          i += 1;
+          continue;
+        }
+        if (inCode) {
+          code.push(line);
+          i += 1;
+          continue;
+        }
+        if (!line.trim()) {
+          closeList();
+          i += 1;
+          continue;
+        }
+        const heading = line.match(/^(#{1,6})\s+(.*)$/);
+        if (heading) {
+          closeList();
+          const level = heading[1].length;
+          out.push(`<h${level}>${renderInline(heading[2])}</h${level}>`);
+          i += 1;
+          continue;
+        }
+        if (/^(-{3,}|\*{3,}|_{3,})\s*$/.test(line.trim())) {
+          closeList();
+          out.push("<hr>");
+          i += 1;
+          continue;
+        }
+        if (line.trim().startsWith(">")) {
+          closeList();
+          const quote = [];
+          while (i < lines.length && lines[i].trim().startsWith(">")) {
+            quote.push(lines[i].replace(/^\s*>\s?/, ""));
+            i += 1;
+          }
+          out.push("<blockquote>" + quote.map((part) => `<p>${renderInline(part)}</p>`).join("") + "</blockquote>");
+          continue;
+        }
+        const ordered = line.match(/^\s*(\d+)\.\s+(.*)$/);
+        if (ordered) {
+          if (listType !== "ol") {
+            closeList();
+            listType = "ol";
+            out.push("<ol>");
+          }
+          out.push(`<li>${renderInline(ordered[2])}</li>`);
+          i += 1;
+          continue;
+        }
+        const bullet = line.match(/^\s*[-*]\s+(.*)$/);
+        if (bullet) {
+          if (listType !== "ul") {
+            closeList();
+            listType = "ul";
+            out.push("<ul>");
+          }
+          out.push(`<li>${renderInline(bullet[1])}</li>`);
+          i += 1;
+          continue;
+        }
+        closeList();
+        const tableLines = [];
+        let j = i;
+        while (j < lines.length && lines[j].includes("|")) {
+          tableLines.push(lines[j]);
+          j += 1;
+        }
+        if (
+          tableLines.length >= 2 &&
+          /^\s*\|?(\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?\s*$/.test(tableLines[1])
+        ) {
+          const splitRow = (row) =>
+            row
+              .trim()
+              .replace(/^\|/, "")
+              .replace(/\|$/, "")
+              .split("|")
+              .map((cell) => cell.trim());
+          const headers = splitRow(tableLines[0]);
+          out.push("<table><thead><tr>" + headers.map((cell) => `<th>${renderInline(cell)}</th>`).join("") + "</tr></thead><tbody>");
+          for (const row of tableLines.slice(2)) {
+            const cells = splitRow(row);
+            out.push("<tr>" + cells.map((cell) => `<td>${renderInline(cell)}</td>`).join("") + "</tr>");
+          }
+          out.push("</tbody></table>");
+          i = j;
+          continue;
+        }
+        out.push(`<p>${renderInline(line)}</p>`);
+        i += 1;
+      }
+      closeList();
+      return out.join("");
+    }
+    const available = sourcePack.items || {};
+    const entries = Object.values(available).sort((a, b) => (a.owner_path || "").localeCompare(b.owner_path || "", "zh-Hans-CN"));
+    function viewerUrl(ownerPath) {
+      const query = `?v=${viewerVersion}&path=${encodeURIComponent(ownerPath)}`;
+      return rawShareMode && fallbackShareUrl ? `${fallbackShareUrl}${query}` : query;
+    }
+    function renderOwner(ownerPath, updateUrl = false) {
+      const chosen = available[ownerPath] || entries[0] || null;
+      if (!chosen) {
+        titleNode.textContent = "未收录任何 owner page";
+        pathNode.textContent = "当前 source pack 为空";
+        bodyNode.innerHTML = '<div class="empty">这个 viewer 还没有收进任何 markdown owner 页面。请先刷新相关 HTML lens。</div>';
+        rawLink.style.display = "none";
+        return;
+      }
+      titleNode.textContent = chosen.title || chosen.owner_path;
+      pathNode.textContent = chosen.owner_path;
+      bodyNode.innerHTML = `<div class="md-prose">${renderMarkdown(chosen.markdown || "")}</div>`;
+      if (rawShareMode) {
+        rawLink.textContent = "Raw markdown 未公开（share-only 模式）";
+        rawLink.removeAttribute("href");
+        rawLink.classList.remove("primary");
+        rawLink.classList.add("warn");
+      } else {
+        rawLink.href = chosen.raw_href || "#";
+      }
+      fallbackLink.href = viewerUrl(chosen.owner_path);
+      if (listNode) {
+        listNode.querySelectorAll("[data-owner-path]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.ownerPath === chosen.owner_path);
+        });
+      }
+      if (updateUrl && window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", viewerUrl(chosen.owner_path));
+      }
+    }
+    if (listNode) {
+      listNode.innerHTML = entries.map((item) => {
+        return `<button type="button" class="owner-link" data-owner-path="${escapeHtml(item.owner_path)}">
+          <div class="owner-name">${escapeHtml(item.title || item.owner_path)}</div>
+          <div class="owner-path">${escapeHtml(item.owner_path)}</div>
+        </button>`;
+      }).join("");
+      listNode.querySelectorAll("[data-owner-path]").forEach((button) => {
+        button.addEventListener("click", () => {
+          renderOwner(button.dataset.ownerPath || "", true);
+        });
+      });
+    }
+    renderOwner(requestedPath, false);
+    
+  })();</script>
+</body>
+</html>

@@ -52,5 +52,6 @@ tags: [views, lens, presentation]
 - [[views/publication]]
 - `views/publication.md`: public-html-publish profile and public_url contract.
 - `current/public-html-publish-status.html`: stable public-html-publish live readback sample.
+- `current/markdown-owner-viewer.html`: shared current HTML owner-page viewer; current lens links to repository Markdown owners must go through this rendered viewer instead of raw `.md` files.
 - `current/problem-focused-visual-presentation-system-sample.html`: problem-focused visual presentation validation sample.
 - HTML-only public sharing excludes `.exports`, Markdown, PDF / PNG / SVG, logs, raw assets, and local secrets.
