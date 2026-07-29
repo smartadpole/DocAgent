@@ -1,0 +1,1 @@
+{"presentation_eligibility":"admit","evaluation":{"semantic-content":{"independent_model_judge":"builder","rubric_revision":"topic-presentation-semantic-rubric.v1","trace_ref":"fixture://trace"}},"expected_fail_layer":"semantic-content"}

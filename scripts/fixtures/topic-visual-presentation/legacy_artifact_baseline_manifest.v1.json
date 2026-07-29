@@ -1,0 +1,9 @@
+{
+  "revision": "wiki-topic-visual-presentation-legacy-baseline.v1",
+  "policy": "grandfather-unmodified; same-path refresh requires pre_post_hash_reason_and_compatibility_readback",
+  "artifacts": [
+    {"path": "views/current/markdown-owner-viewer.html", "sha256": "6ff8ef4da057402beeb8f81acbe718b327f822756ab18e8aed28d8432716b105", "role": "legacy current utility"},
+    {"path": "views/current/problem-focused-visual-presentation-system-sample.html", "sha256": "b8389c17ebc8c934955d429aeecebba334a2d9a0480492f04a3a22c52f01d6b2", "role": "legacy current lens"},
+    {"path": "views/current/public-html-publish-status.html", "sha256": "128618eac3121538a0c5305e4e26ef5b6a6f500f5438e0cf57f617d0743a8a9e", "role": "legacy public canonical sample"}
+  ]
+}
