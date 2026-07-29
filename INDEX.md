@@ -60,7 +60,7 @@ tags: [index, root]
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能
 - [[skills/work-item-auto-decomposition/SKILL]]：本仓项目 / 领域绑定的事项自动拆解技能，用于补齐 Gate / FP / EP / TASK / risk / issue / test / 验收关系
-- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能，承接 focus contract、source pack、视觉策略、静态 QA 和同源导出
+- [[skills/topic-visual-presentation/SKILL]]：主题图文呈现唯一入口，承接 eligibility、subject/source、三轴、五门 evaluator 与同源导出
 - [[skills/documentation-maintenance/SKILL]]：代码、结构或规则变化后的文档维护技能
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析、定位、分工和联测验证技能
 - [[skills/retrospective-capability/SKILL]]：复盘能力总技能，统一项目交付、软件研发链、历史对话、Agent 工作流、Harness episode 和治理自演进复盘合同
@@ -109,7 +109,7 @@ tags: [index, root]
 - [[skills/transferable-skill-governance/SKILL]]：判断外部通用技能吸收时应 recognize、complete、upgrade、merge、adapt、defer 还是 reject。
 - [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]：矩阵级通用技能吸收的 source-depth、能力分类、project conformance、未验证边界和人工确认事项。
 - [[skills/goal-contract/SKILL]]：复杂长时任务的完成契约，连接目标、证据层级、停止条件和记录落点。
-- [[skills/problem-focused-visual-presentation/SKILL]]：把复杂主题、状态、风险或证据链转成问题聚焦图文 lens；持久 HTML 必须同步 registry、保留 `static_visual_qa` 并同源导出 PDF / PNG。
+- [[skills/topic-visual-presentation/SKILL]]：把复杂主题、状态、风险或证据链在 admit 后转为默认 HTML；所有 materialization 同源导出 PDF / PNG，并保持五门不能上推。
 - [[skills/documentation-maintenance/SKILL]]：代码、结构、规则或公开行为变化后检查并同步文档。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能，用于模糊问题、故障、联调失败、验收争议和跨工程阻塞的定位、分工与联测收口。
 - [[concepts/codex-goals]]：Codex 长时任务的线程级完成契约，适合终点明确但路径依赖中间证据的持续工作。
@@ -146,8 +146,8 @@ tags: [index, root]
 - [[templates/development-acceptance-plan-template]]：AP 验收计划模板
 - [[templates/project-retrospective-template]]：项目、阶段、交付链、Issue / 事故后和 Agent 工作复盘的通用核心模板，包含证据地图、上轮行动兑现回检、行动分流、治理自演进和未验证边界
 - [[templates/goal-contract-template]]：长时任务完成契约模板，用于定义期望最终状态、完成判定、验证面 / 证据边界、约束、预算和阻塞停止条件。
-- [[templates/problem-focused-lens-template]]：问题聚焦式图文 lens 模板，用于 current / snapshot / print view 的 source pack、证据边界、视觉策略、`static_visual_qa` 和导出字段
-- [[templates/problem-focused-lens-source-pack-contract]] / [[templates/problem-focused-lens-review-contract]]：问题聚焦 lens 的 source pack 和审核合同
+- [[templates/topic-presentation-template]]：主题呈现合同模板，用于即时 subject/source、图关系、三轴、独立 judge trace 和导出字段
+- [[templates/topic-presentation-template]]：主题呈现的 subject/source、五门 evaluator 和审核合同
 - [[templates/public-html-publication-template]]：HTML 公开发布 profile 模板，用于声明 source root、public_url、HTML-only、multi-host / multi-project 和 blocked 口径
 - [[templates/research-intake-template]]：研究 intake 模板，用于外部技术材料、论文、repo、产品更新或社区讨论进入 research-capability 前的 source package、access boundary、A3 compensation、parser / evaluator 和 writeback 字段
 - [[templates/technology-research-contract-template]] / [[templates/technology-research-report-template]]：调研合同和正式研究报告骨架

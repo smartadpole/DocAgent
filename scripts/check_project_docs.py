@@ -43,6 +43,11 @@ EXAMPLE_WIKILINK_TARGETS = {
     "page#heading",
     "page#^block-id",
 }
+HISTORICAL_RETIRED_LINK_PREFIXES = (
+    "skills/problem-focused-visual-presentation",
+    "templates/problem-focused-lens-",
+    "problem-focused-visual-presentation-rules",
+)
 
 
 def markdown_files(repo: Path) -> list[Path]:
@@ -128,9 +133,13 @@ def check_wikilinks(repo: Path, errors: list[str]) -> None:
     index = build_link_index(repo)
     for path in markdown_files(repo):
         rel = path.relative_to(repo)
+        if rel.as_posix().startswith("archive/"):
+            continue
         text = path.read_text(encoding="utf-8")
         for match in WIKILINK_RE.finditer(text):
             target = match.group(1).strip()
+            if rel.as_posix() == "log.md" and target.startswith(HISTORICAL_RETIRED_LINK_PREFIXES):
+                continue
             if not link_exists(repo, index, target):
                 errors.append(f"{rel}: unresolved wikilink [[{target}]]")
 

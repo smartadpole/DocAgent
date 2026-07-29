@@ -31,7 +31,7 @@
 - 如果用户要求吸收外部矩阵、附件建议或下游工程通用技能，先读 [[skills/transferable-skill-governance/SKILL]]，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
 - 如果用户要求自动拆解当前 wiki 的研发事项，读 [[skills/work-item-auto-decomposition/SKILL]]；它是项目 / 领域绑定能力，不硬升为通用 skill。
 - 如果用户要求 canonical HTML 公网访问、外部分发或 public URL，先读 [[skills/public-html-publish/SKILL]]、[[public-html-publish-rules]] 和 [[views/publication]]。
-- 如果用户要求图文 lens、HTML、状态页、风险页、计划页、验收页、决策页、主题梳理、一图胜千言、PDF / PNG 或持久视图，先读 [[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和 [[views/README]]；持久 HTML 必须同步 registry，生成同源 PDF / PNG 到忽略目录，并保留 `static_visual_qa`。
+- 如果用户要求主题图文、HTML、状态页、风险页、计划页、验收页、决策页、PDF / PNG 或持久视图，先读 [[skills/topic-visual-presentation/SKILL]]、[[templates/topic-presentation-template]] 和 [[views/README]]；admit 默认 HTML，所有 materialization 生成同源 PDF / PNG，五门 evaluator 不得上推。
 - 如果用户要求复盘阶段、专题、交付链、Issue / 事故后经验或 Agent 工作流，先读 [[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]、[[projects/retrospectives/README]]；标准 / 深度复盘正文进入 `projects/retrospectives/<year>/` 并同步 [[projects/retrospectives/indexes/by-year]]，项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话和 Agent 工作复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。
 
 ## 工作阶段检查
@@ -41,7 +41,7 @@
 - research-capability 聚合入口、调研模板或研究治理改动跑：`python3 scripts/check_all.py --only research-capability`。
 - public-html-publish skill、profile、治理页或发布模板改动跑：`python3 scripts/check_all.py --only public-html-publish`。
 - 知识关联 skill 或落位规则改动跑：`python3 scripts/check_all.py --only knowledge-linking`。
-- 问题聚焦式图文呈现、`views/`、lens 模板或导出守卫改动跑：`python3 scripts/check_all.py --only problem-focused-visual-presentation`。
+- 主题图文呈现、`views/`、topic 模板或导出守卫改动跑：`python3 scripts/check_all.py --only topic-visual-presentation`。
 - H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
 - Agent System Capability Package、intelligence evidence 或外部矩阵识别 capsule 改动跑：`python3 scripts/check_all.py --only agent-system-maturity`。
 - 实现类工程合集、主控 / 子工程模板、implementation project profile 或 topic landing 改动跑：`python3 scripts/check_all.py --only implementation-template-system`。

@@ -40,7 +40,7 @@ tags: [entry, governance]
 - [[knowledge-linking-rules]]：knowledge-linking 的有效链接、单一信息源和关系画像规则
 - [[markdown-document-governance-profile.v1]]：wiki 的 Markdown 方言、renderer、链接、frontmatter、资产、生成内容和验证 profile
 - [[issue-analysis-rules]]：issue-analysis 的快速根因链、完整案件和验收 / 规则升级分流
-- [[problem-focused-visual-presentation-rules]]：problem-focused lens 的 source pack、导出、views 和不上推规则
+- [[topic-visual-presentation-rules]]：主题呈现的准入、subject/source、导出、views、五门 evaluator 和不上推规则
 - [[public-html-publish-rules]]：public-html-publish 的 HTML-only、public_url、host / prefix、live readback 和 blocked 裁定规则
 - [[research-capability-rules]]：research-capability 的证据等级、行动等级、查证和沉淀落位规则
 - 复盘总入口看 [[skills/retrospective-capability/SKILL]]，复盘方法看 [[concepts/project-retrospective]]，archive root 看 [[projects/retrospectives/README]]，具体复盘正文进入 `projects/retrospectives/<year>/` 并同步索引；项目交付 / 软件研发链复盘用 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流复盘用 [[skills/historical-dialogue-retrospective/SKILL]]，复盘暴露的重复失守或机制缺口再回到 [[harness-evolution]] 和 [[harness-feedback-ledger]]
@@ -120,7 +120,7 @@ tags: [entry, governance]
 - 如果问题是“文档是否随代码、规则或结构变化同步”，优先写 [[documentation-maintenance-rules]]
 - 如果问题是“新增知识怎样落位、入口和回链”，优先写 [[knowledge-linking-rules]]
 - 如果问题是“问题要快诊断、完整 Issue、验收还是规则升级”，优先写 [[issue-analysis-rules]]
-- 如果问题是“复杂信息是否要做成图文 lens 或持久 views”，优先写 [[problem-focused-visual-presentation-rules]]
+- 如果问题是“复杂信息是否要进入主题图文呈现或持久 views”，优先写 [[topic-visual-presentation-rules]]
 - 如果问题是“canonical HTML 是否已经公网可访问、能否给 public URL”，优先写 [[public-html-publish-rules]] 和 [[views/publication]]
 - 如果问题是“调研能否形成可行动判断”，优先写 [[research-capability-rules]]
 

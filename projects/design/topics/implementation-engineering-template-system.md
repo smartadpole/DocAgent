@@ -42,7 +42,7 @@ wiki 是统一模板工程，对外输出的是 **Template Kernel + Project Prof
 | 子工程 / implementation repo | Subproject Git Preflight、allowed writes、handoff、代码 / runtime 证据 | [[templates/harness-adoption-template]]、[[templates/code-handoff-template]]、[[templates/implementation-project-profile-template]] |
 | runtime-service | service registry、health / smoke / config profile、blocked readback | [[projects/service-registry]]、[[state-constraint-reasoning]] |
 | 数据 / 模型工程 | source freshness、non-default / boundary evidence、readback、evaluation correction | [[agent-system-maturity]]、[[projects/development/reports/README]] |
-| 知识库 / 文档治理工程 | owner-first、trace、memory、log、topic placement、documentation maintenance、lens | [[projects/memory/README]]、[[projects/trace]]、[[documentation-maintenance-rules]]、[[skills/problem-focused-visual-presentation/SKILL]] |
+| 知识库 / 文档治理工程 | owner-first、trace、memory、log、topic placement、documentation maintenance、topic presentation | [[projects/memory/README]]、[[projects/trace]]、[[documentation-maintenance-rules]]、[[skills/topic-visual-presentation/SKILL]] |
 | 运维 agent / ops | service registry、runtime config switch、health、production readback、rollback、ops diagnostics | [[projects/service-registry]]、[[skills/runtime-config-switch/SKILL]]、[[skills/performance-bandwidth-analysis/SKILL]] |
 | 调研 / 选型工程 | Research Contract、Source Ledger、evidence matrix、adoption contract | [[skills/research-capability/SKILL]]、[[templates/research-intake-template]] |
 
@@ -90,7 +90,7 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | `ops-diagnostics-pack` | timing ledger、coverage matrix、容量、外部依赖、浏览器 / runtime profile 和不上推边界 | [[skills/performance-bandwidth-analysis/SKILL]]、[[state-constraint-reasoning]] |
 | `research-intelligence-pack` | 调研合同、source plan、证据等级和落地裁决 | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] |
 | `memory-trace-log-pack` | owner-first、topic、memory、trace、log 和文档维护 | [[projects/memory/README]]、[[projects/trace]]、[[skills/documentation-maintenance/SKILL]] |
-| `visual-publication-pack` | lens、HTML、public URL、同源导出和 live readback | [[skills/problem-focused-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]] |
+| `visual-publication-pack` | topic HTML、public URL、同源导出和 live readback | [[skills/topic-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]] |
 
 下游工程贡献的是可抽象能力包，不是整套项目事实。业务名、服务名、运行 ID、端口、表、账号、dataset、模型、机器、路径和一次性 handoff 只能作为 source evidence，不进入 pack 正文。
 
@@ -150,7 +150,7 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | Research Operating System / Technical Research | skill + template + sensor | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] |
 | topic placement / Design Topic Governance | topic owner + project docs sensor | [[projects/design/topics/README]]、本页 |
 | Cross-project Log Architecture | memory + log + generated view boundary | [[log-writing-rules]]、[[projects/memory/README]] |
-| Public / Lens / Visual Presentation | views + skill + publication boundary | [[skills/problem-focused-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]] |
+| Public / Topic Visual Presentation | views + skill + publication boundary | [[skills/topic-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]] |
 
 ## 不能上推边界
 

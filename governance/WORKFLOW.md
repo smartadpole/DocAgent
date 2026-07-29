@@ -257,7 +257,7 @@
 
 - 外部来源进入 `raw/` 或 `inbox/`
 - 当前项目判断和推进进入 `projects/`
-- 问题聚焦式图文呈现进入 `views/`，只承接 current / snapshot lens 和 registry，不替代事实源；持久 HTML lens 必须先固定 focus contract、source pack、evidence boundary、visual strategy、page paradigm、component semantic manifest 和 `static_visual_qa`，并同轮生成同源 PDF / PNG 到忽略目录
+- 主题图文呈现进入 `views/`，只承接 current / snapshot 派生视图，不替代事实源；admit 后固定 subject/source、三轴、五门 evaluator 和版本化 trace，并同轮生成同源 PDF / PNG 到忽略目录
 - 高频 agent 分析流程进入 `skills/`
 - 稳定结论沉到 `articles/`、`concepts/`、`indexes/`
 - 失去主入口职责但仍需保留的内容进入 `archive/`
@@ -286,7 +286,7 @@
 - `projects/incidents/README.md`：`projects/README.md`、`projects/releases.md`、`projects/development/execution/worklog.md`、`projects/decisions.md`、`projects/memory/README.md`
 - `projects/retrospectives/README.md`：`projects/README.md`、`projects/STRUCTURE.md`、[[concepts/project-retrospective]]、相关 trace、决策、开发、Issue、事故、会议或 log 页面
 - `skills/`：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能带项目语境，再补读对应项目主入口、设计、EP / TASK、轻量 TODO、测试报告或服务台账
-- `views/`：[[README]]、[[INDEX]]、[[views/README]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]]、目标事实源和 [[views/lens-registry]]
+- `views/`：[[README]]、[[INDEX]]、[[views/README]]、[[skills/topic-visual-presentation/SKILL]]、[[templates/topic-presentation-template]]、目标事实源和 [[views/lens-registry]]
 - `articles/`：对应 `raw/`、相关 `concepts/`、必要时读相关项目页
 - `concepts/`：相关 `articles/`、相关项目页、相关 `indexes/`
 - `indexes/`：它所指向的主页面

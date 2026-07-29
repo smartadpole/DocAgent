@@ -34,8 +34,8 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
-- 新问题聚焦式图文 lens 可以参考 [[templates/problem-focused-lens-template]]；持久 lens 还要同步 [[views/lens-registry]]，填写视觉策略、组件语义 manifest、`static_visual_qa` 和同源 PDF / PNG 导出合同
-- 新问题聚焦式图文 lens 的 source pack 和交付前审核可以参考 [[templates/problem-focused-lens-source-pack-contract]]、[[templates/problem-focused-lens-review-contract]]
+- 新主题呈现使用 [[templates/topic-presentation-template]]；持久 current/snapshot 同步 [[views/lens-registry]]，填写 subject/source、关系图、三轴、五门 evaluator 和同源 PDF / PNG 合同
+- 新主题呈现的 source pack、交付前审核和五门边界统一使用 [[templates/topic-presentation-template]]
 - 新 HTML 公开发布 profile 可以参考 [[templates/public-html-publication-template]]；发布验证闭环可以参考 [[templates/public-html-publication-contract-template]]；真实发布仍以 [[views/publication]] 和 live readback 为准。
 - 新技术、开源工程、行业 / AI、产品或 PoC 调研启动前，可以参考 [[templates/technology-research-contract-template]]；正式研究结果可以参考 [[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]]
 - 新外部技术材料、论文、repo、社区讨论或产品更新进入研究流程前，可以参考 [[templates/research-intake-template]]；它只承接 intake 和 source package，不替代正式研究报告。

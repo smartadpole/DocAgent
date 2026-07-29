@@ -26,7 +26,7 @@ tags: [views, lens, presentation]
 
 - 只有用户要求 HTML / 图文文件 / 打印 / PDF / PNG / 持久页面，或本轮明确需要 current / snapshot lens 时，才写入 `views/`。
 - 每个持久 lens 必须能回到 source pack、证据边界和原始入口。
-- 每个复杂或持久 lens 必须声明 focus contract、视觉策略、page paradigm、component semantic manifest 和 `static_visual_qa`。
+- 每个新复杂或持久呈现必须声明 eligibility、subject/source、关系图、三轴、五门 evaluator 与 versioned trace；旧 grandfather artifact 不追补新 schema。
 - current lens 不记录历史快照结论；snapshot lens 不冒充当前事实。
 - PDF / PNG / SVG 只作为导出、打印、预览或分发产物，不作为事实源提交。
 - 生成或刷新持久 HTML / print view 时，必须说明是否已生成同源 PDF / PNG；如果没有实际导出，只能写“具备导出配置”或“待导出”。
@@ -45,13 +45,13 @@ tags: [views, lens, presentation]
 
 ## 相关入口
 
-- [[skills/problem-focused-visual-presentation/SKILL]]
+- [[skills/topic-visual-presentation/SKILL]]
 - [[skills/public-html-publish/SKILL]]
-- [[templates/problem-focused-lens-template]]
+- [[templates/topic-presentation-template]]
 - [[views/lens-registry]]
 - [[views/publication]]
 - `views/publication.md`: public-html-publish profile and public_url contract.
 - `current/public-html-publish-status.html`: stable public-html-publish live readback sample.
 - `current/markdown-owner-viewer.html`: shared current HTML owner-page viewer; current lens links to repository Markdown owners must go through this rendered viewer instead of raw `.md` files.
-- `current/problem-focused-visual-presentation-system-sample.html`: problem-focused visual presentation validation sample.
+- `current/topic-visual-presentation-system.html`: canonical topic presentation representative sample; older problem-focused sample is grandfathered legacy only.
 - HTML-only public sharing excludes `.exports`, Markdown, PDF / PNG / SVG, logs, raw assets, and local secrets.

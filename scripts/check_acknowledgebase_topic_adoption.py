@@ -26,7 +26,7 @@ SOURCE_TOPICS = (
     "projects/design/topics/dialogue-work-state-capture-phase-one-pilot.md",
     "projects/design/topics/execution-process-record-system.md",
     "projects/design/topics/personal-capability-system-architecture.md",
-    "projects/design/topics/problem-focused-lens-default-invocation-boundary.md",
+    "skills/topic-visual-presentation/SKILL.md",
     "projects/design/topics/research-operating-system-design.md",
     "projects/design/topics/retrospective-archive-storage-structure.md",
     "projects/design/topics/skill-maturity-integrated-scoring-loop-contract.md",

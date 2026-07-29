@@ -26,7 +26,7 @@ tags: [skill-transfer, agent-system, conformance, matrix-adoption]
 - `/Users/hai/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-matrix.data.json`
 - `/Users/hai/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-diagnostics.md`
 
-重点源能力：Goal Contract、Loop Engineering、复盘能力、documentation-maintenance、issue-analysis、problem-focused-visual-presentation、public-html-publish、knowledge-linking、research-capability、cross-project-governance-audit、frontier-technology-intake。存在源 `TRANSFER.md` 的能力，以 `TRANSFER.md` 的迁移边界优先。
+重点源能力：Goal Contract、Loop Engineering、复盘能力、documentation-maintenance、issue-analysis、topic-visual-presentation、public-html-publish、knowledge-linking、research-capability、cross-project-governance-audit、frontier-technology-intake。存在源 `TRANSFER.md` 的能力，以 `TRANSFER.md` 的迁移边界优先。
 
 ## 本仓吸收原则
 
@@ -42,8 +42,8 @@ tags: [skill-transfer, agent-system, conformance, matrix-adoption]
 | --- | --- |
 | `local_source_of_truth` | [[skills/README]] 是技能入口；各技能 `SKILL.md` 是执行源；同目录 `TRANSFER.md` 是迁移边界源；本清单记录矩阵吸收裁决；[[governance/README]]、[[POLICY]]、[[WORKFLOW]]、[[AGENTS]] 是规则入口；`views/` 只承接持久呈现。 |
 | `allowed_write_scope` | 本仓授权范围内可更新 `skills/`、`templates/`、`governance/`、`scripts/`、`views/`、`projects/` 和 [[log]]；外部项目事实、运行 ID、服务实例、handoff 和历史 log 不进入本仓通用事实。 |
-| `required_profile` | 跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；任务书生成走 [[skills/cross-project-skill-adoption-prompt/SKILL]]；长时任务走 [[skills/goal-contract/SKILL]]；持续循环走 [[skills/loop-engineering/SKILL]]；持久图文和公开发布分别走 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
-| `validation_command` | 本清单专项检查：`python3 scripts/check_all.py --only transferable-skill-baseline`；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance,cross-project-governance-audit,transferable-skill-baseline`；收尾跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
+| `required_profile` | 跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；任务书生成走 [[skills/cross-project-skill-adoption-prompt/SKILL]]；长时任务走 [[skills/goal-contract/SKILL]]；持续循环走 [[skills/loop-engineering/SKILL]]；主题呈现和公开发布分别走 [[skills/topic-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
+| `validation_command` | 本清单专项检查：`python3 scripts/check_all.py --only transferable-skill-baseline`；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,research-capability,loop-engineering,public-html-publish,topic-visual-presentation,documentation-maintenance,cross-project-governance-audit,transferable-skill-baseline`；收尾跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
 | `blocked_when_missing` | 缺目标结构自检、`TRANSFER.md`、owner 页面、专项 sensor、非默认 / 边界验证、人工确认边界、live readback 或外部 evaluator readback 时，只能写 `partial / blocked / review`，不能写完成、发布、验收或迁移闭环。 |
 | `exceptions` | 简单问答、一次性小修、只读解释、无持久沉淀价值的临时判断不强套完整技能包；项目 / 领域绑定能力只抽象方法，不硬升通用 skill；sensor 只证明结构，不证明执行质量。 |
 
@@ -57,7 +57,7 @@ tags: [skill-transfer, agent-system, conformance, matrix-adoption]
 | Public HTML Publish | baseline 候选 | recognition-gap | complete | [[skills/public-html-publish/SKILL]]、[[skills/public-html-publish/TRANSFER]]、[[views/publication]]、`scripts/check_public_html_publish.py` | live 公开需 `--live` readback；静态检查通过不等于公网可访问。 |
 | documentation-maintenance | transferable skill | recognition-gap | upgrade | [[skills/documentation-maintenance/SKILL]]、[[skills/documentation-maintenance/TRANSFER]]、[[documentation-maintenance-rules]]、`scripts/check_documentation_maintenance.py` | 文档同步检查不替代设计 owner 或项目验收。 |
 | issue-analysis | transferable skill | signal-only-gap | recognize | [[skills/issue-analysis/SKILL]]、[[skills/issue-analysis/TRANSFER]]、[[issue-analysis-rules]]、[[templates/development-issue-template]] | Issue 分析只定位和分流；关闭仍由 Issue 档案、报告和验收证据裁决。 |
-| problem-focused-visual-presentation | transferable skill | recognition-gap + 局部 true-gap | complete | [[skills/problem-focused-visual-presentation/SKILL]]、[[skills/problem-focused-visual-presentation/TRANSFER]]、[[views/README]]、[[views/lens-registry]] | lens 不替代事实源、验收关闭、Issue 关闭、决策拍板或报告；PDF / PNG 是派生导出。 |
+| topic-visual-presentation | transferable skill | recognition-gap + 局部 true-gap | complete | [[skills/topic-visual-presentation/SKILL]]、[[skills/topic-visual-presentation/TRANSFER]]、[[views/README]]、[[views/lens-registry]] | topic presentation 不替代事实源、验收关闭、Issue 关闭、决策拍板或报告；PDF / PNG 是派生导出。 |
 | knowledge-linking | transferable skill | recognition-gap | recognize | [[skills/knowledge-linking/SKILL]]、[[skills/knowledge-linking/TRANSFER]]、[[knowledge-linking-rules]]、`scripts/check_knowledge_linking.py` | 链接质量仍需语义判断；sensor 只防孤岛和入口漏项。 |
 | research-capability | transferable skill | true-gap | upgrade | [[skills/research-capability/SKILL]]、[[skills/research-capability/TRANSFER]]、[[templates/research-intake-template]]、[[research-capability-rules]] | 子项覆盖是成熟度信号；不把外部 13 个研究子项平铺成并列 skill。 |
 | frontier-technology-intake | transferable 子项 | true-gap | adapt | 作为 research-capability 的 Frontier Tech Intake / Research Intake 子项和模板字段吸收 | 不新增并列通用 skill；不绕过平台访问、版权、隐私和人工确认边界。 |
@@ -75,7 +75,7 @@ tags: [skill-transfer, agent-system, conformance, matrix-adoption]
 ## 验证与回看
 
 - 本清单结构：`python3 scripts/check_all.py --only transferable-skill-baseline`
-- 相关技能束：`python3 scripts/check_all.py --only skill-maturity,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance,cross-project-governance-audit,agent-system-maturity`
+- 相关技能束：`python3 scripts/check_all.py --only skill-maturity,research-capability,loop-engineering,public-html-publish,topic-visual-presentation,documentation-maintenance,cross-project-governance-audit,agent-system-maturity`
 - 收尾总门禁：`python3 scripts/check_all.py`
 - 空白 / whitespace：`git diff --check`
 

@@ -16,7 +16,24 @@ tags: [views, lens, registry]
 
 每条记录还要能回到 source pack，并用中文写清证据边界、未读来源、同源导出关系和不能上推范围。PDF / PNG / SVG 导出缓存必须进入 gitignore 忽略目录，不作为 registry 的事实源。
 
-## Current
+## Current canonical
+
+### topic-visual-presentation-system
+
+- `path`: `views/current/topic-visual-presentation-system.html`
+- `lens_type`: `topic information presentation system sample`
+- `source_pages`: `skills/topic-visual-presentation/SKILL.md`; `governance/topic-visual-presentation-rules.md`; `templates/topic-presentation-template.md`
+- `generated_at`: `2026-07-29`
+- `source_revision`: topic canonical cutover working tree
+- `evidence_boundary`: contract-schema and local export readback only; independent semantic judge, independent visual review and reader utility remain unproven.
+- `output_mode`: `current semantic-static html`
+- `exports`: same-source PDF / PNG at `views/.exports/topic-visual-presentation-system/` and ignored by Git.
+- `refresh_trigger`: skill, rule, template, schema, publication profile or renderer changes.
+- `cannot_promote`: this view cannot replace owner pages or prove semantic, visual, delivery or reader-utility gates beyond its stated evidence.
+
+## Legacy grandfather artifacts
+
+The entries below are retained for unchanged path/lens_id/public compatibility under `scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json`; they are not canonical runtime entries or aliases.
 
 ### markdown-owner-viewer-current
 
@@ -39,7 +56,7 @@ tags: [views, lens, registry]
 - `lens_type`: `knowledge / status / acceptance validation sample`
 - `focus_object`: problem-focused visual presentation system in this wiki
 - `judgement_purpose`: validate that the local lens system covers trigger rules, source pack, visual strategy, static visual QA, registry and same-source export flow
-- `source_pages`: `skills/problem-focused-visual-presentation/SKILL.md`; `templates/problem-focused-lens-template.md`; `governance/problem-focused-visual-presentation-rules.md`; `views/README.md`; `views/lens-registry.md`; `scripts/check_problem_focused_visual_presentation.py`
+- `source_pages`: historical source pack embedded in the unchanged legacy HTML; retired paths are not runtime dependencies.
 - `generated_at`: `2026-06-25`
 - `source_revision`: current working tree at generation time; commit hash must be read from git after commit
 - `evidence_boundary`: confirmed for local structure and generated export artifacts; blocked for public URL, human design approval and source truth completeness beyond the listed source pack

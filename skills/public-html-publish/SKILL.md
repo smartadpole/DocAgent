@@ -97,7 +97,7 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 - [[templates/public-html-publication-template]]
 - [[views/publication]]
 - [[views/README]]
-- [[skills/problem-focused-visual-presentation/SKILL]]
+- [[skills/topic-visual-presentation/SKILL]]
 
 
 ## L5 live profile update (2026-06-19)

@@ -63,8 +63,8 @@
 | --- | --- |
 | `local_source_of_truth` | [[skills/README]] 是通用技能入口；各技能 `SKILL.md` 是执行流程源；同目录 `TRANSFER.md` 是迁移边界源；[[governance/README]]、[[POLICY]]、[[WORKFLOW]] 和 [[AGENTS]] 是规则入口；`views/` 只承接持久呈现；`projects/` 继续承接项目事实。 |
 | `allowed_write_scope` | 本仓 agent 可在本轮授权范围内更新 `skills/`、`templates/`、`governance/`、`scripts/`、`views/`、`projects/` 和 [[log]]；不得把外部工程项目事实、运行 ID、服务实例、handoff 或历史 log 写成本仓通用事实。 |
-| `required_profile` | 先按 [[response-mode-routing]] 判断响应模式；跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；长时执行使用 [[skills/goal-contract/SKILL]]；持续循环使用 [[skills/loop-engineering/SKILL]]；实现类工程接入先填 [[templates/implementation-project-profile-template]]；持久图文和公开发布分别使用 [[skills/problem-focused-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
-| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,transferable-skill-baseline,research-capability,loop-engineering,public-html-publish,problem-focused-visual-presentation,documentation-maintenance,cross-project-governance-audit,implementation-template-system`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
+| `required_profile` | 先按 [[response-mode-routing]] 判断响应模式；跨工程吸收先走 [[skills/transferable-skill-governance/SKILL]]；长时执行使用 [[skills/goal-contract/SKILL]]；持续循环使用 [[skills/loop-engineering/SKILL]]；实现类工程接入先填 [[templates/implementation-project-profile-template]]；主题呈现和公开发布分别使用 [[skills/topic-visual-presentation/SKILL]] 与 [[skills/public-html-publish/SKILL]]。 |
+| `validation_command` | 局部改动优先跑对应专项 sensor；技能体系改动至少跑 `python3 scripts/check_all.py --only skill-maturity,transferable-skill-baseline,research-capability,loop-engineering,public-html-publish,topic-visual-presentation,documentation-maintenance,cross-project-governance-audit,implementation-template-system`；收尾前跑完整 `python3 scripts/check_all.py` 和 `git diff --check`。 |
 | `blocked_when_missing` | 缺少目标工程结构自检、`TRANSFER.md` 迁移边界、owner 页面、专项 sensor、人工确认边界、live readback 或真实证据时，只能写 `partial / blocked / review`，不能写成验收完成、发布完成或迁移完成。 |
 | `exceptions` | 简单问答、一次性小修、只读解释、没有持久沉淀价值的临时判断不强行套完整技能包；项目 / 领域绑定能力只抽象方法，不新建通用 skill；sensor 只证明 wiring，不证明真实运行质量、审美质量或业务验收。 |
 
@@ -109,7 +109,7 @@
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
 - [[skills/work-item-auto-decomposition/SKILL]]：项目 / 领域绑定的研发事项自动拆解技能。用于本仓需求、Gate、FP、EP、TASK、risk、issue、test、验收关系不完整时，生成候选拆解、关系节点和关闭证据；不作为通用迁移 skill。
-- [[skills/problem-focused-visual-presentation/SKILL]]：问题聚焦式图文呈现技能。用于把复杂文档、主题、状态、风险、计划、验收、知识或证据链重组为可读、可追溯、带证据边界的图文 lens；持久 HTML 还必须同步 registry、保留 `static_visual_qa`，并同源导出 PDF / PNG 到忽略目录。
+- [[skills/topic-visual-presentation/SKILL]]：主题图文呈现唯一运行入口。即时 subject/source 输入在 admit 后默认 HTML；problem-focus 只是子范围，PDF/PNG、五门 evaluator、legacy baseline 和公开发布边界独立可追溯。
 - [[skills/public-html-publish/SKILL]]：HTML 公开发布技能。用于把 canonical HTML views 按 [[views/publication]] 生成 public_url 或明确 blocked 原因，并守住 HTML-only、host / prefix 和 live readback 边界。
 - [[skills/documentation-maintenance/SKILL]]：文档维护技能。用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。

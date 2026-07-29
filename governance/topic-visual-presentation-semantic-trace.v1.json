@@ -1,0 +1,50 @@
+{
+  "trace_revision": "wiki-topic-presentation-semantic-trace.v1",
+  "trace_kind": "builder-independent-semantic-review",
+  "reviewer": {
+    "identity": "agent:/root/independent_reviewer",
+    "role": "independent semantic reviewer",
+    "builder_relation": "independent; did not author or modify the reviewed implementation"
+  },
+  "reviewed_at": "2026-07-29",
+  "rubric": {
+    "revision": "topic-presentation-semantic-rubric.v1",
+    "calibration_revision": "wiki-topic-presentation-intent-calibration.v1",
+    "criteria": [
+      "admitted topic presentation has a bounded subject_package and source_pack",
+      "task_state, content_scope and materialization are explicit and valid",
+      "claims distinguish owner truth, derived view evidence and unknowns",
+      "problem-focus is represented as a content_scope submode rather than a second runtime entry",
+      "five evaluator gates remain independent"
+    ]
+  },
+  "inputs": [
+    {"path": "skills/topic-visual-presentation/SKILL.md", "sha256": "69d2e7ce604baa7759aa6096104851235da7cdbd6cb5b990798dca6fbc9ea21f"},
+    {"path": "governance/topic-visual-presentation-rules.md", "sha256": "82f6c2726a1063ae9f15c6b52b127d1afd1a886f0cf19bba28a7d83ae1f5995d"},
+    {"path": "governance/topic-visual-presentation-evaluation.md", "sha256": "f46bf91bdff83003f4359d4bc2ce8bded3e3add933558439d6094271103f90da"},
+    {"path": "templates/topic-presentation-template.md", "sha256": "03eef15afe254da5cff495f645fdaf24598bd738e209f03f259fbe2c1d4eee56"},
+    {"path": "scripts/check_topic_visual_presentation.py", "sha256": "42279606c78538eb6a35e591f9c8c013ef35110a49d771d1603765eb338f67c0"},
+    {"path": "scripts/fixtures/topic-visual-presentation/positive-structure.v1.json", "sha256": "1b1e34ee4956c9f3526ef588db710da577af110367eff6a67ad331a7f998facb"},
+    {"path": "scripts/fixtures/topic-visual-presentation/positive-problem-focus.v1.json", "sha256": "8b827ca1bbe904fffd113bd1abd542a6b45088c5c5c75209709e08f5c6527e02"},
+    {"path": "views/current/topic-visual-presentation-system.html", "sha256": "440a04d0a50c28f86a4a21f7c7c3074da2d2b43aee555e8648ada86110b54941"}
+  ],
+  "verdict": {
+    "status": "pass-bounded-semantic-contract",
+    "evidence": [
+      "The canonical sample contains an explicit subject_package, source_pack, source bindings, unknowns, owner refs and the three runtime axes.",
+      "The canonical sample uses task_state=understand, content_scope=topic and materialization=current; both positive fixtures separately exercise topic/inline and problem-focus/ephemeral.",
+      "The skill, rule and template consistently keep projects as owner facts, articles/concepts as independent knowledge, and views as derived presentation.",
+      "The sample states that semantic, visual and reader-utility evidence cannot be promoted from structure or export readback."
+    ],
+    "disagreement_handling": "No contradictory source claim was found in the reviewed input set. A future contradiction must retain both source bindings and return to the owning source rather than being resolved by this trace."
+  },
+  "cannot_promote": [
+    "This verdict does not establish factual completeness or freshness outside the listed source pack.",
+    "This verdict does not establish visual quality, delivery/public reachability, reader utility, project state, acceptance or publication authorization.",
+    "The deterministic fixture/sensor result remains a separate contract-schema gate and cannot be used as semantic authority for future subject packages."
+  ],
+  "limits": [
+    "The review covers the representative system sample and fixtures, not a real user topic request with external source material.",
+    "No real reader-task oracle was supplied; reader-utility remains unproven."
+  ]
+}

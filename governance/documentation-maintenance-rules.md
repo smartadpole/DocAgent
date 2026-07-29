@@ -34,7 +34,7 @@ tags: [governance, documentation-maintenance, sensor]
 1. 真实 diff、用户指定文件、诊断矩阵、检查失败或运行证据。
 2. 受影响主入口，例如 [[README]]、[[INDEX]]、[[AGENTS]]、[[governance/README]]、[[skills/README]]、[[templates/README]]、[[views/README]]。
 3. owning page，例如某个 skill、template、governance rule、project page、service registry 或 report。
-4. 关联 sensor，例如 `python3 scripts/check_all.py --only skill-maturity`、`documentation-maintenance`、`knowledge-linking`、`problem-focused-visual-presentation`。
+4. 关联 sensor，例如 `python3 scripts/check_all.py --only skill-maturity`、`documentation-maintenance`、`knowledge-linking`、`topic-visual-presentation`。
 5. [[log]]，只记录本轮真实用户意图、关键动作和结构变化，不作为主动背景入口。
 
 如果证据和文档冲突，先标注冲突层级。不要用最新回复、旧日志或记忆覆盖正式主入口。

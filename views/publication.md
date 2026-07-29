@@ -20,6 +20,8 @@ tags: [views, html, public, publish]
 - access shape：share-only；无目录入口；直接文件路径、隐藏目录、`.exports` 和非 HTML 默认返回 404。
 - public_url 公式：`views/<relative>.html` + `.codex/local/public-html-share.env` 中的 `PUBLIC_HTML_SHARE_SECRET` -> `https://hai-macbook-pro.smartadpole.com/wiki/views/share/<relative-stem>--<signature>.html`。
 - sample canonical HTML：`views/current/public-html-publish-status.html`。
+- topic canonical HTML：`views/current/topic-visual-presentation-system.html`；其 topic presentation refresh 触发由 [[views/lens-registry]] 记录，公开发布仍按本 profile 独立 live/deny 读回。
+- legacy compatibility：`views/current/problem-focused-visual-presentation-system-sample.html` 保持 grandfather 路径、lens_id 和既有 share URL；它不是新的 runtime entry。
 - sample public URL：运行 `python3 scripts/check_public_html_publish.py --url` 生成。
 - live readback：运行 `python3 scripts/check_public_html_publish.py --live`，必须同时验证 200 share URL 和 404 denial paths / denial readback。
 - secret / token storage：`.codex/local/public-html-share.env` 只保留在本机，不提交 Git。

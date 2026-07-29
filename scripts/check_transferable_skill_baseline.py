@@ -49,7 +49,7 @@ MANIFEST_TERMS = (
     "Public HTML Publish",
     "documentation-maintenance",
     "issue-analysis",
-    "problem-focused-visual-presentation",
+    "topic-visual-presentation",
     "knowledge-linking",
     "research-capability",
     "frontier-technology-intake",

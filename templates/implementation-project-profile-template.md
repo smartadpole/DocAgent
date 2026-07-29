@@ -197,7 +197,7 @@ tags: [template, implementation, project, agent-system, harness]
 | research-capability | use / adapt / defer / reject |  |  |
 | issue-analysis | use / adapt / defer / reject |  |  |
 | documentation-maintenance | use / adapt / defer / reject |  |  |
-| problem-focused-visual-presentation | use / adapt / defer / reject |  |  |
+| topic-visual-presentation | use / adapt / defer / reject |  |  |
 | public-html-publish | use / adapt / defer / reject |  |  |
 | retrospective-capability | use / adapt / defer / reject |  |  |
 | work-item-auto-decomposition | use / adapt / project-bound / reject |  |  |

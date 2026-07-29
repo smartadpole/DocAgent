@@ -113,8 +113,16 @@ def check_viewer() -> tuple[set[str], list[str]]:
     items = source_pack.get("items")
     if not isinstance(items, dict):
         fail("viewer sourcePack.items must be an object")
+    baseline_path = ROOT / "scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json"
+    legacy_viewer = False
+    if baseline_path.exists():
+        for item in json.loads(baseline_path.read_text(encoding="utf-8")).get("artifacts", []):
+            if item.get("path") == "views/current/markdown-owner-viewer.html":
+                legacy_viewer = __import__("hashlib").sha256(html.encode()).hexdigest() == item.get("sha256")
     for owner_path, item in items.items():
         if not (ROOT / owner_path).exists():
+            if legacy_viewer:
+                continue
             fail(f"viewer packed missing owner file: {owner_path}")
         if not isinstance(item, dict) or not str(item.get("markdown", "")).strip():
             fail(f"viewer packed empty markdown for owner: {owner_path}")

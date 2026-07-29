@@ -52,6 +52,6 @@ markdown_profile:
 ## 与相邻 owner 的边界
 
 - [[knowledge-linking-rules]]：判断知识之间是否需要上位、邻接、来源、应用和反向关系。
-- [[problem-focused-visual-presentation-rules]]：判断读者界面和图文呈现质量。
+- [[topic-visual-presentation-rules]]：判断主题读者界面和图文呈现质量。
 - [[documentation-maintenance-rules]]：执行 owner discovery、stale / duplicate-rule 和传播。
 - 本页：声明 wiki 实际使用的 Markdown 方言、renderer 和验证命令。

@@ -1,0 +1,48 @@
+{
+  "trace_revision": "wiki-topic-presentation-visual-trace.v1",
+  "trace_kind": "builder-independent-visual-review",
+  "reviewer": {
+    "identity": "agent:/root/independent_reviewer",
+    "role": "independent visual reviewer",
+    "builder_relation": "independent; did not author or modify the reviewed implementation"
+  },
+  "reviewed_at": "2026-07-29",
+  "rubric": {
+    "revision": "topic-presentation-visual-rubric.v1",
+    "criteria": [
+      "visual hierarchy makes the subject and primary purpose legible",
+      "flow, status table and ownership boundary remain readable at the reviewed export size",
+      "HTML, PNG and PDF are materially equivalent derived views",
+      "PNG crop has no material blank tail",
+      "visual evidence does not claim semantic correctness or reader success"
+    ]
+  },
+  "inputs": [
+    {"path": "views/current/topic-visual-presentation-system.html", "sha256": "440a04d0a50c28f86a4a21f7c7c3074da2d2b43aee555e8648ada86110b54941"},
+    {"path": "views/.exports/topic-visual-presentation-system/export-readback.v1.json", "sha256": "7cd50018ac84d0b531fbc26086387a4df0d27110015faa7398d500fcceacbd72"},
+    {"path": "views/.exports/topic-visual-presentation-system/topic-visual-presentation-system.png", "sha256": "3882052da3c3adcd0d74572f52fc2b6eb792219905958b2cd69058f7d9f6ed84", "dimensions": [1440, 1120]},
+    {"path": "views/.exports/topic-visual-presentation-system/topic-visual-presentation-system.pdf", "sha256": "ef0b3838a2941f2c9b841de9ea75175b5837c3d0bb0431248ab6a929a12d25b7", "pages": 2}
+  ],
+  "readback": {
+    "html": "inspected canonical semantic-static document",
+    "png": "inspected 1440x1120 export; content ends after the source-and-boundary section with no material blank tail",
+    "pdf": "rendered and inspected both Letter pages at 144 dpi; all content is legible and follows the HTML order"
+  },
+  "verdict": {
+    "status": "pass-with-print-layout-limit",
+    "evidence": [
+      "The hero, three summary cards, process flow and five-gate matrix establish a clear visual hierarchy for the stated system sample.",
+      "The reviewed PNG preserves the full content and has no material empty lower canvas after the corrected content crop.",
+      "The PDF retains the same hierarchy and content across two pages; its second page contains normal unused lower-page space after the final boundary paragraph.",
+      "The sample labels local evidence and unproven gates rather than visually presenting them as completed outcomes."
+    ]
+  },
+  "cannot_promote": [
+    "This review does not certify semantic correctness, source completeness, public reachability, reader utility, owner-state closure or accessibility conformance beyond visible legibility.",
+    "The PDF page-two unused lower space must not be interpreted as a PNG crop failure or as a reader-task success signal."
+  ],
+  "limits": [
+    "Review was performed on one desktop-scale PNG and a two-page Letter PDF; no assistive-technology, mobile-device or real-reader-task evaluation was performed.",
+    "Reader utility remains unproven."
+  ]
+}

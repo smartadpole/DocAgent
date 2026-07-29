@@ -171,7 +171,7 @@
 - 涉及子工程代码前必须做 Subproject Git Preflight：目录、分支、remote、fetch 后 ahead / behind / diverged、dirty / local-only 状态和更新策略；默认不 pull / merge / rebase / reset，除非用户授权且 fast-forward safe。
 - 当用户要求调研、研究、技术 / 产品 / 公司 / 开源工程评估、PoC 判断或会影响选型 / 采购 / 架构的当前事实时，使用 [[skills/research-capability/SKILL]]，并按 [[research-capability-rules]] 区分一手事实、信号、推论、行动等级和未验证边界。
 - 当用户要求 canonical HTML 公网访问、外部分发或 public URL 时，使用 [[skills/public-html-publish/SKILL]]，并按 [[public-html-publish-rules]] 和 [[views/publication]] 区分 HTML-only、host / prefix、live readback 和 blocked 口径。
-- 当用户要求看文档、主题、状态、风险、计划、验收、issue、知识材料，或说“图文”“HTML”“一图胜千言”“直观看”“状态页”“风险页”“验收页”“决策页”时，先按 [[skills/problem-focused-visual-presentation/SKILL]] 固定 focus contract、source pack、证据边界、视觉策略和输出模式；持久 HTML 必须同步 [[views/lens-registry]]，并同轮生成同源 PDF / PNG 到忽略目录。Lens 只负责呈现，不替代项目状态、验收关闭、issue 关闭、决策拍板、测试报告或规则裁定。
+- 当用户要求看主题、复杂关系、状态、风险、计划、验收、issue 或知识材料，先按 [[skills/topic-visual-presentation/SKILL]] 做 `admit / reject / clarify / abstain`，以即时 subject_package / source_pack、三轴和五门 evaluator 决定输出；admit 默认 HTML 并同源生成 PDF / PNG。`problem-focus` 只是 content_scope，lens 不替代 owner、验收、状态或规则裁定。
 - 如果本轮出现用户纠偏、检查失败、模式切换、重复失守或明显可脚本化缺口，先判断是否写入 [[harness-feedback-ledger]]；单次 episode 不直接新增硬规则，按 [[harness-evolution]] 判断是否晋升为模板、sensor、技能或规则。
 - 如果用户只要求“为什么 / 在哪 / 先分析”，默认不自动扩大成正式 issue、TASK、Gate 或状态回写；除非发现明确长期项目价值、用户授权沉淀，或当前规则要求必须沉淀。
 - 复杂问题不要一次改完，先拆成几个中间节点，再逐步推进。
@@ -311,7 +311,7 @@
 - 如果目标在 `projects/retrospectives/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/retrospectives/README.md`、[[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]，再按对象补读 trace、决策、开发、Issue、事故、会议、log、[[skills/delivery-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]] 或相关概念页。
 - 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`acceptance/`、`reports/`、`risks/` 或功能点实体页。
 - 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
-- 如果目标在 `views/`，先读 [[README]]、[[INDEX]]、[[views/README]]、[[skills/problem-focused-visual-presentation/SKILL]]、[[templates/problem-focused-lens-template]] 和目标事实源；current / snapshot 必须同步 [[views/lens-registry]]，导出 PDF / PNG / SVG 缓存必须落在 `.gitignore` 忽略目录。
+- 如果目标在 `views/`，先读 [[README]]、[[INDEX]]、[[views/README]]、[[skills/topic-visual-presentation/SKILL]]、[[templates/topic-presentation-template]] 和目标事实源；current / snapshot 必须同步 [[views/lens-registry]]，导出 PDF / PNG 缓存必须落在 `.gitignore` 忽略目录。
 - 如果目标是持久 HTML lens，必须在 HTML meta、JSON script 或等价机器可读块中保留 `static_visual_qa`，并检查 PDF / PNG 是否来自同一 source manifest 或同一 render pipeline；没有真实导出和检查时不得声称“已导出”。
 - 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
 - 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。

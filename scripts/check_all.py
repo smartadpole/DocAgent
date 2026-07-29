@@ -52,9 +52,9 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         (sys.executable, "scripts/check_cross_project_governance_audit.py"),
     ),
     (
-        "problem-focused-visual-presentation",
-        "problem-focused visual presentation",
-        (sys.executable, "scripts/check_problem_focused_visual_presentation.py"),
+        "topic-visual-presentation",
+        "topic visual presentation",
+        (sys.executable, "scripts/check_topic_visual_presentation.py"),
     ),
     ("public-html-publish", "public HTML publish", (sys.executable, "scripts/check_public_html_publish.py")),
     ("markdown-owner-viewer", "markdown owner viewer", (sys.executable, "scripts/check_markdown_owner_viewer.py")),

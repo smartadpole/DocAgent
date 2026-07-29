@@ -9,6 +9,13 @@
 
 ## 2026-07-29
 
+### 将问题聚焦呈现一次性切换为主题呈现合同
+
+- **用户意图**：按已独立验收的上游 canonical contract，在 wiki 成熟模板源中完成问题聚焦到主题聚焦呈现的 G1–G3/G5 本地迁移；保留旧 current HTML、lens_id 和公开 URL，不保留旧运行 alias/stub。
+- **关键动作**：新增 [[skills/topic-visual-presentation/SKILL]]、[[concepts/topic-information-presentation]]、[[templates/topic-presentation-template]]、[[topic-visual-presentation-rules]]、评价合同、fixture、legacy baseline manifest 与 `scripts/check_topic_visual_presentation.py`；替换 active agent/routing/skill/template/views/checker/maturity consumers，删除原 problem-focused skill、template、rule 和 checker。旧 current HTML 保持 hash 不变并在 [[views/lens-registry]] 标为 grandfather；新增 `views/current/topic-visual-presentation-system.html` 作为 canonical sample。
+- **验证 / 边界**：Chrome headless 已从新 HTML 真实导出并读回 ignored PDF/PNG；new/legacy public 与 deny readback 由本轮 public profile 验证。确定性 schema、负向 mutation 和 legacy hash 已覆盖；builder-independent semantic judge、independent visual reviewer 和真实 reader utility 未由本轮同一实施者自证，保持 unproven，不能把本地结构或导出 pass 上推为完整五门通过。
+- **Persistence Decision**：`artifact-needed`；owner 为 [[skills/topic-visual-presentation/SKILL]]、[[topic-visual-presentation-rules]]、[[views/lens-registry]] 和本地 checker，发现入口为 [[INDEX]] / [[skills/README]]。未改 AcknowledgeBase 或其他仓，且未提交。
+
 ### 把 Markdown 规则从知识关联中拆成工程 Profile
 
 - **用户意图**：用户指出长链接显示名、表格转义等属于 Markdown 文档规范，不应继续散落在知识关联和主题呈现；并要求 wiki 与 AcknowledgeBase 按统一方案整改。
