@@ -32,6 +32,12 @@ tags: [governance, knowledge-linking, knowledge]
 
 只有“参见若干链接”但不说明关系的，不能算完成 knowledge-linking。
 
+### 读者可见链接标签
+
+- 面向读者的页面导航表如果以 `页面` 为列名，首列 qualified wikilink 不得直接展示目录路径，必须使用页面标题或简短语义别名；表格内的别名分隔符必须转义，例如 `[[projects/design/README\|设计方案]]`，否则 Markdown 会把链接拆成两列。
+- 目录路径负责稳定定位，显示名负责自然阅读；“链接可点击”不等于“显示合格”。
+- `python3 scripts/check_all.py --only knowledge-linking` 对缺少别名或用完整目标路径充当别名的确定性失守报错；别名是否准确表达页面职责仍由 agent 人工回看。
+
 ## 单一信息源守卫
 
 知识关联不是复制正文。维护时按以下规则：

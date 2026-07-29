@@ -3,9 +3,20 @@
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
+
+PAGE_TABLE_HEADER_RE = re.compile(r"^\|\s*页面\s*\|")
+PAGE_TABLE_SEPARATOR_RE = re.compile(r"^\|\s*:?-{3,}:?\s*\|")
+PAGE_TABLE_LINK_CELL_RE = re.compile(
+    r"^\|\s*\[\[([^\]|#\\\n]+)(?:#[^\]\\|\n]+)?(?:\\\|([^\]\n]+))?\]\]\s*\|"
+)
+PAGE_TABLE_UNESCAPED_ALIAS_RE = re.compile(
+    r"^\|\s*\[\[([^\]|#\\\n]+)(?:#[^\]|\n]+)?\|([^\]\n]+)\]\]\s*\|"
+)
+SCAN_EXCLUDED_DIRS = {".git", ".obsidian", "archive", "assets", "raw", "views"}
 
 REQUIRED_FILES = (
     "skills/knowledge-linking/SKILL.md",
@@ -42,6 +53,63 @@ ROUTING_TERMS = (
     "knowledge-linking",
     "知识关联",
 )
+
+
+def iter_reader_markdown(repo: Path) -> list[Path]:
+    return [
+        path
+        for path in repo.rglob("*.md")
+        if not any(part in SCAN_EXCLUDED_DIRS for part in path.relative_to(repo).parts)
+    ]
+
+
+def check_readable_page_table_links_for_text(
+    rel: str,
+    text: str,
+    errors: list[str],
+) -> None:
+    """Require semantic labels for qualified paths in reader-facing page tables."""
+    in_page_table = False
+    for number, line in enumerate(text.splitlines(), start=1):
+        if PAGE_TABLE_HEADER_RE.match(line):
+            in_page_table = True
+            continue
+        if not in_page_table:
+            continue
+        if not line.startswith("|"):
+            in_page_table = False
+            continue
+        if PAGE_TABLE_SEPARATOR_RE.match(line):
+            continue
+        malformed = PAGE_TABLE_UNESCAPED_ALIAS_RE.match(line)
+        if malformed and "/" in malformed.group(1):
+            target = malformed.group(1).strip()
+            errors.append(
+                f"{rel}:{number}: reader-facing `页面` table uses an unescaped wikilink alias "
+                f"separator for [[{target}]]; write [[{target}\\|页面标题]] so Markdown does not split the cell"
+            )
+            continue
+        match = PAGE_TABLE_LINK_CELL_RE.match(line)
+        if not match:
+            continue
+        target = match.group(1).strip()
+        alias = (match.group(2) or "").strip()
+        if "/" not in target or (alias and alias != target):
+            continue
+        errors.append(
+            f"{rel}:{number}: reader-facing `页面` table exposes qualified path "
+            f"[[{target}]]; add a concise semantic alias such as [[{target}\\|页面标题]]"
+        )
+
+
+def check_readable_page_table_links(repo: Path, errors: list[str]) -> None:
+    for path in iter_reader_markdown(repo):
+        rel = path.relative_to(repo).as_posix()
+        check_readable_page_table_links_for_text(
+            rel,
+            path.read_text(encoding="utf-8"),
+            errors,
+        )
 
 
 def read(repo: Path, rel: str, errors: list[str]) -> str:
@@ -86,6 +154,7 @@ def main() -> int:
             errors.append(f"{rel}: missing knowledge-linking entry")
     if check_all and "knowledge-linking" not in check_all:
         errors.append("scripts/check_all.py: missing knowledge-linking check")
+    check_readable_page_table_links(repo, errors)
 
     if errors:
         for error in errors:
@@ -93,7 +162,7 @@ def main() -> int:
         print(f"FAILED: {len(errors)} knowledge-linking issue(s)", file=sys.stderr)
         return 1
 
-    print("OK: knowledge-linking wiring checked")
+    print("OK: knowledge-linking wiring and readable page-table link labels checked")
     return 0
 
 

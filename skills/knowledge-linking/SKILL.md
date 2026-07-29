@@ -87,6 +87,7 @@ sensor: python3 scripts/check_all.py --only knowledge-linking,skill-maturity
 
 - 更新对应 README / INDEX / registry 或上位入口。
 - 回看新增页是否有来源、适用边界和非 `[[log]]` 入链。
+- 新增或修改以 `页面` 为首列的导航表时，qualified wikilink 使用页面标题或简短语义别名，不直接展示目录路径；表格内别名分隔符必须写成 `\|`，避免链接被拆列。
 - 规则、技能、模板或入口变化后运行 `python3 scripts/check_all.py --only knowledge-linking,skill-maturity` 或相关专项检查；收尾前按本库规则运行完整检查。
 
 ## 输出格式

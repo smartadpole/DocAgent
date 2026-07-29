@@ -7,6 +7,15 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-29
+
+### 把链接显示名可读性接入 knowledge-linking sensor
+
+- **用户意图**：用户指出 AcknowledgeBase 页面导航表仍显示完整目录路径，确认 wiki 早已有“别名可读、链接自然可读”规则后要求整改。
+- **关键动作**：保留 [[WORKFLOW]] 作为原始规则，不复制第二份正文；在 [[knowledge-linking-rules]] 补充页面导航表的确定性边界，在 [[instruction-adherence]] 增加触发矩阵，并扩展 `scripts/check_knowledge_linking.py` 检查以 `页面` 为首列的导航表首列 qualified wikilink 是否提供语义别名、表格内别名分隔符是否写成 `\|`。
+- **验证 / 边界**：缺别名和未转义别名两类负向 fixture 必须触发错误，转义别名 fixture 和 `python3 scripts/check_all.py --only knowledge-linking` 必须通过；一般正文的别名质量仍由人工回看，不把 wiki 现有历史链接一次性升级成全库硬失败。
+- **Persistence Decision**：`artifact-needed`，owner 为 [[knowledge-linking-rules]]，发现入口保持 [[skills/knowledge-linking/SKILL]] 与统一检查；AcknowledgeBase 负责系统层 owner 和实际违规修复，wiki 只吸收模板级执行规则与本地 sensor。
+
 ## 2026-07-24
 
 ### 升级 current HTML Markdown owner 渲染入口

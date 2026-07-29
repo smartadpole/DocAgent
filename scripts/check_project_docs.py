@@ -34,7 +34,7 @@ GOVERNANCE_PAGES = (
     "governance/WORKFLOW.md",
     "governance/POLICY.md",
 )
-WIKILINK_RE = re.compile(r"!?\[\[([^\]|\n]+)(?:\|[^\]\n]+)?\]\]")
+WIKILINK_RE = re.compile(r"!?\[\[([^\]|\\\n]+)(?:\\?\|[^\]\n]+)?\]\]")
 FRONTMATTER_RE = re.compile(r"\A---\n.*?\n---\n", re.DOTALL)
 EXAMPLE_WIKILINK_TARGETS = {
     "wikilink",
