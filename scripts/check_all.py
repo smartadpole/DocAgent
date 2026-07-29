@@ -58,6 +58,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ),
     ("public-html-publish", "public HTML publish", (sys.executable, "scripts/check_public_html_publish.py")),
     ("markdown-owner-viewer", "markdown owner viewer", (sys.executable, "scripts/check_markdown_owner_viewer.py")),
+    (
+        "markdown-document-governance",
+        "Markdown document governance",
+        (sys.executable, "scripts/check_markdown_document_governance.py"),
+    ),
     ("knowledge-linking", "knowledge linking", (sys.executable, "scripts/check_knowledge_linking.py")),
     ("documentation-maintenance", "documentation maintenance", (sys.executable, "scripts/check_documentation_maintenance.py")),
     ("harness-feedback-ledger", "harness feedback ledger", (sys.executable, "scripts/check_harness_feedback_ledger.py")),

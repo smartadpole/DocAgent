@@ -9,6 +9,12 @@
 
 ## 2026-07-29
 
+### 把 Markdown 规则从知识关联中拆成工程 Profile
+
+- **用户意图**：用户指出长链接显示名、表格转义等属于 Markdown 文档规范，不应继续散落在知识关联和主题呈现；并要求 wiki 与 AcknowledgeBase 按统一方案整改。
+- **关键动作**：wiki 不复制 AcknowledgeBase 的完整 Topic，新增 [[governance/markdown-document-governance-profile.v1]] 只承接本地 `obsidian-vault` 采纳值；AGENTS、[[knowledge-linking-rules]]、[[skills/knowledge-linking/SKILL]] 和 [[instruction-adherence]] 改为消费者。新增 `scripts/check_markdown_document_governance.py`，将读者导航表的 qualified path / `\|` 回归 fixture 从 knowledge-linking sensor 迁出并接入统一门禁。
+- **验证 / 边界**：本地 profile 只适用于 wiki；上游完整设计仍由 AcknowledgeBase 的 Markdown Topic 维护。knowledge-linking 继续检查语义关系，Markdown sensor 检查确定性源文本风险，用户可见问题还需 Obsidian / viewer readback。
+
 ### 把链接显示名可读性接入 knowledge-linking sensor
 
 - **用户意图**：用户指出 AcknowledgeBase 页面导航表仍显示完整目录路径，确认 wiki 早已有“别名可读、链接自然可读”规则后要求整改。

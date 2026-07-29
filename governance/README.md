@@ -38,6 +38,7 @@ tags: [entry, governance]
 - [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]：矩阵级通用技能吸收清单，证明本仓如何把 AcknowledgeBase 2026-06-26 `agent-evidence-v12` 快照吸收到 repo-native owner、template、sensor 和 conformance 中；专项检查为 `transferable-skill-baseline`
 - [[documentation-maintenance-rules]]：documentation-maintenance 的触发、证据顺序、保守同步和 sensor 接线
 - [[knowledge-linking-rules]]：knowledge-linking 的有效链接、单一信息源和关系画像规则
+- [[markdown-document-governance-profile.v1]]：wiki 的 Markdown 方言、renderer、链接、frontmatter、资产、生成内容和验证 profile
 - [[issue-analysis-rules]]：issue-analysis 的快速根因链、完整案件和验收 / 规则升级分流
 - [[problem-focused-visual-presentation-rules]]：problem-focused lens 的 source pack、导出、views 和不上推规则
 - [[public-html-publish-rules]]：public-html-publish 的 HTML-only、public_url、host / prefix、live readback 和 blocked 裁定规则

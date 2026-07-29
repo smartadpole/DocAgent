@@ -379,18 +379,10 @@
 
 ## 链接规则
 
-- 同一文档库内的页面跳转，默认优先使用 `[[wikilink]]`，不要再写成本机绝对路径。
-- 仓库内文档之间的引用，默认统一使用 `[[wikilink]]`，不要再保留 `[xxx](./foo.md)`、`[xxx](../bar.md)`、`[xxx](foo.md)` 这类指向本库内页面的 Markdown 链接。
-- 只要语义上是在引用本库页面、模板页、入口页或跳转目标，就必须使用 `[[wikilink]]`；不要写成反引号文件名、裸文件名或纯文本路径。
-- 只有在说明命令、环境变量、工作区位置时，才提“当前工作区”这类概念；不要把本机用户名和绝对目录写进长期文档。
-- 外部网站、官方文档、仓库地址这类外部资源，继续使用普通 Markdown 链接。
-- 如果一个页面只是作为导航入口出现，优先用 `[[wikilink]]`；如果需要附带解释，可以在链接后补一句说明，不复制整段内容。
-- 页内引用如果指向本库的标题、区块或子页面，也优先使用 Obsidian 可解析的 `[[page#heading]]`、`[[page#^block-id]]`、`[[page|alias]]`，不要混回 `.md#heading` 形式。
-- 当语义上是在引用本库内页面本身、入口职责或跳转目标时，优先直接写成 `[[wikilink]]`，不要写成 [[BRAIN]]、[[POLICY]]、`log.md` 这类裸文件名。
-- 不允许保留空链接、占位链接、缺失目标的半成品引用；发现 `[]()`、`[text](#)`、只剩文本没有目标的引用时，必须在交付前修正或删除。
-- 只要本次处理新增或修改了 Markdown 引用，就必须顺手修正同一文件内发现的错误引用，不把坏格式留给下一轮。
-- 交付前必须回看引用格式是否满足这组约束；引用格式不合规，视为结果未完成。
-- 如果本次改动涉及模板页、模板入口或内部链接，交付前必须额外检查两件事：有没有复制出第二份模板正文；有没有把本库页面写成不可点击的文件名字符串。
+- Markdown 方言、链接、显示名、表格转义、frontmatter、资产、生成内容和验证层级统一读取 [[governance/markdown-document-governance-profile.v1]]；不要在 AGENTS 维护第二份语法清单。
+- wiki profile 使用 Obsidian wikilink 表达内部页面语义跳转，外部来源使用普通 Markdown link；其他工程不得直接继承本 profile。
+- 新增或修改 Markdown 时先判 canonical source / generated 边界，运行 `python3 scripts/check_all.py --only markdown-document-governance` 和受影响的语义检查；用户可见渲染问题还要做 primary renderer readback。
+- 新发现且可稳定复现的 Markdown 坏格式同轮补失败 / 通过 fixture，或说明为什么暂不适合硬化。
 
 ## 写作规则
 

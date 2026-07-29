@@ -27,7 +27,7 @@ sensor: python3 scripts/check_all.py --only knowledge-linking,skill-maturity
 - 不为了通过形式检查堆无意义链接；每条链接必须表达上位、邻接、案例、规则、模板、技能或证据关系。
 - `[[log]]` 是历史记录，不是知识入口；新增知识不能只靠 `[[log]]` 被发现。
 - 外部事实需要调研或可能变化时，必须查证来源，不能凭记忆写成稳定结论。
-- 技能只提供执行方法，不替代 [[POLICY]]、[[response-mode-routing]]、[[template-feedback-rules]] 或目标页面的单一信息源。
+- 技能只提供执行方法，不替代 [[POLICY]]、[[response-mode-routing]]、[[template-feedback-rules]]、[[governance/markdown-document-governance-profile.v1]] 或目标页面的单一信息源。
 
 ## 成熟度与证据信号
 
@@ -87,8 +87,8 @@ sensor: python3 scripts/check_all.py --only knowledge-linking,skill-maturity
 
 - 更新对应 README / INDEX / registry 或上位入口。
 - 回看新增页是否有来源、适用边界和非 `[[log]]` 入链。
-- 新增或修改以 `页面` 为首列的导航表时，qualified wikilink 使用页面标题或简短语义别名，不直接展示目录路径；表格内别名分隔符必须写成 `\|`，避免链接被拆列。
-- 规则、技能、模板或入口变化后运行 `python3 scripts/check_all.py --only knowledge-linking,skill-maturity` 或相关专项检查；收尾前按本库规则运行完整检查。
+- Markdown 形式、显示名、转义、frontmatter 和资产先读取 [[governance/markdown-document-governance-profile.v1]]，不在知识关联技能复制规则。
+- 规则、技能、模板或入口变化后运行 `python3 scripts/check_all.py --only knowledge-linking,markdown-document-governance,skill-maturity` 或相关专项检查；收尾前按本库规则运行完整检查。
 
 ## 输出格式
 

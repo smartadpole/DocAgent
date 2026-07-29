@@ -10,7 +10,7 @@ tags: [governance, knowledge-linking, knowledge]
 
 # Knowledge Linking Rules
 
-本页是 `knowledge-linking` 的治理裁定页。[[skills/knowledge-linking/SKILL]] 负责执行知识落位、入口和回链；本页负责判断“什么时候必须做知识关联、做到什么程度、哪些链接不能算有效关联”。
+本页是 `knowledge-linking` 的治理裁定页。[[skills/knowledge-linking/SKILL]] 负责执行知识落位、入口和回链；本页负责判断“什么时候必须做知识关联、做到什么程度、哪些链接不能算有效关联”。Markdown 方言、显示名、转义、frontmatter、资产和渲染由 [[markdown-document-governance-profile.v1]] 承接。
 
 ## 必须做 knowledge-linking 的场景
 
@@ -32,11 +32,7 @@ tags: [governance, knowledge-linking, knowledge]
 
 只有“参见若干链接”但不说明关系的，不能算完成 knowledge-linking。
 
-### 读者可见链接标签
-
-- 面向读者的页面导航表如果以 `页面` 为列名，首列 qualified wikilink 不得直接展示目录路径，必须使用页面标题或简短语义别名；表格内的别名分隔符必须转义，例如 `[[projects/design/README\|设计方案]]`，否则 Markdown 会把链接拆成两列。
-- 目录路径负责稳定定位，显示名负责自然阅读；“链接可点击”不等于“显示合格”。
-- `python3 scripts/check_all.py --only knowledge-linking` 对缺少别名或用完整目标路径充当别名的确定性失守报错；别名是否准确表达页面职责仍由 agent 人工回看。
+链接是否符合本地 profile、能否在表格中安全解析以及是否需要 renderer readback，由 `python3 scripts/check_all.py --only markdown-document-governance` 和 [[markdown-document-governance-profile.v1]] 判断。knowledge-linking 通过不能上推为 Markdown 渲染通过。
 
 ## 单一信息源守卫
 

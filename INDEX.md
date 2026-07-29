@@ -56,6 +56,7 @@ tags: [index, root]
 - [[skills/runtime-config-switch/SKILL]]：Runtime 配置切换技能，用于只改配置、不改代码的 live config readback、smoke、cleanup、rollback 和 service-registry 回写
 - [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]：AcknowledgeBase 2026-06-26 `agent-evidence-v12` 快照在本仓的 repo-native 吸收清单和 conformance；专项检查为 `python3 scripts/check_all.py --only transferable-skill-baseline`
 - [[skills/knowledge-linking/SKILL]]：知识关联、落位、入口和回链技能
+- [[governance/markdown-document-governance-profile.v1]]：wiki 的 Markdown 文档 profile；统一声明 Obsidian 方言、链接、生成边界与验证命令
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能
 - [[skills/work-item-auto-decomposition/SKILL]]：本仓项目 / 领域绑定的事项自动拆解技能，用于补齐 Gate / FP / EP / TASK / risk / issue / test / 验收关系
