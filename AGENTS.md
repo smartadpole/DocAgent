@@ -130,7 +130,9 @@
 - 新页面先写最小可用版本，再补链接。
 - 所有重要概念都要双向链接，避免孤岛页。
 - 有长期价值的结论要回写到文档库，而不是只留在对话里。
+- 本仓是公开可见仓库。任何 tracked 写入在落盘前都必须通过 [[wiki-governance-system-contract.v1#公开仓库持久化边界]]：公司 / 内部工程的名称、路径、registry 明细、业务事实、服务拓扑、机器、账号、端口、运行 ID、内部 URL、一次性 handoff 和未公开个人信息，不得写入本仓任何 tracked 文件，包括 `log.md`、报告、trace、decision、ledger、view source pack、脚本常量和示例。跨工程吸收只能持久化为去标识的 source archetype、capability pack、抽象规则和不上推边界；原始证据留在对应私有 owner。`raw/` 可以保留经用户确认可公开的外部网页抓取，但不是公司 / 私有材料的例外通道。
 - 过程性决定和修复动作要写进 `log.md`，并补上这次对话真正想解决的问题主题；关键动作不要压缩到失真。
+- `log.md` 的“真实用户意图”只保留公开安全的结果导向摘要；如果原始意图含公司工程、私有路径或内部运行事实，必须去标识后再写，不得以“历史记录”“受控 provenance”或“完整回看”为理由保留原文。
 - 写 `log.md` 时，同一天、同文件、同领域都不是自动合并理由；只有仍然属于同一条连续用户意图和同一段推进链，才允许并到同一条记录里。
 - 写 `log.md` 的三级标题时，直接写一句话标题，不加前缀。
 - 如果把几轮内容合并后，只能用“完善 `log`”“继续调整规则”这类过宽标题概括，说明已经合并过度，应拆回多条记录。
@@ -150,6 +152,7 @@
 - 模板反哺里的“规则默认反哺”指默认进入候选并必须判断，不表示原样写入；写入前必须完成抽象、事实剥离、冲突、单一信息源和规则体积检查。
 - 下游项目出现可复用 agent 技能时，只吸收任务触发条件、事实源分层、定位方法、输出格式、回写守卫和禁止项；不要把下游项目的业务链路、服务名、数据表、运行 ID、仓库路径或本地 handoff 规则原样写入模板技能。
 - 跨工程通用技能吸收、矩阵缺口处理或外部附件建议吸收时，先使用 [[skills/transferable-skill-governance/SKILL]] 判定 `true-gap / recognition-gap / signal-only-gap` 和 `recognize / complete / upgrade / merge / adapt / defer / reject`，再决定是否写入 skill、TRANSFER、template、governance、sensor 或 views。
+- 跨工程读取或吸收任务在写入前必须运行 `python3 scripts/check_all.py --only public-repository-content`；检查通过只证明机器可识别的路径、内部地址、其他工程公开 host 和本地 deny terms 未泄漏，源工程身份是否已充分去标识仍需人工语义复核。
 - 当目标是 Agent System Capability Package、agent-system maturity 或 intelligence maturity 时，先使用 [[agent-system-maturity]] 填写 Matrix Recognition Capsule；skill maturity 高分不能上推成 runtime、memory、evaluation、governance、migration 或 intelligence 高分。
 - 当前 wiki 的目标角色是实现类工程合集与模板；主控、子工程、runtime service、数据 / 模型工程或文档治理工程接入时，先使用 [[projects/design/topics/implementation-engineering-template-system]] 和 [[templates/implementation-project-profile-template]]，写清 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract、Template Adoption 和 Closeout Proof。对应检查是 `python3 scripts/check_all.py --only implementation-template-system`。
 - 跨项目采纳设计时，禁止整库同步、整目录复制或把对方项目设计页原样搬进当前库；必须先列候选项并标注系统层信息 / 项目材料，只有通过事实剥离后的系统规则、结构、流程、技能、模板和自动化契约才能写入。

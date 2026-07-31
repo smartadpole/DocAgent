@@ -65,7 +65,20 @@ tags: [governance, agent, workflow, memory, harness, skill, evaluation, sensor]
 3. 对已上升到 agent 治理层级的能力，不能只写 `candidate`；必须进入 owner、skill、template、sensor、harness 或 evaluation contract。
 4. 对项目事实、业务链路、服务实例、数据库、运行 ID、账号、端口、数据集、模型、机器和一次性 handoff，必须写明不复制边界。
 5. 本地存在 AcknowledgeBase 且本轮改变 agent / workflow / memory / harness / skill / evaluator / sensor / template 默认行为时，对应 topic 必须 `updated` 才能报 complete。
-6. 具体 source project 名称只允许留在上游 registry、内部审计证据、历史 log 或受控 provenance；不得成为 wiki 对外模板的工程类型、能力名称或默认 profile 名。
+6. 具体 source project 名称只允许留在对应私有 registry 或私有审计证据；不得进入本公开仓库的正文、历史 log、报告、trace、decision、ledger、view source pack、脚本常量、示例、工程类型、能力名称或默认 profile 名。
+
+## 公开仓库持久化边界
+
+本仓以“公开可见”为默认状态。公开不要求达到开源工程配套水平，但要求每个 tracked 文件都满足 public-safe persistence：
+
+1. 公司 / 内部工程的名称、路径、registry 明细、业务事实、服务拓扑、机器、账号、端口、运行 ID、内部 URL、一次性 handoff 和未公开个人信息不得写入本仓。
+2. 跨工程读取可以发生，但落盘内容必须先去标识，只保留 source archetype、project profile、capability pack、抽象规则、验证方法和不上推边界。
+3. `log.md`、报告、trace、decision、ledger 和 view source pack 都不是例外；“真实用户意图”必须改写为公开安全的结果导向摘要，不能保存含内部身份的原文。
+4. `raw/` 可以保留经用户确认可公开的外部网页抓取、JS / CSS 和图片；公司 / 私有材料、凭据、会话能力和未授权个人信息仍不得借 `raw/` 绕过边界。
+5. 机器 sensor 负责拦截可识别的绝对路径、内部地址和本地 deny terms；语义上是否仍能识别具体内部工程，必须在写入和提交前人工复核。
+6. 没有可写的私有 owner 时，内部证据的 Persistence Decision 只能是 `blocked` 或 `no-op`；不得为了满足本仓的沉淀、log 或收尾要求而降级写入公开仓库。
+
+专项检查：`python3 scripts/check_all.py --only public-repository-content`。
 
 ## 执行包
 

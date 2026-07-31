@@ -25,6 +25,7 @@
 - 如果用户要求全面整改 wiki 治理体系、agent 体系、workflow、memory、harness、skill、sensor、template 或 closeout 行为，读 [[wiki-governance-system-contract.v1]]，必要时使用 [[templates/governance-system-upgrade-contract-template]] 固定 source coverage、ability extraction、system layer landing、sensor / evaluator、persistence routing 和 closeout proof；只新增 manifest、入口链接或 sensor 不能回答完成。
 - 如果涉及主控、子工程、runtime service、数据 / 模型工程、文档治理工程或“wiki 作为实现类工程合集 / 模板”的升级，读 [[projects/design/topics/implementation-engineering-template-system]]，并使用 [[templates/implementation-project-profile-template]] 固定 project_role、owner surfaces、agent system layers、control plane、implementation boundaries、evidence contract 和 Closeout Proof。
 - 如果涉及规则已有但没有执行，读 [[instruction-adherence]]。
+- 本仓公开可见；任何 tracked 写入，尤其是跨工程吸收、`log.md`、报告、trace、decision、ledger、view source pack 和示例，必须先按 [[wiki-governance-system-contract.v1#公开仓库持久化边界]] 去标识。不得写入公司 / 内部工程名称、路径、registry 明细、业务或运行事实、内部 URL、个人信息或凭据；只允许持久化 source archetype、capability pack、抽象规则和不上推边界。
 - 如果涉及 TASK、issue、AP、报告目标包、handoff、状态页或会议行动项的当前裁决，读 [[execution-contract-semantics]]。
 - 如果用户要求持续推进、直到完成、反复尝试或跨多轮跟进，先按 [[skills/goal-contract/SKILL]] 判断是否需要 Goal Contract；模板见 [[templates/goal-contract-template]]。
 - 如果用户要求调研、研究、选型、产品 / 公司 / 开源工程评估或 PoC 判断，先读 [[skills/research-capability/SKILL]] 和 [[research-capability-rules]]。
@@ -40,6 +41,7 @@
 - 技能页、技能入口或技能模板改动跑：`python3 scripts/check_all.py --only skill-maturity`。
 - research-capability 聚合入口、调研模板或研究治理改动跑：`python3 scripts/check_all.py --only research-capability`。
 - public-html-publish skill、profile、治理页或发布模板改动跑：`python3 scripts/check_all.py --only public-html-publish`。
+- 任何 tracked 内容、跨工程吸收或公开发布边界改动跑：`python3 scripts/check_all.py --only public-repository-content`。
 - 知识关联 skill 或落位规则改动跑：`python3 scripts/check_all.py --only knowledge-linking`。
 - 主题图文呈现、`views/`、topic 模板或导出守卫改动跑：`python3 scripts/check_all.py --only topic-visual-presentation`。
 - H5 ledger 或指令遵循改动跑：`python3 scripts/check_all.py --only harness-feedback-ledger,instruction-adherence`。
@@ -61,4 +63,5 @@
 
 - 当前库是模板级 Harness，只吸收系统层规则、流程、模板、技能和自动化契约。
 - 从下游工程反哺时，不复制项目事实、业务名、运行实例、具体状态或一次性测试证据。
+- 公司 / 私有工程的原始身份和证据只留在对应私有 owner；本仓 `log.md` 也只能写公开安全的去标识摘要，历史记录不是例外。
 - episode 先写入 [[harness-feedback-ledger]]，不要因为单次纠偏直接新增硬规则。

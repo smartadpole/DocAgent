@@ -7,3 +7,4 @@ views/**/*.pdf
 views/**/*.png
 views/**/*.svg
 .codex/local/*.env
+.codex/local/public-repository-deny-terms.txt

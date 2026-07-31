@@ -26,7 +26,7 @@ tags: [skill-maturity, research-capability, documentation-maintenance, cross-pro
 ## 吸收原则
 
 - 子项细节吸收为方法 lens、字段、守卫和质量门，不吸收为并列技能目录。
-- 把 AcknowledgeBase 当作只读 source material；本仓 Path ROOT 仍是 `/Users/hai/Documents/Software/wiki`。
+- 把 AcknowledgeBase 当作只读 source material；本仓 Path ROOT 仍是 `$HOME/Documents/Software/wiki`。
 - sensor 证明 wiring 和字段存在，不证明真实运行质量、研究质量、审美质量或外部 evaluator readback。
 
 ## 验证结果

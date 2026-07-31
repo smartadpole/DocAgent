@@ -17,14 +17,14 @@ tags: [skill-transfer, agent-system, conformance, matrix-adoption]
 
 ## 源资料
 
-- `/Users/hai/Documents/Docs/AcknowledgeBase/skills/README.md`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/skills/transferable-skill-governance/SKILL.md`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/skills/transferable-skill-governance/TRANSFER.md`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/skills/cross-project-skill-adoption-prompt/SKILL.md`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/skills/cross-project-skill-adoption-prompt/TRANSFER.md`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/templates/skill-transfer-manifest-template.md`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-matrix.data.json`
-- `/Users/hai/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-diagnostics.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/skills/README.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/skills/transferable-skill-governance/SKILL.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/skills/transferable-skill-governance/TRANSFER.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/skills/cross-project-skill-adoption-prompt/SKILL.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/skills/cross-project-skill-adoption-prompt/TRANSFER.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/templates/skill-transfer-manifest-template.md`
+- `$HOME/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-matrix.data.json`
+- `$HOME/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-diagnostics.md`
 
 重点源能力：Goal Contract、Loop Engineering、复盘能力、documentation-maintenance、issue-analysis、topic-visual-presentation、public-html-publish、knowledge-linking、research-capability、cross-project-governance-audit、frontier-technology-intake。存在源 `TRANSFER.md` 的能力，以 `TRANSFER.md` 的迁移边界优先。
 

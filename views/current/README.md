@@ -17,6 +17,5 @@ tags: [views, current]
 ## 当前索引
 
 新增后必须同步 [[views/lens-registry]]。
-- `current/public-html-publish-status.html`: public-html-publish live readback status sample.
 - `current/topic-visual-presentation-system.html`: current canonical topic presentation representative sample with HTML/PDF/PNG readback contract.
-- `current/problem-focused-visual-presentation-system-sample.html`: grandfathered legacy sample; retained unchanged for old path/lens_id/public compatibility, not a runtime entry.
+- `current/problem-focused-visual-presentation-system-sample.html`: grandfathered legacy sample; retained only for local path / lens_id compatibility, not a public page or runtime entry.

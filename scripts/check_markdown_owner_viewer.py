@@ -53,7 +53,7 @@ def extract_source_pack(html: str) -> dict[str, object]:
     if start < 0:
         fail("viewer missing embedded sourcePack")
     start += len(marker)
-    end = html.find(";\n    const fallbackShareUrl", start)
+    end = html.find(";\n    const viewerVersion", start)
     if end < 0:
         fail("viewer sourcePack terminator not found")
     try:
@@ -101,7 +101,7 @@ def check_viewer() -> tuple[set[str], list[str]]:
     for snippet in (
         "lens-markdown-owner-viewer-current",
         "Owner Page Viewer",
-        "share-only 模式不公开 raw markdown",
+        "local artifact; not publicly published",
         '<button type="button" class="owner-link"',
         "data-owner-path",
         "replaceState",
@@ -136,6 +136,8 @@ def check_current_html(packed: set[str]) -> list[str]:
     for html_path in current_html_files():
         html = html_path.read_text(encoding="utf-8")
         check_browser_scripts(html_path, html)
+        if "data-share-href=" in html or "smartadpole.com" in html:
+            fail(f"{rel(html_path)} retains another project's public-page information")
         for match in MD_HREF.finditer(html):
             target = normalize_md_target(html_path, match.group("href"))
             if target:
@@ -151,8 +153,6 @@ def check_current_html(packed: set[str]) -> list[str]:
             owners.add(target)
             if "v=" not in href:
                 missing_viewer_links.append(f"{rel(html_path)} missing v= for {target}")
-            if "data-share-href=" not in html:
-                missing_viewer_links.append(f"{rel(html_path)} missing data-share-href")
     if direct_md:
         fail("current HTML still links raw markdown:\n" + "\n".join(direct_md))
     if missing_viewer_links:

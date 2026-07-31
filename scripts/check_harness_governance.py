@@ -244,7 +244,7 @@ H5_LEDGER_REQUIRED_TERMS = (
     "## Sensor Backlog",
     "## Rule Promotion Queue",
     "## Rule Prune Queue",
-    "DocCustomeranalysis Harness 反哺",
+    "production-control source project Harness 反哺",
 )
 
 CODEX_ADAPTER_REQUIRED_TERMS = (

@@ -131,7 +131,7 @@ rg -n "git fetch --all --prune|git merge --no-ff" <CODEX_HOME>/rules/default.rul
 | 走偏表现 | 为什么错 | 正确纠偏 |
 | --- | --- | --- |
 | 去改 wiki 的 [[AGENTS]] / [[WORKFLOW]] / [[POLICY]] | 这些是 wiki 项目规则，不是系统级 Codex 配置 | 自发现当前机器的 `<CODEX_HOME>/AGENTS.md` |
-| 写死 `/Users/hai/.codex/AGENTS.md` | 该路径只适合某些 macOS 用户，不适合不同用户名、Windows 或 remote host | 先读 `CODEX_HOME`，否则按当前用户 home 发现 |
+| 直接假定 `$HOME/.codex/AGENTS.md` | `CODEX_HOME` 可能被重定向，Windows 或 remote host 的配置根也可能不同 | 先读 `CODEX_HOME`，否则按当前用户 home 发现 |
 | 写死 `macmini` | 默认分支会随机器变化；用户未指定时应使用主机名 | 用户指定优先，否则从当前主机名归一化 |
 | 在 wiki 仓库创建默认本机分支 | 把配置目标误解成仓库状态 | 删除误建分支，回到系统配置 |
 | 创建远程默认本机分支 | 把本机工作分支偏好误解成远程发布目标 | 删除误建远程分支 |

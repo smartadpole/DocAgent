@@ -92,8 +92,8 @@ tags: [trace, project]
 - **记录人**：sunhao
 - **角色**：agent
 - **本轮变化**：
-  - **来源对照**：从 `DocCustomeranalysis` 只吸收系统层 Harness 能力，包括 H5 自演进、episode ledger、统一本地门禁、工作阶段专项 sensor、Codex 本地适配和复盘模板。
-  - **事实剥离**：没有吸收下游项目的业务 issue、运行环境、测试报告状态、141 / 149 边界或 GitLab 平台假设。
+  - **来源对照**：从 `production-control source project` 只吸收系统层 Harness 能力，包括 H5 自演进、episode ledger、统一本地门禁、工作阶段专项 sensor、Codex 本地适配和复盘模板。
+  - **事实剥离**：没有吸收下游项目的业务 issue、运行环境、测试报告状态、具体实例边界或 GitLab 平台假设。
   - **首个 sensor**：新增 `scripts/check_all.py` 和 `scripts/check_harness_governance.py`，先检查响应路由、H5 ledger、模板、入口 wiring 和本地适配。
 - **当前实现口径**：
   - 用户纠偏、检查失败、模式切换和重复失守先写成 Harness episode；只有重复、影响面大或可脚本化时才晋升为规则。
@@ -104,7 +104,7 @@ tags: [trace, project]
 - **记录人**：sunhao
 - **角色**：agent
 - **本轮变化**：
-  - **主链升级**：把 `DocCustomeranalysis` 中已验证的 `Gate -> FP -> EP -> TASK` 事项设计抽象为当前 wiki 默认模型。
+  - **主链升级**：把 `production-control source project` 中已验证的 `Gate -> FP -> EP -> TASK` 事项设计抽象为当前 wiki 默认模型。
   - **关系节点补齐**：risk、Issue、test、验收、报告和服务台账不再散落为平行清单，而是作为事项关闭守卫和反馈节点。
   - **模板和 sensor**：新增 EP、TASK、Issue 模板与入口，并把 `work-item-matrix` 接入 `scripts/check_all.py`。
 - **当前实现口径**：

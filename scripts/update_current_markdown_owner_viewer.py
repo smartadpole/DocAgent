@@ -4,12 +4,9 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
-import hmac
 import json
 import os
 import re
-import secrets
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -19,15 +16,11 @@ from urllib.parse import parse_qs, quote, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 CURRENT_VIEWS = ROOT / "views" / "current"
 VIEWER_PATH = CURRENT_VIEWS / "markdown-owner-viewer.html"
-SECRET_ENV_FILE = ROOT / ".codex" / "local" / "public-html-share.env"
-SECRET_KEYS = ("PUBLIC_HTML_SHARE_SECRET", "LIFEOS_PUBLIC_SHARE_SECRET")
-PUBLIC_BASE_URL = "https://hai-macbook-pro.smartadpole.com/wiki/views/share"
 VIEWER_LENS_ID = "lens-markdown-owner-viewer-current"
 REPO_MD_LINK = re.compile(r"""(?<![\w-])href=(?P<q>['"])(?P<href>[^'"]+?\.md)(?P=q)""")
 VIEWER_LINK = re.compile(
-    r"""(?<![\w-])(?P<attr>href|data-share-href)=(?P<q>['"])(?P<href>[^'"]*markdown-owner-viewer[^'"]*)(?P=q)"""
+    r"""(?<![\w-])href=(?P<q>['"])(?P<href>[^'"]*markdown-owner-viewer[^'"]*)(?P=q)"""
 )
-MARKER = "markdown-owner-viewer-share-swap"
 
 
 def read_text(path: Path) -> str:
@@ -43,35 +36,6 @@ def markdown_title(path: Path) -> str:
         if line.startswith("# "):
             return line[2:].strip()
     return path.stem
-
-
-def read_or_create_share_secret() -> str:
-    if SECRET_ENV_FILE.exists():
-        for line in SECRET_ENV_FILE.read_text(encoding="utf-8").splitlines():
-            for key in SECRET_KEYS:
-                if line.startswith(f"{key}="):
-                    return line.split("=", 1)[1].strip()
-    SECRET_ENV_FILE.parent.mkdir(parents=True, exist_ok=True)
-    secret = secrets.token_hex(32)
-    SECRET_ENV_FILE.write_text(
-        "# Local only. Do not commit.\n"
-        f"PUBLIC_HTML_SHARE_SECRET={secret}\n",
-        encoding="utf-8",
-    )
-    return secret
-
-
-def share_slug(secret: str, rel_path: str) -> str:
-    digest = hmac.new(secret.encode("utf-8"), rel_path.encode("utf-8"), hashlib.sha256).hexdigest()
-    return digest[:24]
-
-
-def public_share_url(path: Path) -> str:
-    rel_path = path.relative_to(ROOT / "views").as_posix()
-    secret = read_or_create_share_secret()
-    stem = rel_path[:-5] if rel_path.endswith(".html") else rel_path
-    signed_name = quote(f"{stem}--{share_slug(secret, rel_path)}.html", safe="/-_.~")
-    return f"{PUBLIC_BASE_URL}/{signed_name}"
 
 
 def js_json(value: object) -> str:
@@ -122,35 +86,11 @@ def owner_paths_from_html(path: Path) -> set[str]:
     return owners
 
 
-def render_inline_script() -> str:
-    return f"""
-<script id="{MARKER}">
-  if (window.location.pathname.includes("/share/")) {{
-    document.querySelectorAll("[data-share-href]").forEach((link) => {{
-      link.href = link.dataset.shareHref;
-    }});
-  }}
-</script>
-"""
-
-
-def ensure_share_swap_script(text: str) -> str:
-    text = re.sub(
-        rf"\s*<script id=\"{MARKER}\">.*?</script>\s*",
-        "\n",
-        text,
-        flags=re.DOTALL,
-    )
-    if "</body>" not in text:
-        return text
-    return text.replace("</body>", f"{render_inline_script()}</body>")
-
-
 def viewer_href(base: str, owner_path: str, version: str) -> str:
     return f'{base}?v={quote(version, safe="")}&path={quote(owner_path, safe="/")}'
 
 
-def rewrite_html_links(path: Path, viewer_share_url: str, link_version: str, dry_run: bool) -> tuple[bool, set[str]]:
+def rewrite_html_links(path: Path, link_version: str, dry_run: bool) -> tuple[bool, set[str]]:
     text = read_text(path)
     owners = owner_paths_from_html(path)
     local_viewer = Path(os.path.relpath(VIEWER_PATH, start=path.parent)).as_posix()
@@ -162,24 +102,27 @@ def rewrite_html_links(path: Path, viewer_share_url: str, link_version: str, dry
         if not target:
             return match.group(0)
         local = viewer_href(local_viewer, target, link_version)
-        share = viewer_href(viewer_share_url, target, link_version)
         changed = True
-        return f'href="{local}" data-share-href="{share}"'
+        return f'href="{local}"'
 
     rewritten = REPO_MD_LINK.sub(replace_md, text)
+    rewritten = re.sub(r"""\s+data-share-href=(['"])[^'"]*\1""", "", rewritten)
+    rewritten = re.sub(
+        r"""\s*<script id="markdown-owner-viewer-share-swap">.*?</script>\s*""",
+        "\n",
+        rewritten,
+        flags=re.DOTALL,
+    )
 
     def replace_viewer(match: re.Match[str]) -> str:
         nonlocal changed
         target = extract_viewer_target(match.group("href"))
         if not target:
             return match.group(0)
-        base = viewer_share_url if match.group("attr") == "data-share-href" else local_viewer
         changed = True
-        return f'{match.group("attr")}="{viewer_href(base, target, link_version)}"'
+        return f'href="{viewer_href(local_viewer, target, link_version)}"'
 
     rewritten = VIEWER_LINK.sub(replace_viewer, rewritten)
-    if owners or "markdown-owner-viewer" in rewritten or "data-share-href" in rewritten:
-        rewritten = ensure_share_swap_script(rewritten)
     if rewritten != text:
         changed = True
         if not dry_run:
@@ -267,9 +210,7 @@ def viewer_css() -> str:
 def viewer_script() -> str:
     return """
     const sourcePack = __SOURCE_PACK__;
-    const fallbackShareUrl = __FALLBACK_SHARE_URL__;
     const viewerVersion = encodeURIComponent(sourcePack.generated_at || sourcePack.source_revision || "current");
-    const rawShareMode = window.location.pathname.includes("/share/");
     const params = new URLSearchParams(window.location.search);
     const requestedPath = params.get("path") || "";
     const pathNode = document.getElementById("path");
@@ -417,8 +358,7 @@ def viewer_script() -> str:
     const available = sourcePack.items || {};
     const entries = Object.values(available).sort((a, b) => (a.owner_path || "").localeCompare(b.owner_path || "", "zh-Hans-CN"));
     function viewerUrl(ownerPath) {
-      const query = `?v=${viewerVersion}&path=${encodeURIComponent(ownerPath)}`;
-      return rawShareMode && fallbackShareUrl ? `${fallbackShareUrl}${query}` : query;
+      return `?v=${viewerVersion}&path=${encodeURIComponent(ownerPath)}`;
     }
     function renderOwner(ownerPath, updateUrl = false) {
       const chosen = available[ownerPath] || entries[0] || null;
@@ -432,14 +372,7 @@ def viewer_script() -> str:
       titleNode.textContent = chosen.title || chosen.owner_path;
       pathNode.textContent = chosen.owner_path;
       bodyNode.innerHTML = `<div class="md-prose">${renderMarkdown(chosen.markdown || "")}</div>`;
-      if (rawShareMode) {
-        rawLink.textContent = "Raw markdown 未公开（share-only 模式）";
-        rawLink.removeAttribute("href");
-        rawLink.classList.remove("primary");
-        rawLink.classList.add("warn");
-      } else {
-        rawLink.href = chosen.raw_href || "#";
-      }
+      rawLink.href = chosen.raw_href || "#";
       fallbackLink.href = viewerUrl(chosen.owner_path);
       if (listNode) {
         listNode.querySelectorAll("[data-owner-path]").forEach((button) => {
@@ -467,10 +400,9 @@ def viewer_script() -> str:
     """
 
 
-def render_viewer(source_pack: dict[str, object], viewer_share_url: str) -> str:
+def render_viewer(source_pack: dict[str, object]) -> str:
     script = viewer_script()
     script = script.replace("__SOURCE_PACK__", js_json(source_pack))
-    script = script.replace("__FALLBACK_SHARE_URL__", js_json(viewer_share_url))
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -481,7 +413,7 @@ def render_viewer(source_pack: dict[str, object], viewer_share_url: str) -> str:
   <meta name="lens_type" content="resource">
   <meta name="focus_object" content="owner page markdown reading surface for current HTML lenses">
   <meta name="generated_from" content="views/current/**/*.html">
-  <meta name="evidence_boundary" content="viewer renders a controlled owner-page source pack; markdown owner pages remain source of truth; share-only publication still does not expose raw markdown files">
+  <meta name="evidence_boundary" content="viewer renders a controlled owner-page source pack; markdown owner pages remain source of truth; this local artifact is not publicly published">
   <meta name="output_mode" content="current html utility viewer">
   <meta name="export_profile" content="canonical HTML only; no PDF / PNG export required for this utility viewer">
   <meta name="print_profile" content="@page and @media print are declared for readable fallback printing">
@@ -499,7 +431,7 @@ def render_viewer(source_pack: dict[str, object], viewer_share_url: str) -> str:
       <div class="meta">
         <span class="pill">viewer scope: current HTML lenses</span>
         <span class="pill">source of truth: markdown owner page</span>
-        <span class="pill warn">share-only 模式不公开 raw markdown</span>
+        <span class="pill warn">local artifact; not publicly published</span>
       </div>
       <div class="actions">
         <a class="btn primary" id="rawLink" href="#" target="_blank" rel="noopener noreferrer">打开原始文件</a>
@@ -570,19 +502,18 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="show planned changes without writing files")
     args = parser.parse_args()
 
-    viewer_share_url = public_share_url(VIEWER_PATH)
     link_version = datetime.now().strftime("%Y%m%d%H%M%S")
     all_owners: set[str] = set()
     rewritten_files: list[str] = []
 
     for html_path in current_html_files():
-        changed, owners = rewrite_html_links(html_path, viewer_share_url, link_version, dry_run=args.dry_run)
+        changed, owners = rewrite_html_links(html_path, link_version, dry_run=args.dry_run)
         all_owners.update(owners)
         if changed:
             rewritten_files.append(html_path.relative_to(ROOT).as_posix())
 
     source_pack = build_source_pack(all_owners)
-    viewer_html = render_viewer(source_pack, viewer_share_url)
+    viewer_html = render_viewer(source_pack)
     viewer_changed = not VIEWER_PATH.exists() or read_text(VIEWER_PATH) != viewer_html
     if viewer_changed and not args.dry_run:
         write_text(VIEWER_PATH, viewer_html)

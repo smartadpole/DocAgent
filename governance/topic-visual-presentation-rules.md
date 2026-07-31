@@ -20,7 +20,7 @@ topic_presentation_profile:
   views_layer: views/current/, views/snapshots/, views/lens-registry.md
   publication: skills/public-html-publish/SKILL.md and views/publication.md
   local_deltas: canonical-only cutover, all-runtime residual scan, mutation fixtures
-  compatibility: grandfather legacy HTML/lens_id/public URL via baseline manifest
+  compatibility: grandfather legacy local HTML/lens_id via baseline manifest
   sample_set: topic current sample plus canonical problem-focus fixture
   validation: check_topic_visual_presentation, runtime export readback, public live/deny, check_all, git diff --check
 ```
@@ -31,4 +31,4 @@ topic_presentation_profile:
 
 五门 evaluator（contract-schema、semantic-content、visual-quality、delivery-findability、reader-utility）独立且不得上推。semantic-content 必须同时有确定性 sensor、builder-independent model judge 与版本化 rubric/calibration/trace；无真实 reader oracle 则 reader-utility=unproven。没有通用人工 veto。
 
-`views/` 仅承接 canonical current/snapshot；registry 记录 source、refresh 和五门边界。旧 artifact 仅按 legacy baseline grandfather；同路径刷新须 pre/post hash、reason 和 compatibility readback。公开发布遵守 [[governance/public-html-publish-rules]]，独立进行 new/legacy/deny live readback。
+`views/` 仅承接 canonical current/snapshot；registry 记录 source、refresh 和五门边界。旧 artifact 仅按 legacy baseline grandfather；同路径刷新须 pre/post hash、reason 和 compatibility readback。公开发布遵守 [[governance/public-html-publish-rules]]；本仓当前没有已发布页面，其他工程的发布读回不能作为本仓证据。

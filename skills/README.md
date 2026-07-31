@@ -79,7 +79,7 @@
 | Goal Contract | baseline 候选 | recognition-gap + 局部 true-gap | complete | 保留 [[skills/goal-contract/SKILL]]，补手工确认、非默认值、code-level / business-flow、method-candidate 和 conformance 边界到 `TRANSFER`。 |
 | Loop Engineering | baseline 候选 | recognition-gap | upgrade | 保留 [[skills/loop-engineering/SKILL]]，补 direct-execution、ff-only update 和 Orchestrator-only / Worker preflight 边界。 |
 | 复盘能力 | baseline 候选 | signal-only-gap | recognize | 现有总技能、子项、archive、索引和 sensor 已是 owner；不新建平行复盘体系，只保持 `views` 不替代复盘档案。 |
-| Public HTML Publish | baseline 候选 | recognition-gap | complete | 保留 [[skills/public-html-publish/SKILL]]、[[views/publication]] 和 sensor；补 share-only live profile 与 Cloudflare Pages / Pages Direct Upload 只是可选模式的边界。 |
+| Public HTML Publish | baseline 候选 | recognition-gap | complete | 保留通用 skill、blocked 本仓 profile 和 sensor；本仓没有已发布页面，其他工程 host / prefix / live readback 不作为本仓事实。 |
 | 文档维护 | transferable skill | recognition-gap | upgrade | 保留 [[skills/documentation-maintenance/SKILL]]，显式补 duplicate-rule、generated guard、quality-gate 和 verification-loop。 |
 | Issue 分析 | transferable skill | signal-only-gap | recognize | 保留 [[skills/issue-analysis/SKILL]] 和 [[templates/development-issue-template]]；不复制下游业务 issue 事实。 |
 | 图文呈现 | transferable skill | signal-only-gap + 局部 true-gap | recognize / complete | 现有 `views/`、registry、reference、HTML 样本和 sensor 继续作为 owner；补 visual floor 词汇时只为明确完成合同，不追求堆视觉术语。 |

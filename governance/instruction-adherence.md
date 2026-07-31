@@ -46,6 +46,7 @@ tags: [agent, harness, instruction-following]
 | 用户要求验收、复验、关闭、准出或写 `done` | 先锁定验收对象、测试计划来源、证据层级、人工确认边界和不上推边界 | [[projects/development/plan/test-acceptance-planning-model]] / [[projects/development/reports/README]] | 证据是否足以关闭当前层级 |
 | 执行页出现“默认不需要，但如果”、`可选 / 视情况 / 后续可能` 或非目标展开 | 按 [[governance/execution-contract-semantics]] 上移参考规则，当前事项只保留单值裁决 | `scripts/check_execution_contract_semantics.py` | 该句是否承担当前执行裁决 |
 | 用户指出规则没有被遵循 | 写入或更新 [[harness-feedback-ledger]]，判断是否晋升模板 / sensor / 流程 | [[harness-evolution]] | 一次性失误还是可复用缺口 |
+| 公开仓库接收公司 / 私有工程上下文 | 写入前按 [[wiki-governance-system-contract.v1#公开仓库持久化边界]] 去标识；日志只留 public-safe 摘要；运行 `public-repository-content` sensor | `scripts/check_public_repository_content.py` / [[templates/log-entry-template]] | 源工程身份是否仍可从语义组合中被识别，需要人工复核 |
 | 新增或修改 Markdown、链接、frontmatter、资产引用或生成页 | 先读取 [[markdown-document-governance-profile.v1]] 和 canonical source，再按 profile 选择方言与验证层级 | `python3 scripts/check_all.py --only markdown-document-governance` | 显示名、内容结构、真实 renderer 和派生物边界仍需按风险回看 |
 | 规则改动或规则迁移 | 做原始规则保全，判断补充、澄清、弱化、替换或冲突 | [[POLICY]] / [[template-feedback-rules]] | 改动是否降低旧规则强度 |
 

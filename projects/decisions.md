@@ -40,7 +40,7 @@ tags: [decision]
 
 ### 2026-05-28 设计图工具采用 Excalidraw 主力和 Diagrams.Net 正式版
 
-- **背景**：`DocCustomeranalysis` 已经把大型系统图从长 Mermaid 迁移为“SVG / PNG 正文预览 + Excalidraw 可编辑源文件”的图资产模式。当前 wiki 仍只有 `assets/` 对截图、Canvas 和 Excalidraw 的泛化描述，缺少正式设计图资产入口。
+- **背景**：`production-control source project` 已经把大型系统图从长 Mermaid 迁移为“SVG / PNG 正文预览 + Excalidraw 可编辑源文件”的图资产模式。当前 wiki 仍只有 `assets/` 对截图、Canvas 和 Excalidraw 的泛化描述，缺少正式设计图资产入口。
 - **要决策什么**：wiki 后续大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图使用什么工具、图源文件放哪里、Markdown 正文如何同时满足可读和可编辑。
 - **可选项**：
   - 继续用 Mermaid 承接所有图。
@@ -62,7 +62,7 @@ tags: [decision]
 
 ### 2026-05-25 Gate / FP / EP / TASK 成为研发事项默认主链
 
-- **背景**：用户明确要求完整吸收 `DocCustomeranalysis` 中 Gate、FP、EP、TASK、Issue、risk、test、验收和台账等工程设计。对照后确认，可复用部分是事项主链、关系节点、Issue / report 分工、验收执行包和服务台账规则，不是下游项目事实。
+- **背景**：用户明确要求完整吸收 `production-control source project` 中 Gate、FP、EP、TASK、Issue、risk、test、验收和台账等工程设计。对照后确认，可复用部分是事项主链、关系节点、Issue / report 分工、验收执行包和服务台账规则，不是下游项目事实。
 - **要决策什么**：是否把当前 wiki 的研发事项模型从“功能点 / TODO / 报告”升级为更完整的 `Gate -> FP -> EP -> TASK` 主链，并让 Issue、risk、test、验收和服务台账进入默认关闭守卫。
 - **可选项**：
   - 只在回复里说明已经吸收。
@@ -104,7 +104,7 @@ tags: [decision]
 
 ### 2026-05-25 H5 自演进和本地 sensor 成为 Harness 默认支撑
 
-- **背景**：用户指出同定位的 `DocCustomeranalysis` 工程在 Harness 设计和整体系统流程上更健全。对照后确认，可复用部分不是具体项目事实，而是 H5 自演进、episode ledger、统一本地门禁、工作阶段专项 sensor 和周期复盘模板。
+- **背景**：用户指出同定位的 `production-control source project` 工程在 Harness 设计和整体系统流程上更健全。对照后确认，可复用部分不是具体项目事实，而是 H5 自演进、episode ledger、统一本地门禁、工作阶段专项 sensor 和周期复盘模板。
 - **要决策什么**：是否把这些能力从下游项目抽象吸收进当前 wiki 模板库，并决定它们的单一信息源。
 - **可选项**：
   - 只在最终回复里总结差距。
@@ -117,7 +117,7 @@ tags: [decision]
   - 后续 sensor 扩展优先覆盖 Markdown / wikilink、frontmatter、技能质量和模板完整性。
 - **各自优劣**：
   - 只总结最快，但无法改变后续执行。
-  - 原样复制最完整，但会夹带 DocCustomeranalysis 的项目事实和 GitLab 平台假设。
+  - 原样复制最完整，但会夹带 production-control source project 的项目事实和 GitLab 平台假设。
   - 抽象吸收需要同步多个入口，但能保持模板库边界，并让规则减肥和 sensor 晋升形成闭环。
 - **风险点**：
   - 如果 episode ledger 变成新流水账，会增加维护负担；因此 [[harness-feedback-ledger]] 只记录可反哺 Harness 的结构性信号。

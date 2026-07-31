@@ -63,7 +63,7 @@ inline、ephemeral、current、snapshot 都默认生成并读回同源 PDF/PNG�
 
 ## 兼容与边界
 
-旧 HTML、current、snapshot、lens_id、registry entry 与 public URL 由 `scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json` grandfather。未修改旧 artifact 不追补新 schema；同路径刷新必须记录 pre/post hash、reason 和 compatibility readback。`public-html-publish` 是独立能力。
+旧 HTML、current、snapshot、lens_id 与 registry entry 由 `scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json` grandfather。未修改旧 artifact 不追补新 schema；同路径刷新必须记录 pre/post hash、reason 和 compatibility readback。`public-html-publish` 是独立能力，本仓当前没有已发布页面。
 
 相关入口：[[concepts/topic-information-presentation]]、[[templates/topic-presentation-template]]、[[governance/topic-visual-presentation-rules]]、[[skills/public-html-publish/SKILL]]。
 

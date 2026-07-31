@@ -56,6 +56,11 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
         "topic visual presentation",
         (sys.executable, "scripts/check_topic_visual_presentation.py"),
     ),
+    (
+        "public-repository-content",
+        "public repository content boundary",
+        (sys.executable, "scripts/check_public_repository_content.py"),
+    ),
     ("public-html-publish", "public HTML publish", (sys.executable, "scripts/check_public_html_publish.py")),
     ("markdown-owner-viewer", "markdown owner viewer", (sys.executable, "scripts/check_markdown_owner_viewer.py")),
     (

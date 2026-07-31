@@ -51,7 +51,6 @@ tags: [views, lens, presentation]
 - [[views/lens-registry]]
 - [[views/publication]]
 - `views/publication.md`: public-html-publish profile and public_url contract.
-- `current/public-html-publish-status.html`: stable public-html-publish live readback sample.
 - `current/markdown-owner-viewer.html`: shared current HTML owner-page viewer; current lens links to repository Markdown owners must go through this rendered viewer instead of raw `.md` files.
 - `current/topic-visual-presentation-system.html`: canonical topic presentation representative sample; older problem-focused sample is grandfathered legacy only.
-- HTML-only public sharing excludes `.exports`, Markdown, PDF / PNG / SVG, logs, raw assets, and local secrets.
+- 本仓当前没有已发布页面；`views/` 中的 HTML 是本地 canonical artifact，不等于公网导出或发布。

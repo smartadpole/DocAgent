@@ -1,17 +1,37 @@
 # 活动记录
 
-> 历史不重写；新记录按时间降序插在前面，并按日期下的对话组织。
+> 历史事实不改写；涉及公开安全时允许对来源身份、私有路径和内部运行细节做等义去标识。新记录按时间降序插在前面，并按日期下的对话组织。
 
 `[[log]]` 只负责承接历史记录。
 
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-07-31
+
+### 禁止公开仓库继续沉淀内部工程上下文
+
+- **记录人**：Codex
+- **用户意图**：本仓只需公开可见，不要求补齐开源工程配套；保留已确认可公开的网页抓取，同时禁止后续跨工程吸收把公司或私有上下文写入本仓，并整改现有严重和高风险暴露。进一步确认本仓没有已发布页面，仓内不得沿用其他工程的公开页面信息。
+- **公开边界**：`public-safe`
+- **主题**：
+  1. 将公开安全从人工提醒升级为 tracked 写入和日志持久化的硬边界。
+  2. 去标识当前工作树中的私有来源身份、本机绝对路径、注册表明细和内部运行事实。
+  3. 用仓库 sensor 与本机私有 denylist 阻止同类信息再次进入提交。
+- **关键动作**：
+  1. 在 [[AGENTS]]、[[.codex/AGENTS]]、[[wiki-governance-system-contract.v1]] 和 [[log-writing-rules]] 中固定 public-safe persistence：跨工程工作只能落盘 source archetype、capability pack、抽象规则和不上推边界，原始证据保留在私有 owner。
+  2. 更新 [[instruction-adherence]]、[[templates/log-entry-template]] 和 [[harness-feedback-ledger]]，把本次纠偏接成触发器、模板字段和 episode。
+  3. 新增 `scripts/check_public_repository_content.py` 并接入 `scripts/check_all.py --only public-repository-content`，检查 tracked authored content 的本机绝对路径、内部地址、URL 内嵌凭据及本机私有 deny terms。
+  4. 对当前 tracked 文档中的私有来源身份、绝对用户目录、注册表枚举和运行实例细节做等义去标识；删除误记为本仓 live profile 的其他工程 host、签名链接和状态页，将本仓发布状态校正为 blocked。`raw/`、密钥和线上运行态均未改动。
+- **验证 / 边界**：机器检查只能证明确定性模式与本机 deny terms 未命中，语义组合是否仍可识别具体内部工程继续要求人工复核；本轮只删除仓内错误发布记录，不访问或修改任何线上服务。历史 Git commit 未重写，远端也未在本轮更新。
+- **Persistence Decision**：`artifact-needed`；规则 owner 为 [[wiki-governance-system-contract.v1]]，执行入口为 [[AGENTS]]，日志消费者为 [[log-writing-rules]]，验证入口为 `public-repository-content` sensor。
+- **影响页面 / 文件**：[[AGENTS]]、[[.codex/AGENTS]]、[[wiki-governance-system-contract.v1]]、[[log-writing-rules]]、[[instruction-adherence]]、[[harness-feedback-ledger]]、[[templates/log-entry-template]]、[[log]]、相关历史治理记录、`scripts/check_public_repository_content.py`、`scripts/check_all.py`、`.gitignore`。
+
 ## 2026-07-29
 
 ### 将问题聚焦呈现一次性切换为主题呈现合同
 
-- **用户意图**：按已独立验收的上游 canonical contract，在 wiki 成熟模板源中完成问题聚焦到主题聚焦呈现的 G1–G3/G5 本地迁移；保留旧 current HTML、lens_id 和公开 URL，不保留旧运行 alias/stub。
+- **用户意图**：按已独立验收的上游 canonical contract，在 wiki 成熟模板源中完成问题聚焦到主题聚焦呈现的 G1–G3/G5 本地迁移；保留旧 current HTML 和 lens_id，不保留旧运行 alias/stub。旧公开 URL 兼容后来确认不属于本仓事实，已在 2026-07-31 清理。
 - **关键动作**：新增 [[skills/topic-visual-presentation/SKILL]]、[[concepts/topic-information-presentation]]、[[templates/topic-presentation-template]]、[[topic-visual-presentation-rules]]、评价合同、fixture、legacy baseline manifest 与 `scripts/check_topic_visual_presentation.py`；替换 active agent/routing/skill/template/views/checker/maturity consumers，删除原 problem-focused skill、template、rule 和 checker。旧 current HTML 保持 hash 不变并在 [[views/lens-registry]] 标为 grandfather；新增 `views/current/topic-visual-presentation-system.html` 作为 canonical sample。
 - **验证 / 边界**：Chrome headless 已从新 HTML 真实导出并读回 ignored PDF/PNG；new/legacy public 与 deny readback 由本轮 public profile 验证。确定性 schema、负向 mutation 和 legacy hash 已覆盖；builder-independent semantic judge、independent visual reviewer 和真实 reader utility 未由本轮同一实施者自证，保持 unproven，不能把本地结构或导出 pass 上推为完整五门通过。
 - **Persistence Decision**：`artifact-needed`；owner 为 [[skills/topic-visual-presentation/SKILL]]、[[topic-visual-presentation-rules]]、[[views/lens-registry]] 和本地 checker，发现入口为 [[INDEX]] / [[skills/README]]。未改 AcknowledgeBase 或其他仓，且未提交。
@@ -35,8 +55,8 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求先把 AcknowledgeBase 已验证的 Markdown owner viewer 能力升级到 wiki，使 current HTML 里的 Markdown owner 链接进入渲染后的 HTML viewer，而不是 raw Markdown 纯文本。
-- **关键动作**：新增 `scripts/update_current_markdown_owner_viewer.py` 和 `scripts/check_markdown_owner_viewer.py`，并注册 `python3 scripts/check_all.py --only markdown-owner-viewer`；生成 `views/current/markdown-owner-viewer.html`，把 `views/current/problem-focused-visual-presentation-system-sample.html` 中的仓库内 `.md` 链接改为 viewer 链接和 share-only `data-share-href`。
-- **验证 / 边界**：viewer source pack 收录 4 个 owner Markdown；Markdown 真相源仍是原文件，share-only 模式不公开 raw `.md` 文件；本轮不改首次接触规则、冷启动规则或其他治理状态。
+- **关键动作**：新增 `scripts/update_current_markdown_owner_viewer.py` 和 `scripts/check_markdown_owner_viewer.py`，并注册 `python3 scripts/check_all.py --only markdown-owner-viewer`；生成 `views/current/markdown-owner-viewer.html`，把 current HTML 中的仓库内 `.md` 链接改为本地 viewer 链接。
+- **验证 / 边界**：viewer source pack 收录 owner Markdown；Markdown 真相源仍是原文件，本地 HTML 不等于公网发布；本轮不改首次接触规则、冷启动规则或其他治理状态。
 - **影响页面 / 文件**：[[views/README]]、[[views/lens-registry]]、[[log]]、`views/current/markdown-owner-viewer.html`、`views/current/problem-focused-visual-presentation-system-sample.html`、`scripts/update_current_markdown_owner_viewer.py`、`scripts/check_markdown_owner_viewer.py`、`scripts/check_all.py`。
 
 ## 2026-07-23
@@ -45,7 +65,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户用截图指出，“你好”后的回答仍不对：它输出的是使用过程中的项目运行引导，而不是首次接触时应有的 onboarding 引导；后续截图进一步确认它虽避开部分运行术语，但仍把首次接触写成“检查当前项目状态 / 实现或收尾指令”菜单；最新要求进一步校准为首次接触和常规引导应该在一起，目标口径是“wiki / 软件工程知识库的协作维护者 + 四个常规方向 + 这轮想解决什么”。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话 / 冷启动规则的语义分层纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有主动对话 / 冷启动规则的语义分层纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
 - **关键判断**：
   1. 首次接触和使用过程项目引导是两个层面；前者是认识 agent / 工程、建立协作入口，后者才是分支、dirty、TASK、EP、Gate、diff、检查和收尾。
   2. 首次接触不能主动暴露运行层信息，否则会把新用户直接推入内部治理术语。
@@ -68,7 +88,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户用截图指出，一个“你好”思考接近半分钟且读取文件 / 跑命令仍未出结果，这不合理。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话 / 冷启动规则的性能纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有主动对话 / 冷启动规则的性能纠偏；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
 - **关键判断**：
   1. 首次问候的目标是低压力入口，不是身份审计；为了更精确的工程身份去读 README、BRAIN、projects 或跑 `rg` / `git`，属于应避免成本。
   2. 正确策略是零工具 / 零读盘 / 零命令 / 零调研即时回复；身份不确定时，把“先定位工程身份”列为可选推进方向。
@@ -84,7 +104,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户指出新开对话里“你好”仍不生效，只有当前对话因为刚讨论过规则才生效；这说明 agent 规则不够强，没有进入冷启动必读层。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有 agent 启动规则和 Harness sensor 升级；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有 agent 启动规则和 Harness sensor 升级；更新根 [[AGENTS]]、[[.codex/AGENTS]]、[[harness-feedback-ledger]]、[[log]] 和 sensor。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic、根 AGENTS 和 log。
 - **关键判断**：
   1. 新对话通常先看到根 `AGENTS.md` 或 thin adapter；如果“你好”触发器只在 [[proactive-dialogue-system]]，低信息输入可能不会触发读取。
   2. 首次问候最低形态必须放进冷启动入口，而不是依赖当前对话上下文。
@@ -100,7 +120,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户用截图指出“你好”后的实际回答只剩“继续处理 wiki 还是先聊点别的”，没有实现上一轮要求的项目引导。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有主动对话治理的执行形态纠偏；更新 [[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor，不新建 greeting skill。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic updated。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有主动对话治理的执行形态纠偏；更新 [[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和 sensor，不新建 greeting skill。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic updated。
 - **关键判断**：
   1. 上一轮规则仍允许“普通问候 no-op”，但没有锁定最低回复形态，导致 agent 可以退回普通闲聊分叉。
   2. 首次问候可以 no-op 于文件层，但不能 no-op 于引导层；至少要说明工程身份、主体推进能力、可选推进方向和推荐下一步。
@@ -116,7 +136,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户希望未来从 wiki clone 的工程里，用户只说“你好”时，agent 不只是寒暄，而能通过引导式对话推进项目；同时 agent 可以选择把当前 wiki / agent 体系建设分块呈现给用户，引导其继续优化定位、workflow、memory、harness、skill 等体系。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的主动对话 / 响应模式治理升级；更新 [[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和对应 sensor，不新建平行 greeting skill。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic updated。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有模板工程的主动对话 / 响应模式治理升级；更新 [[proactive-dialogue-system]]、[[response-mode-routing]]、[[harness-feedback-ledger]]、[[log]] 和对应 sensor，不新建平行 greeting skill。AcknowledgeBase 本地存在，因此同步其过程方案沉淀 topic updated。
 - **关键判断**：
   1. `你好` 在新 clone、模板工程或身份未初始化工程里，可以触发轻量引导入口。
   2. 首次问候不应自动启动 Goal、全量调研、写 log 或铺完整项目结构；默认只读工程身份信号，给出少量可选推进方向。
@@ -132,7 +152,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户纠偏上一轮 owner topology 设计，认为 clone 画像不需要优先声明“不做什么”，更应该声明自身角色和主体要做的事。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的 profile 语义修正；更新当前生效设计页、profile 模板、trace、log 和专项 sensor，不重写历史 log。AcknowledgeBase 本地存在，因此同步其个人能力体系 topic updated。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有模板工程的 profile 语义修正；更新当前生效设计页、profile 模板、trace、log 和专项 sensor，不重写历史 log。AcknowledgeBase 本地存在，因此同步其个人能力体系 topic updated。
 - **关键判断**：
   1. clone 初始画像的主语应该是目标工程自身，不是一组否定清单。
   2. `not_owner / 不承接什么` 适合风险 guard、禁止项或冲突裁决，不适合作为目标工程身份声明的主字段。
@@ -148,7 +168,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户认可 profile / pack 方向，但要求确认画像足够全面；如果不足，需要启动调研技能做梳理，确保未来从 wiki clone 出来的目标工程能覆盖个人能力 owner 拓扑和实现类工程治理需求。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的设计 topic、模板和 sensor 补强；不新建平行 profile 系统，不触碰 `.obsidian` 本地状态。AcknowledgeBase 本地存在，因此同步其个人能力体系 topic updated。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有模板工程的设计 topic、模板和 sensor 补强；不新建平行 profile 系统，不触碰 `.obsidian` 本地状态。AcknowledgeBase 本地存在，因此同步其个人能力体系 topic updated。
 - **关键判断**：
   1. 画像不应成为手工能力选择菜单，也不应让 clone 初期因为少选能力而破坏完整智能体系。
   2. wiki 应默认保留完整 Template Kernel；profile 只裁决事实归口、owner、证据解释、隐私 / 当前性边界和重治理默认是否展开。
@@ -165,7 +185,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求落实新的主题方案，明确 wiki 是独立模板工程，既可以做主控模板、子工程模板、知识库，也可以做运维 agent；因此不应继续把 wiki 定义成某一种工程模板，或把所有类型压进一张大模板。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的设计 topic / 模板 / 项目记忆 / sensor 确认与补记；不新建平行模板工程，不触碰 `.obsidian` 本地状态。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的设计 topic / 模板 / 项目记忆 / sensor 确认与补记；不新建平行模板工程，不触碰 `.obsidian` 本地状态。
 - **关键判断**：
   1. wiki 的稳定定位应是 Template Kernel + Project Profile Overlay + Capability Pack 的模板母体工程。
   2. 工程角色需要成为一等对象：controller、subproject、runtime-service、knowledge-base、data-model、ops-agent 和 hybrid 都通过 overlay 裁剪 Kernel，而不是互相复制。
@@ -182,66 +202,66 @@
 
 - **记录人**：Codex
 - **用户意图**：用户指出 wiki 是统一模板、也是对外工程，上一轮把一串内部工程名直接写成 wiki 概念不合适；需要把具体 source project 和对外模板语言分层。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有模板工程的治理边界纠偏；更新现有设计 owner、模板、治理合同、审计技能和 sensor，不新建平行目录。AcknowledgeBase 本地存在，因此同步其既有过程方案沉淀 topic。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有模板工程的治理边界纠偏；更新现有设计 owner、模板、治理合同、审计技能和 sensor，不新建平行目录。AcknowledgeBase 本地存在，因此同步其既有过程方案沉淀 topic。
 - **关键判断**：
   1. wiki 对外输出应是 `Template Kernel + Project Profile Overlay + Capability Pack`，不是内部 source project 清单。
   2. source registry 仍可作为内部审计和 provenance，但进入 wiki 正文时必须匿名化为工程角色、source archetype、能力包和证据边界。
-  3. 历史 log 可保留当时来源名作为事实记录；当前生效模板页和 sensor 不应强制项目名。
+  3. 历史事实仍需保留，但来源名、私有路径和内部运行细节应在公开仓库中做等义去标识；当前生效模板页和 sensor 同样不得强制具体项目名。
 - **关键动作**：
   1. 更新 [[implementation-engineering-template-system]]，新增对外模板身份、Project Profile Overlay 和 Capability Packs，明确主控模板、子工程模板、runtime-service、knowledge-base、ops-agent、data-model、lightweight repo 和 hybrid 的组合方式。
   2. 更新 [[templates/implementation-project-profile-template]]，新增 `profile_overlay`、required / optional / forbidden capability packs 和 source deidentification 字段。
   3. 更新 [[agent-system-cross-project-alignment.v1]]，把具名注册工程矩阵改为 source archetype / capability pack 矩阵，并把控制面 delta 从项目名改为生产控制面来源。
   4. 更新 [[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]] 和相关 sensor，要求 registry-driven 审计可以具名，但 wiki 模板输出必须去项目名化。
-- **验证 / 边界**：本轮修的是模板边界和当前生效 owner，不回写历史 log 的旧来源名，不删除 AcknowledgeBase registry 的 provenance。
+- **验证 / 边界**：本轮修的是模板边界和当前生效 owner；来源 provenance 保留在私有 owner，本公开仓库的历史 log 只保留去标识后的事实与能力结论。
 - **影响页面**：[[implementation-engineering-template-system]]、[[templates/implementation-project-profile-template]]、[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`、`scripts/check_agent_system_maturity.py`、`scripts/check_implementation_template_system.py`；AcknowledgeBase 侧同步更新过程方案沉淀 topic 和 log。
 
-### 按 AcknowledgeBase 注册表全集吸收所有工程治理能力
+### 按私有来源注册表吸收完整工程治理能力
 
 - **记录人**：Codex
-- **用户意图**：用户纠正“不是只有 DocCustomeranalysis”，要求举一反三吸收所有工程能力，并进一步指出应看 AcknowledgeBase 台账中登记的工程集合，不能把单一强工程或本地路径扫描当成全工程闭环。
-- **Goal Contract 摘要**：本轮目标改为 registry-driven 全登记工程能力吸收。完成边界是按 AcknowledgeBase `projects/governance/registry.md` 逐工程写出系统层能力、wiki 落点、裁决和不上推边界，并同步 AcknowledgeBase topic updated；不证明所有下游工程已采用，也不复制下游业务事实。
-- **目录归类与落位判断**：本轮仍属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区的治理 / skill / sensor 升级；更新既有治理页、既有技能和既有 sensor，不新建平行工程清单。AcknowledgeBase 本地存在，更新其既有过程方案沉淀 topic。
+- **用户意图**：用户要求举一反三吸收完整工程能力，并指出应以私有来源注册表为覆盖口径，不能把单一强工程或本地路径扫描当成全工程闭环。
+- **Goal Contract 摘要**：本轮目标改为 registry-driven 全登记工程能力吸收。完成边界是按私有 owner 的注册表逐工程写出系统层能力、wiki 落点、裁决和不上推边界；不证明所有下游工程已采用，也不复制下游业务事实。
+- **目录归类与落位判断**：本轮仍属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区的治理 / skill / sensor 升级；更新既有治理页、既有技能和既有 sensor，不在公开仓库新建来源工程清单。
 - **关键判断**：
-  1. AcknowledgeBase 当前工程注册表是全工程吸收的单一口径；治理优先级列表、public HTML publish 覆盖集、旧矩阵摘要和本机 `find` 结果都只能作为补充证据。
-  2. 14 个登记工程都需要逐行裁决：AcknowledgeBase、wiki、OpsMind、DocCustomeranalysis、DocFilmCommunity、LifeOS、fetch-adapter、train_platform、prefect、customeranalysis、H100、haimind、store_stream_download、data_analysis。
+  1. 私有 owner 的工程注册表是全工程吸收的覆盖口径；治理优先级列表、发布覆盖集、旧矩阵摘要和本机目录扫描都只能作为补充证据。
+  2. 登记工程需要逐行裁决，但公开仓库只保留知识治理、生产控制、产品智能、运行服务、评估平台、运维自动化、适配、实现、模型、流处理和分析等 source archetype。
   3. 轻量仓也有可吸收的 minimum viable governance profile；但业务路径、服务、数据集、模型、机器、账号、端口、运行 ID 和一次性 handoff 不能上推为通用规则。
 - **关键动作**：
   1. 更新 [[agent-system-cross-project-alignment.v1]]，新增 `Registered Project Capability Absorption` 矩阵，逐 registry project 写明 system-layer capability、decision、wiki landing / guard 和 project-bound boundary。
-  2. 更新 [[wiki-governance-system-contract.v1]]，加入“注册表全工程吸收要求”，固定 `registry-driven`、逐行裁决、项目事实剥离和 AcknowledgeBase topic updated 完成态。
+  2. 更新 [[wiki-governance-system-contract.v1]]，加入“注册表全工程吸收要求”，固定 `registry-driven`、逐行裁决、项目事实剥离和私有 owner 回写边界。
   3. 更新 [[skills/cross-project-governance-audit/SKILL]] 和 [[skills/README]]，让“举一反三 / 所有工程”触发 registry-driven 逐工程审计，而不是只看最强样本。
   4. 扩展 `scripts/check_agent_control_plane_hardening.py`，检查全登记工程矩阵、关键工程名、代表性治理能力和审计技能接线。
-- **验证 / 边界**：本轮验证对象是 wiki 侧全工程吸收口径和结构接线；不声称所有登记工程已经同步采用 wiki 新口径，也不把 AcknowledgeBase registry 之外的额外本地路径纳入闭环。
-- **影响页面**：[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]]、[[skills/README]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`；AcknowledgeBase 侧同步更新过程方案沉淀 topic 和 log。
+- **验证 / 边界**：本轮验证对象是 wiki 侧全工程吸收口径和结构接线；不声称所有登记工程已经同步采用 wiki 新口径，也不把私有注册表之外的额外本地路径纳入闭环。
+- **影响页面**：[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/cross-project-governance-audit/SKILL]]、[[skills/README]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`；私有 owner 侧只保留原始来源与回写证据。
 
-### 吸收 DocCustomeranalysis 实战控制面为 wiki 通用治理能力
+### 吸收 production-control source project 实战控制面为 wiki 通用治理能力
 
 - **记录人**：Codex
-- **用户意图**：用户纠正上一轮“DocCustomeranalysis 某些实战型控制面仍更强”的边界，指出这些能力虽然来自业务实战，但已经上升到 agent 治理层级，应由 wiki 学习；DB readback 等强业务绑定能力可以不吸纳。
+- **用户意图**：用户纠正上一轮“production-control source project 某些实战型控制面仍更强”的边界，指出这些能力虽然来自业务实战，但已经上升到 agent 治理层级，应由 wiki 学习；DB readback 等强业务绑定能力可以不吸纳。
 - **Goal Contract 摘要**：本轮目标是全面浏览登记工程能力面，把已上升为治理层的实战控制面能力吸收到 wiki，并同步 AcknowledgeBase topic updated、验证和提交。完成边界是通用 owner / skill / sensor 接线和上游 topic 更新；不证明所有下游工程已采纳，也不复制业务事实。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区的治理 / skill / sensor 升级；新增通用 skill 落到 `skills/performance-bandwidth-analysis/` 和 `skills/runtime-config-switch/`，新增检查落到 `scripts/check_agent_control_plane_hardening.py`；AcknowledgeBase 本地存在，需同步其既有过程方案沉淀 topic。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区的治理 / skill / sensor 升级；新增通用 skill 落到 `skills/performance-bandwidth-analysis/` 和 `skills/runtime-config-switch/`，新增检查落到 `scripts/check_agent_control_plane_hardening.py`；AcknowledgeBase 本地存在，需同步其既有过程方案沉淀 topic。
 - **关键判断**：
-  1. `agent-finalizer`、`external-write-boundary`、`acceptance-governance`、`long-task-progress`、production readback、performance evidence ledger 和 runtime config switch 已不只是 DocCustomeranalysis 项目经验，而是通用 agent 控制面能力。
+  1. `agent-finalizer`、`external-write-boundary`、`acceptance-governance`、`long-task-progress`、production readback、performance evidence ledger 和 runtime config switch 已不只是 production-control source project 项目经验，而是通用 agent 控制面能力。
   2. `customer-group-db-readback` 这类绑定业务表、账号、DSN、批次前缀或项目 schema 的能力不新增通用 skill，只吸收“receipt、ingress、DB / service-side readback 不能互替”的证据分层。
   3. wiki 的吸收完成不能只写跨工程对齐表；必须进入 agent-orchestration、skills、TRANSFER、README / INDEX 和专项 sensor。
 - **关键动作**：
   1. 更新 [[agent-orchestration]]，新增 `Production-Grade Control Plane Hardening`，把 finalizer、外部写边界、验收治理、长任务进度、生产读回、性能证据账本和 runtime 配置切换固定成默认控制面合同。
   2. 新增 [[skills/performance-bandwidth-analysis/SKILL]] / `TRANSFER.md` 和 [[skills/runtime-config-switch/SKILL]] / `TRANSFER.md`，作为通用可迁移技能。
-  3. 更新 [[agent-system-cross-project-alignment.v1]] 和 [[wiki-governance-system-contract.v1]]，把 DocCustomeranalysis 后发能力从 `candidate` 推进为 `upgrade / complete`，同时保留业务事实不上推边界。
+  3. 更新 [[agent-system-cross-project-alignment.v1]] 和 [[wiki-governance-system-contract.v1]]，把 production-control source project 后发能力从 `candidate` 推进为 `upgrade / complete`，同时保留业务事实不上推边界。
   4. 新增 `scripts/check_agent_control_plane_hardening.py` 并接入 `scripts/check_all.py --only agent-control-plane-hardening`，同步 [[skills/README]]、[[governance/README]] 和 [[INDEX]] 的入口。
-- **验证 / 边界**：本轮验证对象是 wiki 通用控制面结构、技能迁移边界和 sensor 接线；不复制 DocCustomeranalysis 的 149 / 141 服务、Prefect 当前状态、数据库表、账号、运行 ID、项目专属 gate 或脚本路径。
+- **验证 / 边界**：本轮验证对象是 wiki 通用控制面结构、技能迁移边界和 sensor 接线；不复制 source project 的服务实例、调度运行态、数据库表、账号、运行 ID、项目专属 gate 或脚本路径。
 - **影响页面**：[[agent-orchestration]]、[[agent-system-cross-project-alignment.v1]]、[[wiki-governance-system-contract.v1]]、[[skills/README]]、[[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]]、[[governance/README]]、[[INDEX]]、[[log]]、`scripts/check_agent_control_plane_hardening.py`、`scripts/check_all.py`；AcknowledgeBase 侧同步更新过程方案沉淀 topic 和 log。
 
 ### 刷新所有登记工程能力吸收判断
 
 - **记录人**：Codex
-- **用户意图**：用户追问 wiki 是否已经吸收好其他工程能力，并特别指出 `DocCustomeranalysis` 最近升级了很多；需要按所有工程重新分析，而不是沿用旧的跨工程吸收摘要。
+- **用户意图**：用户追问 wiki 是否已经吸收好其他工程能力，并特别指出 `production-control source project` 最近升级了很多；需要按所有工程重新分析，而不是沿用旧的跨工程吸收摘要。
 - **关键判断**：
-  1. 旧版 [[agent-system-cross-project-alignment.v1]] 已覆盖实现类工程模板和 AcknowledgeBase topic adoption，但对 `DocCustomeranalysis` 的描述仍停在 issue / work-item / lens / publication 层。
-  2. `DocCustomeranalysis` 当前已经形成更强的控制面能力：Goal / Loop 长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、性能分层、runtime 配置切换和 DB readback 分层。
-  3. wiki 不能把客户分析业务事实、149 / 141 服务、数据库表、运行 ID、Prefect 当前状态或项目专属 owner gate 搬进模板；能吸收的是系统层合同、证据分层和 future sensor 候选。
+  1. 旧版 [[agent-system-cross-project-alignment.v1]] 已覆盖实现类工程模板和 AcknowledgeBase topic adoption，但对 `production-control source project` 的描述仍停在 issue / work-item / lens / publication 层。
+  2. `production-control source project` 当前已经形成更强的控制面能力：Goal / Loop 长任务编排、agent-finalizer、external-write-boundary、acceptance-governance、long-task-progress、性能分层、runtime 配置切换和 DB readback 分层。
+  3. wiki 不能把业务事实、服务实例、数据库表、运行 ID、调度运行态或项目专属 owner gate 搬进模板；能吸收的是系统层合同、证据分层和 future sensor 候选。
 - **关键动作**：
   1. 更新 [[agent-system-cross-project-alignment.v1]] 的 source coverage，把 AcknowledgeBase registry 覆盖的 14 个工程分组纳入本轮 refresh 判断。
-  2. 新增 `DocCustomeranalysis Delta Decision`，逐项标注 `recognize / complete / adapt / defer / reject`，区分通用控制面、混合型技能和项目绑定 sensor。
+  2. 新增 `production-control source project Delta Decision`，逐项标注 `recognize / complete / adapt / defer / reject`，区分通用控制面、混合型技能和项目绑定 sensor。
   3. 更新 `scripts/check_agent_system_maturity.py`，把 `agent-finalizer`、`external-write-boundary`、`acceptance-governance`、`performance-bandwidth-analysis`、`runtime-config-switch` 和 `customer-group-db-readback` 纳入跨工程对齐页的可发现词汇。
 - **验证 / 边界**：本轮是源覆盖刷新和系统层吸收判断，不证明所有登记工程已经同步采用 wiki 新规则；不新增空 skill，不复制下游项目事实。AcknowledgeBase 本机存在，因此同轮同步更新其过程方案沉淀 topic。
 - **影响页面**：[[agent-system-cross-project-alignment.v1]]、[[log]]、`scripts/check_agent_system_maturity.py`；AcknowledgeBase 侧同步更新 `projects/design/topics/agent-harness-memory-evaluation-and-migration/process-knowledge-persistence.md` 和 `log.md`。
@@ -251,7 +271,7 @@
 - **记录人**：Codex
 - **用户意图**：用户纠正上一轮体检口径，明确不是泛泛判断 AcknowledgeBase 是否需要更新；应先判断本地是否存在 AcknowledgeBase，如果存在，则必须有对应 topic `updated` 才算闭环。
 - **关键判断**：
-  1. 本机 `/Users/hai/Documents/Docs/AcknowledgeBase` 存在，因此本轮不能只在 wiki 留 handback 或把 `rejected / deferred` 当作闭环。
+  1. 本机 `$HOME/Documents/Docs/AcknowledgeBase` 存在，因此本轮不能只在 wiki 留 handback 或把 `rejected / deferred` 当作闭环。
   2. `acknowledge_topic_update_required` 是 agent / workflow / memory / harness / skill / evaluator / sensor / template 等默认行为升级的完成条件；本地存在 AcknowledgeBase 时，完成态收紧为 topic `updated`。
   3. `rejected / deferred` 只能说明上游 owner 作出明确裁决，不能替代“已吸收并闭环”。
 - **关键动作**：
@@ -297,7 +317,7 @@
 - **记录人**：Codex
 - **用户意图**：用户要求设置 Goal，全面整改 wiki，使它不只是普通知识库或单项技能库，而是所有实现类工程的合集与模板；主控、子工程、runtime service、数据 / 模型工程和文档治理工程都要能覆盖，并且 AcknowledgeBase 已覆盖的调研、agent、workflow、memory、harness、skill 和 design topic 方案要落实到 wiki 的本地系统中。
 - **Goal Contract 摘要**：本轮目标是把 wiki 的实现类工程模板定位落成本地 owner、模板、入口、sensor 和验证，而不是复制 AcknowledgeBase 原目录或把 source topic 文案搬入 wiki。完成边界是结构接线和验证通过；runtime / live readback / end-to-end / 人工确认仍不能上推。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的治理 / 设计 topic / 模板 / sensor / memory 整改；新增内容落到 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、`scripts/check_implementation_template_system.py` 和相关入口页，不触碰 `.obsidian` 预存本地配置改动。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的治理 / 设计 topic / 模板 / sensor / memory 整改；新增内容落到 [[projects/design/topics/implementation-engineering-template-system]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]]、[[templates/implementation-project-profile-template]]、`scripts/check_implementation_template_system.py` 和相关入口页，不触碰 `.obsidian` 预存本地配置改动。
 - **关键动作**：
   1. 新增 [[projects/design/topics/implementation-engineering-template-system]]，把 wiki 定位为实现类工程合集与模板，覆盖 controller、subproject、runtime-service、data-model、documentation-governance 等工程类型，并规定 Implementation Project Profile、Topic 到系统层落地和不能上推边界。
   2. 新增 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]]，把 AcknowledgeBase topic 家族按 agent、workflow、memory、harness、skill、evaluation、topic、migration 层落实到 wiki 本地 owner。
@@ -315,7 +335,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求全面升级本工程通用 agent 技能体系，吸收 AcknowledgeBase 2026-06-26 11:39、`source_revision=308bc64`、`agent-evidence-v12` 技能成熟度快照里的通用能力；目标不是复制目录或只新增 `SKILL.md`，而是形成 repo-native 的技能、规则、模板、sensor、入口和验证闭环。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的技能 / 治理 / sensor 升级；落位到既有 [[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、`templates/`、`scripts/`、入口页、[[projects/status]]、[[projects/trace]] 和 [[log]]，不触碰 `.obsidian` 预存本地配置改动，不把 AcknowledgeBase 目录形态复制进本仓。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的技能 / 治理 / sensor 升级；落位到既有 [[skills/README]]、[[skills/transferable-skill-governance/SKILL]]、`templates/`、`scripts/`、入口页、[[projects/status]]、[[projects/trace]] 和 [[log]]，不触碰 `.obsidian` 预存本地配置改动，不把 AcknowledgeBase 目录形态复制进本仓。
 - **源资料边界**：读取 AcknowledgeBase 指定的技能入口、transferable-skill-governance、cross-project-skill-adoption-prompt、skill-transfer manifest 模板、矩阵 JSON / diagnostics，以及 Goal、Loop、复盘、文档维护、Issue 分析、图文呈现、公开发布、知识关联、研究、跨工程治理审计和 frontier intake 源资料；只吸收触发、事实源分层、流程、输出、禁止项、迁移边界、conformance 和 sensor 口径，不复制项目事实、路径、服务名、运行 ID、handoff、历史 log 或一次性验收样例。
 - **关键动作**：
   1. 新增 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]，记录源快照、吸收原则、project conformance、逐能力分类、验证命令、未验证边界和人工确认事项。
@@ -349,13 +369,13 @@
 - **记录人**：Codex
 - **用户意图**：用户继续纠偏，指出 [[projects/design/topics/local-git-branch-and-sync-semantics]] 不能写死主目标位置和默认分支；方案需要适配不同机器，配置入口应由 agent 自己发现，默认分支如果没有明确指定就使用主机名。
 - **关键判断**：
-  1. `/Users/hai/.codex/AGENTS.md` 只能作为当前 Mac 的样例路径，不能写成跨机器固定目标。
+  1. `$HOME/.codex/AGENTS.md` 只能作为当前 Mac 的样例路径，不能写成跨机器固定目标。
   2. `macmini` 只能作为本轮用户指定值，不能写成所有机器默认值；未指定时应从当前机器主机名推导。
   3. 方案页必须把“变量如何确定”写清楚，否则后续 agent 会继续把样例值当成规则。
 - **关键动作**：
   1. 更新 [[projects/design/topics/local-git-branch-and-sync-semantics]]，新增 `CODEX_HOME` / home 目录发现顺序和 `<CODEX_HOME>/AGENTS.md` 占位口径。
   2. 将默认分支规则改为：用户指定优先；未指定时读取当前主机名并归一化为可用 Git 分支名；主机名不可信时停止确认。
-  3. 更新验证命令和失败模式，明确禁止写死 `/Users/hai/.codex/AGENTS.md` 或 `macmini`。
+  3. 更新验证命令和失败模式，明确禁止写死 `$HOME/.codex/AGENTS.md` 或 `macmini`。
   4. 更新 [[projects/design/topics/README]] 的专题摘要，改为跨机器自发现口径。
 - **验证 / 边界**：本轮只整改 wiki 方案页、专题入口和 log，不修改任何机器的 Codex 配置，不执行仓库分支操作。
 - **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[projects/design/topics/README]]、[[log]]。
@@ -365,14 +385,14 @@
 - **记录人**：Codex
 - **用户意图**：用户指出前序执行把 [[projects/design/topics/local-git-branch-and-sync-semantics]] 的目标理解偏了，要求整改该方案页，确保后续不会把系统级 Codex 配置误执行成 wiki 仓库规则、仓库分支或远程分支操作。
 - **关键判断**：
-  1. 该方案的真实目标是升级本机系统级 Codex 配置，主落位是 `/Users/hai/.codex/AGENTS.md`。
+  1. 该方案的真实目标是升级本机系统级 Codex 配置，主落位是 `$HOME/.codex/AGENTS.md`。
   2. `config.toml` 不是默认分支 / git 同步语义主入口；`default.rules` 只承接命令级 allow 规则。
   3. 后续使用该方案时，不应修改 wiki 的 [[AGENTS]] / [[WORKFLOW]] / [[POLICY]]，不应创建仓库 `macmini` 分支或远程 `origin/macmini`。
 - **关键动作**：
   1. 将 [[projects/design/topics/local-git-branch-and-sync-semantics]] 改为“本机 Codex Git 分支与同步语义配置方案”，明确目标一句话、目标配置位置、非目标、验证方式和失败模式。
   2. 将默认分支从旧候选 `macpro` 纠正为本机 `macmini`。
   3. 更新 [[projects/design/topics/README]]，把该专题从待拍板候选改成已采纳的系统级 Codex 配置方案入口。
-- **验证 / 边界**：本轮只整改 wiki 方案页和专题入口，不修改 `/Users/hai/.codex/AGENTS.md`、不执行仓库分支操作、不执行 git 同步。
+- **验证 / 边界**：本轮只整改 wiki 方案页和专题入口，不修改 `$HOME/.codex/AGENTS.md`、不执行仓库分支操作、不执行 git 同步。
 - **影响页面**：[[projects/design/topics/local-git-branch-and-sync-semantics]]、[[projects/design/topics/README]]、[[log]]。
 
 ## 2026-07-08
@@ -427,8 +447,8 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求不只学习 Acknowledge 工程的同类技能细节，还要借鉴所有工程里的智能化能力，尤其是 agent、harness、memory、workflow 等系统能力。目标是让当前 wiki 把多工程已经验证过的系统层做法吸收为 repo-native 能力，而不是复制任一工程的目录、业务事实或一次性状态。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的治理 / agent-system / sensor / 报告升级；跨工程 source pack 和 adoption decision 落到 [[agent-system-cross-project-alignment.v1]]，主 owner 继续是 [[agent-system-maturity]]，验证证据落到 [[projects/development/reports/2026-07-06-cross-project-agent-intelligence-absorption]]，过程记录进入 [[log]]。
-- **源资料边界**：读取 AcknowledgeBase、train_platform、H100、DocCustomeranalysis、DocFilmCommunity 等工程的 agent system、harness、memory、issue、work-item、lens、publication、frontier intake 和治理入口；LifeOS、OpsMind、fetch-adapter、prefect、haimind、customeranalysis 作为候选 source coverage 或 memory-index 信号处理。只吸收系统层信息，不复制源工程项目事实、运行 ID、服务名、端口、业务对象、矩阵分数、历史 log 或 handoff。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的治理 / agent-system / sensor / 报告升级；跨工程 source pack 和 adoption decision 落到 [[agent-system-cross-project-alignment.v1]]，主 owner 继续是 [[agent-system-maturity]]，验证证据落到 [[projects/development/reports/2026-07-06-cross-project-agent-intelligence-absorption]]，过程记录进入 [[log]]。
+- **源资料边界**：读取 AcknowledgeBase、evaluation-platform source project、runtime-service source project、production-control source project、product-intelligence source project 等工程的 agent system、harness、memory、issue、work-item、lens、publication、frontier intake 和治理入口；LifeOS、operations source project、adapter source project、workflow-orchestration source project、model-system source project、implementation source project 作为候选 source coverage 或 memory-index 信号处理。只吸收系统层信息，不复制源工程项目事实、运行 ID、服务名、端口、业务对象、矩阵分数、历史 log 或 handoff。
 - **关键动作**：
   1. 新增 [[agent-system-cross-project-alignment.v1]]，用 Source Coverage、Seven-Layer Absorption Matrix 和 Adoption Decisions 承接跨工程 agent / harness / memory / workflow / evaluation / migration 能力。
   2. 更新 [[agent-system-maturity]]，把跨工程吸收图接入 Agent System Capability Package owner，并把 `Cross-project agent intelligence alignment` 写入 Gap Table。
@@ -445,7 +465,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户指出 Acknowledge 工程有很多同样技能，但细节更出色，希望把能力学习到当前 wiki。目标不是复制 AcknowledgeBase 目录，而是把更成熟的执行细节抽象吸收到本仓已有技能、reference、报告和检查闭环。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的技能体系升级；研究方法储备落到 `skills/research-capability/reference/`，技能正文继续落在既有 `skills/` owner，验证证据落到 [[projects/development/reports/2026-06-30-acknowledge-skill-detail-adoption]]，过程记录进入 [[log]]。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的技能体系升级；研究方法储备落到 `skills/research-capability/reference/`，技能正文继续落在既有 `skills/` owner，验证证据落到 [[projects/development/reports/2026-06-30-acknowledge-skill-detail-adoption]]，过程记录进入 [[log]]。
 - **源资料边界**：读取 AcknowledgeBase 的 research-capability、technology-research-router、研究子技能、documentation-maintenance 和 cross-project-skill-adoption-prompt；只吸收 R0-R4 深度分级、溯源入口、子项路由、thin adapter / generated guard / design-misroute、golden baseline 和任务书质量门，不复制项目事实、生活事实、历史 log、矩阵分数、source revision、运行 ID 或一次性验收证据。
 - **关键动作**：
   1. 新增 [[skills/research-capability/reference/research-method-route-map]]，把技术专题、开源工程、行业 / AI、问题拆解、结构化判断、市场、用户、竞争情报、尽调、科研、战略前瞻、社会政策和生活 / 现场决策吸收为研究方法 lens。
@@ -460,7 +480,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求继续升级目标工程的 Agent 体系、智能化成熟度、通用 skill 前沿维护能力，以及项目 / 领域绑定的事项自动拆解能力。目标不是新增几个 `SKILL.md`，而是让 wiki 具备可运行、可评估、可迁移、可被外部矩阵识别的 agent system；同时把 `work-item-auto-decomposition` 做成当前工程自己的领域绑定能力，不硬升为通用 skill。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的治理 / 技能 / 模板 / sensor / 报告升级。Agent system owner 落到 [[agent-system-maturity]]，snapshot 落到 `governance/agent-system-maturity-snapshot.v1.json`，项目绑定事项拆解落到 [[skills/work-item-auto-decomposition/SKILL]]，验证证据落到 [[projects/development/reports/2026-06-30-agent-system-maturity-phase-1a]]，未触碰预存 `.obsidian/` 本地改动。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的治理 / 技能 / 模板 / sensor / 报告升级。Agent system owner 落到 [[agent-system-maturity]]，snapshot 落到 `governance/agent-system-maturity-snapshot.v1.json`，项目绑定事项拆解落到 [[skills/work-item-auto-decomposition/SKILL]]，验证证据落到 [[projects/development/reports/2026-06-30-agent-system-maturity-phase-1a]]，未触碰预存 `.obsidian/` 本地改动。
 - **源资料边界**：读取 AcknowledgeBase 的 agent-system maturity 设计、profile / schema、cross-project skill adoption、work-item system / task model、矩阵 diagnostics 和本仓入口 / skill / checker / report；只吸收七层对象、八维 intelligence lens、Matrix Recognition Capsule、true-gap / recognition-gap / signal-only-gap、Goodhart guard、树状编号、关系节点和不上推边界，不复制上游当前分数、profile hash、snapshot、项目事实、运行 ID 或历史 log。
 - **关键动作**：
   1. 新增 [[agent-system-maturity]]，建立本仓 Agent System Capability Package owner，覆盖 skill、runtime、harness、memory、evaluation、governance、migration 七层对象，以及 Matrix Recognition Capsule。
@@ -481,7 +501,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求 wiki 在评分矩阵中位列前茅且符合自身设计；随后明确这不是只升级 skill 体系，还要覆盖 Agent、Harness、Memory、Goal、Loop、Run Capsule、sensor、views 和报告，并且 Loop Engineering 必须实际使用、结构升级和验证证明三层齐全。
-- **目录归类与落位判断**：本轮属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的 agent / harness / skill / template / sensor / report 升级；实现改动落在本仓已有 `skills/`、`templates/`、`scripts/`、`governance/`、`projects/development/reports/` 和 `log.md`，不触碰 `.obsidian/` 预存本地改动，不把 AcknowledgeBase 生成产物纳入本仓提交。
+- **目录归类与落位判断**：本轮属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的 agent / harness / skill / template / sensor / report 升级；实现改动落在本仓已有 `skills/`、`templates/`、`scripts/`、`governance/`、`projects/development/reports/` 和 `log.md`，不触碰 `.obsidian/` 预存本地改动，不把 AcknowledgeBase 生成产物纳入本仓提交。
 - **运行控制**：本轮按 Goal / Loop 验收口径执行，先落 Phase 1A 最小闭环，再继续 whole harness system 收口。Loop Contract 的 discovery source、run queue、worker topology、evaluator oracle、persistence routing、next-run decision 和 stop / blocked conditions 已写入 [[projects/development/reports/2026-06-26-agent-harness-system-phase-1a]] 和 [[projects/development/reports/2026-06-26-agent-harness-skill-maturity-upgrade]]。
 - **关键动作**：
   1. 将 [[skills/research-capability/SKILL]] 和 [[templates/research-intake-template]] 从资料调研推进为决策型研究资产合同，补 So-What、counter-evidence、deal-breaker、Frontier Tech Intake、evidence level、decision output、staleness / update trigger、深度等级、可选研究 lens、Path ROOT 和行动兑现回检，并升级 `scripts/check_research_capability.py`。
@@ -499,7 +519,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求基于 AcknowledgeBase 2026-06-26 11:39、`source_revision=308bc64`、`agent-evidence-v12` 的技能成熟度快照，全面升级本工程通用 agent 技能体系；目标不是复制 AcknowledgeBase 目录，也不是只新增 `SKILL.md`，而是把通用能力吸收到本工程 repo-native 的 skill、TRANSFER、template、sensor、入口和验证闭环。
-- **目录归类与落位判断**：本轮确认该工作属于 `/Users/hai/Documents/Software/wiki` 既有软件专题工作区内的技能 / 治理体系升级，落位在本仓已有 [[skills/README]]、`skills/`、`templates/`、`scripts/`、[[README]]、[[INDEX]] 和 [[log]]；不新建平行 AcknowledgeBase 目录，不触碰 `.obsidian/` 预存本地配置改动。
+- **目录归类与落位判断**：本轮确认该工作属于 `$HOME/Documents/Software/wiki` 既有软件专题工作区内的技能 / 治理体系升级，落位在本仓已有 [[skills/README]]、`skills/`、`templates/`、`scripts/`、[[README]]、[[INDEX]] 和 [[log]]；不新建平行 AcknowledgeBase 目录，不触碰 `.obsidian/` 预存本地配置改动。
 - **源资料边界**：读取 AcknowledgeBase 的技能入口、`transferable-skill-governance`、`cross-project-skill-adoption-prompt`、迁移 manifest 模板、矩阵 JSON / 诊断页，以及 Goal、Loop、复盘、文档维护、Issue 分析、图文呈现、公开发布、知识关联、研究、跨工程治理审计和 frontier intake 源资料；只吸收触发条件、事实源分层、流程、输出格式、验证、回写守卫、迁移边界和 sensor 口径，不复制项目事实、路径、服务名、运行 ID、handoff、历史 log、source revision 或一次性验收样例。
 - **关键裁决**：
   1. Goal Contract、Loop Engineering、复盘和 Public HTML Publish 作为 baseline 候选处理；本仓已有 owner，采取 `recognize / complete / upgrade`，不另造平行体系。
@@ -613,7 +633,7 @@
 
 - **记录人**：Codex
 - **用户意图**：用户要求以 AcknowledgeBase 最新技能成熟度矩阵和诊断为输入，全面升级本工程 `scope=general` 的通用 / 可迁移技能能力面；目标不是刷分，也不是照搬 AcknowledgeBase 目录形态，而是让本工程具备可执行、可验证、可维护的 agent 能力。
-- **矩阵锚点**：读取 `/Users/hai/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-diagnostics.md` 与 `skill-maturity-matrix.data.json`，锚定 `generated_at=2026-06-18 10:53`、`source_revision=904deee`、`scoring_schema_version=agent-evidence-v4`；同时读取 AcknowledgeBase `skills/README.md`、`transferable-skill-governance`、`cross-project-skill-adoption-prompt` 和相关源能力资料。
+- **矩阵锚点**：读取 `$HOME/Documents/Docs/AcknowledgeBase/views/current/governance/skill-maturity-diagnostics.md` 与 `skill-maturity-matrix.data.json`，锚定 `generated_at=2026-06-18 10:53`、`source_revision=904deee`、`scoring_schema_version=agent-evidence-v4`；同时读取 AcknowledgeBase `skills/README.md`、`transferable-skill-governance`、`cross-project-skill-adoption-prompt` 和相关源能力资料。
 - **关键判断**：
   1. `goal-contract`、`transferable-skill-governance`、`research-capability` 是真缺口或识别缺口，需要补 repo-native `SKILL.md` / `TRANSFER.md` / 入口 / sensor。
   2. `public-html-publish` 已有 skill、TRANSFER、profile 和 sensor，但缺可复用 profile 模板和治理裁定页，属于可升级缺口；保持 live readback blocked 口径。
@@ -636,7 +656,7 @@
 ### 接入 public-html-publish HTML 公开发布能力
 
 - **记录人**：sunhao
-- **用户意图**：用户要求 wiki、DocCustomeranalysis、DocFilmCommunity 三个文档类仓库统一接入 AcknowledgeBase 的 public-html-publish 能力；目标是本仓库具备 HTML-only 发布合同、publication profile、public_url 公式和专项 sensor，不复制 LifeOS 的 host / prefix / secret。
+- **用户意图**：用户要求 wiki、production-control source project、product-intelligence source project 三个文档类仓库统一接入 AcknowledgeBase 的 public-html-publish 能力；目标是本仓库具备 HTML-only 发布合同、publication profile、public_url 公式和专项 sensor，不复制 LifeOS 的 host / prefix / secret。
 - **关键动作**：
   1. 新增 [[skills/public-html-publish/SKILL]] 与 `TRANSFER.md`，明确只吸收 AcknowledgeBase 源能力的抽象发布合同，禁止复制 LifeOS 运行事实。
   2. 新增 [[views/publication]]，把本仓库发布状态设为 `blocked`，声明 source root、`/wiki/views/` prefix 候选、public_url 公式、HTML-only、multi-host / multi-project 和 live readback 边界。
@@ -813,26 +833,26 @@
   2. 新增 `scripts/check_instruction_adherence.py`，检查 [[instruction-adherence]] 的触发矩阵、sensor 覆盖、收尾证明和 `scripts/check_all.py` 接线。
   3. 新增 `scripts/check_project_docs.py`，检查 wiki 入口页、治理 frontmatter 和本地 wikilink。
   4. 更新 `scripts/check_all.py`、`.codex/AGENTS.md`、[[harness-evolution]] 和 [[harness-feedback-ledger]]，让三个专项 sensor 可用 `--only` 独立运行。
-- **二阶反思**：这次治理不应照搬 `DocCustomeranalysis` 的重 finalizer / 外部子工程写入边界，而应先把 wiki 自己的模板级 H5 检查拆细；后续若 wiki 变成具体主控工程，再考虑更强收尾证明。
+- **二阶反思**：这次治理不应照搬 `production-control source project` 的重 finalizer / 外部子工程写入边界，而应先把 wiki 自己的模板级 H5 检查拆细；后续若 wiki 变成具体主控工程，再考虑更强收尾证明。
 - **影响页面**：[[harness-feedback-ledger]]、[[harness-evolution]]、[[instruction-adherence]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_all.py`、`scripts/check_harness_governance.py`、`scripts/check_harness_feedback_ledger.py`、`scripts/check_instruction_adherence.py`、`scripts/check_project_docs.py`。
 
 ### 同步 Customer 架构图绘制规范
 
 - **记录人**：sunhao
 - **用户意图**：用户指出 Customer 中已有架构图绘制规范，wiki 不应继续缺失同步；重点是大型架构图不使用不实用的 Mermaid，而采用另一套可维护图工具。
-- **复核结论**：本轮只同步抽象后的图工具规则，不复制 `DocCustomeranalysis` 的业务图、服务事实或项目状态。正式大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图应进入 `projects/design/diagrams/`；Excalidraw 是主力源文件，Diagrams.Net 只用于稳定后的正式交付 / 汇报图，Mermaid 退回局部小流程、状态机和短链路。
+- **复核结论**：本轮只同步抽象后的图工具规则，不复制 `production-control source project` 的业务图、服务事实或项目状态。正式大型架构图、服务拓扑图、业务到实现总览图和跨模块数据流图应进入 `projects/design/diagrams/`；Excalidraw 是主力源文件，Diagrams.Net 只用于稳定后的正式交付 / 汇报图，Mermaid 退回局部小流程、状态机和短链路。
 - **关键动作**：
   1. 新增 [[projects/design/diagrams/README]]，作为设计图资产入口，固定 Excalidraw、Diagrams.Net、Mermaid 和其他图工具分工。
   2. 更新 [[projects/design/README]]、[[projects/STRUCTURE]]、[[projects/decisions]]、[[INDEX]] 和 [[README]]，把设计图资产纳入架构阅读和结构入口。
   3. 更新 [[AGENTS]]、[[WORKFLOW]] 和 [[assets/README]]，明确正式大图不再默认放 `assets/` 或写成长 Mermaid，`assets/` 只承接临时支持性附件和草图。
-  4. 从 `DocCustomeranalysis` 同步 Obsidian 插件包 `obsidian-excalidraw-plugin` 和 `obsidian-diagrams-net`，并更新 `.obsidian/community-plugins.json`。
+  4. 从 `production-control source project` 同步 Obsidian 插件包 `obsidian-excalidraw-plugin` 和 `obsidian-diagrams-net`，并更新 `.obsidian/community-plugins.json`。
 - **二阶反思**：这次漏同步说明跨项目吸收不能只查“设计正文”，还要查源项目的 `AGENTS`、`decisions`、`STRUCTURE` 和专门资产入口；后续用户提到“Customer 中已有规范”时，应优先用 Customer 作为源头而不是只查目标仓库是否已有关键词。
 - **影响页面**：[[projects/design/diagrams/README]]、[[projects/design/README]]、[[projects/STRUCTURE]]、[[projects/decisions]]、[[AGENTS]]、[[WORKFLOW]]、[[INDEX]]、[[README]]、[[assets/README]]、[[log]]、`.obsidian/community-plugins.json`、`.obsidian/plugins/obsidian-excalidraw-plugin/`、`.obsidian/plugins/obsidian-diagrams-net/`。
 
 ### 升级主动对话和性能预算 Harness
 
 - **记录人**：sunhao
-- **用户意图**：把当前 wiki 的智能体系统升级得更前沿、更智能，同时注意性能，避免只堆规则或照搬 `DocCustomeranalysis` 的业务事实。
+- **用户意图**：把当前 wiki 的智能体系统升级得更前沿、更智能，同时注意性能，避免只堆规则或照搬 `production-control source project` 的业务事实。
 - **主题**：
   1. 智能化升级应落到主动对话、场景自动判定、带假设推进和每轮产物化，而不是只增加说明文字。
   2. 性能优化应落到读取预算、问题预算、检查预算和产物大小预算，避免为了“智能”无限扩读、长问卷或铺满项目结构。
@@ -843,16 +863,16 @@
   3. **同步入口和路由**：更新 [[AGENTS]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、`.codex/AGENTS.md` 和 [[templates/README]]，把“引导式设计”加入默认响应模式。
   4. **升级 sensor**：扩展 `scripts/check_harness_governance.py`，检查主动对话页、引导式模板、入口 wiring、性能预算和产物化字段。
   5. **记录 H5 episode**：更新 [[harness-feedback-ledger]]，把本轮作为“主动对话和性能预算升级”的 promoted episode。
-- **不反哺边界**：没有复制 `DocCustomeranalysis` 的业务 issue、141 / 149 环境语义、服务实例、项目状态或具体报告；只吸收抽象后的主动对话、引导式设计、产物化闭环和性能预算。
+- **不反哺边界**：没有复制 `production-control source project` 的业务 issue、具体环境语义、服务实例、项目状态或具体报告；只吸收抽象后的主动对话、引导式设计、产物化闭环和性能预算。
 - **二阶反思**：这轮说明“更智能”必须变成可触发、可模板化、可检查的机制；否则会退化成聊天风格偏好。后续同类升级应继续按“场景判断 -> 产物落地 -> sensor 守卫 -> 性能预算”的顺序推进。
 - **影响页面**：[[proactive-dialogue-system]]、[[templates/guided-discovery-session-template]]、[[AGENTS]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[governance/README]]、[[INDEX]]、[[templates/README]]、[[harness-feedback-ledger]]、[[log]]、`.codex/AGENTS.md`、`scripts/check_harness_governance.py`。
 
 ## 2026-05-26
 
-### 吸收 DocCustomeranalysis 的测试成熟度和口径漂移治理
+### 吸收 production-control source project 的测试成熟度和口径漂移治理
 
 - **记录人**：sunhao
-- **用户意图**：从 `/Users/hai/Documents/Code/DocCustomeranalysis` 最近完善的 harness 设计、测试环节规则和口径漂移治理中抽象可复用系统层信息，回写到当前 wiki 模板库，不复制下游项目事实。
+- **用户意图**：从 `$HOME/Documents/Code/production-control source project` 最近完善的 harness 设计、测试环节规则和口径漂移治理中抽象可复用系统层信息，回写到当前 wiki 模板库，不复制下游项目事实。
 - **主题**：
   1. 规则已有但执行失守时，优先升级为触发矩阵、模板字段、sensor、门禁或最终证明，而不是继续堆自然语言规则。
   2. 执行类页面必须保持当前裁决单值，防止参考规则、非目标、条件路由或上层证据漂成隐形待办。
@@ -863,16 +883,16 @@
   3. **补模板和报告字段**：新增 [[templates/development-acceptance-plan-template]]，升级 [[templates/development-test-report-template]]，让报告记录计划来源、AP、fixture / oracle 和不上推边界。
   4. **同步入口和研发链路**：更新 [[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[projects/STRUCTURE]]、[[projects/development/README]]、研发总控、事项模型、TASK 模型和报告入口。
   5. **新增 sensor**：新增 `scripts/check_testing_system_maturity.py` 和 `scripts/check_execution_contract_semantics.py`，并接入 `scripts/check_all.py` 和 `scripts/check_harness_governance.py`。
-- **不反哺边界**：没有复制 `DocCustomeranalysis` 的业务 issue、服务器编号、项目状态、具体测试报告、服务实例、灰度 / 生产事实或一次性任务结论；只吸收抽象后的规则覆盖层、执行合同语义、测试成熟度模型、AP 计划层和可检查 sensor。
+- **不反哺边界**：没有复制 `production-control source project` 的业务 issue、服务器编号、项目状态、具体测试报告、服务实例、灰度 / 生产事实或一次性任务结论；只吸收抽象后的规则覆盖层、执行合同语义、测试成熟度模型、AP 计划层和可检查 sensor。
 - **二阶反思**：这轮说明“测试规则更完善”不能只写进报告模板；如果没有前置 AP / 计划来源和执行合同语义检查，后续仍会把报告当计划、把高环境当阶梯、把非目标写成隐形待办。后续同类吸收应继续按“抽象候选 -> 入口/模板 -> sensor -> log/commit”的闭环执行。
 - **影响页面**：[[instruction-adherence]]、[[execution-contract-semantics]]、[[concepts/software-testing-acceptance-release]]、[[projects/development/plan/test-acceptance-planning-model]]、[[projects/development/acceptance/README]]、[[projects/development/acceptance/plans/README]]、[[templates/development-acceptance-plan-template]]、[[templates/development-test-report-template]]、[[README]]、[[INDEX]]、[[governance/README]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[harness-feedback-ledger]]、[[projects/STRUCTURE]]、[[projects/development/README]]、[[projects/development/plan/README]]、[[projects/development/plan/work-item-system-model]]、[[projects/development/plan/task-design-model]]、[[projects/development/reports/README]]、[[templates/README]]、[[concepts/README]]、[[log]]、`scripts/check_all.py`、`scripts/check_harness_governance.py`、`scripts/check_testing_system_maturity.py`、`scripts/check_execution_contract_semantics.py`。
 
 ## 2026-05-25
 
-### 继续吸收 DocCustomeranalysis 的 Goal Contract 防线设计
+### 继续吸收 production-control source project 的 Goal Contract 防线设计
 
 - **记录人**：sunhao
-- **用户意图**：从 `DocCustomeranalysis` 读取新补强的 goal 设计，把其中可复用的系统层规则吸收到当前 wiki 模板库，而不是复制下游项目事实。
+- **用户意图**：从 `production-control source project` 读取新补强的 goal 设计，把其中可复用的系统层规则吸收到当前 wiki 模板库，而不是复制下游项目事实。
 - **主题**：
   1. Goal Contract 的切入点应固定在响应模式判断之后、正式长时执行之前。
   2. Goal Contract 只解决防跑偏、防证据漂移和防无限探索，不替代项目状态、验收报告、规则层或 memory。
@@ -883,14 +903,14 @@
   3. **同步协作模板**：更新 [[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/harness-episode-package-template]] 和 [[templates/harness-adoption-template]]，让主控下发、子工程回传和 episode 复盘都能记录完成判定与证据边界。
   4. **同步概念和入口**：更新 [[concepts/codex-goals]]、[[concepts/harness-engineering]]、[[INDEX]] 和 [[templates/README]]，避免入口仍停留在旧版“最终状态 + 验证面 + 阻塞条件”的粗口径。
   5. **升级 sensor**：更新 `scripts/check_harness_governance.py`，把 Goal Contract 新字段和关键防线纳入 Harness 检查。
-- **不反哺边界**：本轮没有复制 `DocCustomeranalysis` 的业务事项、141 / 149 环境语义、具体 issue、服务实例或项目状态；只吸收抽象后的 Goal Contract 触发位置、字段结构、证据审计和 sensor 要求。
+- **不反哺边界**：本轮没有复制 `production-control source project` 的业务事项、具体环境语义、具体 issue、服务实例或项目状态；只吸收抽象后的 Goal Contract 触发位置、字段结构、证据审计和 sensor 要求。
 - **二阶反思**：这轮说明“吸收 goal 设计”不能只改模板正文；长时任务契约如果不进入路由、协作模板和 sensor，很快会退回成一段可选提示词。后续同类反哺应继续遵守“先分类候选、剥离项目事实、同步可检查入口”的顺序。
 - **影响页面**：[[templates/goal-contract-template]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/harness-episode-package-template]]、[[templates/harness-adoption-template]]、[[concepts/codex-goals]]、[[concepts/harness-engineering]]、[[INDEX]]、[[templates/README]]、[[log]]、`scripts/check_harness_governance.py`。
 
 ### 完整吸收 Gate / FP / EP / TASK 研发事项体系
 
 - **记录人**：sunhao
-- **用户意图**：在前一轮吸收 H5 Harness 后，继续完整吸收 `DocCustomeranalysis` 中更成熟的 Gate、FP、EP、TASK、Issue、risk、test、项目验收、测试、服务台账和子工程沟通规则，并固化为当前 wiki 的默认工程设计。
+- **用户意图**：在前一轮吸收 H5 Harness 后，继续完整吸收 `production-control source project` 中更成熟的 Gate、FP、EP、TASK、Issue、risk、test、项目验收、测试、服务台账和子工程沟通规则，并固化为当前 wiki 的默认工程设计。
 - **主题**：
   1. 正式研发事项主链升级为 `Gate -> FP -> EP -> TASK`，不再只靠 FP / TODO / 报告表达执行闭环。
   2. risk、Issue、test、验收、报告和服务台账作为关系节点和关闭守卫，而不是平行堆放的清单。
@@ -923,14 +943,14 @@
 - **二阶反思**：这轮说明 Goals 最适合先转成模板字段和 sensor，而不是直接新增一组重规则；主控和子工程之间真正需要固化的是“谁定义完成、谁生产证据、谁关闭状态”。
 - **影响页面**：[[templates/goal-contract-template]]、[[templates/harness-adoption-template]]、[[templates/developer-task-brief-template]]、[[templates/code-handoff-template]]、[[templates/harness-episode-package-template]]、[[response-mode-routing]]、[[WORKFLOW]]、[[AGENTS]]、[[POLICY]]、[[README]]、[[INDEX]]、[[templates/README]]、[[concepts/harness-engineering]]、[[harness-feedback-ledger]]、[[log]]。
 
-### 吸收 DocCustomeranalysis 的 H5 Harness 与本地门禁
+### 吸收 production-control source project 的 H5 Harness 与本地门禁
 
 - **记录人**：sunhao
-- **用户意图**：把 `DocCustomeranalysis` 中更健全的 Harness 设计和整体系统流程抽象吸收到当前 wiki 模板库里，因为两者定位一致，但不能复制下游项目事实。
+- **用户意图**：把 `production-control source project` 中更健全的 Harness 设计和整体系统流程抽象吸收到当前 wiki 模板库里，因为两者定位一致，但不能复制下游项目事实。
 - **主题**：
   1. 当前 wiki 已有响应模式路由，但缺少 H5 自演进、episode ledger 和可执行 sensor 闭环。
   2. 可复用的是系统层能力：episode 数据、晋升 / 降级机制、统一本地门禁、工作阶段专项检查、Codex 本地入口和复盘模板。
-  3. 不反哺的是下游项目业务 issue、运行环境、具体测试报告、141 / 149 边界、GitLab 平台假设和一次性状态。
+  3. 不反哺的是下游项目业务 issue、运行环境、具体测试报告、实例边界、GitLab 平台假设和一次性状态。
 - **关键动作**：
   1. **新增 H5 治理入口**：新增 [[harness-evolution]] 和 [[harness-feedback-ledger]]，让用户纠偏、检查失败、模式切换和重复失守先沉淀为 episode，再决定是否晋升规则。
   2. **新增模板和本地适配**：新增 [[templates/harness-episode-package-template]]、[[templates/harness-evolution-review-template]] 和 `.codex/AGENTS.md`。
@@ -1187,15 +1207,15 @@
 ### 重新定义模板反哺的系统层范围并补齐规则类反哺
 
 - **记录人**：sunhao
-- **用户意图**：纠正前一次反哺时对“可复用系统层信息”的定义过窄问题，明确只要是规则就默认进入反哺候选并必须判断，并把 DocFilmCommunity 中遗漏的规则、流程、写法和记忆路由抽象回模板库。
+- **用户意图**：纠正前一次反哺时对“可复用系统层信息”的定义过窄问题，明确只要是规则就默认进入反哺候选并必须判断，并把 product-intelligence source project 中遗漏的规则、流程、写法和记忆路由抽象回模板库。
 - **主题**：
   1. 重新定义模板反哺的系统层范围。
   2. 区分可复用系统信息和具体项目材料。
-  3. 补齐 DocFilmCommunity 中已经验证的规则类反哺。
+  3. 补齐 product-intelligence source project 中已经验证的规则类反哺。
 - **关键动作**：
   1. **主规则**：更新 [[template-feedback-rules]]，把可反哺系统层信息扩展为结构、流程、规则、记忆系统、写法格式、模板、自动化契约和治理说明，并明确“只要它是规则，就默认进入反哺候选”。
   2. **主边界**：在 [[template-feedback-rules]] 中补清项目材料范围，要求抽掉项目事实、业务状态、技术拍板和一次性结论，只保留可跨项目复用的系统规则。
-  3. **主回填**：把 DocFilmCommunity 中关于 [[log]] 标题、同日记录复核、并列项编号、[[projects/trace]] 同轮同步和来源材料格式转换不进 trace 的规则，回写到 [[log-writing-rules]]、[[trace-writing-rules]]、[[templates/log-entry-template]]、[[templates/trace-entry-template]]、[[AGENTS]]、[[POLICY]] 和 [[WORKFLOW]]。
+  3. **主回填**：把 product-intelligence source project 中关于 [[log]] 标题、同日记录复核、并列项编号、[[projects/trace]] 同轮同步和来源材料格式转换不进 trace 的规则，回写到 [[log-writing-rules]]、[[trace-writing-rules]]、[[templates/log-entry-template]]、[[templates/trace-entry-template]]、[[AGENTS]]、[[POLICY]] 和 [[WORKFLOW]]。
   4. **主同步**：补回“标签：内容”默认加粗、决策标题保持稳定、决策摘要不引入复杂 block id，以及完整架构包到研发拆解时的回链、验证、发布和交付前检查规则。
   5. **主防线**：补清“规则默认反哺”只是默认进入候选，不代表原样写入；写入前必须通过抽象、事实剥离、冲突、单一信息源和规则体积检查，后续证明不通用时要收窄、降级或退役。
   6. **主入口**：同步更新 [[README]]、[[INDEX]] 和 [[governance/README]] 中的模板反哺入口描述，避免入口页继续把反哺范围收窄成结构和模板。
@@ -1225,13 +1245,13 @@
   2. **主同步**：更新 [[templates/log-entry-template]] 和 [[log-writing-rules]]，明确三级标题直接写一句话标题，不再加旧版固定前缀。
 - **影响页面**：[[log]]、[[templates/log-entry-template]]、[[log-writing-rules]]。
 
-### 把 DocFilmCommunity 的系统级进化反哺回 wiki 模板
+### 把 product-intelligence source project 的系统级进化反哺回 wiki 模板
 
 - **记录人**：sunhao
-- **用户意图**：解决不同项目各自演化后如何反哺模板库的问题，并把 DocFilmCommunity 中已经验证过的系统性规则、结构和模板抽象回当前 wiki 模板，但不带入具体项目事实。
+- **用户意图**：解决不同项目各自演化后如何反哺模板库的问题，并把 product-intelligence source project 中已经验证过的系统性规则、结构和模板抽象回当前 wiki 模板，但不带入具体项目事实。
 - **主题**：
   1. 建立跨项目模板反哺机制。
-  2. 抽象 DocFilmCommunity 的结构性演进。
+  2. 抽象 product-intelligence source project 的结构性演进。
   3. 同步项目层、设计层、会议层、决策写法和研发拆解流程。
 - **关键动作**：
   1. **主机制**：新增 [[template-feedback-rules]]，明确下游项目反哺模板时要先区分项目事实和系统能力，再按结构、流程、规则、模板和知识沉淀分流。
