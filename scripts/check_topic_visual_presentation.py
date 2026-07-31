@@ -1,96 +1,362 @@
 #!/usr/bin/env python3
-"""Validate wiki topic-visual-presentation wiring, mutations and runtime evidence."""
+"""Validate the repo-local topic-presentation-contract.v2 implementation."""
+
 from __future__ import annotations
 
-import argparse, hashlib, json, re, sys
+import argparse
+import copy
+import hashlib
+import json
+import re
+import struct
+import subprocess
+import sys
 from pathlib import Path
+from typing import Any
+
 
 ROOT = Path(__file__).resolve().parents[1]
-FIX = ROOT / "scripts/fixtures/topic-visual-presentation"
-REQUIRED = (
-    "skills/topic-visual-presentation/SKILL.md", "skills/topic-visual-presentation/TRANSFER.md",
-    "concepts/topic-information-presentation.md", "templates/topic-presentation-template.md",
-    "governance/topic-visual-presentation-rules.md", "governance/topic-visual-presentation-evaluation.md",
-    "views/current/topic-visual-presentation-system.html", "views/lens-registry.md",
-    "scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json",
+OWNER = ROOT / "governance"
+SCHEMA = OWNER / "topic-presentation-contract.v2.schema.json"
+PROFILE = OWNER / "topic-presentation-active-profile.v2.json"
+INVENTORY = OWNER / "topic-presentation-verification-inventory.v2.json"
+GOLDENS = (
+    OWNER / "topic-presentation-golden-single.v2.json",
+    OWNER / "topic-presentation-golden-page-tree.v2.json",
 )
-PROFILE_FIELDS = ("repository", "need", "existing_skill", "local_owner_roots", "renderer", "design_system", "evidence_layers", "views_layer", "publication", "local_deltas", "compatibility", "sample_set", "validation")
-EXEMPT_LEGACY = {"log.md", "views/current/markdown-owner-viewer.html", "views/current/problem-focused-visual-presentation-system-sample.html", "scripts/check_topic_visual_presentation.py", "scripts/check_project_docs.py", "scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json"}
-OLD = re.compile(r"problem-focused-visual-presentation|problem-focused-lens-template|check_problem_focused_visual_presentation", re.I)
-SELF = {"", "self", "builder", "author", "same-agent", "none", "n/a"}
+EXPORTER = ROOT / "scripts/export_topic_presentation_bundle.py"
+ACTIVE_ROOT = ROOT / "views/.exports/topic-presentation-v2/active"
+ACTIVE_READBACK = ACTIVE_ROOT / "active-runtime-readback.v2.json"
+LEGACY_BASELINE = ROOT / "scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json"
+TOP_KEYS = {
+    "contract_revision", "presentation_bundle_decision", "presentation_bundle",
+    "coverage_manifest", "page_download_contracts", "generation_metadata",
+}
+FORMATS = {"pdf", "png-desktop", "png-mobile"}
 
-def load(path): return json.loads(path.read_text(encoding="utf-8"))
-def error_if(errors, condition, message):
-    if condition: errors.append(message)
 
-def validate(doc):
-    errs=[]
-    if doc.get("presentation_eligibility") != "admit": return errs
-    intent=doc.get("intent_routing_contract", {})
-    error_if(errs, intent.get("content_scope") not in {"topic", "problem-focus"}, "contract-schema: invalid content_scope")
-    error_if(errs, not intent.get("confidence", {}).get("calibration_revision"), "contract-schema: missing calibration_revision")
-    axes=doc.get("runtime_axes", {})
-    error_if(errs, axes.get("task_state") not in {"understand","compare","decide","act","verify","review"}, "contract-schema: missing/invalid task_state")
-    error_if(errs, axes.get("content_scope") not in {"topic", "problem-focus"}, "contract-schema: missing/invalid runtime content_scope")
-    error_if(errs, axes.get("materialization") not in {"inline","ephemeral","current","snapshot"}, "contract-schema: missing/invalid materialization")
-    source=doc.get("source_pack", {})
-    error_if(errs, not source.get("sources") or not source.get("evidence_bindings"), "contract-schema: admit requires non-empty source_pack")
-    rep=doc.get("representation", {})
-    error_if(errs, rep.get("primary_format") != "html" or set(rep.get("same_source_exports", [])) != {"pdf", "png"}, "contract-schema: admit requires HTML plus PDF/PNG")
-    error_if(errs, any(rep.get("export_readback", {}).get(k) != "pass" for k in ("html","pdf","png")), "contract-schema: missing export readback")
-    sem=doc.get("evaluation", {}).get("semantic-content", {})
-    judge=str(sem.get("independent_model_judge", "")).lower()
-    error_if(errs, judge in SELF or not sem.get("rubric_revision") or not sem.get("trace_ref"), "semantic-content: self/missing judge trace")
-    return errs
+def load(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
 
-def main():
-    parser=argparse.ArgumentParser(); parser.add_argument("--verify-runtime", action="store_true"); args=parser.parse_args(); errors=[]
-    for rel in REQUIRED:
-        error_if(errors, not (ROOT/rel).exists(), f"missing: {rel}")
-    rules=(ROOT/"governance/topic-visual-presentation-rules.md").read_text(encoding="utf-8")
-    for field in PROFILE_FIELDS:
-        error_if(errors, f"  {field}:" not in rules, f"topic_presentation_profile missing {field}")
-    profile_block=rules.split("topic_presentation_profile:", 1)[1].split("```", 1)[0] if "topic_presentation_profile:" in rules else ""
-    error_if(errors, "  repository: wiki" not in profile_block, "topic_presentation_profile repository must be stable repo id wiki")
-    error_if(errors, "/Users/" in profile_block or "repository: /" in profile_block, "topic_presentation_profile repository must not be checkout path")
-    error_if(errors, "  need: required" not in profile_block and "  need: optional" not in profile_block and "  need: not-applicable" not in profile_block, "topic_presentation_profile invalid need")
-    error_if(errors, "  views:" in profile_block, "topic_presentation_profile must use views_layer, not views")
-    mutations = (
-        profile_block.replace("  repository:", "  removed_repository:"),
-        profile_block.replace("  repository: wiki", "  repository: /tmp/wiki"),
-        profile_block.replace("  need: required", "  need: invented"),
-        profile_block.replace("  views_layer:", "  views:"),
-    )
-    for index, mutated in enumerate(mutations, 1):
-        valid = all(f"  {field}:" in mutated for field in PROFILE_FIELDS)
-        valid = valid and "  repository: wiki" in mutated and "/Users/" not in mutated and "repository: /" not in mutated
-        valid = valid and any(f"  need: {value}" in mutated for value in ("required", "optional", "not-applicable"))
-        valid = valid and "  views:" not in mutated
-        error_if(errors, valid, f"profile mutation {index} did not fail")
-    for path in ROOT.rglob("*"):
-        if not path.is_file() or path.suffix not in {".md", ".py", ".json", ".html"}: continue
-        rel=path.relative_to(ROOT).as_posix()
-        if rel in EXEMPT_LEGACY or rel.startswith(("archive/", "raw/", "inbox/", "assets/", ".obsidian/", "views/.exports/", "projects/development/reports/", "projects/retrospectives/")): continue
-        text=path.read_text(encoding="utf-8", errors="ignore")
-        if rel == "views/lens-registry.md" and "## Legacy grandfather artifacts" in text: text=text.split("## Legacy grandfather artifacts", 1)[0]
-        if rel == "views/current/README.md": text="\n".join(line for line in text.splitlines() if "grandfathered legacy sample" not in line)
-        if rel == "views/publication.md": text="\n".join(line for line in text.splitlines() if "legacy compatibility" not in line)
-        if OLD.search(text): errors.append(f"legacy active residual: {rel}")
-    for name, expected in (("positive-structure.v1.json", False), ("positive-problem-focus.v1.json", False), ("negative-empty-source-pack.v1.json", True), ("negative-missing-png-export.v1.json", True), ("negative-self-judged-semantic.v1.json", True)):
-        outcome=bool(validate(load(FIX/name)))
-        error_if(errors, outcome != expected, f"mutation mismatch: {name}")
-    baseline=load(FIX/"legacy_artifact_baseline_manifest.v1.json")
-    for item in baseline["artifacts"]:
-        path=ROOT/item["path"]
-        actual=hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else "missing"
-        error_if(errors, actual != item["sha256"], f"legacy baseline changed: {item['path']}")
-    if args.verify_runtime:
-        export=ROOT/"views/.exports/topic-visual-presentation-system/export-readback.v1.json"
-        error_if(errors, not export.exists(), "runtime evidence missing")
-        if export.exists():
-            data=load(export); error_if(errors, data.get("html") != "pass" or data.get("pdf") != "pass" or data.get("png") != "pass", "runtime export readback failed")
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def git_head() -> str:
+    return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip()
+
+
+def ensure(errors: list[str], condition: bool, message: str) -> None:
+    if not condition:
+        errors.append(message)
+
+
+def unique(items: list[Any]) -> bool:
+    return len(items) == len(set(items))
+
+
+def validate_contract(contract: dict[str, Any], *, source_check: bool = True) -> list[str]:
+    errors: list[str] = []
+    ensure(errors, set(contract) == TOP_KEYS, f"schema: top-level keys differ: {sorted(set(contract) ^ TOP_KEYS)}")
+    if set(contract) != TOP_KEYS:
+        return errors
+    ensure(errors, contract["contract_revision"] == "topic-presentation-contract.v2", "schema: wrong contract revision")
+    decision = contract["presentation_bundle_decision"]
+    bundle = contract["presentation_bundle"]
+    shape = decision.get("bundle_shape")
+    ensure(errors, shape in {"single-page", "page-tree"}, "schema: invalid bundle shape")
+    ensure(errors, bundle.get("bundle_shape") == shape, "schema: decision/bundle shape mismatch")
+    ensure(errors, bundle.get("contract_revision") == "topic-presentation-contract.v2", "schema: bundle revision mismatch")
+    ensure(errors, decision.get("materialization") in {"inline", "ephemeral", "current", "snapshot"}, "schema: invalid materialization")
+    ensure(errors, decision.get("split_benefit") in {"low", "medium", "high"}, "schema: invalid split benefit")
+    ensure(errors, decision.get("navigation_cost") in {"low", "medium", "high"}, "schema: invalid navigation cost")
+    pages = bundle.get("page_catalog", [])
+    page_ids = [item.get("page_id") for item in pages]
+    ensure(errors, bool(pages) and unique(page_ids), "tree: missing or duplicate page_id")
+    root_id = bundle.get("root_page_id")
+    ensure(errors, root_id in page_ids, "tree: root page missing")
+    ensure(errors, len(pages) <= decision.get("page_count_budget", 0), "tree: page count exceeds budget")
+    edges = bundle.get("canonical_tree", {}).get("edges", [])
+    ensure(errors, bundle.get("canonical_tree", {}).get("edge_source") == "edges", "tree: edges are not canonical source")
+    parents: dict[str, str] = {}
+    children: dict[str, list[str]] = {page_id: [] for page_id in page_ids}
+    for edge in edges:
+        parent, child = edge.get("parent_page_id"), edge.get("child_page_id")
+        ensure(errors, parent in page_ids and child in page_ids and parent != child, f"tree: invalid edge {parent}->{child}")
+        if child in parents:
+            errors.append(f"tree: multiple parents for {child}")
+        parents[child] = parent
+        if parent in children:
+            children[parent].append(child)
+    if shape == "single-page":
+        ensure(errors, len(pages) == 1 and not edges, "tree: single-page must have one page and zero edges")
+        ensure(errors, decision.get("split_guard") == "fail", "decision: cohesive single page must reject split")
+    else:
+        ensure(errors, len(pages) > 1 and len(edges) == len(pages) - 1, "tree: page-tree must have n-1 edges")
+        ensure(errors, decision.get("split_guard") == "pass", "decision: page-tree split guard not passed")
+        ensure(errors, bool(decision.get("independent_module_boundaries")), "decision: page-tree lacks independent boundaries")
+        reached: set[str] = set()
+        queue = [root_id]
+        while queue:
+            node = queue.pop(0)
+            if node in reached:
+                errors.append("tree: cycle detected")
+                break
+            reached.add(node)
+            queue.extend(children.get(node, []))
+        ensure(errors, reached == set(page_ids), f"tree: orphan/unreachable pages {sorted(set(page_ids) - reached)}")
+    coverage = contract["coverage_manifest"]
+    units = {item.get("unit_id") for item in coverage.get("information_units", [])}
+    claims = {item.get("claim_id"): item for item in coverage.get("claims", [])}
+    fragments = {item.get("source_fragment_id"): item for item in coverage.get("source_fragments", [])}
+    sections = {item.get("rendered_section_id"): item for item in coverage.get("rendered_sections", [])}
+    bindings = coverage.get("page_bindings", [])
+    ensure(errors, None not in units and len(units) == len(coverage.get("information_units", [])), "coverage: duplicate/missing units")
+    ensure(errors, None not in claims and len(claims) == len(coverage.get("claims", [])), "coverage: duplicate/missing claims")
+    ensure(errors, None not in fragments and len(fragments) == len(coverage.get("source_fragments", [])), "coverage: duplicate/missing fragments")
+    ensure(errors, None not in sections and len(sections) == len(coverage.get("rendered_sections", [])), "coverage: duplicate/missing sections")
+    quads = []
+    bound_units = []
+    page_owners: dict[str, set[str]] = {page_id: set() for page_id in page_ids}
+    for binding in bindings:
+        quad = tuple(binding.get(key) for key in ("unit_id", "claim_id", "source_fragment_id", "rendered_section_id"))
+        quads.append(quad)
+        bound_units.append(binding.get("unit_id"))
+        ensure(errors, binding.get("page_id") in page_ids, "coverage: binding page missing")
+        ensure(errors, binding.get("unit_id") in units, "coverage: binding unit missing")
+        ensure(errors, binding.get("claim_id") in claims, "coverage: binding claim missing")
+        ensure(errors, binding.get("source_fragment_id") in fragments, "coverage: binding fragment missing")
+        ensure(errors, binding.get("rendered_section_id") in sections, "coverage: binding section missing")
+        if binding.get("claim_id") in claims:
+            ensure(errors, claims[binding["claim_id"]].get("unit_id") == binding.get("unit_id"), "coverage: claim/unit mismatch")
+        if binding.get("rendered_section_id") in sections:
+            ensure(errors, sections[binding["rendered_section_id"]].get("page_id") == binding.get("page_id"), "coverage: section/page mismatch")
+        if binding.get("source_fragment_id") in fragments and binding.get("page_id") in page_owners:
+            page_owners[binding["page_id"]].add(fragments[binding["source_fragment_id"]].get("owner_ref", ""))
+    ensure(errors, unique(quads), "coverage: duplicate claim binding")
+    ensure(errors, set(bound_units) == units and len(bound_units) == len(units), "coverage: every unit must bind exactly once")
+    structural = coverage.get("structural_coverage", {})
+    ensure(errors, set(structural.get("expected_unit_ids", [])) == units, "coverage: expected units mismatch")
+    ensure(errors, set(structural.get("bound_unit_ids", [])) == units, "coverage: bound units mismatch")
+    ensure(errors, structural.get("uncovered_unit_ids") == [] and structural.get("invalid_bindings") == [], "coverage: tracked candidate has unresolved bindings")
+    ensure(errors, structural.get("acceptance") == "pass", "coverage: structural acceptance not pass")
+    semantic = coverage.get("semantic_coverage", {})
+    ensure(errors, semantic.get("acceptance") == "not-evaluated", "evaluation: builder candidate cannot self-pass semantic")
+    ensure(errors, semantic.get("reviewer") == "independent-evaluator-required", "evaluation: independent reviewer boundary missing")
+    for page_id, owners in page_owners.items():
+        ensure(errors, len(owners) == 1 and all(ref.endswith(".md") for ref in owners), f"source: page {page_id} must have exactly one Markdown owner")
+    if source_check:
+        for fragment in fragments.values():
+            ref, needle = fragment.get("owner_ref", ""), fragment.get("rendered_text", "")
+            source = ROOT / ref
+            ensure(errors, source.is_file(), f"source: owner missing {ref}")
+            if source.is_file():
+                ensure(errors, bool(needle) and needle in source.read_text(encoding="utf-8"), f"source: selector text missing {ref}::{needle}")
+    download_ids = [item.get("page_id") for item in contract["page_download_contracts"]]
+    ensure(errors, set(download_ids) == set(page_ids) and unique(download_ids), "delivery: one download contract required per page")
+    for item in contract["page_download_contracts"]:
+        ensure(errors, {artifact.get("format") for artifact in item.get("artifacts", [])} == FORMATS, "delivery: PDF/desktop/mobile artifacts required")
+        ensure(errors, item.get("surfaces", {}).get("local", {}).get("delivery_adapter") == "local-export-resolver", "delivery: local resolver missing")
+        ensure(errors, item.get("surfaces", {}).get("public", {}).get("availability") == "blocked", "delivery: public must remain blocked without endpoint")
+    generation_ids = [item.get("page_id") for item in contract["generation_metadata"]]
+    ensure(errors, set(generation_ids) == set(page_ids) and unique(generation_ids), "time: one generation record required per page")
+    ensure(errors, all(item.get("precision") == "minute" for item in contract["generation_metadata"]), "time: precision must be minute")
+    return errors
+
+
+def verify_legacy() -> list[str]:
+    errors: list[str] = []
+    baseline = load(LEGACY_BASELINE)
+    for item in baseline.get("artifacts", []):
+        path = ROOT / item["path"]
+        ensure(errors, path.is_file(), f"legacy: missing {item['path']}")
+        if path.is_file():
+            ensure(errors, sha256(path) == item["sha256"], f"legacy: grandfather changed {item['path']}")
+    return errors
+
+
+def portable() -> list[str]:
+    errors: list[str] = []
+    for path in (SCHEMA, PROFILE, INVENTORY, EXPORTER, *GOLDENS):
+        ensure(errors, path.is_file(), f"portable: missing {path.relative_to(ROOT)}")
     if errors:
-        print("FAILED: topic visual presentation", file=sys.stderr); print("\n".join(errors), file=sys.stderr); return 1
-    print("OK: topic visual presentation wiring and mutation checks passed")
+        return errors
+    schema = load(SCHEMA)
+    ensure(errors, schema.get("$id") == "wiki://topic-presentation/topic-presentation-contract.v2.schema.json", "schema: repo-local id missing")
+    ensure(errors, schema.get("additionalProperties") is False, "schema: top-level additionalProperties must be false")
+    profile = load(PROFILE)
+    ensure(errors, profile.get("contract_revision") == "topic-presentation-contract.v2", "profile: wrong contract")
+    ensure(errors, profile.get("activation_state") == "active" and profile.get("active_consumer_pointer") == "v2", "profile: v2 not active")
+    ensure(errors, profile.get("v1_write_allowed") is False, "profile: v1 writer not frozen")
+    ensure(errors, profile.get("schema_sha256") == sha256(SCHEMA), "profile: schema hash mismatch")
+    ensure(errors, profile.get("dependency_inventory_sha256") == sha256(INVENTORY), "profile: inventory hash mismatch")
+    ensure(errors, profile.get("public_delivery") == "blocked" and profile.get("reader_utility") == "unproven", "profile: evidence boundary promoted")
+    inventory = load(INVENTORY)
+    surfaces = inventory.get("active_writer_surfaces", []) + inventory.get("routing_and_discovery_surfaces", []) + inventory.get("legacy_read_only_surfaces", [])
+    ensure(errors, unique(surfaces), "inventory: duplicate surface")
+    for rel in surfaces:
+        ensure(errors, (ROOT / rel).is_file(), f"inventory: missing surface {rel}")
+    for rel, terms in inventory.get("required_terms", {}).items():
+        path = ROOT / rel
+        if path.is_file():
+            text = path.read_text(encoding="utf-8")
+            for term in terms:
+                ensure(errors, term in text, f"inventory: {rel} missing {term}")
+    ensure(errors, inventory.get("portable_gate", {}).get("exports_required") is False, "portable: exports must not be required")
+    for golden in GOLDENS:
+        errors.extend(f"{golden.name}: {error}" for error in validate_contract(load(golden)))
+    errors.extend(verify_legacy())
+    active_text = "\n".join(
+        (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
+        for rel in inventory.get("active_writer_surfaces", [])
+        if (ROOT / rel).is_file() and not rel.startswith("scripts/")
+    )
+    ensure(errors, "active_consumer_pointer=v1" not in active_text, "compatibility: active v1 pointer residual")
+    ensure(errors, "dual-write" not in active_text.lower() or "禁止 dual-write" in active_text or "no dual-write" in active_text.lower(), "compatibility: dual-write residual")
+    return errors
+
+
+def png_dimensions(path: Path) -> tuple[int, int]:
+    data = path.read_bytes()[:24]
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        raise ValueError(f"not PNG: {path}")
+    return struct.unpack(">II", data[16:24])
+
+
+def runtime(regenerate: bool) -> list[str]:
+    errors = portable()
+    if errors:
+        return errors
+    if regenerate:
+        result = subprocess.run([sys.executable, str(EXPORTER), "--active"], cwd=ROOT, text=True, capture_output=True)
+        ensure(errors, result.returncode == 0, f"runtime: regeneration failed: {result.stderr.strip()}")
+    ensure(errors, ACTIVE_READBACK.is_file(), "runtime: active readback missing")
+    if errors:
+        return errors
+    readback = load(ACTIVE_READBACK)
+    ensure(errors, readback.get("mode") == "active" and readback.get("contract_revision") == "topic-presentation-contract.v2", "runtime: wrong mode/contract")
+    ensure(errors, readback.get("candidate_commit") == git_head(), "runtime: readback HEAD mismatch")
+    ensure(errors, readback.get("public_delivery") == "blocked" and readback.get("reader_utility") == "unproven", "runtime: evidence boundary promoted")
+    run_root = ROOT / readback.get("run_root", "missing")
+    ensure(errors, run_root.is_dir(), "runtime: immutable run root missing")
+    for bundle_ref in readback.get("bundles", []):
+        manifest_path = run_root / bundle_ref.get("manifest_path", "missing")
+        ensure(errors, manifest_path.is_file(), f"runtime: manifest missing {manifest_path}")
+        if not manifest_path.is_file():
+            continue
+        ensure(errors, sha256(manifest_path) == bundle_ref.get("manifest_sha256"), "runtime: manifest hash mismatch")
+        manifest = load(manifest_path)
+        for key in ("bundle_revision", "source_snapshot_id", "build_id"):
+            ensure(errors, manifest.get(key) == bundle_ref.get(key), f"runtime: {key} identity mismatch")
+        ensure(errors, manifest.get("candidate_commit") == git_head(), "runtime: manifest HEAD mismatch")
+        contract = manifest.get("contract", {})
+        ensure(errors, contract.get("presentation_bundle", {}).get("bundle_revision") == manifest.get("bundle_revision"), "runtime: contract bundle mismatch")
+        ensure(errors, contract.get("presentation_bundle", {}).get("source_snapshot_id") == manifest.get("source_snapshot_id"), "runtime: contract source mismatch")
+        ensure(errors, contract.get("presentation_bundle", {}).get("build_id") == manifest.get("build_id"), "runtime: contract build mismatch")
+        ensure(errors, manifest.get("evaluation", {}).get("semantic-content") == "not-evaluated", "runtime: semantic self-promotion")
+        ensure(errors, manifest.get("evaluation", {}).get("visual-quality") == "not-evaluated", "runtime: visual self-promotion")
+        ensure(errors, manifest.get("evaluation", {}).get("reader-utility") == "unproven", "runtime: reader utility self-promotion")
+        pages = {page["page_id"]: page for page in contract.get("presentation_bundle", {}).get("page_catalog", [])}
+        page_artifacts: dict[str, dict[str, Path]] = {page_id: {} for page_id in pages}
+        for artifact in manifest.get("artifacts", []):
+            path = run_root / artifact.get("path", "missing")
+            ensure(errors, path.is_file(), f"runtime: artifact missing {artifact.get('path')}")
+            if path.is_file():
+                ensure(errors, sha256(path) == artifact.get("sha256"), f"runtime: artifact hash mismatch {artifact.get('path')}")
+                ensure(errors, path.stat().st_size == artifact.get("bytes"), f"runtime: artifact byte count mismatch {artifact.get('path')}")
+                page_artifacts.setdefault(artifact["page_id"], {})[artifact["kind"]] = path
+        bindings_by_page: dict[str, list[str]] = {page_id: [] for page_id in pages}
+        for binding in contract.get("coverage_manifest", {}).get("page_bindings", []):
+            bindings_by_page.setdefault(binding["page_id"], []).append(binding["claim_id"])
+        for page_id, artifacts in page_artifacts.items():
+            ensure(errors, set(artifacts) == {"html", "pdf", "png-desktop", "png-mobile"}, f"runtime: incomplete page artifacts {page_id}")
+            if "html" not in artifacts:
+                continue
+            text = artifacts["html"].read_text(encoding="utf-8")
+            ensure(errors, len(re.findall(r'class="source-link"', text)) == 1, f"runtime: {page_id} must expose one source link")
+            ensure(errors, len(re.findall(r'href="[^"]+\.md"', text)) == 1, f"runtime: {page_id} must expose only current owner Markdown link")
+            ensure(errors, all(token in text for token in ("download-pdf", "download-desktop", "download-mobile")), f"runtime: download controls missing {page_id}")
+            ensure(errors, bool(re.search(r'<time datetime="\d{4}-\d\d-\d\dT\d\d:\d\d:00[+-]\d\d:\d\d">', text)), f"runtime: minute timezone timestamp missing {page_id}")
+            ensure(errors, "公开下载：blocked" in text, f"runtime: public blocked label missing {page_id}")
+            ensure(errors, "/Users/" not in text and "views/.exports" not in text, f"runtime: local path leaked {page_id}")
+            for claim_id in bindings_by_page.get(page_id, []):
+                ensure(errors, f'data-claim-id="{claim_id}"' in text, f"runtime: hidden/missing claim {claim_id}")
+            if "png-desktop" in artifacts:
+                ensure(errors, png_dimensions(artifacts["png-desktop"]) == (1440, 1000), f"runtime: desktop PNG size mismatch {page_id}")
+            if "png-mobile" in artifacts:
+                ensure(errors, png_dimensions(artifacts["png-mobile"]) == (500, 1800), f"runtime: mobile PNG size mismatch {page_id}")
+            if "pdf" in artifacts:
+                info = subprocess.run(["pdfinfo", str(artifacts["pdf"])], capture_output=True, text=True)
+                ensure(errors, info.returncode == 0 and bool(re.search(r"^Pages:\s+\d+", info.stdout, re.M)), f"runtime: PDF unreadable {page_id}")
+    return errors
+
+
+def export_snapshot() -> dict[str, str]:
+    if not (ROOT / "views/.exports").exists():
+        return {}
+    return {path.relative_to(ROOT).as_posix(): sha256(path) for path in (ROOT / "views/.exports").rglob("*") if path.is_file()}
+
+
+def v1_compatibility() -> list[str]:
+    errors = portable()
+    before = export_snapshot()
+    result = subprocess.run([sys.executable, str(EXPORTER), "--v1-compatibility"], cwd=ROOT, text=True, capture_output=True)
+    after = export_snapshot()
+    ensure(errors, result.returncode == 0, f"compatibility: v1 readback failed {result.stderr.strip()}")
+    ensure(errors, before == after, "compatibility: v1 check wrote runtime artifacts")
+    ensure(errors, '"writes": 0' in result.stdout, "compatibility: zero-write proof missing")
+    return errors
+
+
+def negative_suite() -> list[str]:
+    errors = portable()
+    base = load(GOLDENS[1])
+    mutations: list[tuple[str, dict[str, Any]]] = []
+    item = copy.deepcopy(base); item["presentation_bundle"]["page_catalog"].append(copy.deepcopy(item["presentation_bundle"]["page_catalog"][0])); mutations.append(("duplicate-page", item))
+    item = copy.deepcopy(base); item["presentation_bundle"]["canonical_tree"]["edges"].append({"parent_page_id": "contract-template", "child_page_id": "evaluation-contract", "order": 9}); mutations.append(("multiple-parent", item))
+    item = copy.deepcopy(base); item["presentation_bundle"]["canonical_tree"]["edges"].pop(); mutations.append(("orphan", item))
+    item = copy.deepcopy(base); item["coverage_manifest"]["page_bindings"].pop(); mutations.append(("fake-coverage", item))
+    item = copy.deepcopy(base); item["coverage_manifest"]["semantic_coverage"]["acceptance"] = "pass"; item["coverage_manifest"]["semantic_coverage"]["reviewer"] = "builder"; mutations.append(("self-semantic-pass", item))
+    item = copy.deepcopy(base); item["page_download_contracts"][0]["artifacts"] = item["page_download_contracts"][0]["artifacts"][:1]; mutations.append(("missing-png", item))
+    item = copy.deepcopy(base); item["page_download_contracts"][0]["surfaces"]["public"]["availability"] = "available"; mutations.append(("fake-public", item))
+    item = copy.deepcopy(base); item["generation_metadata"][0]["precision"] = "second"; mutations.append(("wrong-time-precision", item))
+    item = copy.deepcopy(base); item["coverage_manifest"]["source_fragments"][1]["owner_ref"] = "governance/topic-visual-presentation-rules.md"; mutations.append(("many-owner-links", item))
+    item = copy.deepcopy(base); item["presentation_bundle_decision"]["split_guard"] = "fail"; mutations.append(("tree-without-split-proof", item))
+    for name, mutation in mutations:
+        ensure(errors, bool(validate_contract(mutation, source_check=False)), f"negative: mutation passed {name}")
+    pointer = ACTIVE_ROOT / "current-pointer.v2.json"
+    prior = pointer.read_bytes() if pointer.exists() else None
+    result = subprocess.run([sys.executable, str(EXPORTER), "--interrupted-build"], cwd=ROOT, text=True, capture_output=True)
+    current = pointer.read_bytes() if pointer.exists() else None
+    ensure(errors, result.returncode == 0 and prior == current, "negative: interrupted shadow build changed active pointer")
+    return errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=("portable-structure", "runtime-artifact-readback", "negative-suite", "v1-compatibility"), default="portable-structure")
+    parser.add_argument("--regenerate", action="store_true")
+    args = parser.parse_args()
+    if args.mode == "portable-structure":
+        errors = portable()
+    elif args.mode == "runtime-artifact-readback":
+        errors = runtime(args.regenerate)
+    elif args.mode == "negative-suite":
+        errors = negative_suite()
+    else:
+        errors = v1_compatibility()
+    if errors:
+        print("FAILED: topic presentation v2", file=sys.stderr)
+        print("\n".join(errors), file=sys.stderr)
+        return 1
+    print(f"OK: topic presentation v2 {args.mode}")
     return 0
-if __name__ == "__main__": raise SystemExit(main())
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wiki://topic-presentation/topic-presentation-contract.v2.schema.json",
+  "title": "Topic Presentation Page Bundle Contract v2",
+  "description": "Stable schema for a single-page or rooted page-tree presentation bundle. Activation is owned by a versioned consumer profile, not by this schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_revision",
+    "presentation_bundle_decision",
+    "presentation_bundle",
+    "coverage_manifest",
+    "page_download_contracts",
+    "generation_metadata"
+  ],
+  "properties": {
+    "contract_revision": {
+      "const": "topic-presentation-contract.v2"
+    },
+    "presentation_bundle_decision": {
+      "$ref": "#/$defs/presentationBundleDecision"
+    },
+    "presentation_bundle": {
+      "$ref": "#/$defs/presentationBundle"
+    },
+    "coverage_manifest": {
+      "$ref": "#/$defs/coverageManifest"
+    },
+    "page_download_contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/pageDownloadContract"
+      }
+    },
+    "generation_metadata": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/generationMetadata"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "presentationBundleDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_shape",
+        "materialization",
+        "cohesion",
+        "independent_module_boundaries",
+        "split_benefits",
+        "navigation_costs",
+        "split_benefit",
+        "navigation_cost",
+        "split_guard",
+        "no_split_reasons",
+        "root_responsibility",
+        "navigation_depth_budget",
+        "page_count_budget",
+        "decision_rationale"
+      ],
+      "properties": {
+        "bundle_shape": {
+          "enum": [
+            "single-page",
+            "page-tree"
+          ]
+        },
+        "materialization": {
+          "enum": [
+            "inline",
+            "ephemeral",
+            "current",
+            "snapshot"
+          ]
+        },
+        "cohesion": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "independent_module_boundaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "split_benefits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "navigation_costs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "split_benefit": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "navigation_cost": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "split_guard": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "no_split_reasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "root_responsibility": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "navigation_depth_budget": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "page_count_budget": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "decision_rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_id",
+        "title",
+        "responsibility",
+        "canonical_path",
+        "lifecycle_status",
+        "previous_paths",
+        "successor_page_ids",
+        "includes",
+        "excludes",
+        "reader_tasks",
+        "local_section_graph"
+      ],
+      "properties": {
+        "page_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "responsibility": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "canonical_path": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lifecycle_status": {
+          "enum": [
+            "active",
+            "redirected",
+            "merged",
+            "retired"
+          ]
+        },
+        "previous_paths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "successor_page_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "includes": {
+          "type": "array"
+        },
+        "excludes": {
+          "type": "array"
+        },
+        "reader_tasks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "local_section_graph": {
+          "type": "array",
+          "minItems": 1
+        }
+      }
+    },
+    "treeEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parent_page_id",
+        "child_page_id",
+        "order"
+      ],
+      "properties": {
+        "parent_page_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "child_page_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "presentationBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_id",
+        "bundle_title",
+        "contract_revision",
+        "bundle_revision",
+        "source_snapshot_id",
+        "build_id",
+        "bundle_shape",
+        "root_page_id",
+        "page_catalog",
+        "canonical_tree",
+        "discovery_paths",
+        "cross_relations"
+      ],
+      "properties": {
+        "bundle_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "bundle_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "contract_revision": {
+          "const": "topic-presentation-contract.v2"
+        },
+        "bundle_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_snapshot_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "build_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "bundle_shape": {
+          "enum": [
+            "single-page",
+            "page-tree"
+          ]
+        },
+        "root_page_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "page_catalog": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/page"
+          }
+        },
+        "canonical_tree": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "edge_source",
+            "edges"
+          ],
+          "properties": {
+            "edge_source": {
+              "const": "edges"
+            },
+            "edges": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/treeEdge"
+              }
+            }
+          }
+        },
+        "discovery_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "discovery_id",
+              "discovery_type",
+              "entry_ref",
+              "page_ids"
+            ],
+            "properties": {
+              "discovery_id": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "discovery_type": {
+                "enum": [
+                  "root-map",
+                  "task-index",
+                  "search",
+                  "registry",
+                  "archive"
+                ]
+              },
+              "entry_ref": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "page_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              }
+            }
+          }
+        },
+        "cross_relations": {
+          "type": "array"
+        }
+      }
+    },
+    "coverageManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "information_units",
+        "claims",
+        "source_fragments",
+        "rendered_sections",
+        "page_bindings",
+        "structural_coverage",
+        "semantic_coverage"
+      ],
+      "properties": {
+        "information_units": {
+          "type": "array",
+          "minItems": 1
+        },
+        "claims": {
+          "type": "array",
+          "minItems": 1
+        },
+        "source_fragments": {
+          "type": "array",
+          "minItems": 1
+        },
+        "rendered_sections": {
+          "type": "array",
+          "minItems": 1
+        },
+        "page_bindings": {
+          "type": "array",
+          "minItems": 1
+        },
+        "structural_coverage": {
+          "type": "object",
+          "required": [
+            "expected_unit_ids",
+            "bound_unit_ids",
+            "uncovered_unit_ids",
+            "invalid_bindings",
+            "acceptance"
+          ]
+        },
+        "semantic_coverage": {
+          "type": "object",
+          "required": [
+            "oracle_revision",
+            "reviewer",
+            "unsupported_claim_ids",
+            "contradicted_claim_ids",
+            "acceptance"
+          ]
+        }
+      }
+    },
+    "pageDownloadContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_id",
+        "bundle_revision",
+        "html_revision",
+        "artifacts",
+        "surfaces",
+        "controls"
+      ],
+      "properties": {
+        "page_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "bundle_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "html_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 2
+        },
+        "surfaces": {
+          "type": "object",
+          "required": [
+            "local",
+            "public"
+          ]
+        },
+        "controls": {
+          "type": "object",
+          "required": [
+            "placement",
+            "labels"
+          ]
+        }
+      }
+    },
+    "generationMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_id",
+        "generated_at",
+        "display_text",
+        "precision",
+        "source_revision",
+        "bundle_revision",
+        "build_id"
+      ],
+      "properties": {
+        "page_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "display_text": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "precision": {
+          "const": "minute"
+        },
+        "source_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "bundle_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "build_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

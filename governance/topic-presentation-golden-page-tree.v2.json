@@ -1,0 +1,124 @@
+{
+  "contract_revision": "topic-presentation-contract.v2",
+  "presentation_bundle_decision": {
+    "bundle_shape": "page-tree",
+    "materialization": "current",
+    "cohesion": "medium",
+    "independent_module_boundaries": ["runtime skill", "contract template", "governance profile", "evaluation contract"],
+    "split_benefits": ["independent responsibilities", "independent refresh boundaries"],
+    "navigation_costs": ["one root-to-child transition"],
+    "split_benefit": "high",
+    "navigation_cost": "low",
+    "split_guard": "pass",
+    "no_split_reasons": [],
+    "root_responsibility": "Provide one entry and route readers to the runtime, contract, governance and evaluation modules.",
+    "navigation_depth_budget": 2,
+    "page_count_budget": 4,
+    "decision_rationale": "Four existing owners have independent responsibilities; a tree isolates them while retaining one discoverable entry."
+  },
+  "presentation_bundle": {
+    "bundle_id": "wiki-topic-presentation-page-tree",
+    "bundle_title": "主题呈现能力体系",
+    "contract_revision": "topic-presentation-contract.v2",
+    "bundle_revision": "derived-at-render",
+    "source_snapshot_id": "derived-at-render",
+    "build_id": "derived-at-render",
+    "bundle_shape": "page-tree",
+    "root_page_id": "runtime-entry",
+    "page_catalog": [
+      {"page_id": "runtime-entry", "title": "主题呈现运行入口", "responsibility": "给出准入、运行三轴与页面包地图。", "canonical_path": "index.html", "lifecycle_status": "active", "previous_paths": [], "successor_page_ids": [], "includes": ["eligibility", "runtime-axes", "page-bundle"], "excludes": ["模板字段细节", "评价执行结果"], "reader_tasks": ["understand", "navigate"], "local_section_graph": ["entry", "map"]},
+      {"page_id": "contract-template", "title": "页面包合同", "responsibility": "说明 single-page/page-tree、逐 claim binding、下载和生成时间字段。", "canonical_path": "contract.html", "lifecycle_status": "active", "previous_paths": [], "successor_page_ids": [], "includes": ["bundle-decision", "claim-binding", "downloads", "time"], "excludes": ["运行路由"], "reader_tasks": ["verify"], "local_section_graph": ["shape", "bindings", "delivery"]},
+      {"page_id": "governance-profile", "title": "本仓治理与兼容边界", "responsibility": "说明 active profile、ignored exports、v1 grandfather 与公开边界。", "canonical_path": "governance.html", "lifecycle_status": "active", "previous_paths": [], "successor_page_ids": [], "includes": ["active-pointer", "portable-gate", "legacy-boundary"], "excludes": ["独立 evaluator 结论"], "reader_tasks": ["act", "verify"], "local_section_graph": ["profile", "portable", "compatibility"]},
+      {"page_id": "evaluation-contract", "title": "五层评价合同", "responsibility": "区分 contract、semantic、visual、delivery 与 reader utility。", "canonical_path": "evaluation.html", "lifecycle_status": "active", "previous_paths": [], "successor_page_ids": [], "includes": ["evidence-layers", "cannot-promote"], "excludes": ["伪造 reader utility"], "reader_tasks": ["review"], "local_section_graph": ["layers", "boundaries"]}
+    ],
+    "canonical_tree": {"edge_source": "edges", "edges": [
+      {"parent_page_id": "runtime-entry", "child_page_id": "contract-template", "order": 1},
+      {"parent_page_id": "runtime-entry", "child_page_id": "governance-profile", "order": 2},
+      {"parent_page_id": "runtime-entry", "child_page_id": "evaluation-contract", "order": 3}
+    ]},
+    "discovery_paths": [
+      {"discovery_id": "root-map", "discovery_type": "root-map", "entry_ref": "index.html", "page_ids": ["runtime-entry", "contract-template", "governance-profile", "evaluation-contract"]},
+      {"discovery_id": "skill-index", "discovery_type": "registry", "entry_ref": "skills/README.md", "page_ids": ["runtime-entry", "contract-template", "governance-profile", "evaluation-contract"]}
+    ],
+    "cross_relations": [
+      {"from_page_id": "governance-profile", "relation_type": "depends-on", "to_page_id": "contract-template"},
+      {"from_page_id": "evaluation-contract", "relation_type": "evaluates", "to_page_id": "runtime-entry"}
+    ]
+  },
+  "coverage_manifest": {
+    "information_units": [
+      {"unit_id": "unit-entry-eligibility", "unit_type": "constraint"},
+      {"unit_id": "unit-entry-exports", "unit_type": "constraint"},
+      {"unit_id": "unit-contract-shape", "unit_type": "decision"},
+      {"unit_id": "unit-contract-binding", "unit_type": "constraint"},
+      {"unit_id": "unit-contract-download", "unit_type": "constraint"},
+      {"unit_id": "unit-contract-time", "unit_type": "constraint"},
+      {"unit_id": "unit-governance-portable", "unit_type": "constraint"},
+      {"unit_id": "unit-governance-legacy", "unit_type": "constraint"},
+      {"unit_id": "unit-evaluation-independent", "unit_type": "constraint"},
+      {"unit_id": "unit-evaluation-reader", "unit_type": "unknown"}
+    ],
+    "claims": [
+      {"claim_id": "claim-entry-eligibility", "unit_id": "unit-entry-eligibility", "text": "主题呈现先做 admit/reject/clarify/abstain 准入。"},
+      {"claim_id": "claim-entry-exports", "unit_id": "unit-entry-exports", "text": "admit 后默认 HTML 并同源导出 PDF/PNG。"},
+      {"claim_id": "claim-contract-shape", "unit_id": "unit-contract-shape", "text": "页面包必须先裁决 single-page 或 page-tree。"},
+      {"claim_id": "claim-contract-binding", "unit_id": "unit-contract-binding", "text": "每个 included unit 绑定 claim、source fragment 与 rendered section。"},
+      {"claim_id": "claim-contract-download", "unit_id": "unit-contract-download", "text": "每页提供本地 PDF 与桌面/移动 PNG 下载。"},
+      {"claim_id": "claim-contract-time", "unit_id": "unit-contract-time", "text": "每页显示精确到分钟且带时区的生成时间。"},
+      {"claim_id": "claim-governance-portable", "unit_id": "unit-governance-portable", "text": "portable 检查不能要求 ignored exports 已存在。"},
+      {"claim_id": "claim-governance-legacy", "unit_id": "unit-governance-legacy", "text": "v1 只作为 grandfathered artifact 只读基线。"},
+      {"claim_id": "claim-evaluation-independent", "unit_id": "unit-evaluation-independent", "text": "语义结论需要 builder-independent evaluator。"},
+      {"claim_id": "claim-evaluation-reader", "unit_id": "unit-evaluation-reader", "text": "本地通过不能上推为读者效用通过。"}
+    ],
+    "source_fragments": [
+      {"source_fragment_id": "fragment-entry-eligibility", "owner_ref": "skills/topic-visual-presentation/SKILL.md", "selector": "contains:admit | reject | clarify | abstain", "rendered_text": "admit | reject | clarify | abstain"},
+      {"source_fragment_id": "fragment-entry-exports", "owner_ref": "skills/topic-visual-presentation/SKILL.md", "selector": "contains:PDF/PNG", "rendered_text": "PDF/PNG"},
+      {"source_fragment_id": "fragment-contract-shape", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:single-page | page-tree", "rendered_text": "single-page | page-tree"},
+      {"source_fragment_id": "fragment-contract-binding", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:source_fragment_id", "rendered_text": "source_fragment_id"},
+      {"source_fragment_id": "fragment-contract-download", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:png-mobile", "rendered_text": "png-mobile"},
+      {"source_fragment_id": "fragment-contract-time", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:precision: minute", "rendered_text": "precision: minute"},
+      {"source_fragment_id": "fragment-governance-portable", "owner_ref": "governance/topic-visual-presentation-rules.md", "selector": "contains:portable-structure", "rendered_text": "portable-structure"},
+      {"source_fragment_id": "fragment-governance-legacy", "owner_ref": "governance/topic-visual-presentation-rules.md", "selector": "contains:grandfather", "rendered_text": "grandfather"},
+      {"source_fragment_id": "fragment-evaluation-independent", "owner_ref": "governance/topic-visual-presentation-evaluation.md", "selector": "contains:builder-independent model judge", "rendered_text": "builder-independent model judge"},
+      {"source_fragment_id": "fragment-evaluation-reader", "owner_ref": "governance/topic-visual-presentation-evaluation.md", "selector": "contains:Reader utility is explicitly unproven", "rendered_text": "Reader utility is explicitly `unproven`"}
+    ],
+    "rendered_sections": [
+      {"rendered_section_id": "section-entry-eligibility", "page_id": "runtime-entry"},
+      {"rendered_section_id": "section-entry-exports", "page_id": "runtime-entry"},
+      {"rendered_section_id": "section-contract-shape", "page_id": "contract-template"},
+      {"rendered_section_id": "section-contract-binding", "page_id": "contract-template"},
+      {"rendered_section_id": "section-contract-download", "page_id": "contract-template"},
+      {"rendered_section_id": "section-contract-time", "page_id": "contract-template"},
+      {"rendered_section_id": "section-governance-portable", "page_id": "governance-profile"},
+      {"rendered_section_id": "section-governance-legacy", "page_id": "governance-profile"},
+      {"rendered_section_id": "section-evaluation-independent", "page_id": "evaluation-contract"},
+      {"rendered_section_id": "section-evaluation-reader", "page_id": "evaluation-contract"}
+    ],
+    "page_bindings": [
+      {"page_id": "runtime-entry", "unit_id": "unit-entry-eligibility", "claim_id": "claim-entry-eligibility", "source_fragment_id": "fragment-entry-eligibility", "rendered_section_id": "section-entry-eligibility"},
+      {"page_id": "runtime-entry", "unit_id": "unit-entry-exports", "claim_id": "claim-entry-exports", "source_fragment_id": "fragment-entry-exports", "rendered_section_id": "section-entry-exports"},
+      {"page_id": "contract-template", "unit_id": "unit-contract-shape", "claim_id": "claim-contract-shape", "source_fragment_id": "fragment-contract-shape", "rendered_section_id": "section-contract-shape"},
+      {"page_id": "contract-template", "unit_id": "unit-contract-binding", "claim_id": "claim-contract-binding", "source_fragment_id": "fragment-contract-binding", "rendered_section_id": "section-contract-binding"},
+      {"page_id": "contract-template", "unit_id": "unit-contract-download", "claim_id": "claim-contract-download", "source_fragment_id": "fragment-contract-download", "rendered_section_id": "section-contract-download"},
+      {"page_id": "contract-template", "unit_id": "unit-contract-time", "claim_id": "claim-contract-time", "source_fragment_id": "fragment-contract-time", "rendered_section_id": "section-contract-time"},
+      {"page_id": "governance-profile", "unit_id": "unit-governance-portable", "claim_id": "claim-governance-portable", "source_fragment_id": "fragment-governance-portable", "rendered_section_id": "section-governance-portable"},
+      {"page_id": "governance-profile", "unit_id": "unit-governance-legacy", "claim_id": "claim-governance-legacy", "source_fragment_id": "fragment-governance-legacy", "rendered_section_id": "section-governance-legacy"},
+      {"page_id": "evaluation-contract", "unit_id": "unit-evaluation-independent", "claim_id": "claim-evaluation-independent", "source_fragment_id": "fragment-evaluation-independent", "rendered_section_id": "section-evaluation-independent"},
+      {"page_id": "evaluation-contract", "unit_id": "unit-evaluation-reader", "claim_id": "claim-evaluation-reader", "source_fragment_id": "fragment-evaluation-reader", "rendered_section_id": "section-evaluation-reader"}
+    ],
+    "structural_coverage": {"expected_unit_ids": ["unit-entry-eligibility", "unit-entry-exports", "unit-contract-shape", "unit-contract-binding", "unit-contract-download", "unit-contract-time", "unit-governance-portable", "unit-governance-legacy", "unit-evaluation-independent", "unit-evaluation-reader"], "bound_unit_ids": ["unit-entry-eligibility", "unit-entry-exports", "unit-contract-shape", "unit-contract-binding", "unit-contract-download", "unit-contract-time", "unit-governance-portable", "unit-governance-legacy", "unit-evaluation-independent", "unit-evaluation-reader"], "uncovered_unit_ids": [], "invalid_bindings": [], "acceptance": "pass"},
+    "semantic_coverage": {"oracle_revision": "wiki-topic-presentation-semantic-rubric.v2", "reviewer": "independent-evaluator-required", "unsupported_claim_ids": [], "contradicted_claim_ids": [], "acceptance": "not-evaluated"}
+  },
+  "page_download_contracts": [
+    {"page_id": "runtime-entry", "bundle_revision": "derived-at-render", "html_revision": "derived-at-render", "artifacts": [{"format": "pdf", "artifact_id": "runtime-entry-pdf"}, {"format": "png-desktop", "artifact_id": "runtime-entry-desktop-png"}, {"format": "png-mobile", "artifact_id": "runtime-entry-mobile-png"}], "surfaces": {"local": {"delivery_adapter": "local-export-resolver", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "render pending"}, "public": {"delivery_adapter": "none", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "no controlled public endpoint"}}, "controls": {"placement": "shared-footer", "labels": ["下载 PDF", "下载桌面 PNG", "下载移动 PNG"]}},
+    {"page_id": "contract-template", "bundle_revision": "derived-at-render", "html_revision": "derived-at-render", "artifacts": [{"format": "pdf", "artifact_id": "contract-template-pdf"}, {"format": "png-desktop", "artifact_id": "contract-template-desktop-png"}, {"format": "png-mobile", "artifact_id": "contract-template-mobile-png"}], "surfaces": {"local": {"delivery_adapter": "local-export-resolver", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "render pending"}, "public": {"delivery_adapter": "none", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "no controlled public endpoint"}}, "controls": {"placement": "shared-footer", "labels": ["下载 PDF", "下载桌面 PNG", "下载移动 PNG"]}},
+    {"page_id": "governance-profile", "bundle_revision": "derived-at-render", "html_revision": "derived-at-render", "artifacts": [{"format": "pdf", "artifact_id": "governance-profile-pdf"}, {"format": "png-desktop", "artifact_id": "governance-profile-desktop-png"}, {"format": "png-mobile", "artifact_id": "governance-profile-mobile-png"}], "surfaces": {"local": {"delivery_adapter": "local-export-resolver", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "render pending"}, "public": {"delivery_adapter": "none", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "no controlled public endpoint"}}, "controls": {"placement": "shared-footer", "labels": ["下载 PDF", "下载桌面 PNG", "下载移动 PNG"]}},
+    {"page_id": "evaluation-contract", "bundle_revision": "derived-at-render", "html_revision": "derived-at-render", "artifacts": [{"format": "pdf", "artifact_id": "evaluation-contract-pdf"}, {"format": "png-desktop", "artifact_id": "evaluation-contract-desktop-png"}, {"format": "png-mobile", "artifact_id": "evaluation-contract-mobile-png"}], "surfaces": {"local": {"delivery_adapter": "local-export-resolver", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "render pending"}, "public": {"delivery_adapter": "none", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "no controlled public endpoint"}}, "controls": {"placement": "shared-footer", "labels": ["下载 PDF", "下载桌面 PNG", "下载移动 PNG"]}}
+  ],
+  "generation_metadata": [
+    {"page_id": "runtime-entry", "generated_at": "1970-01-01T00:00:00+00:00", "display_text": "derived-at-render", "precision": "minute", "source_revision": "derived-at-render", "bundle_revision": "derived-at-render", "build_id": "derived-at-render"},
+    {"page_id": "contract-template", "generated_at": "1970-01-01T00:00:00+00:00", "display_text": "derived-at-render", "precision": "minute", "source_revision": "derived-at-render", "bundle_revision": "derived-at-render", "build_id": "derived-at-render"},
+    {"page_id": "governance-profile", "generated_at": "1970-01-01T00:00:00+00:00", "display_text": "derived-at-render", "precision": "minute", "source_revision": "derived-at-render", "bundle_revision": "derived-at-render", "build_id": "derived-at-render"},
+    {"page_id": "evaluation-contract", "generated_at": "1970-01-01T00:00:00+00:00", "display_text": "derived-at-render", "precision": "minute", "source_revision": "derived-at-render", "bundle_revision": "derived-at-render", "build_id": "derived-at-render"}
+  ]
+}

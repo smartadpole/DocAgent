@@ -1,0 +1,36 @@
+{
+  "profile_revision": "wiki-topic-presentation-active.v2",
+  "contract_revision": "topic-presentation-contract.v2",
+  "activation_state": "active",
+  "active_contract_ref": "topic-presentation-contract.v2",
+  "active_consumer_pointer": "v2",
+  "v1_write_allowed": false,
+  "schema_ref": "governance/topic-presentation-contract.v2.schema.json",
+  "schema_sha256": "c4f97256e13e754a1309228739c882b6c268660b87195040a757c487bfc407ac",
+  "renderer_revision": "wiki-topic-presentation-renderer.v2",
+  "dependency_inventory_ref": "governance/topic-presentation-verification-inventory.v2.json",
+  "dependency_inventory_sha256": "75842d06df6e72b6f774e17f6e73dd4c8fb30efa6e0b8c00ea730b0e2acc7999",
+  "golden_contract_refs": [
+    "governance/topic-presentation-golden-single.v2.json",
+    "governance/topic-presentation-golden-page-tree.v2.json"
+  ],
+  "adoption_source": {
+    "contract_revision": "topic-presentation-contract.v2",
+    "source_revision": "b3572848430669326e58978a00c87453213aa9fb"
+  },
+  "active_runtime_readback": "views/.exports/topic-presentation-v2/active/active-runtime-readback.v2.json",
+  "evaluation_state": {
+    "contract_schema": "implemented",
+    "semantic_content": "not-evaluated",
+    "visual_quality": "not-evaluated",
+    "delivery_findability": "not-evaluated",
+    "reader_utility": "unproven"
+  },
+  "public_delivery": "blocked",
+  "reader_utility": "unproven",
+  "cannot_promote": [
+    "Local schema and runtime readback do not establish independent semantic or visual acceptance.",
+    "Local exports do not establish a controlled public endpoint.",
+    "No real reader-task evidence has been collected."
+  ]
+}

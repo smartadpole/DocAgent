@@ -1,0 +1,11 @@
+{
+  "profile_revision": "wiki-topic-presentation-shadow.v2",
+  "contract_revision": "topic-presentation-contract.v2",
+  "activation_state": "shadow",
+  "active_contract_ref": "topic-presentation-contract.v1",
+  "candidate_contract_ref": "topic-presentation-contract.v2",
+  "active_consumer_pointer": "v1",
+  "candidate_schema_ref": "governance/topic-presentation-contract.v2.schema.json",
+  "dependency_inventory_ref": "governance/topic-presentation-verification-inventory.v2.json",
+  "v1_write_allowed": false
+}

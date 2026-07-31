@@ -1,0 +1,84 @@
+{
+  "contract_revision": "topic-presentation-contract.v2",
+  "presentation_bundle_decision": {
+    "bundle_shape": "single-page",
+    "materialization": "current",
+    "cohesion": "high",
+    "independent_module_boundaries": [],
+    "split_benefits": [],
+    "navigation_costs": ["The evaluation verdict and its cannot-promote boundary must be read together."],
+    "split_benefit": "low",
+    "navigation_cost": "high",
+    "split_guard": "fail",
+    "no_split_reasons": ["One compact owner defines one evaluation boundary."],
+    "root_responsibility": "Explain the five independent evidence layers without splitting one verdict boundary.",
+    "navigation_depth_budget": 1,
+    "page_count_budget": 1,
+    "decision_rationale": "The source is cohesive and splitting would add navigation without isolating an independent owner."
+  },
+  "presentation_bundle": {
+    "bundle_id": "wiki-topic-presentation-single",
+    "bundle_title": "主题呈现评价边界",
+    "contract_revision": "topic-presentation-contract.v2",
+    "bundle_revision": "derived-at-render",
+    "source_snapshot_id": "derived-at-render",
+    "build_id": "derived-at-render",
+    "bundle_shape": "single-page",
+    "root_page_id": "evaluation-boundary",
+    "page_catalog": [
+      {
+        "page_id": "evaluation-boundary",
+        "title": "主题呈现评价边界",
+        "responsibility": "区分结构、语义、视觉、交付与读者效用证据。",
+        "canonical_path": "index.html",
+        "lifecycle_status": "active",
+        "previous_paths": [],
+        "successor_page_ids": [],
+        "includes": ["evaluation-layers", "cannot-promote"],
+        "excludes": ["将本地导出上推为公开发布或读者效用"],
+        "reader_tasks": ["understand", "verify"],
+        "local_section_graph": ["evidence-layers", "evidence-boundary"]
+      }
+    ],
+    "canonical_tree": {"edge_source": "edges", "edges": []},
+    "discovery_paths": [
+      {"discovery_id": "root-map", "discovery_type": "root-map", "entry_ref": "index.html", "page_ids": ["evaluation-boundary"]}
+    ],
+    "cross_relations": []
+  },
+  "coverage_manifest": {
+    "information_units": [
+      {"unit_id": "unit-five-gates", "unit_type": "constraint"},
+      {"unit_id": "unit-independent-review", "unit_type": "constraint"},
+      {"unit_id": "unit-reader-boundary", "unit_type": "unknown"}
+    ],
+    "claims": [
+      {"claim_id": "claim-five-gates", "unit_id": "unit-five-gates", "text": "五个证据层必须独立裁决。"},
+      {"claim_id": "claim-independent-review", "unit_id": "unit-independent-review", "text": "语义通过需要独立 evaluator。"},
+      {"claim_id": "claim-reader-boundary", "unit_id": "unit-reader-boundary", "text": "没有真实读者任务时，读者效用保持未证明。"}
+    ],
+    "source_fragments": [
+      {"source_fragment_id": "fragment-five-gates", "owner_ref": "governance/topic-visual-presentation-evaluation.md", "selector": "contains:evidence layers are independent", "rendered_text": "`contract-schema / semantic-content / visual-quality / delivery-findability / reader-utility` are independent"},
+      {"source_fragment_id": "fragment-independent-review", "owner_ref": "governance/topic-visual-presentation-evaluation.md", "selector": "contains:builder-independent model judge", "rendered_text": "builder-independent model judge"},
+      {"source_fragment_id": "fragment-reader-boundary", "owner_ref": "governance/topic-visual-presentation-evaluation.md", "selector": "contains:Reader utility is explicitly unproven", "rendered_text": "Reader utility is explicitly `unproven`"}
+    ],
+    "rendered_sections": [
+      {"rendered_section_id": "section-five-gates", "page_id": "evaluation-boundary"},
+      {"rendered_section_id": "section-independent-review", "page_id": "evaluation-boundary"},
+      {"rendered_section_id": "section-reader-boundary", "page_id": "evaluation-boundary"}
+    ],
+    "page_bindings": [
+      {"page_id": "evaluation-boundary", "unit_id": "unit-five-gates", "claim_id": "claim-five-gates", "source_fragment_id": "fragment-five-gates", "rendered_section_id": "section-five-gates"},
+      {"page_id": "evaluation-boundary", "unit_id": "unit-independent-review", "claim_id": "claim-independent-review", "source_fragment_id": "fragment-independent-review", "rendered_section_id": "section-independent-review"},
+      {"page_id": "evaluation-boundary", "unit_id": "unit-reader-boundary", "claim_id": "claim-reader-boundary", "source_fragment_id": "fragment-reader-boundary", "rendered_section_id": "section-reader-boundary"}
+    ],
+    "structural_coverage": {"expected_unit_ids": ["unit-five-gates", "unit-independent-review", "unit-reader-boundary"], "bound_unit_ids": ["unit-five-gates", "unit-independent-review", "unit-reader-boundary"], "uncovered_unit_ids": [], "invalid_bindings": [], "acceptance": "pass"},
+    "semantic_coverage": {"oracle_revision": "wiki-topic-presentation-semantic-rubric.v2", "reviewer": "independent-evaluator-required", "unsupported_claim_ids": [], "contradicted_claim_ids": [], "acceptance": "not-evaluated"}
+  },
+  "page_download_contracts": [
+    {"page_id": "evaluation-boundary", "bundle_revision": "derived-at-render", "html_revision": "derived-at-render", "artifacts": [{"format": "pdf", "artifact_id": "evaluation-boundary-pdf"}, {"format": "png-desktop", "artifact_id": "evaluation-boundary-desktop-png"}, {"format": "png-mobile", "artifact_id": "evaluation-boundary-mobile-png"}], "surfaces": {"local": {"delivery_adapter": "local-export-resolver", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "render pending"}, "public": {"delivery_adapter": "none", "availability": "blocked", "target_readback": "not-evaluated", "blocked_reason": "no controlled public endpoint"}}, "controls": {"placement": "shared-footer", "labels": ["下载 PDF", "下载桌面 PNG", "下载移动 PNG"]}}
+  ],
+  "generation_metadata": [
+    {"page_id": "evaluation-boundary", "generated_at": "1970-01-01T00:00:00+00:00", "display_text": "derived-at-render", "precision": "minute", "source_revision": "derived-at-render", "bundle_revision": "derived-at-render", "build_id": "derived-at-render"}
+  ]
+}

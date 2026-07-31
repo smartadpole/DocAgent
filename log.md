@@ -9,6 +9,19 @@
 
 ## 2026-07-31
 
+### 将主题呈现升级为可移植的 page-bundle v2
+
+- **记录人**：Codex
+- **用户意图**：在不复制外部工程事实、不预铺事项链的前提下，把主题呈现升级为真实可运行的单页 / 页面树合同；复杂信息通过统一入口和页面嵌套隔离边界，每页保留自身丰富细节、单一 Markdown owner、同源下载与生成时间。
+- **公开边界**：`public-safe`；tracked 文件只保留通用合同、本仓 owner 与去标识的来源 revision，不写外部工程名称、路径、运行 ID 或私有事实；所有 HTML/PDF/PNG 运行产物进入 ignored exports。
+- **关键动作**：
+  1. 将 [[skills/topic-visual-presentation/SKILL]] 与 [[templates/topic-presentation-template]] 切换为 `topic-presentation-contract.v2`，加入 `single-page | page-tree` 裁决、canonical edges、逐 claim binding、每页单一 owner link、本地 PDF/桌面 PNG/移动 PNG 与分钟级带时区生成时间。
+  2. 在既有 [[topic-visual-presentation-rules]] / evaluation owner 下新增 repo-local schema、active profile、完整 surface inventory、真实单页与四 owner 页面树 golden；不新建 FP / EP / TASK / Gate / AP。
+  3. 新增 `scripts/export_topic_presentation_bundle.py`，先写 ignored immutable run，再原子更新 pointer；默认 active v2，shadow 显式运行，v1 compatibility 只读零写入。
+  4. 扩展 `scripts/check_topic_visual_presentation.py`，把 portable（不要求 `.exports`）、runtime readback、负样本、legacy grandfather 与 v1 zero-write 分门验证。
+- **验证 / 边界**：本地结构、运行产物和交付读回不能上推为独立语义、视觉、公开交付或真实读者效用；这些层级继续由独立 evaluator、受控 published endpoint 与 reader task evidence 单独裁决。
+- **Persistence Decision**：`artifact-needed`；owner 仍为既有 skill / template / governance pages，发现入口不变，运行件不提交。
+
 ### 将调研能力升级为 Strong Template Kernel
 
 - **记录人**：Codex

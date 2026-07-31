@@ -1,0 +1,55 @@
+{
+  "inventory_revision": "wiki-topic-presentation-verification-inventory.v2",
+  "contract_revision": "topic-presentation-contract.v2",
+  "inventory_policy": "complete-repo-local-active-surface-inventory",
+  "active_writer_surfaces": [
+    "skills/topic-visual-presentation/SKILL.md",
+    "skills/topic-visual-presentation/TRANSFER.md",
+    "templates/topic-presentation-template.md",
+    "governance/topic-visual-presentation-rules.md",
+    "governance/topic-visual-presentation-evaluation.md",
+    "governance/topic-presentation-contract.v2.schema.json",
+    "governance/topic-presentation-active-profile.v2.json",
+    "governance/topic-presentation-verification-inventory.v2.json",
+    "governance/topic-presentation-golden-single.v2.json",
+    "governance/topic-presentation-golden-page-tree.v2.json",
+    "scripts/check_topic_visual_presentation.py",
+    "scripts/export_topic_presentation_bundle.py"
+  ],
+  "routing_and_discovery_surfaces": [
+    "AGENTS.md",
+    "README.md",
+    "INDEX.md",
+    "skills/README.md",
+    "views/README.md",
+    "views/lens-registry.md",
+    "scripts/check_all.py"
+  ],
+  "legacy_read_only_surfaces": [
+    "views/current/topic-visual-presentation-system.html",
+    "views/current/problem-focused-visual-presentation-system-sample.html",
+    "scripts/fixtures/topic-visual-presentation/legacy_artifact_baseline_manifest.v1.json"
+  ],
+  "runtime_only_surfaces": [
+    "views/.exports/topic-presentation-v2/shadow/",
+    "views/.exports/topic-presentation-v2/active/"
+  ],
+  "required_terms": {
+    "skills/topic-visual-presentation/SKILL.md": ["topic-presentation-contract.v2", "single-page | page-tree", "local-export-resolver", "precision=minute"],
+    "templates/topic-presentation-template.md": ["contract_revision: topic-presentation-contract.v2", "source_fragment_id", "png-mobile", "precision: minute"],
+    "governance/topic-visual-presentation-rules.md": ["active_consumer_pointer=v2", "portable-structure", "v1 writer", "grandfather"],
+    "governance/topic-visual-presentation-evaluation.md": ["semantic-content", "visual-quality", "delivery-findability", "reader-utility"]
+  },
+  "portable_gate": {
+    "command": "python3 scripts/check_topic_visual_presentation.py --mode portable-structure",
+    "exports_required": false
+  },
+  "runtime_gate": {
+    "command": "python3 scripts/check_topic_visual_presentation.py --mode runtime-artifact-readback --regenerate",
+    "exports_required": true
+  },
+  "compatibility_gate": {
+    "command": "python3 scripts/check_topic_visual_presentation.py --mode v1-compatibility",
+    "write_policy": "zero-write"
+  }
+}
