@@ -1,0 +1,26 @@
+{
+  "case_id": "negative-r3-without-source-plan",
+  "contract_revision": "research-contract.v1",
+  "research_level": "strong-template-kernel",
+  "depth": "R3",
+  "claim_scope": "design",
+  "action_level": "Assess",
+  "so_what": "Evidence is incomplete.",
+  "decision_output": "continue research",
+  "deal_breakers": ["unknown license"],
+  "evidence_levels": ["L2"],
+  "source_plan": {"checkpoint": "blocked"},
+  "coverage_matrix": [],
+  "evidence_delta": {"triggered": false},
+  "validation": {"local_validation": false},
+  "evaluation": {
+    "deterministic_validator": "passed",
+    "evaluator_provenance": "versioned fixture oracle",
+    "outcome_review": "unproven",
+    "next_run_decision": "build source plan"
+  },
+  "expected_errors": [
+    "R2_SOURCE_PLAN_CHECKPOINT",
+    "R2_COVERAGE_MATRIX_REQUIRED"
+  ]
+}

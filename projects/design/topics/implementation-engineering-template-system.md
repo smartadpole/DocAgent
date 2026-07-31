@@ -4,7 +4,7 @@ id: DES-TOPIC-IMPLEMENTATION-TEMPLATE-001
 project: PROJ-WIKI-001
 status: accepted-design
 stage: implementation-template
-updated: 2026-07-23
+updated: 2026-07-31
 tags: [design, implementation, template, agent-system, harness]
 ---
 
@@ -44,7 +44,7 @@ wiki 是统一模板工程，对外输出的是 **Template Kernel + Project Prof
 | 数据 / 模型工程 | source freshness、non-default / boundary evidence、readback、evaluation correction | [[agent-system-maturity]]、[[projects/development/reports/README]] |
 | 知识库 / 文档治理工程 | owner-first、trace、memory、log、topic placement、documentation maintenance、topic presentation | [[projects/memory/README]]、[[projects/trace]]、[[documentation-maintenance-rules]]、[[skills/topic-visual-presentation/SKILL]] |
 | 运维 agent / ops | service registry、runtime config switch、health、production readback、rollback、ops diagnostics | [[projects/service-registry]]、[[skills/runtime-config-switch/SKILL]]、[[skills/performance-bandwidth-analysis/SKILL]] |
-| 调研 / 选型工程 | Research Contract、Source Ledger、evidence matrix、adoption contract | [[skills/research-capability/SKILL]]、[[templates/research-intake-template]] |
+| 调研 / 选型工程 | Research Contract、R2+ Source Plan、Source Ledger、coverage matrix、Evidence Delta、验证阶梯、adoption contract、revision / evaluation loop | [[skills/research-capability/SKILL]]、[[templates/research-intake-template]] |
 
 ## Project Profile Overlay
 
@@ -88,7 +88,7 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | `runtime-control-plane-pack` | 服务配置切换、health / smoke、production readback、rollback | [[projects/service-registry]]、[[skills/runtime-config-switch/SKILL]] |
 | `acceptance-governance-pack` | 验收对象、证据层级、manual boundary 和 finalizer | [[agent-orchestration]]、[[projects/development/acceptance/README]] |
 | `ops-diagnostics-pack` | timing ledger、coverage matrix、容量、外部依赖、浏览器 / runtime profile 和不上推边界 | [[skills/performance-bandwidth-analysis/SKILL]]、[[state-constraint-reasoning]] |
-| `research-intelligence-pack` | 调研合同、source plan、证据等级和落地裁决 | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] |
+| `research-intelligence-pack` | strong template-kernel 调研合同、R2+ source plan、coverage、Evidence Delta、验证阶梯、评价和修订闭环 | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] |
 | `memory-trace-log-pack` | owner-first、topic、memory、trace、log 和文档维护 | [[projects/memory/README]]、[[projects/trace]]、[[skills/documentation-maintenance/SKILL]] |
 | `visual-publication-pack` | topic HTML、public URL、同源导出和 live readback | [[skills/topic-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]] |
 
@@ -147,7 +147,7 @@ Hybrid 必须声明 `primary_profile` 和 `secondary_profiles`。冲突时按 ow
 | Agent Harness / Memory / Evaluation / Migration | agent-system 七层对象 | [[agent-system-cross-project-alignment.v1]]、[[projects/design/topics/agent-workflow-memory-harness-skill-landing]] |
 | Goal Orchestration / Run Capsule | workflow + harness | [[agent-orchestration]]、[[templates/run-capsule-template]] |
 | Process Knowledge Persistence / Dialogue Persistence | memory + persistence | [[projects/memory/README]]、[[log]]、[[harness-feedback-ledger]] |
-| Research Operating System / Technical Research | skill + template + sensor | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] |
+| Research Operating System / Technical Research | strong template-kernel skill + template + structured evaluator | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] |
 | topic placement / Design Topic Governance | topic owner + project docs sensor | [[projects/design/topics/README]]、本页 |
 | Cross-project Log Architecture | memory + log + generated view boundary | [[log-writing-rules]]、[[projects/memory/README]] |
 | Public / Topic Visual Presentation | views + skill + publication boundary | [[skills/topic-visual-presentation/SKILL]]、[[skills/public-html-publish/SKILL]] |

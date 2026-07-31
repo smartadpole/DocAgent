@@ -4,13 +4,19 @@ id: GOV-RESEARCH-CAPABILITY-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-12
+updated: 2026-07-31
 tags: [governance, research-capability, technology-research, technical-topic-research, open-source-project-research, industry-ai-research]
 ---
 
 # Research Capability Rules
 
 本页是 `research-capability` 的治理裁定页。[[skills/technology-research/SKILL]] 是合并版执行技能；[[templates/technology-research-contract-template]] 和 [[templates/technology-research-report-template]] 是可复制骨架。本页约束研究何时必须联网查证、何时只做内部材料整理、何时不能给生产采用结论。
+
+## Strong Template Kernel 裁决
+
+本仓 `research_level: strong-template-kernel`。强吸收的对象是可迁移的 Research Contract、Source Plan、Source Ledger、coverage matrix、Evidence Delta、验证阶梯、采用合同、修订循环和 evaluator，不是 AcknowledgeBase 的领域知识、项目事实、研究正文、历史案例或目录形态。AcknowledgeBase 继续拥有上游设计和领域知识；wiki 拥有可复制、可执行、可验证的模板内核合同，两者不得形成第二真相源。
+
+结构和字段齐全只证明 contract-ready；正负 fixture 通过只证明确定性 evaluator 能识别已知边界；没有独立 reviewer、真实研究 case outcome 或读者任务 oracle 时，不得宣称研究质量整体通过。
 
 ## 研究不是资料堆叠
 
@@ -49,6 +55,23 @@ research-capability 的完成标准不是“找到了很多资料”，而是形
 | 源码工程 | 现实实现是什么 | 本地代码、测试、运行、架构图 | 外部资料调研 |
 
 源码工程解读必须回到 [[projects/codebase/source-code-audit-workflow]]；不能用外部 research 替代源码审计。
+
+## R2+ Source Plan 与 Coverage
+
+- R0 / R1 可以轻量执行，但仍要标注当前性和不可上推边界。
+- R2 / R3 / R4 在广泛收集前必须通过 Source Plan checkpoint，至少包含问题到来源类型映射、必需 L1、coverage target、contradiction plan、access boundary、停止条件和 owner。
+- coverage matrix 必须按关键问题记录 `covered / partial / blocked`，并同时登记支持证据、counter-evidence、stale evidence 和下一步。
+- 来源数量、搜索轮数和报告篇幅不能代替 coverage；关键问题仍 blocked 时，结论必须同步降级。
+
+## Evidence Delta Re-open
+
+已有研究收到新截图、链接、文档、日志、接口响应或运行结果时，必须重新开启受影响的研究合同：判 materiality，区分直接观察和推论，补外围一手核验与反证，重算结论、行动等级和风险门，并对 source ledger、owner、decision、trace 或报告逐项记录 updated / no-op / blocked。只追加摘要不构成吸收完成。
+
+## 验证与评价循环
+
+研究验证分层为 desk evidence、local validation、PoC、service/runtime readback 和 human approval。`Adopt` 必须同时有 L1 或等价直接证据、与 claim scope 相符的 local validation，以及已闭合的 blocker；生产、采购、合规、安全和业务批准仍由对应 owner 决定。
+
+评价至少区分：确定性 contract validator、builder-independent evaluator / 人工 reviewer、真实 case outcome 和 reader utility。失败或新证据改变覆盖时，必须形成 Revision Brief、Delta Source Plan 和 next-run decision；同一作者的自评不能替代独立 outcome evidence。
 
 ## 证据等级
 

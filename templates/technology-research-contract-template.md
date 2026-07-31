@@ -2,13 +2,15 @@
 type: template
 id: TEMPLATE-RESEARCH-CONTRACT-001
 status: active
-updated: 2026-06-12
+updated: 2026-07-31
 tags: [template, research, technology-research, research-capability]
 ---
 
 # Technology Research Contract Template
 
 用于启动 `research-capability`。先填合同，再开始查资料或写结论。
+
+- contract revision：`research-contract.v1`
 
 ## 调研对象
 
@@ -36,6 +38,31 @@ tags: [template, research, technology-research, research-capability]
 | 问题 | 必需证据 | 来源等级 | 是否需联网 | 完成条件 |
 | --- | --- | --- | --- | --- |
 |  |  | L1 / L2 / L3 / L4 | yes / no |  |
+
+## R2+ Source Plan Checkpoint
+
+- 调研深度：R0 / R1 / R2 / R3 / R4
+- checkpoint：pass / blocked / not-required
+- 问题到来源类型映射：
+- 必需 L1 来源：
+- coverage target：
+- contradiction plan：
+- access boundary：
+- 停止条件：
+- source plan owner：
+
+R2 / R3 / R4 未通过 checkpoint 时不得开始广泛收集或写强结论。
+
+## Evidence Delta Contract
+
+- 是否有补充材料：yes / no
+- materiality：duplicate / clarification / conclusion-changing / architecture-changing / not-applicable
+- 直接观察：
+- 外围一手核验：
+- 新反证：
+- 受影响旧结论：
+- 结论重算要求：
+- propagation targets：
 
 ## 风险门
 
@@ -116,3 +143,8 @@ tags: [template, research, technology-research, research-capability]
 - 是否有行动等级：
 - 是否有刷新触发：
 - 是否有沉淀落位：
+- R2+ 是否通过 Source Plan checkpoint：
+- 是否建立 coverage matrix 与 counter-evidence：
+- 补充材料是否完成 Evidence Delta Re-open：
+- evaluator provenance 和 outcome review 如何获得：
+- 失败时的 Revision Brief / Delta Source Plan / next-run decision：

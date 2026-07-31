@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-TECHNOLOGY-RESEARCH-EVIDENCE-MATRIX-001
 status: active
-updated: 2026-06-12
+updated: 2026-07-31
 tags: [template, research, technology-research, evidence-matrix, research-capability]
 ---
 
@@ -15,6 +15,8 @@ tags: [template, research, technology-research, evidence-matrix, research-capabi
 | 问题 | 决策影响 | 必需证据等级 | 当前证据 | 状态 | 下一步 |
 | --- | --- | --- | --- | --- | --- |
 |  | high / medium / low | L1 / L2 / L3 / L4 |  | confirmed / likely / possible / blocked |  |
+
+R2+ 必须给出 Source Plan checkpoint、coverage target 和停止条件；每个关键问题的覆盖状态只能是 `covered / partial / blocked`，不能用来源数量代替问题覆盖。
 
 ## 2. 来源矩阵
 
@@ -84,3 +86,7 @@ tags: [template, research, technology-research, evidence-matrix, research-capabi
 - 没有安全 / 隐私检查：不要建议处理敏感数据。
 - 没有项目 owner：不要写“已拍板”。
 - 没有 knowledge-linking：不要写“已沉淀完整”。
+- 没有 counter-evidence：不要写“替代路线已经排除”。
+- R2+ 没有 Source Plan checkpoint：不要写“系统性研究已完成”。
+- 新材料没有 Evidence Delta Re-open：不要写“最新证据已吸收”。
+- 没有与 claim scope 对应的 local validation：不要给 Adopt。

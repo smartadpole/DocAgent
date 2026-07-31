@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-TECHNOLOGY-RESEARCH-ADOPTION-CONTRACT-001
 status: active
-updated: 2026-06-12
+updated: 2026-07-31
 tags: [template, research, technology-research, adoption-contract, research-capability]
 ---
 
@@ -30,6 +30,7 @@ tags: [template, research, technology-research, adoption-contract, research-capa
 | 隐私和合规边界明确 |  |  | Hold |
 | 成本、限额和退出成本明确 |  |  | Trial / Assess |
 | 本地或目标环境 PoC 通过 |  |  | Trial |
+| claim scope 对应的 local validation / runtime readback |  |  | Trial / Blocked |
 | owner 和维护责任明确 |  |  | Assess |
 | 替代方案已比较 |  |  | Trial / Assess |
 
@@ -69,6 +70,8 @@ tags: [template, research, technology-research, adoption-contract, research-capa
 - 把旧 release、旧价格或旧政策当当前事实。
 - 把宣传语、Star、融资额或单个 benchmark 写成采用结论。
 - 把 PoC 通过写成生产验收。
+- 把 deterministic contract sensor 通过写成真实研究 outcome 通过。
+- R2+ 缺 Source Plan / coverage matrix，或补充材料缺 Evidence Delta Re-open。
 - 把技术可行写成业务值得做。
 
 ## 最终判断块
@@ -81,4 +84,6 @@ tags: [template, research, technology-research, adoption-contract, research-capa
 刷新触发：
 沉淀入口：
 未覆盖边界：
+evaluator provenance：
+outcome review：passed / failed / unproven
 ```

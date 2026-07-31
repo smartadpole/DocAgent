@@ -1,10 +1,11 @@
 ---
 name: technology-research
 description: 技术、开源工程、行业 / AI 赛道或 PoC 调研总控技能；用于先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
-maturity: mature
-evidence_signals: [skill, README entry, governance, template, TRANSFER]
+maturity: leading
+adoption_level: strong-template-kernel
+evidence_signals: [skill, README entry, governance, template, TRANSFER, source-plan, coverage-matrix, revision-loop, outcome-boundary]
 transfer_ready: true
-sensor: python3 scripts/check_all.py --only skill-maturity
+sensor: python3 scripts/check_all.py --only research-capability
 ---
 
 # Technology Research
@@ -14,6 +15,8 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 本技能把“调研一个技术 / 项目 / AI 方向 / 产品机会”从资料搜集收敛成可判断、可复查、可沉淀、可支撑决策的研究流程。它优先处理技术类对象；市场、用户、竞争、尽调、科研、政策、战略前瞻和生活 / 现场决策等方法储备见 [[skills/research-capability/reference/research-method-route-map]]，由 [[skills/research-capability/SKILL]] 统一路由。
 
 它吸收 AcknowledgeBase 的技术调研总控、技术专题调研、开源工程调研和 IT / AI 行业调研方法，但不复制其文章、模板、项目事实、排行或来源路径。本库当前采用合并版技能：先做对象路由，再按技术专题、开源工程、行业 / AI 或 PoC 分支执行。
+
+本技能是 strong template-kernel 的技术执行分支：R2+ 必须先过 Source Plan checkpoint，执行中维护 coverage matrix，补充材料触发 Evidence Delta Re-open，结论失败或证据变化时使用 Revision Brief、Delta Source Plan 和 next-run decision 进入修订循环。
 
 ## 适用场景
 
@@ -33,7 +36,7 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 成熟度与证据信号
 
-- `maturity`：`mature`。本技能已有技能正文、README 入口、迁移边界、研究治理页和 research 模板；是否升级为 `leading` 取决于后续是否沉淀真实 research sensor 和稳定示例，而不是追正文体量。
+- `maturity`：`leading / strong-template-kernel`。本技能已有技能正文、README 入口、迁移边界、研究治理页、R2+ source plan、coverage matrix、修订循环和结构化正负 fixture；真实研究 outcome 仍需独立 evaluator 或人工 reviewer。
 - `template`：调研启动合同见 [[templates/technology-research-contract-template]]，正式报告骨架见 [[templates/technology-research-report-template]]。
 - `governance`：调研事实查证、知识沉淀、规则升级和项目落位分别回到 [[governance/research-capability-rules]]、[[response-mode-routing]]、[[POLICY]]、[[template-feedback-rules]] 和目标项目主入口。
 - `TRANSFER`：跨工程吸收边界见 [[skills/technology-research/TRANSFER]]；迁移时吸收证据等级、对象路由、成熟度 / 风险门和分支流程，不复制具体调研文章或项目结论。
@@ -92,6 +95,20 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须声明不能替代采购、法务、合规、安全或人工拍板。
 
+### 3.2 R2+ Source Plan 与 Coverage
+
+R2 / R3 / R4 在广泛收集前必须先写：
+
+- 问题到来源类型映射、必需 L1 和 access boundary。
+- coverage target、contradiction plan、停止条件和行动 owner。
+- coverage matrix：每个关键问题标记 covered / partial / blocked，同时列 supporting evidence、counter-evidence、stale evidence 和下一步。
+
+checkpoint 未通过时保持 `blocked / Assess`，不能用检索数量、材料篇数或报告长度代替覆盖证明。
+
+### 3.3 Evidence Delta 与修订循环
+
+用户补充截图、链接、文档、日志、接口响应或运行结果时，执行 Evidence Delta Re-open：判 materiality，补外围一手核验和反证，重算整体结论、风险门与行动等级，并记录 propagation results。评价失败或关键证据变化时，形成 Revision Brief、Delta Source Plan 和 next-run decision。
+
 ### 4. 路由分支
 
 | 对象 | 执行重点 |
@@ -113,11 +130,14 @@ R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须�
 - 推荐下一步。
 - 刷新触发条件。
 - 长期落位：`articles/`、`concepts/`、`skills/`、`templates/`、`projects/` 或只留本轮回复。
+- 验证阶梯：desk evidence / local validation / PoC / service-runtime readback / human approval。
+- evaluator provenance、outcome review、Revision Brief 和 next-run decision。
 
 ## 输出格式
 
 ```markdown
 **调研合同**
+- contract revision：research-contract.v1
 - 对象：
 - 决策目标：
 - 关键问题：
@@ -129,6 +149,19 @@ R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须�
 - L2 权威分析：
 - L3 信号：
 - 待查证：
+
+**R2+ Source Plan / Coverage**
+- checkpoint：pass / blocked / not-required
+- coverage target：
+- contradiction plan：
+- stopping rule：
+- coverage matrix：covered / partial / blocked
+
+**Evidence Delta**
+- materiality：duplicate / clarification / conclusion-changing / architecture-changing / not-applicable
+- 外围一手核验：
+- 新反证：
+- 结论重算与 propagation：
 
 **分支判断**
 - 分支：
@@ -156,6 +189,13 @@ R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须�
 - 溯源入口：
 - 入口 / 回链：
 - 检查：
+
+**评价与修订**
+- deterministic validator：
+- evaluator provenance：
+- outcome review：passed / failed / unproven
+- Revision Brief / Delta Source Plan：
+- next-run decision：
 ```
 
 ## 禁止项
@@ -163,5 +203,8 @@ R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须�
 - 不把热点、宣传、README、Star 数或二级文章直接写成结论。
 - 不把“前沿 / 热门 / 有潜力”误写成“现在应该采用”。
 - 不在缺少运行验证、PoC 或本地约束验证时写“可生产接入”。
+- 不让 R2+ 跳过 Source Plan checkpoint，不用材料数量代替 coverage。
+- 不把新材料只追加到报告末尾；必须 Evidence Delta Re-open 并重算受影响结论。
+- 不把 deterministic validator 或 builder-self 自评上推为独立 outcome review。
 - 不把外部项目事实、公司结论、报告排行或一次性调研数据写进通用技能。
 - 不让调研页成为孤岛；长期沉淀必须补入口、上位关系和回链。

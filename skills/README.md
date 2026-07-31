@@ -84,7 +84,7 @@
 | Issue 分析 | transferable skill | signal-only-gap | recognize | 保留 [[skills/issue-analysis/SKILL]] 和 [[templates/development-issue-template]]；不复制下游业务 issue 事实。 |
 | 图文呈现 | transferable skill | signal-only-gap + 局部 true-gap | recognize / complete | 现有 `views/`、registry、reference、HTML 样本和 sensor 继续作为 owner；补 visual floor 词汇时只为明确完成合同，不追求堆视觉术语。 |
 | 知识关联 | transferable skill | recognition-gap | recognize | 保留 [[skills/knowledge-linking/SKILL]]；`skill-transfer` 和 `Transfer Manifest` 只作为迁移场景的关系画像要求。 |
-| 调研 / 研究能力 | transferable skill | true-gap | upgrade | 保留聚合入口，不平铺外部子项；把 frontier technology intake 吸收为研究 intake 子项和模板字段。 |
+| 调研 / 研究能力 | transferable skill | true-gap + governance drift | upgrade | 升级为 `strong-template-kernel`：保留聚合入口，不平铺外部子项；完整承接 R2+ Source Plan、coverage matrix、Evidence Delta、验证阶梯、修订循环和正负 fixture evaluator。 |
 | 跨工程治理审计 | transferable skill | recognition-gap | upgrade | 保留自查 / 审计技能，补 source-depth、handoff-ready、non-reference、no runtime validation 和 registry-driven 全工程逐行吸收边界；“举一反三 / 所有工程”不能只看单一强工程或能力覆盖集。 |
 | 跨工程技能迁移任务书 | transferable skill | recognition-gap | upgrade | 保留 meta skill，新增 [[templates/skill-transfer-manifest-template]]，任务书必须达到 `taskbook-ready` 并区分源能力、目标结构自检和验证。 |
 | Transferable Skill Governance | transferable skill | recognition-gap | complete | 本页和 [[skills/transferable-skill-governance/SKILL]] 作为裁决面；补 repo-native、Path ROOT 和输出裁决表口径。 |
@@ -99,8 +99,8 @@
 
 ## 当前技能
 
-- [[skills/research-capability/SKILL]]：调研 / 研究能力聚合技能。用于把技术、开源工程、产品、公司、行业、AI、PoC 和源码工程研究统一到调研合同、证据等级、行动等级、风险门和沉淀落位。
-- [[skills/technology-research/SKILL]]：research-capability 的当前执行分支。用于技术、开源工程、行业 / AI 赛道或 PoC 调研，先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
+- [[skills/research-capability/SKILL]]：`strong-template-kernel` 调研聚合技能。统一 Research Contract、R2+ Source Plan、coverage matrix、Evidence Delta、验证阶梯、行动等级、修订循环和 evaluator，同时保持上游设计 / 领域知识不复制边界。
+- [[skills/technology-research/SKILL]]：research-capability 的技术执行分支。用于技术、开源工程、行业 / AI 赛道或 PoC 调研，按 source plan、coverage、反证、local / runtime evidence 和 outcome review 产出可支撑判断的研究结果。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于新增、调研或大改长期知识页时判断分层落位、入口、上位 / 邻接关系、反向回链和验证方式，避免知识成为孤岛。
 - [[skills/goal-contract/SKILL]]：长时任务完成契约技能。用于终点清楚但路径需要探索、可能跨多轮推进、跨工程回传或证据边界敏感时，先固定目标、范围、证据层级、验证面、预算、停止条件和记录落点。
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能。用于根据矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。

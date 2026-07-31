@@ -4,7 +4,7 @@ id: INDEX-ROOT-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-05-25
+updated: 2026-07-31
 tags: [index, root]
 ---
 
@@ -48,8 +48,8 @@ tags: [index, root]
 - [[harness-feedback-ledger]]：Harness episode、sensor backlog、规则晋升和降级队列
 - [[log-writing-rules]]：`[[log]]` 的记录规则入口
 - [[skills/README]]：项目内可复用 agent 技能入口和技能成熟度模型
-- [[skills/technology-research/SKILL]]：技术、开源工程、行业 / AI 赛道和 PoC 调研总控技能
-- [[skills/research-capability/SKILL]]：调研 / 研究能力聚合入口，统一调研合同、证据等级、行动等级、风险门和沉淀落位
+- [[skills/technology-research/SKILL]]：技术、开源工程、行业 / AI 赛道和 PoC 的 strong template-kernel 执行分支
+- [[skills/research-capability/SKILL]]：调研 / 研究能力聚合入口，统一 Research Contract、R2+ Source Plan、coverage、Evidence Delta、验证阶梯和评价循环
 - [[skills/goal-contract/SKILL]]：长时任务完成契约技能，用于防目标漂移、证据漂移和无限探索
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能，用于矩阵驱动升级时判定 true-gap / recognition-gap / signal-only-gap
 - [[skills/performance-bandwidth-analysis/SKILL]]：性能、计时 trace 与带宽分析技能，用于建立 timing ledger、coverage matrix 和生产容量不上推边界
@@ -103,8 +103,8 @@ tags: [index, root]
 - [[agent-system-maturity]]：当目标是 agent system / intelligence maturity 或外部矩阵识别时，先填写 Matrix Recognition Capsule，区分 true-gap、recognition-gap 和 signal-only-gap。
 - [[agent-system-cross-project-alignment.v1]]：当目标是借鉴所有工程的智能化能力时，先记录 source coverage 和 repo-native adoption decision，保持 `structure-only` 与 `insufficient-evidence` 边界。
 - [[acknowledgebase-topic-system-adoption.v1]]：当目标是把 AcknowledgeBase 所有 design topics 落实到 wiki 工程治理体系时，先逐 topic 检查 source_topic、capability extraction、wiki owner landing、agent-system action 和 validation。
-- [[skills/technology-research/SKILL]]：技术调研总控，先固定调研合同、证据等级、成熟度、风险门和沉淀落位。
-- [[skills/research-capability/SKILL]]：research-capability 聚合入口，避免把外部研究子项原样平铺进本库。
+- [[skills/technology-research/SKILL]]：技术调研执行分支，R2+ 先过 Source Plan checkpoint，并维护 coverage、反证、验证和修订循环。
+- [[skills/research-capability/SKILL]]：strong template-kernel 聚合入口；完整吸收可迁移合同，不把外部研究子项、领域正文或项目事实原样平铺进本库。
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：把已沉淀技能生成目标工程可执行迁移任务书。
 - [[skills/transferable-skill-governance/SKILL]]：判断外部通用技能吸收时应 recognize、complete、upgrade、merge、adapt、defer 还是 reject。
 - [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]：矩阵级通用技能吸收的 source-depth、能力分类、project conformance、未验证边界和人工确认事项。

@@ -1,0 +1,43 @@
+{
+  "case_id": "negative-production-adopt-without-runtime",
+  "contract_revision": "research-contract.v1",
+  "research_level": "strong-template-kernel",
+  "depth": "R4",
+  "claim_scope": "production",
+  "action_level": "Adopt",
+  "so_what": "Production adoption still lacks runtime proof.",
+  "decision_output": "adopt for production",
+  "deal_breakers": ["runtime compatibility"],
+  "evidence_levels": ["L1"],
+  "source_plan": {
+    "checkpoint": "pass",
+    "required_l1": ["official documentation", "local test evidence"],
+    "coverage_target": "all production-critical questions",
+    "contradiction_plan": ["search runtime failures"],
+    "access_boundary": "public and local validation evidence",
+    "stop_condition": "runtime readback complete",
+    "owner": "research owner"
+  },
+  "coverage_matrix": [
+    {
+      "question_id": "Q-production",
+      "status": "covered",
+      "supporting_evidence": ["local validation"],
+      "counter_evidence": ["runtime readback missing"]
+    }
+  ],
+  "evidence_delta": {"triggered": false},
+  "validation": {
+    "local_validation": true,
+    "poc": true,
+    "runtime_readback": false,
+    "human_approval": false
+  },
+  "evaluation": {
+    "deterministic_validator": "passed",
+    "evaluator_provenance": "independent review fixture",
+    "outcome_review": "passed",
+    "next_run_decision": "collect runtime readback"
+  },
+  "expected_errors": ["ADOPT_RUNTIME_READBACK_REQUIRED"]
+}

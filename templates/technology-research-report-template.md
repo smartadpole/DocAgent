@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-RESEARCH-REPORT-001
 status: active
-updated: 2026-06-12
+updated: 2026-07-31
 tags: [template, research, technology-research, research-capability]
 ---
 
@@ -30,6 +30,23 @@ tags: [template, research, technology-research, research-capability]
 | 证据 | 等级 | 来源 | 支撑的问题 | 局限 |
 | --- | --- | --- | --- | --- |
 |  | L1 / L2 / L3 / L4 / L5 |  |  |  |
+
+## Source Plan 与 Coverage
+
+- 调研深度：R0 / R1 / R2 / R3 / R4
+- Source Plan checkpoint：pass / blocked / not-required
+- coverage target：
+- stopping rule：
+
+| 关键问题 | 覆盖状态 | 支持证据 | counter-evidence | stale / blocked | 下一步 |
+| --- | --- | --- | --- | --- | --- |
+|  | covered / partial / blocked |  |  |  |  |
+
+## Evidence Delta
+
+| 新材料 | materiality | 外围一手核验 | 新反证 | 结论变化 | propagation |
+| --- | --- | --- | --- | --- | --- |
+|  | duplicate / clarification / conclusion-changing / architecture-changing / not-applicable |  |  | 保持 / 上调 / 下调 / 推翻 | updated / no-op / blocked |
 
 ## 分支判断
 
@@ -91,3 +108,16 @@ tags: [template, research, technology-research, research-capability]
 - 没有本地运行：不能写“可接入生产”。
 - 没有项目 owner 确认：不能写“已拍板采用”。
 - 没有沉淀入口：不能写“已进入知识库”。
+- R2+ 没有 Source Plan checkpoint 或 coverage matrix：不能写“全面调研完成”。
+- 补充材料没有 Evidence Delta Re-open：不能声称整体结论已更新。
+- 没有独立 evaluator / 人工 reviewer：outcome review 保持 `unproven`。
+
+## 评价与修订
+
+- deterministic validator：
+- evaluator / reviewer provenance：
+- outcome review：passed / failed / unproven
+- reader utility：proven / unproven
+- Revision Brief：
+- Delta Source Plan：
+- next-run decision：

@@ -1,0 +1,51 @@
+{
+  "case_id": "positive-r3-trial",
+  "contract_revision": "research-contract.v1",
+  "research_level": "strong-template-kernel",
+  "depth": "R3",
+  "claim_scope": "design",
+  "action_level": "Trial",
+  "so_what": "Run a bounded proof before design adoption.",
+  "decision_output": "continue with PoC",
+  "deal_breakers": ["license conflict"],
+  "evidence_levels": ["L1", "L2"],
+  "source_plan": {
+    "checkpoint": "pass",
+    "required_l1": ["official documentation", "source repository"],
+    "coverage_target": "all critical questions covered or explicitly blocked",
+    "contradiction_plan": ["search known failures", "compare alternatives"],
+    "access_boundary": "public sources only",
+    "stop_condition": "critical questions covered and no unresolved blocker",
+    "owner": "research owner"
+  },
+  "coverage_matrix": [
+    {
+      "question_id": "Q1",
+      "status": "covered",
+      "supporting_evidence": ["official documentation"],
+      "counter_evidence": ["documented limitation"]
+    }
+  ],
+  "evidence_delta": {
+    "triggered": false,
+    "materiality": "not-applicable",
+    "conclusion_recomputed": false,
+    "external_verification": [],
+    "new_counter_evidence": [],
+    "propagation_results": []
+  },
+  "validation": {
+    "local_validation": false,
+    "poc": false,
+    "runtime_readback": false,
+    "human_approval": false
+  },
+  "evaluation": {
+    "deterministic_validator": "passed",
+    "evaluator_provenance": "versioned fixture oracle",
+    "outcome_review": "unproven",
+    "revision_brief": "",
+    "delta_source_plan": "",
+    "next_run_decision": "run bounded PoC"
+  }
+}

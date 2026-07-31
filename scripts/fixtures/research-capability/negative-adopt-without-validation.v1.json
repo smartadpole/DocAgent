@@ -1,0 +1,41 @@
+{
+  "case_id": "negative-adopt-without-validation",
+  "contract_revision": "research-contract.v1",
+  "research_level": "strong-template-kernel",
+  "depth": "R2",
+  "claim_scope": "design",
+  "action_level": "Adopt",
+  "so_what": "Claimed adoption is premature.",
+  "decision_output": "adopt",
+  "deal_breakers": ["unverified compatibility"],
+  "evidence_levels": ["L1"],
+  "source_plan": {
+    "checkpoint": "pass",
+    "required_l1": ["official documentation"],
+    "coverage_target": "critical questions",
+    "contradiction_plan": ["search failures"],
+    "access_boundary": "public",
+    "stop_condition": "critical questions covered",
+    "owner": "research owner"
+  },
+  "coverage_matrix": [
+    {
+      "question_id": "Q1",
+      "status": "covered",
+      "supporting_evidence": ["official documentation"],
+      "counter_evidence": ["compatibility unknown"]
+    }
+  ],
+  "evidence_delta": {"triggered": false},
+  "validation": {"local_validation": false, "runtime_readback": false},
+  "evaluation": {
+    "deterministic_validator": "passed",
+    "evaluator_provenance": "versioned fixture oracle",
+    "outcome_review": "unproven",
+    "next_run_decision": "run local validation"
+  },
+  "expected_errors": [
+    "ADOPT_LOCAL_VALIDATION_REQUIRED",
+    "ADOPT_OUTCOME_REVIEW_REQUIRED"
+  ]
+}

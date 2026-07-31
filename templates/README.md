@@ -37,7 +37,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新主题呈现使用 [[templates/topic-presentation-template]]；持久 current/snapshot 同步 [[views/lens-registry]]，填写 subject/source、关系图、三轴、五门 evaluator 和同源 PDF / PNG 合同
 - 新主题呈现的 source pack、交付前审核和五门边界统一使用 [[templates/topic-presentation-template]]
 - 新 HTML 公开发布 profile 可以参考 [[templates/public-html-publication-template]]；发布验证闭环可以参考 [[templates/public-html-publication-contract-template]]；真实发布仍以 [[views/publication]] 和 live readback 为准。
-- 新技术、开源工程、行业 / AI、产品或 PoC 调研启动前，可以参考 [[templates/technology-research-contract-template]]；正式研究结果可以参考 [[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]]
+- 新技术、开源工程、行业 / AI、产品或 PoC 调研启动前，使用 [[templates/technology-research-contract-template]] 固定 R2+ Source Plan 和 Evidence Delta；正式研究结果使用 [[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]] 承接 coverage、验证阶梯、评价与修订循环。
 - 新外部技术材料、论文、repo、社区讨论或产品更新进入研究流程前，可以参考 [[templates/research-intake-template]]；它只承接 intake 和 source package，不替代正式研究报告。
 - 新跨工程技能迁移源能力清单可以参考 [[templates/skill-transfer-manifest-template]]；新跨工程技能迁移任务书可以参考 [[templates/skill-transfer-contract-template]]、[[templates/skill-transfer-evidence-contract]] 和 [[templates/skill-transfer-review-contract]]
 - 矩阵级或多能力吸收清单必须额外写 project conformance、source snapshot、逐能力分类和未验证边界；本仓当前样例是 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]，检查为 `python3 scripts/check_all.py --only transferable-skill-baseline`

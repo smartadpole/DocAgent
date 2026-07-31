@@ -192,6 +192,19 @@ tags: [trace, project]
   - `knowledge-base-profile` 不再承担所有个人能力 owner 的身份差异；Personal Strategy、Career、Wealth、Public Output、软件治理对象和实现工程的差异由 owner topology identity 与 responsibility scope 表达。
   - profile 不是能力开关；目标工程 clone 后默认保留完整 wiki 智能基线，后续只由本地 owner 显式关闭或降级不需要的能力。
 
+#### 2026-07-31 调研能力升级为 strong template-kernel
+
+- **记录人**：Codex
+- **角色**：agent
+- **本轮变化**：
+  - **冲突修正**：用户指出调研能力不应继续停在 `medium`；现场确认 2026-07-20 profile 仍把 wiki 当作上游能力消费方，而 2026-07-23 后 wiki 已是完整 Template Kernel，两套口径发生漂移。
+  - **能力收口**：将 research profile 升级为 `strong-template-kernel`，完整承接 R2+ Source Plan、coverage matrix、Evidence Delta Re-open、验证阶梯、Research Case Packet、Revision Brief、Delta Source Plan 和 next-run decision。
+  - **评价落地**：`research-capability` sensor 从关键词 wiring 扩展为可复用结构化 contract validator，并用正负 fixture 锁住 R2+ 无 source plan、Adopt 无 local validation / outcome review、production Adopt 无 runtime readback、补充材料未重算四类失守。
+- **当前实现口径**：
+  - wiki 拥有可复制的研究执行合同和评价器；AcknowledgeBase 继续拥有上游设计和领域知识，本仓不复制研究正文、项目事实、历史 case 或子技能目录。
+  - deterministic validator 通过只证明已知合同边界；真实研究质量仍需独立 evaluator、真实 case outcome 或人工 reviewer。
+  - 上游 owner 本轮只读；由于没有跨仓写授权，AcknowledgeBase conformance 更新作为 handback 边界，不冒充已同步。
+
 ### TRACE-001 文档系统分层与项目运行链路
 
 - **原始意图**：

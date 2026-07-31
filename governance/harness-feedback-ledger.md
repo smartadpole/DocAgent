@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-29
+updated: 2026-07-31
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-31 | research profile 的 medium 裁决未随 Template Kernel 定位升级 | 用户追问为什么调研没有 strong 吸收，并要求把 wiki 升级为 strong template-kernel；现场确认旧 profile 与后续“profile 不裁剪完整 Kernel”规则冲突，原 sensor 仍主要检查关键词 wiring | 规则升级 | 应避免成本 | 将 research profile、skill、governance、templates、design owner、memory 和 trace 统一到 strong-template-kernel；增加版本化结构化 contract validator、positive fixtures 和四类 negative fixtures；AC 继续作为上游设计 / 领域知识 owner，本轮不跨仓写入 | `python3 scripts/check_all.py --only research-capability` / [[skills/research-capability/SKILL]] / [[projects/development/reports/2026-07-31-research-strong-template-kernel-upgrade]] | promoted |
 | 2026-07-31 | 公开仓库仍把内部工程吸收身份和其他工程发布信息写进 log / report / publication profile | 用户要求禁止继续把公司工程吸收记录写入公开仓库；随后澄清本仓没有已发布页面，应删除或隐藏仓内记录的其他工程公开页面信息 | 规则升级 | 应避免成本 | 将 public-safe persistence 升为 [[wiki-governance-system-contract.v1]] 硬边界；根 AGENTS、Codex adapter 和日志规则 / 模板改为消费者；新增 `public-repository-content` sensor；将本仓 publication profile 校正为 blocked，删除误导性 live 状态页和具体 host / 签名链接；未访问线上服务，密钥和线上运行态保持不变 | `python3 scripts/check_all.py --only public-repository-content,public-html-publish,markdown-owner-viewer,instruction-adherence` | promoted |
 | 2026-07-29 | 链接显示名与表格转义没有 Markdown 统一 owner，首轮错误归入 knowledge-linking | 用户继续纠偏：这件事本身属于 Markdown 文档规范，应和其他链接 / 文档规则成为一个主题，而不是散落在主题呈现和知识关联 | 规则升级 | 应避免成本 | wiki 新增 [[markdown-document-governance-profile.v1]] 只维护本地 `obsidian-vault` 采纳值；AGENTS、knowledge-linking skill / governance 与 instruction-adherence 改为消费者；qualified path / 表格 `\|` 回归 fixture 迁入独立 Markdown sensor | [[markdown-document-governance-profile.v1]] / `python3 scripts/check_all.py --only markdown-document-governance` | promoted |
 | 2026-07-29 | 链接自然可读规则已存在但 checker 只验证目标存在 | AcknowledgeBase 的页面导航表再次直接展示 qualified path；用户追问 wiki 是否已有规则并要求整改，现场确认 wiki `WORKFLOW` 早已要求“别名仍然可读、链接自然可读”，但 knowledge-linking 与 project-docs 均未检查显示名 | 规则升级 | 可优化成本 | 首轮把显示名规则补进 knowledge-linking 并增加 fixture；后续经用户纠偏，Markdown 语法职责已迁入 [[markdown-document-governance-profile.v1]] 和独立 sensor，knowledge-linking 只保留语义关系 | `python3 scripts/check_all.py --only markdown-document-governance` / 负向 fixture | promoted |

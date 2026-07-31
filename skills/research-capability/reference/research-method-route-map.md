@@ -19,6 +19,8 @@
 | R3 结构分析 | 需要系统性方案、机制解释、风险和替代方案 | 证据矩阵、反证、敏感性、风险门 | 不替代正式决策 |
 | R4 尽调 / 接入 | 会影响投资、采购、合作、生产接入或长期承诺 | 数据室 / 官方材料、三角验证、红旗分级、人工确认边界 | 不替代法务、合规、安全或人工拍板 |
 
+R2+ 共用同一套 strong template-kernel 运行合同，不因方法子项不同而省略：先过 `Source Plan checkpoint`，再用 `coverage matrix` 管关键问题、支持证据、反证和 blocked；收到补充材料时执行 `Evidence Delta Re-open`。证据或评价失败后写 `Revision Brief`、`Delta Source Plan` 和 next-run decision，不在各子项复制第二套流程。
+
 ## 子项路由
 
 | 子项 | 典型问题 | 关键方法 | 输出重点 | 守卫 |
@@ -46,3 +48,4 @@
 - `反证面`：否定信号、失败案例、替代解释、不可复现信息和旧结论过期风险。
 - `风险门`：deal-breaker、人工确认、合规 / 安全 / 法务 / 采购边界。
 - `行动兑现`：owner、检查方式、完成口径、刷新触发和下一次复查条件。
+- `评价闭环`：deterministic validator、独立 evaluator / 人工 reviewer、outcome 状态、Revision Brief 和 next-run decision。

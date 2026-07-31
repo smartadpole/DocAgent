@@ -4,7 +4,7 @@ id: DES-TOPIC-AGENT-SYSTEM-LANDING-001
 project: PROJ-WIKI-001
 status: accepted-design
 stage: system-landing
-updated: 2026-07-23
+updated: 2026-07-31
 tags: [design, agent, workflow, memory, harness, skill, topic]
 ---
 
@@ -42,7 +42,7 @@ tags: [design, agent, workflow, memory, harness, skill, topic]
 | goal orchestration governance | complete | 由 [[agent-orchestration]]、Run Capsule 和 Loop Contract 承接，不另建平行流程。 |
 | process knowledge persistence | adapt | 作为 Persistence Decision 字段进入 Goal / Run / Loop 收尾，不默认新建 runs 目录。 |
 | cross-repository governance acceptance | complete | 由 Subproject Git Preflight、handoff、controller evaluator 和不上推边界承接。 |
-| research operating system | complete | 由 research-capability 聚合技能、technology-research 分支、research intake 和 evidence matrix 承接。 |
+| research operating system | strong-template-kernel | 由 research-capability 聚合技能、technology-research 分支、R2+ source plan、coverage / Evidence Delta 模板、验证阶梯、修订循环和结构化正负 fixture evaluator 承接；上游设计与领域知识不复制。 |
 | topic placement and topic file governance | adapt | 当前先以少量 design-topic owner + sensor 接线承接，不提前做大规模目录迁移。 |
 | dialogue persistence / work-state capture | partial | 先落实 Persistence Decision、log / memory / ledger 分层；真实行为样本和自动 evaluator 仍保留 `insufficient-evidence`。 |
 

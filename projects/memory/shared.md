@@ -6,7 +6,7 @@ scope: project
 project: PROJ-WIKI-001
 status: confirmed
 source_of_truth: true
-updated: 2026-07-23
+updated: 2026-07-31
 tags: [memory, shared]
 ---
 
@@ -16,6 +16,7 @@ tags: [memory, shared]
 
 - 当前 vault 的用途是一个面向软件研发的文档系统。
 - 当前 wiki 的目标角色已经升级为所有实现类工程的合集与模板，但不再把自己定义成某一种工程模板；稳定口径是 Template Kernel + Project Profile Overlay + Capability Pack 的模板母体工程。
+- 调研能力属于 Template Kernel 的 `strong-template-kernel` 基线：wiki 完整承接可迁移的 Research Contract、R2+ Source Plan、coverage、Evidence Delta、验证阶梯、修订循环和 evaluator；AcknowledgeBase 保留上游设计与领域知识 owner，wiki 不复制领域正文或项目事实。
 - 主控、子工程、runtime service、数据 / 模型工程、知识库 / 文档治理工程、运维 agent 和 hybrid 工程接入时，都应先声明 project_role、primary / secondary profiles、required / optional / forbidden packs、project_bound_facts，再从本仓找到本地 profile、agent system 七层、control plane、implementation boundaries、evidence contract、template adoption 和 closeout proof。
 - 当前运行模式是单库、单项目。
 - 当前项目就是这个 wiki 系统本身。

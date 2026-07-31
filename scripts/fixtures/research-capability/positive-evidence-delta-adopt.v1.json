@@ -1,0 +1,51 @@
+{
+  "case_id": "positive-evidence-delta-adopt",
+  "contract_revision": "research-contract.v1",
+  "research_level": "strong-template-kernel",
+  "depth": "R2",
+  "claim_scope": "design",
+  "action_level": "Adopt",
+  "so_what": "The verified delta removes the design blocker.",
+  "decision_output": "adopt for design preparation",
+  "deal_breakers": ["runtime incompatibility"],
+  "evidence_levels": ["L1"],
+  "source_plan": {
+    "checkpoint": "pass",
+    "required_l1": ["official change record"],
+    "coverage_target": "all decision-critical questions",
+    "contradiction_plan": ["verify regression reports"],
+    "access_boundary": "public and local test evidence",
+    "stop_condition": "delta and regression boundary verified",
+    "owner": "research owner"
+  },
+  "coverage_matrix": [
+    {
+      "question_id": "Q-delta",
+      "status": "covered",
+      "supporting_evidence": ["official change record", "local validation"],
+      "counter_evidence": ["older incompatible release"]
+    }
+  ],
+  "evidence_delta": {
+    "triggered": true,
+    "materiality": "conclusion-changing",
+    "conclusion_recomputed": true,
+    "external_verification": ["official change record"],
+    "new_counter_evidence": ["older incompatible release"],
+    "propagation_results": ["design owner updated", "adoption contract updated"]
+  },
+  "validation": {
+    "local_validation": true,
+    "poc": true,
+    "runtime_readback": false,
+    "human_approval": false
+  },
+  "evaluation": {
+    "deterministic_validator": "passed",
+    "evaluator_provenance": "independent review fixture",
+    "outcome_review": "passed",
+    "revision_brief": "delta incorporated",
+    "delta_source_plan": "completed",
+    "next_run_decision": "handoff to design owner"
+  }
+}

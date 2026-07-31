@@ -1,0 +1,35 @@
+{
+  "case_id": "negative-evidence-delta-without-reopen",
+  "contract_revision": "research-contract.v1",
+  "research_level": "strong-template-kernel",
+  "depth": "R1",
+  "claim_scope": "knowledge",
+  "action_level": "Assess",
+  "so_what": "New material may change the conclusion.",
+  "decision_output": "continue observation",
+  "deal_breakers": ["source authenticity unknown"],
+  "evidence_levels": ["L4"],
+  "source_plan": {},
+  "coverage_matrix": [],
+  "evidence_delta": {
+    "triggered": true,
+    "materiality": "clarification",
+    "conclusion_recomputed": false,
+    "external_verification": [],
+    "new_counter_evidence": [],
+    "propagation_results": []
+  },
+  "validation": {"local_validation": false},
+  "evaluation": {
+    "deterministic_validator": "passed",
+    "evaluator_provenance": "versioned fixture oracle",
+    "outcome_review": "unproven",
+    "next_run_decision": "re-open evidence delta"
+  },
+  "expected_errors": [
+    "EVIDENCE_DELTA_REOPEN:external_verification",
+    "EVIDENCE_DELTA_REOPEN:new_counter_evidence",
+    "EVIDENCE_DELTA_REOPEN:propagation_results",
+    "EVIDENCE_DELTA_REOPEN:conclusion_recomputed"
+  ]
+}

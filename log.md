@@ -9,6 +9,21 @@
 
 ## 2026-07-31
 
+### 将调研能力升级为 Strong Template Kernel
+
+- **记录人**：Codex
+- **用户意图**：用户确认 wiki 不应只按中档消费调研能力，要求完整承接可迁移的研究合同、运行闭环和评价机制，同时让 AcknowledgeBase 继续拥有上游设计与领域知识，避免第二事实源。
+- **公开边界**：`public-safe`；只写抽象合同、能力包、fixture 和不上推边界，不写来源工程的领域正文、项目事实、真实研究 case、路径或运行记录。
+- **关键判断**：2026-07-20 的 `medium` research profile 与 2026-07-23 后“完整 Template Kernel、profile 不裁剪基础能力”的 owner 口径冲突；这是 profile / sensor 未同步升级造成的治理漂移，不是强能力不适合 wiki。
+- **关键动作**：
+  1. 将 `.codex/research-capability-profile.md` 升级为 `strong-template-kernel`，明确 wiki 拥有可复制执行合同，AcknowledgeBase 保留上游设计和领域知识。
+  2. 升级 [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]]、[[research-capability-rules]]、TRANSFER 和 method route map，补 R2+ Source Plan、coverage matrix、Evidence Delta、验证阶梯、Research Case Packet、Revision Brief、Delta Source Plan 与 next-run decision。
+  3. 升级现有 research contract / report / evidence matrix / adoption templates，不新建平行 Research OS 或 13 个空子技能。
+  4. 将 `scripts/check_research_capability.py` 从关键词 wiring 扩为可复用结构化 case validator，并新增正向 R3 / Evidence Delta case 与四类负向 fixture，覆盖 source plan、local validation / outcome review、production runtime readback 和 Evidence Delta 重算。
+  5. 同步 Template Kernel owner、topic adoption、project memory、trace、Harness ledger 和 [[projects/development/reports/2026-07-31-research-strong-template-kernel-upgrade]]。
+- **验证 / 边界**：本地 fixture evaluator 能证明已知合同与禁止项；真实研究语义、读者效用、外部 evaluator、采购 / 合规 / 生产采用仍不可上推。AC 本轮只读，未获跨仓写授权，其 conformance 更新保留为 handback。
+- **Persistence Decision**：`artifact-needed`；本地 owner、发现入口、sensor、报告与提交证明同轮收口。
+
 ### 禁止公开仓库继续沉淀内部工程上下文
 
 - **记录人**：Codex
