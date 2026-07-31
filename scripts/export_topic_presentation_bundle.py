@@ -77,11 +77,37 @@ def chrome(*arguments: str) -> None:
 
 
 def render_pdf(source: Path, target: Path) -> None:
-    chrome("--no-pdf-header-footer", f"--print-to-pdf={target}", source.resolve().as_uri())
+    """Print one compact page whose height follows real print-media content."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as error:
+        raise RuntimeError("Playwright is required for content-sized PDF export") from error
+    with sync_playwright() as runtime:
+        browser = runtime.chromium.launch(headless=True, executable_path=str(CHROME))
+        page = browser.new_page(viewport={"width": 794, "height": 240}, device_scale_factor=1)
+        page.goto(source.resolve().as_uri(), wait_until="load")
+        page.emulate_media(media="print")
+        content_height = int(page.evaluate("Math.ceil(document.documentElement.scrollHeight)"))
+        page.pdf(
+            path=str(target), print_background=True, width="794px",
+            height=f"{content_height + 4}px", margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
+            prefer_css_page_size=False,
+        )
+        browser.close()
 
 
-def render_png(source: Path, target: Path, width: int, height: int) -> None:
-    chrome(f"--window-size={width},{height}", f"--screenshot={target}", source.resolve().as_uri())
+def render_png(source: Path, target: Path, width: int) -> None:
+    """Capture the complete responsive page at a stable viewport width."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as error:
+        raise RuntimeError("Playwright is required for full-content PNG export") from error
+    with sync_playwright() as runtime:
+        browser = runtime.chromium.launch(headless=True, executable_path=str(CHROME))
+        page = browser.new_page(viewport={"width": width, "height": 240}, device_scale_factor=1)
+        page.goto(source.resolve().as_uri(), wait_until="load")
+        page.screenshot(path=str(target), full_page=True, animations="disabled")
+        browser.close()
 
 
 def source_snapshot(contract: dict[str, Any]) -> tuple[str, list[dict[str, Any]]]:
@@ -218,7 +244,7 @@ a{{color:var(--teal);text-underline-offset:3px}}a:focus-visible{{outline:3px sol
 .claims{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:26px 0}}.claim{{min-width:0;min-height:170px;background:var(--surface);border:1px solid var(--line);padding:20px}}.claim-no{{color:var(--coral);font-weight:800}}.claim h2{{font-size:20px;line-height:1.25;margin:18px 0 10px;overflow-wrap:anywhere;word-break:break-word}}.claim p{{color:var(--muted);font-size:13px}}code,.source,.boundary{{overflow-wrap:anywhere;word-break:break-word}}
 .delivery{{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border-top:2px solid var(--ink);padding-top:20px;margin-top:30px}}.downloads{{display:flex;gap:8px;flex-wrap:wrap}}.button{{display:inline-block;padding:10px 13px;background:var(--ink);color:white;text-decoration:none;border-radius:2px}}.source{{margin-top:24px;padding:16px;background:var(--wash)}}.boundary{{color:var(--muted);font-size:13px;margin-top:16px}}
 @media(max-width:760px){{.topline,.delivery{{grid-template-columns:1fr;display:grid}}.map,.claims{{grid-template-columns:1fr}}h1{{font-size:42px}}.shell{{padding-top:18px}}}}
-@page{{size:A4;margin:14mm}}@media print{{body{{background:white}}.shell{{width:100%;padding:0}}.map{{grid-template-columns:repeat(2,1fr)}}.claim{{break-inside:avoid;min-height:0}}.button{{color:var(--ink);background:white;border:1px solid var(--ink)}}}}
+@page{{margin:0}}@media print{{body{{background:white;font-size:13px;line-height:1.4}}.shell{{width:100%;padding:10mm}}.topline{{padding-bottom:7px;font-size:10px}}h1{{font-size:40px;line-height:1;margin:14px 0 8px}}.lede{{font-size:14px;margin:0}}.map{{grid-template-columns:repeat(4,1fr);gap:5px;margin:14px 0}}.map a{{min-height:60px;padding:9px;font-size:10px}}.crumbs{{font-size:9px}}.claims{{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:13px 0}}.claim{{break-inside:avoid;min-height:130px;padding:12px}}.claim-no{{font-size:10px}}.claim h2{{font-size:14px;line-height:1.25;margin:8px 0 6px}}.claim p{{font-size:9px;margin:0}}.source{{margin-top:10px;padding:9px;font-size:10px}}.delivery{{grid-template-columns:1fr auto;gap:10px;margin-top:10px;padding-top:10px;font-size:10px;break-inside:avoid}}.downloads{{gap:5px}}.button{{color:var(--ink);background:white;border:1px solid var(--ink);padding:5px 7px;font-size:9px}}.boundary{{font-size:9px;margin-top:8px}}}}
 </style></head><body><main class="shell">
 <header><div class="topline"><span class="eyebrow">{html.escape(bundle['bundle_shape'])} · {html.escape(page_id)}</span><time datetime="{generated.isoformat()}">{html.escape(display_time)}</time></div>
 <h1>{html.escape(page['title'])}</h1><p class="lede">{html.escape(page['responsibility'])}</p></header>
@@ -270,10 +296,8 @@ def materialize(role: str, source_path: Path, run_root: Path, generated: datetim
         desktop_path = output_dir / f"{page_stem}.desktop.png"
         mobile_path = output_dir / f"{page_stem}.mobile.png"
         render_pdf(html_path, pdf_path)
-        render_png(html_path, desktop_path, 1440, 1000)
-        # Chrome headless clamps its layout viewport near 500 px; use that stable
-        # narrow breakpoint so the mobile artifact is complete rather than cropped.
-        render_png(html_path, mobile_path, 500, 1800)
+        render_png(html_path, desktop_path, 1440)
+        render_png(html_path, mobile_path, 500)
         for kind, path in (("html", html_path), ("pdf", pdf_path), ("png-desktop", desktop_path), ("png-mobile", mobile_path)):
             artifacts.append({"page_id": page["page_id"], "kind": kind, "path": path.relative_to(run_root).as_posix(), "sha256": sha256(path), "bytes": path.stat().st_size})
     manifest = {

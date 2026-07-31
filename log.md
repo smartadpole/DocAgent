@@ -19,6 +19,7 @@
   2. 在既有 [[topic-visual-presentation-rules]] / evaluation owner 下新增 repo-local schema、active profile、完整 surface inventory、真实单页与四 owner 页面树 golden；不新建 FP / EP / TASK / Gate / AP。
   3. 新增 `scripts/export_topic_presentation_bundle.py`，先写 ignored immutable run，再原子更新 pointer；默认 active v2，shadow 显式运行，v1 compatibility 只读零写入。
   4. 扩展 `scripts/check_topic_visual_presentation.py`，把 portable（不要求 `.exports`）、runtime readback、负样本、legacy grandfather 与 v1 zero-write 分门验证。
+  5. 独立视觉复核发现固定 A4 会产生孤儿尾页后，将 PDF 改为由真实 print-media 内容高度决定的紧凑单页，并用 full-page scrollHeight 生成桌面 / 移动 PNG；runtime gate 同步加入 PDF 单页、PDF raster 与 PNG 尾部空白比例检查，未隐藏 claim、source 或下载控制，也未添加伪填充。
 - **验证 / 边界**：本地结构、运行产物和交付读回不能上推为独立语义、视觉、公开交付或真实读者效用；这些层级继续由独立 evaluator、受控 published endpoint 与 reader task evidence 单独裁决。
 - **Persistence Decision**：`artifact-needed`；owner 仍为既有 skill / template / governance pages，发现入口不变，运行件不提交。
 

@@ -11,6 +11,8 @@ import re
 import struct
 import subprocess
 import sys
+import tempfile
+import zlib
 from pathlib import Path
 from typing import Any
 
@@ -228,6 +230,71 @@ def png_dimensions(path: Path) -> tuple[int, int]:
     return struct.unpack(">II", data[16:24])
 
 
+def png_trailing_uniform_ratio(path: Path) -> float:
+    """Measure the bottom uniform-color tail of an RGB/RGBA PNG."""
+    data = path.read_bytes()
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        raise ValueError(f"not PNG: {path}")
+    position = 8
+    compressed = bytearray()
+    width = height = color_type = bit_depth = interlace = 0
+    while position < len(data):
+        length = struct.unpack(">I", data[position:position + 4])[0]
+        kind = data[position + 4:position + 8]
+        chunk = data[position + 8:position + 8 + length]
+        position += 12 + length
+        if kind == b"IHDR":
+            width, height, bit_depth, color_type, _, _, interlace = struct.unpack(">IIBBBBB", chunk)
+        elif kind == b"IDAT":
+            compressed.extend(chunk)
+        elif kind == b"IEND":
+            break
+    channels = {2: 3, 6: 4}.get(color_type)
+    if bit_depth != 8 or channels is None or interlace != 0:
+        raise ValueError("blank-tail sensor requires non-interlaced 8-bit RGB/RGBA PNG")
+    raw = zlib.decompress(bytes(compressed))
+    stride = width * channels
+    previous = bytearray(stride)
+    rows: list[bytearray] = []
+    cursor = 0
+    for _ in range(height):
+        filter_type = raw[cursor]
+        cursor += 1
+        current = bytearray(raw[cursor:cursor + stride])
+        cursor += stride
+        for offset in range(stride):
+            left = current[offset - channels] if offset >= channels else 0
+            above = previous[offset]
+            upper_left = previous[offset - channels] if offset >= channels else 0
+            if filter_type == 1:
+                predictor = left
+            elif filter_type == 2:
+                predictor = above
+            elif filter_type == 3:
+                predictor = (left + above) // 2
+            elif filter_type == 4:
+                estimate = left + above - upper_left
+                distances = (abs(estimate - left), abs(estimate - above), abs(estimate - upper_left))
+                predictor = (left, above, upper_left)[distances.index(min(distances))]
+            elif filter_type == 0:
+                predictor = 0
+            else:
+                raise ValueError(f"unsupported PNG filter: {filter_type}")
+            current[offset] = (current[offset] + predictor) & 0xFF
+        rows.append(current)
+        previous = current
+    background = rows[-1][-channels:-channels + 3] if channels == 4 else rows[-1][-3:]
+    sample_step = max(channels, (stride // 64 // channels) * channels)
+    tail_rows = 0
+    for row in reversed(rows):
+        samples = (row[offset:offset + 3] for offset in range(0, stride, sample_step))
+        if all(max(abs(sample[channel] - background[channel]) for channel in range(3)) <= 3 for sample in samples if len(sample) == 3):
+            tail_rows += 1
+        else:
+            break
+    return tail_rows / height if height else 1.0
+
+
 def runtime(regenerate: bool) -> list[str]:
     errors = portable()
     if errors:
@@ -287,12 +354,26 @@ def runtime(regenerate: bool) -> list[str]:
             for claim_id in bindings_by_page.get(page_id, []):
                 ensure(errors, f'data-claim-id="{claim_id}"' in text, f"runtime: hidden/missing claim {claim_id}")
             if "png-desktop" in artifacts:
-                ensure(errors, png_dimensions(artifacts["png-desktop"]) == (1440, 1000), f"runtime: desktop PNG size mismatch {page_id}")
+                desktop_width, desktop_height = png_dimensions(artifacts["png-desktop"])
+                ensure(errors, desktop_width == 1440 and desktop_height >= 500, f"runtime: desktop PNG size mismatch {page_id}")
+                ensure(errors, png_trailing_uniform_ratio(artifacts["png-desktop"]) <= 0.20, f"runtime: desktop PNG blank tail exceeds 20% {page_id}")
             if "png-mobile" in artifacts:
-                ensure(errors, png_dimensions(artifacts["png-mobile"]) == (500, 1800), f"runtime: mobile PNG size mismatch {page_id}")
+                mobile_width, mobile_height = png_dimensions(artifacts["png-mobile"])
+                ensure(errors, mobile_width == 500 and mobile_height >= 700, f"runtime: mobile PNG size mismatch {page_id}")
+                ensure(errors, png_trailing_uniform_ratio(artifacts["png-mobile"]) <= 0.20, f"runtime: mobile PNG blank tail exceeds 20% {page_id}")
             if "pdf" in artifacts:
                 info = subprocess.run(["pdfinfo", str(artifacts["pdf"])], capture_output=True, text=True)
-                ensure(errors, info.returncode == 0 and bool(re.search(r"^Pages:\s+\d+", info.stdout, re.M)), f"runtime: PDF unreadable {page_id}")
+                match = re.search(r"^Pages:\s+(\d+)", info.stdout, re.M)
+                ensure(errors, info.returncode == 0 and match is not None, f"runtime: PDF unreadable {page_id}")
+                ensure(errors, match is not None and int(match.group(1)) == 1, f"runtime: PDF must be one page without orphan tail {page_id}")
+                if match is not None and int(match.group(1)) == 1:
+                    with tempfile.TemporaryDirectory(prefix="wiki-topic-pdf-tail-") as temporary:
+                        prefix = Path(temporary) / "page"
+                        raster = subprocess.run(["pdftoppm", "-png", "-r", "120", str(artifacts["pdf"]), str(prefix)], capture_output=True, text=True)
+                        page_png = prefix.with_name("page-1.png")
+                        ensure(errors, raster.returncode == 0 and page_png.is_file(), f"runtime: PDF raster readback failed {page_id}")
+                        if page_png.is_file():
+                            ensure(errors, png_trailing_uniform_ratio(page_png) <= 0.20, f"runtime: PDF blank tail exceeds 20% {page_id}")
     return errors
 
 
