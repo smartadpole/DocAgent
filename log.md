@@ -7,6 +7,21 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-08-03
+
+### 加固 Markdown 本地采用面的上下文感知检查
+
+- **记录人**：Codex
+- **用户意图**：长链接显示名问题已归入统一 Markdown 文档治理后，继续审计并补齐本仓采用面，避免“已有规则”被误当成检查与验证已经完整。
+- **公开边界**：`public-safe`；只记录通用 profile、fixture、sensor 与本仓扫描结果，不写上游或其他工程的本机路径、运行 ID 和私有事实。
+- **关键动作**：
+  1. 保留 [[governance/markdown-document-governance-profile.v1]] 作为 repo-local `obsidian-vault` 采用值，不复制上游完整 Topic。
+  2. 将 `scripts/check_markdown_document_governance.py` 升级为上下文感知扫描：跳过 frontmatter、fenced code 与 inline code，覆盖所有真实表格中的未转义 wikilink 别名、`页面` 表格的语义显示名以及工程路径前缀粘连 wikilink。
+  3. 增加通用表格、页面导航表、路径前缀、fenced / inline 示例和合法转义的正负 fixture；本仓扫描未发现存量真实违规。
+  4. 更新 Harness ledger 与 Sensor Backlog，明确该能力已由独立 Markdown sensor 实施，不再只依赖 `project-docs` 的入口 / frontmatter 检查。
+- **验证 / 边界**：`python3 scripts/check_all.py --only markdown-document-governance` 通过；本地 V0 / V1 通过不能上推其他仓库已采纳，也不能替代后续具体 renderer 缺陷的 V2 回读。
+- **Persistence Decision**：`artifact-needed`；更新既有本地 profile、sensor、ledger 与日志，不新建平行 Topic。
+
 ## 2026-07-31
 
 ### 将主题呈现升级为可移植的 page-bundle v2

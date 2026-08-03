@@ -4,7 +4,7 @@ id: GOV-MARKDOWN-DOCUMENT-PROFILE-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-29
+updated: 2026-08-03
 tags: [markdown, documentation, obsidian, links, rendering, validation]
 ---
 
@@ -44,7 +44,8 @@ markdown_profile:
 
 - wiki 内部页面语义跳转使用 wikilink，外部来源使用普通 Markdown link。
 - qualified path、通用文件名和页内锚点在读者面使用短语义显示名。
-- `页面` 导航表中的 wikilink 别名分隔符写成 `\|`，避免被表格 parser 拆列。
+- 所有读者正文表格中的 wikilink 别名分隔符写成 `\|`，避免被表格 parser 拆列；`页面` 导航表还必须为 qualified path 提供短语义显示名。
+- sensor 跳过 frontmatter、fenced code 和 inline code 语法示例，并拦截正文中的工程路径前缀粘连 wikilink。
 - 可点击链接不放进 inline code；命令、物理路径字符串和语法示例可以使用反引号。
 - `views/` 是派生阅读层；修改生成视图前先找 canonical Markdown / manifest / generator。
 - 结构、链接、frontmatter、资产或生成内容变化时运行 Markdown 专项 sensor；用户可见渲染问题还需要 primary renderer readback。

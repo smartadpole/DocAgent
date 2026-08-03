@@ -4,7 +4,7 @@ id: GOV-HARNESS-FEEDBACK-LEDGER-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-07-31
+updated: 2026-08-03
 tags: [agent, harness, feedback, episode]
 ---
 
@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08-03 | 独立 Markdown sensor 已存在，但覆盖仍停在页面表格特例且 backlog 仍只指向 project-docs | 用户要求继续审计 Markdown 治理是否完整；本地复核确认 profile 已采用，但 sensor 没有覆盖所有真实表格、路径前缀粘连和示例上下文跳过，ledger 也未反映独立 sensor 的现状 | 规则升级 | 应避免成本 | 保留 repo-local profile；把 Markdown sensor 改为上下文感知扫描并加入通用表格、页面导航、路径前缀、fenced / inline 示例和合法转义 fixture；本仓真实扫描无违规 | [[markdown-document-governance-profile.v1]] / `scripts/check_markdown_document_governance.py` / `python3 scripts/check_all.py --only markdown-document-governance` | promoted |
 | 2026-07-31 | research profile 的 medium 裁决未随 Template Kernel 定位升级 | 用户追问为什么调研没有 strong 吸收，并要求把 wiki 升级为 strong template-kernel；现场确认旧 profile 与后续“profile 不裁剪完整 Kernel”规则冲突，原 sensor 仍主要检查关键词 wiring | 规则升级 | 应避免成本 | 将 research profile、skill、governance、templates、design owner、memory 和 trace 统一到 strong-template-kernel；增加版本化结构化 contract validator、positive fixtures 和四类 negative fixtures；AC 继续作为上游设计 / 领域知识 owner，本轮不跨仓写入 | `python3 scripts/check_all.py --only research-capability` / [[skills/research-capability/SKILL]] / [[projects/development/reports/2026-07-31-research-strong-template-kernel-upgrade]] | promoted |
 | 2026-07-31 | 公开仓库仍把内部工程吸收身份和其他工程发布信息写进 log / report / publication profile | 用户要求禁止继续把公司工程吸收记录写入公开仓库；随后澄清本仓没有已发布页面，应删除或隐藏仓内记录的其他工程公开页面信息 | 规则升级 | 应避免成本 | 将 public-safe persistence 升为 [[wiki-governance-system-contract.v1]] 硬边界；根 AGENTS、Codex adapter 和日志规则 / 模板改为消费者；新增 `public-repository-content` sensor；将本仓 publication profile 校正为 blocked，删除误导性 live 状态页和具体 host / 签名链接；未访问线上服务，密钥和线上运行态保持不变 | `python3 scripts/check_all.py --only public-repository-content,public-html-publish,markdown-owner-viewer,instruction-adherence` | promoted |
 | 2026-07-29 | 链接显示名与表格转义没有 Markdown 统一 owner，首轮错误归入 knowledge-linking | 用户继续纠偏：这件事本身属于 Markdown 文档规范，应和其他链接 / 文档规则成为一个主题，而不是散落在主题呈现和知识关联 | 规则升级 | 应避免成本 | wiki 新增 [[markdown-document-governance-profile.v1]] 只维护本地 `obsidian-vault` 采纳值；AGENTS、knowledge-linking skill / governance 与 instruction-adherence 改为消费者；qualified path / 表格 `\|` 回归 fixture 迁入独立 Markdown sensor | [[markdown-document-governance-profile.v1]] / `python3 scripts/check_all.py --only markdown-document-governance` | promoted |
@@ -58,7 +59,7 @@ tags: [agent, harness, feedback, episode]
 | 复盘 archive 结构检查 | 复盘 archive 与 sensor 闭环升级 | `scripts/check_retrospective_system.py` 检查 archive root 不平铺正文、年份目录、by-year 收录、模板字段、显式复盘规则和行动分流 | active |
 | H5 ledger 独立 sensor | wiki 独立治理 sensor 拆分 | `scripts/check_harness_feedback_ledger.py` 检查四张表、状态词表、active episode、sensor backlog 和 promotion 来源回链 | active |
 | 指令遵循独立 sensor | wiki 独立治理 sensor 拆分 | `scripts/check_instruction_adherence.py` 检查 [[instruction-adherence]]、ledger、`.codex/AGENTS.md` 和 `scripts/check_all.py` 的执行覆盖接线 | active |
-| Markdown / wikilink / frontmatter 检查 | 多入口文档库容易出现链接和元数据漂移 | `scripts/check_project_docs.py` 检查入口页、治理 frontmatter 和本地 wikilink | active |
+| Markdown / wikilink / frontmatter 检查 | 多入口文档库容易出现链接、元数据和渲染语法漂移 | `scripts/check_project_docs.py` 检查入口页、治理 frontmatter 和本地 wikilink；`scripts/check_markdown_document_governance.py` 上下文感知检查真实表格别名、页面语义显示名、路径前缀粘连与正负 fixture | active |
 | 技能质量检查 | 技能页可能复制项目事实或缺少触发 / 输出边界 | 后续可补技能结构检查 | observed |
 | 模板完整性检查 | 新增模板后可能忘记挂入口或字段漂移 | 当前由 `check_harness_governance.py` 覆盖 Harness 模板入口 | active |
 | 研发事项结构检查 | 关键词式 wiring 检查可能随着字段增加变脆 | 当前由 `check_work_item_matrix.py` 检查矩阵列顺序、模板字段、章节、表头和入口链接 | active |
