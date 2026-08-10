@@ -7,6 +7,16 @@
 - 详细记录规则见 [[log-writing-rules]]。
 - 默认模板见 [[templates/log-entry-template]]。
 
+## 2026-08-10
+
+### 防止翻译插件运行日志进入仓库索引
+
+- **记录人**：Codex
+- **用户意图**：按统一工程仓库治理规则分离可复现插件配置和动态运行日志，避免翻译历史再次被提交。
+- **关键动作**：在 `.gitignore` 增加 `.obsidian/plugins/mouse-tooltip-translator/translation-log.json` 精确规则；当前目标日志不存在且未被跟踪，因此无需执行索引移除，也没有删除本地数据。
+- **边界**：只忽略运行日志，不扩大为整个插件目录，不改变当前 Obsidian 源码 / 配置跟踪策略。
+- **影响文件**：`.gitignore`、[[log]]。
+
 ## 2026-08-03
 
 ### 加固 Markdown 本地采用面的上下文感知检查
