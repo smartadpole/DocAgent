@@ -4,7 +4,7 @@ id: DES-TOPIC-AGENT-SYSTEM-LANDING-001
 project: PROJ-WIKI-001
 status: accepted-design
 stage: system-landing
-updated: 2026-07-31
+updated: 2026-10-13
 tags: [design, agent, workflow, memory, harness, skill, topic]
 ---
 
@@ -62,3 +62,19 @@ tags: [design, agent, workflow, memory, harness, skill, topic]
 - `python3 scripts/check_all.py --only implementation-template-system`
 - `python3 scripts/check_all.py --only acknowledge-topic-adoption`
 - `python3 scripts/check_all.py --only agent-system-maturity,skill-maturity,harness-governance`
+
+## 模板继承的当前执行基线
+
+本轮目标是让后续工程从模板创建时直接获得统一流程，同时保留知识深度、融合问候、事项父级归属、复盘 / 研究能力、公开安全和证据分层。采用上游既有设计，当前范围为入口、技能发现、Goal / Loop 触发、阶段合同、检查器及收尾。未授权业务模型迁移、生产操作或仓库外配置修改。
+
+| 要求 / 保留特色 | 原位置与差异 | 当前承接 | 验证 |
+| --- | --- | --- | --- |
+| 单一规则正文、冷启动与领域深度 | 根入口过厚，平台 adapter 重复正文 | 根 [[AGENTS]] 保留 guard 与原融合问候；四个条件页保留原知识、治理、执行、呈现细则；adapter 只导入根入口 | agent-guidance 与 harness-governance；专业检查跟随链接，根 guard 独立检测 |
+| 原生技能发现 | 只有 skills 正文，无项目发现投影 | `.agents/skills/` 使用仓库内相对链接 | 原路径和隔离目录均验证链接；运行发现单独记录 |
+| 持续推进不过度编排 | Goal / Loop / Run Capsule 用时长和复杂程度触发 | [[skills/goal-contract/SKILL]]、[[skills/loop-engineering/SKILL]] 和 [[agent-orchestration]] 各自唯一条件；路由 / workflow / 模板同步 | 边界回归；不能上推到所有模型行为 |
+| 最小登记与高风险证据 | TASK / Issue 模板一次要求完整字段 | staged-v1，保留 wiki 的 parent_ep 与本地编号；按执行影响和阶段补齐 | 原始症状、重复字段、失败证据、跨仓、生产、服务边界回归；模板实例化验证 |
+| 提交与公开安全 | 既有规则保留，增加最终状态读回 | 执行条件页、public-repository-content 与 scoped commit | 文件清单、完整门禁、commit / staged / dirty 读回 |
+
+此基线直接替换活跃入口与创建模板，不保留旧触发路径。现有历史报告仍是历史证据；模板仓当前无 TASK / Issue 实例，任何新实例都必须声明阶段合同，缺 profile 不允许绕过检查。源技能按模块原生适配，不整库复制；模板维护机器、私有工程事实和运行身份不成为衍生项目默认值。
+
+模板接入方式为复制或 clone 仓库后按 [[templates/implementation-project-profile-template|接入配置]] 校准身份、能力包与边界，没有另一个模板生成器。复制时必须包含 `.agents/`、`.codex/`、根 AGENTS 和相对链接指向的 `skills/`；丢失隐藏目录或链接应由检查失败暴露。采纳证据、未测范围与回退见 [[projects/development/reports/2026-10-13-template-agent-remediation|整改记录]]。

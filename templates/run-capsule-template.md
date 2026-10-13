@@ -8,7 +8,7 @@ tags: [template, harness, goal, orchestration, evaluator]
 
 # Run Capsule 模板
 
-Run Capsule 是 Goal、多 agent、多线程或跨工程长任务的最小运行控制面。它不是项目状态页、验收报告、全局 memory 或每轮必填表；只有当任务需要持续推进、并行 agent、跨工程回传或严格证据合流时才使用。
+Run Capsule 仅承接独立运行身份、恢复游标或跨角色合流。先复用已有 owner；普通持续执行、跨仓修改或一次性协作不自动创建。启动条件见 [[agent-orchestration]]，Goal 工具授权见 [[skills/goal-contract/SKILL]]。
 
 ## 适用性判断
 

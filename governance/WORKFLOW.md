@@ -37,16 +37,11 @@
 
 完成判断按 [[wiki-governance-system-contract.v1#完成定义]]；只完成逐 topic manifest、摘要矩阵、入口链接或 sensor 时，只能回答 `partial / review`，不能回答“全面整改完了”。
 
-长时任务的 Goal Contract 放在响应模式判断之后、正式长时执行之前：
+Goal Contract 按 [[skills/goal-contract/SKILL]] 的唯一启动条件使用：
 
-- 主控侧任务如果要“持续推进直到完成”，先用 [[templates/goal-contract-template]] 定义期望最终状态、完成判定、验证面 / 证据边界、约束、边界、预算、探索分支上限和阻塞停止条件。
-- 子工程接到主控任务时，不重新定义关闭口径；只把 Goal Contract 转成实现范围、测试方案、回传包和未验证边界。
-- Goal Contract 不是验收结论；health、日志、子工程自述、任务 accepted / running 等中间态只能作为辅助证据，状态关闭仍按验收关闭模式执行。
-- 普通解释、一行改动、一次性整理或范围未裁定的任务不默认套用 Goal Contract。
-- 多 agent、多线程或主控 / 子工程任务使用 [[agent-orchestration]] 和 [[templates/run-capsule-template]]；Worker 只交证据，Evaluator 才能做整体闭环裁决。
-- 涉及子工程代码前必须做 Subproject Git Preflight：目录、分支、remote、fetch 后 ahead / behind / diverged、dirty / local-only 状态和更新策略；默认不 pull / merge / rebase / reset。
-- 行动依赖权限、远程状态、浏览器 profile、预算、外部服务或人工确认时，先按 [[state-constraint-reasoning]] 判断 `executable / conditional / blocked / ask-human`。
-- 规则、模板、sensor、log、复盘或 Goal 是否需要升级，先按 [[agent-governance-strategy]] 做 P0 / P1 / P2 / P3 分级。
+先复用当前 owner 的目标、授权、验收和停止条件。只有用户明确要求独立完成契约，或持久恢复、依赖控制、累计预算确需独立记录且原 owner 无法承接时，才建立 Goal Contract。普通持续执行、复杂排障、跨多轮验证或区分证据层级，本身均不构成启动条件。
+
+Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于获准创建 Goal 工具对象。仅“持续做到完成”时直接继续已有任务。
 
 模式切换要显式说明：快速诊断形成根因后，如果继续做沉淀、验收、规则升级或收尾，要告诉用户“分析结论已形成，现在进入某某闭环”。这不是额外仪式感，而是响应效率治理的一部分。
 

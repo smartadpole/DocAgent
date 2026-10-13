@@ -1,6 +1,6 @@
 ---
 name: loop-engineering
-description: Loop Engineering / 持续 agent 循环控制技能。用于把 Goal、Run Capsule、子 agent、harness、memory 和软件研发体系组织成可持续的发现、分派、验证、持久化和下一轮决策闭环；它是控制面能力，不是无人值守自动化许可，也不新建平行项目状态系统。
+description: 跨 run 的持久发现、去重队列、调度和恢复；要求发现源、状态、oracle、预算和停止条件。普通持续执行或一次多 agent 协作不触发。
 maturity: mature
 evidence_signals: [skill, README entry, template, governance, verification-loop, sensor, TRANSFER]
 transfer_ready: true
@@ -17,13 +17,7 @@ Loop Engineering 是持续 agent 循环控制技能。它在 Goal Contract、[[t
 
 ## 触发条件
 
-满足以下任一条件时使用：
-
-- 用户要求“用 Loop Engineering 武装工程”“持续发现并处理复杂问题”“多 agent 调度”“直到闭环”。
-- 已经有 Goal Contract，但任务需要跨多轮发现、分派、验证和状态持久化。
-- 复杂问题需要多个子 agent / worker 并行审计、实现或验证，并且主线程必须做 evaluator 合流。
-- 需要周期性读取 CI、issue、commit、inbox、监控、服务台账、测试报告、知识链接检查或用户反馈。
-- 需要判断某个自动化候选是否具备 Discovery source、Run queue、Evaluator oracle、Persistent state、Scheduler / trigger 和 Budget / stop。
+只有需要跨 run 持续发现新输入、维护去重 Run queue、持久化状态并由 Scheduler / trigger 调度时使用。Discovery source、Evaluator oracle、Persistent state、Budget / stop 和人工确认边界必须明确。普通“继续直到完成”、一次多 agent 合作或长任务本身不触发 Loop。
 
 不满足以下条件时，不进入 loop：
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 REQUIRED_FILES = (
@@ -75,11 +76,11 @@ ROUTING_REQUIRED_TERMS = (
     "--only",
     "harness-evolution",
     "harness-feedback-ledger",
-    "期望最终状态防跑偏",
-    "验证面 / 证据边界防漂移",
-    "预算 / 阻塞停止条件防无限探索",
-    "响应模式判断之后、正式长时执行之前",
-    "主控和子工程之间的长任务回传",
+    "期望最终状态",
+    "验证面 / 证据边界",
+    "预算 / 阻塞停止条件",
+    "先复用当前 owner",
+    "Goal 工具仅在用户明确要求 Goal 时调用",
     "proactive-dialogue-system",
     "场景包",
     "置信度",
@@ -280,8 +281,8 @@ GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = (
     "辅助证据",
     "明确不足以闭环的证据",
     "health、日志、子工程自述或中间态误当成真正闭环",
-    "响应模式判断之后、正式长时执行之前",
-    "复杂 bug 复现、性能优化、迁移、跨轮调研、反复验证的修复、主控和子工程之间的长任务回传",
+    "先复用当前 owner",
+    "Goal 工具仅在用户明确要求 Goal 时调用",
     "Pipeline trace",
     "Method capture decision",
     "Persistence landing",
@@ -309,7 +310,7 @@ STATE_CONSTRAINT_REQUIRED_TERMS = (
 )
 
 AGENT_ORCHESTRATION_REQUIRED_TERMS = (
-    "Goal Contract -> Run Capsule -> Orchestrator -> Worker -> Evaluator -> Persistence Routing",
+    "不把它们当作固定启动链",
     "Worker 只交证据，不能宣布整体闭环",
     "Subproject Git Preflight",
     "ahead / behind / diverged",
@@ -320,6 +321,8 @@ AGENT_ORCHESTRATION_REQUIRED_TERMS = (
 
 
 def read_text(repo: Path, rel: str, errors: list[str]) -> str:
+    if rel in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel
     if not path.exists():
         errors.append(f"{rel}: required harness file is missing")

@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 REQUIRED_OWNER_TERMS = (
@@ -100,6 +101,8 @@ AGENT_INTELLIGENCE_TEMPLATE_TERMS = (
 
 
 def read_text(repo: Path, rel: str, errors: list[str]) -> str:
+    if rel in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel
     if not path.exists():
         errors.append(f"{rel}: missing file")

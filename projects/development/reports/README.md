@@ -80,3 +80,5 @@ Issue 是案件档案，报告是每次庭审记录。同一个 ISSUE 可以有�
 ## 最小报告骨架
 
 默认复制 [[templates/development-test-report-template]]，不要在本页维护第二份模板正文。
+
+模板执行基线的分层验证与回退见 [[projects/development/reports/2026-10-13-template-agent-remediation|模板 Agent 整改记录]]。

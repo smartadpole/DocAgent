@@ -13,6 +13,7 @@ import argparse
 import re
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 REQUIRED_FILES = (
@@ -163,27 +164,11 @@ TEMPLATE_FIELDS: dict[str, tuple[str, ...]] = {
         "service registry",
     ),
     "templates/development-task-template.md": (
-        "父 EP",
-        "上游 Gate / FP",
-        "目标",
-        "范围",
-        "不做项",
-        "local validation",
-        "service-side validation",
-        "end-to-end validation",
-        "issue-trigger",
-        "回归守卫",
-        "service registry",
+        "父 EP", "目标", "范围", "不做项", "完成条件", "验证计划", "关系覆盖",
     ),
     "templates/development-issue-template.md": (
-        "用户可见症状",
-        "复现路径",
-        "根因边界",
-        "EP",
-        "TASK",
-        "最新有效报告",
-        "未验证边界",
-        "关闭结论",
+        "用户可见症状", "期望行为", "影响范围", "证据", "最新有效报告",
+        "验证结果", "反向复验", "回归守卫", "未验证边界", "关闭结论",
     ),
     "templates/development-test-report-template.md": (
         "上游 EP / TASK / FP / Gate / ISSUE",
@@ -311,6 +296,8 @@ FORBIDDEN_SCAN_FILES = (
 
 
 def read_text(repo: Path, rel_path: str, errors: list[str]) -> str:
+    if rel_path in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel_path
     if not path.exists():
         errors.append(f"{rel_path}: missing file")

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 REQUIRED_FILES = (
@@ -112,6 +113,8 @@ ENTRYPOINT_TERMS = {
 
 
 def read(repo: Path, rel: str, errors: list[str]) -> str:
+    if rel in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel
     if not path.exists():
         errors.append(f"{rel}: missing file")

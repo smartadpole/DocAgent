@@ -6,6 +6,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 README_TERMS = (
@@ -80,6 +81,8 @@ FRONTMATTER_RE = re.compile(r"\A---\n(?P<body>.*?)\n---\n", re.DOTALL)
 
 
 def read_text(repo: Path, rel: str, errors: list[str]) -> str:
+    if rel in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel
     if not path.exists():
         errors.append(f"{rel}: required skill maturity file is missing")

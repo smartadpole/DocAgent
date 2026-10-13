@@ -2,11 +2,11 @@
 
 ## 能力目标
 
-让目标工程具备长时任务完成契约能力：在复杂实现、排障、迁移、调研、验收或跨工程协作开始前，先固定目标、范围、证据层级、验证面、预算、停止条件和记录落点，防止目标漂移、证据漂移和无限探索。
+让目标工程具备长时任务完成契约能力：先复用现有 owner；命中独立合同启动条件时补充目标、范围、证据层级、验证面、预算、停止条件和记录落点，防止目标漂移、证据漂移和无限探索。
 
 ## 可以吸收
 
-- 启动条件：终点清楚、路径需探索、可能跨多轮执行、跨工程回传或证据边界敏感时启用。
+- 启动条件：用户明确要求独立完成契约，或原 owner 无法承接必要的持久恢复、依赖控制和累计预算；普通继续执行不触发。
 - 合同字段：objective、expected final state、in scope、out of scope、source pack、acceptance criteria、evidence layers、verification surface、record landing、iteration budget、stop / blocked conditions、closure boundary。
 - 证据分层：code-level / unit、functional、service-side、end-to-end、non-default / boundary、related regression、manual confirmation。
 - 业务链路证据：functional / business-flow 证据必须说明用户可见行为、后台副作用、状态投影或持久化 readback 之间的对应关系。
@@ -38,7 +38,9 @@
 
 ## 验证要求
 
-- 用一个长时任务样例建立合同，检查字段齐全且有记录落点。
+- 分别验证普通继续执行复用 owner、显式独立合同请求、服务证据不足不关闭；检查适用字段和记录落点。
 - 检查最终结论是否区分 passed / partial / blocked / failed，以及哪些 code-level、business-flow、non-default、manual-confirmation 证据不能上推。
 - 跑目标工程已有检查或新增轻量 sensor。
 - 最终回复写清合同落位、检查命令、未验证边界和不能替代的验收入口。
+
+Goal 工具仅在用户明确要求 Goal 时调用；不将文档合同、任务时长或复杂程度当成工具授权。

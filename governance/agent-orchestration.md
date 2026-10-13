@@ -10,16 +10,13 @@ tags: [governance, harness, orchestration, run-capsule]
 
 # Agent Orchestration
 
-这页定义本库的多 agent / 多线程 / 子工程任务编排口径。核心模型是 `Goal Contract -> Run Capsule -> Orchestrator -> Worker -> Evaluator -> Persistence Routing`。
+这页定义本库的多 agent / 多线程 / 子工程任务编排口径。按需选择 Goal Contract、Run Capsule、Orchestrator、Worker、Evaluator 和 Persistence Routing，不把它们当作固定启动链。
 
 ## 启动条件
 
-满足任一条件时使用 [[templates/run-capsule-template]]：
+默认单 agent；用户或适用规则明确要求委派时才启动 Worker。Goal Contract 的唯一启动条件见 [[skills/goal-contract/SKILL]]。
 
-- 同一目标需要多个 Worker 并行读取、实现、验证或审计。
-- 主控库和子工程之间需要明确写入边界、证据层级和回传口径。
-- 长时任务已经有 Goal Contract，但单轮运行需要记录 Worker ownership 和 evaluator 合流。
-- 结果可能被 health、日志、handoff、自述或局部测试错误上推为整体闭环。
+仅在独立运行身份、恢复游标或跨角色合流确有需要、且已有 owner 无法承接时使用 [[templates/run-capsule-template|运行记录模板]]。跨仓工作仍必须执行 Subproject Git Preflight，但跨仓、长任务或证据分层本身不要求新建运行记录。
 
 ## 角色分工
 
@@ -63,7 +60,7 @@ Worker 只交证据，不能宣布整体闭环。
 
 ## Governance System Run Capsule
 
-当任务目标是“全面整改 wiki 治理体系”或同时触及 agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 多层时，Run Capsule 必须引用 [[wiki-governance-system-contract.v1]]。
+当任务目标是“全面整改 wiki 治理体系”或同时触及 agent、workflow、memory、harness、skill、evaluation、governance、template、topic、migration 多层时，当前执行 owner 必须引用；如果已使用 Run Capsule，则由它引用 [[wiki-governance-system-contract.v1]]。
 
 最小字段：
 
@@ -82,8 +79,8 @@ Worker 只交证据，不能宣布整体闭环。
 
 收尾时必须说明：
 
-- Run Capsule 状态：passed / partial / blocked / failed。
-- Worker 回传是否齐全，缺口在哪里。
+- 当前 owner / 已启用 Run Capsule 状态：passed / partial / blocked / failed。
+- 已委派时 Worker 回传是否齐全，缺口在哪里。
 - Evaluator 结论和不能上推的证据边界。
 - State transition 与 Next-run recommendation。
 - Persistence Routing 的实际落点。

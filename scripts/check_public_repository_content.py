@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -107,7 +108,7 @@ def main() -> int:
         if not path.exists():
             errors.append(f"{rel}: required public-repository guard file is missing")
             continue
-        text = path.read_text(encoding="utf-8")
+        text = read_agent_sources(ROOT, errors) if rel in ("AGENTS.md", ".codex/AGENTS.md") else path.read_text(encoding="utf-8")
         for term in terms:
             if term not in text:
                 errors.append(f"{rel}: missing public-repository guard term {term}")

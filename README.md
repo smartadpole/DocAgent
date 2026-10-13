@@ -253,3 +253,5 @@ tags: [entry, root]
 - [[templates/loop-contract-template]]：Loop Contract 控制面，记录 discovery source、run queue、evaluator、persistent state、budget / stop 和 next-run decision。
 - [[templates/run-capsule-template]]：单轮运行胶囊，承接 Parent Loop Contract、Input discovery item、Worker limits、State transition 和 Next-run recommendation。
 - 专项检查：`python3 scripts/check_all.py --only loop-engineering`。
+
+模板接入需保留隐藏目录 `.agents/` 与 `.codex/`、根 `AGENTS.md`、`CLAUDE.md` 和 `skills/`。条件规则与相对技能链接用 `python3 scripts/check_all.py --only agent-guidance,staged-contracts` 验证；身份、分支与能力包采用目标工程的部署环境配置。

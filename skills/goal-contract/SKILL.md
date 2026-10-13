@@ -1,6 +1,6 @@
 ---
 name: goal-contract
-description: 长时任务完成契约技能。用于终点清楚但路径需要探索、可能跨多轮推进、跨工程回传或证据边界敏感时，先固定目标、范围、验收面、证据层级、预算、停止条件和记录落点。
+description: 为明确要求 Goal 或确需独立持久恢复、依赖与累计预算的任务建立完成契约；复用现有 owner，普通继续执行不自动创建 Goal 或 Loop。
 maturity: mature
 evidence_signals: [skill, README entry, template, governance, TRANSFER, verification-loop, quality-gate]
 transfer_ready: true
@@ -11,19 +11,17 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 ## 定位
 
-Goal Contract 是本仓库的长时任务完成契约能力，位置固定在 [[response-mode-routing]] 完成响应模式判断之后、正式长时执行之前。
+Goal Contract 是本仓库的长时任务完成契约能力，在 [[response-mode-routing]] 完成模式判断且命中启动条件后使用。
 
 它只回答“这一轮到底怎样才算完成、用哪些证据证明、何时停止或阻塞汇报”。它不替代项目状态、验收报告、TASK / Issue 关闭标准、[[templates/run-capsule-template]]、[[BRAIN]]、[[POLICY]] 或人工确认。
 
-## 触发场景
+## 启动条件
 
-- 用户要求持续推进、长时间执行、反复验证、跨多轮跟进或“未解决不允许停”。
-- 任务终点清楚，但实现、排障、迁移、调研、复验或跨工程回传路径需要探索。
-- 本轮需要区分 implementation scope、evidence scope 和 closure scope。
-- 多 agent、主控 / 子工程、实现 / 验收分工容易把局部证据上推成完整闭环。
-- health、日志、accepted / running、自述、handoff 或历史报告可能被误当作完成证据。
+先复用当前 owner 的目标、授权、验收和停止条件。只有用户明确要求独立完成契约，或持久恢复、依赖控制、累计预算确需独立记录且原 owner 无法承接时，才建立 Goal Contract。普通持续执行、复杂排障、跨多轮验证或区分证据层级，本身均不构成启动条件。
 
-普通一次性问答、短命令、简单改文档、范围尚未裁定的探索，不默认启动 Goal Contract。
+Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于获准创建 Goal 工具对象。仅“持续做到完成”时直接继续已有任务。
+
+Run Capsule 仅在独立运行身份、恢复游标或跨角色合流确有需要时建立；Loop 须有跨 run 发现源与持久队列。
 
 ## 成熟度与证据信号
 
@@ -37,43 +35,20 @@ Goal Contract 是本仓库的长时任务完成契约能力，位置固定在 [[
 
 ## 工作流
 
-1. 判适用性：说明为什么这不是普通一次性任务；不适用时直接说明原因，不创建空合同。
-2. 建立合同：使用 [[templates/goal-contract-template]] 写清 objective、expected final state、scope、acceptance criteria、verification surface、evidence layers、budget、stop conditions 和 closure boundary。
+1. 判适用性：确认现有 owner 无法承接的具体需要；不适用时继续原任务，不创建空合同。
+2. 建立合同：复用已有字段，仅使用 [[templates/goal-contract-template]] 补充缺项，写清 objective、expected final state、scope、acceptance criteria、verification surface、evidence layers、budget、stop conditions 和 closure boundary。
 3. 选择证据层级：按任务性质声明 `code-level / unit`、`functional / business-flow`、`service-side`、`end-to-end`、`non-default / boundary` 和 `manual-confirmation` 是否适用；缺哪一层就写 partial / blocked，不能用结构检查替代真实证据。
 4. 标注合同类型：`implementation-goal`、`trace-only`、`method-candidate`、`research-decision` 或 `orchestrator-acceptance`，避免把方法沉淀、矩阵识别或只读 trace 误当成实现完成。
 5. 绑定记录落点：chat-level、TASK、Issue、AP、handoff、episode package 或其他 owning page；不能只靠最终回复成为长期事实源。
 6. 记录 Pipeline trace：写清用户目标、source pack、执行位置、Run Capsule / handoff、验证面和沉淀落点之间的链路。
-7. 多 agent 或子工程任务进入 [[agent-orchestration]]：使用 [[templates/run-capsule-template]] 固定 Orchestrator、Worker、Evaluator、Subproject Git Preflight 和 Worker 不能上推的证据边界。
+7. 需要独立运行身份、恢复或跨角色合流的任务进入 [[agent-orchestration]]：使用 [[templates/run-capsule-template]] 固定 Orchestrator、Worker、Evaluator、Subproject Git Preflight 和 Worker 不能上推的证据边界。
 8. 执行中校准：每轮继续前回看合同，不让中间日志、health、子工程自述或矩阵分数改写目标。
 9. 合流验证：关闭前逐条检查 acceptance criteria，区分完成证据、辅助证据、不能上推的证据和仍需人工确认项。
 10. 收口沉淀：按 [[agent-governance-strategy]] 和 [[harness-evolution]] 判断 Method capture decision、Persistence landing、Reuse decision、Retrospective trigger decision 是否进入 log、ledger、memory、skill、template、sensor、rule 或 retrospective。
 
 ## 输出格式
 
-```markdown
-## Goal Contract
-
-- Objective:
-- Expected final state:
-- In scope:
-- Out of scope:
-- Source pack:
-- Acceptance criteria:
-- Evidence layers:
-- Contract type: implementation-goal / trace-only / method-candidate / research-decision / orchestrator-acceptance
-- Non-default / boundary validation:
-- Business-flow / code-level validation:
-- Manual-confirmation:
-- Verification surface:
-- Record landing:
-- Pipeline trace:
-- Method capture decision:
-- Persistence landing:
-- Reuse decision:
-- Iteration budget:
-- Stop / blocked conditions:
-- Closure boundary:
-```
+仅使用 [[templates/goal-contract-template]] 的适用字段；目标、授权和验收引用已有 owner，不在本技能复制第二份模板。
 
 ## 禁止项
 

@@ -32,5 +32,5 @@ tags: [development, issue]
 
 - 新 ISSUE 默认复制 [[templates/development-issue-template]]。
 - ISSUE 必须维护原始现象保真：先保留用户原始报告的触发动作、入口和表面现象，再写直接观察、辅助证据和候选根因。
-- ISSUE 必须写清关联 EP / TASK / FP / risk / Bug ID、最新有效报告、关闭标准和回归守卫。
+- ISSUE 使用 staged-v1：先登记原始症状、期望、影响、证据与 owner，未知根因不阻止登记。按调查进展关联实际 EP / TASK / FP / risk；修复时补授权与影响，关闭时补最新有效报告、反向复验、回归守卫和关闭结论。
 - 新增或更新 ISSUE 时，先改实体页，再同步本索引摘要；不要把复现、根因、证据和沟通包写在索引页里。

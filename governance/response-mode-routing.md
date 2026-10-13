@@ -24,7 +24,7 @@ tags: [agent, workflow, efficiency, harness]
 - 能脚本化或模板化的约束，优先沉淀成 sensor、模板或技能，不继续堆在入口页。
 - 工作阶段用 `python3 scripts/check_all.py --only <check-key>` 跑专项 sensor，收尾和提交前用 `python3 scripts/check_all.py` 跑统一门禁。
 - 性能预算默认分成读取预算、问题预算、检查预算和产物大小预算；任何提速都不能削弱证据分层、写入边界、人工确认或提交闭环。
-- 长时任务需要持续推进时，先用 Goal Contract 固定三条防线：期望最终状态防跑偏，验证面 / 证据边界防漂移，预算 / 阻塞停止条件防无限探索；Goal Contract 只定义当前任务完成契约，不替代验收、状态关闭、规则层或 memory。
+- 完成契约优先复用当前 owner；独立 Goal Contract 的唯一启动条件见 [[skills/goal-contract/SKILL]]。
 
 ## 模式表
 
@@ -43,7 +43,9 @@ tags: [agent, workflow, efficiency, harness]
 
 ## Goal Contract 边界
 
-Goal Contract 的位置固定在响应模式判断之后、正式长时执行之前。它只用于终点清楚但路径需要探索的长时任务，例如复杂 bug 复现、性能优化、迁移、跨轮调研、反复验证的修复、主控和子工程之间的长任务回传。普通解释、一行改动、一次性整理、范围未裁定的任务不默认使用。
+先复用当前 owner 的目标、授权、验收和停止条件。只有用户明确要求独立完成契约，或持久恢复、依赖控制、累计预算确需独立记录且原 owner 无法承接时，才建立 Goal Contract。普通持续执行、复杂排障、跨多轮验证或区分证据层级，本身均不构成启动条件。
+
+Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于获准创建 Goal 工具对象。仅“持续做到完成”时直接继续已有任务。
 
 使用时必须先记录三条防线：期望最终状态、验证面 / 证据边界、预算 / 阻塞停止条件；再补必须保持的约束、允许边界和明确不做项。它不改变 [[POLICY]]、[[AGENTS]]、工作项状态、验收关闭标准或环境语义；如果 Goal Contract 的完成证据不足，结论只能写 `partial`、`review` 或 `blocked`。`health`、日志、子工程 handoff / 自述、任务 accepted / running 等中间态，默认只能作为辅助证据，不能上推成真正闭环。
 
@@ -51,7 +53,7 @@ Goal Contract 的位置固定在响应模式判断之后、正式长时执行之
 
 - 快速诊断发现长期项目价值时，先给诊断 checkpoint，再说明将进入 Issue 分析 + 沉淀或知识沉淀。
 - 快速诊断发现用户目标尚未成形、但已经需要产出需求 / 设计 / 决策候选时，切到引导式设计。
-- 引导式设计发现方向已经选定且验收标准稳定时，切到知识沉淀、正式研发链路或 Goal Contract。
+- 引导式设计发现方向已经选定且验收标准稳定时，切到知识沉淀或正式研发链路；Goal Contract 仍按独立启动条件判断。
 - 快速诊断发现结论会影响关闭、准出、发布或生产判断时，必须切到验收关闭模式。
 - 知识沉淀发现内容会改变默认执行方式、自动写入边界或优先级时，必须切到规则升级模式。
 - 知识沉淀发现复盘对象时，先使用 [[skills/retrospective-capability/SKILL]] 固定复盘合同和子项路由；项目交付 / 软件研发链使用 [[skills/delivery-retrospective/SKILL]]，历史对话或 Agent 工作流使用 [[skills/historical-dialogue-retrospective/SKILL]]；发现重复失守、可模板化或可脚本化缺口时，按 [[harness-evolution]] 进入 Harness 自演进。

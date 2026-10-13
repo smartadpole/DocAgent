@@ -44,7 +44,7 @@
 | 能力 | 主要技能 / owner | 完成边界 |
 | --- | --- | --- |
 | 长时目标和完成契约 | [[skills/goal-contract/SKILL]] | Goal Contract 不能替代验收和治理系统完成定义。 |
-| 多轮 / Worker / Evaluator | [[skills/loop-engineering/SKILL]]、[[agent-orchestration]] | Loop 只负责发现、分派、验证、持久化和 next-run decision。 |
+| 跨 run 持久发现 / 去重队列 / 调度 | [[skills/loop-engineering/SKILL]]、[[agent-orchestration]] | Loop 只负责发现、分派、验证、持久化和 next-run decision。 |
 | 能力迁移与 topic 吸收 | [[skills/transferable-skill-governance/SKILL]]、[[acknowledgebase-topic-system-adoption.v1]] | 只吸收系统能力，不复制项目事实、分数或目录。 |
 | 调研和源计划 | [[skills/research-capability/SKILL]]、[[skills/technology-research/SKILL]] | 调研证据不能直接上推为治理能力已落地。 |
 | 实战控制面 | [[skills/performance-bandwidth-analysis/SKILL]]、[[skills/runtime-config-switch/SKILL]]、[[agent-orchestration]] | 性能、配置、生产 readback、finalizer 和验收治理进入通用合同；DB readback 等业务绑定能力只抽象证据分层。 |
@@ -102,7 +102,7 @@
 - [[skills/research-capability/SKILL]]：`strong-template-kernel` 调研聚合技能。统一 Research Contract、R2+ Source Plan、coverage matrix、Evidence Delta、验证阶梯、行动等级、修订循环和 evaluator，同时保持上游设计 / 领域知识不复制边界。
 - [[skills/technology-research/SKILL]]：research-capability 的技术执行分支。用于技术、开源工程、行业 / AI 赛道或 PoC 调研，按 source plan、coverage、反证、local / runtime evidence 和 outcome review 产出可支撑判断的研究结果。
 - [[skills/knowledge-linking/SKILL]]：知识关联技能。用于新增、调研或大改长期知识页时判断分层落位、入口、上位 / 邻接关系、反向回链和验证方式，避免知识成为孤岛。
-- [[skills/goal-contract/SKILL]]：长时任务完成契约技能。用于终点清楚但路径需要探索、可能跨多轮推进、跨工程回传或证据边界敏感时，先固定目标、范围、证据层级、验证面、预算、停止条件和记录落点。
+- [[skills/goal-contract/SKILL]]：仅为明确请求或原 owner 无法承接的持久恢复、依赖与累计预算建立完成契约；普通持续执行不自动创建 Goal。
 - [[skills/transferable-skill-governance/SKILL]]：可迁移技能治理技能。用于根据矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject。
 - [[skills/performance-bandwidth-analysis/SKILL]]：性能、计时 trace 与带宽分析技能。用于诊断延迟、吞吐、传输、并发、runtime trace、服务入口和端到端链路差异，先建立 timing ledger 和 coverage matrix，再判断瓶颈、容量和不上推边界。
 - [[skills/runtime-config-switch/SKILL]]：Runtime 配置切换技能。用于只改配置、不改代码的服务入口、base URL、端口、环境变量、feature flag、部署参数、回调地址或写入目标切换，并证明 live service 正在使用新配置。
@@ -127,3 +127,5 @@
 - 从外部矩阵、lens 或下游工程再次吸收技能时，先判断它是通用可迁移能力、治理能力还是项目 / 领域绑定能力；只有前两类可落为本库技能，项目 / 领域绑定能力只抽象方法并记录不复制原因。
 - 例外：当用户明确要求把项目 / 领域绑定能力做成当前目标工程自己的能力时，可以落为 `transfer_ready: false` 的本地 skill，并必须绑定本仓 owner、template、sensor 和不上推边界。
 - 外部诊断里的 `missing signals` 是候选修复方向，不是执行命令；补完后要回看本库是否更清晰、更可维护，而不是只看矩阵分数是否更高。
+
+项目技能通过 `.agents/skills/` 的逐技能相对链接提供发现，正文只维护在 `skills/`；新建或移除技能时同步链接并运行 `agent-guidance` 检查。

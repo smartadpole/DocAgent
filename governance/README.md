@@ -133,3 +133,5 @@ tags: [entry, governance]
 - [[templates/loop-contract-template]]：Loop Contract 控制面，记录 discovery source、run queue、evaluator、persistent state、budget / stop 和 next-run decision。
 - [[templates/run-capsule-template]]：单轮运行胶囊，承接 Parent Loop Contract、Input discovery item、Worker limits、State transition 和 Next-run recommendation。
 - 专项检查：`python3 scripts/check_all.py --only loop-engineering`。
+
+Agent 条件入口：[[governance/agent-guidance-knowledge|知识维护]]、[[governance/agent-guidance-execution|执行与收尾]]、[[governance/agent-guidance-governance|规则演进]]、[[governance/agent-guidance-presentation|主题呈现]]；按任务读取，源入口见 [[AGENTS]]。

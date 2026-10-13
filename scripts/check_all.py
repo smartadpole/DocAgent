@@ -10,6 +10,8 @@ from pathlib import Path
 
 
 CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
+    ("agent-guidance", "conditional rules and skill discovery", (sys.executable, "scripts/test_agent_guidance.py")),
+    ("staged-contracts", "stage and evidence boundary regressions", (sys.executable, "scripts/test_staged_contracts.py")),
     ("project-docs", "project docs", (sys.executable, "scripts/check_project_docs.py")),
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),
     ("agent-harness-l5", "agent harness L5 validation", (sys.executable, "scripts/check_agent_harness_l5.py")),

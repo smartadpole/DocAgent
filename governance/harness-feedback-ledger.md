@@ -23,6 +23,7 @@ tags: [agent, harness, feedback, episode]
 
 | 日期 | Episode | 触发信号 | 响应模式 | 成本类型 | 已采取改动 | Sensor / Artifact | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-10-13 | 模板入口未随执行基线更新 | 用户指出模板工程也必须治理，现场发现重复 adapter、旧触发和完整表单默认值 | 规则升级 | 可优化成本 | 根 guard 与条件页分离，原生技能相对链接，Goal / Loop 唯一触发，staged-v1 原生模板与实例校验 | [[2026-10-13-template-agent-remediation]] / agent-guidance / staged-contracts | promoted |
 | 2026-08-03 | 独立 Markdown sensor 已存在，但覆盖仍停在页面表格特例且 backlog 仍只指向 project-docs | 用户要求继续审计 Markdown 治理是否完整；本地复核确认 profile 已采用，但 sensor 没有覆盖所有真实表格、路径前缀粘连和示例上下文跳过，ledger 也未反映独立 sensor 的现状 | 规则升级 | 应避免成本 | 保留 repo-local profile；把 Markdown sensor 改为上下文感知扫描并加入通用表格、页面导航、路径前缀、fenced / inline 示例和合法转义 fixture；本仓真实扫描无违规 | [[markdown-document-governance-profile.v1]] / `scripts/check_markdown_document_governance.py` / `python3 scripts/check_all.py --only markdown-document-governance` | promoted |
 | 2026-07-31 | research profile 的 medium 裁决未随 Template Kernel 定位升级 | 用户追问为什么调研没有 strong 吸收，并要求把 wiki 升级为 strong template-kernel；现场确认旧 profile 与后续“profile 不裁剪完整 Kernel”规则冲突，原 sensor 仍主要检查关键词 wiring | 规则升级 | 应避免成本 | 将 research profile、skill、governance、templates、design owner、memory 和 trace 统一到 strong-template-kernel；增加版本化结构化 contract validator、positive fixtures 和四类 negative fixtures；AC 继续作为上游设计 / 领域知识 owner，本轮不跨仓写入 | `python3 scripts/check_all.py --only research-capability` / [[skills/research-capability/SKILL]] / [[projects/development/reports/2026-07-31-research-strong-template-kernel-upgrade]] | promoted |
 | 2026-07-31 | 公开仓库仍把内部工程吸收身份和其他工程发布信息写进 log / report / publication profile | 用户要求禁止继续把公司工程吸收记录写入公开仓库；随后澄清本仓没有已发布页面，应删除或隐藏仓内记录的其他工程公开页面信息 | 规则升级 | 应避免成本 | 将 public-safe persistence 升为 [[wiki-governance-system-contract.v1]] 硬边界；根 AGENTS、Codex adapter 和日志规则 / 模板改为消费者；新增 `public-repository-content` sensor；将本仓 publication profile 校正为 blocked，删除误导性 live 状态页和具体 host / 签名链接；未访问线上服务，密钥和线上运行态保持不变 | `python3 scripts/check_all.py --only public-repository-content,public-html-publish,markdown-owner-viewer,instruction-adherence` | promoted |
@@ -76,7 +77,7 @@ tags: [agent, harness, feedback, episode]
 | 候选规则 | 来自 episode | 晋升目标 | 状态 |
 | --- | --- | --- | --- |
 | 模板级 H5 不能只靠聚合式 harness 检查；ledger、instruction-adherence 和入口结构应可按工作阶段独立运行 | wiki 独立治理 sensor 拆分 | `scripts/check_harness_feedback_ledger.py` / `scripts/check_instruction_adherence.py` / `scripts/check_project_docs.py` / `scripts/check_all.py --list` | active |
-| 长时任务先写 Goal Contract，主控定义完成契约，子工程回传证据 | Codex Goals 转主控 / 子工程契约 | [[response-mode-routing]] / [[WORKFLOW]] / [[templates/goal-contract-template]] | promoted |
+| Goal Contract 按唯一启动条件建立；owner 可承接则复用，主控 / 子工程保持证据边界 | Codex Goals 转主控 / 子工程契约 | [[response-mode-routing]] / [[WORKFLOW]] / [[templates/goal-contract-template]] | promoted |
 | 工作阶段跑专项 sensor，收尾和提交前跑完整门禁 | production-control source project Harness 反哺 | [[harness-evolution]] / `scripts/check_all.py` | promoted |
 | H5 episode 不直接晋升硬规则，先进入 ledger 和复盘 | production-control source project Harness 反哺 | [[harness-evolution]] | promoted |
 | 规则不能只停在自然语言，重复失守要升级为模板字段、sensor、技能或最终证明 | production-control source project Harness 反哺 | [[response-mode-routing]] / [[WORKFLOW]] / `scripts/check_harness_governance.py` | active |
@@ -85,7 +86,7 @@ tags: [agent, harness, feedback, episode]
 | 测试报告必须引用事项页计划或 AP，环境按证据面路由而不是阶梯上推 | production-control source project 测试成熟度与口径漂移反哺 | [[projects/development/plan/test-acceptance-planning-model]] / `scripts/check_testing_system_maturity.py` | promoted |
 | 研发事项日常维护先走总控页入口顺序，治理层只在改变默认规则时修改 | 研发事项入口顺序和结构化 sensor | [[projects/development/plan/README]] / [[WORKFLOW]] | promoted |
 | 主动对话先自动判定场景包和置信度，再用少量问题、明确假设和性能预算推进产物化 | 主动对话和性能预算升级 | [[proactive-dialogue-system]] / [[templates/guided-discovery-session-template]] / `scripts/check_harness_governance.py` | promoted |
-| 多 agent / 子工程任务必须由 Orchestrator 定义 Run Capsule，Worker 只交证据，Evaluator 做合流裁决；涉及代码前先做 Subproject Git Preflight | 整体 Agent Harness 模块接入 | [[agent-orchestration]] / [[templates/run-capsule-template]] / `scripts/check_harness_governance.py` | active |
+| Run Capsule 仅在运行身份、恢复或跨角色合流需要时建立；Worker 只交证据，涉及子工程代码前先做 Subproject Git Preflight | 整体 Agent Harness 模块接入 | [[agent-orchestration]] / [[templates/run-capsule-template]] / `scripts/check_harness_governance.py` | active |
 | 规则、模板、sensor、log、复盘和 Goal 的强度先做 P0 / P1 / P2 / P3 分级，避免所有偏差都升级成硬规则 | 整体 Agent Harness 模块接入 | [[agent-governance-strategy]] / [[POLICY]] / [[WORKFLOW]] | active |
 | 行动依赖权限、远程、dirty / diverged、预算或人工确认时先做 state constraint reasoning | 整体 Agent Harness 模块接入 | [[state-constraint-reasoning]] / [[WORKFLOW]] / [[POLICY]] | active |
 | L5 不等于泛称“已验证”；必须给用户可见的命令、结果、commit / push readback、不能上推边界和例外原因 | Agent Harness L5 验证补强 | [[instruction-adherence]] / `scripts/check_agent_harness_l5.py` / 本轮验证报告 | active |

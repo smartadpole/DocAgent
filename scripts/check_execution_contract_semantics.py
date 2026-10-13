@@ -3,9 +3,12 @@
 
 from __future__ import annotations
 
+from staged_contracts import check_repository
+
 import re
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 REQUIRED_FILES = (
@@ -61,6 +64,8 @@ FORBIDDEN_EXECUTION_PATTERNS = (
 
 
 def read_text(repo: Path, rel: str, errors: list[str]) -> str:
+    if rel in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel
     if not path.exists():
         errors.append(f"{rel}: required execution-contract semantics file is missing")
@@ -122,6 +127,7 @@ def main() -> int:
             require_terms(rel, text, terms, errors)
 
     reject_execution_pollution(repo, errors)
+    errors.extend(check_repository(repo))
 
     if errors:
         for error in errors:

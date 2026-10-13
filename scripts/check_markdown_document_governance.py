@@ -6,6 +6,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from agent_guidance import read_agent_sources
 
 
 PAGE_TABLE_HEADER_RE = re.compile(r"^\|\s*页面\s*\|")
@@ -44,6 +45,8 @@ PROFILE_TERMS = (
 
 
 def read(repo: Path, rel: str, errors: list[str]) -> str:
+    if rel in ("AGENTS.md", ".codex/AGENTS.md"):
+        return read_agent_sources(repo, errors)
     path = repo / rel
     if not path.exists():
         errors.append(f"{rel}: required Markdown profile file is missing")
