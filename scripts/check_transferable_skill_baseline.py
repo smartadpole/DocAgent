@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,22 +79,15 @@ ENTRY_TERMS = {
     "governance/README.md": ("matrix-adoption-2026-06-26-agent-evidence-v12", "transferable-skill-baseline"),
     "projects/status.md": ("transferable-skill-baseline", "matrix-adoption-2026-06-26"),
     "scripts/check_all.py": ("transferable-skill-baseline", "check_transferable_skill_baseline.py"),
-    "skills/transferable-skill-governance/SKILL.md": (
-        "matrix-adoption-2026-06-26-agent-evidence-v12",
-        "repo-native",
-    ),
+    "skills/transferable-skill-governance/SKILL.md": skill_terms('transferable-skill-governance'),
     "skills/transferable-skill-governance/TRANSFER.md": (
-        "Matrix adoption manifest",
-        "local_source_of_truth",
+        "manifest",
+        "当前owner",
     ),
-    "skills/cross-project-skill-adoption-prompt/SKILL.md": (
-        "source-depth",
-        "Transfer Manifest",
-        "Matrix Recognition Capsule",
-    ),
+    "skills/cross-project-skill-adoption-prompt/SKILL.md": skill_terms('cross-project-skill-adoption-prompt'),
     "skills/cross-project-skill-adoption-prompt/TRANSFER.md": (
         "Matrix Recognition Capsule",
-        "insufficient-evidence",
+        "未证明",
     ),
     "templates/skill-transfer-manifest-template.md": (
         "local_source_of_truth",
@@ -107,7 +102,7 @@ def read_text(rel: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"missing transferable skill baseline file: {rel}")
         return ""
-    return path.read_text(encoding="utf-8")
+    return read_conditional_sources(ROOT, rel, errors)
 
 
 def require_terms(rel: str, text: str, terms: tuple[str, ...], errors: list[str]) -> None:

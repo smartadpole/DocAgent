@@ -1,66 +1,28 @@
-# Public HTML Publish 迁移边界
+# Public Html Publish Transfer
 
 ## 能力目标
 
-让目标工程具备 HTML-only 的公开发布能力：canonical HTML 可以映射到可解释 public URL，非公开对象不会被默认暴露，静态检查和 live readback 能区分 published、partial 和 blocked。
-
-## 来源
-
-- 源能力：上游 `skills/public-html-publish/SKILL.md`
-- 源模板：上游 `templates/public-html-publication-template.md`
-- 源检查：上游 `scripts/check_public_html_publish.py`
-
-当前 wiki 仓库只采用上游已抽象后的能力，不直接读取或复制来源工程的 host、prefix、secret、启动器、screen session、照片路径、领域事实或一次性 live readback。
+在明确发布授权下提供HTML-only公网访问及隔离读回。 运行入口为 [[skills/public-html-publish/SKILL]]；条件参考随入口按触发迁移，不全量注入每次运行。
 
 ## 可以吸收
 
-- HTML-only 发布对象边界。
-- `share-only live host`、`static site deploy`、`internal preview`、`blocked` 四类发布模式。
-- host / path prefix / source root / canonical path / public_url 公式分离。
-- 多工程、多主机边界：每个工程维护自己的 prefix、profile、secret / deploy config 和 readback。
-- live readback 与 denial readback：公开 HTML 返回 200 且包含稳定标记，非公开对象返回 404 / 403 / blocked。
-- 最终回复合同：生成或刷新 canonical HTML 后必须给 public URL，不能给时说明具体 blocked 原因。
+- host / prefix / canonical path与public_url映射，发布模式、live readback和denial readback。
+- multi-project / multi-host隔离、敏感内容检查、撤销与凭据边界。
+- 发布状态仅归publication profile与现场证据，不在技能写死live或blocked。
+- 本地HTML生成不隐含发布；公开assets或导出件需要明确allowlist。
 
 ## 只能抽象吸收
 
-- 来源工程、上游知识库或其他工程的 host、prefix、secret、启动方式、部署脚本和拒绝路径只能抽象成目标工程自己的 publication profile 字段。
-- 目标工程可以使用 `views/`、`reports/html/`、`docs/views/` 或自己的 canonical HTML root，不强制照搬目录。
-- 检查脚本可以用 Python、Node、Makefile、CI job 或平台 CLI 实现，重点是 HTML-only、public_url、live readback 和 blocked 口径。
-- Cloudflare Tunnel、Cloudflare Pages、Pages Direct Upload、Netlify、GitHub Pages 或本机 share-only host 都只是发布模式候选；目标工程必须写自己的 host / prefix / deploy target / secret / denial path / live readback，不能借用来源工程事实。
+host、prefix、部署目标、secret、拒绝路径和供应商机制由目标工程自行配置；不能借用其他工程运行事实。
 
 ## 禁止复制
 
-- 不复制来源工程 host、path prefix、share secret、token、启动器 label、screen session 或本机运行状态。
-- 不复制其他工程的业务事实、项目状态、私有路径、服务名或一次性 readback 结果。
-- 不默认公开 `.exports`、PDF / PNG / SVG、Markdown、日志、项目页、assets、raw data 或整个仓库。
+不复制来源工程身份、私有路径、项目状态、服务实例、业务数据、凭据、历史日志或一次性检查结论。源工程可访问不等于获准修改；目标已有规则和用户授权优先。迁移结果不冒充业务验收或外部评价完成。
 
 ## 目标工程结构自检
 
-1. 是否已有 canonical HTML 生成层、views registry 或 report 输出目录？
-2. 是否已有真实 host、static deploy、tunnel、preview URL 或登录态预览？
-3. public_url 是否能从 source root、path prefix 和 canonical path 稳定生成？
-4. 哪些路径必须 404 / 403 / blocked？
-5. 没有 live readback 时，最终回复是否明确 blocked 而不是声称已发布？
-
-## 本仓库落位
-
-- skill：[[skills/public-html-publish/SKILL]]
-- governance：[[public-html-publish-rules]]
-- template：[[templates/public-html-publication-template]]
-- publication profile：[[views/publication]]
-- sensor：`python3 scripts/check_all.py --only public-html-publish`
-- canonical HTML source root：`views/current/` 与 `views/snapshots/`
-- 默认状态：`blocked`，直到本仓库配置真实 host / deploy target 并完成 live readback。
+查找已有等价能力、当前owner、实际发现入口、允许写入范围和验证方法；优先复用，缺项按需要补齐。模板、reference和sensor只迁移当前能力真正消费的部分，不为形式完整预建目录。
 
 ## 验证要求
 
-- 静态验证：`python3 scripts/check_public_html_publish.py`
-- 门禁验证：`python3 scripts/check_all.py --only public-html-publish`
-- 公网读回：`python3 scripts/check_public_html_publish.py --live`
-
-没有真实 host、secret、mount、deploy target 或 live readback 时，`--live` 必须保持 blocked，不得把本机文件、localhost、截图、Cloudflare / Pages 配置存在或导出件当作公网完成证据。
-
-
-## L5 live profile update (2026-06-19)
-
-This project now treats public-html-publish as a live share-only publication contract. A valid publication claim must include `public_url`, HTML-only source scope, `host / prefix`, canonical path mapping, live readback, denial readback, multi-project prefix isolation, and multi-host boundary notes. If any host, secret, prefix, or live denial check is unavailable, the result must downgrade to blocked instead of claiming L5.
+验证公开页面响应与内容、非公开路径拒绝、内部链接及撤销边界；没有公网读回不能宣称published，普通本地HTML不必报告公网阻塞。 运行目标适用检查，说明真实变更、验证和未证明的范围；结构检查不能证明模型行为正确。

@@ -1,266 +1,38 @@
 ---
 name: historical-dialogue-retrospective
-description: 历史对话与 Agent 工作流复盘技能。用于用户要求复盘历史对话、当前对话、Harness episode、log 记录、agent 工作方式、效率、质量、偏差、协作链路或工作流改进时；帮助 Codex 区分当前上下文、log、harness ledger、原始 session / rollout、git diff / commit、检查输出、memory 和受影响页面，产出 agent 偏差判断、workflow 改进候选和沉淀路由。
+description: 复盘历史对话或 Agent 工作过程中的目标理解、执行、验证与协作偏差；短问因先快诊，明确深度复盘时还原首轮目标、纠偏序列和原始执行证据。
 maturity: leading
 evidence_signals: [skill, README entry, template, governance, sensor, TRANSFER]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only retrospective-system,skill-maturity
+conditional_sources: [skills/historical-dialogue-retrospective/references/deep-review.md]
 ---
 
 # Historical Dialogue Retrospective
 
-## 定位
+本技能是 [[skills/retrospective-capability/SKILL]] 的 Agent 工作分析分支。评价 agent 如何理解目标、用证据推进、验证与交付；不替代项目验收或 Issue 案件。
 
-本技能用于复盘当前工程中的深度 agent 工作流协作。
+## 选择范围
 
-本技能是 [[skills/retrospective-capability/SKILL]] 的内部子项，专注历史对话、Agent 工作流、Harness episode、log、git 和检查证据共同参与的复盘。项目交付和软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]。
+“有没有问题”“为什么慢”先给最可信结论、依据和缺口。明确复盘请求按总入口处理；用户要求深度/完整历史复盘，或重复失守需要系统性调查时，读取 [[skills/historical-dialogue-retrospective/references/deep-review]]。不因每次收尾、多 agent、普通纠偏而自动全量复盘，也不输出无触发的 no-op 声明。
 
-它的对象不是单篇文档，也不只是项目结果，而是历史对话中 agent 如何理解目标、读取上下文、选择模式、调用工具、修改文件、验证结果、沟通边界、提交收尾，并把经验沉淀到 Harness / 知识库 / 项目文档里的全过程。
+## 证据地图
 
-主要目标：
-
-- 发现 agent 工作是否偏离用户目标、当前阶段、证据边界或目录归类。
-- 发现 workflow、模板、sensor、技能、规则或记忆路由的可改进点。
-- 把历史对话中的可复用经验沉淀到 [[concepts/agent-work-retrospective]]、[[projects/retrospectives/README]]、[[harness-feedback-ledger]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]]、`templates/` 或技能层。
-
-## 成熟度与证据信号
-
-- `maturity`：`leading`。本技能已具备技能正文、README 入口、复盘模板、治理路由、专项 sensor 和迁移清单；后续成熟度回归由 `python3 scripts/check_all.py --only retrospective-system,skill-maturity` 检查。
-- `template`：标准复盘骨架在 [[templates/project-retrospective-template]]，技能页只承接历史对话 / Agent 工作流的执行方法，不复制模板正文。
-- `governance`：复盘行动分流、Harness episode、规则晋升、模板和 sensor 更新分别回到 [[projects/retrospectives/README]]、[[harness-feedback-ledger]]、[[harness-evolution]]、[[WORKFLOW]]、[[POLICY]] 和 [[AGENTS]]。
-- `TRANSFER`：跨工程吸收边界见 [[skills/historical-dialogue-retrospective/TRANSFER]]；迁移时必须先让目标工程自检已有复盘 / postmortem / incident / lessons 结构，避免新建平行体系。
-- `evidence boundary`：本技能评价的是 agent 如何完成工作和如何沉淀经验；不能替代项目结果复盘、Issue / 事故事实档案、验收报告或状态关闭。
-
-## 触发场景
-
-用户出现以下意图时使用本技能：
-
-- “复盘历史对话 / 最近几轮 / 某个专题推进过程”。
-- “看看 agent 工作有没有偏差 / 有没有做慢 / 做重 / 漏验证 / 漏提交 / 漏沉淀”。
-- “分析整个 agent 工作流哪里可以改进”。
-- “从 harness 体系、log 和当前上下文里复盘”。
-- “启动复盘技能”且对象包含 agent 协作、历史记录、工作流或 Harness。
-- “深度复盘 / 完整复盘 / 全面复盘这段对话”“为什么没有自动做好”“围绕我最初目标和后续纠偏复盘”“举一反三分析”。
-
-如果只是问某个 bug 根因，优先用 [[skills/issue-analysis/SKILL]]；如果只是复盘单个项目交付结果，优先看 [[concepts/project-retrospective]] 和 [[concepts/software-development-project-retrospective]]。
-
-## 自动触发矩阵
-
-本技能可以被 agent 自动调用，但必须先按 [[response-mode-routing]]、[[agent-governance-strategy]] 和 [[harness-evolution]] 判资格。自动调用不是每轮仪式，只在触发信号达到对应等级时启动。
-
-| 等级 | 自动触发信号 | 动作 | 默认落位 |
-| --- | --- | --- | --- |
-| no-op | 普通一次性解释、小修小改、无用户纠偏、无检查失败、无结构性新信息 | 不调用本技能，只在最终回复说明已无复盘触发 | reply only |
-| 轻量复盘 checkpoint | 长 Goal、Run Capsule、多 agent、Loop iteration 或复杂规则升级顺利结束，但没有明显失守 | 用本技能的证据地图和质量自检做短判断，不新建复盘档案 | [[log]] / Closeout Proof / next-run decision |
-| 标准复盘 | 用户纠偏、明显返工、漏验证 / 漏提交 / 漏沉淀、模式切换成本偏高、Worker 证据被 evaluator 打回 | 启动本技能完整框架，判断偏差、效率质量和沉淀路由 | `projects/retrospectives/<year>/` 或 [[harness-feedback-ledger]] |
-| 深度复盘 | 同类失守重复出现、sensor / 模板 / skill / 规则失效、Loop evaluator 漏停、持续调度失控、影响默认执行方式 | 启动本技能并同步 [[harness-evolution]]，形成复盘档案和晋升 / 降级候选 | 年份复盘档案 + ledger + skill / template / sensor / rule |
-
-自动触发时要写清为什么达到该等级、为什么没有升到更高等级、哪些证据不足。轻量 checkpoint 不得冒充标准复盘；标准复盘也不得自动升级硬规则。子 agent / Worker 只标注 `retrospective-signal: none / checkpoint / standard / deep` 和证据，最终由主线程 evaluator 合流裁决。
-
-## 显式深度历史复盘
-
-用户显式要求深度 / 完整 / 全面复盘历史对话、分析为什么没有自动做好、围绕首轮目标和后续纠偏复盘，或要求举一反三时，启动显式深度历史复盘。此模式下，读取预算让位于完整性，但仍先定义时间窗和证据计划。
-
-必做证据：
-
-1. 当前用户请求和最新约束。
-2. 首轮目标 / 最初用户意图 / 最终目标。
-3. 用户纠偏序列：用户在哪些点补充、否定、要求重做或要求升级。
-4. 相关 [[log]]、[[harness-feedback-ledger]]、复盘档案和受影响 owner 页。
-5. 原始 session / rollout 默认纳入证据计划；如果只能读取 rollout summary、当前对话或整理记录，必须把结论降级并写入未验证边界。
-6. memory 线索默认纳入检索，但 memory 不是真相源；只用于定位可能相关的历史偏好、路径和 rollout，再回到文件 / session / diff 取证。
-7. git diff / commit / 检查输出，用来证明实际改动、落库和验证闭环。
-
-分析重心：
-
-- 首轮目标和用户纠偏是最高优先级证据，先解释 agent 是否围绕它们推进。
-- 对话产物必须先落成 `projects/retrospectives/<year>/` 档案或 owner 页；最终回复只做摘要和指针。
-- 标准 / 深度复盘正文落档后，必须同步 [[projects/retrospectives/indexes/by-year]]；如果属于稳定主题或类型，同步 [[projects/retrospectives/indexes/by-theme]] 或 [[projects/retrospectives/indexes/by-type]]。
-- 必须新增“上层抽象与举一反三”：抽象失败模式，判断同类问题还会在哪些入口、模板、sensor、skill 或规则中复发。
-
-## 响应模式
-
-先按 [[response-mode-routing]] 判断：
-
-- 只是问“有没有问题 / 大概怎么看”：快速诊断，给 `confirmed / likely / possible / blocked`。
-- 要整理历史、形成复盘报告、沉淀方法：知识沉淀。
-- 发现重复失守、规则没有执行、可脚本化缺口：切到规则升级或 Harness 自演进。
-- 涉及关闭 TASK / EP / Gate / 发布：切到验收关闭，不用本技能直接裁决关闭。
-
-复盘开始前说明本轮读取范围和不会覆盖的边界。
-
-## 证据源分层
-
-不要把所有历史材料当成同等证据。先建立证据地图：
-
-| 证据源 | 用途 | 限制 |
+| 来源 | 可证明 | 限制 |
 | --- | --- | --- |
-| 当前对话上下文 | 用户最新目标、约束、纠偏和本轮触发点 | 可能只覆盖当前片段，不能代表完整历史 |
-| [[log]] | 主题化历史、用户意图、关键动作和影响页面 | 是整理后的记录，不是原始执行轨迹 |
-| [[harness-feedback-ledger]] | 已识别的 Harness episode、sensor backlog 和晋升队列 | 只收结构性信号，不记录普通流水 |
-| 原始 session / rollout | 直接对话、tool call、状态更新和真实过程 | 读取成本高，按目标抽样，不默认全量扫 |
-| git diff / commit | 实际文件改动、提交边界和变更主题 | 只能证明文件变化，不能单独证明用户意图 |
-| 受影响主页面 | 当前单一信息源和最终沉淀状态 | 可能已经被后续修订，需要标注时间点 |
-| 检查 / 测试输出 | agent 是否验证、验证是否充分 | 通过不等于业务闭环，失败不等于根因明确 |
-| memory | 检索线索和长期偏好 | 不是当前事实真相源，需回到文件或历史证据验证 |
-| 最终回复 / handoff | agent 对用户或下游的交付表达 | 可能遗漏未验证边界，不能替代 diff 和检查 |
+| 当前上下文 | 最新目标与约束 | 不代表完整历史 |
+| 原始 session / rollout | 对话、工具调用与执行过程 | 限定时间窗，按缺口取证 |
+| git diff / commit | 实际修改及提交边界 | 不能单独证明用户意图或行为效果 |
+| 检查 / 测试输出 | 做过哪些验证、结果如何 | 通过不等于业务闭环 |
+| log / ledger | 主题历史和已识别结构问题 | 整理记录，不是原始执行轨迹 |
+| 受影响 owner | 当前落库内容 | 历史判断需匹配当时 revision |
+| memory | 定位偏好、路径和历史线索 | 回到原始证据验证 |
+| 最终回复 / handoff | 当时声称与交付表达 | 不能代替 diff、测试或运行事实 |
 
-最小读取顺序：
+从用户目标和实际结果出发，追踪决定性理解、读取、执行、验证和纠偏事件。结论标明 confirmed / likely / possible / blocked，保留反证，缺原始记录就降低证据强度。
 
-1. 当前对话目标和用户最新约束。
-2. [[concepts/agent-work-retrospective]]、[[harness-evolution]]、[[harness-feedback-ledger]]。
-3. 相关 [[log]] 条目和受影响主页面。
-4. 目标时间窗内的 git commit / diff / 检查输出。
-5. 只有当上述证据冲突或不足时，再读取原始 session / rollout 摘要或更细 tool trace。
+## 改进与交付
 
-显式深度历史复盘的读取顺序改为：当前请求 -> 首轮目标 -> 用户纠偏序列 -> log / ledger / owner 页 -> 原始 session / rollout 或 rollout summary -> memory 线索回查 -> git / diff / 检查输出。证据读取要有边界：先按复盘对象定义时间窗、commit 区间、页面集合和抽样范围；不要无限扩读。
+区分必要成本、重复读取/无效流程成本和返工成本。根据证据选择改进 owner：一次表现保留学习；重复机制失守进入 ledger；可执行检查进入 sensor；模板/skill 只承接可复用方法。不要把一次偏差升级硬规则，也不要预先认定“增加更多规则”是答案。
 
-## 复盘对象框定
-
-先写清：
-
-- 时间范围：哪几轮、哪一天、哪个专题、哪个 commit 区间或哪个 episode。
-- 工作对象：知识库专题、规则升级、项目交付、bug 分析、验收关闭、子工程回传或多者组合。
-- 复盘目标：找 agent 偏差、找 workflow 改进、校准沉淀路由、评估效率质量，还是准备规则 / 技能升级。
-- 首轮目标：用户最初要的最终目标是什么，哪些后续补充改变了目标权重。
-- 用户纠偏序列：用户指出了哪些遗漏、错误、降级或不完整动作。
-- 不做范围：不重判已关闭项目状态、不重写历史、不把单次偏差直接升级硬规则。
-
-## 工作链还原
-
-按实际发生顺序重建：
-
-1. 用户原始目标和后续纠偏。
-2. agent 的响应模式判断和是否切换。
-3. 读取了哪些事实源，漏了哪些必要事实源。
-4. 做了哪些文件变更、工具调用、验证和提交。
-5. 最终回复如何描述已完成、未验证和下一步。
-6. 后续是否出现返工、纠偏、规则升级或 episode。
-
-## Agent 偏差分类
-
-| 偏差类型 | 判断问题 |
-| --- | --- |
-| 目标偏差 | 是否误解用户真实目标，或把分析 / 沉淀 / 技能 / 规则 / 项目交付混成另一类 |
-| 路由偏差 | 响应模式、目录归类、知识库层 / 项目层 / 治理层 / 技能层落位是否错误 |
-| 读取偏差 | 是否漏读单一信息源、过度读取、只看整理记录不看直接证据 |
-| 执行偏差 | 是否改动范围过大、提前铺结构、越权写入、未按中间节点收口 |
-| 验证偏差 | 是否只跑 happy path、没跑相关 sensor、把检查通过上推成完整闭环 |
-| 沟通偏差 | 是否没及时说明阶段切换、未验证边界、阻塞或实际完成范围 |
-| 沉淀偏差 | 该进 log / concept / skill / template / ledger / policy 的内容是否落错位置 |
-| 收尾偏差 | 是否漏更新 log、漏二阶反思、漏提交、提交混入无关改动 |
-
-每个偏差都标注证据等级：
-
-- `confirmed`：有用户纠偏、diff、检查、log 或 ledger 直接支持。
-- `likely`：证据链强，但缺少一段原始 session 或外部确认。
-- `possible`：只有迹象，需继续抽样。
-- `blocked`：缺原始记录、commit、文件或权限。
-
-## 效率和质量判断
-
-把成本分成：
-
-- **必要成本**：为守住证据、权限、目录归类、验证和提交闭环必须花的成本。
-- **可优化成本**：因路由不清、重复读取、缺模板、缺 sensor、缺技能导致的额外成本。
-- **应避免成本**：误放文件、越权写入、反复返工、把简单任务做重、跳过关键验证导致的成本。
-
-质量维度：
-
-- 目标保真。
-- 单一信息源使用。
-- 证据分层。
-- 文件落位。
-- 验证充分性。
-- 用户沟通。
-- 沉淀路由。
-- 提交边界。
-
-## Workflow 改进路由
-
-不要把所有问题都写成硬规则。按下面路由：
-
-- 单次表现：写 [[log]] 或复盘报告，继续观察。
-- 重复失守或影响面大：写 [[harness-feedback-ledger]] episode。
-- 可模板化：补专题输出结构或 `templates/`。
-- 可脚本化：补 sensor 或扩展 `scripts/check_all.py` 相关检查。
-- 高频 agent 操作套路：补技能或更新本技能。
-- 执行顺序问题：更新 [[WORKFLOW]] 或 [[response-mode-routing]]。
-- 硬约束 / 禁止项：更新 [[AGENTS]]。
-- 自动写入、优先级或裁定边界：更新 [[POLICY]]。
-- 稳定共享背景：更新 [[BRAIN]] 或项目 memory。
-
-## 输出格式
-
-```markdown
-**复盘对象**
-- 时间范围：
-- 工作链：
-- 复盘目标：
-- 首轮目标：
-- 用户纠偏序列：
-- 不做范围：
-
-**证据地图**
-- 当前上下文：
-- 首轮目标：
-- 用户纠偏：
-- log：
-- harness ledger：
-- git / diff / commit：
-- 受影响页面：
-- 检查输出：
-- 原始 session / rollout：
-- memory：
-- 最终回复 / handoff：
-- 缺口：
-
-**工作链还原**
-1.
-2.
-3.
-
-**Agent 偏差判断**
-| 偏差 | 等级 | 证据 | 影响 | 是否重复 |
-| --- | --- | --- | --- | --- |
-
-**效率与质量**
-- 必要成本：
-- 可优化成本：
-- 应避免成本：
-- 质量结论：
-
-**Workflow 改进候选**
-| 候选 | 路由 | 理由 | 是否本轮落地 |
-| --- | --- | --- | --- |
-
-**沉淀动作**
-- log：
-- retrospective：
-- concept：
-- skill：
-- template：
-- ledger：
-- rules / sensor：
-- 暂不落地：
-
-**上层抽象与举一反三**
-- 失败模式：
-- 同类风险面：
-- 可提前发现的模板 / skill / sensor：
-- 本轮晋升判断：
-
-**未验证边界**
--
-```
-
-## 禁止项
-
-- 不把 [[log]] 当原始真相源；它是主题化历史。
-- 不把 [[harness-feedback-ledger]] 当普通任务清单；它只记录结构性 episode。
-- 不把当前对话上下文当完整历史；必要时回到 commit、文件和原始 session。
-- 显式深度历史复盘不得跳过首轮目标、用户纠偏序列、原始 session / rollout 证据计划和上层抽象。
-- 不因一次偏差直接新增硬规则；先判断是否重复、影响面大或可脚本化。
-- 不为了“完整复盘”无限扩读；先定义时间窗和抽样边界。
-- 不重写历史结论；新判断写成新复盘结果，并标注证据时间点。
-- 不把历史对话或 Harness 复盘正文平铺到 `projects/retrospectives/` 根目录；archive root 只保留 README、indexes 和年份目录。
+长期复盘档案、索引、上轮行动兑现与行动分流沿用总技能；最终回复摘要结论和实际落点。相关验证：`python3 scripts/check_all.py --only retrospective-system`。迁移见 [[skills/historical-dialogue-retrospective/TRANSFER]]。

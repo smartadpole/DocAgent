@@ -6,6 +6,8 @@ from __future__ import annotations
 import sys
 import re
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 from agent_guidance import read_agent_sources
 
 
@@ -48,13 +50,11 @@ ENTRYPOINT_REFERENCES: dict[str, tuple[str, ...]] = {
     ),
     "AGENTS.md": (
         "projects/retrospectives/README",
-        "concepts/project-retrospective",
         "skills/retrospective-capability/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
     ),
     ".codex/AGENTS.md": (
         "projects/retrospectives/README",
-        "concepts/project-retrospective",
         "skills/retrospective-capability/SKILL",
         "skills/historical-dialogue-retrospective/SKILL",
         "retrospective-system",
@@ -211,62 +211,11 @@ TEMPLATE_REQUIRED_TERMS = (
     "### Agent 工作回看（适用时）",
 )
 
-RETROSPECTIVE_CAPABILITY_REQUIRED_TERMS = (
-    "复盘能力总技能",
-    "统一复盘合同",
-    "子项路由",
-    "上轮行动兑现回检",
-    "no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘",
-    "显式复盘请求",
-    "总结教训",
-    "深度复盘",
-    "首轮目标",
-    "用户纠偏序列",
-    "产物即档案",
-    "行动分流",
-    "projects/retrospectives/<year>/",
-    "projects/retrospectives/indexes/by-year",
-    "文件爆炸控制",
-    "不把测试报告当复盘",
-)
+RETROSPECTIVE_CAPABILITY_REQUIRED_TERMS = skill_terms('retrospective-capability')
 
-DELIVERY_SKILL_REQUIRED_TERMS = (
-    "项目交付与软件研发链复盘子技能",
-    "需求 -> 设计 -> 拆解 -> 实现 -> 测试验收 -> 发布运行",
-    "证据读取顺序",
-    "交付链回看",
-    "上轮行动兑现回检",
-    "需求偏差",
-    "设计偏差",
-    "验证偏差",
-    "不把测试报告当复盘",
-)
+DELIVERY_SKILL_REQUIRED_TERMS = skill_terms('delivery-retrospective')
 
-SKILL_REQUIRED_TERMS = (
-    "触发场景",
-    "自动触发矩阵",
-    "显式深度历史复盘",
-    "响应模式",
-    "证据源分层",
-    "复盘对象框定",
-    "工作链还原",
-    "Agent 偏差分类",
-    "效率和质量判断",
-    "Workflow 改进路由",
-    "输出格式",
-    "禁止项",
-    "当前对话上下文",
-    "原始 session / rollout",
-    "git diff / commit",
-    "检查 / 测试输出",
-    "memory",
-    "最终回复 / handoff",
-    "首轮目标",
-    "用户纠偏序列",
-    "上层抽象与举一反三",
-    "projects/retrospectives/<year>",
-    "不因一次偏差直接新增硬规则",
-)
+SKILL_REQUIRED_TERMS = skill_terms('historical-dialogue-retrospective')
 
 INDEX_REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
     "projects/retrospectives/indexes/by-year.md": (
@@ -303,7 +252,7 @@ def read_text(repo: Path, rel: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"{rel}: required retrospective file is missing")
         return ""
-    text = path.read_text(encoding="utf-8")
+    text = read_conditional_sources(repo, rel, errors)
     if not text.strip():
         errors.append(f"{rel}: required retrospective file is empty")
     return text

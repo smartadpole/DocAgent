@@ -2,78 +2,30 @@
 type: template
 id: TEMPLATE-GOAL-CONTRACT-001
 status: active
-updated: 2026-06-22
+updated: 2026-10-14
 tags: [template, harness, goal, contract]
+conditional_sources: [templates/goal-contract-extensions.md]
 ---
 
 # Goal Contract 模板
 
 先复用当前 owner 的目标、授权、验收和停止条件。只有用户明确要求独立完成契约，或持久恢复、依赖控制、累计预算确需独立记录且原 owner 无法承接时，才建立 Goal Contract。普通持续执行、复杂排障、跨多轮验证或区分证据层级，本身均不构成启动条件。
 
-Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于获准创建 Goal 工具对象。仅“持续做到完成”时直接继续已有任务。
+Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于获准创建 Goal 工具对象。仅“持续做到完成”时直接继续已有任务，不生成未启用合同或适用性表单。
 
-Goal 只解决三件事：
+## 最小生效核心
 
-1. **防止任务跑偏**：固定原始目标、期望最终状态和本轮完成判定，跨多轮后先回到这里校准“到底要完成什么”。
-2. **防止证据漂移**：固定验证面、可接受证据、不能上推的证据边界，避免把 health、日志、子工程自述或中间态误当成真正闭环。
-3. **防止无限探索**：固定预算、停止条件和阻塞汇报格式，避免复杂任务无边界地继续查下去。
+以下信息可以链接已有 owner 的精确章节，不复写第二份目标或状态。
 
-## 适用性判断
+- **Owner 与独立记录原因**：事项 / owning page；原 owner 无法承接的恢复、依赖或累计预算需要。
+- **目标与完成判定**：用户最新目标、期望最终状态、可观察的验收结果和明确不做项。
+- **授权与约束**：允许写入的文件 / 环境、工具 / 数据权限、必须保持的边界。
+- **验证合同**：直接完成证据、必要验证面、证据来源及不能上推的层级。
+- **预算与停止条件**：适用的时间 / 成本 / 读取或探索上限；权限、风险、目标冲突、证据或预算触发的停止点。
+- **当前进展与恢复点**：已达到状态、完成证据 / 缺口、下一步动作与 owner；恢复时读回真实状态。
 
-- **任务 / 事项 ID**：
-- **当前响应模式**：
-- **当前执行位置**：主控 / 子工程 / Worker / Evaluator / 其他
-- **owning page / record landing**：
-- **质量门 / sensor**：
-- **为什么需要完成契约**：
-- **原 owner 无法承接的具体需要**：
-- **不使用 Goal Contract 的理由**：
+health、日志、handoff / 自述、accepted / running 等中间态不能代替功能、service-side、end-to-end 或正式准出证据。必要证据缺失只能判 partial / review / blocked；预算耗尽不代表完成，局部通过不能关闭父事项。
 
-## 完成契约
+## 条件扩展
 
-- **原始目标 / 用户最新目标**：
-- **期望最终状态**：用可观察结果写清完成后应该变成什么样。
-- **完成判定**：哪些结果出现才算完成；哪些结果只能算 partial / review / blocked。
-- **验证面**：测试 / benchmark / 报告 / artifact / DB readback / 日志 / UI / 人工确认 / 其他
-- **合同类型**：implementation-goal / trace-only / method-candidate / research-decision / orchestrator-acceptance
-- **证据层级**：code-level / unit、functional / business-flow、service-side、end-to-end、non-default / boundary、manual-confirmation；不适用或缺失时写明 partial / blocked。
-- **Source pack**：必须读取或引用的事实源；区分一手事实、辅助事实和推论。
-- **Pipeline trace**：本轮从用户目标到执行、验证、沉淀的链路；主控 / 子工程任务要写明 Run Capsule 或 handoff 位置。
-- **必须保持的约束**：
-- **允许使用的文件 / 工具 / 数据 / 环境**：
-- **明确不做项**：
-
-## 迭代和停止
-
-- **每轮检查什么**：
-- **每轮记录什么**：
-- **下一步选择规则**：
-- **预算或时间边界**：时间 / 命令次数 / 读取范围 / 远程操作 / 成本上限。
-- **探索分支上限**：最多同时追几条线索；超过后先汇报而不是继续扩散。
-- **必须停止并汇报的条件**：权限缺失、证据不足、环境风险、预算耗尽、目标冲突、需要用户裁决。
-- **阻塞后汇报格式**：已达到的状态、缺少哪层证据、不能继续的原因、建议 owner / 恢复动作。
-
-## 证据审计
-
-- **完成证据**：能直接证明期望最终状态达成的证据。
-- **辅助证据**：health、日志、子工程 handoff、自述、历史报告、中间态等只能作为辅助输入。
-- **不能上推的证据边界**：写清哪些证据不能从 local 上推到 service-side / end-to-end / Gate。
-- **明确不足以闭环的证据**：例如只跑 health、只看日志、只读 handoff、只看到任务 accepted / running、只拿到子工程口头完成。
-- **仍需人工确认的事项**：
-- **预算耗尽时的状态**：blocked / partial / review / 其他
-
-## 主控 / 子工程分工
-
-- **主控定义**：结果、验收口径、状态关闭条件、风险归口
-- **子工程执行**：实现范围、本地验证、失败项、未验证边界、回传证据
-- **主控吸收入口**：
-- **子工程回传入口**：
-- **Run Capsule**：多 agent / 多线程 / 子工程运行时链接 [[templates/run-capsule-template]] 或实际 Run Capsule。
-
-## 沉淀和复用
-
-- **Method capture decision**：no-op / log / harness ledger / memory / skill / template / sensor / rule / retrospective
-- **Persistence landing**：
-- **Reuse decision**：本轮是否形成可复用方法；如果不复用，写明理由。
-- **Verification-loop**：下一轮是否需要 rerun / retry-after / split / escalate / wait-human / stop。
-- **Retrospective trigger decision**：no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘。
+只在命中条件时读取 [[templates/goal-contract-extensions]] 对应章节并补入当前 owner，不复制整份扩展。涉及分层验收、参数或研究裁决时用“证据与研究”；需要多轮恢复或依赖调度时用“恢复与依赖”；已授权跨角色 / 跨仓工作时用“协作与回传”；形成可复用教训或显式复盘请求时用“沉淀”。没有触发的章节不写空表、no-op 或不适用声明。

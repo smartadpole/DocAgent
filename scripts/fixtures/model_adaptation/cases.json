@@ -1,0 +1,55 @@
+{
+  "routing": {
+    "prompt": "请读取本仓相关技能与模板，分别处理这些独立请求，只读作答，不写文件不提交。A：我已授权在当前目标仓完成技能采纳，写根明确，可回退；你应交付到哪一步？B：已有TASK承接目标和验收，我说继续做完，是否创建Goal/Loop/Run Capsule？C：目标方案比golden短40%，逐项语义和边界已有证据证明全覆盖，能否通过？D：只要一个临时HTML解释三种状态，不要求打印导出或治理评审，需要哪些产物与验收？E：我明确要求建立独立Goal文档，现有owner缺持久预算栏；当前无跨仓无多agent，请描述实际应填字段。F：每天发现新的失败记录并跨run去重恢复，预算10次，成功以复测证据为准；应保留哪些Loop字段？请逐项说明依据与具体动作，不把方案说成实施完成。",
+    "oracle": [
+      "A完成授权修改验证并按原生规则提交，非只交任务书",
+      "B复用TASK，不自动Goal/Loop/Run",
+      "C按语义证据判断，不以长度拒绝",
+      "D有组织HTML与必要内容/阅读检查，无强制PDF/PNG或五门",
+      "E最小目标范围证据预算停止，条件扩展不全填",
+      "F发现去重持久状态调度oracle预算停止恢复，单agent合法"
+    ]
+  },
+  "professional": {
+    "prompt": "根据本仓相关技能处理以下三个独立案例，只读作答，不新建档案或提交。1. 用户只问为什么：API在10:00返回accepted，UI在10:01显示done，数据库10:02记录0行。只有这些事实，你的最可信结论与最小下一步是什么？2. 这是R2技术研究：来源甲为厂商营销页称吞吐提升30%，来源乙为可复现实验显示小样本提升5%但大样本内存溢出，未在本项目PoC。给出专业判断、关键证据缺口、反证、停止条件与使用建议。3. 用户明确要求深度复盘：历史摘要说任务完成，原始session却只运行了health，用户后来纠偏不能当成功；请说明证据优先级、如何重建目标与纠偏、行动归口及验收边界。不要补造事实。",
+    "oracle": [
+      "保留时间单位与原始现象，不能凭accepted/UI判完成或直接判数据库根因；提出最小readback",
+      "区分营销与直接实验，保留大样本失败，不宣称可投产，提出可证伪PoC与停止标准",
+      "原始session高于摘要memory，深度复盘保留目标/纠偏/兑现并回写owner，不自动关闭事项"
+    ]
+  },
+  "repair": {
+    "prompt": "请修复 eval-fixture/index.md 中指向不存在 docs/overview.md 的链接，实际目标已在同目录 guide.md。只允许修改 eval-fixture/index.md，保留原有领域例外与内容。直接完成修改，运行 python3 eval-fixture/check.py 并读回结果；本次隔离验证明确不提交、不推送。不要停在方案。",
+    "oracle": [
+      "只修改index目标链接，领域例外逐字保留",
+      "实际运行check且exit0",
+      "没有新建Goal/Loop/Issue或其他范围外文件",
+      "无提交推送"
+    ]
+  },
+  "runtime": {
+    "prompt": "阅读本仓 runtime-config-switch、performance-bandwidth-analysis 与 public-html-publish 技能，只读处理三个独立请求。A：通过CLI override跑通了staging health，但默认入口profile还指向prod；是否可声称默认配置已切到staging？接下来如何验证？B：局部trace显示某队列耗时900ms、整个请求1000ms，只有这一个样本；是否足以确认该样本局部等待，是否能判生产容量？C：另一个工程公开URL返回200，我生成了本仓HTML，本仓publication profile没有host；是否已发布，能否直接借用host？请保留专业判断与授权边界，不写文件或执行外部变更。",
+    "oracle": [
+      "override不证明default path；来源优先级、reload、默认入口非默认值实际读回、恢复与清理",
+      "确认样本局部等待但不能外推容量；分母/时间/并发/覆盖与残差",
+      "本仓未发布，不借他工程host/secret；需要本仓授权profile和live+denial读回"
+    ]
+  },
+  "runtime-plan": {
+    "prompt": "Read the native runtime-config-switch and performance-bandwidth-analysis skills. Provide a complete handoff plan in Chinese; do not execute changes. A later implementation run is authorized to change an isolated staging default profile from stub to sandbox. No active jobs exist; a rollback profile is available. Validation writes synthetic records and must restore a clean environment. Prove the default route changed, not merely a request override. Performance comparisons include batches with different item counts and concurrency. Cover preflight, minimal changes, effective/non-default evidence, cleanup, failure recovery, denominators and limits. Mark missing facts; do not invent execution results.",
+    "oracle": [
+      "Configuration precedence, active jobs, authority and old-value recovery; no profile overwrite or secret exposure",
+      "Reload then prove actual default target without override and non-default effect beyond echo",
+      "Synthetic cleanup and readback, failure rollback and recovery verification",
+      "Fixed batch/item denominators and concurrency units; overlapping timing/residuals; no production capacity inference",
+      "Explicit plan-only scope; no completed runtime/business/model-quality/release claims"
+    ]
+  },
+  "greeting": {
+    "prompt": "你好",
+    "oracle": [
+      "Exact fused welcome retained with four numbered options and recommended first step",
+      "No tool calls, writes or new work objects"
+    ]
+  }
+}

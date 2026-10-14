@@ -26,10 +26,10 @@ tags: [views, lens, presentation]
 
 - 只有用户要求 HTML / 图文文件 / 打印 / PDF / PNG / 持久页面，或本轮明确需要 current / snapshot lens 时，才写入 `views/`。
 - 每个持久 lens 必须能回到 source pack、证据边界和原始入口。
-- 每个新复杂或持久呈现必须声明 eligibility、subject/source、关系图、三轴、五门 evaluator 与 versioned trace；旧 grandfather artifact 不追补新 schema。
+- 正式导出、公开交付或治理证据模式必须声明 eligibility、subject/source、关系图、三轴、五门 evaluator 与 versioned trace；旧 grandfather artifact 不追补新 schema。
 - current lens 不记录历史快照结论；snapshot lens 不冒充当前事实。
 - PDF / PNG / SVG 只作为导出、打印、预览或分发产物，不作为事实源提交。
-- 生成或刷新持久 HTML / print view 时，必须说明是否已生成同源 PDF / PNG；如果没有实际导出，只能写“具备导出配置”或“待导出”。
+- 用户要求导出或正式 v2 交付时，必须说明是否已生成同源 PDF / PNG；如果没有实际导出，只能写“具备导出配置”或“待导出”。
 - 生成或刷新持久 HTML / print view 时，必须从同一 HTML / source manifest 生成 PDF 和至少一张 PNG 到忽略目录，并在最终回复展示 PNG 预览；导出失败时只能写失败原因。
 - 复杂或持久 lens 必须在 HTML meta、JSON script 或等价机器可读块中保留 `static_visual_qa`，字段覆盖 layout、type、spacing、palette、component roles、accessibility、export render、finish grade、视觉强度、层级幅度、组件多样性、颜色预算、调整循环、渲染审阅、review artifact 和视觉验收结果。
 - 生成或刷新 canonical HTML 后，还必须按 [[skills/public-html-publish/SKILL]] 和 [[views/publication]] 给出 public_url；没有真实 host / live readback 时写明 blocked 原因，不能声称公网完成。

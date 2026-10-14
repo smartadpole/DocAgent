@@ -14,6 +14,7 @@ import sys
 import tempfile
 import zlib
 from pathlib import Path
+from agent_guidance import read_conditional_sources
 from typing import Any
 
 
@@ -206,7 +207,7 @@ def portable() -> list[str]:
     for rel, terms in inventory.get("required_terms", {}).items():
         path = ROOT / rel
         if path.is_file():
-            text = path.read_text(encoding="utf-8")
+            text = read_conditional_sources(ROOT, rel, errors)
             for term in terms:
                 ensure(errors, term in text, f"inventory: {rel} missing {term}")
     ensure(errors, inventory.get("portable_gate", {}).get("exports_required") is False, "portable: exports must not be required")
@@ -219,7 +220,7 @@ def portable() -> list[str]:
         if (ROOT / rel).is_file() and not rel.startswith("scripts/")
     )
     ensure(errors, "active_consumer_pointer=v1" not in active_text, "compatibility: active v1 pointer residual")
-    ensure(errors, "dual-write" not in active_text.lower() or "禁止 dual-write" in active_text or "no dual-write" in active_text.lower(), "compatibility: dual-write residual")
+    ensure(errors, "dual-write" not in active_text.lower() or "禁止 dual-write" in active_text or "禁止 v1/v2 dual-write" in active_text or "不 dual-write" in active_text or "no dual-write" in active_text.lower(), "compatibility: dual-write residual")
     return errors
 
 

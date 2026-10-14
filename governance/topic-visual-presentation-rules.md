@@ -25,11 +25,11 @@ topic_presentation_profile:
   validation: portable-structure without exports, runtime artifact readback, negative suite, v1 zero-write, public live/deny, check_all, git diff --check
 ```
 
-[[skills/topic-visual-presentation/SKILL]] 是唯一运行入口。先做 presentation eligibility，再冻结 subject_package、source_pack、reader contract 和三轴；`admit` 默认 HTML，inline/ephemeral/current/snapshot 默认同源 PDF/PNG 到临时或 ignored exports。
+[[skills/topic-visual-presentation/SKILL]] 是唯一运行入口。默认按用户问题组织 HTML，保留来源与证据边界并检查内容和阅读效果；普通即时呈现不强制 PDF/PNG 或五门。正式导出、公开交付或治理证据场景才冻结 presentation eligibility、subject_package、source_pack、reader contract、三轴并执行下述 v2 合同。
 
 主题、项目 owner 和独立知识不可混同：`projects/` 维护项目事实，`articles/` / `concepts/` 维护独立知识；视图和导出不成为 truth source。problem-focus 仅是 content_scope。
 
-五门 evaluator（contract-schema、semantic-content、visual-quality、delivery-findability、reader-utility）独立且不得上推。semantic-content 必须同时有确定性 sensor、builder-independent model judge 与版本化 rubric/calibration/trace；无真实 reader oracle 则 reader-utility=unproven。没有通用人工 veto。
+正式 v2 模式的五门 evaluator（contract-schema、semantic-content、visual-quality、delivery-findability、reader-utility）独立且不得上推。semantic-content 必须同时有确定性 sensor、builder-independent model judge 与版本化 rubric/calibration/trace；无真实 reader oracle 则 reader-utility=unproven。没有通用人工 veto。
 
 `views/` 仅承接 canonical current/snapshot；registry 记录 source、refresh 和五门边界。旧 artifact 仅按 legacy baseline grandfather；同路径刷新须 pre/post hash、reason 和 compatibility readback。公开发布遵守 [[governance/public-html-publish-rules]]；本仓当前没有已发布页面，其他工程的发布读回不能作为本仓证据。
 

@@ -1,68 +1,35 @@
 ---
 type: skill-transfer
 skill: loop-engineering
-updated: 2026-06-17
+updated: 2026-10-14
 ---
 
 # Loop Engineering Transfer
 
 ## 能力目标
 
-让目标工程具备受控循环能力：发现输入、形成队列、分派 Worker、独立评价、持久化状态并决定 `stop / rerun / retry-after / split / escalate / wait-human / schedule-next`。迁移目标不是新增一个 loop 目录、一个模板或一段说明，而是建立一套可持续运行的 agent 循环控制面。
+实现跨run持续发现、去重、评价、持久恢复与可停止调度。 运行入口为 [[skills/loop-engineering/SKILL]]；条件参考随入口按触发迁移，不全量注入每次运行。
 
 ## 可以吸收
 
-- Loop 方法入口：何时从一次性 Goal / Run Capsule 升级为 loop，以及何时只能 `not-ready` 或 `discovery-only`。
-- Execution posture：每轮必须标清 `orchestrator-only`、`orchestrator-plus-workers`、`direct-execution` 或 `blocked`；direct-execution 只能用于权限、写入边界和验证合同都清楚的小范围动作。
-- Loop Contract 字段：Objective、Discovery Source、Trigger / Schedule、Run Queue And State、Agent Topology、Worker Ownership、Evaluator Oracle、Persistence Routing、Budget And Safety、Next-run Decision。
-- Run Capsule / Worker 回传接线：Parent Loop Contract、Input discovery item、Allowed writes、Required evidence、Limits、State transition、Next-run recommendation。
-- Evaluator oracle：脚本、独立 agent、人工 reviewer 或真实运行工具；禁止生成者自评替代 evaluator。
-- Persistence routing：no-op、log、harness ledger、memory、skill、template、sensor、rule、software-development 或目标工程等价项。
-- Scheduler / trigger 与安全边界：人工、定时、事件、外部平台、本地调度失效边界、重试 / 退避、人工批准和 rollback。
-- Sensor / 检查或结构化 review：入口存在、模板字段、Worker limits、Evaluator oracle、禁止项、单一信息源和检查命令。
+- Discovery source、Run queue、Persistent state、Evaluator oracle、Scheduler/trigger和Budget/stop。
+- 缺关键条件只能discovery-only/not-ready，不启动写入型循环。
+- 单agent合法；委派已授权且有需要才读Worker参考，Run Capsule按恢复/合流需要建立。
+- 消费项、幂等标识、状态转换、证据、next-run decision与失败恢复。
+- Loop不授予外部写入、自动发布或父级关闭权限。
 
 ## 只能抽象吸收
 
-- 上游工程的项目状态、业务事实、服务实例、运行 ID、历史 handoff、矩阵排行和 source revision 只能作为方法参考，不能写进目标工程事实源。
-- 目标工程已有 issue / task / risk / report / service registry / memory / log / feedback ledger 时，Loop 结果必须分流到这些 owner 页面；没有时先建立等价记录落点，不硬造平行看板。
-- 目标工程没有 `skills/`、`templates/` 或 `scripts/check_all.py` 时，可把能力落到 agent workflow、governance 入口或结构化 review 清单，但仍要保留 Worker limits、Evaluator oracle 和 Next-run decision。
-- 业务循环脚本只能作为 discovery source、Worker 工具或 evaluator oracle 候选，不能冒充 Loop Contract 或持久状态。
-- `git fetch --all --prune` 只刷新远端视图；`pull / merge / rebase / reset / checkout` 不是默认动作。只有 clean、behind、用户授权且可 fast-forward 时，才能裁决为 `ff-only update`。
+目标调度系统、状态存储、oracle、业务owner、Git策略与runbook需要本地确定；脚本不自动代表完整循环控制。
 
 ## 禁止复制
 
-- 禁止复制 AcknowledgeBase 或其他源工程的项目事实、业务名、数据库表、服务名、运行 ID、本地 handoff、历史报告或一次性状态。
-- 不把 Loop Engineering 迁移成无人值守自动化许可。
-- 不新建平行 `loop/` 状态系统、平行任务看板或第二套真相源。
-- 不自动关闭 Gate / FP / EP / TASK / Issue / release，不自动合并、发布、改生产事实或改高优先级规则。
-- 不让 Worker 自述、模型自评、health、日志、accepted / running 或测试全绿替代 evaluator。
+不复制来源工程身份、私有路径、项目状态、服务实例、业务数据、凭据、历史日志或一次性检查结论。源工程可访问不等于获准修改；目标已有规则和用户授权优先。迁移结果不冒充业务验收或外部评价完成。
 
 ## 目标工程结构自检
 
-1. 是否已有 `AGENTS.md`、README / INDEX、governance、skills、templates、scripts 和项目状态 / issue / task / report 入口。
-2. 是否已有 Goal Contract、Run Capsule、handoff、task brief、runbook 或等价运行控制面。
-3. 是否有稳定 Discovery source、可去重 Run queue、Persistent state 和 Evaluator oracle。
-4. Loop 结果应回写到哪些单一信息源：issue、TASK、risk、AP、report、service-registry、memory、log、harness ledger 或 engineering feedback。
-5. 涉及子工程时，是否已记录目录、branch、remote / upstream、fetch 结果、ahead / behind / diverged、dirty / local-only、update decision 和 worker launch allowed？
-6. 哪些动作必须人工批准：写入生产、合并、发布、关闭状态、改规则、启用定时调度或外部事件触发。
-7. 是否已有检查脚本；若无，至少写结构化 review 清单覆盖入口、模板字段、Worker limits、Evaluator oracle、禁止项和单一信息源。
+查找已有等价能力、当前owner、实际发现入口、允许写入范围和验证方法；优先复用，缺项按需要补齐。模板、reference和sensor只迁移当前能力真正消费的部分，不为形式完整预建目录。
 
 ## 验证要求
 
-- `contract`：有 Loop Contract 或等价控制面，能记录 discovery source、queue、state、evaluator、budget 和 next-run decision。
-- `quality-gate`：有脚本、真实运行工具、人工 reviewer 或独立 agent evaluator。
-- `verification-loop`：每轮能把结果映射为 passed / partial / blocked / failed / skipped。
-- `sensor`：有机器检查或结构化 review，防止概念页孤立、状态只留聊天、Worker 自评替代 evaluator。
-- `entry`：README / INDEX / AGENTS / governance / skills / templates 入口能发现 skill、Loop Contract、Run Capsule 和检查命令。
-
-## 目标工程落地顺序
-
-1. 先补 Loop Contract 模板或等价字段。
-2. 再把 Run Capsule / Worker 回传格式接入目标工程 agent 规则。
-3. 再定义 Discovery source、Run queue、Persistent state 和 Evaluator oracle。
-4. 再补 sensor，至少检查 loop 入口、模板字段、Worker limits、Evaluator oracle、禁止项和 `check_all.py` 接线。
-5. 最后才考虑小范围、可回滚、人工批准的 assisted patch loop。
-
-## 最终交付要求
-
-目标工程 agent 必须说明：已更新位置、检查结果、未验证边界、未自动执行的动作和后续需要人工批准的事项。若用户禁止提交 commit，最终回复必须明确未提交。
+验证重复输入不重复副作用、预算/失败会停、恢复游标有效、Worker局部证据不关整体；确定性oracle可用时不强制另开模型。 运行目标适用检查，说明真实变更、验证和未证明的范围；结构检查不能证明模型行为正确。

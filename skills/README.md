@@ -109,7 +109,7 @@
 - [[skills/cross-project-skill-adoption-prompt/SKILL]]：跨工程技能迁移任务书生成技能。用于把已沉淀技能或能力抽象成可交给目标工程 agent 执行的提示词、资料清单、吸收边界、落位步骤和验证要求。
 - [[skills/cross-project-governance-audit/SKILL]]：跨工程治理审计技能。用于按需读取多个工程的关键治理文件，对照平台级标准评估成熟度、漂移、共性缺口和可执行 handoff 边界。
 - [[skills/work-item-auto-decomposition/SKILL]]：项目 / 领域绑定的研发事项自动拆解技能。用于本仓需求、Gate、FP、EP、TASK、risk、issue、test、验收关系不完整时，生成候选拆解、关系节点和关闭证据；不作为通用迁移 skill。
-- [[skills/topic-visual-presentation/SKILL]]：主题图文呈现唯一运行入口。即时 subject/source 输入在 admit 后默认 HTML；problem-focus 只是子范围，PDF/PNG、五门 evaluator、legacy baseline 和公开发布边界独立可追溯。
+- [[skills/topic-visual-presentation/SKILL]]：主题图文呈现唯一运行入口。默认按来源与阅读目标生成 HTML；PDF/PNG、正式 v2 bundle 与五门 evaluator 按实际交付条件启用，公开发布另受授权与现场读回约束。
 - [[skills/public-html-publish/SKILL]]：HTML 公开发布技能。用于把 canonical HTML views 按 [[views/publication]] 生成 public_url 或明确 blocked 原因，并守住 HTML-only、host / prefix 和 live readback 边界。
 - [[skills/documentation-maintenance/SKILL]]：文档维护技能。用于代码、结构、规则或公开行为变化后，保守检查文档是否过期、缺失或不准确，并产出修正报告或受控文档改动。
 - [[skills/issue-analysis/SKILL]]：主控侧 issue / incident 分析技能。用于把模糊问题拆成权威事实源、最小根因链、责任边界、跨工程分工、联测方案和主控文档回写。
@@ -129,3 +129,10 @@
 - 外部诊断里的 `missing signals` 是候选修复方向，不是执行命令；补完后要回看本库是否更清晰、更可维护，而不是只看矩阵分数是否更高。
 
 项目技能通过 `.agents/skills/` 的逐技能相对链接提供发现，正文只维护在 `skills/`；新建或移除技能时同步链接并运行 `agent-guidance` 检查。
+
+
+## 模型适配与条件能力
+
+全部 18 个原生技能继续由各自 `SKILL.md` 唯一承接；`.agents/skills` 只做相对链接发现。较长的跨仓、研究、复盘与正式交付细节通过带触发说明的 `conditional_sources` 引用；普通任务不全量加载。成熟度元数据是已有证据信号，不能冒充本轮真实模型验证。
+
+当前整改设计与逐项验收见 [[projects/design/topics/agent-workflow-memory-harness-skill-landing]] 和 [[projects/development/reports/2026-10-14-full-model-adaptation]]。`scripts/skill_invariants.py` 校验必要能力接线，真实模型测试使用 `scripts/run_model_adaptation.py`；二者分开记录结果。直接执行、短答、深度专业分析和正式治理走同一入口的条件分支，不保留旧流程入口。

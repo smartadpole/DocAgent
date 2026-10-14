@@ -2,50 +2,35 @@
 type: skill-transfer-manifest
 skill: retrospective-capability
 status: active
-updated: 2026-06-25
+updated: 2026-10-14
 tags: [skill, transfer, retrospective]
 ---
 
-# Retrospective Capability Transfer Manifest
+# Retrospective Capability Transfer
 
 ## 能力目标
 
-把项目交付、软件研发链、历史对话、Agent 工作流、Harness episode、行动分流和治理自演进收敛为目标工程可持续运行的复盘系统。
+根据实际学习需求组织复盘深度、证据、归档与行动兑现。 运行入口为 [[skills/retrospective-capability/SKILL]]；条件参考随入口按触发迁移，不全量注入每次运行。
 
 ## 可以吸收
 
-- 复盘总技能 + 子项路由，而不是把项目、软件研发和历史对话复盘平铺成互相竞争的入口。
-- 复盘合同：对象、目标、深度等级、证据计划、上轮行动兑现回检、输出形态和不做项。
-- 项目交付 / 软件研发链的读取顺序、交付链回看、偏差分类和行动分流。
-- 历史对话 / Agent 工作流的证据源分层、自动触发矩阵和显式深度复盘要求。
-- 行动分流到已有 owner 页面，不在复盘目录形成平行看板。
-- `retrospective-system` 或等价 sensor 作为机器可发现入口。
+- 显式标准/深度复盘与单点快诊分开，普通任务结束不自动复盘。
+- 对象/目标/时间窗、相关上轮行动兑现回检、反证和未验证边界。
+- 交付与历史对话分支按对象加载；档案聚合避免一信号一文件。
+- 行动回原owner，事实与学习分离，单次偏差不默认升级规则。
 
 ## 只能抽象吸收
 
-- 本库的 `projects/`、`governance/`、`skills/`、`templates/` 目录名。
-- Gate / FP / EP / TASK / AP / report 事项体系；目标工程应映射到自己的 issue、task、milestone、acceptance 或 report 系统。
-- Harness ledger 形态和 sensor 接入方式；目标工程已有治理 backlog 时优先复用。
-- 当前 wiki 的 wikilink、log、提交和检查脚本习惯。
+年度分区、多维索引、项目事项与ledger路由适配目标已有postmortem/lessons体系；不固定目录或要求每个入口重复链接。
 
 ## 禁止复制
 
-- 不复制项目事实、历史 log、复盘正文、ledger 条目、运行 ID、服务路径、用户偏好、一次性 handoff 或当前状态。
-- 不把 `historical-dialogue-retrospective` 当成完整复盘体系。
-- 不把行动项留在复盘目录里形成第二看板。
-- 不为了迁移制造空壳 skill；目标工程没有技能体系时，先把流程落到 AGENTS、WORKFLOW 或 docs 方法页。
+不复制来源工程身份、私有路径、项目状态、服务实例、业务数据、凭据、历史日志或一次性检查结论。源工程可访问不等于获准修改；目标已有规则和用户授权优先。迁移结果不冒充业务验收或外部评价完成。
 
 ## 目标工程结构自检
 
-- 已有 retrospective / postmortem / incident review / lessons-learned 结构时优先复用。
-- 有 `projects/` 时，复盘档案优先落到 `projects/retrospectives/`；没有时按目标工程文档治理区选择 `docs/retrospectives/` 或等价目录。
-- `templates/` 如果是前端或运行资产目录，不把复盘模板塞进去，改用文档模板目录。
-- 没有 `skills/` 体系时，不制造空壳 skill；先写入 agent workflow 或规则入口。
+查找已有等价能力、当前owner、实际发现入口、允许写入范围和验证方法；优先复用，缺项按需要补齐。模板、reference和sensor只迁移当前能力真正消费的部分，不为形式完整预建目录。
 
 ## 验证要求
 
-- 检查入口可发现性：README、INDEX、AGENTS / WORKFLOW、skills、templates、复盘档案入口都有短链接。
-- 检查模板字段：对象、目标、实际结果、关键事实、上轮行动回检、证据地图、偏差原因、行动分流、治理自演进、未验证边界。
-- 检查单一信息源：Issue、事故、测试报告、决策、memory、trace 和复盘职责没有互相替代。
-- 跑目标工程已有检查；如有 `check_all`，接入 `retrospective-system` 或等价检查。
-- 最终回复说明落位、检查结果、commit hash、未验证边界和没有复制的项目事实。
+验证轻信号不爆文件、明确深度请求不降为短总结、旧行动得到回检、复盘不关闭Issue/Gate；尊重只口头/不写文件要求。 运行目标适用检查，说明真实变更、验证和未证明的范围；结构检查不能证明模型行为正确。

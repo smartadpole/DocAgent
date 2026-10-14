@@ -70,20 +70,20 @@ Worker 只交证据，不能宣布整体闭环。
 | ability extraction | 触发条件、事实源、agent behavior、writeback guard、evidence boundary |
 | owner landing | 每一层实际写入的 owner、skill、template、memory、ledger 或 sensor |
 | evaluator | `governance-system-rectification` 专项、相关专项 sensor、完整 `check_all` 和人工 / external readback 边界 |
-| persistence routing | log、harness ledger、project memory、skill、template、sensor、rule 的 needed / no-op / blocked |
+| persistence routing | 发生可复用增量或结构性信号时选择 log、harness ledger、project memory、skill、template、sensor 或 rule；无信号不填空回执 |
 | closeout proof | commit、structure-only、insufficient-evidence、runtime / external evaluator 未验证边界 |
 
 如果只完成 topic manifest、摘要矩阵、入口链接或单个 sensor，Evaluator 只能裁决 `partial / review`，不能裁决治理体系全面完成。
 
 ## Closeout Proof
 
-收尾时必须说明：
+收尾说明实际结果、证据与缺口；以下字段仅在对应机制启用时适用，不重复已有 owner：
 
 - 当前 owner / 已启用 Run Capsule 状态：passed / partial / blocked / failed。
 - 已委派时 Worker 回传是否齐全，缺口在哪里。
 - Evaluator 结论和不能上推的证据边界。
-- State transition 与 Next-run recommendation。
-- Persistence Routing 的实际落点。
+- 有跨 run 状态时记录 State transition 与 Next-run recommendation。
+- 有沉淀信号时记录 Persistence Routing 的实际落点。
 - 运行了哪些 sensor；sensor 只证明结构 wiring，不证明真实运行质量。
 
 ## Production-Grade Control Plane Hardening
@@ -95,7 +95,7 @@ Worker 只交证据，不能宣布整体闭环。
 | `agent-finalizer` | 有文件改动、提交、跨仓回传或 scoped closeout 时，必须有范围证明、预存 dirty / residual 分类、post-write check 和最终状态读回；finalizer 可以是脚本、模板字段或人工 evaluator，但不能只靠最终回复自述。 | 不复制某个工程的脚本路径、protected repo 清单或提交数量。 |
 | `external-write-boundary` | 主控 / 子工程 / 上游 owner 必须分清 `not authorized / orchestrator-only / explicitly authorized`；能访问文件系统不等于有写授权。 | 不把目标工程事实写进 AcknowledgeBase、wiki 或用户级配置。 |
 | `acceptance-governance` | 验收前先冻结对象、测试方案、核心用例、环境路由、人工确认边界和上推边界；局部 smoke、health 或接口回显不能关闭父级 Goal / Gate / Issue。 | 不把下游具体 AP、TASK、Issue 状态复制成本仓状态。 |
-| `long-task-progress` | 长 Goal / Loop / Run Capsule 必须可读当前切片、已收集材料、已执行动作、结果 / 阻塞、下一步、证据入口、`blocked_for_done`、`not_blocked_for_implementation` 和 monitoring policy。 | 不把运行中、accepted 或 Worker 自述当整体完成。 |
+| `long-task-progress` | 需跨 run 恢复的任务应可读当前进度、结果 / 阻塞、下一步和证据入口；区分 `blocked_for_done` 与 `not_blocked_for_implementation`，仅实际启用监控时补 monitoring policy，不强制另建重复字段。 | 不把运行中、accepted 或 Worker 自述当整体完成。 |
 | production readback | 生产或 runtime 结论必须有 service-side / live readback；本地配置、代码 diff、health 绿灯和局部日志都只能作为辅助证据。 | 不复制具体机器、服务、端口、表名、账号或运行 ID。 |
 | performance evidence ledger | 触发性能、吞吐、带宽或容量判断时，使用 [[skills/performance-bandwidth-analysis/SKILL]] 先建立 timing ledger、coverage matrix 和不可上推边界。 | 不把单点 probe、raw transfer 或小样本 smoke 上推成生产容量。 |
 | runtime config switch | 触发配置切换时，使用 [[skills/runtime-config-switch/SKILL]] 证明 live service 使用新配置，并写回 service registry / TASK / report / log。 | 不把文件 diff、请求级 override 或 health 当默认配置已切换。 |

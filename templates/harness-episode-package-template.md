@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-HARNESS-EPISODE-001
 status: active
-updated: 2026-05-25
+updated: 2026-10-14
 tags: [template, harness, episode, observability]
 ---
 
@@ -15,20 +15,15 @@ tags: [template, harness, episode, observability]
 - **触发用户意图**：
 - **响应模式**：快速诊断 / 知识沉淀 / Issue 分析 + 沉淀 / 验收关闭 / 规则升级 / 子工程实现 / 批处理
 - **是否发生模式切换**：
-- **是否使用 Goal Contract**：
 - **最终状态**：done / partial / blocked / review
 
-## Goal Contract
+## 当前 owner 与完成依据
 
-- **原始目标 / 用户最新目标**：
-- **期望最终状态**：
-- **完成判定**：
-- **验证面**：
-- **证据边界**：
-- **约束**：
-- **探索分支上限**：
-- **阻塞停止条件**：
-- **明确不足以闭环的证据**：
+- **事项 / owning page**：链接当前目标、授权、验收和停止条件所在章节。
+- **本次范围差异**：仅记录相对 owner 的实际增量；用户新要求先更新 owner。
+- **完成证据与缺口**：链接直接证据，并写明本次结论能支持的层级。
+
+只有本次实际启用独立合同，才引用对应 Goal Contract / Run Capsule / Loop Contract 及其启动原因；启动条件分别见 [[templates/goal-contract-template]]、[[templates/run-capsule-template]]、[[templates/loop-contract-template]]。Episode 记录真实过程，不复写目标正文，也不生成未启用合同的空字段。
 
 ## 首次 Checkpoint
 

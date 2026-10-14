@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 
 
 REQUIRED_FILES = (
@@ -17,17 +19,7 @@ REQUIRED_FILES = (
     "scripts/check_all.py",
 )
 
-SKILL_TERMS = (
-    "分层落位",
-    "关系画像",
-    "主入口",
-    "上位",
-    "邻接",
-    "反向回链",
-    "log",
-    "sensor",
-    "knowledge-linking",
-)
+SKILL_TERMS = skill_terms('knowledge-linking')
 
 TRANSFER_TERMS = (
     "## 能力目标",
@@ -49,7 +41,7 @@ def read(repo: Path, rel: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"{rel}: required knowledge-linking file is missing")
         return ""
-    return path.read_text(encoding="utf-8")
+    return read_conditional_sources(repo, rel, errors)
 
 
 def require_terms(rel: str, text: str, terms: tuple[str, ...], errors: list[str]) -> None:

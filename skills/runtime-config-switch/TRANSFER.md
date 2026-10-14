@@ -2,36 +2,27 @@
 
 ## 能力目标
 
-把下游工程中的配置切换经验抽象成通用 runtime 变更合同：确认配置边界、最小编辑、live readback、default path proof、smoke、cleanup、service-registry 回写和 rollback。
+将配置修改与live service默认路径消费证明闭环。 运行入口为 [[skills/runtime-config-switch/SKILL]]；条件参考随入口按触发迁移，不全量注入每次运行。
 
 ## 可以吸收
 
-- 配置切换触发条件和 out-of-scope 判定。
-- live readback 证据链：文件、进程 / runtime endpoint、部署参数、日志、health、默认路径证明。
-- 低风险 smoke、cleanup、rollback 和 owner 回写顺序。
-- secret 不入 tracked 文档的守卫。
+- 配置源/优先级、活动任务、变更窗口、最小编辑、runbook与rollback。
+- live readback与default path proof，请求override不能替代默认路径。
+- 低风险smoke、receipt与持久化readback、synthetic cleanup及owner回写。
+- secret保护及配置证据不能上推模型、性能或发布验收。
 
 ## 只能抽象吸收
 
-- 具体服务的重启命令、配置文件路径、部署系统、feature flag 名称、base URL、端口和 callback 只能留在目标工程。
-- 某个项目的 synthetic ID、验证样本、读回账号、清理 SQL 或服务台账格式不能原样迁移。
+具体key、部署方式、端口、地址、重启命令、验证账号与清理方式只在目标授权环境确定。
 
 ## 禁止复制
 
-- 不复制真实环境变量、secret、DSN、token、机器地址、端口、账号、服务名、业务 URL 或一次性运行证据。
-- 不把某工程的 config switch smoke 写成本仓的 runtime validation。
+不复制来源工程身份、私有路径、项目状态、服务实例、业务数据、凭据、历史日志或一次性检查结论。源工程可访问不等于获准修改；目标已有规则和用户授权优先。迁移结果不冒充业务验收或外部评价完成。
 
 ## 目标工程结构自检
 
-目标工程采纳前必须确认：
-
-- `local_source_of_truth`：service registry / TASK / report / log 的真实落点。
-- `allowed_write_scope`：agent 是否有权限编辑配置、重启服务、触发 smoke 或清理数据。
-- `required_profile`：哪些配置源、deployment params 和 runtime readback 必须检查。
-- `validation_command`：health、runtime endpoint、smoke、readback 和 cleanup 如何证明。
-- `blocked_when_missing`：无权限、活动任务风险、缺回滚源、缺 runtime readback 或缺 cleanup 时如何停下。
+查找已有等价能力、当前owner、实际发现入口、允许写入范围和验证方法；优先复用，缺项按需要补齐。模板、reference和sensor只迁移当前能力真正消费的部分，不为形式完整预建目录。
 
 ## 验证要求
 
-- 本仓结构验证：`python3 scripts/check_all.py --only skill-maturity,agent-control-plane-hardening`。
-- 目标工程 runtime 验证：必须由目标工程 live service / registry / report 证明；本仓技能只提供通用合同。
+分别验证文件已改但服务未消费、override生效而默认未切换、smoke存在持久化副作用；缺readback保持partial/blocked。 运行目标适用检查，说明真实变更、验证和未证明的范围；结构检查不能证明模型行为正确。

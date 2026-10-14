@@ -59,8 +59,8 @@
       {"unit_id": "unit-evaluation-reader", "unit_type": "unknown"}
     ],
     "claims": [
-      {"claim_id": "claim-entry-eligibility", "unit_id": "unit-entry-eligibility", "text": "主题呈现先做 admit/reject/clarify/abstain 准入。"},
-      {"claim_id": "claim-entry-exports", "unit_id": "unit-entry-exports", "text": "admit 后默认 HTML 并同源导出 PDF/PNG。"},
+      {"claim_id": "claim-entry-eligibility", "unit_id": "unit-entry-eligibility", "text": "普通主题呈现先按用户阅读目标组织 HTML。"},
+      {"claim_id": "claim-entry-exports", "unit_id": "unit-entry-exports", "text": "普通 HTML 不强制导出，正式交付按对应合同验证。"},
       {"claim_id": "claim-contract-shape", "unit_id": "unit-contract-shape", "text": "页面包必须先裁决 single-page 或 page-tree。"},
       {"claim_id": "claim-contract-binding", "unit_id": "unit-contract-binding", "text": "每个 included unit 绑定 claim、source fragment 与 rendered section。"},
       {"claim_id": "claim-contract-download", "unit_id": "unit-contract-download", "text": "每页提供本地 PDF 与桌面/移动 PNG 下载。"},
@@ -71,8 +71,8 @@
       {"claim_id": "claim-evaluation-reader", "unit_id": "unit-evaluation-reader", "text": "本地通过不能上推为读者效用通过。"}
     ],
     "source_fragments": [
-      {"source_fragment_id": "fragment-entry-eligibility", "owner_ref": "skills/topic-visual-presentation/SKILL.md", "selector": "contains:admit | reject | clarify | abstain", "rendered_text": "admit | reject | clarify | abstain"},
-      {"source_fragment_id": "fragment-entry-exports", "owner_ref": "skills/topic-visual-presentation/SKILL.md", "selector": "contains:PDF/PNG", "rendered_text": "PDF/PNG"},
+      {"source_fragment_id": "fragment-entry-eligibility", "owner_ref": "skills/topic-visual-presentation/SKILL.md", "selector": "contains:默认快速呈现", "rendered_text": "默认快速呈现"},
+      {"source_fragment_id": "fragment-entry-exports", "owner_ref": "skills/topic-visual-presentation/SKILL.md", "selector": "contains:不强制", "rendered_text": "不强制"},
       {"source_fragment_id": "fragment-contract-shape", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:single-page | page-tree", "rendered_text": "single-page | page-tree"},
       {"source_fragment_id": "fragment-contract-binding", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:source_fragment_id", "rendered_text": "source_fragment_id"},
       {"source_fragment_id": "fragment-contract-download", "owner_ref": "templates/topic-presentation-template.md", "selector": "contains:png-mobile", "rendered_text": "png-mobile"},

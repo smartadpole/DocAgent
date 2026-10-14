@@ -2,6 +2,8 @@
 
 使用位置：[[projects/development/execution/developer-execution-workflow]]
 
+执行单引用当前 TASK / 父 EP owner 的目标、范围和验收，仅补本次派发差异与实现输入。按当前阶段保留适用字段，不预填未适用字段。独立 Goal Contract、Run Capsule 或 Loop Contract 只有命中各自启动条件时才链接实际合同，见 [[templates/goal-contract-template]]、[[templates/run-capsule-template]]、[[templates/loop-contract-template]]；普通编码任务不默认建立。
+
 ```md
 ## 编码任务执行单
 
@@ -11,28 +13,17 @@
 - 父 EP：
 - TASK：
 - ISSUE / issue-trigger：
-- 上游需求 / 目标：
+- 当前 owner / 上游需求：目标、授权、范围和停止条件所在章节
 - 关系类型：
 - 主责模块：
 - 执行方：
 - 协同方 / 上下游：
-- 目标：
-- 范围：
-- 不做：
-- Goal Contract：
-- 原始目标 / 用户最新目标：
-- 期望最终状态：
-- 完成判定：
-- 验证面：
-- 证据边界：
-- 必须保持的约束：
-- 探索分支上限：
-- 阻塞停止条件：
-- 明确不足以闭环的证据：
+- 本次派发范围与不做项：仅写相对 owner 的差异
+- 必须保持的约束：引用 owner，补充实现环境约束
 - 输入：
 - 输出：
-- 父 EP Done Contract：
-- TASK Done Contract：
+- 父 EP Done Contract：引用父级完成标准及本 TASK 对应部分
+- TASK Done Contract：引用当前验收条目，不另建完成标准
 - 接口 / 数据合同：
 - 测试方案：
 - 核心用例 / 检查点：

@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 
 
 REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
@@ -57,27 +59,14 @@ REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
         "DB readback",
         "不新增通用 skill",
     ),
-    "skills/performance-bandwidth-analysis/SKILL.md": (
-        "Performance Bandwidth Analysis",
-        "timing ledger",
-        "coverage matrix",
-        "production",
-        "service-side readback",
-        "不可上推",
-    ),
+    "skills/performance-bandwidth-analysis/SKILL.md": skill_terms('performance-bandwidth-analysis'),
     "skills/performance-bandwidth-analysis/TRANSFER.md": (
         "## 可以吸收",
         "## 只能抽象吸收",
         "## 禁止复制",
         "## 目标工程结构自检",
     ),
-    "skills/runtime-config-switch/SKILL.md": (
-        "Runtime Config Switch",
-        "live service",
-        "default path proof",
-        "service registry",
-        "rollback",
-    ),
+    "skills/runtime-config-switch/SKILL.md": skill_terms('runtime-config-switch'),
     "skills/runtime-config-switch/TRANSFER.md": (
         "## 可以吸收",
         "## 只能抽象吸收",
@@ -90,13 +79,7 @@ REQUIRED_TERMS: dict[str, tuple[str, ...]] = {
         "agent-finalizer / external-write-boundary / acceptance-governance / long-task-progress",
         "registry-driven 全工程逐行吸收边界",
     ),
-    "skills/cross-project-governance-audit/SKILL.md": (
-        "举一反三",
-        "source registry",
-        "逐工程审计",
-        "system-layer capability",
-        "project-bound fact",
-    ),
+    "skills/cross-project-governance-audit/SKILL.md": skill_terms('cross-project-governance-audit'),
     "scripts/check_all.py": (
         "agent-control-plane-hardening",
         "check_agent_control_plane_hardening.py",
@@ -113,7 +96,7 @@ def main() -> int:
         if not path.exists():
             errors.append(f"{rel}: missing required file")
             continue
-        text = path.read_text(encoding="utf-8")
+        text = read_conditional_sources(repo, rel, errors)
         for term in terms:
             if term not in text:
                 errors.append(f"{rel}: missing required term {term!r}")

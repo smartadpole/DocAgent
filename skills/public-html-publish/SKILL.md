@@ -1,6 +1,6 @@
 ---
 name: public-html-publish
-description: HTML 公开发布技能。用于把本仓库 canonical HTML views 通过受控 public URL、静态托管或等价公网入口发布给外部阅读者，同时维护 HTML-only 边界、host / prefix 分离、public_url 公式、live readback 和 blocked 口径。
+description: 将已授权的 canonical HTML 发布为可分享公网 URL，检查公开范围、路径隔离与真实读回；生成本地 HTML 本身不触发发布。
 maturity: mature
 evidence_signals: [skill, TRANSFER, governance, template, publication-profile, quality-gate, sensor, views]
 transfer_ready: true
@@ -10,96 +10,22 @@ sensor: python3 scripts/check_all.py --only public-html-publish
 
 # Public HTML Publish
 
-## 定位
+只在用户要求公网访问、外部分发或明确授权自动发布时使用。HTML 呈现与公开发布是独立动作；发布权限不由文件生成推导。
 
-本技能承接当前 wiki 仓库内 canonical HTML views / lens / report 的公网发布合同。它只负责发布入口、访问边界、URL 生成和公网读回验证，不替代 Markdown 真相源、项目状态、验收关闭、发布裁决或人工确认。
+## 发布合同
 
-本仓库统一采用上游 `public-html-publish` 源能力；只吸收抽象后的 HTML-only、host / prefix / canonical path、public_url、live readback、拒绝路径和 blocked 口径。禁止复制来源工程的 host、prefix、secret、启动器、screen session 或任何一次性运行事实。
+读取 [[views/publication]] 与实际 canonical HTML，确认授权对象、host / prefix、部署模式和拒绝路径。当前运行状态只由 publication profile 与本轮读回承接，不在技能维护第二份 live/blocked 状态。
 
-## 触发
+默认 HTML-only：本仓 canonical root 为 `views/current/` 与 `views/snapshots/`。Markdown、projects、raw、日志、原始 assets、`.exports`、PDF/PNG/SVG 或全仓目录不默认公开；确需新增资源时单独明确 allowlist。
 
-- 用户要求 HTML / views / lens / report 能公网访问、远程查看、外部分发或获得可分享 URL。
-- 用户要求新增 HTML 后自动得到 public URL。
-- 用户要求检查 public_url、host、path prefix、Cloudflare / Netlify / Pages / 静态托管、live readback 或拒绝路径。
+public_url 按 host + path prefix + canonical relative path 生成，保持 canonical path 映射。share-only live host / Tunnel、static site deploy（如 Pages / Netlify）、internal preview 分开声明；临时隧道不等于持久部署。
 
-## 工作流
+发布前检查本机绝对路径、内部系统地址、凭据、个人或敏感业务信息。多工程使用各自 prefix/profile，multi-project / multi-host 的授权、撤销和 secret 边界不互相借用。
 
-1. 读取 [[views/publication]]、[[views/README]]、相关 canonical HTML 和本技能的 `TRANSFER.md`。
-2. 区分发布对象：canonical HTML、Markdown 真相源、导出缓存、原始 assets、snapshot 和全局目录入口。
-3. 判定发布模式：`share-only live host`、`static site deploy`、`internal preview` 或 `blocked`。
-   - `Cloudflare Pages` / `Pages Direct Upload` 可作为 static site deploy 模式；只有完成部署读回、路径隔离、回滚或撤销说明后，才能写为可公开访问。
-   - `Cloudflare Tunnel` 或本机 share-only host 只证明当前隧道 / profile 可访问，不等同于 Pages 持久部署。
-4. 默认只发布 `views/current/**/*.html` 与 `views/snapshots/**/*.html`；不默认公开 Markdown、`projects/`、`raw/`、日志、assets、`.exports` 或整个仓库。
-5. 按 publication profile 生成 public_url：host + path prefix + canonical relative path；缺少 host / deploy / token / live readback 时只输出 blocked 原因。
-6. 发布前检查 HTML 中是否包含本不该公开的本机绝对路径、内部系统地址、凭据、密钥、票据、健康、合同或个人联系信息。
-7. 完成前运行静态检查；有公网条件时再运行 live readback 和 denial readback，并确认 multi-project / multi-host 边界没有互相借用。
-8. verification-loop 必须包含证据计划、检查方式、行动 owner、完整产物和上层抽象：静态检查证明合同，live readback 证明公网访问，denial readback 证明拒绝路径，artifact completeness 证明 public URL / canonical HTML / source page / export QA 可互相追溯。
-9. 生成或刷新 canonical HTML 后，最终回复必须给出 public URL；如果不能给出，必须说明具体 blocked 原因。
+## 读回与交付
 
-## 成熟度与证据信号
+静态检查证明配置与范围；live readback 验证公网响应、稳定内容标记、内部链接；denial readback 验证根目录、导出缓存和其他非公开对象被拒绝。HTTP 200、构建成功、localhost、截图或配置存在不能单独证明发布完成。
 
-- `maturity`：`mature`。本技能已有 skill、TRANSFER、governance、publication profile、canonical HTML sample、template、views registry 和 sensor；具体公开可访问结论必须另有 live readback，缺失时降级为 blocked。
-- `skill`：本页定义触发、发布对象、工作流、验收口径和禁止项。
-- `TRANSFER`：跨工程迁移边界见 [[skills/public-html-publish/TRANSFER]]。
-- `governance`：公开发布裁定见 [[public-html-publish-rules]]。
-- `template`：publication profile 骨架见 [[templates/public-html-publication-template]]。
-- `views`：当前仓库发布 profile 见 [[views/publication]]。
-- `sensor`：`python3 scripts/check_all.py --only public-html-publish` 检查 skill、TRANSFER、governance、template、profile、gitignore 和 canonical HTML 边界。
-- `evidence boundary`：结构接线和静态检查只能证明发布合同存在；真实公网完成必须以 live readback 为准。
+已授权发布但缺 host、部署权限或读回时说明具体 blocked 原因，不编造 URL。成功后给可访问 public URL、canonical/source 追溯与撤销边界。普通本地 HTML 生成无需声明缺公网条件。
 
-| Level | 名称 | 最低要求 |
-| --- | --- | --- |
-| L1 | local export | 只有本机 HTML 或导出文件；不能声称公网可用。 |
-| L2 | publish profile | 有 publication profile，区分 canonical HTML、导出缓存、源文档和 assets。 |
-| L3 | URL contract | 有可重复 public_url 公式、host / prefix / canonical path 分离、gitignore 和静态检查。 |
-| L4 | live readback | 有公网 200、内容标记、拒绝路径和内部链接可达验证。 |
-| L5 | multi-project safe publish | 支持多工程 / 多主机边界、撤销 / secret rotation、隐私审查和迁移验证。 |
-
-当前仓库按 [[views/publication]] 处于 `blocked`：没有配置 public host，也没有已发布页面。`python3 scripts/check_public_html_publish.py --live` 返回 blocked 是正确结果；不得借用其他工程的 host、prefix、secret、mount、服务状态或 live readback 声称本仓 HTML 已公开。
-
-## 输出格式
-
-```markdown
-**Public HTML Publish**
-- Canonical HTML:
-- Publication profile:
-- Public URL:
-- Mode:
-- Static check:
-- Live readback:
-- Denial readback:
-- Cloudflare Pages / Pages Direct Upload:
-- verification-loop:
-- Artifact completeness:
-- Blocked reason:
-- Not published:
-```
-
-## 验收口径
-
-- 任意 canonical HTML 都能按 [[views/publication]] 的 public_url 公式得到可解释 URL，或得到明确 blocked 原因。
-- 发布对象限定为 canonical HTML；`.exports`、PDF / PNG / SVG、Markdown、日志、项目页、原始 assets、凭据和整个仓库不默认公开。
-- 公网验证必须使用 `python3 scripts/check_public_html_publish.py --live` 或等价 `curl -L -A 'Mozilla/5.0'` 读回。
-- 根路径、全局目录、导出缓存和非公开对象必须按 profile 返回 404 / 403 / blocked。
-
-## 禁止项
-
-- 不把 `file://`、`localhost`、截图、PDF、PNG、构建成功或本机打开当作公网发布完成。
-- 不混用 Cloudflare Tunnel、Pages、Workers、Netlify、GitHub Pages、本机服务和内网预览事实。
-- 不默认公开 assets、logs、projects、raw data、Markdown 真相源或整个仓库。
-- 不让 public HTML 成为第二份真相源。
-- 不复制来源工程 host、path prefix、share secret、启动器、screen session 或运行状态。
-
-## 相关入口
-
-- [[skills/public-html-publish/TRANSFER]]
-- [[public-html-publish-rules]]
-- [[templates/public-html-publication-template]]
-- [[views/publication]]
-- [[views/README]]
-- [[skills/topic-visual-presentation/SKILL]]
-
-
-## L5 live profile update (2026-06-19)
-
-This project now treats public-html-publish as a live share-only publication contract. A valid publication claim must include `public_url`, HTML-only source scope, `host / prefix`, canonical path mapping, live readback, denial readback, multi-project prefix isolation, and multi-host boundary notes. If any host, secret, prefix, or live denial check is unavailable, the result must downgrade to blocked instead of claiming L5.
+使用 [[templates/public-html-publication-template]] 补实际 profile；规则 owner 为 [[public-html-publish-rules]]。检查命令 `python3 scripts/check_public_html_publish.py`；公网条件具备时执行 `--live` 或等价实际读回。sensor 状态不能代替现场证据。迁移见 [[skills/public-html-publish/TRANSFER]]。

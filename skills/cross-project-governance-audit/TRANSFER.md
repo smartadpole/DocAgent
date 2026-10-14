@@ -1,52 +1,28 @@
-# Cross-Project Governance Audit Transfer
+# Cross Project Governance Audit Transfer
 
 ## 能力目标
 
-让目标工程可以按统一维度审计自身或多个工程的 agent / harness / governance 成熟度，输出漂移、缺口、共性模式和可执行 handoff。
+对指定工程按证据审计治理机制，输出真实缺口、识别缺口和可执行整改。 运行入口为 [[skills/cross-project-governance-audit/SKILL]]；条件参考随入口按触发迁移，不全量注入每次运行。
 
 ## 可以吸收
 
-- 审计模式：单工程、多工程、本库自查、handoff 生成。
-- 审计维度：执行入口、响应路由、Harness 反馈、sensor、模板 / 技能成熟度、跨工程协作。
-- 证据分级：confirmed、partial、missing、blocked。
-- 输出骨架：维度表、共性模式、不反哺项目材料、handoff 候选和证据边界。
-- 审计不上推边界：治理信号不等于业务质量或验收状态。
-- source-depth：审计必须说明读取深度；只读根入口、只读矩阵或只读 handoff 时不得写成完整治理审计。
-- handoff-ready：建议足够交给目标工程执行，不代表目标工程已经完成修复。
-- non-reference：项目事实、排行榜、旧 source revision、路径和一次性状态只能列为不反哺材料。
-- 深度等级：quick scan / targeted audit / deep governance audit / handoff package；深度模式必须与用户目标、读取预算和验证面匹配。
-- 证据计划：写清将读取 AGENTS、governance、skills、TRANSFER、templates、sensor、reports、matrix 还是 Git preflight。
-- 触发优先级：显式审计请求、主控验收、重复治理失守、矩阵异常和下游反哺候选优先；普通只读询问不自动升级。
-- 完整产物：正式审计至少包括 Audit Header、Source Depth、Drift Report、Handoff-Ready Taskbook、Transfer Manifest、Closeout Proof。
-- 行动 owner、检查方式、完成口径：handoff-ready 输出必须让目标工程 agent 能按 owner、命令和证据层执行，而不是只读建议。
-- 上层抽象 / 举一反三：只吸收可复用模式、同类失败和同类风险，不复制目标工程业务事实。
+- 单工程/多工程/本仓审计按用户范围选择；明确全登记工程请求才按注册表全集覆盖。
+- source-depth、true-gap / recognition-gap / signal-only-gap、证据强度及 no runtime validation 边界。
+- handoff-ready 需有 owner、写入范围、操作、验证与停止条件，不等于整改已完成。
+- 对外模板使用 source archetype / capability pack，分开 system-layer capability 与 project-bound fact。
 
 ## 只能抽象吸收
 
-- 源工程的治理标准、注册表、工程清单和历史报告只能作为方法参考。
-- 目标工程应替换成自己的治理入口、检查脚本、技能目录和协作规则。
-- 如果目标工程只需要自查，不必建立跨工程注册表。
+目标治理维度、注册表、Git流程与检查入口按目标自身结构映射；不需要多工程审计时不建注册表。
 
 ## 禁止复制
 
-- 不复制外部工程路径、分数、排名、审计日期、提交记录、项目状态或业务事实。
-- 不把审计结论当作目标工程已修复或已验收。
-- 不把其他工程的本地提交 / handoff 规则搬进目标工程。
+不复制来源工程身份、私有路径、项目状态、服务实例、业务数据、凭据、历史日志或一次性检查结论。源工程可访问不等于获准修改；目标已有规则和用户授权优先。迁移结果不冒充业务验收或外部评价完成。
 
 ## 目标工程结构自检
 
-迁移前检查：
-
-1. 是否有根级 agent 规则入口。
-2. 是否有响应模式、harness ledger、模板反哺、技能成熟度或等价机制。
-3. 是否有 `scripts/check_all.py` 或 CI 检查。
-4. 是否有跨工程协作边界和写权限规则。
-5. 是否真的需要跨工程审计；如果只需要本库自查，保留单工程模式即可。
+查找已有等价能力、当前owner、实际发现入口、允许写入范围和验证方法；优先复用，缺项按需要补齐。模板、reference和sensor只迁移当前能力真正消费的部分，不为形式完整预建目录。
 
 ## 验证要求
 
-- 对目标工程自身跑一次轻量审计，输出 confirmed / partial / missing / blocked。
-- 审计报告必须写明 source-depth 和 no runtime validation 边界。
-- 如果新增 sensor，运行对应检查并说明是否做了负向测试。
-- handoff 只作为建议，除非用户授权，不直接执行目标工程改动。
-- 最终回复写清审计对象、证据边界、更新文件和检查结果。
+用一个有等价能力但命名不同的对象检验 recognition-gap；用一个仅文件存在、无运行证据的对象验证不上推。 运行目标适用检查，说明真实变更、验证和未证明的范围；结构检查不能证明模型行为正确。

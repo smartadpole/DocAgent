@@ -1,303 +1,35 @@
 ---
 name: issue-analysis
-description: 主控侧 issue / incident 分析技能。用于处理模糊问题、故障、联调失败、验收争议、跨工程阻塞、状态/日志/API/DB/artifact/报告不一致、责任边界不清或需要分工协调的问题；帮助 Codex 对齐事实源、下游处理权威证据、定位最小根因链、裁定主责与协同方、拆解跨工程任务、设计联测/验收方案，并决定主控文档如何吸收子工程反馈。
+description: 调查已发生故障、偏差、验收争议或证据冲突；保留原始现象并先做最小可区分验证，跨工程分工与正式案件按实际需要展开。
 maturity: leading
 evidence_signals: [skill, README entry, governance, sensor, TRANSFER]
 transfer_ready: true
 sensor: python3 scripts/check_all.py --only skill-maturity
+conditional_sources: [skills/issue-analysis/references/cross-project-investigation.md]
 ---
 
 # Issue Analysis
 
-## 定位
+把观察到的问题收敛到有证据的原因、责任边界与验证动作。单次问因先快速诊断，不自动建 Issue、任务树或改状态；需要持续跟踪、正式修复或影响验收时再进入对应 owner。
 
-把一个“看起来有问题”的输入，收敛成可以裁决、可以分派、可以联测、可以回写的问题分析结果。
+## 最小诊断
 
-本技能服务主控文档项目，而不是某一个子工程。主控侧负责定义需求 / Gate / TODO / FP / 验收口径，读取多个子工程证据，裁定整体状态，组织分工和联测，并把子工程 handoff 吸收到项目事实源。
+保留原始现象、触发入口、期望、影响范围与直接证据；期望未知时标明待确认，不替用户编造。列出最小根因候选，优先执行能区分候选的验证，避免先铺整个业务链路。
 
-不要照搬子工程 skill 的业务事实、目录规则、提交规则或本地 handoff 规则。可以吸收它们的抽象方法，例如事实源分层、计数 / 状态单位归一、边界归属、错误传播、证据闭环和 agent 过程自检。
+区分直接观察、上下文、反证和未知项。用 confirmed / likely / possible / blocked 表达把握；只有现象、机制和影响路径串起来才确认根因。定位不到内部机制时停在最窄可信边界，明确下一项证据。
 
-## 成熟度与证据信号
+## 状态与证据冲突
 
-- `maturity`：`leading`。本技能已具备技能正文、README 入口、治理路由、专项 sensor 和迁移清单；后续成熟度回归由 `python3 scripts/check_all.py --only skill-maturity` 检查。
-- `template`：不单独维护第二份 issue-analysis 模板；本技能的输出格式已经是可复制骨架。若后续出现反复产出正式 Issue 案件页，优先回到 [[templates/development-issue-template]]，不在技能页复制项目案件模板。
-- `governance`：响应模式、验收关闭、子工程写入边界和报告不上推口径分别回到 [[governance/issue-analysis-rules]]、[[response-mode-routing]]、[[WORKFLOW]]、[[POLICY]]、[[AGENTS]] 和事项 / 报告模型。
-- `TRANSFER`：跨工程吸收边界见 [[skills/issue-analysis/TRANSFER]]；迁移时只吸收事实源分层、最小根因链、责任边界、联测方案和回写守卫，不复制本库项目事实。
-- `evidence boundary`：本技能输出的是问题分析、分工和验证方案；不能替代正式 Issue 案件、测试报告、TASK / EP / FP / Gate 关闭或人工确认。
+先归一对象、单位、ID、时间点和权威源：requirements 定义期望；orchestration 表示调度；service_contract / service_internal 表示服务合同与处理；domain_units 表示业务分母；persistence 表示持久化；presentation 表示展示；agent_process 表示 agent 实际操作。
 
-## 主控视角
+请求成功或 accepted/running 不等于后台完成，receipt 不等于 DB readback，artifact 包通过不等于代码实现或端到端通过。UI、日志摘要、原始模型输出不能替代合同定义的业务结果。不同运行 ID、请求 ID、写入 ID、flow run ID 不混用。
 
-主控分析和子工程分析的区别：
+跨工程联调、责任争议或多层状态冲突需要分工时，读取 [[skills/issue-analysis/references/cross-project-investigation]]。涉及 agent 行为时先读真正影响该行为的入口规则、技能、配置和 handoff，缺口决定扩读，不遍历全部上下文目录。
 
-- **子工程视角**：证明本仓库负责的代码、接口、配置、artifact、测试和 handoff 是否正确。
-- **主控视角**：判断多个子工程证据是否共同满足项目目标、合同、Gate、TODO / FP 关闭条件和用户可见闭环。
-- **子工程输出**：本地代码变更、测试、handoff、未吸收项和外部 follow-up 建议。
-- **主控输出**：责任裁决、跨工程分工、联测方案、测试报告、TODO / FP / Gate 状态、风险 / 会议归口和正式项目文档回写。
+## 修复与留证
 
-默认不直接修改子工程文件、子工程 handoff 或子工程代码，除非用户明确授权当前轮写那个子工程。主控侧应把需要子工程吸收的事项写入本库报告、TODO、风险、worklog 或最终回复。
+验证覆盖原始复现、实际影响层和相关回归。参数问题用非默认值/边界值证明参数真实生效；服务或持久化问题需要对应 readback。不能验证时报告具体缺口，不写 done。
 
-## 工作流
+正式案件使用 [[templates/development-issue-template]] 保存 Issue Intake：原始现象、入口、report-or-task、artifact-class、root-cause 状态及关联证据。报告承接单次测试，TASK 承接修复，设计/需求/服务 owner 承接变化，Issue 保留案件事实；不复制到平行状态表。根因解释不自动关闭 TASK / EP / FP / Gate。
 
-### 0. 先判响应模式
-
-进入完整 issue 分析前，先按 [[response-mode-routing]] 判断本轮是不是只需要快速诊断。
-
-- 如果用户只是问“为什么 / 在哪 / 先分析 / 差异是什么”，先走快速根因链：问题框、最相关事实源、最小根因候选、置信度和待确认项。
-- 如果结论有长期项目价值、会影响 TODO / FP / Gate / status / risk / report，或用户要求沉淀，再显式切到完整 Issue 分析 + 沉淀。
-- 快速根因链不默认新建 issue、不默认改项目状态，也不默认关闭 TODO / FP / Gate。
-- 如果用户要求验收、关闭、准出或 `done`，切到验收关闭模式；issue root cause 只能作为证据之一，不能自动等于关闭完成。
-- 如果本轮只是规则候选或流程反思，优先走知识沉淀或规则升级，不把它写成项目现场 issue。
-
-切换模式时要给 checkpoint：先告诉用户当前最可信结论，再说明现在进入沉淀、验收或规则升级闭环。
-
-### 1. 先框定问题
-
-先写一个短问题框：
-
-- **issue-id**：已有正式 Issue 时写 issue-id；没有时写 `intake-only`，不得为了分析强行建 issue。
-- **Issue Intake**：把原始现象、触发入口、report-or-task 关系、artifact-class 和 root-cause 状态先冻结，再进入分工。
-- **现象**：用户看到什么不对，或哪条链路失败。
-- **业务影响**：影响用户结果、项目推进、Gate 准出、TODO / FP 关闭、服务运行、数据可信度、UI 展示还是跨工程协作。
-- **期望行为**：按当前需求 / 设计 / TODO / 合同应该发生什么。
-- **触发入口**：用户动作、API、调度任务、定时任务、手动 run、代码提交、配置变更、数据变化或外部服务。
-- **范围**：环境、服务、模型 / 算法、数据库、业务对象、样本量、运行轨道、时间窗口。
-- **当前证据**：日志、截图、接口返回、DB readback、artifact、handoff、测试报告、代码路径、项目文档链接。
-- **主控问题**：这是要定位根因、裁定状态、拆分任务、修正验收标准、升级风险，还是组织联测。
-- **report-or-task**：本轮输出是测试报告、Issue 案件、TASK 修复、risk、handoff 还是只读分析。
-- **artifact-class**：log / API response / DB readback / UI screenshot / HTML lens / report / handoff / code diff / service state / other。
-- **root-cause**：confirmed / likely / possible / blocked；没有证据链时不得写 confirmed。
-
-如果期望行为不清晰，先标为“待确认期望”，不要直接替用户拍板。
-
-### 2. 读取上下文单元
-
-如果问题涉及某个子工程的 skill、agent 行为、handoff 或本地执行规则，不要只读 `SKILL.md`。把相关 agent context 作为一个单元读取：
-
-- 子工程根 `AGENTS.md` 或 `.codex/AGENTS.md` 中触发和边界规则。
-- 子工程 `.agents/skills/`、`.codex/skills/`、`.claude/skills/` 中相关技能和同名 / 前身技能。
-- 技能本地元数据，如果存在，例如 `agents/openai.yaml`。
-- 子工程 `docs/handoffs/<skill-or-topic>/` 或当前 TODO / FP 的 handoff。
-- 本库对应的项目主页面、TODO / FP、最新测试报告、worklog、风险、设计合同和状态页。
-
-吸收时只提炼抽象能力和主控需要的协作边界，不复制子工程业务事实、路径规则、代码仓库规则或本地提交规则。
-
-### 3. 建事实源地图
-
-把材料分成四类：
-
-- **直接证据**：错误信息、失败命令、日志片段、状态字段、DB 行数、artifact 内容、截图、复现步骤。
-- **上下文证据**：近期提交、运行配置、服务台账、设计合同、TODO 状态、测试报告、风险项、会议结论。
-- **反证 / 排除项**：已经确认正常的服务、路径、参数、样本或历史结论。
-- **未知项**：缺少的真实环境、owner、凭据、样本、运行事实、人工确认或业务规则。
-
-再按事实源标注每条证据的权威层：
-
-- `requirements`：需求、trace、设计、Gate、TODO / FP、验收标准、风险、会议和正式决策。
-- `orchestration`：调度、状态机、flow / task、重试、取消、并发、定时任务、运行参数和运行日志。
-- `service_contract`：服务请求 / 响应、状态查询、错误码、callback、receipt、取消 / 重跑合同。
-- `service_internal`：子工程内部实际处理到哪一步、当前对象、worker、adapter 调用、内部日志。
-- `domain_units`：进度或正确性的业务单位，例如批次、业务对象、业务记录、图片、frame、record、row、artifact。
-- `persistence`：数据库写入、readback、manifest、snapshot、ledger、object store、缓存或持久化历史。
-- `presentation`：UI、报告、图表、日志渲染、artifact 摘要、用户可见状态文本。
-- `agent_process`：Codex 本轮或近期改了什么、声称了什么、漏查了什么、未验证什么、是否误放文件或越界修改。
-
-结论分级使用：
-
-- `confirmed`：现象、机制和影响路径已经被证据串起来。
-- `likely`：证据强，但缺少一段验证。
-- `possible`：只是候选假设。
-- `blocked`：缺关键证据，不能继续定因。
-
-### 4. 归一计数和状态单位
-
-先问清每个数字和状态是谁生产的、表示什么对象：
-
-- 不把请求成功当作后台完成。
-- 不把调度状态当作服务内部状态。
-- 不把服务 receipt 当作数据库 readback。
-- 不把 artifact 包通过当作代码实现或端到端闭环通过。
-- 不把 UI 展示、日志摘要和真实持久化数据混成同一事实源。
-- 不把一个业务单位的进度误读成另一个业务单位。
-
-如果状态或计数冲突，先解释它们是不是不同层、不同单位、不同时间点或不同权威源，不急着判定谁错。
-
-### 5. 定位最小根因链
-
-不要把整个业务链路当成固定模板。先下游处理本次问题涉及哪些产品 / 工程表面：
-
-- 调度 / 编排入口。
-- 服务 API / 状态合同。
-- 子工程内部处理。
-- 外部服务、模型、数据库或对象存储。
-- 持久化 / readback。
-- UI / 报告 / 用户可见展示。
-- 项目文档、验收标准或 handoff 吸收。
-
-再找最小根因链：
-
-- 哪一层最早知道真实状态。
-- 哪一层没有暴露、记录、传播或展示这个状态。
-- 哪一层产生了错误副作用或缺失副作用。
-- 哪一层的验收标准、文档或结论已经过期。
-- 哪一层需要修复，哪一层只需要补观测、补报告或补吸收。
-
-### 6. 缩小到责任边界
-
-把定位落到最窄可信位置：
-
-- **代码位置**：仓库、文件、函数、配置、接口、测试或 handoff 路径。
-- **文档位置**：需求、trace、设计、TODO、FP、测试报告、风险、会议或服务台账。
-- **服务边界**：调度、业务服务、数据库、UI、外部模型 / 外部系统或其他子工程。
-- **数据边界**：批次、业务对象、运行 ID、写入 ID、artifact 路径、样本范围、时间窗口。
-- **流程边界**：需求未冻结、合同未明确、下游未吸收、人工未确认、准出证据不足。
-
-如果主控侧不能直接裁定子工程内部原因，结论写成“主控定位到某边界，需要子工程按以下证据继续确认”，不要伪装成已经完成内部根因分析。
-
-### 7. 做跨工程分工拆解
-
-按 owner / 模块拆任务，而不是按随手清单拆任务。每个任务写清：
-
-- **主责模块 / 执行方**：未确认具体人时写模块或角色。
-- **协同方 / 上下游**：谁提供输入，谁消费输出。
-- **工作范围**：具体服务、接口、文档、数据或测试对象。
-- **输入依赖**：需要的日志、样本、环境、权限、配置、业务确认或上游产物。
-- **交付物**：代码改动、配置、测试报告、handoff、DB readback、截图、运行记录或文档回写。
-- **验收方式**：local validation、service-side validation、end-to-end validation、人工确认或 Gate 准出证据。
-- **阻塞 / 风险**：不能执行或不能关闭的原因。
-- **主控吸收方式**：子工程回传后，主控要更新哪个测试报告、TODO、FP、风险、会议、设计或状态页。
-
-标注任务关系：
-
-- `parallel`：可以并行处理。
-- `sequential`：必须等上游完成。
-- `blocked`：缺证据、权限、owner 或业务拍板。
-
-### 8. 输出联测和验收方案
-
-验证方案必须能证明“问题被定位 / 修复 / 收口”，而不是只证明“跑过一次”。
-
-至少包含：
-
-- **复现**：如何看到当前问题。
-- **local validation**：子工程自己的最小验证。
-- **service-side validation**：服务实例、状态接口、artifact、日志、配置或持久化证据。
-- **end-to-end validation**：跨工程调用、状态查询、后台副作用、readback / artifact / UI 投影共同闭环。
-- **非默认值 / 边界值**：参数、profile、样本量、状态、重试、取消、dry_run、run_env、model_name、并发或失败预算。
-- **相关回归**：相邻功能、接口合同、状态机、写库、UI 投影、报告、Gate 准出是否受影响。
-- **证据落点**：测试报告、TODO、FP、风险、worklog、service-registry、handoff 或最终回复。
-
-如果不能验收，明确写“未验证”，并说明最小缺口。
-
-## 输出格式
-
-### 快速分析
-
-```markdown
-**响应模式**
-- 模式：
-- 是否需要升级：
-
-**问题框**
-- issue-id：
-- Issue Intake：
-- 现象：
-- 业务影响：
-- 期望行为：
-- 当前范围：
-- report-or-task：
-- artifact-class：
-- root-cause：
-
-**定位结论**
-- 权威事实源：
-- 最小根因链：
-- 最可能责任边界：
-- 置信度：
-- 关键证据：
-- 待确认：
-
-**分工拆解**
-- 任务：
-  主责模块 / 执行方：
-  协同方 / 上下游：
-  交付物：
-  验收方式：
-
-**下一步**
-```
-
-### 完整 Issue 分析
-
-```markdown
-**问题框**
-- 现象：
-- 业务影响：
-- 期望行为：
-- 触发入口：
-- 范围：
-
-**证据链**
-- 已确认：
-- 反证 / 排除：
-- 未知项：
-- 权威事实源：
-- 计数 / 状态单位：
-
-**定位**
-- 涉及表面：
-- 最窄责任边界：
-- 最小根因链：
-- 备选假设：
-- 置信度：
-
-**业务影响**
-- 影响对象：
-- 严重程度：
-- Gate / TODO / FP / 发布影响：
-
-**分工拆解**
-- 任务：
-  状态：
-  主责模块 / 执行方：
-  协同方 / 上下游：
-  工作范围：
-  输入依赖：
-  交付物：
-  验收方式：
-  主控吸收方式：
-  阻塞 / 风险：
-
-**验证方案**
-- 复现：
-- local validation：
-- service-side validation：
-- end-to-end validation：
-- 回归范围：
-- 人工确认：
-- 文档回写：
-```
-
-## 回写守卫
-
-分析后按影响面决定回写：
-
-- 项目状态、下一步或阻塞变化：回写 [[projects/README]] 或项目状态页。
-- TODO / FP 状态或关闭条件变化：回写 [[projects/development/execution/todo]]、[[projects/development/feature-points/README]] 或实体页。
-- 测试结论、复验失败或新测试点：回写 [[projects/development/reports/README]]。
-- 服务运行事实、端口、配置、健康检查或代码版本变化：回写 [[projects/service-registry]]。
-- 新风险、卡点、人工确认或会议议题：回写 [[projects/development/risks/README]] 或 [[projects/meetings/README]]。
-- 接口、状态语义、字段合同、数据写入或运行质量变化：回写 [[projects/design/README]] 下的对应设计页。
-- 需求范围、验收标准或主线口径变化：回写 [[projects/requirements]] 和 [[projects/trace]]。
-- 过程性分析和结构性动作：回写 [[log]]。
-
-## 禁止项
-
-- 不只吸收或修改 `SKILL.md`，却漏读相关 `AGENTS.md`、技能目录和 handoff。
-- 不照搬子工程的业务事实、仓库规则、提交规则或本地 handoff 路径作为主控规则。
-- 不用一句“应该是某模块问题”替代证据链。
-- 不把接口请求成功误写成后台效果完成。
-- 不把 handoff / artifact 包通过误写成代码实现或端到端闭环通过。
-- 不把旧报告结论外推到新需求或新验收标准。
-- 不把不同系统的运行 ID、请求 ID、写入 ID、flow run ID、业务 ID 或 artifact ID 混用。
-- 不把模型 / 服务 raw output 直接等同于最终业务结果，除非合同明确这样定义。
-- 不在缺少真实 DB readback、artifact、日志或人工确认时写成 `done`、准出或已关闭。
+主控默认只读子工程；已获授权才在 allowed write roots 内修复。规则 owner：[[governance/issue-analysis-rules]]；迁移见 [[skills/issue-analysis/TRANSFER]]。

@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 from agent_guidance import read_agent_sources
 
 
@@ -22,28 +24,7 @@ REQUIRED_FILES = (
     "templates/README.md",
 )
 
-SKILL_TERMS = (
-    "Loop Engineering",
-    "Discovery source",
-    "Run queue",
-    "Evaluator oracle",
-    "Persistent state",
-    "Scheduler / trigger",
-    "Budget / stop",
-    "Worker",
-    "Subproject Git preflight",
-    "Execution posture",
-    "direct-execution",
-    "ff-only update",
-    "Process record",
-    "Reuse decision",
-    "orchestrator-only",
-    "Human approval",
-    "stop / blocked conditions",
-    "software-development",
-    "不新建平行",
-    "evidence boundary",
-)
+SKILL_TERMS = skill_terms('loop-engineering')
 
 TRANSFER_TERMS = (
     "## 能力目标",
@@ -52,54 +33,14 @@ TRANSFER_TERMS = (
     "## 禁止复制",
     "## 目标工程结构自检",
     "## 验证要求",
-    "Loop Contract",
+    "Persistent state",
     "Run Capsule",
-    "禁止复制 AcknowledgeBase",
+    "不复制来源工程身份",
 )
 
-LOOP_TEMPLATE_TERMS = (
-    "## Discovery Source",
-    "## Trigger / Schedule",
-    "## Run Queue And State",
-    "## Agent Topology",
-    "## Subproject Git Preflight",
-    "## Worker Ownership",
-    "## Evaluator Oracle",
-    "## Persistence Routing",
-    "## Software Development Landing",
-    "## Budget And Safety",
-    "## Next-run Decision",
-    "Process Record",
-    "Reuse entry proof",
-    "Retrospective trigger decision",
-    "direct-execution",
-    "ff-only update",
-    "Stop / blocked conditions",
-    "人工确认边界",
-    "orchestrator-only",
-    "queued / running / passed / partial / blocked / failed / skipped",
-    "baseline fail + candidate pass",
-    "stop / rerun / retry-after / split / escalate / wait-human / schedule-next",
-    "禁止新建平行看板",
-)
+LOOP_TEMPLATE_TERMS = ('## 最小生效核心', '## 条件扩展', 'Discovery Source', 'Trigger / Schedule', 'Run Queue And State', 'Evaluator Oracle', 'Budget And Safety', 'next-run marker', 'queued / running / passed / partial / blocked / failed / skipped', 'baseline fail + candidate pass', 'stop / rerun / retry-after / split / escalate / wait-human / schedule-next', '不新建平行研发看板', '人工确认边界', 'limits', '调度恢复')
 
-RUN_CAPSULE_TERMS = (
-    "Parent Loop Contract",
-    "Run id",
-    "Input discovery item",
-    "State transition",
-    "Next-run recommendation",
-    "Worker 回传是否齐全",
-    "Subproject Git Preflight",
-    "Process Record",
-    "Reuse entry proof",
-    "Retrospective trigger decision",
-    "direct-execution",
-    "ff-only update",
-    "Stop / blocked conditions",
-    "manual-confirmation",
-    "orchestrator-only",
-)
+RUN_CAPSULE_TERMS = ('## 最小生效核心', '## 条件扩展', 'Parent Loop Contract', 'Run id', 'State transition', 'Next-run recommendation', 'Subproject Git Preflight', 'Process Record', 'manual-confirmation', 'limits', '外部仓库现场检查', '多角色合流')
 
 ENTRY_TERMS = {
     "AGENTS.md": ("Loop Engineering", "skills/loop-engineering/SKILL", "templates/loop-contract-template"),
@@ -119,7 +60,7 @@ def read_text(repo: Path, rel: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"{rel}: required Loop Engineering file is missing")
         return ""
-    return path.read_text(encoding="utf-8")
+    return read_conditional_sources(repo, rel, errors)
 
 
 def require_terms(rel: str, text: str, terms: tuple[str, ...], errors: list[str]) -> None:

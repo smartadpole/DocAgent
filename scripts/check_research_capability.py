@@ -7,6 +7,8 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,87 +56,10 @@ REQUIRED_TERMS = {
         "evaluation loop",
         "second upstream truth source",
     ),
-    "skills/research-capability/SKILL.md": (
-        "聚合入口",
-        "technology-research",
-        "证据等级",
-        "行动等级",
-        "当前性审计",
-        "不平铺外部 13 个子项",
-        "So-What",
-        "counter-evidence",
-        "deal-breaker",
-        "decision output",
-        "更新机制",
-        "深度等级",
-        "Path ROOT",
-        "行动 owner",
-        "完成口径",
-        "持久化",
-        "Frontier Technology Intake",
-        "Frontier Tech Intake",
-        "Research Intake",
-        "source package",
-        "A3 compensation",
-        "knowledge-linking",
-        "research-method-route-map",
-        "strong-template-kernel",
-        "Source Plan checkpoint",
-        "coverage matrix",
-        "Evidence Delta Re-open",
-        "Research Case Packet",
-        "Revision Brief",
-        "Delta Source Plan",
-        "outcome review",
-    ),
-    "skills/research-capability/reference/research-method-route-map.md": (
-        "Research Method Route Map",
-        "R0 线索",
-        "R4 尽调 / 接入",
-        "子项路由",
-        "结构化判断",
-        "竞争情报",
-        "尽职调查",
-        "科研方法",
-        "战略前瞻",
-        "溯源入口",
-        "Source Plan checkpoint",
-        "coverage matrix",
-        "Evidence Delta Re-open",
-        "Revision Brief",
-        "Delta Source Plan",
-        "反证面",
-        "风险门",
-        "行动兑现",
-    ),
-    "skills/technology-research/SKILL.md": (
-        "So-What",
-        "counter-evidence",
-        "deal-breaker",
-        "decision output",
-        "刷新触发",
-        "R0",
-        "R4",
-        "溯源入口",
-        "Source Plan checkpoint",
-        "coverage matrix",
-        "Evidence Delta Re-open",
-        "Revision Brief",
-        "Delta Source Plan",
-        "outcome review",
-    ),
-    "skills/research-capability/TRANSFER.md": (
-        "能力目标",
-        "可以吸收",
-        "只能抽象吸收",
-        "禁止复制",
-        "目标工程结构自检",
-        "验证要求",
-        "Frontier Technology Intake",
-        "source package",
-        "A3 compensation",
-        "不复制",
-    ),
+    "skills/research-capability/SKILL.md": skill_terms('research-capability'),
+    "skills/research-capability/reference/research-method-route-map.md": ('ACH', 'TAM/SAM/SOM', 'SUS/SEQ/HEART', 'KIT/KIQ', '三角验证', 'RCT', 'DiD', 'STEEP/PESTEL', 'Source Plan checkpoint', 'Evidence Delta Re-open', '授权'),
+    "skills/technology-research/SKILL.md": skill_terms('technology-research'),
+    "skills/research-capability/TRANSFER.md": ('R0–R4', 'L1–L6', 'Source Plan checkpoint', 'Evidence Delta Re-open', 'Research Case Packet', 'Revision Brief', 'access boundary', 'extraction quality', 'parser/evaluator', '不复制来源工程身份'),
     "templates/research-intake-template.md": (
         "Research Intake Template",
         "Intake Contract",
@@ -392,7 +317,7 @@ def main() -> int:
         path = ROOT / rel_path
         if not path.exists():
             continue
-        text = path.read_text(encoding="utf-8")
+        text = read_conditional_sources(ROOT, rel_path, errors)
         for term in terms:
             if term not in text:
                 errors.append(f"{rel_path} missing research-capability term: {term}")

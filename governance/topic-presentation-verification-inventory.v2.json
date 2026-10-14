@@ -4,6 +4,7 @@
   "inventory_policy": "complete-repo-local-active-surface-inventory",
   "active_writer_surfaces": [
     "skills/topic-visual-presentation/SKILL.md",
+    "skills/topic-visual-presentation/references/formal-delivery.md",
     "skills/topic-visual-presentation/TRANSFER.md",
     "templates/topic-presentation-template.md",
     "governance/topic-visual-presentation-rules.md",
@@ -35,10 +36,35 @@
     "views/.exports/topic-presentation-v2/active/"
   ],
   "required_terms": {
-    "skills/topic-visual-presentation/SKILL.md": ["topic-presentation-contract.v2", "single-page | page-tree", "local-export-resolver", "precision=minute"],
-    "templates/topic-presentation-template.md": ["contract_revision: topic-presentation-contract.v2", "source_fragment_id", "png-mobile", "precision: minute"],
-    "governance/topic-visual-presentation-rules.md": ["active_consumer_pointer=v2", "portable-structure", "v1 writer", "grandfather"],
-    "governance/topic-visual-presentation-evaluation.md": ["semantic-content", "visual-quality", "delivery-findability", "reader-utility"]
+    "skills/topic-visual-presentation/SKILL.md": [
+      "topic-presentation-contract.v2",
+      "不强制",
+      "默认快速呈现"
+    ],
+    "templates/topic-presentation-template.md": [
+      "contract_revision: topic-presentation-contract.v2",
+      "source_fragment_id",
+      "png-mobile",
+      "precision: minute"
+    ],
+    "governance/topic-visual-presentation-rules.md": [
+      "active_consumer_pointer=v2",
+      "portable-structure",
+      "v1 writer",
+      "grandfather"
+    ],
+    "governance/topic-visual-presentation-evaluation.md": [
+      "semantic-content",
+      "visual-quality",
+      "delivery-findability",
+      "reader-utility"
+    ],
+    "skills/topic-visual-presentation/references/formal-delivery.md": [
+      "single-page / page-tree",
+      "local-export-resolver",
+      "precision=minute",
+      "不 dual-write"
+    ]
   },
   "portable_gate": {
     "command": "python3 scripts/check_topic_visual_presentation.py --mode portable-structure",

@@ -2,24 +2,27 @@
 
 ## 能力目标
 
-建立唯一主题呈现入口、`topic-presentation-contract.v2` page bundle 与不可上推边界。
+形成结构清晰且内容保真的HTML阅读路径，并按明确交付需要导出或评审。 运行入口为 [[skills/topic-visual-presentation/SKILL]]；条件参考随入口按触发迁移，不全量注入每次运行。
 
 ## 可以吸收
 
-`admit / reject / clarify / abstain`、即时 `subject_package + source_pack`、typed relation 与 lifecycle、organization/adaptation、三轴运行、`single-page | page-tree`、逐 claim source binding、HTML 默认与每页 PDF/桌面 PNG/移动 PNG、分钟级带时区生成时间、portable/runtime 分门、五门 evaluator、独立 public publish 和 grandfather baseline。
+- 默认快速HTML，无需预先Topic文档；按信息层级与语义模块选择single-page/page-tree。
+- 普通呈现不强制PDF/PNG、calibration、逐claim绑定或独立五门。
+- 显式导出/正式v2 bundle/治理评审按条件参考采用实际合同；完整v2保留同源导出、binding、edges和readback。
+- 发布权限独立，derived presentation不替代事实owner，结构/视觉/语义/效用不能互相上推。
 
 ## 只能抽象吸收
 
-目标工程必须本地裁决 owner、export workspace、calibration、rubric、trace 与 live/deny readback。
+renderer、schema、active profile、calibration、rubric、legacy baseline与公开profile应适配目标已有结构；不能复制旧工程artifact当新证据。
 
 ## 禁止复制
 
-不得复制业务事实、旧 skill/template/checker 作为 alias、历史 HTML 文本或 PDF/PNG truth source。
+不复制来源工程身份、私有路径、项目状态、服务实例、业务数据、凭据、历史日志或一次性检查结论。源工程可访问不等于获准修改；目标已有规则和用户授权优先。迁移结果不冒充业务验收或外部评价完成。
 
 ## 目标工程结构自检
 
-检查 owner、active profile、repo-local full inventory、ignored immutable export workspace、renderer、registry、public profile、sensor、真实 page-tree fixture 和 baseline。portable gate 不得要求 exports 已存在；v1 compatibility 必须零写入。
+查找已有等价能力、当前owner、实际发现入口、允许写入范围和验证方法；优先复用，缺项按需要补齐。模板、reference和sensor只迁移当前能力真正消费的部分，不为形式完整预建目录。
 
 ## 验证要求
 
-跑 schema/mutation scanner、真实 HTML/PDF/PNG readback 与适用的 live/deny readback；最终说明 evidence boundary。
+验证普通HTML不执行重导出，明确PDF请求真实读回PDF，正式v2检查schema与同源binding；portable不依赖ignored导出，runtime才生成；缺独立judge不伪报通过。 运行目标适用检查，说明真实变更、验证和未证明的范围；结构检查不能证明模型行为正确。

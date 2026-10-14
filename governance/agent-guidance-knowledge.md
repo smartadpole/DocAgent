@@ -124,60 +124,34 @@
 - 当一个主题需要长期导航、分类和检索时，再由 `indexes/` 收口。
 - 当页面不再承担当前入口职责但仍有历史价值时，转入 `archive/`，同时在 `log.md` 留痕。
 
-## 读取顺序
+## 按目标建立上下文
 
-- 写任何内容时都要先建立全局背景，不允许只盯着当前文件局部改写。
-- 先判断这段内容在整个文档库里的位置：它服务哪个主题、哪个阶段、哪个主入口、哪类读者。
-- 任何一段内容都不是孤立的，修改前必须先判断它的上游、下游和主入口。
-- 用 `INDEX.md` 和相关入口定位目标 owner，再读直接依赖；已经加载且未变化的页面复用，不默认全量重读。
-- [[BRAIN]] 提供共享背景；已加载且未变化时直接复用，发现新需求或证据冲突时再回看相关章节。
-- 默认先按 [[response-mode-routing]] 判定本轮读取深度；快速诊断只读最小事实源，状态关闭、规则升级、结构变更和跨工程沉淀必须升级到对应完整读取集。
-- 如果目标涉及规则、优先级或自动沉淀边界，再读 [[POLICY]]。
-- 如果目标涉及项目级稳定记忆，再读 `projects/memory/README.md`。
-- 如果目标在 `projects/`，先读 `projects/README.md` 和 `projects/STRUCTURE.md`，再读相关的需求、设计、会议、复盘、决策、记忆、开发页面。
-- 如果目标是服务实例台账或服务运行事实，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/service-registry.md`、`projects/design/deployment.md`，再按服务补读相关代码基线、开发执行、测试报告或事故页。
-- 如果目标在 `projects/codebase/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、`projects/requirements.md`、`projects/design/README.md` 和 `projects/decisions.md`，再读对应代码基线子页。
-- 如果目标在 `projects/meetings/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`，再读相关的需求、决策、开发和记忆页面；如果会议涉及未决设计专题，再补读 `projects/design/topics/README.md` 和对应专题页。
-- 如果目标在 `projects/retrospectives/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/retrospectives/README.md`、[[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]，再按对象补读 trace、决策、开发、Issue、事故、会议、log、[[skills/delivery-retrospective/SKILL]]、[[skills/historical-dialogue-retrospective/SKILL]] 或相关概念页。
-- 如果目标在 `projects/development/`，先读 `projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md` 和 `projects/development/plan/work-item-system-model.md`，再按任务补读 `execution/`、`gates/`、`implementation/`、`issues/`、`acceptance/`、`reports/`、`risks/` 或功能点实体页。
-- 如果目标在 `skills/`，先读 [[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]] 和 [[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
-- 如果目标在知识库层，先找对应的主摘要页、概念页和索引页，确认哪一页才是单一信息源。
-- 如果这次改动会影响阶段判断、导航结构、概念定义、项目状态或记忆路由，就必须额外回看相关入口页和主页面。
-- 改动后要回看相关入口页和链接页，确认结构、跳转和职责没有被破坏。
+先明确本轮目标、目标内容的层级、权威 owner 和直接依赖。已知 owner 时直接读取；不知道 owner 时用 `INDEX.md`、相关 README 或检索定位。目录位置用于判断职责，不自动触发整套目录入口或全局治理页必读。
 
-### 批处理模式的读取顺序
+- 读取 owner 当前内容、直接来源，以及本次判断真实依赖的上游约束和下游使用点。已有且未变化的上下文复用；[[BRAIN]] 只在背景缺失或冲突时补读相关章节。
+- 以证据缺口扩读：事实矛盾、状态关闭、跨层验收、规则权限、关键设计取舍或记忆路由变化，需要补足对应 owner 和证据。升级深度不等于加载所有主页面，性能预算也不能让必要证据缺席。
+- 新增 / 重构长期知识时，使用 [[skills/knowledge-linking/SKILL]] 保留研究深度、上位 / 邻接 / 入口 / 反向关系和专业落位；链接已有内容不等于已经理解其证据。
+- 修改导航时核对实际导航目标；修改概念时核对定义的来源、相关概念和直接使用处；修改事实时回溯原始来源。改动影响职责、阶段、状态或关系时，同步真正受影响的入口和 owner。
+- 修改技能 / 规则时核对该能力的直接合同、授权和影响面；改变优先级或自动沉淀边界时读 [[POLICY]]。不要因目标在 `skills/` 就重读所有治理文件。
+- 涉及项目事实时按下表定位专业 owner；表中是触发与定位关系，不能照表全量读取。
 
-- 先做一次批次级校准：判断这批内容属于证据层、项目运行层还是知识沉淀层，并确认主入口和单一信息源。
-- 再读这批材料共享的一组入口页，不要把同一批入口页按材料份数重复读取。
-- 之后按单份材料只补读它自己的直接来源、对应主页面和必要的邻接页。
-- 只有出现异常信号时才升级读取：规则变化、结构变化、项目状态变化、冲突升级、设计拍板、记忆路由变化。
+| 目标或缺口 | 专业 owner 与扩读条件 |
+| --- | --- |
+| 项目状态、结构或新模块职责 | `projects/README.md` 与 `projects/STRUCTURE.md`；只在状态 / 结构判断需要时读取相关章节 |
+| 服务真实运行事实 | `projects/service-registry.md`；部署设计变化读部署页，验收或事故结论读对应报告 / 事故事实 |
+| 源码工程审计 | [[projects/codebase/source-code-audit-workflow]]；保留目标等级、证据矩阵、未读 / 阻塞范围和终态自审，现实与设计冲突分别回到冲突和决策 owner |
+| 需求 / trace / 设计 / 决策 | 本次需求、来源、约束与决定；只补受影响的专题 / 设计子页、概念和开发项，不将整套架构包强制预读 |
+| 研发事项、验收或关闭 | 当前 Gate / FP / EP / TASK / Issue / AP / 报告及直接父项；关系或关闭语义不清时读事项模型 / 测试验收模型，保留父级和不上推边界 |
+| 会议 | 当前会议正文与其议题来源、行动 owner；新建会议或改变归档 / 分流规则时读会议入口与 worklog 对应记录 |
+| 复盘 | [[skills/retrospective-capability/SKILL]] 和复盘对象的原始事实；交付 / Agent / 事故对象再路由到对应子技能或案件，归档时核对复盘入口与索引 |
+| 发布与事故 | 当前发布 / 事故 owner、真实验证或原始现象；仅补结论依赖的设计、运行、开发与决策 |
+| 稳定记忆 | `projects/memory/README.md` 或 [[BRAIN]] 对应条目；跨层规则变动再读取裁定 owner |
 
-## 目标文件的最小读取集
+改后核对本次受影响的职责、链接与事实一致性。不为证明“读得够多”填写读取清单；有缺口时如实保留结论边界。
 
-- 改 `projects/README.md` 时，至少读：`README.md`、`INDEX.md`、`projects/STRUCTURE.md`、相关项目层主页面；如果这次更新涉及记忆或规则，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
-- 改 `projects/service-registry.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/deployment.md`、相关代码基线页、相关测试报告或运维记录；如果新增服务会影响阶段、风险、owner 或准出，再同步检查 `projects/status.md`、`projects/development/execution/todo.md`、风险页和会议页。
-- 改需求页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、相关 `raw/` 来源、已有设计页、已有决策页。
-- 改 `projects/trace.md` 时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、已有设计页、已有决策页、当前相关开发页；如果 trace 涉及记忆或规则边界，再加读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
-- 改代码基线页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/codebase/README.md`、需求页、设计页和已有决策页；如果现实实现和主线冲突，先写 [[projects/codebase/conflicts]]，再升级到 [[projects/decisions]]。
-- 改设计页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/design/README.md`、`projects/design/topics/README.md`、需求页、已有决策页、相关设计子页 / 专题页、相关 `concepts/`；如果设计会影响记忆或规则，还要读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
-- 改决策页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、需求页、设计页、相关开发页或事故目录；如果决策涉及记忆路由，再读 [[BRAIN]]、[[POLICY]] 和 `projects/memory/README.md`。
-- 改开发页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、当前相关决策页，必要时读发布页或事故目录。
-- 改开发执行页、EP、TASK、待办、Issue、AP、测试报告、Gate 或风险页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/development/README.md`、`projects/development/plan/README.md`、`projects/development/plan/work-item-system-model.md`、`projects/development/plan/test-acceptance-planning-model.md`、当前相关 EP / TASK / FP / Gate / Issue / AP / 报告页和必要设计页。
-- 改会议页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/meetings/README.md`、`projects/meetings/worklog.md`、相关需求页、决策页和开发页；如果会议讨论的是未决设计专题，还要补读 `projects/design/topics/README.md` 和对应专题页；如果会议规则或分流方式变更，再读 [[WORKFLOW]]、[[POLICY]] 和 [[BRAIN]]。
-- 改复盘页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、`projects/retrospectives/README.md`、[[skills/retrospective-capability/SKILL]]、[[concepts/project-retrospective]]；软件研发复盘补读 [[skills/delivery-retrospective/SKILL]] 和 [[concepts/software-development-project-retrospective]]，Agent 工作复盘补读 [[concepts/agent-work-retrospective]] 和 [[skills/historical-dialogue-retrospective/SKILL]]，事故 / Issue 后复盘补读事实主档案。
-- 改发布页时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、设计页、决策页、相关验证记录。
-- 改事故目录或事故文件时，至少读：`projects/README.md`、`projects/STRUCTURE.md`、发布页、相关开发页、相关决策和原始证据。
-- 改 `skills/` 时，至少读：[[README]]、[[INDEX]]、[[skills/README]]、[[BRAIN]]、[[POLICY]]、[[WORKFLOW]]；如果技能包含项目业务语境，再读对应项目主页面、相关设计页、EP / TASK、轻量 TODO、测试报告或服务台账，确认技能没有复制正式项目事实正文。
-- 改 `articles/` 时，至少读：对应 `raw/` 来源、相关 `concepts/`、必要时读相关项目页。
-- 改 `concepts/` 时，至少读：相关 `articles/`、相关项目页、相关 `indexes/`。
-- 改 `indexes/` 时，至少读：它要导航到的主页面，不允许只看索引本身闭门重排。
-- 改 [[response-mode-routing]] 时，至少读：[[README]]、[[INDEX]]、[[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、[[BRAIN]]、[[skills/README]] 和相关技能 / 模板；如果改动影响项目状态、验收或模板接入，再补读相关项目主页面、[[projects/trace]] 和 [[projects/decisions]]。
+### 批处理
 
-### 批处理模式的最小读取集
-
-- 批量改 `articles/` 时，先读一次：`README.md`、`INDEX.md`、相关 `articles/` 主入口或相邻摘要卡、相关 `concepts/` 主页面；然后每篇材料只补读自己的来源和直接回链目标。只有当摘要明确参与当前项目判断时，才补读相关项目页。
-- 批量改设计材料或设计草稿时，先读一次：`projects/README.md`、`projects/STRUCTURE.md`、对应设计主入口、当前相关需求页或决策页；然后每份材料只补读自己的直接来源和必要的相关 `concepts/`。只有当某份材料会改变记忆、规则、项目状态或关键取舍时，才追加 [[BRAIN]]、[[POLICY]]、`projects/memory/README.md` 和更多项目页。
-- 批量改 `concepts/` 时，先读一次相关概念主页面和索引页，再按条目补读必要的 `articles/` 或项目页，不为每个概念重复读同一组导航入口。
+共享目标、入口和来源先校准一次；单份材料仅补自身来源、owner 和必要邻接页。出现规则、结构、状态、冲突、关键设计或记忆变化时，对该材料扩读并退出轻量批处理。复用共享上下文不降低每份材料的事实核验和知识深度。
 
 ## 文件与目录操作
 
@@ -219,11 +193,7 @@
 
 ## 新文档处理
 
-1. 新材料先进入 `inbox/` 或 `raw/`。
-2. 生成或更新摘要卡。
-3. 回链到相关概念页。
-4. 更新索引页。
-5. 在 `log.md` 顶部新增一条主题化记录。
+按材料目标落位：原始材料进入 `inbox/` / `raw/`，稳定知识更新摘要或概念 owner，直接项目事实进入项目 owner。只补实际需要的摘要、概念与索引关系，避免为每条材料复制一条完整流水；有实质内容或结构变化时按收尾规则记录 [[log]]。
 
 ## 定期检查
 

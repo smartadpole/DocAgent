@@ -3,7 +3,7 @@ type: development_reports
 id: DEV-REPORTS-001
 project: PROJ-WIKI-001
 status: active
-updated: 2026-07-31
+updated: 2026-10-14
 tags: [development, reports, testing]
 ---
 
@@ -16,6 +16,7 @@ tags: [development, reports, testing]
 
 ## 最新报告
 
+- [[projects/development/reports/2026-10-14-full-model-adaptation]]：18 个技能、长模板、新流程消费者与真实模型场景的完整整改验收。
 - [[projects/development/reports/2026-07-31-research-strong-template-kernel-upgrade]]：调研能力 strong template-kernel 升级与结构化 evaluator 验证报告。
 - [[projects/development/reports/2026-07-06-cross-project-agent-intelligence-absorption]]：跨工程智能化能力吸收报告。
 - [[projects/development/reports/2026-06-30-acknowledge-skill-detail-adoption]]：Acknowledge 技能细节吸收报告。

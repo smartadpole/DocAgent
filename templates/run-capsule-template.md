@@ -2,114 +2,25 @@
 type: template
 id: TEMPLATE-RUN-CAPSULE-001
 status: active
-updated: 2026-06-22
+updated: 2026-10-14
 tags: [template, harness, goal, orchestration, evaluator]
+conditional_sources: [templates/run-capsule-extensions.md]
 ---
 
 # Run Capsule 模板
 
-Run Capsule 仅承接独立运行身份、恢复游标或跨角色合流。先复用已有 owner；普通持续执行、跨仓修改或一次性协作不自动创建。启动条件见 [[agent-orchestration]]，Goal 工具授权见 [[skills/goal-contract/SKILL]]。
+仅承接独立运行身份、恢复游标或跨角色合流。先复用已有 owner；普通持续执行、跨仓修改或一次性协作不自动创建。启动条件见 [[agent-orchestration]]，Goal 工具授权见 [[skills/goal-contract/SKILL]]。没有启动条件时直接推进原事项，不生成未启用说明。
 
-## 适用性判断
+## 最小生效核心
 
-- **是否启用 Run Capsule**：是 / 否
-- **触发信号**：Goal / 多 agent / 多线程 / 主控 + 子工程 / 长时验证 / 证据漂移风险 / 其他
-- **不启用理由**：
-- **当前响应模式**：
-- **记录落点**：chat-level / TASK / Issue / AP / handoff / episode package / 其他
-- **Parent Loop Contract**：如属于持续循环，链接 [[templates/loop-contract-template]] 或实际 Loop Contract 记录；不属于则写不适用。
-- **Run id**：
-- **Input discovery item**：本次运行消费的发现项、队列项、issue、CI、监控或用户输入。
+- **Run id 与 owner**：运行标识、记录落点、原事项 / 合同链接及本次需要独立身份或恢复记录的原因。
+- **本轮目标与输入**：引用用户最新目标、完成判定和消费输入，仅补本轮范围差异；属于持续 Loop 时链接实际 Parent Loop Contract。
+- **授权与停止**：允许写入范围、必须保持的约束、不做项、预算和停止 / blocked 条件。
+- **证据与 limits**：本次直接完成证据、必要层级、缺测及不能上推的范围。health、自述或 accepted / running 不能替代必要功能和验收证据。
+- **结果与恢复游标**：实际状态 passed / partial / blocked / failed、关键动作与失败项链接、下一步动作和负责 owner；跨 run 恢复前重新读回现场状态。
 
-## Objective
+这些信息可在原 owner 通过短链接承接；Capsule 不复制目标正文、另建任务状态或替 evaluator 宣布整体闭环。
 
-- **用户最新目标**：
-- **Expected final state**：
-- **Acceptance criteria**：
-- **Out of scope**：
-- **Stop / blocked conditions**：
+## 条件扩展
 
-## Agent Topology
-
-- **Orchestrator / 主线程**：
-- **Execution posture**：direct-execution / orchestrator-only / worker-assisted / evaluator-required / blocked
-- **Worker agents / 子线程**：
-- **Acceptance / evaluator thread**：
-- **是否使用独立 worktree / 独立仓库 / 只读研究**：
-- **并行理由**：
-- **不适合并行的部分**：
-
-## Subproject Git Preflight
-
-涉及子工程代码、handoff 或外部仓库时填写；不涉及则写不适用。
-
-| Field | Value |
-| --- | --- |
-| directory |  |
-| branch / upstream |  |
-| remotes |  |
-| fetch state | not-run / fetched / blocked |
-| ahead / behind / diverged |  |
-| dirty / untracked |  |
-| local-only risk |  |
-| update policy | ff-only update；默认不 pull / merge / rebase / reset；只有授权且 fast-forward safe 才更新 |
-
-## Worker Ownership
-
-| Worker | Scope | Allowed writes | Required evidence | Output format | Stop condition |
-| --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
-
-Worker 必须继承本次 Goal / Parent Loop Contract / Run Capsule / AGENTS / owning page 的边界；缺少 `limits`、未声明不能上推的证据或把局部通过写成整体闭环时，默认不能用于关闭整体任务。
-
-## Evidence Layers
-
-- **code-level / unit**：
-- **functional / business-flow**：
-- **service-side**：
-- **end-to-end**：
-- **non-default / boundary**：
-- **related regression**：
-- **manual-confirmation**：
-- **不能上推的辅助证据**：
-
-## Evaluator
-
-- **Evaluator owner**：主线程 / 验收线程 / 人工 reviewer / sensor / 组合
-- **合流规则**：
-- **冲突处理**：
-- **passed 条件**：
-- **partial 条件**：
-- **blocked 条件**：
-- **failed 条件**：
-
-## Persistence Routing
-
-| Signal | Decision | Landing |
-| --- | --- | --- |
-| 普通完成，无结构性新信息 | no-op / reply only |  |
-| 影响未来理解 | log | [[log]] |
-| 用户纠偏 / 检查失败 / 模式切换 / 重复失守 | harness ledger | [[harness-feedback-ledger]] |
-| 长 Goal / 多 agent / Loop 收尾复盘信号 | retrospective | [[skills/historical-dialogue-retrospective/SKILL]] |
-| 稳定背景 | memory | [[BRAIN]] / [[projects/memory/README]] |
-| 可复用流程 | skill | `skills/` |
-| 可复制字段 | template | `templates/` |
-| 可机器检查 | sensor | `scripts/check_all.py --only <check-key>` |
-| P0 必须 / 禁止行为 | rule | [[AGENTS]] / [[POLICY]] |
-
-标准路由枚举：`no-op / log / harness ledger / retrospective / memory / skill / template / sensor / rule`。
-
-## Closeout Proof
-
-- **Run Capsule 状态**：passed / partial / blocked / failed
-- **Worker 回传是否齐全**：
-- **Evaluator 结论**：
-- **Process Record**：本轮关键命令、文件变更、决策和失败项落点；不把流水写成事实源。
-- **State transition**：queued / running / passed / partial / blocked / failed / skipped
-- **Consumed inputs**：
-- **Next-run recommendation**：stop / rerun / retry-after / split / escalate / wait-human / schedule-next
-- **Retrospective trigger decision**：no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘；如由 Worker 提供信号，写明 evaluator 裁决理由
-- **Reuse entry proof**：如形成可复用流程，说明进入 skill / template / sensor / rule 的证据；否则写 no-op。
-- **沉淀路由及理由**：
-- **检查 / sensor**：
-- **仍需人工确认**：
+仅命中时读取 [[templates/run-capsule-extensions]] 对应章节：跨角色合流用“多角色合流”；外部仓库动作前用“外部仓库现场检查”；多个验收面 / 参数用“分层证据”；Loop run 用“循环回传”；稳定方法或复盘信号用“沉淀与复盘”。Worker 回传的 limits 与不上推边界始终保留；未触发项无需写空表、不适用或 no-op。

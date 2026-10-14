@@ -56,7 +56,7 @@
 
 仅当任务需要跨 run 发现源、去重持久队列与调度恢复时，读取 [[skills/loop-engineering/SKILL]] 和 [[templates/loop-contract-template]]；普通长任务、多 agent 或“直到闭环”不自动触发。
 
-Loop Engineering 只能作为控制面：不新建平行 `loop` 看板，不自动关闭 Gate / FP / EP / TASK / Issue / release，不自动合并、发布、改生产事实或改高优先级规则。Worker 回传必须通过 [[templates/run-capsule-template]] 写清 `limits`、证据层级、State transition 和 Next-run recommendation；缺少独立 evaluator 的回传不能上推为整体闭环。相关改动后运行 `python3 scripts/check_all.py --only loop-engineering`。
+Loop Engineering 只能作为控制面：不新建平行 `loop` 看板，不自动关闭 Gate / FP / EP / TASK / Issue / release，不自动合并、发布、改生产事实或改高优先级规则。已授权 Worker 回传必须在当前 owner 写清 `limits`、证据层级、State transition 和 Next-run recommendation；缺少独立 evaluator 的回传不能上推为整体闭环。独立运行身份、恢复游标或合流确需且原 owner 无法承接时，才使用 [[templates/run-capsule-template]]。相关改动后运行 `python3 scripts/check_all.py --only loop-engineering`。
 
 ## 检查与状态读回
 

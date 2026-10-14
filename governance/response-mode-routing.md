@@ -4,7 +4,7 @@ id: GOV-RESPONSE-MODE-001
 scope: shared
 status: active
 source_of_truth: true
-updated: 2026-06-22
+updated: 2026-10-14
 tags: [agent, workflow, efficiency, harness]
 ---
 
@@ -31,12 +31,12 @@ tags: [agent, workflow, efficiency, harness]
 | 模式 | 典型触发 | 首次反馈目标 | 最小读取 | 默认写入 | 必要收尾 |
 | --- | --- | --- | --- | --- | --- |
 | 快速诊断 | “为什么”“在哪”“先分析”“差异是什么” | `confirmed / likely / possible / blocked` 分级结论和证据边界 | 入口规则 + 1 到 3 个最相关事实源 | 否 | 说明是否需要升级到沉淀、验收或规则升级 |
-| 引导式设计 | “设计一个系统”“帮我想完整”“更智能 / 更前沿 / 更高效”“还不知道怎么开始”；新 clone / 模板工程中的“你好 / hi / 开始吧” | 自动判定场景包、置信度和关键假设；首次接触必须给融合入口：首段自然覆盖系统角色、用户目标、协作方式、第一步成果，再给 2 到 4 个常规引导方向和推荐第一步 | [[proactive-dialogue-system]]；首次接触是零工具 / 零读盘 / 零命令路径，只用已加载上下文和启动入口身份，身份不确定时先给“定位工程身份”选项；不得主动读取运行层状态或输出具体检查 / 提交证明 | 条件写入；首次接触完成最低回复但没有新增判断可 no-op，形成项目意图 / 体系校准时必须产物化 | 写清场景包、假设、待确认项、性能预算和落地位置；no-op 时说明没有新增可沉淀信息 |
-| 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘”“知识关联” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 总入口 + 单一信息源 + 来源；新增长期知识时调用 [[skills/knowledge-linking/SKILL]]；复盘先调用 [[skills/retrospective-capability/SKILL]] | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/<year>/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
-| 主题图文呈现 | “图文”“HTML”“主题梳理”“一图胜千言” | 先裁决 `admit / reject / clarify / abstain`，再组织 subject/source、三轴和五门 evaluator | [[skills/topic-visual-presentation/SKILL]] + 目标 truth sources | admit 默认 HTML；current/snapshot 写 `views/` | 同源 PDF / PNG、registry、版本化 trace 和不能上推范围 |
+| 引导式设计 | “设计一个系统”“帮我想完整”“更智能 / 更前沿 / 更高效”“还不知道怎么开始”；新 clone / 模板工程中的“你好 / hi / 开始吧” | 自动判定场景包、置信度和关键假设；首次接触必须给融合入口：首段自然覆盖系统角色、用户目标、协作方式、第一步成果，再给 2 到 4 个常规引导方向和推荐第一步 | [[proactive-dialogue-system]]；首次接触是零工具 / 零读盘 / 零命令路径，只用已加载上下文和启动入口身份，身份不确定时先给“定位工程身份”选项；不得主动读取运行层状态或输出具体检查 / 提交证明 | 条件写入；首次接触无新增判断时直接回复，形成项目意图 / 体系校准时落到合适 owner | 只写影响判断的假设、待确认项和实际落点，不输出空字段或 no-op 证明 |
+| 知识沉淀 | “沉淀下来”“做成参考”“形成反思”“复盘”“知识关联” | 判断知识层、概念层、复盘档案、规则候选还是项目层 | 当前 owner + 直接来源与必要关系；新增长期知识时调用 [[skills/knowledge-linking/SKILL]]；复盘先调用 [[skills/retrospective-capability/SKILL]] | 是，优先 `articles/`、`concepts/`、`projects/retrospectives/<year>/` 或 `log` | 补入口链接，不把候选伪装成已生效规则 |
+| 主题图文呈现 | “图文”“HTML”“主题梳理”“一图胜千言” | 按来源组织结构、关系和内容深度；默认轻量 HTML | [[skills/topic-visual-presentation/SKILL]] + 目标 owner / 直接来源 | HTML；持久 current/snapshot 写 `views/` | 核对内容与视觉；正式导出、公开交付或治理证据时启用 v2 专业合同、registry、同源导出和版本化 trace |
 | Issue 分析 + 沉淀 | 现场问题、联调失败、验收争议、跨工程阻塞 | 先给根因 checkpoint，再进入主控沉淀 | 项目主入口 + 当前工作项 / 报告 / 风险 + 直接证据 | 是 | 同步单一信息源、风险 / 报告 / 状态，跑必要检查 |
 | 验收关闭 | “验收”“复验”“关闭”“准出”“done” | 先声明验收对象和证据层级 | TASK / EP / FP / Gate / Issue + 最新证据 + 必要运行事实；TODO 仅作轻量兼容视图 | 是 | 写清 local / service-side / end-to-end 和人工确认边界 |
-| 规则升级 | “以后都这样”“升级规则”“写进 AGENTS / WORKFLOW / POLICY” | 先判断改旧规则、补澄清还是新增模式 | [[AGENTS]]、[[WORKFLOW]]、[[POLICY]]、相关技能 / 模板 | 是 | 同步入口、log、必要模板和二阶反思 |
+| 规则升级 | “以后都这样”“升级规则”“写进 AGENTS / WORKFLOW / POLICY” | 先判断改旧规则、补澄清还是新增模式 | 当前规则 owner、直接授权与受影响技能 / 模板；优先级变化再读 [[POLICY]] | 是 | 同步受影响入口、log 与必要检查；有可复用信号时沉淀 |
 | 子工程实现 / 回传 | 明确授权改代码仓库或子工程 | 明确主控输入、实现范围、回传格式 | 主控裁决 + 子工程入口规则 + 目标代码上下文 | 在被授权仓库内 | 产出测试证据、handoff 和主控吸收建议 |
 | 批处理 | 大量同类摘要、归类、补链接 | 批次级校准和共享读取集 | 共享入口 + 单份直接来源 | 是 | 每小批回看链接和落点，异常即退出批处理 |
 | 收尾 | 用户明确要求“收尾 / finalize”，或本轮实质变更已经进入提交前 | 范围核对、入口同步、log eligibility、二阶反思资格、检查和提交计划 | 本轮 diff + 受影响入口 + 专项 sensor | 是 | 同主题提交，最终回复写明检查、commit hash 和未验证边界 |
@@ -57,9 +57,9 @@ Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于
 - 快速诊断发现结论会影响关闭、准出、发布或生产判断时，必须切到验收关闭模式。
 - 知识沉淀发现内容会改变默认执行方式、自动写入边界或优先级时，必须切到规则升级模式。
 - 知识沉淀发现复盘对象时，先使用 [[skills/retrospective-capability/SKILL]] 固定复盘合同和子项路由；项目交付 / 软件研发链使用 [[skills/delivery-retrospective/SKILL]]，历史对话或 Agent 工作流使用 [[skills/historical-dialogue-retrospective/SKILL]]；发现重复失守、可模板化或可脚本化缺口时，按 [[harness-evolution]] 进入 Harness 自演进。
-- 长 Goal、Run Capsule、多 agent、Loop iteration 或复杂规则升级收尾时，evaluator 必须裁决 `no-op / 轻量复盘 checkpoint / 标准复盘 / 深度复盘`；显式复盘请求默认标准复盘并落档到 `projects/retrospectives/<year>/`，不能被自动触发的 `no-op` 降级。
+- 长 Goal、Run Capsule、多 agent 或 Loop 收尾若出现可复用教训、重复失守或用户明确请求，按复盘技能确定深度；不因对象标签强制生成 no-op 裁决。显式复盘请求默认标准复盘并落档到 `projects/retrospectives/<year>/`，不能被自动触发资格不足降级。
 - Issue 分析进入状态修改、任务关闭、Gate 准出或发布判断时，必须切到验收关闭模式。
-- 多 agent、子工程或跨仓库回传需要拆分 Worker / Evaluator 时，切到 [[agent-orchestration]] 和 Run Capsule。
+- 已授权多角色或跨仓工作时按 [[agent-orchestration]] 分工；Run Capsule 只在独立运行身份、恢复游标或跨角色合流需要时建立。
 - 行动依赖权限、远程、dirty / diverged 工作区、预算或人工确认时，先按 [[state-constraint-reasoning]] 判断可执行状态。
 - 任何模式发现用户未授权的写入边界、外部服务操作或子工程修改时，先停在建议和回传包，不越权执行。
 
@@ -71,7 +71,7 @@ Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于
 2. 和问题直接相关的 1 到 3 个事实源。
 3. 能快速量化的命令输出。
 
-触发以下任一信号时，必须升级读取：
+以下信号要求按缺口扩读对应 owner 与证据；不按目录或模式加载固定全量清单，已加载且未变化的内容直接复用：
 
 - 结论会改变项目状态、规则、验收、关闭或发布。
 - 目标需要通过主动对话沉淀成需求、设计、决策候选或轻量 discovery。
@@ -84,8 +84,8 @@ Goal 工具仅在用户明确要求 Goal 时调用；需要文档合同不等于
 - 复杂任务先给一句模式判断和当前读取范围。
 - 根因或主判断形成后，给 checkpoint，不把用户晾到全部沉淀完成后才看到结论。
 - 进入沉淀、验收、规则升级或收尾时，显式说明当前阶段。
-- 最终回复分开写：诊断结论、已改页面、验证 / 检查、未验证边界和下一步。
-- 引导式设计最终回复至少写清场景包、置信度、假设、待人工确认项、落地文件和性能预算是否被扩大。
+- 最终回复先给结果，再提供支撑结论的改动、验证和必要边界；只保留适用内容，不套固定全套标题。
+- 引导式设计保留会改变判断的假设与待确认项，有实际产物时链接落点；不输出无变化预算或空白待办。
 
 ## 禁止项
 

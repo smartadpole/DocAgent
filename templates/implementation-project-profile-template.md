@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-IMPLEMENTATION-PROJECT-PROFILE-001
 status: active
-updated: 2026-07-23
+updated: 2026-10-14
 tags: [template, implementation, project, agent-system, harness]
 ---
 
@@ -154,15 +154,15 @@ tags: [template, implementation, project, agent-system, harness]
 
 ## Control Plane
 
-- **Goal Contract**：
-- **Loop policy**：
-- **Run Capsule policy**：
-- **Orchestrator role**：
-- **Worker / subproject dispatch**：
-- **Evaluator owner**：
-- **Issue policy**：
-- **Persistence Decision**：
-- **Monitoring / heartbeat / lease**：
+Profile 声明本地控制面接线，不实例化每轮执行合同。默认由当前事项 owner 承接目标、授权、验收、停止条件和状态；能力包可用不代表每轮必须启用。以下只填写实际采用能力的本地 owner / 入口与触发条件，未触发项不生成空字段或 no-op 证明。
+
+- **当前 owner 与状态入口**：引用 Owner Surfaces 中对应事项、证据和状态归口。
+- **Goal Contract**：用户明确要求独立完成契约，或原 owner 无法承接的恢复、依赖、累计预算需要成立时，按 [[templates/goal-contract-template]] 接入；Goal 工具仅由用户明确要求触发。
+- **Run Capsule policy**：需要独立运行身份、恢复游标或跨角色合流时，按 [[templates/run-capsule-template]] 接入。
+- **Loop policy**：需要跨 run 发现、去重持久队列和调度恢复时，按 [[templates/loop-contract-template]] 接入。
+- **协作 owner**：已授权协作时声明 Orchestrator role、Worker / subproject dispatch 与 Evaluator owner；保留 allowed writes、required evidence 和不上推边界。
+- **Issue policy**：实际问题的原始现象、分析与复验按本地 Issue owner 维护。
+- **沉淀与监测入口**：形成可复用信息时记录落点；启用持续监测时声明 Monitoring / heartbeat / lease 的调度和停止 owner。
 
 ## Implementation Boundaries
 

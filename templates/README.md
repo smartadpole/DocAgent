@@ -34,8 +34,7 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新服务实例台账条目可以参考 [[templates/service-registry-template]]
 - 新源码工程审计报告可以参考 [[templates/source-code-audit-report-template]]
 - 新项目内 agent 技能可以参考 [[templates/skill-template]]
-- 新主题呈现使用 [[templates/topic-presentation-template]]；持久 current/snapshot 同步 [[views/lens-registry]]，填写 subject/source、关系图、三轴、五门 evaluator 和同源 PDF / PNG 合同
-- 新主题呈现的 source pack、交付前审核和五门边界统一使用 [[templates/topic-presentation-template]]
+- 新主题呈现从 [[skills/topic-visual-presentation/SKILL]] 默认生成轻量 HTML，按来源结构组织页面与关系；持久 current/snapshot 同步 [[views/lens-registry]]。正式导出、公开交付或治理级证据时才使用 [[templates/topic-presentation-template]] 的 subject/source、三轴、五门 evaluator 和同源 PDF / PNG 专业合同
 - 新 HTML 公开发布 profile 可以参考 [[templates/public-html-publication-template]]；发布验证闭环可以参考 [[templates/public-html-publication-contract-template]]；真实发布仍以 [[views/publication]] 和 live readback 为准。
 - 新技术、开源工程、行业 / AI、产品或 PoC 调研启动前，使用 [[templates/technology-research-contract-template]] 固定 R2+ Source Plan 和 Evidence Delta；正式研究结果使用 [[templates/technology-research-report-template]]、[[templates/technology-research-evidence-matrix-template]] 和 [[templates/technology-research-adoption-contract-template]] 承接 coverage、验证阶梯、评价与修订循环。
 - 新外部技术材料、论文、repo、社区讨论或产品更新进入研究流程前，可以参考 [[templates/research-intake-template]]；它只承接 intake 和 source package，不替代正式研究报告。
@@ -44,10 +43,11 @@ Harness 相关模板默认按 [[response-mode-routing]] 先判响应模式；引
 - 新 Cross-Project / Project Governance Audit 可以参考 [[templates/cross-project-governance-audit-contract-template]]；报告必须写 source-depth、handoff-ready、Transfer Manifest、verification-loop、git remote -v / git fetch --all --prune 读回和 no runtime validation 边界。
 - 新规则页可以复制 [[templates/policy-template]]
 - 新项目记忆页可以复制 [[templates/memory-template]]
-- 新长时任务需要防跑偏、防证据漂移、防无限探索时，可以参考 [[templates/goal-contract-template]]
+- 仅在 Goal 独立启动条件满足时使用 [[templates/goal-contract-template]] 的最小生效核心；分层验收、恢复依赖、协作与沉淀按条件读取 [[templates/goal-contract-extensions]]，不为普通长任务生成完整合同
 - 新引导式设计、主动对话或轻量 discovery 可以参考 [[templates/guided-discovery-session-template]]
 - 新系统、主控仓库或子工程接入 Agent Harness 可以参考 [[templates/harness-adoption-template]]
 - 新单次 Harness episode 可以参考 [[templates/harness-episode-package-template]]
 - 新周期性 Harness 演进复盘可以参考 [[templates/harness-evolution-review-template]]
-- 新持续 agent 循环控制面可以参考 [[templates/loop-contract-template]]；单轮多 agent / Worker 回传可以参考 [[templates/run-capsule-template]]，并按 [[agent-orchestration]] 做 Orchestrator / Worker / Evaluator 和 Subproject Git Preflight 分工。
+- 跨 run 的发现、持久队列和调度恢复使用 [[templates/loop-contract-template]]，命中调度、协作、验收、研发落位或沉淀时补 [[templates/loop-contract-extensions]] 对应能力。
+- 独立运行身份、恢复游标或跨角色合流使用 [[templates/run-capsule-template]]；外部仓库现场检查、Worker / Evaluator、分层证据和 Loop 回传见 [[templates/run-capsule-extensions]] 的条件章节。普通跨仓动作或一次性协作不自动新建 Capsule。
 - 如果你启用了 Obsidian 的 Templates 插件，这个目录可以直接作为模板目录

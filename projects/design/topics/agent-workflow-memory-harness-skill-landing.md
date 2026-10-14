@@ -4,7 +4,7 @@ id: DES-TOPIC-AGENT-SYSTEM-LANDING-001
 project: PROJ-WIKI-001
 status: accepted-design
 stage: system-landing
-updated: 2026-10-13
+updated: 2026-10-14
 tags: [design, agent, workflow, memory, harness, skill, topic]
 ---
 
@@ -78,3 +78,17 @@ tags: [design, agent, workflow, memory, harness, skill, topic]
 此基线直接替换活跃入口与创建模板，不保留旧触发路径。现有历史报告仍是历史证据；模板仓当前无 TASK / Issue 实例，任何新实例都必须声明阶段合同，缺 profile 不允许绕过检查。源技能按模块原生适配，不整库复制；模板维护机器、私有工程事实和运行身份不成为衍生项目默认值。
 
 模板接入方式为复制或 clone 仓库后按 [[templates/implementation-project-profile-template|接入配置]] 校准身份、能力包与边界，没有另一个模板生成器。复制时必须包含 `.agents/`、`.codex/`、根 AGENTS 和相对链接指向的 `skills/`；丢失隐藏目录或链接应由检查失败暴露。采纳证据、未测范围与回退见 [[projects/development/reports/2026-10-13-template-agent-remediation|整改记录]]。
+
+
+## 高能力模型完整适配
+
+目标基线来自能力、真实任务、用户要求与风险；历史目录和冗长提示不限制目标设计。GPT-6 Astra 是本轮行为验证目标，模型能力和可用名称以实际运行环境确认；模板不强制模型切换，更不授权业务模型迁移。官方依据为 [Skills 与提示词审查](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra) 和 [模型使用指南](https://developers.openai.com/api/docs/guides/latest-model)。
+
+本轮接续入口整改，覆盖全部 18 个技能、关联 TRANSFER、Goal / Loop / Run Capsule 长模板与原有消费者。只保留一套活动流程：迁移在授权内直接实施；普通问因先最小诊断；持续执行复用事项；普通 HTML 按内容和阅读需求验证；深度研究、复盘、跨仓协作和正式导出在命中条件时加载专业部分。专业知识不会因不常驻而删除。
+
+- **能力保留**：研究 R0–R4 / L1–L6、R2+ 来源覆盖与反证、深度复盘原始证据和用户纠偏、性能分母与分层耗时、配置默认路径与非默认值验证、发布隔离与 live / denial readback、原事项父级和公开模板边界。
+- **按需加载**：入口明确触发和最小完成合同；`conditional_sources` 只声明有链接且受条件约束的专业参考。离线 sensor 按显式依赖验证完整能力，运行时不把所有参考注入上下文。断链、越界、重复和循环依赖必须失败。
+- **验收分层**：静态结构检查、隔离模板加载、真实模型任务、项目运行 / 服务验收各自记录；不得从字数、marker 或模型自述推导整体成功。当前模型测例只支持已测场景，不证明所有任务或未来模型。
+- **维护方式**：使用 `scripts/run_model_adaptation.py` 显式运行隔离真实模型探针，固定模型、推理强度、输入快照、原始事件和外部 oracle；默认完整检查不调用付费模型、不访问生产。测试产物落在仓库外数据目录，公共仓库只保留去标识方法与结论。
+
+逐技能处理、实测结果及回退见 [[projects/development/reports/2026-10-14-full-model-adaptation]]。旧报告只保留当时范围的证据，不作为本轮完成凭证。

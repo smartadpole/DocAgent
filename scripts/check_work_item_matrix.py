@@ -13,6 +13,8 @@ import argparse
 import re
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 from agent_guidance import read_agent_sources
 
 
@@ -49,18 +51,7 @@ CONCEPT_TERMS: dict[str, tuple[str, ...]] = {
         "状态化交付合同",
         "Done Contract",
     ),
-    "skills/work-item-auto-decomposition/SKILL.md": (
-        "项目 / 领域绑定",
-        "true-gap",
-        "recognition-gap",
-        "signal-only-gap",
-        "risk:",
-        "test:",
-        "验收:",
-        "issue-trigger:",
-        "TASK done",
-        "不能自动关闭父 EP、FP 或 Gate",
-    ),
+    "skills/work-item-auto-decomposition/SKILL.md": skill_terms('work-item-auto-decomposition'),
     "projects/development/issues/README.md": (
         "Issue 是案件档案",
         "报告是每次庭审记录",
@@ -302,7 +293,7 @@ def read_text(repo: Path, rel_path: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"{rel_path}: missing file")
         return ""
-    return path.read_text(encoding="utf-8")
+    return read_conditional_sources(repo, rel_path, errors)
 
 
 def require_terms(repo: Path, rel_path: str, terms: tuple[str, ...], errors: list[str]) -> None:

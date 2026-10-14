@@ -87,20 +87,20 @@ tags: [policy]
 - agent 每轮必须先按 [[response-mode-routing]] 判断本轮响应模式。快速诊断、知识沉淀、Issue 分析 + 沉淀、验收关闭、规则升级、子工程实现 / 回传和批处理的读取深度、默认写入和收尾动作不同，不得用同一套重治理动作覆盖所有问题。
 - 规则、模板、sensor、log、复盘和 Goal Contract 的强度先按 [[agent-governance-strategy]] 分级：P0 才进入硬约束，P1 进入语义门或模板字段，P2 作为工作流默认，P3 先留在 ledger / backlog。
 - 行动依赖权限、远程状态、dirty / diverged / local-only 工作区、浏览器 profile、外部服务、预算或人工确认时，先按 [[state-constraint-reasoning]] 判断可执行状态，不得把 blocked / ask-human 动作写成默认计划。
-- 多 agent、多线程或主控 / 子工程任务按 [[agent-orchestration]] 和 Run Capsule 分工；Worker 只交证据，不能宣布整体闭环。涉及子工程代码前必须做 Subproject Git Preflight，默认不 pull / merge / rebase / reset。
+- 已授权多 agent、多线程或主控 / 子工程任务按 [[agent-orchestration]] 分工；只有独立运行身份、恢复游标或合流需要且原 owner 无法承接时建立 Run Capsule；Worker 只交证据，不能宣布整体闭环。涉及子工程代码前必须做 Subproject Git Preflight，默认不 pull / merge / rebase / reset。
 - 当用户提出新系统、新工具、新应用、粗糙产品想法，或要求更智能、更前沿、更高效但没有定义成功标准时，默认按 [[proactive-dialogue-system]] 进入引导式设计。agent 可以自动提出少量关键问题、声明假设并生成草案，但不能替用户拍板业务目标、预算、真实 owner、合规、生产事实或最终验收。
 - 如果规则已经存在但没有被执行，先按 [[instruction-adherence]] 判断该补触发器、模板字段、sensor、门禁或最终证明；不得默认继续堆自然语言硬规则。
 - 执行类页面必须按 [[execution-contract-semantics|执行合同语义]] 保持当前裁决单值。参考规则、条件路由、非目标、上层发布 / 准出证据和辅助日志不能下沉为当前 TASK、issue、AP 或报告目标包的隐形待办。
 - 快速诊断模式默认不写项目状态、不关闭 TASK / EP / FP / Gate、不提交规则变更、不把候选结论写成验收完成；TODO 仅作轻量兼容视图。若诊断结果影响项目状态、长期事实、验收或规则，必须显式切换到对应模式。
 - 为了提速而削弱用户可见症状保真、证据分层、权限边界、非默认值验证、人工确认边界或提交闭环，属于无效优化。
 - 为了显得智能而无限扩大读取、长期追问、一次铺满项目结构、静默替用户拍板高风险事项，属于无效智能化。有效智能化必须同时写清场景包、假设、待确认项、产物落点和性能预算。
-- Goal Contract 只用于长时任务的完成契约：写清期望最终状态、完成判定、验证面 / 证据边界、预算 / 阻塞停止条件、约束、允许边界和明确不做项；它不能替代项目状态、TASK / EP / FP / Gate / release 关闭标准、验收报告、规则层或 memory，普通一次性任务不默认套用。Goal 的默认用途是防止任务跑偏、防止证据漂移、防止无限探索；health、日志、子工程自述和中间态不能因为写入 Goal 就被上推成真正闭环。
+- Goal Contract 仅在用户明确要求独立合同，或原 owner 无法承接必要的持久恢复、依赖与累计预算时启用；Goal 工具还需用户明确要求 Goal。已启用合同按需写清期望最终状态、完成判定、验证面 / 证据边界、预算 / 阻塞停止条件、约束、允许边界和明确不做项；它不能替代项目状态、TASK / EP / FP / Gate / release 关闭标准、验收报告、规则层或 memory，普通一次性任务不默认套用。Goal 的默认用途是防止任务跑偏、防止证据漂移、防止无限探索；health、日志、子工程自述和中间态不能因为写入 Goal 就被上推成真正闭环。
 - `Gate -> FP -> EP -> TASK` 是研发事项默认主链；risk、issue、test、验收、报告和服务台账是关系节点。agent 可以补齐矩阵和模板字段，但不能用单个 TASK、单次接口成功或单份报告自动关闭父 EP / FP / Gate。
 - 未实际发生的问题只允许写成 risk 或 `issue-trigger:`；已发生的 bug、偏差、验收失败或用户可见问题才进入 Issue 案件。Issue 必须保留原始现象，不能被推测根因、日志摘要或修复说明改写。
 - agent 可以自动写入：`inbox/`、临时草稿、已确认结构下的普通项目页、已确认模板的 frontmatter
 - agent 可以自动写入 [[log]]，但只记录按对话整理后的主题、用户意图、关键动作、结构变化和结论，不机械转录每个提问
 - agent 可以自动写入 [[projects/trace]]，前提是这轮已经形成明确的项目推进内容，而且该变化会影响当前需求主题的实现口径；写入时要和相关 [[projects/requirements]]、[[projects/design/README]]、[[projects/decisions]] 同轮联动，不把它写成第二份 [[log]]，也不记录原始来源材料清单、出处或格式转换过程
-- agent 可以自动写入 [[projects/retrospectives/README]] 和 `projects/retrospectives/<year>/` 下的具体复盘档案，前提是本轮已经形成阶段、专题、交付链、Issue / 事故后或 Agent 协作的长期学习价值。显式“复盘 / 写复盘 / 沉淀复盘 / 总结教训”默认标准复盘并落档；显式“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出、产物即档案和上层抽象。标准 / 深度复盘正文不得平铺在 archive root，必须同步 [[projects/retrospectives/indexes/by-year]]，稳定主题或类型再同步主题 / 类型索引。复盘不能替代 [[log]]、Issue、事故、测试报告、handoff、ledger、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面，不能留在复盘目录形成平行看板。
+- agent 可以自动写入 [[projects/retrospectives/README]] 和 `projects/retrospectives/<year>/` 下的具体复盘档案，前提是本轮已经形成阶段、专题、交付链、Issue / 事故后或 Agent 协作的长期学习价值。显式“复盘 / 写复盘 / 沉淀复盘 / 总结教训”默认标准复盘并落档；显式“深度 / 完整 / 全面复盘”进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出、产物即档案和上层抽象。标准 / 深度复盘正文不得平铺在 archive root，必须同步 [[projects/retrospectives/indexes/by-year]]，稳定主题或类型再同步主题 / 类型索引。复盘不能替代 [[log]]、Issue、事故、测试报告、handoff、ledger、决策、memory 或 trace；复盘行动项必须分流到已有 owner 页面，不能留在复盘目录形成平行看板。
 - agent 必须把有项目价值的新信息同轮沉淀到正确位置：需求变化、事实纠偏、架构判断、决策倾向、待讨论问题、实现计划、风险、环境约束和用户明确偏好，不得只留在最终回复里。
 - agent 必须显性化新发现的阻塞、问题和待拍板事项：只要影响当前阶段、Gate 准入、下一步、风险归口或会议议题，就同轮更新 [[projects/status]]、[[projects/development/risks/README]]、[[projects/meetings/README]]、[[projects/development/execution/todo]] 或 [[projects/decisions]]；需要用户或 owner 决议的事项只能标为待定 / 会议议题。
 - 对外 API、调度入口、服务间回调、webhook、跨工程数据合同和数据库写入接口属于稳定合同；新增或变更时必须进入正式中文文档，不能只留在 handoff、测试报告或最终回复中。

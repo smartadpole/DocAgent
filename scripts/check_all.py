@@ -11,6 +11,7 @@ from pathlib import Path
 
 CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ("agent-guidance", "conditional rules and skill discovery", (sys.executable, "scripts/test_agent_guidance.py")),
+    ("conditional-sources", "conditional skill and template source boundaries", (sys.executable, "scripts/test_conditional_sources.py")),
     ("staged-contracts", "stage and evidence boundary regressions", (sys.executable, "scripts/test_staged_contracts.py")),
     ("project-docs", "project docs", (sys.executable, "scripts/check_project_docs.py")),
     ("harness-governance", "harness governance", (sys.executable, "scripts/check_harness_governance.py")),

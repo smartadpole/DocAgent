@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,22 +22,7 @@ REQUIRED_FILES = (
 )
 
 REQUIRED_TERMS = {
-    "skills/cross-project-governance-audit/SKILL.md": (
-        "cross-project-governance-audit",
-        "Cross-Project",
-        "Project Governance Audit",
-        "YYYY-MM-DD",
-        "YYYY-MM",
-        "git remote -v",
-        "source-depth",
-        "handoff-ready",
-        "skill-transfer",
-        "Transfer Manifest",
-        "non-reference",
-        "verification-loop",
-        "no runtime validation",
-        "true-gap / recognition-gap / signal-only-gap",
-    ),
+    "skills/cross-project-governance-audit/SKILL.md": skill_terms('cross-project-governance-audit'),
     "templates/cross-project-governance-audit-contract-template.md": (
         "Cross-Project Governance Audit Contract Template",
         "CPGA-YYYY-MM-DD",
@@ -102,7 +89,7 @@ def main() -> int:
         path = ROOT / rel
         if not path.exists():
             continue
-        text = path.read_text(encoding="utf-8")
+        text = read_conditional_sources(ROOT, rel, errors)
         for term in terms:
             if term not in text:
                 errors.append(f"{rel} missing cross-project governance audit term: {term}")

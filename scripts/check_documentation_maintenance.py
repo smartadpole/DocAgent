@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 
 
 REQUIRED_FILES = (
@@ -16,19 +18,7 @@ REQUIRED_FILES = (
     "scripts/check_all.py",
 )
 
-SKILL_TERMS = (
-    "documentation-maintenance",
-    "文档维护",
-    "公开 API",
-    "AGENTS",
-    "generated",
-    "duplicate-rule",
-    "quality-gate",
-    "verification-loop",
-    "evidence boundary",
-    "sensor",
-    "governance/documentation-maintenance-rules",
-)
+SKILL_TERMS = skill_terms('documentation-maintenance')
 
 GOVERNANCE_TERMS = (
     "documentation-maintenance",
@@ -55,7 +45,7 @@ def read(repo: Path, rel: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"{rel}: required documentation-maintenance file is missing")
         return ""
-    return path.read_text(encoding="utf-8")
+    return read_conditional_sources(repo, rel, errors)
 
 
 def require_terms(rel: str, text: str, terms: tuple[str, ...], errors: list[str]) -> None:

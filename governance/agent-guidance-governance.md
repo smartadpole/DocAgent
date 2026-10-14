@@ -51,7 +51,7 @@
 - 测试报告是验证证据，不是案件单一信息源。已发生问题的主档案在 Issue；报告必须回链 Issue / EP / TASK / FP / Gate，并写明本次证据能关闭哪一层、不能上推到哪一层。
 - 复盘是长期学习工程，不替代 [[log]]、Issue、事故、报告、handoff、ledger、决策、memory 或 trace。测试报告通过、Issue 关闭或事故修复都不能自动等价为复盘完成；只有当目标、事实、偏差、原因、保留做法、改进行动和沉淀路由形成可复用学习资产时，才进入 [[projects/retrospectives/README]]。
 - 复盘体系统一入口是 [[skills/retrospective-capability/SKILL]]；项目交付 / 软件研发链复盘使用 [[skills/delivery-retrospective/SKILL]]，历史对话 / Agent 工作流复盘使用 [[skills/historical-dialogue-retrospective/SKILL]]。不要把这些子项平铺成互相竞争的入口。
-- 用户显式要求“复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认标准复盘并落档到 `projects/retrospectives/<year>/`；显式要求“深度 / 完整 / 全面复盘 / 为什么没有自动做好 / 举一反三”时，进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出、产物即档案和上层抽象。自动触发的 `no-op / 轻量 checkpoint` 不能降级显式复盘请求。标准 / 深度复盘必须同步 [[projects/retrospectives/indexes/by-year]]，稳定主题或类型再同步主题 / 类型索引。
+- 用户显式要求“复盘 / 写复盘 / 沉淀复盘 / 总结教训”时，默认标准复盘并落档到 `projects/retrospectives/<year>/`；显式要求“深度 / 完整 / 全面复盘”时，进入深度复盘，必须纳入首轮目标、用户纠偏序列、原始 session / rollout 证据计划、git / 检查输出、产物即档案和上层抽象。自动触发的 `no-op / 轻量 checkpoint` 不能降级显式复盘请求。标准 / 深度复盘必须同步 [[projects/retrospectives/indexes/by-year]]，稳定主题或类型再同步主题 / 类型索引。
 - 代码工程或外部工程里的 agent 处理本库 TASK / EP / FP / Gate 时，默认把本库作为只读上下文源；TODO 只作轻量兼容视图。除非任务明确授权“受控回写”，否则不得直接改本库文档、改 TASK / EP 状态、关闭 Gate 或提交文档仓库。
 - 本库侧 agent 默认不直接修改代码工程或子工程文件、handoff 或代码；除非用户明确授权修改该子工程，否则只在本库测试报告、TASK、父 EP、风险和最终回复中写清需要子工程吸收的证据与建议。
 - 源码工程解读必须先使用 [[projects/codebase/source-code-audit-workflow]]，明确本次目标等级、实际达到等级、证据覆盖矩阵和未读 / 阻塞清单；没有完成 L3 自审时，不得暗示已经完成完整源码审计或已经可以做生产接入结论。
@@ -87,7 +87,7 @@
 - 跨项目采纳设计时，禁止整库同步、整目录复制或把对方项目设计页原样搬进当前库；必须先列候选项并标注系统层信息 / 项目材料，只有通过事实剥离后的系统规则、结构、流程、技能、模板和自动化契约才能写入。
 - 如果具体工程或下游项目提供“不适合吸收”的清单，只把它当作下游处理项目材料和反哺边界的参考；当前库作为上游模板库，只从具体工程中抽象吸收系统层信息，不在本库维护模板到项目的吸收状态或项目侧同步记录。
 - 升级 agent 规则、治理层、memory、workflow、skill、harness、evaluator、sensor、template 或 agent 入口默认行为时，先判本地是否存在 AcknowledgeBase，再判 `acknowledge_topic_update_required` 和 `upstream_write_authorization`：如果本机存在 AcknowledgeBase，则对应 topic 必须 `updated` 才算闭环；`rejected / deferred` 只能说明本次上游吸收被明确裁决，不能替代闭环。只有用户或 Run Capsule / dispatch 明确授权上游写入，且 allowed write roots 包含 AcknowledgeBase owner 时，才可受控直编 AcknowledgeBase；本仓普通运行即使本机能访问 AcknowledgeBase，也只能保留本仓库项目事实、handoff、验证证据和 conformance，并产出 system-layer extraction / handback。handback 必须写清 owner discovery、system-layer delta、本地 conformance、验证证据、禁止项、不上推边界，以及 `design-owner: existing / deferred / not-applicable`；handback 只是 pending / blocked 证据，不是完成态；不得把本仓事实写进 AcknowledgeBase 或用户级 `~/.codex/AGENTS.md`。
-- 收尾必须给出 Persistence Decision：`artifact-needed / no-op / blocked`。可复用 workflow、agent-system、Worker findings、治理 delta、未来任务知识或自动沉淀方案必须写清 owner、landing path、发现入口和最终回复证明；`no-op` 要有理由，`blocked` 要有恢复条件。
+- 有实际沉淀信号时给出 Persistence Decision：`artifact-needed / no-op / blocked`。仅实际可复用的方法、结构变化或未来任务知识记录 owner、landing path、发现入口与证据；未触发时不要求 `no-op`，真正阻塞时保留恢复条件。
 
 ## 结构变更同步规则
 

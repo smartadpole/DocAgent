@@ -2,7 +2,7 @@
 type: template
 id: TEMPLATE-HARNESS-ADOPTION-001
 status: active
-updated: 2026-06-22
+updated: 2026-10-14
 tags: [template, harness, agent]
 ---
 
@@ -49,20 +49,18 @@ tags: [template, harness, agent]
 - **根规则入口**：root AGENTS / thin adapter / project-specific adapter。
 - **治理分级**：P0 hard constraint / P1 semantic gate / P2 workflow default / P3 backlog。
 - **状态约束**：权限、remote、dirty / diverged / local-only、预算、外部服务、人工确认。
-- **Run Capsule / 编排**：Orchestrator、Worker、Evaluator、allowed writes、required evidence、Subproject Git Preflight。
-- **Loop Contract**：discovery source、run queue、scheduler、state store、evaluator oracle、budget / stop、next-run decision。
+- **当前 owner 入口**：引用需求、授权、验收和停止条件的单一信息源；接入模板只声明本地接线。
 - **最终交付合同**：修改位置、检查结果、commit hash、未验证边界和不能上推的证据。
 
-## Goal Contract
+## 条件合同接入
 
-- **适合使用 Goal 的任务类型**：
-- **不适合使用 Goal 的任务类型**：
-- **切入位置**：响应模式判断之后、正式长时执行之前。
-- **主控侧 Goal 定义入口**：
-- **子工程 Goal 接收方式**：
-- **完成证据必须回写到哪里**：
-- **不能上推的辅助证据**：health、日志、handoff、自述、中间态等。
-- **阻塞停止条件**：
+默认沿用当前 owner 推进。接入时只为实际需要的能力声明本地 owner / 落点；长时执行、复杂排障或多轮验证本身不触发独立合同，也不生成未启用表单。
+
+- **Goal Contract**：用户明确要求独立完成契约，或持久恢复、依赖控制、累计预算确需独立记录且原 owner 无法承接时，按 [[templates/goal-contract-template]] 引用实际合同。Goal 工具仅在用户明确要求 Goal 时使用。
+- **Run Capsule / 编排**：需要独立运行身份、恢复游标或跨角色合流时使用 [[templates/run-capsule-template]]；已授权协作再声明 Orchestrator、Worker、Evaluator、allowed writes、required evidence 和 Subproject Git Preflight。
+- **Loop Contract**：需要跨 run 发现源、去重持久队列与调度恢复时使用 [[templates/loop-contract-template]]；合同承接 discovery source、run queue、scheduler、state store、evaluator oracle、budget / stop 和 next-run decision。
+
+目标、完成判定和完成证据回写到原 owner；health、日志、handoff、自述和中间态只能作为辅助证据。各合同只补独立运行需要，不建立平行状态源。
 
 ## 验证层级
 

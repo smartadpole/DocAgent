@@ -1,6 +1,6 @@
 ---
 name: technology-research
-description: 技术、开源工程、行业 / AI 赛道或 PoC 调研总控技能；用于先固定调研合同、证据等级、成熟度、风险门、分支路线和沉淀落位，再产出可支撑判断的研究结果。
+description: 研究技术机制、开源工程、行业/AI方向、产品或 PoC 的可用性与选择；公共研究证据规则复用 research-capability，按对象保留专业验证。
 maturity: leading
 adoption_level: strong-template-kernel
 evidence_signals: [skill, README entry, governance, template, TRANSFER, source-plan, coverage-matrix, revision-loop, outcome-boundary]
@@ -10,201 +10,27 @@ sensor: python3 scripts/check_all.py --only research-capability
 
 # Technology Research
 
-## 定位
+这是 [[skills/research-capability/SKILL]] 的技术执行分支。复用研究目标、深度、来源分层、当前性与结论更新规则，不建立第二套合同或输出模板。
 
-本技能把“调研一个技术 / 项目 / AI 方向 / 产品机会”从资料搜集收敛成可判断、可复查、可沉淀、可支撑决策的研究流程。它优先处理技术类对象；市场、用户、竞争、尽调、科研、政策、战略前瞻和生活 / 现场决策等方法储备见 [[skills/research-capability/reference/research-method-route-map]]，由 [[skills/research-capability/SKILL]] 统一路由。
+## 对象差异
 
-它吸收 AcknowledgeBase 的技术调研总控、技术专题调研、开源工程调研和 IT / AI 行业调研方法，但不复制其文章、模板、项目事实、排行或来源路径。本库当前采用合并版技能：先做对象路由，再按技术专题、开源工程、行业 / AI 或 PoC 分支执行。
-
-本技能是 strong template-kernel 的技术执行分支：R2+ 必须先过 Source Plan checkpoint，执行中维护 coverage matrix，补充材料触发 Evidence Delta Re-open，结论失败或证据变化时使用 Revision Brief、Delta Source Plan 和 next-run decision 进入修订循环。
-
-## 适用场景
-
-- 用户要求“调研”“研究一下”“判断是否值得做 / 引入 / PoC / 产品化”。
-- 用户给出技术概念、论文、开源仓库、产品、公司、AI 赛道或行业方向。
-- 用户要求比较多个方案、判断成熟度、风险、成本、license、供应链、安全或合规。
-- 用户希望把调研结果沉淀成长期知识、选型依据、PoC 方案或后续项目输入。
-
-## 边界
-
-- 不把“资料多”当作“调研充分”；必须形成问题、证据、判断和行动。
-- 不把“支持材料多”当作“可以采用”；必须写 So-What、counter-evidence / 反证、deal-breaker 和 decision output。
-- 涉及近期事实、价格、版本、license、release、政策、公司状态、benchmark、CVE、开源活跃度或模型能力时，必须查证当前来源。
-- 没有运行验证、PoC 或本地约束验证时，不给“可生产 / 可正式接入”的强结论。
-- 调研结论不能替代项目决策、采购拍板、验收报告或安全合规审查。
-- 如果调研产物会长期保留，必须配合 [[skills/knowledge-linking/SKILL]] 做落位、入口和回链。
-
-## 成熟度与证据信号
-
-- `maturity`：`leading / strong-template-kernel`。本技能已有技能正文、README 入口、迁移边界、研究治理页、R2+ source plan、coverage matrix、修订循环和结构化正负 fixture；真实研究 outcome 仍需独立 evaluator 或人工 reviewer。
-- `template`：调研启动合同见 [[templates/technology-research-contract-template]]，正式报告骨架见 [[templates/technology-research-report-template]]。
-- `governance`：调研事实查证、知识沉淀、规则升级和项目落位分别回到 [[governance/research-capability-rules]]、[[response-mode-routing]]、[[POLICY]]、[[template-feedback-rules]] 和目标项目主入口。
-- `TRANSFER`：跨工程吸收边界见 [[skills/technology-research/TRANSFER]]；迁移时吸收证据等级、对象路由、成熟度 / 风险门和分支流程，不复制具体调研文章或项目结论。
-- `evidence boundary`：本技能输出的是研究判断和行动建议；不能替代运行验收、采购 / 合规批准、项目状态关闭或生产接入结论。
-
-## 工作流
-
-### 1. 固定调研合同
-
-开始前先写清：
-
-- 调研对象：技术概念、开源工程、行业 / AI 赛道、公司 / 产品、PoC 或本地源码工程。
-- 决策目标：学习、选型、引入、PoC、产品化、创业判断、采购、治理或持续观察。
-- 关键问题：本轮必须回答的 3 到 7 个问题。
-- 证据计划：哪些事实必须联网或回到一手来源查证。
-- 输出形态：短答、研究报告、比较矩阵、PoC 方案、源码审计入口、知识页或项目任务。
-- 不做项：本轮不展开的对象、不会给出的强结论和不能越界的部分。
-- 溯源入口：外部原文、raw / source ledger、数据快照或社区深读入口放在哪里。
-
-### 2. 建证据等级
-
-把证据分层：
-
-- `L1 一手事实`：官方文档、论文、标准、法规、repo、release、产品文档、真实运行 / 测试数据。
-- `L2 权威分析`：标准组织、监管机构、行业报告、可靠研究机构。
-- `L3 产业信号`：招聘、客户案例、融资、会议、社区活跃、产品更新。
-- `L4 媒体 / 社区线索`：新闻、博客、社交媒体、论坛，只能作为线索。
-- `L5 推论`：必须说明依据和不确定性。
-- `L6 建议`：必须连接证据、成熟度、风险和行动。
-
-没有 L1 或明确的一手来源时，不给强采用建议。
-
-### 3. 判成熟度和风险
-
-至少输出：
-
-- 技术 / 工程成熟度：TRL、Adopt / Trial / Assess / Hold，或 A / B / C / D。
-- 证据置信度：high / medium / low。
-- 刷新触发：release、法规、价格、benchmark、CVE、融资、产品变化、PoC 结果等。
-- 阻断风险：安全、license、供应链、隐私、合规、AI 评测、成本、维护和组织落地。
-- 观察风险：暂不阻断，但需要复查的条件。
-- So-What：证据对当前选型、采购、PoC、治理或继续观察的实际含义。
-- counter-evidence / 反证：反向证据、失败案例、替代解释、不可复现信号和社区争议。
-- deal-breaker：足以否决、延后、降级为人工确认或停止投入的条件。
-- decision output：`直接使用 / 封装使用 / Fork / 只参考 / 放弃 / 继续观察`。
-
-### 3.1 判研究深度
-
-| 深度 | 使用场景 | 技术调研输出 |
+| 对象 | 需要回答 | 关键验证 |
 | --- | --- | --- |
-| R0 线索 | 只需要识别材料价值和下一步是否值得读 | source package、对象假设、明显风险 |
-| R1 桌面初筛 | 需要候选筛选或方向比较 | L1 / L2 来源、成熟度假设、风险门、刷新触发 |
-| R2 验证计划 | 准备 PoC、运行验证或用户 / 市场验证 | 验证目标、样本、指标、成功 / 退出条件 |
-| R3 结构分析 | 需要方案、机制、生态和替代路线 | 证据矩阵、反证、替代方案、适用边界 |
-| R4 尽调 / 接入 | 会影响采购、合作、生产接入或长期承诺 | 三角验证、license / 供应链 / 安全 / 合规、人工确认边界 |
+| 技术概念/路线 | 解决什么问题、机制与假设、替代方案、适用/不适用场景 | 对关键机制核验原始论文/标准/文档，区分理论与实际约束 |
+| 开源工程/GitHub/Hugging Face | 项目画像、维护健康、license/供应链、架构、效果性能、集成与退出成本 | release/issue/依赖直接证据；需要采用判断时按 claim scope 做运行验证 |
+| 行业/AI赛道/公司群体 | 技术路线、产品应用、竞争/开源生态、机会与风险 | 比较独立一手证据，区分产业信号与已发生事实 |
+| 产品/公司 | 用户价值、能力边界、交付形态、定价/成本、依赖与替代 | 官方能力和实际体验分开，采购/合规结论由相应 owner 裁决 |
+| PoC | 哪个假设待验证、样本、指标、成功和失败退出条件 | 代表性输入、基线与反例、非默认/边界条件、质量和成本 |
+| 本地源码工程 | 具体实现、调用路径、合同与运行行为 | 使用 [[projects/codebase/source-code-audit-workflow]]，外部资料不替代源码审计 |
 
-R2 以上必须把“尚未验证”和“已经验证”分开写；R4 必须声明不能替代采购、法务、合规、安全或人工拍板。
+以上是决策维度，按问题取舍，不为所有对象展开全部章节。R2+ 需要的 Source Plan checkpoint、coverage matrix、Evidence Delta Re-open 与修订机制由研究总技能的条件参考承接。
 
-### 3.2 R2+ Source Plan 与 Coverage
+## 判断与建议
 
-R2 / R3 / R4 在广泛收集前必须先写：
+成熟度可使用 TRL 或工程成熟度说明，行动可使用 Adopt / Trial / Assess / Hold / Blocked；只有有用时输出等级，避免装饰性打分。判断联系机制证据、本地约束、替代方案、反证、deal-breaker、维护和迁移成本。
 
-- 问题到来源类型映射、必需 L1 和 access boundary。
-- coverage target、contradiction plan、停止条件和行动 owner。
-- coverage matrix：每个关键问题标记 covered / partial / blocked，同时列 supporting evidence、counter-evidence、stale evidence 和下一步。
+技术使用策略可为直接使用、封装使用、Fork、只参考、放弃或继续观察。解释为什么、适用范围与下一项最有区分力的验证。Star、README 宣传、新闻热度或旧 benchmark 不证明可用；单次跑通不证明生产可用。
 
-checkpoint 未通过时保持 `blocked / Assess`，不能用检索数量、材料篇数或报告长度代替覆盖证明。
+版本、API、license、价格、CVE、模型能力等事实要核对当前来源。没有运行、PoC 或本地约束验证时保留对应未验证边界。研究结论不替代项目决策、采购批准或运行验收。
 
-### 3.3 Evidence Delta 与修订循环
-
-用户补充截图、链接、文档、日志、接口响应或运行结果时，执行 Evidence Delta Re-open：判 materiality，补外围一手核验和反证，重算整体结论、风险门与行动等级，并记录 propagation results。评价失败或关键证据变化时，形成 Revision Brief、Delta Source Plan 和 next-run decision。
-
-### 4. 路由分支
-
-| 对象 | 执行重点 |
-| --- | --- |
-| 技术概念 / 技术路线 | 问题定义、概念边界、核心机制、生态扫描、方案对比、场景映射、PoC、行动等级 |
-| 开源工程 / Hugging Face / GitHub | R0-R4 深度、项目画像、健康度、license / 供应链、运行验证、代码结构、效果性能、集成成本、使用策略 |
-| 行业 / AI 赛道 / 公司群体 | 宏观趋势、技术路线、产品应用、公司竞争、开源生态、落地治理、机会和风险 |
-| 本地源码工程 | 转入 [[projects/codebase/source-code-audit-workflow]]，不得用外部调研替代源码审计 |
-| PoC | 验证目标、样本、指标、成功标准、失败退出条件、成本和复查触发 |
-
-### 5. 形成判断和沉淀
-
-结论必须同时包含：
-
-- 一句话判断。
-- 证据等级和置信度。
-- 成熟度和行动等级。
-- 关键风险和阻断项。
-- 推荐下一步。
-- 刷新触发条件。
-- 长期落位：`articles/`、`concepts/`、`skills/`、`templates/`、`projects/` 或只留本轮回复。
-- 验证阶梯：desk evidence / local validation / PoC / service-runtime readback / human approval。
-- evaluator provenance、outcome review、Revision Brief 和 next-run decision。
-
-## 输出格式
-
-```markdown
-**调研合同**
-- contract revision：research-contract.v1
-- 对象：
-- 决策目标：
-- 关键问题：
-- 输出形态：
-- 不做项：
-
-**证据计划**
-- L1 一手事实：
-- L2 权威分析：
-- L3 信号：
-- 待查证：
-
-**R2+ Source Plan / Coverage**
-- checkpoint：pass / blocked / not-required
-- coverage target：
-- contradiction plan：
-- stopping rule：
-- coverage matrix：covered / partial / blocked
-
-**Evidence Delta**
-- materiality：duplicate / clarification / conclusion-changing / architecture-changing / not-applicable
-- 外围一手核验：
-- 新反证：
-- 结论重算与 propagation：
-
-**分支判断**
-- 分支：
-- 调研深度：R0 / R1 / R2 / R3 / R4
-- 成熟度：
-- 置信度：
-- 风险门：
-
-**研究结论**
-- 一句话结论：
-- 关键依据：
-- 对比 / 替代：
-- 适用场景：
-- 不适用场景：
-- So-What：
-- 反证 / counter-evidence：
-- deal-breaker：
-- decision output：直接使用 / 封装使用 / Fork / 只参考 / 放弃 / 继续观察
-- 行动等级：
-- 下一步：
-- 刷新触发：
-
-**沉淀**
-- 主落位：
-- 溯源入口：
-- 入口 / 回链：
-- 检查：
-
-**评价与修订**
-- deterministic validator：
-- evaluator provenance：
-- outcome review：passed / failed / unproven
-- Revision Brief / Delta Source Plan：
-- next-run decision：
-```
-
-## 禁止项
-
-- 不把热点、宣传、README、Star 数或二级文章直接写成结论。
-- 不把“前沿 / 热门 / 有潜力”误写成“现在应该采用”。
-- 不在缺少运行验证、PoC 或本地约束验证时写“可生产接入”。
-- 不让 R2+ 跳过 Source Plan checkpoint，不用材料数量代替 coverage。
-- 不把新材料只追加到报告末尾；必须 Evidence Delta Re-open 并重算受影响结论。
-- 不把 deterministic validator 或 builder-self 自评上推为独立 outcome review。
-- 不把外部项目事实、公司结论、报告排行或一次性调研数据写进通用技能。
-- 不让调研页成为孤岛；长期沉淀必须补入口、上位关系和回链。
+正式资产按需要使用 [[templates/technology-research-report-template]]，保留溯源入口与刷新触发；长期知识补入口与回链。相关检查：`python3 scripts/check_all.py --only research-capability`。迁移见 [[skills/technology-research/TRANSFER]]。

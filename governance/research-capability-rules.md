@@ -61,11 +61,11 @@ research-capability 的完成标准不是“找到了很多资料”，而是形
 - R0 / R1 可以轻量执行，但仍要标注当前性和不可上推边界。
 - R2 / R3 / R4 在广泛收集前必须通过 Source Plan checkpoint，至少包含问题到来源类型映射、必需 L1、coverage target、contradiction plan、access boundary、停止条件和 owner。
 - coverage matrix 必须按关键问题记录 `covered / partial / blocked`，并同时登记支持证据、counter-evidence、stale evidence 和下一步。
-- 来源数量、搜索轮数和报告篇幅不能代替 coverage；关键问题仍 blocked 时，结论必须同步降级。
+- 来源数量、搜索轮数和报告篇幅不能代替 coverage；关键问题仍 blocked 时，降低依赖该问题的 claim 强度，不否认已独立核验的事实。
 
 ## Evidence Delta Re-open
 
-已有研究收到新截图、链接、文档、日志、接口响应或运行结果时，必须重新开启受影响的研究合同：判 materiality，区分直接观察和推论，补外围一手核验与反证，重算结论、行动等级和风险门，并对 source ledger、owner、decision、trace 或报告逐项记录 updated / no-op / blocked。只追加摘要不构成吸收完成。
+已有研究收到新材料时先判 materiality，区分直接观察和推论。重复或澄清只更新受影响事实；会改变结论、架构或风险门时执行 Evidence Delta Re-open，补一手核验与反证，重算受影响判断，并同步实际消费该结论的 owner。不能只追加摘要而保留过期裁决，不要求无关 owner 的 no-op 回执。
 
 ## 验证与评价循环
 
@@ -88,7 +88,7 @@ research-capability 的完成标准不是“找到了很多资料”，而是形
 
 ## 行动等级
 
-研究结论必须给行动等级：
+技术采用判断可用以下行动等级；市场、用户、政策或科研使用适合其决策问题的建议，不强套技术采用枚举：
 
 - `Adopt`：证据充分、风险可控、已有本地或生产约束验证。
 - `Trial`：值得 PoC 或小范围试用，但未满足正式采用。

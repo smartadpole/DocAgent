@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from skill_invariants import skill_terms
+from agent_guidance import read_conditional_sources
 from agent_guidance import read_agent_sources
 
 
@@ -190,7 +192,7 @@ TEMPLATE_REQUIRED_SECTIONS = (
     "## 单一信息源",
     "## 写权限和边界",
     "## 响应模式路由",
-    "## Goal Contract",
+    "## 条件合同接入",
     "## 验证层级",
     "## Handoff 和回写",
     "## Feedback Sensors",
@@ -198,7 +200,7 @@ TEMPLATE_REQUIRED_SECTIONS = (
 )
 
 EPISODE_TEMPLATE_REQUIRED_SECTIONS = (
-    "## Goal Contract",
+    "## 当前 owner 与完成依据",
     "## 首次 Checkpoint",
     "## 执行轨迹",
     "## 证据边界",
@@ -213,11 +215,7 @@ EVOLUTION_TEMPLATE_REQUIRED_SECTIONS = (
     "## Sensor Backlog",
 )
 
-ISSUE_SKILL_REQUIRED_TERMS = (
-    "### 0. 先判响应模式",
-    "是否需要升级",
-    "不默认新建 issue",
-)
+ISSUE_SKILL_REQUIRED_TERMS = skill_terms('issue-analysis')
 
 CHECK_ALL_REQUIRED_TERMS = (
     "--only",
@@ -261,34 +259,9 @@ CODEX_ADAPTER_REQUIRED_TERMS = (
     "scripts/check_all.py --only",
 )
 
-GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS = (
-    "## 适用性判断",
-    "## 完成契约",
-    "## 迭代和停止",
-    "## 证据审计",
-    "## 主控 / 子工程分工",
-    "## 沉淀和复用",
-)
+GOAL_CONTRACT_TEMPLATE_REQUIRED_SECTIONS = ('## 最小生效核心', '## 条件扩展')
 
-GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = (
-    "防止任务跑偏",
-    "防止证据漂移",
-    "防止无限探索",
-    "原始目标 / 用户最新目标",
-    "完成判定",
-    "探索分支上限",
-    "阻塞后汇报格式",
-    "辅助证据",
-    "明确不足以闭环的证据",
-    "health、日志、子工程自述或中间态误当成真正闭环",
-    "先复用当前 owner",
-    "Goal 工具仅在用户明确要求 Goal 时调用",
-    "Pipeline trace",
-    "Method capture decision",
-    "Persistence landing",
-    "Reuse decision",
-    "Verification-loop",
-)
+GOAL_CONTRACT_TEMPLATE_REQUIRED_TERMS = ('用户明确要求 Goal', '原 owner', '目标与完成判定', '授权与约束', '验证合同', '预算与停止条件', '恢复点', 'Source pack', 'non-default / boundary', '不能上推', 'Pipeline trace', 'templates/run-capsule-extensions', '没有触发')
 
 AGENT_STRATEGY_REQUIRED_TERMS = (
     "P0 hard constraint",
@@ -327,7 +300,7 @@ def read_text(repo: Path, rel: str, errors: list[str]) -> str:
     if not path.exists():
         errors.append(f"{rel}: required harness file is missing")
         return ""
-    return path.read_text(encoding="utf-8")
+    return read_conditional_sources(repo, rel, errors)
 
 
 def has_link_or_term(text: str, stem: str) -> bool:

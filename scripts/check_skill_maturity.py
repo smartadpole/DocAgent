@@ -6,6 +6,8 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from agent_guidance import read_conditional_sources
+from skill_invariants import skill_terms
 from agent_guidance import read_agent_sources
 
 
@@ -34,8 +36,7 @@ TEMPLATE_TERMS = (
     "evidence_signals:",
     "transfer_ready:",
     "sensor:",
-    "## 成熟度与证据信号",
-    "evidence boundary",
+    "## 验证与迁移边界",
     "TRANSFER.md",
 )
 TRANSFER_MANIFEST_TEMPLATE_TERMS = (
@@ -66,9 +67,6 @@ SKILL_FRONTMATTER_FIELDS = (
     "transfer_ready:",
     "sensor:",
 )
-SKILL_REQUIRED_TERMS = ("## 定位", "## 成熟度与证据信号", "## 输出格式", "## 禁止项")
-SKILL_WORKFLOW_TERMS = ("## 工作流", "## 响应模式", "## 工作链还原")
-SKILL_MATURITY_TERMS = ("maturity", "evidence_signals", "transfer_ready", "sensor", "evidence boundary")
 TRANSFER_REQUIRED_TERMS = (
     "## 能力目标",
     "## 可以吸收",
@@ -125,10 +123,10 @@ def check_skill_files(repo: Path, readme: str, errors: list[str]) -> None:
         rel = path.relative_to(repo).as_posix()
         text = path.read_text(encoding="utf-8")
         frontmatter = parse_frontmatter(rel, text, errors)
-        require_terms(rel, text, SKILL_REQUIRED_TERMS, errors)
-        require_terms(rel, text, SKILL_MATURITY_TERMS, errors)
-        if not any(term in text for term in SKILL_WORKFLOW_TERMS):
-            errors.append(f"{rel}: missing workflow or response-mode section")
+        source = read_conditional_sources(repo, rel, errors)
+        require_terms(rel, source, skill_terms(path.parent.name), errors)
+        if not re.search(r"^description:\s*\S.+$", frontmatter, re.M):
+            errors.append(f"{rel}: missing specific skill trigger description")
         wikilink = f"[[{path.relative_to(repo).with_suffix('').as_posix()}]]"
         if wikilink not in readme:
             errors.append(f"skills/README.md: missing skill entry {wikilink}")

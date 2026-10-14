@@ -1,6 +1,6 @@
 ---
 name: transferable-skill-governance
-description: 可迁移技能治理技能。用于根据外部成熟度矩阵、源技能或下游经验吸收通用能力时，先判断 true-gap / recognition-gap / signal-only-gap，再决定 recognize / complete / upgrade / merge / adapt / defer / reject，避免为追分创建空技能或复制项目事实。
+description: 吸收外部技能或成熟度反馈时判断真实能力、识别缺口与项目绑定边界，选择原生适配；普通技能小改不自动启动矩阵治理。
 maturity: active
 evidence_signals: [skill, README entry, TRANSFER, governance, template, sensor, quality-gate, verification-loop]
 transfer_ready: true
@@ -9,80 +9,24 @@ sensor: python3 scripts/check_all.py --only skill-maturity
 
 # Transferable Skill Governance
 
-## 定位
+外部矩阵是缺口雷达，不是执行命令。依据用户目标、影响与证据判断需要改变什么，不为分数、篇幅或术语制造结构。
 
-本技能负责“怎么吸收外部通用技能”，不是某个具体业务技能。它把成熟度矩阵、源工程 skill、TRANSFER、模板、governance、sensor 和目标工程结构放到同一个决策面里，避免两种常见偏差：
+## 缺口与处理
 
-- 看到缺口就照单全收，复制项目事实或目录形态。
-- 看到 leader / 领先就误以为真实执行质量已经通过验证。
+先检查目标已有等价能力和实际使用方式，区分：true-gap（缺真实能力）、recognition-gap（已有但不可发现）、signal-only-gap（只缺弱信号）、project-bound-gap（依赖领域或事项 owner）。按价值与风险排序，不能只按 score_gap。
 
-本仓库是 wiki / 模板源工程，吸收对象必须先经过本库身份筛选，只落到既有 repo-local `skills/`、`templates/`、`governance/`、`scripts/`、`views/` 等层级。Path ROOT 永远是当前目标工程根目录，而不是 AcknowledgeBase 或矩阵里显示的来源路径；所有外部路径只读参考。
+逐项选择 recognize / complete / upgrade / merge / adapt / defer / reject。落点使用现有 skill、reference、template、governance 或 sensor；只建立真实需要的组合，不为单一技能强铺系统层。公开模板不携带来源工程身份、私有路径、业务状态或一次性 evidence。
 
-当吸收对象从单项 skill 扩展到 agent system / intelligence maturity 时，本技能必须先使用 [[agent-system-maturity]] 的七层对象和 Matrix Recognition Capsule 做裁决。skill maturity 高分只能作为 skill 子层证据，不能上推成 runtime、memory、evaluation、governance、migration 或 intelligence 高分。
+## 条件证据
 
-本仓矩阵级吸收证据清单是 [[skills/transferable-skill-governance/matrix-adoption-2026-06-26-agent-evidence-v12]]。它承接 AcknowledgeBase 2026-06-26 `agent-evidence-v12` 快照的 repo-native source-depth、逐能力裁决、project conformance 和未验证边界；后续类似全面吸收不能只改 `skills/README` 或最终回复。
+外部 evaluator 或矩阵级吸收需要可核对的能力清单、source-depth、candidate files、baseline、逐项裁决与剩余边界；使用 [[templates/skill-transfer-evidence-contract]] 和 [[templates/skill-transfer-review-contract]] 的适用字段。矩阵识别与真实行为分离，缺 external readback 就写未验证，expected impact 不是已通过。
 
-## 触发场景
+系统级能力升级才读取 [[agent-system-maturity]]，分别判断 skill、runtime、harness、memory、evaluation、governance、migration 及 intelligence evidence；单项 skill 高分不能外推其他层。普通能力升级不强制 Matrix Recognition Capsule 或全维评分。
 
-- 用户要求根据 AcknowledgeBase、矩阵、诊断、下游工程或附件升级通用技能。
-- 某个技能有成熟度缺口、source project、leader 标记或跨工程迁移任务。
-- 需要判断外部经验是系统层信息、项目材料、一次性状态还是不可吸收内容。
-- 新增或重写 `SKILL.md`、`TRANSFER.md`、模板、governance、sensor 或 views 接线。
-- 需要判断通用 skill 是否具备前沿维护能力：source-depth、TRANSFER、golden example / review contract、verification-loop、runtime / outcome / external readback 边界。
-- 需要判断某项能力是通用可迁移能力，还是只能做成当前项目 / 领域绑定能力。
+矩阵级或多能力吸收保留 repo-native adoption manifest 或等价裁决清单，记录 source snapshot、实际落点、授权、验证与例外；它只索引证据，不替代 owner，也不固定某次历史快照为永久标准。
 
-## 成熟度与证据信号
+## 验证与交付
 
-- `skill`：本页定义吸收流程和决策枚举。
-- `TRANSFER`：迁移边界见 [[skills/transferable-skill-governance/TRANSFER]]。
-- `governance`：与 [[template-feedback-rules]]、[[documentation-maintenance-rules]]、[[WORKFLOW]] 和 [[AGENTS]] 共用反哺边界。
-- `template`：跨工程任务书、证据和 review 使用 [[templates/skill-transfer-contract-template]]、[[templates/skill-transfer-evidence-contract]]、[[templates/skill-transfer-review-contract]]。
-- `sensor`：`skill-maturity` 检查技能 frontmatter、README entry、TRANSFER 和必要结构；它只证明 wiring，不证明真实执行质量。
-- `evidence boundary`：矩阵是缺口雷达，不是执行命令。
-- `frontier maintenance`：通用 skill 的前沿维护必须至少能回答 source-depth、true-gap / recognition-gap / signal-only-gap、review contract、verification-loop、external readback / blocked 和 Goodhart guard；缺一项时不直接提 maturity。
+检查原生入口、条件参考、实际消费者和行为边界；新 sensor 应验证有意义的不变量而不是固定措辞。对有价值的 golden baseline 比较语义覆盖，不以变短判失败。拒绝为空白分数补空 skill、空 view、重复正文。
 
-## 工作流
-
-1. 读取目标工程入口规则和既有结构，确认是否已有等价体系。
-2. 从矩阵或诊断中过滤目标工程、`scope=general` 和能力清单，按 `score_gap` 排序。
-3. 对每个能力先判缺口类型：
-   - `true-gap`：本地确实缺触发、流程、模板、sensor、验证或入口。
-   - `recognition-gap`：本地已有能力，但命名、入口、TRANSFER 或 sensor 不可识别。
-   - `signal-only-gap`：缺的是 body、large-body、benchmark 等弱信号，不值得为分数补噪声。
-   - `project-bound-gap`：能力依赖目标工程自己的研发结构、领域事实、服务实例、业务流程或生活系统 owner，只能在目标工程绑定落位，不能上推为通用 skill。
-4. 再判处理方式：
-   - `recognize`：承认已有体系，不改或只补入口说明。
-   - `complete`：补缺失的耐久落点。
-   - `upgrade`：吸收更成熟方法，增强本地 skill / template / sensor。
-   - `merge`：合并多个本地能力，防止平行系统。
-   - `adapt`：只抽象方法，不复制目录或事实。
-   - `defer`：适用但当前没有运行条件或证据。
-   - `reject`：不适用、冲突、隐私风险或第二真相源风险。
-5. 对要升级的能力选择最小耐久落点：`SKILL.md`、`TRANSFER.md`、模板、governance、sensor、views，按真实需要组合。
-6. 对通用 skill 做前沿维护 review：检查 source-depth、TRANSFER、golden / review contract、verification-loop、runtime / outcome / external readback 边界是否齐全。
-7. 对外部 evaluator 任务填写 Matrix Recognition Capsule；外部 readback 不能运行时写 blocked 和 expected impact。
-8. 更新入口页和检查脚本，运行专项检查和完整检查。
-9. 若本轮是矩阵级或多能力吸收，更新 Matrix adoption manifest 或等价清单，并运行 `python3 scripts/check_all.py --only transferable-skill-baseline`。
-10. 最终回复列明未复制内容、未验证边界和结构 wiring 与真实运行质量的区别。
-
-## 输出格式
-
-Output The decision table first, then list the updated files, validation commands, and remaining boundaries. short-description 要能一句话说明：本轮是在本工程结构内升级通用 agent 技能体系，不是复制 AcknowledgeBase 目录。
-
-```markdown
-| 能力 | 矩阵原状态 | 缺口类型 | 处理方式 | 落位 | 剩余边界 |
-| --- | --- | --- | --- | --- | --- |
-|  |  | true-gap / recognition-gap / signal-only-gap | recognize / complete / upgrade / merge / adapt / defer / reject |  |  |
-```
-
-如果涉及外部矩阵或 agent-system maturity，先输出 Matrix Recognition Capsule 摘要，再输出上表。
-
-## 禁止项
-
-- 不复制项目事实、业务链路、服务名、表名、运行 ID、真实路径、历史 log、一次性 handoff、密钥或环境配置。
-- 不为了追分创建没有触发面、没有使用方式、没有检查意义的空 skill、空模板或空 view。
-- 不把 `leader / 领先` 当作真实执行质量、审美质量、验收闭环或项目状态。
-- 不让外部目录形态压过本工程已有结构。
-- 不把下游工程“不吸收清单”变成本库维护下游同步状态的台账。
-- 不把项目 / 领域绑定能力硬升为通用 skill；只能在目标工程自己的 owner、template、sensor 或报告中承接。
-- 不把外部 evaluator 的 expected impact 写成已经 readback。
+输出逐能力决定、实际变更、验证和未证明的范围。单项迁移执行用 [[skills/cross-project-skill-adoption-prompt/SKILL]]；反哺规则归 [[template-feedback-rules]]。专项检查可用 `python3 scripts/check_all.py --only transferable-skill-baseline,skill-maturity`；结构 green 不是运行质量。迁移见 [[skills/transferable-skill-governance/TRANSFER]]。
